@@ -1,40 +1,26 @@
-// middleware.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-const locales = ['en', 'fa'];
-const defaultLocale = 'en';
-
-function getLocale(request: NextRequest): string {
-  // ساده‌ترین روش: نگاه به هدر accept-language
-  const acceptLanguage = request.headers.get('accept-language');
-  if (!acceptLanguage) return defaultLocale;
-
-  // اولین زبان قابل قبول را برمی‌گرداند
-  const preferred = acceptLanguage.split(',')[0].trim().split('-')[0];
-  return locales.includes(preferred) ? preferred : defaultLocale;
-}
+const locales = ['fa', 'en', 'ps', 'fr'];
+const defaultLocale = 'fa';
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const pathname = request.nextUrl.pathname;
 
-  // اگر مسیر قبلاً زبان دارد، کاری نکن
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  // اگر مسیر بدون زبان باشه، به زبان پیش‌فرض ریدایرکت کن
+  const pathnameIsMissingLocale = locales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
 
-  if (pathnameHasLocale) {
-    return NextResponse.next();
+  if (pathnameIsMissingLocale) {
+    return NextResponse.redirect(
+      new URL(`/${defaultLocale}${pathname === '/' ? '' : pathname}`, request.url)
+    );
   }
 
-  // زبان مناسب را پیدا کن و ریدایرکت کن
-  const locale = getLocale(request);
-  request.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    // همه مسیرها به جز موارد زیر
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
