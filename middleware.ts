@@ -2,39 +2,33 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const locales = ['fa', 'en', 'ps', 'fr'];
-const defaultLocale = 'fa';
+const defaultLocale = 'en';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // مسیرهای سیستمی را نادیده بگیر
+  // ۱. نادیده گرفتن فایل‌های عمومی و API
   if (
-    pathname.startsWith('/api') ||
     pathname.startsWith('/_next') ||
-    pathname.startsWith('/favicon') ||
     pathname.includes('.') ||
-    pathname.startsWith('/static')
+    pathname.startsWith('/api')
   ) {
     return NextResponse.next();
   }
 
-  // چک کن آیا مسیر با یکی از زبان‌ها شروع شده یا نه
+  // ۲. بررسی اینکه آیا آدرس فعلی شامل زبان هست یا خیر
   const hasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  // اگر هیچ زبانی در مسیر نبود (مثلاً / یا /about) → به زبان پیش‌فرض هدایت کن
+  // ۳. اگر زبان نداشت، ریدایرکت به زبان پیش‌فرض
   if (!hasLocale) {
-    const newUrl = request.nextUrl.clone();
-    newUrl.pathname = `/${defaultLocale}${pathname === '/' ? '' : pathname}`;
-    return NextResponse.redirect(newUrl);
+    return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|static).*)',
-  ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
