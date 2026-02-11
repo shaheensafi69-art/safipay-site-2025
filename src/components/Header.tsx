@@ -12,6 +12,7 @@ const languages = [
   { code: 'ps', label: 'پښتو', flag: '🇦🇫', flagUrl: 'https://flagcdn.com/w160/af.png' },
   { code: 'en', label: 'English', flag: '🇬🇧', flagUrl: 'https://flagcdn.com/w160/gb.png' },
   { code: 'fr', label: 'Français', flag: '🇫🇷', flagUrl: 'https://flagcdn.com/w160/fr.png' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪', flagUrl: 'https://flagcdn.com/w160/de.png' }, // اضافه شدن آلمانی
 ];
 
 export default function Header() {
@@ -41,11 +42,11 @@ export default function Header() {
   };
 
   const navText = {
-    home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil' }[currentLang] || 'Home',
-    invest: { fa: 'سرمایه‌گذاری', ps: 'پانګونه', en: 'Invest', fr: 'Investir' }[currentLang] || 'Invest',
-    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact' }[currentLang] || 'Contact',
-    about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos' }[currentLang] || 'About Us',
-    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue' }[currentLang] || 'Language',
+    home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite' }[currentLang] || 'Home',
+    invest: { fa: 'سرمایه‌گذاری', ps: 'پانګونه', en: 'Invest', fr: 'Investir', de: 'Investieren' }[currentLang] || 'Invest',
+    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt' }[currentLang] || 'Contact',
+    about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns' }[currentLang] || 'About Us',
+    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache' }[currentLang] || 'Language',
   };
 
   const navItems = [
@@ -65,20 +66,18 @@ export default function Header() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
-          {/* لوگو */}
           <Link href={`/${currentLang}`} className="flex items-center gap-3 group relative z-[110]">
             <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
               <Image src="/logo.png" alt="SafiPay" fill className="object-contain" priority />
             </div>
-            <span className="text-xl font-black tracking-tighter text-white group-hover:text-amber-500 transition-colors">
+            <span className="text-xl font-black tracking-tighter text-white group-hover:text-amber-500 transition-colors uppercase">
               SAFIPAY
             </span>
           </Link>
 
-          {/* نوار منوی اصلی (Nav) با هاله پرچم تقویت شده */}
+          {/* نوار منو با هاله پرچم داینامیک */}
           <nav className="hidden md:flex items-center relative group/nav">
-            {/* پرچم در پس‌زمینه با وضوح بالا و تفکیک رنگی */}
-            <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
                <img 
                  src={activeLangObj.flagUrl} 
                  className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" 
@@ -100,11 +99,9 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* بخش انتخاب زبان با افکت نئونی پرچم */}
+          {/* دکمه زبان با افکت تفکیک شده */}
           <div className="hidden md:flex items-center gap-4">
             <div className="relative group/lang flex items-center justify-center">
-              
-              {/* هاله دور دکمه زبان با تفکیک عالی */}
               <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
                  <img 
                    src={activeLangObj.flagUrl} 
@@ -151,7 +148,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* منوی موبایل */}
+          {/* همبرگر منوی موبایل */}
           <button
             className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl active:scale-95 transition-transform"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -161,7 +158,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* تمام صفحه موبایل */}
+      {/* موبایل منو */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -170,7 +167,6 @@ export default function Header() {
             exit={{ opacity: 0, scale: 1.05 }}
             className="fixed inset-0 z-[150] bg-black/98 backdrop-blur-3xl flex flex-col p-8 md:hidden"
           >
-            {/* پرچم محو بزرگ در پس‌زمینه موبایل */}
             <div className="absolute inset-0 -z-10 opacity-20 blur-3xl overflow-hidden">
                <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
             </div>
@@ -178,9 +174,9 @@ export default function Header() {
             <div className="flex justify-between items-center mb-16">
               <div className="flex items-center gap-3">
                 <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
-                <span className="font-black text-lg tracking-tighter">SAFIPAY</span>
+                <span className="font-black text-lg tracking-tighter text-white">SAFIPAY</span>
               </div>
-              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full">
+              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full text-white">
                 <X size={20} />
               </button>
             </div>
