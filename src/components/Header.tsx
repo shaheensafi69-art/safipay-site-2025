@@ -58,13 +58,14 @@ export default function Header() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-        scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-amber-500/20 py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-black/90 backdrop-blur-xl border-b border-amber-500/30 py-3' : 'bg-transparent py-5'
       }`} 
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
+          {/* لوگو */}
           <Link href={`/${currentLang}`} className="flex items-center gap-3 group relative z-[110]">
             <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
               <Image src="/logo.png" alt="SafiPay" fill className="object-contain" priority />
@@ -74,18 +75,18 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* --- بخش نوار منو با هاله پرچم (عکس دوم شما) --- */}
+          {/* نوار منوی اصلی (Nav) با هاله پرچم تقویت شده */}
           <nav className="hidden md:flex items-center relative group/nav">
-            {/* افکت هاله پرچم پشت منو */}
-            <div className="absolute -inset-[2px] -z-10 rounded-full overflow-hidden opacity-30 blur-md group-hover/nav:opacity-60 transition-all duration-1000">
+            {/* پرچم در پس‌زمینه با وضوح بالا و تفکیک رنگی */}
+            <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                <img 
                  src={activeLangObj.flagUrl} 
-                 className="w-full h-full object-cover scale-[2] animate-[spin_10s_linear_infinite]" 
+                 className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" 
                  alt="" 
                />
             </div>
 
-            <div className="flex items-center gap-8 bg-black/60 border border-white/10 rounded-full px-8 py-2.5 backdrop-blur-xl relative z-10">
+            <div className="flex items-center gap-8 bg-black/80 border border-white/30 rounded-full px-8 py-2.5 backdrop-blur-2xl relative z-10">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -99,11 +100,12 @@ export default function Header() {
             </div>
           </nav>
 
+          {/* بخش انتخاب زبان با افکت نئونی پرچم */}
           <div className="hidden md:flex items-center gap-4">
             <div className="relative group/lang flex items-center justify-center">
               
-              {/* --- افکت هاله پرچم دور دکمه زبان (عکس اول شما) --- */}
-              <div className="absolute -inset-[3px] -z-10 rounded-xl overflow-hidden opacity-40 blur-md group-hover/lang:opacity-80 transition-all duration-700">
+              {/* هاله دور دکمه زبان با تفکیک عالی */}
+              <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
                  <img 
                    src={activeLangObj.flagUrl} 
                    className="w-full h-full object-cover scale-150 animate-pulse" 
@@ -113,9 +115,9 @@ export default function Header() {
 
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/80 border border-white/20 text-white backdrop-blur-md hover:border-amber-500/50 transition-all font-bold text-sm shadow-xl"
+                className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/90 border border-white/40 text-white backdrop-blur-md hover:border-amber-500 transition-all font-bold text-sm shadow-2xl"
               >
-                <span className="text-xl">{activeLangObj.flag}</span>
+                <span className="text-xl drop-shadow-md">{activeLangObj.flag}</span>
                 <span className="tracking-wide uppercase">{activeLangObj.label}</span>
                 <ChevronDown size={14} className={`transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -126,21 +128,21 @@ export default function Header() {
                     initial={{ opacity: 0, y: 15, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 15, scale: 0.95 }}
-                    className={`absolute ${isRtl ? 'left-0' : 'right-0'} top-full mt-4 w-56 bg-gray-950/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden p-2`}
+                    className={`absolute ${isRtl ? 'left-0' : 'right-0'} top-full mt-5 w-56 bg-black/95 backdrop-blur-3xl border border-white/20 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden p-2.5`}
                   >
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
                         onClick={() => changeLanguage(lang.code)}
                         className={`flex items-center justify-between w-full px-4 py-3.5 rounded-2xl transition-all group ${
-                          currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20' : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                          currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/40' : 'text-gray-400 hover:bg-white/10 hover:text-white'
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                           <span className="text-lg opacity-80 group-hover:opacity-100">{lang.flag}</span>
+                           <span className="text-lg opacity-90 group-hover:opacity-100">{lang.flag}</span>
                            <span className="font-bold text-xs tracking-widest uppercase">{lang.label}</span>
                         </div>
-                        {currentLang === lang.code && <div className="w-1.5 h-1.5 rounded-full bg-black shadow-inner" />}
+                        {currentLang === lang.code && <div className="w-2 h-2 rounded-full bg-black shadow-inner" />}
                       </button>
                     ))}
                   </motion.div>
@@ -149,8 +151,9 @@ export default function Header() {
             </div>
           </div>
 
+          {/* منوی موبایل */}
           <button
-            className="md:hidden p-3 text-white bg-white/5 border border-white/10 rounded-2xl active:scale-95 transition-transform"
+            className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl active:scale-95 transition-transform"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
           >
             {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -158,17 +161,18 @@ export default function Header() {
         </div>
       </div>
 
-      {/* منوی موبایل */}
+      {/* تمام صفحه موبایل */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 1.1 }}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            className="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl flex flex-col p-8 md:hidden"
+            exit={{ opacity: 0, scale: 1.05 }}
+            className="fixed inset-0 z-[150] bg-black/98 backdrop-blur-3xl flex flex-col p-8 md:hidden"
           >
-            <div className="absolute inset-0 -z-10 opacity-10 blur-3xl overflow-hidden">
-               <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-150" alt="bg" />
+            {/* پرچم محو بزرگ در پس‌زمینه موبایل */}
+            <div className="absolute inset-0 -z-10 opacity-20 blur-3xl overflow-hidden">
+               <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
             </div>
 
             <div className="flex justify-between items-center mb-16">
@@ -176,7 +180,7 @@ export default function Header() {
                 <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
                 <span className="font-black text-lg tracking-tighter">SAFIPAY</span>
               </div>
-              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/5 border border-white/10 rounded-full">
+              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full">
                 <X size={20} />
               </button>
             </div>
@@ -201,14 +205,14 @@ export default function Header() {
             </nav>
 
             <div className="mt-auto pb-10">
-              <p className="text-[10px] text-gray-500 mb-6 font-black uppercase tracking-[0.3em] opacity-50">{navText.language}</p>
+              <p className="text-[10px] text-gray-400 mb-6 font-black uppercase tracking-[0.3em] opacity-70">{navText.language}</p>
               <div className="grid grid-cols-2 gap-4">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
                     className={`flex items-center justify-center gap-3 py-5 rounded-[2rem] font-bold text-xs transition-all border ${
-                      currentLang === lang.code ? 'bg-amber-500 border-amber-500 text-black' : 'bg-white/5 border-white/5 text-white'
+                      currentLang === lang.code ? 'bg-amber-500 border-amber-500 text-black' : 'bg-white/5 border-white/10 text-white shadow-xl'
                     }`}
                   >
                     <span className="text-xl">{lang.flag}</span>
