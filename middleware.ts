@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// ۱. حتماً de را به این لیست اضافه کن
-const locales = ['fa', 'en', 'ps', 'fr', 'de'];
+// لیست کامل زبان‌های هدف: فارسی، انگلیسی، پشتو، فرانسوی، آلمانی، ترکی، عربی، روسی
+const locales = ['fa', 'en', 'ps', 'fr', 'de', 'tr', 'ar', 'ru'];
 const defaultLocale = 'en';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // ۲. نادیده گرفتن فایل‌های سیستم و عکس‌ها
+  // ۱. نادیده گرفتن فایل‌های سیستم، عکس‌ها و API
   if (
     pathname.startsWith('/_next') ||
     pathname.includes('.') ||
@@ -17,15 +17,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // ۳. بررسی وجود زبان در آدرس
+  // ۲. بررسی وجود زبان در ابتدای آدرس
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (pathnameHasLocale) return NextResponse.next();
 
-  // ۴. اگر زبان نداشت، برو به زبان پیش‌فرض
-  // نکته: اینجا چک می‌کنیم که دوبار زبان اضافه نشود
+  // ۳. اگر زبان در آدرس نبود، ریدایرکت به زبان پیش‌فرض (en)
   request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
   return NextResponse.redirect(request.nextUrl);
 }
