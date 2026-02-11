@@ -1,34 +1,25 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Phone, MessageSquare, Mail, Send, MapPin, Globe, ShieldCheck, ArrowLeft } from 'lucide-react';
+import { Phone, MessageSquare, Mail, Send, MapPin, Globe, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 
-export default function ContactPageFA() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+export default function ContactPageTR() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
-    // Formspree به صورت خودکار عمل می‌کند، این هندلر برای نمایش وضعیت موفقیت است
+    // Formspree otomatik çalışır, bu işlem sadece kullanıcıya bilgi vermek içindir.
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="rtl">
+    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
       
-      {/* --- بخش هیرو (Cinematic Hero) --- */}
+      {/* --- Cinematic Hero Bölümü --- */}
       <section className="relative pt-40 pb-24 overflow-hidden">
-        {/* افکت‌های نوری پس‌زمینه */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -mr-64 -mt-64" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/5 blur-[120px] rounded-full -ml-32 -mb-32" />
+        {/* Arka Plan Işık Efektleri */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -ml-64 -mt-64" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-600/5 blur-[120px] rounded-full -mr-32 -mb-32" />
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
@@ -40,7 +31,7 @@ export default function ContactPageFA() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
             </span>
-            پشتیبانی فعال و جهانی
+            AKTİF VE KÜRESEL DESTEK
           </motion.div>
           
           <motion.h1 
@@ -48,7 +39,7 @@ export default function ContactPageFA() {
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-black mb-8 tracking-tighter"
           >
-            با <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent px-2">ما</span> در تماس باشید
+            <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent px-2">Bizimle</span> İletişime Geçin
           </motion.h1>
           
           <motion.p 
@@ -57,40 +48,40 @@ export default function ContactPageFA() {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 font-light leading-relaxed"
           >
-            آماده پاسخگویی به سوالات شما درباره آینده بانکداری دیجیتال هستیم. 
-            تیم SafiPay در هر قدم کنار شماست.
+            Dijital bankacılığın geleceği hakkındaki sorularınızı yanıtlamaya hazırız.
+            SafiPay ekibi her adımda yanınızda.
           </motion.p>
         </div>
       </section>
 
-      {/* --- محتوای اصلی --- */}
+      {/* --- Ana İçerik --- */}
       <section className="pb-32 container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* ستون اطلاعات تماس */}
+          {/* İletişim Bilgileri Sütunu */}
           <motion.div 
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-6"
           >
             <div className="p-8 md:p-10 bg-white/5 border border-white/10 rounded-[2.5rem] space-y-10">
               <div className="space-y-2">
-                <h2 className="text-3xl font-black text-white uppercase tracking-tight">راه‌های ارتباطی</h2>
+                <h2 className="text-3xl font-black text-white uppercase tracking-tight">İLETİŞİM KANALLARI</h2>
                 <div className="h-1 w-20 bg-amber-500 rounded-full" />
               </div>
 
               <div className="space-y-6">
                 {[
-                  { icon: <MessageSquare />, title: "واتس‌اپ رسمی", value: "+33 7 53 92 89 13", link: "https://wa.me/33753928913", color: "hover:text-green-400" },
-                  { icon: <Phone />, title: "واحد پشتیبانی", value: "+33 7 53 92 89 13", link: "tel:+33753928913", color: "hover:text-amber-400" },
-                  { icon: <Mail />, title: "مکاتبات رسمی", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
+                  { icon: <MessageSquare />, title: "RESMİ WHATSAPP", value: "+33 7 53 92 89 13", link: "https://wa.me/33753928913", color: "hover:text-green-400" },
+                  { icon: <Phone />, title: "DESTEK HATTI", value: "+33 7 53 92 89 13", link: "tel:+33753928913", color: "hover:text-amber-400" },
+                  { icon: <Mail />, title: "RESMİ YAZIŞMALAR", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
                 ].map((item, index) => (
                   <motion.a
                     key={index}
                     href={item.link}
                     target="_blank"
-                    whileHover={{ scale: 1.02, x: -5 }}
+                    whileHover={{ scale: 1.02, x: 5 }}
                     className={`flex items-center gap-5 p-5 rounded-2xl bg-black/40 border border-white/5 transition-all group ${item.color}`}
                   >
                     <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">
@@ -98,7 +89,7 @@ export default function ContactPageFA() {
                     </div>
                     <div>
                       <h4 className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">{item.title}</h4>
-                      <p className="text-lg font-bold tracking-tight text-white/90" dir="ltr">{item.value}</p>
+                      <p className="text-lg font-bold tracking-tight text-white/90">{item.value}</p>
                     </div>
                   </motion.a>
                 ))}
@@ -107,27 +98,26 @@ export default function ContactPageFA() {
               <div className="pt-6 border-t border-white/5">
                 <div className="flex items-center gap-4 text-amber-500/80 mb-4">
                   <ShieldCheck size={20} />
-                  <span className="text-xs font-bold uppercase tracking-widest">تضمین حریم خصوصی</span>
+                  <span className="text-xs font-bold uppercase tracking-widest">GİZLİLİK GARANTİSİ</span>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed font-light">
-                  تمامی پیام‌های ارسالی شما به صورت سرتاسری رمزنگاری شده و مستقیماً توسط تیم مدیریت بررسی می‌شود.
+                  Gönderdiğiniz tüm mesajlar uçtan uca şifrelenir ve doğrudan yönetim ekibi tarafından incelenir.
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* ستون فرم تماس */}
+          {/* İletişim Formu Sütunu */}
           <motion.div 
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
             <div className="h-full bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
-              {/* تزئینات پشت فرم */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
               
-              <h3 className="text-3xl font-black mb-10 tracking-tight">ارسال پیام مستقیم</h3>
+              <h3 className="text-3xl font-black mb-10 tracking-tight">DOĞRUDAN MESAJ GÖNDER</h3>
               
               <form
                 action="https://formspree.io/f/maqbrkgq"
@@ -137,35 +127,34 @@ export default function ContactPageFA() {
               >
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest text-right block">نام و تخلص</label>
+                    <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block text-left">AD VE SOYAD</label>
                     <input
                       type="text"
                       name="name"
                       required
-                      placeholder="مثلاً: شاهین صافی"
+                      placeholder="Örn: Shaheen Safi"
                       className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest text-right block">آدرس ایمیل</label>
+                    <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block text-left">E-POSTA ADRESİ</label>
                     <input
                       type="email"
                       name="email"
                       required
-                      dir="ltr"
-                      placeholder="your@email.com"
-                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700 text-right"
+                      placeholder="e-posta@adresiniz.com"
+                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest text-right block">متن پیام شما</label>
+                  <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block text-left">MESAJINIZ</label>
                   <textarea
                     name="message"
                     required
                     rows={5}
-                    placeholder="جزئیات درخواست خود را بنویسید..."
+                    placeholder="Talebinizin detaylarını buraya yazın..."
                     className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all resize-none placeholder:text-gray-700"
                   />
                 </div>
@@ -176,8 +165,8 @@ export default function ContactPageFA() {
                   type="submit"
                   className="w-full py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all uppercase tracking-tighter"
                 >
-                  ارسال پیام ایمن
-                  <Send size={20} className="rotate-180" />
+                  GÜVENLİ MESAJI GÖNDER
+                  <Send size={20} />
                 </motion.button>
               </form>
 
@@ -187,7 +176,7 @@ export default function ContactPageFA() {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-center text-green-400 text-sm font-bold"
                 >
-                  پیام شما با موفقیت به پروتکل SafiPay ارسال شد.
+                  Mesajınız SafiPay protokolüne başarıyla iletildi.
                 </motion.div>
               )}
             </div>
@@ -195,18 +184,18 @@ export default function ContactPageFA() {
         </div>
       </section>
 
-      {/* بخش فوتر اطلاعاتی */}
+      {/* Bilgi Footer Bölümü */}
       <section className="py-20 border-t border-white/5 bg-black/20">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-10 md:gap-20 text-gray-600 font-bold uppercase tracking-widest text-[10px]">
              <div className="flex items-center gap-2 hover:text-amber-500 transition-colors cursor-default">
-               <MapPin size={16} /> Paris, France
+               <MapPin size={16} /> Paris, Fransa
              </div>
              <div className="flex items-center gap-2 hover:text-amber-500 transition-colors cursor-default">
-               <Globe size={16} /> Global Operations
+               <Globe size={16} /> Küresel Operasyonlar
              </div>
              <div className="flex items-center gap-2 hover:text-amber-500 transition-colors cursor-default">
-               <ShieldCheck size={16} /> AES-256 Encryption
+               <ShieldCheck size={16} /> AES-256 Şifreleme
              </div>
           </div>
         </div>
