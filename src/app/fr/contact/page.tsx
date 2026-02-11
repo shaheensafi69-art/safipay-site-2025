@@ -16,174 +16,176 @@ export default function ContactPageFR() {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30" dir="ltr">
+    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
       
-      {/* --- Section Hero --- */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-600/10 blur-[120px] rounded-full -mr-48 -mt-48" />
+      {/* --- Section Hero Cinématique --- */}
+      <section className="relative pt-40 pb-24 overflow-hidden">
+        {/* Effets de lumière ambiante */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -ml-64 -mt-64" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-600/5 blur-[120px] rounded-full -mr-32 -mb-32" />
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-amber-500 font-bold tracking-[0.3em] uppercase text-sm"
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold tracking-widest uppercase mb-8"
           >
-            Disponible 24h/24 et 7j/7 dans le monde entier
-          </motion.span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            Support Mondial Actif 24/7
+          </motion.div>
+          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black mt-6 mb-8 bg-gradient-to-r from-white via-amber-200 to-amber-500 bg-clip-text text-transparent"
+            className="text-6xl md:text-8xl font-black mb-8 tracking-tighter uppercase"
           >
-            Contactez-nous
+            CONTACTEZ-<span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">NOUS</span>
           </motion.h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed"
+            className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 font-light leading-relaxed"
           >
-            Vous avez des questions sur nos services bancaires ou vous souhaitez établir un partenariat ? 
-            L&apos;équipe de direction de SafiPay est là pour faciliter votre parcours financier.
+            Une question sur l'avenir de la banque digitale ? 
+            L'équipe exécutive de SafiPay est là pour accompagner votre parcours financier.
           </motion.p>
         </div>
       </section>
 
-      {/* --- Section Principale --- */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
+      {/* --- Contenu Principal --- */}
+      <section className="pb-32 container mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* Informations de contact (Gauche) */}
+          {/* Colonne Informations de Contact */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-5 space-y-8"
+            className="lg:col-span-5 space-y-6"
           >
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-white">Nos Coordonnées</h2>
-              <p className="text-gray-400">Choisissez le moyen le plus pratique pour nous joindre.</p>
-            </div>
-
-            <div className="grid gap-6">
-              {[
-                { icon: <Phone size={24} />, title: "Siège Social France", value: "+33 7 53 92 89 13", link: "tel:+33753928913" },
-                { icon: <Phone size={24} />, title: "Support International", value: "+1 (934) 203-2497", link: "tel:+19342032497" },
-                { icon: <MessageSquare size={24} />, title: "WhatsApp Business", value: "+1 (934) 203-2497", link: "https://wa.me/19342032497" },
-                { icon: <Mail size={24} />, title: "Email Officiel", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com" }
-              ].map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.link}
-                  whileHover={{ x: 10 }}
-                  className="flex items-center gap-6 p-6 bg-gray-900/40 border border-white/5 rounded-2xl hover:border-amber-500/50 hover:bg-amber-500/5 transition-all group"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-sm text-gray-500 font-bold uppercase tracking-wider">{item.title}</h4>
-                    <p className="text-lg text-white font-medium">{item.value}</p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Sécurité SafiPay */}
-            <div className="p-8 bg-gradient-to-br from-amber-600/10 to-transparent border border-amber-600/20 rounded-[2rem] space-y-4">
-              <div className="flex items-center gap-3 text-amber-500">
-                <ShieldCheck size={28} />
-                <h3 className="text-xl font-bold italic">Sécurité SafiPay</h3>
+            <div className="p-8 md:p-10 bg-white/5 border border-white/10 rounded-[2.5rem] h-full space-y-10">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-black text-white uppercase tracking-tight">Canaux</h2>
+                <div className="h-1 w-20 bg-amber-500 rounded-full" />
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed text-justify">
-                Vos données sont protégées par un cryptage AES-256 de niveau militaire. 
-                Nous accordons une priorité absolue à votre confidentialité et à votre sécurité financière.
-              </p>
+
+              <div className="space-y-6">
+                {[
+                  { icon: <MessageSquare />, title: "WhatsApp Officiel", value: "+33 7 53 92 89 13", link: "https://wa.me/33753928913", color: "hover:text-green-400" },
+                  { icon: <Phone />, title: "Ligne d'assistance", value: "+33 7 53 92 89 13", link: "tel:+33753928913", color: "hover:text-amber-400" },
+                  { icon: <Mail />, title: "Email Officiel", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
+                ].map((item, index) => (
+                  <motion.a
+                    key={index}
+                    href={item.link}
+                    target="_blank"
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    className={`flex items-center gap-5 p-5 rounded-2xl bg-black/40 border border-white/5 transition-all group ${item.color}`}
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">{item.title}</h4>
+                      <p className="text-lg font-bold tracking-tight text-white/90">{item.value}</p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+
+              <div className="pt-6 border-t border-white/5">
+                <div className="flex items-center gap-4 text-amber-500/80 mb-4">
+                  <ShieldCheck size={20} />
+                  <span className="text-xs font-bold uppercase tracking-widest">Confidentialité Garantie</span>
+                </div>
+                <p className="text-sm text-gray-500 leading-relaxed font-light">
+                  Vos communications sont protégées par le cryptage AES-256. 
+                  Accès direct à notre équipe de direction.
+                </p>
+              </div>
             </div>
           </motion.div>
 
-          {/* Formulaire de contact (Droite) */}
+          {/* Colonne Formulaire de Contact */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 relative"
+            className="lg:col-span-7"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-900 rounded-[2.5rem] blur opacity-20" />
-            
-            <div className="relative bg-gray-900/80 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl">
-              <h3 className="text-3xl font-bold mb-8">Envoyer une demande officielle</h3>
+            <div className="h-full bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
+              
+              <h3 className="text-3xl font-black mb-10 tracking-tight uppercase">Demande Directe</h3>
               
               <form
                 action="https://formspree.io/f/maqbrkgq"
                 method="POST"
                 onSubmit={handleSubmit}
-                className="space-y-6"
+                className="space-y-8"
               >
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-gray-400 ml-1">Nom complet</label>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block">Nom Complet</label>
                     <input
                       type="text"
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
                       required
                       placeholder="ex: Shaheen Safi"
-                      className="w-full px-6 py-4 bg-black/50 border border-white/10 rounded-2xl text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition-all"
+                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-gray-400 ml-1">Adresse email</label>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block">Adresse Email</label>
                     <input
                       type="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       required
-                      placeholder="nom@exemple.com"
-                      className="w-full px-6 py-4 bg-black/50 border border-white/10 rounded-2xl text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition-all"
+                      placeholder="nom@email.com"
+                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-gray-400 ml-1">Détails du message</label>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block">Détails du Message</label>
                   <textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
-                    rows={6}
-                    placeholder="Comment pouvons-nous vous aider ?"
-                    className="w-full px-6 py-4 bg-black/50 border border-white/10 rounded-2xl text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition-all resize-none"
+                    rows={5}
+                    placeholder="Décrivez votre demande ou votre projet..."
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all resize-none placeholder:text-gray-700"
                   />
                 </div>
 
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.01, boxShadow: "0 0 40px rgba(245, 158, 11, 0.2)" }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full py-5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl shadow-amber-900/20 transition-all"
+                  className="w-full py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all uppercase tracking-widest"
                 >
+                  ENVOYER MESSAGE SÉCURISÉ
                   <Send size={20} />
-                  Transmettre le message sécurisé
                 </motion.button>
               </form>
 
               {submitted && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="mt-8 p-6 bg-green-500/10 border border-green-500/20 rounded-2xl text-center text-green-400"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-center text-green-400 text-sm font-bold"
                 >
-                  <p className="font-bold text-lg">Message crypté et envoyé !</p>
-                  <p className="text-sm opacity-80">Nous avons bien reçu votre demande et vous répondrons sous 24 heures.</p>
+                  Demande envoyée avec succès aux protocoles SafiPay.
                 </motion.div>
               )}
             </div>
@@ -191,13 +193,19 @@ export default function ContactPageFR() {
         </div>
       </section>
 
-      {/* --- Footer Minimaliste --- */}
-      <section className="py-20 bg-black/40 border-t border-white/5 text-center">
+      {/* Badges de bas de page */}
+      <section className="py-20 border-t border-white/5 bg-black/20">
         <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-12 opacity-50">
-            <div className="flex items-center gap-2"><MapPin size={20} /> Paris, France</div>
-            <div className="flex items-center gap-2"><Globe size={20} /> Opérations Globales</div>
-            <div className="flex items-center gap-2"><ShieldCheck size={20} /> Protocole de sécurité actif</div>
+          <div className="flex flex-wrap justify-center gap-10 md:gap-20 text-gray-600 font-bold uppercase tracking-widest text-[10px]">
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <MapPin size={16} /> Paris, France
+             </div>
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <Globe size={16} /> Opérations Mondiales
+             </div>
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <ShieldCheck size={16} /> Cryptage AES-256
+             </div>
           </div>
         </div>
       </section>
