@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Phone, MessageSquare, Mail, Send, MapPin, Globe, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 
-export default function ContactPage() {
+export default function ContactPageEN() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,177 +16,176 @@ export default function ContactPage() {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    // نکته: Formspree به صورت اتوماتیک عمل می‌کند، این هندلر برای نمایش وضعیت موفقیت است.
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30" dir="ltr">
+    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
       
-      {/* --- بخش هیرو (Hero Section) --- */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-600/10 blur-[120px] rounded-full -mr-48 -mt-48" />
+      {/* --- Cinematic Hero Section --- */}
+      <section className="relative pt-40 pb-24 overflow-hidden">
+        {/* Ambient Lighting Effects */}
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -ml-64 -mt-64" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-600/5 blur-[120px] rounded-full -mr-32 -mb-32" />
+
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-amber-500 font-bold tracking-[0.3em] uppercase text-sm"
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold tracking-widest uppercase mb-8"
           >
-            Available 24/7 Worldwide
-          </motion.span>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            24/7 Global Support Active
+          </motion.div>
+          
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black mt-6 mb-8 bg-gradient-to-r from-white via-amber-200 to-amber-500 bg-clip-text text-transparent"
+            className="text-6xl md:text-8xl font-black mb-8 tracking-tighter uppercase"
           >
-            Let&apos;s Connect
+            GET IN <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">TOUCH</span>
           </motion.h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed"
+            className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 font-light leading-relaxed"
           >
-            Have a question about our banking services or interested in a partnership? 
-            The SafiPay executive team is here to ensure your financial journey is seamless.
+            Have questions about the future of digital banking? 
+            The SafiPay executive team is here to guide your financial journey.
           </motion.p>
         </div>
       </section>
 
-      {/* --- بخش اصلی محتوا --- */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
+      {/* --- Main Content --- */}
+      <section className="pb-32 container mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* ستون اطلاعات تماس (سمت چپ) */}
+          {/* Contact Info Column */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-5 space-y-8"
+            className="lg:col-span-5 space-y-6"
           >
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-white">Contact Information</h2>
-              <p className="text-gray-400">Choose the most convenient way to reach us.</p>
-            </div>
-
-            <div className="grid gap-6">
-              {/* کارت‌های اطلاعات تماس */}
-              {[
-                { icon: <Phone size={24} />, title: "France HQ", value: "+33 7 53 92 89 13", link: "tel:+33753928913" },
-                { icon: <Phone size={24} />, title: "Global Support", value: "+1 (934) 203-2497", link: "tel:+19342032497" },
-                { icon: <MessageSquare size={24} />, title: "WhatsApp Business", value: "+1 (934) 203-2497", link: "https://wa.me/19342032497" },
-                { icon: <Mail size={24} />, title: "Direct Email", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com" }
-              ].map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.link}
-                  whileHover={{ x: 10 }}
-                  className="flex items-center gap-6 p-6 bg-gray-900/40 border border-white/5 rounded-2xl hover:border-amber-500/50 hover:bg-amber-500/5 transition-all group"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-sm text-gray-500 font-bold uppercase tracking-wider">{item.title}</h4>
-                    <p className="text-lg text-white font-medium">{item.value}</p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* بخش اعتماد (Trust) */}
-            <div className="p-8 bg-gradient-to-br from-amber-600/10 to-transparent border border-amber-600/20 rounded-[2rem] space-y-4">
-              <div className="flex items-center gap-3 text-amber-500">
-                <ShieldCheck size={28} />
-                <h3 className="text-xl font-bold italic">SafiPay Security</h3>
+            <div className="p-8 md:p-10 bg-white/5 border border-white/10 rounded-[2.5rem] h-full space-y-10">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-black text-white uppercase tracking-tight">Channels</h2>
+                <div className="h-1 w-20 bg-amber-500 rounded-full" />
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Your data is encrypted with military-grade 256-bit AES encryption. 
-                We prioritize your privacy and financial security in every interaction.
-              </p>
+
+              <div className="space-y-6">
+                {[
+                  { icon: <MessageSquare />, title: "Official WhatsApp", value: "+33 7 53 92 89 13", link: "https://wa.me/33753928913", color: "hover:text-green-400" },
+                  { icon: <Phone />, title: "Support Hotline", value: "+33 7 53 92 89 13", link: "tel:+33753928913", color: "hover:text-amber-400" },
+                  { icon: <Mail />, title: "Official Email", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
+                ].map((item, index) => (
+                  <motion.a
+                    key={index}
+                    href={item.link}
+                    target="_blank"
+                    whileHover={{ scale: 1.02, x: 5 }}
+                    className={`flex items-center gap-5 p-5 rounded-2xl bg-black/40 border border-white/5 transition-all group ${item.color}`}
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">{item.title}</h4>
+                      <p className="text-lg font-bold tracking-tight text-white/90">{item.value}</p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+
+              <div className="pt-6 border-t border-white/5">
+                <div className="flex items-center gap-4 text-amber-500/80 mb-4">
+                  <ShieldCheck size={20} />
+                  <span className="text-xs font-bold uppercase tracking-widest">Privacy Guaranteed</span>
+                </div>
+                <p className="text-sm text-gray-500 leading-relaxed font-light">
+                  Your communication is protected by AES-256 end-to-end encryption. 
+                  Direct access to our management team.
+                </p>
+              </div>
             </div>
           </motion.div>
 
-          {/* ستون فرم تماس (سمت راست) */}
+          {/* Contact Form Column */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 relative"
+            className="lg:col-span-7"
           >
-            {/* بک‌گراند نوری پشت فرم */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-900 rounded-[2.5rem] blur opacity-20" />
-            
-            <div className="relative bg-gray-900/80 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 shadow-2xl">
-              <h3 className="text-3xl font-bold mb-8">Send an Executive Inquiry</h3>
+            <div className="h-full bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
+              
+              <h3 className="text-3xl font-black mb-10 tracking-tight uppercase">Direct Inquiry</h3>
               
               <form
                 action="https://formspree.io/f/maqbrkgq"
                 method="POST"
                 onSubmit={handleSubmit}
-                className="space-y-6"
+                className="space-y-8"
               >
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-gray-400 ml-1">Full Name</label>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block">Full Name</label>
                     <input
                       type="text"
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
                       required
-                      placeholder="e.g. John Doe"
-                      className="w-full px-6 py-4 bg-black/50 border border-white/10 rounded-2xl text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition-all"
+                      placeholder="e.g. Shaheen Safi"
+                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-gray-400 ml-1">Email Address</label>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block">Email Address</label>
                     <input
                       type="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
                       required
-                      placeholder="name@company.com"
-                      className="w-full px-6 py-4 bg-black/50 border border-white/10 rounded-2xl text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition-all"
+                      placeholder="name@email.com"
+                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-gray-400 ml-1">Message Detail</label>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black text-gray-400 ml-1 uppercase tracking-widest block">Message Details</label>
                   <textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
-                    rows={6}
-                    placeholder="How can we help you today?"
-                    className="w-full px-6 py-4 bg-black/50 border border-white/10 rounded-2xl text-white focus:border-amber-500 focus:ring-1 focus:ring-amber-500 focus:outline-none transition-all resize-none"
+                    rows={5}
+                    placeholder="Describe your inquiry or project..."
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all resize-none placeholder:text-gray-700"
                   />
                 </div>
 
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.01, boxShadow: "0 0 40px rgba(245, 158, 11, 0.2)" }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full py-5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl shadow-amber-900/20 transition-all"
+                  className="w-full py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all uppercase tracking-widest"
                 >
+                  SEND SECURE MESSAGE
                   <Send size={20} />
-                  Transmit Message
                 </motion.button>
               </form>
 
               {submitted && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="mt-8 p-6 bg-green-500/10 border border-green-500/20 rounded-2xl text-center text-green-400"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-center text-green-400 text-sm font-bold"
                 >
-                  <p className="font-bold text-lg">Message Encrypted & Sent!</p>
-                  <p className="text-sm opacity-80">We have received your inquiry and will respond within 24 hours.</p>
+                  Inquiry sent successfully to SafiPay protocols.
                 </motion.div>
               )}
             </div>
@@ -194,13 +193,19 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* --- بخش فوتر کوچک (Global Presence) --- */}
-      <section className="py-20 bg-black/40 border-t border-white/5 text-center">
+      {/* Footer Badges */}
+      <section className="py-20 border-t border-white/5 bg-black/20">
         <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-12 opacity-50">
-            <div className="flex items-center gap-2"><MapPin size={20} /> Paris, France</div>
-            <div className="flex items-center gap-2"><Globe size={20} /> Global Operations</div>
-            <div className="flex items-center gap-2"><ShieldCheck size={20} /> Secure Protocol</div>
+          <div className="flex flex-wrap justify-center gap-10 md:gap-20 text-gray-600 font-bold uppercase tracking-widest text-[10px]">
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <MapPin size={16} /> Paris, France
+             </div>
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <Globe size={16} /> Global Operations
+             </div>
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <ShieldCheck size={16} /> AES-256 Encryption
+             </div>
           </div>
         </div>
       </section>
