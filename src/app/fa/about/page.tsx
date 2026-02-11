@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function AboutPage() {
   return (
     <>
-      {/* Schema.org – هر دو نفر + سازمان */}
+      {/* Schema.org – به‌روزرسانی شده برای هر دو نفر */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -33,9 +33,9 @@ export default function AboutPage() {
               "@type": "Person",
               "name": "مجتبی رحمانی",
               "alternateName": "Mujtaba Rahmani",
-              "jobTitle": "هم‌بنیان‌گذار و مدیر فنی (CTO) SafiPay",
+              "jobTitle": "هم‌بنیان‌گذار و مسئول ارتباطات SafiPay",
               "image": "/mujtaba.jpeg",
-              "description": "متولد ۲۸ جولای ۲۰۰۶. متخصص برجسته در فناوری، زیرساخت‌های دیجیتال و امنیت سیستم‌ها. مجتبی رحمانی مسئولیت توسعه فنی، طراحی معماری مقیاس‌پذیر و حفاظت از امنیت کاربران SafiPay را بر عهده دارد.",
+              "description": "متولد ۲۸ جولای ۲۰۰۶. متخصص در ارتباطات، برندینگ و توسعه روابط عمومی. مجتبی رحمانی به عنوان Co-Founder و Head of Communications، مسئولیت گسترش پیام SafiPay، ایجاد ارتباط با جامعه و جذب حمایت‌های بین‌المللی را بر عهده دارد.",
               "birthDate": "2006-07-28",
               "nationality": "Afghan",
               "url": "https://www.safipay.net/about"
@@ -62,7 +62,7 @@ export default function AboutPage() {
       />
 
       <div className="min-h-screen bg-gray-950 text-white" dir="rtl">
-        {/* هیرو بزرگ با عکس (بدون تغییر) */}
+        {/* هیرو بزرگ با عکس – بدون تغییر */}
         <section className="relative py-32 md:py-40 border-b border-amber-900/30 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-950/20 via-transparent to-black pointer-events-none" />
           <div className="relative z-10 container mx-auto px-6">
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   transition={{ duration: 1.2 }}
                   className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8"
                 >
-                  درباره <span className="text-amber-500">SafiPay</span> و بنیان‌گذارش
+                  درباره <span className="text-amber-500">SafiPay</span> و بنیان‌گذارانش
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 60 }}
@@ -112,7 +112,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* درباره شاهین صافی (تمام متن قبلی بدون تغییر + چارچوب اطلاعاتی) */}
+        {/* بخش بنیان‌گذاران – شاهین + مجتبی */}
         <section className="py-24">
           <div className="container mx-auto px-6">
             <motion.h2
@@ -122,73 +122,125 @@ export default function AboutPage() {
               transition={{ duration: 1 }}
               className="text-4xl md:text-5xl font-bold text-center mb-16 text-amber-500"
             >
-              شاهین صفی – بنیان‌گذار SafiPay
+              بنیان‌گذاران SafiPay
             </motion.h2>
-            <div className="grid md:grid-cols-2 gap-16 items-start">
+
+            <div className="grid md:grid-cols-2 gap-16 lg:gap-24">
+              {/* شاهین صفی */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
-                className="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed text-right"
+                className="space-y-8 text-right"
               >
-                <p>
-                  شاهین صافی متولد ۲ آوریل ۲۰۰۳ در کابل، افغانستان است. او کارآفرین جوان، توسعه‌دهنده و فعال حوزه فین‌تک است که با هدف حل یکی از بزرگ‌ترین مشکلات جامعه افغان – دسترسی نداشتن به سیستم بانکی مدرن و بین‌المللی – پروژه SafiPay را راه‌اندازی کرد.
-                </p>
-                <p>
-                  از کودکی علاقه شدیدی به فناوری و اقتصاد داشت. در حالی که بسیاری از هم‌سن‌وسال‌هایش به بازی‌های کامپیوتری مشغول بودند، شاهین شروع به یادگیری برنامه‌نویسی، بلاکچین، سیستم‌های پرداخت و فین‌تک کرد.
-                </p>
-                <p>
-                  او خودآموخته است و تجربه عملی در توسعه اپلیکیشن‌های مالی، امنیت سایبری و زیرساخت‌های پرداخت دارد. شاهین معتقد است که «بانکداری حق همه انسان‌هاست، نه فقط کسانی که در کشورهای توسعه‌یافته زندگی می‌کنند».
-                </p>
-                <p>
-                  در سال ۲۰۲۵، وقتی دید میلیون‌ها افغان داخل و خارج کشور هنوز به کارت ویزا، حساب دلاری، انتقال سریع پول و خرید آنلاین دسترسی ندارند، تصمیم گرفت SafiPay را به عنوان راه‌حل واقعی بسازد.
-                </p>
-                <p>
-                  او با پشتکار و تلاش شبانه‌روزی، وب‌سایت و اپلیکیشن اولیه را آماده کرد و کمپین جذب سرمایه را آغاز کرد تا این رویا به واقعیت تبدیل شود.
-                </p>
+                <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-amber-600 shadow-2xl shadow-amber-900/50">
+                  <Image
+                    src="/shaheen.jpeg"
+                    alt="شاهین صفی - بنیان‌گذار و مدیرعامل"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-bold text-amber-400 mb-3">
+                    شاهین صفی
+                  </h3>
+                  <p className="text-2xl text-gray-400 mb-6">
+                    بنیان‌گذار و مدیرعامل SafiPay
+                  </p>
+                  <div className="space-y-6 text-lg md:text-xl leading-relaxed">
+                    <p>
+                      شاهین صافی متولد ۲ آوریل ۲۰۰۳ در کابل، افغانستان است. او کارآفرین جوان، توسعه‌دهنده و فعال حوزه فین‌تک است که با هدف حل یکی از بزرگ‌ترین مشکلات جامعه افغان – دسترسی نداشتن به سیستم بانکی مدرن و بین‌المللی – پروژه SafiPay را راه‌اندازی کرد.
+                    </p>
+                    <p>
+                      از کودکی علاقه شدیدی به فناوری و اقتصاد داشت. در حالی که بسیاری از هم‌سن‌وسال‌هایش به بازی‌های کامپیوتری مشغول بودند، شاهین شروع به یادگیری برنامه‌نویسی، بلاکچین، سیستم‌های پرداخت و فین‌تک کرد.
+                    </p>
+                    <p>
+                      او خودآموخته است و تجربه عملی در توسعه اپلیکیشن‌های مالی، امنیت سایبری و زیرساخت‌های پرداخت دارد. شاهین معتقد است که «بانکداری حق همه انسان‌هاست، نه فقط کسانی که در کشورهای توسعه‌یافته زندگی می‌کنند».
+                    </p>
+                    <p>
+                      در سال ۲۰۲۵، وقتی دید میلیون‌ها افغان داخل و خارج کشور هنوز به کارت ویزا، حساب دلاری، انتقال سریع پول و خرید آنلاین دسترسی ندارند، تصمیم گرفت SafiPay را به عنوان راه‌حل واقعی بسازد.
+                    </p>
+                    <p>
+                      او با پشتکار و تلاش شبانه‌روزی، وب‌سایت و اپلیکیشن اولیه را آماده کرد و کمپین جذب سرمایه را آغاز کرد تا این رویا به واقعیت تبدیل شود.
+                    </p>
+                  </div>
 
-                {/* چارچوب اطلاعاتی کوچک برای شاهین */}
-                <div className="bg-gray-900/70 border border-amber-900/40 rounded-2xl p-8 text-right mt-10">
-                  <h3 className="text-2xl font-bold text-amber-500 mb-6">اطلاعات سریع</h3>
-                  <ul className="space-y-4 text-lg text-gray-300">
-                    <li><strong>نام کامل:</strong> شاهین صفی (Shaheen Safi)</li>
-                    <li><strong>تاریخ تولد:</strong> ۲ آوریل ۲۰۰۳</li>
-                    <li><strong>ملیت:</strong> افغانستانی</li>
-                    <li><strong>شغل فعلی:</strong> بنیان‌گذار و مدیرعامل SafiPay</li>
-                    <li><strong>محل فعالیت:</strong> جهانی (با تمرکز بر فرانسه و افغانستان)</li>
-                  </ul>
+                  {/* چارچوب اطلاعاتی شاهین */}
+                  <div className="bg-gray-900/70 border border-amber-900/40 rounded-2xl p-8 mt-10">
+                    <h3 className="text-2xl font-bold text-amber-500 mb-6">اطلاعات سریع</h3>
+                    <ul className="space-y-4 text-lg text-gray-300">
+                      <li><strong>نام کامل:</strong> شاهین صفی (Shaheen Safi)</li>
+                      <li><strong>تاریخ تولد:</strong> ۲ آوریل ۲۰۰۳</li>
+                      <li><strong>ملیت:</strong> افغانستانی</li>
+                      <li><strong>شغل فعلی:</strong> بنیان‌گذار و مدیرعامل SafiPay</li>
+                      <li><strong>محل فعالیت:</strong> جهانی (با تمرکز بر فرانسه و افغانستان)</li>
+                    </ul>
+                  </div>
                 </div>
               </motion.div>
 
-              {/* چارچوب اطلاعاتی کوچک برای مجتبی رحمانی (دقیقاً در کنار شاهین) */}
+              {/* مجتبی رحمانی */}
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
-                className="space-y-6 order-1 md:order-2"
+                className="space-y-8 text-right"
               >
-                <div className="bg-gray-900/70 border border-amber-900/40 rounded-2xl p-8 text-right">
-                  <h3 className="text-2xl font-bold text-amber-500 mb-6">مجتبی رحمانی</h3>
-                  <ul className="space-y-4 text-lg text-gray-300">
-                    <li><strong>نام کامل:</strong> مجتبی رحمانی (Mujtaba Rahmani)</li>
-                    <li><strong>تاریخ تولد:</strong> ۲۸ جولای ۲۰۰۶</li>
-                    <li><strong>ملیت:</strong> افغانستانی</li>
-                    <li><strong>شغل فعلی:</strong> هم‌بنیان‌گذار و مدیر فنی (CTO) SafiPay</li>
-                    <li><strong>محل فعالیت:</strong> جهانی (تمرکز بر توسعه فنی و امنیت)</li>
-                  </ul>
+                <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-amber-600 shadow-2xl shadow-amber-900/50">
+                  <Image
+                    src="/mujtaba.jpeg"
+                    alt="مجتبی رحمانی - هم‌بنیان‌گذار و مسئول ارتباطات"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-bold text-amber-400 mb-3">
+                    مجتبی رحمانی
+                  </h3>
+                  <p className="text-2xl text-gray-400 mb-6">
+                    هم‌بنیان‌گذار و مسئول ارتباطات SafiPay
+                  </p>
+                  <div className="space-y-6 text-lg md:text-xl leading-relaxed">
+                    <p>
+                      مجتبی رحمانی متولد ۲۸ جولای ۲۰۰۶ است؛ جوانی پرشور و باانگیزه که از همان سنین پایین به ارتباطات، برندینگ و ایجاد ارتباط با جوامع علاقه‌مند بود. او معتقد است که یک پروژه موفق فقط به فناوری قوی نیاز ندارد؛ نیاز به صدایی دارد که بتواند پیام را به گوش میلیون‌ها نفر برساند.
+                    </p>
+                    <p>
+                      مجتبی با استعداد طبیعی در برقراری ارتباط، داستان‌گویی و ایجاد اعتماد، به سرعت به یکی از کلیدی‌ترین اعضای تیم SafiPay تبدیل شد. او مسئولیت گسترش پیام SafiPay، ایجاد ارتباط با جامعه افغان در داخل و خارج کشور، مدیریت کمپین‌های عمومی، جذب حمایت‌های بین‌المللی و ساختن یک برند قوی و قابل اعتماد را بر عهده دارد.
+                    </p>
+                    <p>
+                      او با انرژی و خلاقیتش، شبکه‌ای از افراد و سازمان‌ها را دور SafiPay جمع کرده و کمک کرده تا این پروژه از یک ایده کوچک به یک حرکت ملی تبدیل شود. مجتبی نه تنها در ارتباطات، بلکه در ایجاد انگیزه و امید در میان مردم نقش بزرگی دارد.
+                    </p>
+                    <p className="text-amber-400 font-semibold text-xl">
+                      «SafiPay فقط یک بانک نیست؛ یک صدای واحد برای میلیون‌ها افغان است که باید به گوش دنیا برسد.»
+                    </p>
+                    <p>
+                      حضور مجتبی در کنار شاهین، ترکیب بی‌نظیری از فناوری و ارتباطات ایجاد کرده است. او کسی است که می‌داند چگونه یک رویا را نه تنها بسازد، بلکه آن را به دل مردم بنشاند.
+                    </p>
+                  </div>
 
-                <p className="text-lg text-gray-300">
-                  مجتبی رحمانی متولد ۲۸ جولای ۲۰۰۶، متخصص برجسته در فناوری، زیرساخت‌های دیجیتال و امنیت سیستم‌ها است. او به عنوان هم‌بنیان‌گذار و مدیر فنی (CTO)، مسئولیت طراحی معماری مقیاس‌پذیر، پیاده‌سازی لایه‌های امنیتی، تست نفوذ و آماده‌سازی سیستم برای میلیون‌ها کاربر را بر عهده دارد. مجتبی با دانش عمیق در برنامه‌نویسی، امنیت سایبری و سیستم‌های توزیع‌شده، یکی از ستون‌های اصلی فنی SafiPay است.
-                </p>
+                  {/* چارچوب اطلاعاتی کوچک برای مجتبی */}
+                  <div className="bg-gray-900/70 border border-amber-900/40 rounded-2xl p-8 mt-10">
+                    <h3 className="text-2xl font-bold text-amber-500 mb-6">اطلاعات سریع</h3>
+                    <ul className="space-y-4 text-lg text-gray-300">
+                      <li><strong>نام کامل:</strong> مجتبی رحمانی (Mujtaba Rahmani)</li>
+                      <li><strong>تاریخ تولد:</strong> ۲۸ جولای ۲۰۰۶</li>
+                      <li><strong>ملیت:</strong> افغانستانی</li>
+                      <li><strong>شغل فعلی:</strong> هم‌بنیان‌گذار و مسئول ارتباطات SafiPay</li>
+                      <li><strong>محل فعالیت:</strong> جهانی (تمرکز بر گسترش پیام و جذب حمایت)</li>
+                    </ul>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* داستان SafiPay (بدون تغییر) */}
+        {/* بقیه بخش‌ها بدون تغییر باقی می‌مانند */}
+        {/* داستان SafiPay */}
         <section className="py-24 bg-black/50 border-t border-b border-amber-900/30">
           <div className="container mx-auto px-6">
             <motion.h2
@@ -208,19 +260,19 @@ export default function AboutPage() {
               className="max-w-4xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed space-y-8 text-right"
             >
               <p>
-                سال‌ها پیش، وقتی میلیون‌ها افغان در داخل کشور با نبود بانکداری مدرن و در خارج کشور با مشکلات تحریم و عدم دسترسی به حساب بین‌المللی روبرو بودند، من تصمیم گرفتم تغییری ایجاد کنم.
+                سال‌ها پیش، وقتی میلیون‌ها افغان در داخل کشور با نبود بانکداری مدرن و در خارج کشور با مشکلات تحریم و عدم دسترسی به حساب بین‌المللی روبرو بودند، ما تصمیم گرفتیم تغییری ایجاد کنیم.
               </p>
               <p>
-                دیدم که مردم برای ارسال پول به خانواده‌شان مجبور به پرداخت کارمزدهای سنگین ۱۰–۱۵٪ به صرافی‌ها و حواله‌چی‌ها هستند. دیدم که جوانان نمی‌توانند از آمازون، گوگل‌پلی، اپ‌استور یا حتی نتفلیکس خرید کنند. دیدم که زنان روستایی حتی حساب بانکی ندارند.
+                دیدیم که مردم برای ارسال پول به خانواده‌شان مجبور به پرداخت کارمزدهای سنگین ۱۰–۱۵٪ به صرافی‌ها و حواله‌چی‌ها هستند. دیدیم که جوانان نمی‌توانند از آمازون، گوگل‌پلی، اپ‌استور یا حتی نتفلیکس خرید کنند. دیدیم که زنان روستایی حتی حساب بانکی ندارند.
               </p>
               <p>
-                این وضعیت برای من قابل قبول نبود. من می‌خواستم بانکی بسازم که متعلق به مردم افغانستان باشد، بدون مرز، بدون تبعیض و بدون محدودیت‌های سنتی.
+                این وضعیت برای ما قابل قبول نبود. ما می‌خواستیم بانکی بسازیم که متعلق به مردم افغانستان باشد، بدون مرز، بدون تبعیض و بدون محدودیت‌های سنتی.
               </p>
               <p>
                 SafiPay در سال ۲۰۲۵ متولد شد. هدف اولیه فقط یک اپلیکیشن ساده برای انتقال پول بود، اما خیلی زود تبدیل شد به رویای بزرگ‌تر: یک بانک دیجیتال کامل با حساب چندارزی، کارت ویزا مجازی و فیزیکی، پرداخت‌های آنلاین جهانی و زیرساخت امن برای همه افغان‌ها.
               </p>
               <p>
-                امروز SafiPay دیگر فقط یک ایده نیست؛ وب‌سایت و اپلیکیشن اولیه آماده شده، تیم فنی در حال رشد است و کمپین جذب سرمایه برای گرفتن مجوزهای بین‌المللی و توسعه کامل آغاز شده است.
+                امروز SafiPay دیگر فقط یک ایده نیست؛ وب‌سایت و اپلیکیشن اولیه آماده شده، تیم فنی و ارتباطات در حال رشد است و کمپین جذب سرمایه برای گرفتن مجوزهای بین‌المللی و توسعه کامل آغاز شده است.
               </p>
               <p className="text-amber-400 font-semibold text-xl">
                 SafiPay متعلق به تک‌تک افغان‌هاست – چه در کابل، چه در پاریس، چه در تورنتو یا سیدنی.
@@ -229,7 +281,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* چشم‌انداز و مأموریت (بدون تغییر) */}
+        {/* چشم‌انداز و مأموریت – بدون تغییر */}
         <section className="py-24">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-16">
@@ -265,7 +317,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ارزش‌ها (بدون تغییر) */}
+        {/* ارزش‌ها – بدون تغییر */}
         <section className="py-24 bg-black/50 border-t border-b border-amber-900/30">
           <div className="container mx-auto px-6">
             <motion.h2
@@ -312,7 +364,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* کال تو اکشن نهایی (بدون تغییر) */}
+        {/* کال تو اکشن نهایی */}
         <section className="py-24">
           <div className="container mx-auto px-6 text-center">
             <motion.h2
