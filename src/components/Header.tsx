@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const languages = [
@@ -17,6 +17,7 @@ const languages = [
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -27,22 +28,32 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // تشخیص زبان فعلی از روی آدرس
+  // پیدا کردن زبان فعلی از آدرس
   const currentLang = pathname.split('/')[1] || 'en';
   const activeLangObj = languages.find(l => l.code === currentLang) || languages[2];
   const isRtl = currentLang === 'fa' || currentLang === 'ps';
 
-  // --- راه حل نهایی برای مشکل مسیر /en/de ---
+  // --- اصلاح مهم برای حل مشکل آدرس اشتباه (مثل /en/de) ---
   const changeLanguage = (lng: string) => {
-    if (typeof window !== 'undefined') {
-      const segments = window.location.pathname.split('/');
-      // سگمنت اول بعد از اسلش اول همیشه کد زبان است
-      segments[1] = lng; 
-      const newPath = segments.join('/');
-      
-      // استفاده از window.location.href برای اطمینان از پاکسازی کامل مسیر قبلی
-      window.location.href = newPath;
+    // ۱. گرفتن تمام بخش‌های آدرس فعلی
+    const segments = pathname.split('/').filter(Boolean);
+    
+    // ۲. اگر بخش اول آدرس یکی از زبان‌های ما بود، آن را عوض کن
+    // در غیر این صورت زبان جدید را به اول آدرس اضافه کن
+    const knownLangs = ['fa', 'ps', 'en', 'fr', 'de'];
+    if (segments.length > 0 && knownLangs.includes(segments[0])) {
+      segments[0] = lng;
+    } else {
+      segments.unshift(lng);
     }
+
+    // ۳. ساختن مسیر جدید
+    const newPath = `/${segments.join('/')}`;
+    
+    // ۴. هدایت کاربر به مسیر درست
+    router.push(newPath);
+    setIsLangOpen(false);
+    setIsMobileOpen(false);
   };
 
   const navText = {
@@ -70,7 +81,8 @@ export default function Header() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
-          <Link href={`/${currentLang}`} className="flex items-center gap-3 group z-[110]">
+          {/* لوگو */}
+          <Link href={`/${currentLang}`} className="flex items-center gap-3 group relative z-[110]">
             <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
               <Image src="/logo.png" alt="SafiPay" fill className="object-contain" priority />
             </div>
@@ -79,47 +91,72 @@ export default function Header() {
             </span>
           </Link>
 
+          {/* منوی اصلی با هاله روشن پرچم */}
           <nav className="hidden md:flex items-center relative group/nav">
-            <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] transition-all duration-700">
-               <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" alt="" />
+            <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
+               <img 
+                 src={activeLangObj.flagUrl} 
+                 className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" 
+                 alt="" 
+               />
             </div>
-            <div className="flex items-center gap-8 bg-black/80 border border-white/30 rounded-full px-8 py-2.5 backdrop-blur-2xl relative z-10">
+
+            <div className="flex items-center gap-8 bg-black/80 border border-white/30 rounded-full px-8 py-2.5 backdrop-blur-2xl relative z-10 shadow-2xl">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href} className="text-sm font-bold text-gray-300 hover:text-amber-400 transition-all uppercase tracking-widest">
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-bold text-gray-300 hover:text-amber-400 transition-all relative group uppercase tracking-widest"
+                >
                   {item.label}
+                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full ${pathname === item.href ? 'w-full' : ''}`}></span>
                 </Link>
               ))}
             </div>
           </nav>
 
+          {/* انتخاب زبان */}
           <div className="hidden md:flex items-center gap-4">
-            <div className="relative group/lang">
-              <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px]">
-                 <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-150 animate-pulse" alt="" />
+            <div className="relative group/lang flex items-center justify-center">
+              
+              <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
+                 <img 
+                   src={activeLangObj.flagUrl} 
+                   className="w-full h-full object-cover scale-150 animate-pulse" 
+                   alt="Flag Glow" 
+                 />
               </div>
+
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
                 className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/90 border border-white/40 text-white backdrop-blur-md hover:border-amber-500 transition-all font-bold text-sm shadow-2xl"
               >
-                <span>{activeLangObj.flag}</span>
-                <span className="uppercase">{activeLangObj.label}</span>
-                <ChevronDown size={14} className={`transition-transform ${isLangOpen ? 'rotate-180' : ''}`} />
+                <span className="text-xl drop-shadow-md">{activeLangObj.flag}</span>
+                <span className="tracking-wide uppercase">{activeLangObj.label}</span>
+                <ChevronDown size={14} className={`transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
               </button>
 
               <AnimatePresence>
                 {isLangOpen && (
                   <motion.div 
-                    initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 15 }}
-                    className={`absolute ${isRtl ? 'left-0' : 'right-0'} top-full mt-5 w-56 bg-black border border-white/20 rounded-3xl p-2.5 shadow-2xl`}
+                    initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                    className={`absolute ${isRtl ? 'left-0' : 'right-0'} top-full mt-5 w-56 bg-black/95 backdrop-blur-3xl border border-white/20 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden p-2.5`}
                   >
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
                         onClick={() => changeLanguage(lang.code)}
-                        className={`flex items-center justify-between w-full px-4 py-3.5 rounded-2xl transition-all ${currentLang === lang.code ? 'bg-amber-500 text-black' : 'text-gray-400 hover:bg-white/10'}`}
+                        className={`flex items-center justify-between w-full px-4 py-3.5 rounded-2xl transition-all group ${
+                          currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/40' : 'text-gray-400 hover:bg-white/10 hover:text-white'
+                        }`}
                       >
-                        <span className="font-bold text-xs uppercase">{lang.label}</span>
-                        <span>{lang.flag}</span>
+                        <div className="flex items-center gap-3">
+                           <span className="text-lg opacity-90 group-hover:opacity-100">{lang.flag}</span>
+                           <span className="font-bold text-xs tracking-widest uppercase">{lang.label}</span>
+                        </div>
+                        {currentLang === lang.code && <div className="w-2 h-2 rounded-full bg-black shadow-inner" />}
                       </button>
                     ))}
                   </motion.div>
@@ -128,34 +165,74 @@ export default function Header() {
             </div>
           </div>
 
-          <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl">
+          {/* دکمه موبایل */}
+          <button
+            className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl active:scale-95 transition-transform"
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+          >
             {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* منوی موبایل */}
       <AnimatePresence>
         {isMobileOpen && (
-          <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25 }} className="fixed inset-0 z-[150] bg-black p-8 md:hidden overflow-y-auto">
-            <div className="flex justify-between items-center mb-12">
-              <Image src="/logo.png" alt="Logo" width={40} height={40} />
-              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 rounded-full text-white"><X size={24} /></button>
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            className="fixed inset-0 z-[150] bg-black/98 backdrop-blur-3xl flex flex-col p-8 md:hidden"
+          >
+            <div className="absolute inset-0 -z-10 opacity-20 blur-3xl overflow-hidden">
+               <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
             </div>
-            <nav className="flex flex-col gap-8 mb-12">
-              {navItems.map((item) => (
-                <Link key={item.href} href={item.href} onClick={() => setIsMobileOpen(false)} className="text-4xl font-black text-white uppercase tracking-tighter hover:text-amber-500">
-                  {item.label}
-                </Link>
+
+            <div className="flex justify-between items-center mb-16 text-white">
+              <div className="flex items-center gap-3">
+                <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
+                <span className="font-black text-lg tracking-tighter">SAFIPAY</span>
+              </div>
+              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full">
+                <X size={20} />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-6 mb-12">
+              {navItems.map((item, idx) => (
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  key={item.href}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsMobileOpen(false)}
+                    className="text-4xl font-black text-white hover:text-amber-500 transition-colors uppercase tracking-tighter block"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
               ))}
             </nav>
-            <div className="grid grid-cols-2 gap-4">
-              {languages.map((lang) => (
-                <button key={lang.code} onClick={() => changeLanguage(lang.code)} className={`flex items-center justify-center gap-3 py-4 rounded-2xl border ${currentLang === lang.code ? 'bg-amber-500 text-black' : 'bg-white/5 text-white'}`}>
-                  <span>{lang.flag}</span>
-                  <span className="text-xs font-bold uppercase">{lang.label}</span>
-                </button>
-              ))}
+
+            <div className="mt-auto pb-10">
+              <p className="text-[10px] text-gray-400 mb-6 font-black uppercase tracking-[0.3em] opacity-70">{navText.language}</p>
+              <div className="grid grid-cols-2 gap-4">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => changeLanguage(lang.code)}
+                    className={`flex items-center justify-center gap-3 py-5 rounded-[2rem] font-bold text-xs transition-all border ${
+                      currentLang === lang.code ? 'bg-amber-500 border-amber-500 text-black' : 'bg-white/5 border-white/10 text-white shadow-xl'
+                    }`}
+                  >
+                    <span className="text-xl">{lang.flag}</span>
+                    <span className="uppercase tracking-widest">{lang.label}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
