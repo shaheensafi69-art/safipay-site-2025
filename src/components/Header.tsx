@@ -35,26 +35,19 @@ export default function Header() {
 
   // --- اصلاح مهم برای حل مشکل آدرس اشتباه (مثل /en/de) ---
   const changeLanguage = (lng: string) => {
-    // ۱. گرفتن تمام بخش‌های آدرس فعلی
-    const segments = pathname.split('/').filter(Boolean);
+  if (typeof window !== 'undefined') {
+    // گرفتن مسیر فعلی بدون زبان قبلی
+    // اگر آدرس /en/about است، ما فقط /about را می‌خواهیم
+    const pathWithoutLang = pathname.split('/').slice(2).join('/');
     
-    // ۲. اگر بخش اول آدرس یکی از زبان‌های ما بود، آن را عوض کن
-    // در غیر این صورت زبان جدید را به اول آدرس اضافه کن
-    const knownLangs = ['fa', 'ps', 'en', 'fr', 'de'];
-    if (segments.length > 0 && knownLangs.includes(segments[0])) {
-      segments[0] = lng;
-    } else {
-      segments.unshift(lng);
-    }
-
-    // ۳. ساختن مسیر جدید
-    const newPath = `/${segments.join('/')}`;
+    // ساختن آدرس جدید از ریشه
+    // نتیجه می‌شود: /de/about
+    const newPath = `/${lng}${pathWithoutLang ? `/${pathWithoutLang}` : ''}`;
     
-    // ۴. هدایت کاربر به مسیر درست
-    router.push(newPath);
-    setIsLangOpen(false);
-    setIsMobileOpen(false);
-  };
+    // انتقال قطعی به آدرس جدید
+    window.location.href = newPath;
+  }
+};
 
   const navText = {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite' }[currentLang] || 'Home',
