@@ -1,136 +1,121 @@
-// src/app/(ps)/page.tsx
 'use client';
-
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { AlertCircle, CheckCircle2, Globe, Shield, Zap, CreditCard, ArrowLeft, BarChart3 } from 'lucide-react';
 
-export default function HomePage() {
+export default function HomePagePS() {
   return (
-    <div className="bg-gray-950 text-white overflow-x-hidden">
-      {/* هیرو */}
-      <section className="relative min-h-screen flex items-center justify-center px-5 sm:px-8 lg:px-12 py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950/15 via-transparent to-black pointer-events-none" />
-
-        <div className="absolute inset-0 opacity-8 pointer-events-none flex items-center justify-center scale-125 md:scale-150 lg:scale-175 -z-10">
-          <Image
-            src="/logo.png"
-            alt=""
-            width={1000}
-            height={1000}
-            className="object-contain blur-md"
-          />
+    <div className="bg-gray-950 text-white overflow-x-hidden selection:bg-amber-500/30" dir="rtl">
+      
+      {/* --- هیرو برخه (Hero Section) --- */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden">
+        {/* شالید اغیزې (Background Effects) */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-10 pointer-events-none -z-10 blur-3xl">
+           <Image src="/logo.png" alt="" fill className="object-contain animate-pulse" />
         </div>
 
-        <div className="relative z-10 text-center max-w-7xl">
+        <div className="relative z-10 text-center max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-sm font-bold tracking-widest uppercase"
           >
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.04em] mb-6 leading-none">
-              <span className="bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 bg-clip-text text-transparent">
-                SafiPay
-              </span>
-              <br className="sm:hidden" />
-              <span className="text-4xl md:text-6xl lg:text-7xl mt-4 block font-bold text-gray-100">
-                د افغانانو لپاره لومړی نړیوال ډیجیټل بانک
-              </span>
-            </h1>
+            د ټولو افغانانو لپاره د مالي پولو ماتول
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 80 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.4, ease: "easeOut" }}
-            className="text-xl sm:text-2xl md:text-3xl text-gray-300 max-w-4xl mx-auto mb-16 leading-relaxed"
+            transition={{ duration: 1.2 }}
+            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[0.9]"
           >
-            ملیونونه افغانان لا هم د نړیوال بانکي سیسټم ته لاسرسی نه لري. موږ دا ستونزه حل کوو.
+            <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">SafiPay</span>
+            <br />
+            <span className="text-3xl md:text-5xl lg:text-6xl text-amber-500 mt-6 block font-bold italic">
+              د افغانانو لپاره ډیجیټل بانکولي
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-light"
+          >
+            د لومړي نړۍوال ډیجیټل بانک له لارې د ملیونونو خلکو پیاوړي کول. 
+            بې له کومې پولې او محدودیت؛ یوازې اسانه او عصري بانکولي.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.7, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-6 md:gap-12 justify-center"
+            transition={{ duration: 1, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <Link
               href="#problems"
-              className="group px-10 py-6 text-xl md:text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-amber-900/50"
+              className="px-10 py-5 bg-white text-black text-xl font-black rounded-2xl hover:bg-amber-500 transition-all flex items-center gap-2 group"
             >
-              ستونزې وګورئ
+              ستونزې وګورئ <ArrowLeft className="group-hover:-translate-x-1 transition-transform" />
             </Link>
-
             <Link
               href="/invest"
-              className="group px-10 py-6 text-xl md:text-2xl font-bold border-2 border-amber-600 text-amber-400 hover:text-white rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-amber-600 hover:to-amber-700 shadow-lg hover:shadow-amber-900/50"
+              className="px-10 py-5 border-2 border-amber-600/50 text-amber-500 text-xl font-black rounded-2xl hover:bg-amber-600/10 transition-all shadow-[0_0_30px_rgba(217,119,6,0.2)]"
             >
-              اوس ملاتړ وکړئ
+              د کمپاین ملاتړ وکړئ
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* د بانکدارۍ ستونزې */}
-      <section id="problems" className="py-32 bg-black/50 border-t border-b border-amber-900/30">
-        <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-20 text-red-500"
-          >
-            په افغانستان کې د بانکدارۍ ستونزې
-          </motion.h2>
+      {/* --- د ستونزو برخه: بحران (Problems Section) --- */}
+      <section id="problems" className="py-32 relative bg-black">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col items-center mb-24">
+            <motion.div 
+              whileInView={{ opacity: [0, 1], scale: [0.8, 1] }}
+              className="p-4 bg-red-500/10 rounded-3xl mb-6"
+            >
+              <AlertCircle size={48} className="text-red-500" />
+            </motion.div>
+            <h2 className="text-5xl md:text-7xl font-black text-center text-white mb-6">
+              په افغانستان کې <span className="text-red-600">بانکي بحران</span>
+            </h2>
+            <p className="text-gray-500 text-xl text-center max-w-2xl font-light">
+              په افغانستان کې اوسني مالي سیسټمونه ناکاره، منزوي او زاړه دي. 
+              ملیونونه خلک په نننۍ ډیجیټل نړۍ کې له پامه غورځول شوي دي.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
             {[
-              {
-                title: 'د بانکي خدمتونو پراخه لاسرسي نشتوالی',
-                desc: 'له ۸۵–۹۰٪ خلکو (په ځانګړي ډول کلیوالو او ښځو) بانکي حساب نشته. بانکونه یوازې په لویو ښارونو کې دي او ډېرې سیمې هیڅ لاسرسی نه لري.',
-              },
-              {
-                title: 'د نړیوالو کارتونو نشتوالی',
-                desc: 'تقریباً هیڅ افغان بانک ریښتیني ویزې یا مسترکارډ نه ورکوي. موجود کارتونه یوازې داخلي دي یا محدودیتونه لري او بهر کار نه کوي.',
-              },
-              {
-                title: 'غیررسمي او ګران د پیسو انتقال سیسټم',
-                desc: 'خلک د حواله‌چیانو او صرافیانو په واسطه پیسې لیږي چې ۵–۱۵٪ کارمزد اخلي. د درغلۍ، پیسو له لاسه ورکولو او نه تعقیب خطر ډېر دی.',
-              },
-              {
-                title: 'د نړیوالو تادیاتو سیسټمونو سره نه تړل',
-                desc: 'افغانستان له SWIFT سیسټم څخه پرې شوی دی. آنلاین تادیات (آمازون، گوگل، اپل، نتفلیکس او نور) تقریباً ناممکن دي.',
-              },
-              {
-                title: 'تحریمونه او بانکي محدودیتونه',
-                desc: 'افغان بانکونه له نړیوال بانکي سیسټم څخه پرې یا محدود دي. د ډالرو او بهرنیو اسعارو انتقال ډېر سخت، ګران او وخت‌نیوونکی دی.',
-              },
-              {
-                title: 'د پرمختللي ډیجیټل بانکدارۍ نشتوالی',
-                desc: 'موجود بانکي اپلیکیشنونه ډېر ساده، ورو او غیرامن دي. آنلاین احراز هویت (KYC) تقریباً نشته.',
-              },
-              {
-                title: 'د امنیتي او شفافیتي بنسټونو نشتوالی',
-                desc: 'د AML/KYC کمزوري سیسټم له امله د پیسو مینځلو او درغلۍ کچه لوړه ده. خلک د رسمي بانکونو باور نه لري او په نقدي یا فزیکي ډالرو تکیه کوي.',
-              },
-              {
-                title: 'د نقدینې او لوړ تورم ستونزې',
-                desc: 'د پیسو ارزښت ساتلو لپاره خلک ډالر کاروي، خو د فزیکي یا ډیجیټل ډالرو لاسرسی ډېر سخت او خطرناک دی.',
-              },
+              { title: '۸۵٪ بې بانکه وګړي', desc: 'اکثریت نفوس، په ځانګړي ډول مېرمنې او د لیرې پرتو سیمو اوسېدونکي، بانکي حسابونه نه لري.' },
+              { title: 'د سوئیفټ نشتون', desc: 'له نړۍوالو شبکو سره پرېکون پدې معنی دی چې د پیسو رسمي لېږد بېخي ناممکن دی.' },
+              { title: 'جعلي کارتونه', desc: 'اوسني کورني کارتونه په نړۍوالو سایټونو لکه آمازون، نېټ فلېکس یا ګوګل کې کار نه کوي.' },
+              { title: '۱۵٪ د حوالې کمیشن', desc: 'پر غیر رسمي سیسټمونو (حواله) تکیه د لوی مالي زیان او د روڼتیا د نشتوالي لامل کیږي.' },
+              { title: 'سخت انفلاسیون', desc: 'د کورنیو د سپما د خوندي کولو لپاره د ډالرو یا یورو ساتلو لپاره هیڅ اسانه لاره نشته.' },
+              { title: 'بې ډیجیټل پېژندنه', desc: 'د حساب خلاصول لاهم فزیکي شتون او ډېرې زړې اداري بروکراسۍ ته اړتیا لري.' },
+              { title: 'د روڼتیا نشتوالی', desc: 'کمزوري امنیتي زیربناوې د مکرر درغلیو او د پیسو مینځلو خطرونو لامل کیږي.' },
+              { title: 'آفلاین اقتصاد', desc: 'کورني کاروبارونه نشي کولی نړۍوال تادیات ومني، چې دا د ملي اقتصاد د ودې مخه نیسي.' },
             ].map((problem, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 70 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: i * 0.1 }}
-                className="bg-gray-900/70 border border-red-900/40 rounded-2xl p-8 hover:border-red-600/60 transition-all duration-300 group hover:shadow-2xl hover:shadow-red-900/30"
+                transition={{ delay: i * 0.1 }}
+                className="bg-gray-950 border border-white/5 p-8 rounded-[2rem] hover:border-red-500/30 transition-all group text-right"
               >
-                <h3 className="text-2xl md:text-3xl font-bold mb-5 text-red-400 group-hover:text-red-300 transition-colors">
+                <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-2 h-2 rounded-full bg-red-500" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-gray-200 group-hover:text-red-500 transition-colors tracking-tight">
                   {problem.title}
                 </h3>
-                <p className="text-lg text-gray-400 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed">
                   {problem.desc}
                 </p>
               </motion.div>
@@ -139,90 +124,68 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* د SafiPay حل لارې */}
-      <section className="py-32 bg-gradient-to-b from-black to-gray-950">
+      {/* --- د حل لارې: د سافي‌پی انقلاب (Solutions Section) --- */}
+      <section className="py-32 bg-gray-950">
         <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-20 text-amber-500"
-          >
-            SafiPay دا ستونزې څنګه حل کوي؟
-          </motion.h2>
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <motion.div 
+              whileInView={{ opacity: [0, 1], scale: [0.8, 1] }}
+              className="inline-block p-4 bg-amber-500/10 rounded-3xl mb-6"
+            >
+              <Zap size={48} className="text-amber-500" />
+            </motion.div>
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-8">
+              راتلونکی <span className="text-amber-500 italic">دلته دی</span>
+            </h2>
+            <p className="text-gray-400 text-xl font-light">
+              SafiPay یوازې یو اپلیکیشن نه دی؛ دا یو پل دی چې افغانان له نړۍوال بازار سره نښلوي.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              {
-                problem: 'د بانکي خدمتونو پراخه لاسرسي نشتوالی',
-                solution: 'هر افغان (داخل او بهر) ته نړیوال ډیجیټل بانکي حساب پرته له شخصي مراجعه',
-              },
-              {
-                problem: 'د نړیوالو کارتونو نشتوالی',
-                solution: 'فوري مجازی ویزا + فزیکي کارت چې په ټوله نړۍ کې آنلاین او پلورنځیو کې کار کوي',
-              },
-              {
-                problem: 'غیررسمي او ګران د پیسو انتقال سیسټم',
-                solution: 'ګړندی او ارزانه انتقال (کمتر له ۱٪ کارمزد) په ټوله نړۍ کې د بشپړ تعقیب سره',
-              },
-              {
-                problem: 'د نړیوالو تادیاتو سیسټمونو سره نه تړل',
-                solution: 'مستقیم تړل د نړیوالو تادیاتو شبکو سره – آنلاین خریدونه بې محدودیت',
-              },
-              {
-                problem: 'تحریمونه او بانکي محدودیتونه',
-                solution: 'قانوني او نړیوال بنسټونه د محدودیتونو د لرې کولو لپاره د نړیوالو قوانینو په رعایت سره',
-              },
-              {
-                problem: 'د پرمختللي ډیجیټل بانکدارۍ نشتوالی',
-                solution: 'متوسط، ګړندی او خوندي اپلیکیشن د بشپړ آنلاین احراز هویت (KYC) سره',
-              },
-              {
-                problem: 'د امنیتي او شفافیتي بنسټونو نشتوالی',
-                solution: 'قوي AML/KYC سیسټم، میاشتني شفاف راپورونه، پرمختللی کوډ کول او ۲۴/۷ ملاتړ',
-              },
-              {
-                problem: 'د نقدینې او لوړ تورم ستونزې',
-                solution: 'څو اسعاري ډیجیټل حساب د اسانه ساتلو او بدلون لپاره د ډالر، یورو او نورو',
-              },
+              { icon: <Globe />, title: 'نړۍوال لاسرسی', desc: 'په ټوله نړۍ کې د افغانانو لپاره پرته له فزیکي لیدنې، د نړۍوالو حسابونو سمدستي خلاصول.' },
+              { icon: <CreditCard />, title: 'اصلي مجازي کارتونه', desc: 'د نړۍوالو آنلاین پیرودونو او ګډونونو لپاره سمدستي د ویزا او ماسټر کارت صادرول.' },
+              { icon: <Zap />, title: '۱٪ د لېږد کمیشن', desc: 'د حوالې له ګران سیسټم څخه خلاصون او په خورا ارزانه او شفافه توګه د پیسو لېږل.' },
+              { icon: <Shield />, title: 'پرمختللی امنیت', desc: 'د بشپړ ډاډ لپاره د نړۍوالو بانکونو په کچه کوډ شوې امنیتي ټیکنالوژي او ډیجیټل پېژندنه.' },
+              { icon: <BarChart3 />, title: 'څو اسعار لرونکی', desc: 'د انفلاسیون پر وړاندې د ساتنې لپاره د ډالرو، یورو او نورو اسعارو ساتل او تبادله کول.' },
+              { icon: <CheckCircle2 />, title: 'قانوني اطاعت', desc: 'د کاروونکو د پانګې د خوندیتوب لپاره د نړۍوالو بانکي قوانینو په رڼا کې فعالیت کول.' },
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 70 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: i * 0.1 }}
-                className="bg-gray-900/70 border border-amber-900/40 rounded-2xl p-8 hover:border-amber-600/60 transition-all duration-300 group hover:shadow-2xl hover:shadow-amber-900/30"
+                className="group p-10 bg-black/50 border border-amber-900/20 rounded-[2.5rem] hover:bg-amber-950/10 hover:border-amber-500/50 transition-all duration-500 shadow-2xl text-right"
               >
-                <h3 className="text-xl md:text-2xl font-bold text-red-400 mb-4 group-hover:text-red-300 transition-colors">
-                  ستونزه: {item.problem}
-                </h3>
-                <div className="text-lg text-amber-400 font-semibold mb-3">
-                  د SafiPay حل لاره:
+                <div className="text-amber-500 mb-8 transform group-hover:scale-110 transition-transform duration-500">
+                  {item.icon}
                 </div>
-                <p className="text-gray-300 leading-relaxed">
-                  {item.solution}
+                <h3 className="text-2xl font-black mb-4 text-white uppercase tracking-tighter italic">
+                  {item.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed group-hover:text-gray-200 transition-colors">
+                  {item.desc}
                 </p>
               </motion.div>
             ))}
           </div>
 
+          {/* وروستی غږ (Final CTA) */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="text-center mt-20"
+            className="mt-32 max-w-5xl mx-auto bg-gradient-to-l from-amber-600 to-amber-800 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
           >
-            <p className="text-2xl md:text-3xl font-bold text-amber-400 mb-8">
-              د SafiPay په مرسته هر افغان په نړیوال اقتصاد کې په آزاده توګه برخه اخلي
-            </p>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -mr-32 -mt-32" />
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+              ایا چمتو یاست چې د افغانستان <br /> اقتصاد بیا ورغوو؟
+            </h2>
             <Link
               href="/invest"
-              className="inline-block px-12 py-6 text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 rounded-xl transition-all transform hover:scale-105 shadow-2xl shadow-amber-900/50"
+              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105"
             >
-              اوس زمونږ سره یوځای شئ
+              له موږ سره یوځای شئ <ArrowLeft />
             </Link>
           </motion.div>
         </div>
