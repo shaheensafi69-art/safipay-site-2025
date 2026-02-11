@@ -122,7 +122,7 @@ export default function Footer() {
 
                 <Link href="https://www.tiktok.com/@safi_sahib6" target="_blank" className="text-gray-400 hover:text-white"><TikTokIcon /></Link>
 
-                <Link href="Wa.me/+19342032497" target="_blank" className="text-gray-400 hover:text-white"><MessageCircle size={18} /></Link>
+                <Link href="https://Wa.me/+19342032497" target="_blank" className="text-gray-400 hover:text-white"><MessageCircle size={18} /></Link>
 
               </div>
 
