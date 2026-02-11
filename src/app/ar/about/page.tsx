@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function AboutUsPage() {
+export default function AboutUsPageAR() {
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans" dir="rtl">
       
-      {/* بخش هیرو - معرفی کلی */}
+      {/* قسم الهيرو - مقدمة عامة */}
       <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-amber-600/5 blur-[120px] rounded-full" />
         <div className="container mx-auto px-6 relative z-10 text-center">
@@ -16,14 +16,14 @@ export default function AboutUsPage() {
             animate={{ opacity: 1 }}
             className="text-amber-500 font-bold tracking-widest uppercase text-sm"
           >
-            تغییر پارادایم مالی افغانستان
+            تغيير النموذج المالي في أفغانستان
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black mt-6 mb-8 bg-gradient-to-l from-white via-amber-200 to-amber-500 bg-clip-text text-transparent"
           >
-            ما مرزهای بانکی را <br /> جابه‌جا می‌کنیم
+            نحن نعيد تعريف <br /> الحدود المصرفية
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -31,16 +31,16 @@ export default function AboutUsPage() {
             transition={{ delay: 0.2 }}
             className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed"
           >
-            SafiPay صرفاً یک اپلیکیشن نیست؛ یک زیرساخت انقلابی است که با هدف دموکراتیزه کردن دسترسی به سیستم‌های مالی بین‌المللی برای هر شهروند افغان، در هر کجای دنیا، بنا شده است.
+            سافي بي (SafiPay) ليس مجرد تطبيق؛ إنه بنية تحتية ثورية تهدف إلى إضفاء الطابع الديمقراطي على الوصول إلى الأنظمة المالية الدولية لكل مواطن أفغاني، في أي مكان في العالم.
           </motion.p>
         </div>
       </section>
 
-      {/* بخش بنیان‌گذاران - جزئیات دقیق و تخصصی */}
+      {/* قسم المؤسسين */}
       <section className="py-24 container mx-auto px-6">
         <div className="flex flex-col gap-32">
           
-          {/* شاهین صافی - مدیرعامل */}
+          {/* شاهين صافي - المدير التنفيذي */}
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
@@ -63,31 +63,31 @@ export default function AboutUsPage() {
               className="lg:col-span-7 space-y-6"
             >
               <div className="inline-block px-4 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-sm mb-4">
-                Founder & Chief Executive Officer
+                المؤسس والرئيس التنفيذي
               </div>
-              <h2 className="text-4xl font-bold">شاهین صافی <span className="text-gray-500 text-2xl font-light">(Shaheen Safi)</span></h2>
+              <h2 className="text-4xl font-bold">شاهين صافي <span className="text-gray-500 text-2xl font-light">(Shaheen Safi)</span></h2>
               <div className="space-y-4 text-gray-300 text-lg leading-relaxed text-justify">
                 <p>
-                  شاهین صافی (متولد ۲۰۰۳)، استراتژیست فین‌تک و معمار سیستم‌های پرداخت دیجیتال است. او با دیدگاهی فراتر از مرزهای سنتی، مسئولیت هدایت کلان پروژه SafiPay و نظارت بر توسعه زیرساخت‌های فنی را بر عهده دارد. 
+                  شاهين صافي (مواليد 2003)، خبير استراتيجي في التكنولوجيا المالية (FinTech) ومهندس لأنظمة الدفع الرقمي. من خلال رؤيته العابرة للحدود التقليدية، يتولى مسؤولية التوجيه الاستراتيجي لمشروع SafiPay والإشراف على تطوير البنية التحتية التقنية.
                 </p>
                 <p>
-                  شاهین با تسلط بر اکوسیستم‌های بانکی اروپا و شناخت دقیق از چالش‌های اقتصادی افغانستان، توانسته است مدلی را طراحی کند که امنیت در سطح استانداردهای جهانی را با سهولت دسترسی برای کاربران داخلی ترکیب کند. تخصص او در حل مسائل پیچیده بانکی و مدیریت بحران‌های مالی، موتور محرک صافی‌پی در مسیر تبدیل شدن به اولین نئوبانک افغان است.
+                  بفضل إلمامه بالأنظمة المصرفية الأوروبية وفهمه العميق للتحديات الاقتصادية في أفغانستان، تمكن شاهين من تصميم نموذج يجمع بين الأمان بمستوى المعايير العالمية وسهولة الوصول للمستخدمين المحليين. خبرته في حل القضايا المصرفية المعقدة وإدارة الأزمات المالية هي المحرك الأساسي لـ SafiPay في طريقها لتصبح أول نيو-بنك (Neobank) أفغاني.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">تخصص فنی</h4>
-                  <p className="text-sm text-gray-400">معماری سیستم‌های ابری، امنیت پرداخت و بلاکچین</p>
+                  <h4 className="text-amber-500 font-bold mb-1">الخبرة التقنية</h4>
+                  <p className="text-sm text-gray-400">هندسة الأنظمة السحابية، أمن الدفع، والبلوكشين</p>
                 </div>
                 <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">رهبری</h4>
-                  <p className="text-sm text-gray-400">مدیریت استراتژیک و توسعه بین‌المللی کسب‌وکار</p>
+                  <h4 className="text-amber-500 font-bold mb-1">القيادة</h4>
+                  <p className="text-sm text-gray-400">الإدارة الاستراتيجية وتطوير الأعمال الدولية</p>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* مجتبی رحمانی - هم‌بنیان‌گذار */}
+          {/* مجتبى رحماني - المؤسس المشارك */}
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
@@ -96,25 +96,25 @@ export default function AboutUsPage() {
               className="lg:col-span-7 space-y-6 lg:order-1 order-2"
             >
               <div className="inline-block px-4 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-sm mb-4">
-                Co-Founder & Chief Communications Officer
+                المؤسس المشارك ورئيس الاتصالات
               </div>
-              <h2 className="text-4xl font-bold">مجتبی رحمانی <span className="text-gray-500 text-2xl font-light">(Mujtaba Rahmani)</span></h2>
+              <h2 className="text-4xl font-bold">مجتبى رحماني <span className="text-gray-500 text-2xl font-light">(Mujtaba Rahmani)</span></h2>
               <div className="space-y-4 text-gray-300 text-lg leading-relaxed text-justify">
                 <p>
-                  مجتبی رحمانی (متولد ۲۰۰۶)، متخصص ارتباطات استراتژیک و توسعه برند است. او مسئولیت حیاتی مدیریت روابط عمومی، گسترش نفوذ برند در بازارهای جهانی و ایجاد پل‌های ارتباطی میان صافی‌پی و جامعه بزرگ افغان‌های خارج از کشور را بر عهده دارد.
+                  مجتبى رحماني (مواليد 2006)، متخصص في الاتصالات الاستراتيجية وتطوير العلامات التجارية. يتولى المسؤولية الحيوية لإدارة العلاقات العامة، وتوسيع نفوذ العلامة التجارية في الأسواق العالمية، وبناء جسور التواصل بين SafiPay والمجتمع الأفغاني الكبير في الخارج.
                 </p>
                 <p>
-                  مجتبی با استفاده از توانایی‌های منحصر‌به‌فرد در مذاکره و درک روان‌شناسی بازار، نقش کلیدی در جلب اعتماد سرمایه‌گذاران و ایجاد تصویر برند صافی‌پی به عنوان یک نهاد مالی باثبات و مردمی ایفا می‌کند. ماموریت او فراتر از تبلیغات، ایجاد یک فرهنگ مالی جدید برای نسل جوان افغانستان است.
+                  باستخدام قدراته الفريدة في التفاوض وفهم سيكولوجية السوق، يلعب مجتبى دوراً محورياً في كسب ثقة المستثمرين ورسم صورة SafiPay كمؤسسة مالية مستقرة وقريبة من الناس. مهمته تتجاوز الإعلان؛ إنها تتعلق بخلق ثقافة مالية جديدة للجيل الشاب في أفغانستان.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">ارتباطات</h4>
-                  <p className="text-sm text-gray-400">برندینگ استراتژیک، مذاکرات تجاری و روابط عمومی</p>
+                  <h4 className="text-amber-500 font-bold mb-1">الاتصالات</h4>
+                  <p className="text-sm text-gray-400">العلامات التجارية الاستراتيجية، المفاوضات التجارية، والعلاقات العامة</p>
                 </div>
                 <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">توسعه</h4>
-                  <p className="text-sm text-gray-400">گسترش شبکه مشتریان و جذب حمایت‌های بین‌المللی</p>
+                  <h4 className="text-amber-500 font-bold mb-1">التطوير</h4>
+                  <p className="text-sm text-gray-400">توسيع شبكة العملاء وجذب الدعم الدولي</p>
                 </div>
               </div>
             </motion.div>
@@ -136,40 +136,40 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* بخش چشم‌انداز و ماموریت */}
+      {/* قسم الرؤية والمهمة */}
       <section className="py-24 bg-black/40 border-y border-white/5">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16">
           <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-amber-500">ماموریت ما</h3>
+            <h3 className="text-3xl font-bold text-amber-500">مهمتنا</h3>
             <p className="text-gray-400 text-lg leading-relaxed">
-              ماموریت ما در SafiPay این است که به هر افغان قدرت مالی ببخشیم. ما با بهره‌گیری از تکنولوژی‌های نوظهور، هزینه‌های انتقال پول را به حداقل می‌رسانیم و دسترسی به کارت‌های اعتباری بین‌المللی و حساب‌های چندارزی را که زمانی برای مردم ما یک رویا بود، به یک واقعیت روزمره تبدیل می‌کنیم.
+              مهمتنا في SafiPay هي منح القوة المالية لكل أفغاني. من خلال الاستفادة من التقنيات الناشئة، نسعى لتقليل تكاليف تحويل الأموال وتوفير الوصول إلى بطاقات الائتمان الدولية والحسابات متعددة العملات التي كانت يوماً ما حلماً لشعبنا، وتحويلها إلى واقع يومي.
             </p>
           </div>
           <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-amber-500">چشم‌انداز ۲۰۳۰</h3>
+            <h3 className="text-3xl font-bold text-amber-500">رؤية 2030</h3>
             <p className="text-gray-400 text-lg leading-relaxed">
-              ما در حال ساختن آینده‌ای هستیم که در آن هیچ افغانی به دلیل موقعیت جغرافیایی از اقتصاد دیجیتال حذف نشود. چشم‌انداز ما تبدیل شدن به بزرگترین زیرساخت مالی در منطقه و پیشرو در ارائه خدمات نئوبانک برای جوامع در حال توسعه است.
+              نحن نبني مستقبلاً لا يتم فيه استبعاد أي أفغاني من الاقتصاد الرقمي بسبب موقعه الجغرافي. رؤيتنا هي أن نصبح أكبر بنية تحتية مالية في المنطقة والشركة الرائدة في تقديم خدمات النيو-بنك للمجتمعات النامية.
             </p>
           </div>
         </div>
       </section>
 
-      {/* چرا ما؟ - ارزش‌های سازمانی */}
+      {/* القيم المؤسسية */}
       <section className="py-24 container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16">ستون‌های اخلاقی و فنی SafiPay</h2>
+        <h2 className="text-4xl font-bold text-center mb-16">الركائز الأخلاقية والتقنية لـ SafiPay</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {[
             { 
-              title: "شفافیت مطلق", 
-              desc: "ما معتقدیم اعتماد با پنهان‌کاری به دست نمی‌آید. تمامی فرآیندهای مالی و هزینه‌ها در صافی‌پی با شفافیت کامل گزارش می‌شوند." 
+              title: "الشفافية المطلقة", 
+              desc: "نحن نؤمن بأن الثقة لا تُكتسب بالكتمان. يتم الإبلاغ عن جميع العمليات المالية والتكاليف في SafiPay بشفافية تامة." 
             },
             { 
-              title: "امنیت بانکی ارتقایافته", 
-              desc: "با استفاده از پروتکل‌های رمزنگاری پیشرفته و احراز هویت بیومتریک، ما امنیت دارایی‌های کاربران را بالاتر از استانداردهای سنتی تضمین می‌کنیم." 
+              title: "أمن مصرفي متطور", 
+              desc: "باستخدام بروتوكولات التشفير المتقدمة والتحقق من الهوية البيومترية، نضمن أمن أصول المستخدمين بما يتجاوز المعايير التقليدية." 
             },
             { 
-              title: "فراگیری مالی", 
-              desc: "خدمات ما بدون تبعیض جنسیتی، طبقاتی یا جغرافیایی طراحی شده است تا دورافتاده‌ترین نقاط افغانستان را به بازارهای جهانی متصل کند." 
+              title: "الشمول المالي", 
+              desc: "تم تصميم خدماتنا دون تمييز جنسي أو طبقي أو جغرافي لربط أبعد المناطق في أفغانستان بالأسواق العالمية." 
             }
           ].map((item, index) => (
             <motion.div 
@@ -184,16 +184,16 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* بخش دعوت به همکاری */}
+      {/* دعوة للتعاون */}
       <section className="py-24 text-center">
         <div className="container mx-auto px-6 bg-gradient-to-r from-amber-600 to-amber-900 rounded-[3rem] py-16">
-          <h2 className="text-4xl font-black mb-6">در این انقلاب مالی سهیم باشید</h2>
+          <h2 className="text-4xl font-black mb-6">كن جزءاً من هذه الثورة المالية</h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">
-            ما در حال تغییر سرنوشت مالی یک ملت هستیم. چه به عنوان کاربر، چه به عنوان سرمایه‌گذار، جای شما در SafiPay خالی است.
+            نحن نغير المصير المالي لأمة كاملة. سواء كنت مستخدماً أو مستثمراً، هناك مكان لك في SafiPay.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <Link href="/invest" className="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-gray-200 transition-all">سرمایه‌گذاری</Link>
-            <Link href="/contact" className="border-2 border-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all">تماس با تیم اجرایی</Link>
+            <Link href="/ar/invest" className="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-gray-200 transition-all">الاستثمار</Link>
+            <Link href="/ar/contact" className="border-2 border-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all">اتصل بالفريق التنفيذي</Link>
           </div>
         </div>
       </section>
