@@ -5,8 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
     },
-    sitemap: 'https://www.safipay.com/sitemap.xml', // آدرس سایت خودت
+    sitemap: 'https://www.safipay.net/sitemap.xml',
   };
 }
