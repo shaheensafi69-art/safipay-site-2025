@@ -1,12 +1,16 @@
-// src/app/fa/layout.tsx (یا ps)
+// src/app/ru/layout.tsx
+
 export const metadata = {
-  title: 'SafiPay - بانک دیجیتال',
+  title: 'SafiPay - Цифровой Банкинг',
+  description: 'Первый международный цифровой банк для Афганистана.',
 };
 
-export default function RTLLayout({ children }: { children: React.ReactNode }) {
+export default function RULayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fa" dir="rtl">
-      <body>{children}</body>
+    <html lang="ru" dir="ltr">
+      <body className="antialiased font-sans">
+        {children}
+      </body>
     </html>
   );
 }
