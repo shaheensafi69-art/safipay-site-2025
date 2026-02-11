@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -12,7 +12,7 @@ const languages = [
   { code: 'ps', label: 'پښتو', flag: '🇦🇫', flagUrl: 'https://flagcdn.com/w160/af.png' },
   { code: 'en', label: 'English', flag: '🇬🇧', flagUrl: 'https://flagcdn.com/w160/gb.png' },
   { code: 'fr', label: 'Français', flag: '🇫🇷', flagUrl: 'https://flagcdn.com/w160/fr.png' },
-  { code: 'de', label: 'Deutsch', flag: '🇩🇪', flagUrl: 'https://flagcdn.com/w160/de.png' }, // اضافه شدن آلمانی
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪', flagUrl: 'https://flagcdn.com/w160/de.png' },
 ];
 
 export default function Header() {
@@ -28,14 +28,18 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // پیدا کردن زبان فعلی از آدرس
   const currentLang = pathname.split('/')[1] || 'en';
   const activeLangObj = languages.find(l => l.code === currentLang) || languages[2];
   const isRtl = currentLang === 'fa' || currentLang === 'ps';
 
+  // --- اصلاح مهم برای حل مشکل آدرس اشتباه (مثل /en/de) ---
   const changeLanguage = (lng: string) => {
     const segments = pathname.split('/');
-    segments[1] = lng;
-    const newPath = segments.join('/') || `/${lng}`;
+    // بخش اول همیشه زبان است، آن را با زبان جدید جایگزین می‌کنیم
+    segments[1] = lng; 
+    const newPath = segments.join('/');
+    
     router.push(newPath);
     setIsLangOpen(false);
     setIsMobileOpen(false);
@@ -66,6 +70,7 @@ export default function Header() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
+          {/* لوگو */}
           <Link href={`/${currentLang}`} className="flex items-center gap-3 group relative z-[110]">
             <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
               <Image src="/logo.png" alt="SafiPay" fill className="object-contain" priority />
@@ -75,7 +80,7 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* نوار منو با هاله پرچم داینامیک */}
+          {/* منوی اصلی با هاله روشن پرچم */}
           <nav className="hidden md:flex items-center relative group/nav">
             <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
                <img 
@@ -85,7 +90,7 @@ export default function Header() {
                />
             </div>
 
-            <div className="flex items-center gap-8 bg-black/80 border border-white/30 rounded-full px-8 py-2.5 backdrop-blur-2xl relative z-10">
+            <div className="flex items-center gap-8 bg-black/80 border border-white/30 rounded-full px-8 py-2.5 backdrop-blur-2xl relative z-10 shadow-2xl">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -99,9 +104,10 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* دکمه زبان با افکت تفکیک شده */}
+          {/* انتخاب زبان */}
           <div className="hidden md:flex items-center gap-4">
             <div className="relative group/lang flex items-center justify-center">
+              
               <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
                  <img 
                    src={activeLangObj.flagUrl} 
@@ -148,7 +154,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* همبرگر منوی موبایل */}
+          {/* دکمه موبایل */}
           <button
             className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl active:scale-95 transition-transform"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -158,7 +164,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* موبایل منو */}
+      {/* منوی موبایل */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -171,12 +177,12 @@ export default function Header() {
                <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
             </div>
 
-            <div className="flex justify-between items-center mb-16">
+            <div className="flex justify-between items-center mb-16 text-white">
               <div className="flex items-center gap-3">
                 <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
-                <span className="font-black text-lg tracking-tighter text-white">SAFIPAY</span>
+                <span className="font-black text-lg tracking-tighter">SAFIPAY</span>
               </div>
-              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full text-white">
+              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full">
                 <X size={20} />
               </button>
             </div>
