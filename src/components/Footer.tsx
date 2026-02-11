@@ -17,33 +17,38 @@ const TikTokIcon = () => (
 
 export default function Footer() {
   const pathname = usePathname();
-  const currentLang = pathname.split('/')[1] || 'fa';
-  const isRtl = currentLang === 'fa' || currentLang === 'ps';
+  const currentLang = pathname.split('/')[1] || 'en';
+  const isRtl = ['fa', 'ps', 'ar'].includes(currentLang);
 
-  // ۱. اضافه کردن ترجمه آلمانی (de) به برچسب‌ها
-  const labels = {
-    fa: { about: 'درباره ما', invest: 'سرمایه‌گذاری', contact: 'تماس با ما', privacy: 'حریم خصوصی (بزودی)', founder: 'بنیان‌گذار', cofounder: 'هم‌بنیان‌گذار', quickLinks: 'دسترسی سریع' },
-    ps: { about: 'زمونږ په اړه', invest: 'پانګونه', contact: 'اړیکه', privacy: 'حریم خصوصی (ژر)', founder: 'بنسټ اېښودونکی', cofounder: 'ملگری بنسټ اېښودونکی', quickLinks: 'چټک لاسرسی' },
-    en: { about: 'About Us', invest: 'Invest', contact: 'Contact', privacy: 'Privacy (Soon)', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' },
+  // اضافه کردن ترجمه‌های جدید برای تمام زبان‌ها
+  const labels: any = {
+    fa: { about: 'درباره ما', invest: 'سرمایه‌گذاری', contact: 'تماس با ما', privacy: 'حریم خصوصی', founder: 'بنیان‌گذار', cofounder: 'هم‌بنیان‌گذار', quickLinks: 'دسترسی سریع' },
+    ps: { about: 'زمونږ په اړه', invest: 'پانګونه', contact: 'اړیکه', privacy: 'حریم خصوصی', founder: 'بنسټ اېښودونکی', cofounder: 'ملگری بنسټ اېښودونکی', quickLinks: 'چټک لاسرسی' },
+    en: { about: 'About Us', invest: 'Invest', contact: 'Contact', privacy: 'Privacy', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' },
     fr: { about: 'À propos', invest: 'Investir', contact: 'Contact', privacy: 'Confidentialité', founder: 'Fondateur', cofounder: 'Co-fondateur', quickLinks: 'Accès Rapide' },
-    de: { about: 'Über uns', invest: 'Investieren', contact: 'Kontakt', privacy: 'Datenschutz', founder: 'Gründer', cofounder: 'Mitbegründer', quickLinks: 'Schnellzugriff' }
-  }[currentLang as 'fa' | 'ps' | 'en' | 'fr' | 'de'] || { about: 'About', invest: 'Invest', contact: 'Contact', privacy: 'Privacy', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' };
+    de: { about: 'Über uns', invest: 'Investieren', contact: 'Kontakt', privacy: 'Datenschutz', founder: 'Gründer', cofounder: 'Mitbegründer', quickLinks: 'Schnellzugriff' },
+    tr: { about: 'Hakkımızda', invest: 'Yatırım', contact: 'İletişim', privacy: 'Gizlilik', founder: 'Kurucu', cofounder: 'Kurucu Ortak', quickLinks: 'Hızlı Erişim' },
+    ar: { about: 'من نحن', invest: 'استثمار', contact: 'اتصل بنا', privacy: 'الخصوصية', founder: 'المؤسس', cofounder: 'مؤسس مشارك', quickLinks: 'روابط سريعة' },
+    ru: { about: 'О нас', invest: 'Инвестиции', contact: 'Контакт', privacy: 'Конфиденциальность', founder: 'Основатель', cofounder: 'Соучредитель', quickLinks: 'Быстрый доступ' }
+  }[currentLang] || { about: 'About Us', invest: 'Invest', contact: 'Contact', privacy: 'Privacy', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' };
 
-  // ۲. ترجمه متن معرفی بر اساس زبان
-  const description = {
+  const descriptions: any = {
     fa: "اولین سیستم بانکداری دیجیتال بین‌المللی برای افغانستان. اتصال به بازارهای جهانی با امنیت و سرعت فوق‌العاده.",
     ps: "د افغانستان لپاره لومړنی نړیوال ډیجیټل بانکي سیسټم. له نړیوالو بازارونو سره په خوندیتوب او چټکتیا پیوستون.",
     en: "The first international digital banking system for Afghanistan. Connecting to global markets with exceptional security and speed.",
     fr: "Le premier système bancaire numérique international pour l'Afghanistan. Connexion aux marchés mondiaux avec une sécurité et une rapidité exceptionnelles.",
-    de: "Das erste internationale digitale Bankensystem für Afghanistan. Verbindung zu globalen Märkten mit höchster Sicherheit und Geschwindigkeit."
-  }[currentLang as 'fa' | 'ps' | 'en' | 'fr' | 'de'] || "";
+    de: "Das erste internationale digitale Bankensystem für Afghanistan. Verbindung zu globalen Märkten mit höchster Sicherheit und Geschwindigkeit.",
+    tr: "Afganistan için ilk uluslararası dijital bankacılık sistemi. Küresel pazarlara olağanüstü güvenlik ve hızla bağlanın.",
+    ar: "أول نظام مصرفي رقمي دولي لأفغانستان. الاتصال بالأسواق العالمية بأمان وسرعة استثنائيين.",
+    ru: "Первая международная цифровая банковская система для Афганистана. Подключение к мировым рынкам с исключительной безопасностью и скоростью."
+  }[currentLang] || "";
 
   return (
     <footer className="bg-black border-t border-amber-900/30 pt-20 pb-10 font-sans" dir={isRtl ? 'rtl' : 'ltr'}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           
-          {/* ستون اول: صافی‌پی رسمی */}
+          {/* ستون اول: معرفی برند */}
           <div className="space-y-6">
             <Link href={`/${currentLang}`} className="flex items-center gap-3">
               <div className="relative w-12 h-12">
@@ -52,7 +57,7 @@ export default function Footer() {
               <span className="text-2xl font-black text-white tracking-tighter">SAFIPAY</span>
             </Link>
             <p className="text-gray-500 leading-relaxed text-sm">
-              {description}
+              {descriptions}
             </p>
             <div className="flex gap-4 items-center">
               <Link href="https://www.instagram.com/safipay2022" target="_blank" className="p-2 rounded-full bg-white/5 text-amber-500 hover:bg-amber-500 hover:text-black transition-all"><Instagram size={20} /></Link>
@@ -95,7 +100,7 @@ export default function Footer() {
 
           {/* ستون چهارم: لینک‌های سریع */}
           <div className="space-y-6">
-            <h4 className="text-white font-black uppercase tracking-widest text-xs border-b border-amber-500/20 pb-2 inline-block">{labels.quickLinks}</h4>
+            <h4 className="text-white font-black uppercase tracking-widest text-xs border-b border-amber-500/20 pb-2 inline-block uppercase">{labels.quickLinks}</h4>
             <nav className="flex flex-col gap-3">
               <Link href={`/${currentLang}/about`} className="text-gray-500 hover:text-amber-500 text-sm transition-all flex items-center gap-2 group">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-900 group-hover:bg-amber-500" />
@@ -124,7 +129,7 @@ export default function Footer() {
             © 2026 SAFIPAY DIGITAL BANKING SYSTEM. ALL RIGHTS RESERVED.
           </p>
           <div className="flex gap-6 items-center text-gray-500 text-xs">
-            <span className="flex items-center gap-2 cursor-default">
+            <span className="flex items-center gap-2 cursor-default uppercase">
               <Globe size={14} className="text-amber-600" /> KABUL | PARIS
             </span>
           </div>
