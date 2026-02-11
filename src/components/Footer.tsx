@@ -65,7 +65,7 @@ export default function Footer() {
             <h4 className="text-white font-black uppercase tracking-widest text-xs border-b border-amber-500/20 pb-2 inline-block">توسعه‌دهنده / MOJTABA</h4>
             <div className="bg-gradient-to-br from-white/5 to-transparent p-6 rounded-[2rem] border border-white/5 hover:border-amber-500/40 transition-all group">
               <p className="text-amber-500 font-black text-xl mb-1 tracking-tight uppercase">Mojtaba</p>
-              <p className="text-gray-500 text-[10px] mb-4 font-bold tracking-[0.2em] uppercase">Lead Developer</p>
+              <p className="text-gray-500 text-[10px] mb-4 font-bold tracking-[0.2em] uppercase">Co-Founder</p>
               <div className="grid grid-cols-4 gap-2">
                 <Link href="https://www.instagram.com/bigshot_tradez" target="_blank" className="text-gray-400 hover:text-white"><Instagram size={18} /></Link>
                 <Link href="https://www.facebook.com/share/1DJJUX1TS2/" target="_blank" className="text-gray-400 hover:text-white"><Facebook size={18} /></Link>
