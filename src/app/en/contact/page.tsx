@@ -77,7 +77,7 @@ export default function ContactPage() {
                 { icon: <Phone size={24} />, title: "France HQ", value: "+33 7 53 92 89 13", link: "tel:+33753928913" },
                 { icon: <Phone size={24} />, title: "Global Support", value: "+1 (934) 203-2497", link: "tel:+19342032497" },
                 { icon: <MessageSquare size={24} />, title: "WhatsApp Business", value: "+1 (934) 203-2497", link: "https://wa.me/19342032497" },
-                { icon: <Mail size={24} />, title: "Direct Email", value: "ssafi9241@hotmail.com", link: "mailto:ssafi9241@hotmail.com" }
+                { icon: <Mail size={24} />, title: "Direct Email", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com" }
               ].map((item, index) => (
                 <motion.a
                   key={index}
