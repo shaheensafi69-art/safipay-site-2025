@@ -74,8 +74,18 @@ export default function Header() {
             </span>
           </Link>
 
-          <nav className="hidden md:flex items-center bg-white/5 border border-white/10 rounded-full px-8 py-2.5 backdrop-blur-md">
-            <div className="flex items-center gap-8">
+          {/* --- بخش نوار منو با هاله پرچم (عکس دوم شما) --- */}
+          <nav className="hidden md:flex items-center relative group/nav">
+            {/* افکت هاله پرچم پشت منو */}
+            <div className="absolute -inset-[2px] -z-10 rounded-full overflow-hidden opacity-30 blur-md group-hover/nav:opacity-60 transition-all duration-1000">
+               <img 
+                 src={activeLangObj.flagUrl} 
+                 className="w-full h-full object-cover scale-[2] animate-[spin_10s_linear_infinite]" 
+                 alt="" 
+               />
+            </div>
+
+            <div className="flex items-center gap-8 bg-black/60 border border-white/10 rounded-full px-8 py-2.5 backdrop-blur-xl relative z-10">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -90,19 +100,20 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <div className="relative group/lang">
-              {/* --- بخش جدید: پس‌زمینه پرچم هوشمند --- */}
-              <div className="absolute inset-0 -z-10 overflow-hidden rounded-xl opacity-40 blur-sm transition-all duration-700 group-hover/lang:opacity-70 group-hover/lang:blur-none">
+            <div className="relative group/lang flex items-center justify-center">
+              
+              {/* --- افکت هاله پرچم دور دکمه زبان (عکس اول شما) --- */}
+              <div className="absolute -inset-[3px] -z-10 rounded-xl overflow-hidden opacity-40 blur-md group-hover/lang:opacity-80 transition-all duration-700">
                  <img 
                    src={activeLangObj.flagUrl} 
-                   alt="Flag background" 
-                   className="w-full h-full object-cover transform scale-150 transition-transform duration-700 group-hover/lang:scale-110"
+                   className="w-full h-full object-cover scale-150 animate-pulse" 
+                   alt="Flag Glow" 
                  />
               </div>
 
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
-                className="flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/40 border border-white/20 text-white backdrop-blur-sm hover:border-amber-500/50 transition-all font-bold text-sm shadow-xl"
+                className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/80 border border-white/20 text-white backdrop-blur-md hover:border-amber-500/50 transition-all font-bold text-sm shadow-xl"
               >
                 <span className="text-xl">{activeLangObj.flag}</span>
                 <span className="tracking-wide uppercase">{activeLangObj.label}</span>
@@ -115,7 +126,7 @@ export default function Header() {
                     initial={{ opacity: 0, y: 15, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 15, scale: 0.95 }}
-                    className={`absolute ${isRtl ? 'left-0' : 'right-0'} mt-4 w-56 bg-gray-950/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden p-2`}
+                    className={`absolute ${isRtl ? 'left-0' : 'right-0'} top-full mt-4 w-56 bg-gray-950/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden p-2`}
                   >
                     {languages.map((lang) => (
                       <button
@@ -147,7 +158,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* منوی موبایل با استایل جدید */}
+      {/* منوی موبایل */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -156,7 +167,6 @@ export default function Header() {
             exit={{ opacity: 0, scale: 1.1 }}
             className="fixed inset-0 z-[150] bg-black/95 backdrop-blur-3xl flex flex-col p-8 md:hidden"
           >
-            {/* پرچم محو بزرگ در پس‌زمینه منوی موبایل */}
             <div className="absolute inset-0 -z-10 opacity-10 blur-3xl overflow-hidden">
                <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-150" alt="bg" />
             </div>
