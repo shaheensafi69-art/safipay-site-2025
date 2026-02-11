@@ -1,7 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
+import { TrendingUp, Users, Target, ShieldCheck, ArrowRight } from 'lucide-react';
 
-export default function InvestPage() {
+export default function InvestPageFR() {
   const CAMPAIGN_LINK = "https://gogetfunding.com/safipay-%d8%a7%d9%88%d9%84%db%8c%d9%86-%d8%a8%d8%a7%d9%86%da%a9-%d8%af%db%8c%d8%ac%db%8c%d8%aa%d8%a7%d9%84-%d8%a8%d8%b1%d8%a7%db%8c-%d9%85%db%8c%d9%84%db%8c%d9%88%d9%86%d9%87%d8%a7-%d8%a7/";
   const raised = 0;
   const goal = 80000;
@@ -9,204 +10,160 @@ export default function InvestPage() {
   const donors = 0;
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white" dir="ltr">
-      {/* Hero */}
-      <section className="relative py-24 md:py-32 border-b border-amber-900/30 bg-gradient-to-b from-black to-gray-950">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-950/15 to-transparent pointer-events-none" />
-        <div className="relative z-10 container mx-auto px-6 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8 leading-tight"
-          >
-            Construire l'avenir de l'Afghanistan
-            <span className="text-amber-500 block mt-4">Avec votre soutien</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-16 leading-relaxed"
-          >
-            SafiPay est la première banque numérique internationale pour les Afghans.
-            Nous avons besoin de votre soutien pour obtenir les licences bancaires, développer la technologie, mettre en place une sécurité avancée et lancer pleinement.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-amber-500 mb-4"
-          >
-            Notre objectif : 80 000 $
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Barre de progression */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30" dir="ltr">
+      
+      {/* --- Section Hero --- */}
+      <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -ml-48 -mt-48" />
+        <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
-            className="max-w-4xl mx-auto bg-gray-900/70 border border-amber-900/40 rounded-3xl p-10 md:p-16 text-center shadow-2xl shadow-amber-900/30 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-sm font-bold mb-8"
           >
-            <div className="text-8xl md:text-10xl font-black text-amber-500 mb-6">
-              {percentage}%
+            <Target size={16} />
+            <span>CAMPAGNE OFFICIELLE DE FINANCEMENT PARTICIPATIF</span>
+          </motion.div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent leading-tight"
+          >
+            Bâtir l&apos;Avenir Financier <br /> de l&apos;Afghanistan
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed font-light"
+          >
+            SafiPay construit la première néobanque mondiale pour les Afghans. Avec votre soutien, nous obtenons les licences nécessaires, 
+            développons des technologies de pointe et comblons le fossé financier pour des millions de personnes.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* --- Section Progression (Progress Section) --- */}
+      <section className="py-24 container mx-auto px-6">
+        <div className="max-w-5xl mx-auto relative">
+          <div className="absolute -inset-4 bg-gradient-to-r from-amber-600/20 to-amber-900/20 blur-3xl opacity-30 rounded-[3rem]" />
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative bg-gray-900/50 border border-white/10 rounded-[3rem] p-8 md:p-16 backdrop-blur-xl"
+          >
+            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 text-left">
+              <div>
+                <span className="text-gray-500 uppercase tracking-widest font-bold text-sm">Objectif de Financement</span>
+                <div className="text-5xl md:text-7xl font-black text-white mt-2">
+                  ${goal.toLocaleString()}
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-6xl md:text-8xl font-black text-amber-500">
+                  {percentage}%
+                </div>
+                <span className="text-amber-500/60 uppercase tracking-widest font-bold text-sm">Complété</span>
+              </div>
             </div>
 
-            <div className="w-full bg-gray-800 rounded-full h-6 mb-10 overflow-hidden">
-              <div
-                className="bg-gradient-to-r from-amber-600 to-amber-500 h-full rounded-full transition-all duration-1000"
-                style={{ width: `${percentage}%` }}
+            <div className="relative w-full h-8 bg-black/50 rounded-full border border-white/5 overflow-hidden mb-12 shadow-inner">
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: `${percentage}%` }}
+                transition={{ duration: 2, ease: "circOut" }}
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-400 shadow-[0_0_20px_rgba(245,158,11,0.5)]"
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-              <div>
-                <div className="text-5xl font-bold text-amber-400 mb-2">
-                  ${raised.toLocaleString()}
-                </div>
-                <p className="text-xl text-gray-400">Récolté</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/5 pt-12">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-1">${raised.toLocaleString()}</div>
+                <div className="text-sm text-gray-500 font-bold uppercase tracking-tighter">Fonds Récoltés</div>
               </div>
-              <div>
-                <div className="text-5xl font-bold text-amber-400 mb-2">
-                  ${goal.toLocaleString()}
-                </div>
-                <p className="text-xl text-gray-400">Objectif</p>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-1">{donors.toLocaleString()}</div>
+                <div className="text-sm text-gray-500 font-bold uppercase tracking-tighter">Contributeurs Visionnaires</div>
               </div>
-              <div>
-                <div className="text-5xl font-bold text-amber-400 mb-2">
-                  {donors.toLocaleString()}
-                </div>
-                <p className="text-xl text-gray-400">Soutiens</p>
+              <div className="text-center">
+                <div className="text-sm text-amber-500/80 font-mono">Mise à jour : {new Date().toLocaleDateString('fr-FR')}</div>
               </div>
             </div>
-
-            <p className="mt-12 text-lg text-gray-400">
-              Dernière mise à jour : {new Date().toLocaleString('fr-FR')}
-            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Boutons de soutien */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            Votre soutien fait la différence dès maintenant
-          </h2>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 max-w-6xl mx-auto">
-            <a
-              href={`${CAMPAIGN_LINK}?amount=10`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative py-10 px-6 md:px-8 text-xl md:text-2xl font-bold bg-gray-900/70 border border-amber-900/50 rounded-2xl hover:border-amber-600/70 hover:shadow-2xl hover:shadow-amber-900/40 transition-all duration-300 text-center flex flex-col items-center justify-center"
-            >
-              <span className="block text-amber-500 group-hover:text-amber-400 transition-colors text-2xl md:text-3xl mb-2">
-                10 $
-              </span>
-              <span className="block text-sm md:text-base text-gray-400">
-                Petit soutien
-              </span>
-            </a>
-
-            <a
-              href={`${CAMPAIGN_LINK}?amount=25`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative py-10 px-6 md:px-8 text-xl md:text-2xl font-bold bg-gray-900/70 border border-amber-900/50 rounded-2xl hover:border-amber-600/70 hover:shadow-2xl hover:shadow-amber-900/40 transition-all duration-300 text-center flex flex-col items-center justify-center"
-            >
-              <span className="block text-amber-500 group-hover:text-amber-400 transition-colors text-2xl md:text-3xl mb-2">
-                25 $
-              </span>
-              <span className="block text-sm md:text-base text-gray-400">
-                Bon soutien
-              </span>
-            </a>
-
-            <a
-              href={`${CAMPAIGN_LINK}?amount=50`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative py-10 px-6 md:px-8 text-xl md:text-2xl font-bold bg-gray-900/70 border border-amber-900/50 rounded-2xl hover:border-amber-600/70 hover:shadow-2xl hover:shadow-amber-900/40 transition-all duration-300 text-center flex flex-col items-center justify-center"
-            >
-              <span className="block text-amber-500 group-hover:text-amber-400 transition-colors text-2xl md:text-3xl mb-2">
-                50 $
-              </span>
-              <span className="block text-sm md:text-base text-gray-400">
-                Soutien fort
-              </span>
-            </a>
-
-            <a
-              href={`${CAMPAIGN_LINK}?amount=100`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative py-10 px-6 md:px-8 text-xl md:text-2xl font-bold bg-gray-900/70 border border-amber-900/50 rounded-2xl hover:border-amber-600/70 hover:shadow-2xl hover:shadow-amber-900/40 transition-all duration-300 text-center flex flex-col items-center justify-center"
-            >
-              <span className="block text-amber-500 group-hover:text-amber-400 transition-colors text-2xl md:text-3xl mb-2">
-                100 $
-              </span>
-              <span className="block text-sm md:text-base text-gray-400">
-                Gros soutien
-              </span>
-            </a>
-
-            <a
-              href={CAMPAIGN_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="col-span-2 lg:col-span-1 group relative py-10 px-6 md:px-8 text-xl md:text-2xl font-bold border-2 border-amber-600 text-amber-400 hover:bg-amber-950/60 rounded-2xl transition-all duration-300 text-center flex flex-col items-center justify-center"
-            >
-              <span className="block group-hover:text-white transition-colors text-2xl md:text-3xl mb-2">
-                Montant libre
-              </span>
-              <span className="block text-sm md:text-base text-gray-400">
-                Le montant que vous voulez
-              </span>
-            </a>
-          </div>
-
-          <div className="text-center mt-16">
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Toutes les contributions vont directement au développement technique, à la sécurité, aux licences et au lancement complet.
-            </p>
-
-            <p className="text-lg text-gray-400 mb-12">
-              Des rapports mensuels complets et transparents seront fournis à tous les chers soutiens.
-            </p>
+      {/* --- Cartes d'Impact (Donation Cards) --- */}
+      <section className="py-24 bg-black/30 border-y border-white/5">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl font-black mb-16">Choisissez Votre Impact</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              { amount: 10, label: "Contributeur", desc: "Petite aide, grand cœur" },
+              { amount: 25, label: "Soutien Actif", desc: "Propulser notre croissance" },
+              { amount: 100, label: "Ambassadeur", desc: "Rôle clé dans le succès" },
+              { amount: "Libre", label: "Partenaire", desc: "Définissez votre héritage", custom: true }
+            ].map((item, idx) => (
+              <motion.a
+                key={idx}
+                href={item.custom ? CAMPAIGN_LINK : `${CAMPAIGN_LINK}?amount=${item.amount}`}
+                whileHover={{ y: -10 }}
+                className={`p-8 rounded-[2rem] border transition-all flex flex-col items-center justify-center gap-4 ${
+                  item.amount === 100 ? 'bg-amber-500 border-amber-500 text-black' : 'bg-gray-900/50 border-white/10 hover:border-amber-500/50'
+                }`}
+              >
+                <span className={`text-4xl font-black ${item.amount === 100 ? 'text-black' : 'text-amber-500'}`}>
+                  {typeof item.amount === 'number' ? `$${item.amount}` : item.amount}
+                </span>
+                <div className="text-center">
+                  <div className={`font-bold uppercase tracking-widest text-sm ${item.amount === 100 ? 'text-black/80' : 'text-white'}`}>
+                    {item.label}
+                  </div>
+                  <div className={`text-xs mt-1 ${item.amount === 100 ? 'text-black/60' : 'text-gray-500'}`}>
+                    {item.desc}
+                  </div>
+                </div>
+              </motion.a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action final */}
-      <section className="py-20 bg-gradient-to-t from-amber-950/20 to-transparent">
-        <div className="container mx-auto px-6 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto"
-          >
-            Chaque dollar que vous donnez ne contribue pas seulement à construire la première banque numérique des Afghans, mais change l'avenir financier de millions de personnes.
-          </motion.p>
-
-          <motion.a
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.4 }}
-            href="/contact"
-            className="inline-block mt-10 px-12 py-6 text-xl font-bold border-2 border-amber-600 text-amber-400 hover:bg-amber-950/60 rounded-xl transition-all"
-          >
-            Vous avez des questions ? Contactez-nous
-          </motion.a>
+      {/* --- Transparence --- */}
+      <section className="py-24 container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8 text-left">
+            <h2 className="text-4xl font-bold">Transparence Totale</h2>
+            <div className="space-y-6">
+              {[
+                { icon: <ShieldCheck className="text-amber-500" />, title: "Transactions Sécurisées", text: "Tous les fonds sont gérés via la plateforme sécurisée GoGetFunding." },
+                { icon: <TrendingUp className="text-amber-500" />, title: "Allocation Stratégique", text: "Les fonds vont directement aux licences bancaires et à l'infrastructure technique." },
+                { icon: <Users className="text-amber-500" />, title: "Audits Mensuels", text: "Les donateurs reçoivent un rapport détaillé sur l'utilisation de chaque dollar." }
+              ].map((feature, i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="mt-1">{feature.icon}</div>
+                  <div>
+                    <h4 className="font-bold text-lg text-white">{feature.title}</h4>
+                    <p className="text-gray-400">{feature.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-gradient-to-br from-amber-600 to-amber-900 p-12 rounded-[3rem] text-center shadow-2xl shadow-amber-900/20">
+            <h3 className="text-3xl font-black mb-6 italic text-white leading-relaxed">"Investissez dans une nation, <br /> pas seulement dans une banque."</h3>
+            <p className="text-white/80 mb-8 font-light">Chaque contribution nous rapproche de l&apos;indépendance financière de millions d&apos;Afghans.</p>
+            <motion.a 
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-all"
+            >
+              Contact Relations Investisseurs <ArrowRight size={18} />
+            </motion.a>
+          </div>
         </div>
       </section>
     </div>
