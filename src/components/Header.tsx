@@ -35,11 +35,22 @@ export default function Header() {
 
   // --- اصلاح مهم برای حل مشکل آدرس اشتباه (مثل /en/de) ---
   const changeLanguage = (lng: string) => {
-    const segments = pathname.split('/');
-    // بخش اول همیشه زبان است، آن را با زبان جدید جایگزین می‌کنیم
-    segments[1] = lng; 
-    const newPath = segments.join('/');
+    // ۱. گرفتن تمام بخش‌های آدرس فعلی
+    const segments = pathname.split('/').filter(Boolean);
     
+    // ۲. اگر بخش اول آدرس یکی از زبان‌های ما بود، آن را عوض کن
+    // در غیر این صورت زبان جدید را به اول آدرس اضافه کن
+    const knownLangs = ['fa', 'ps', 'en', 'fr', 'de'];
+    if (segments.length > 0 && knownLangs.includes(segments[0])) {
+      segments[0] = lng;
+    } else {
+      segments.unshift(lng);
+    }
+
+    // ۳. ساختن مسیر جدید
+    const newPath = `/${segments.join('/')}`;
+    
+    // ۴. هدایت کاربر به مسیر درست
     router.push(newPath);
     setIsLangOpen(false);
     setIsMobileOpen(false);
