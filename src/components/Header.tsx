@@ -60,11 +60,12 @@ export default function Header() {
   };
 
   const navItems = [
-    { href: `/${currentLang}`, label: translations.home[currentLang] || translations.home.en },
-    { href: `/${currentLang}/partnerships`, label: translations.partnerships[currentLang] || translations.partnerships.en },
-    { href: `/${currentLang}/contact`, label: translations.contact[currentLang] || translations.contact.en },
-    { href: `/${currentLang}/about`, label: translations.about[currentLang] || translations.about.en },
-  ];
+  { href: `/${currentLang}`, label: translations.home[currentLang] || translations.home.en },
+  // تغییر این خط:
+  { href: `/${currentLang}/partners`, label: translations.partnerships[currentLang] || translations.partnerships.en },
+  { href: `/${currentLang}/contact`, label: translations.contact[currentLang] || translations.contact.en },
+  { href: `/${currentLang}/about`, label: translations.about[currentLang] || translations.about.en },
+];
 
   return (
     <header 
