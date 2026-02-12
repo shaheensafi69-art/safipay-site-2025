@@ -1,279 +1,162 @@
 'use client';
 import { motion } from 'framer-motion';
 import { 
-  TrendingUp, Users, Target, ShieldCheck, ArrowLeft, 
-  Rocket, Globe, Landmark, CreditCard, ChevronDown 
+  Handshake, Rocket, Globe, ShieldCheck, 
+  ArrowRight, CreditCard, Zap, BarChart3, Mail 
 } from 'lucide-react';
-import { useState } from 'react';
+import Image from 'next/image';
 
-export default function InvestPageFA() {
-  const CAMPAIGN_LINK = "https://gogetfunding.com/safipay-%d8%a7%d9%88%d9%84%db%8c%d9%86-%d8%a8%d8%a7%d9%86%da%a9-%d8%af%db%8c%d8%ac%db%8c%d8%aa%d8%a7%d9%84-%d8%a8%d8%b1%d8%a7%db%8c-%d9%85%db%8c%d9%84%db%8c%d9%88%d9%86%d9%87%d8%a7-%d8%a7/";
-  const raised = 0;
-  const goal = 80000;
-  const percentage = Math.round((raised / goal) * 100);
-  const donors = 0;
-
-  // وضعیت برای سوالات متداول
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const roadmap = [
-    {
-      stage: "فاز اول",
-      title: "زیرساخت و جامعه‌سازی",
-      status: "در حال اجرا",
-      desc: "راه‌اندازی کمپین جهانی جذب سرمایه، ایجاد جامعه‌ای از ۱۰،۰۰۰ حامی اولیه و نهایی کردن معماری اصلی سیستم.",
-      icon: <Users className="text-amber-500" />
-    },
-    {
-      stage: "فاز دوم",
-      title: "اخذ مجوزهای قانونی",
-      status: "آینده",
-      desc: "دریافت مجوزهای EMI بین‌المللی و ایجاد چارچوب‌های حقوقی در حوزه‌های قضایی کلیدی برای فعالیت رسمی.",
-      icon: <Landmark className="text-amber-500" />
-    },
-    {
-      stage: "فاز سوم",
-      title: "عرضه نسخه بتا",
-      status: "آینده",
-      desc: "انتشار اپلیکیشن سافی‌پی برای تسترهای اولیه، فعال‌سازی انتقال آنی وجه و کیف پول‌های دیجیتال.",
-      icon: <Rocket className="text-amber-500" />
-    },
-    {
-      stage: "فاز چهارم",
-      title: "صدور کارت‌های جهانی",
-      status: "آینده",
-      desc: "همکاری با شبکه‌های پرداخت بزرگ برای صدور کارت‌های فیزیکی و مجازی سافی‌پی جهت خرید جهانی و دسترسی به خودپردازها.",
-      icon: <CreditCard className="text-amber-500" />
-    }
-  ];
-
+export default function PartnershipPageFA() {
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30" dir="rtl">
       
-      {/* --- بخش هیرو (Hero Section) --- */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -mr-48 -mt-48" />
+      {/* --- Hero Section --- */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-600/10 blur-[120px] rounded-full -mr-48 -mt-48" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-sm font-bold mb-8"
           >
-            <Target size={16} />
-            <span>کمپین رسمی جذب سرمایه و حمایت مردمی</span>
+            <Handshake size={16} />
+            <span>فرصت‌های همکاری استراتژیک ۲۰۲۶</span>
           </motion.div>
           
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-l from-white via-amber-100 to-amber-500 bg-clip-text text-transparent leading-tight"
-          >
-            آینده مالی افغانستان را <br /> با دستان خود بسازیم
-          </motion.h1>
+          <h1 className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-l from-white via-amber-100 to-amber-500 bg-clip-text text-transparent leading-tight">
+            با اکوسیستم Safi <br /> آینده را رهبری کنید
+          </h1>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed font-light"
-          >
-            سافی‌پی (SafiPay) در حال ساخت اولین نئوبانک جهانی برای افغان‌هاست. با حمایت شما، ما مجوزهای لازم را اخذ، 
-            تکنولوژی‌های امنیتی را توسعه و شکاف مالی میلیون‌ها نفر را پر خواهیم کرد.
-          </motion.p>
+          <p className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed font-light">
+            ما در حال ساختن یک زیرساخت مالی نوین برای میلیون‌ها کاربر هستیم. از نئوبانک پیشرفته تا سیستم پرداخت آنی، Safi فضایی برای مشارکت‌های هوشمندانه و تغییرات بزرگ است.
+          </p>
         </div>
       </section>
 
-      {/* --- بخش پیشرفت سرمایه (Progress Section) --- */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="max-w-5xl mx-auto relative">
-          <div className="absolute -inset-4 bg-gradient-to-l from-amber-600/20 to-amber-900/20 blur-3xl opacity-30 rounded-[3rem]" />
-          
+      {/* --- Ecosystem Section (SafiPay & Safi TopUp) --- */}
+      <section className="py-20 container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* SafiPay */}
           <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative bg-gray-900/50 border border-white/10 rounded-[3rem] p-8 md:p-16 backdrop-blur-xl"
+            whileHover={{ y: -10 }}
+            className="p-10 rounded-[3rem] bg-gradient-to-br from-gray-900 to-black border border-white/10 relative overflow-hidden group"
           >
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
-              <div className="text-right">
-                <span className="text-gray-500 uppercase tracking-widest font-bold text-sm">هدف نهایی کمپین</span>
-                <div className="text-5xl md:text-7xl font-black text-white mt-2" dir="ltr">
-                  ${goal.toLocaleString()}
-                </div>
-              </div>
-              <div className="text-left">
-                <div className="text-6xl md:text-8xl font-black text-amber-500" dir="ltr">
-                  {percentage}%
-                </div>
-                <span className="text-amber-500/60 uppercase tracking-widest font-bold text-sm">تکمیل شده</span>
-              </div>
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+               <Globe size={120} />
             </div>
-
-            <div className="relative w-full h-8 bg-black/50 rounded-full border border-white/5 overflow-hidden mb-12 shadow-inner">
-              <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: `${percentage}%` }}
-                transition={{ duration: 2, ease: "circOut" }}
-                className="absolute top-0 right-0 h-full bg-gradient-to-l from-amber-700 via-amber-500 to-yellow-400 shadow-[0_0_20px_rgba(245,158,11,0.5)]"
-              />
+            <h3 className="text-3xl font-black text-amber-500 mb-4">SafiPay</h3>
+            <p className="text-gray-400 mb-6 text-lg">اولین نئوبانک دیجیتال متمرکز بر دسترسی جهانی برای اتباع افغانستان. سیستم بانکداری بدون مرز با استانداردهای امنیتی اروپا.</p>
+            <div className="flex gap-4 items-center text-sm font-bold text-white/60">
+               <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">بانکداری دیجیتال</span>
+               <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">کارت‌های بین‌المللی</span>
             </div>
+          </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/5 pt-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1" dir="ltr">${raised.toLocaleString()}</div>
-                <div className="text-sm text-gray-500 font-bold tracking-tighter">مبلغ جمع‌آوری شده</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">{donors.toLocaleString()}</div>
-                <div className="text-sm text-gray-500 font-bold tracking-tighter">حامیان آینده‌نگر</div>
-              </div>
-              <div className="text-center">
-                <div className="text-sm text-amber-500/80 font-mono">آخرین بروزرسانی: {new Date().toLocaleDateString('fa-IR')}</div>
-              </div>
+          {/* Safi TopUp */}
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="p-10 rounded-[3rem] bg-gradient-to-br from-gray-900 to-black border border-white/10 relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+               <Zap size={120} />
+            </div>
+            <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-3xl font-black text-amber-500">Safi TopUp</h3>
+                <span className="text-[10px] bg-amber-500/20 text-amber-500 px-2 py-1 rounded-lg">در حال توسعه</span>
+            </div>
+            <p className="text-gray-400 mb-6 text-lg">پلتفرم فوق‌سریع شارژ خدمات دیجیتال، گیفت‌کارت و پرداخت‌های اعتباری جهانی. پلی بین ارزهای محلی و خدمات بین‌المللی.</p>
+            <div className="flex gap-4 items-center text-sm font-bold text-white/60">
+               <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">پرداخت آنی</span>
+               <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">خدمات دیجیتال</span>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- بخش نقشه راه (Roadmap) --- */}
-      <section className="py-24 container mx-auto px-6 overflow-hidden">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-black mb-6">نقشه راه ما</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">از رویا تا واقعیت جهانی. مسیر ما برای ساخت آینده سافی‌پی اینجاست.</p>
-        </div>
-
-        <div className="max-w-4xl mx-auto relative">
-          <div className="absolute right-8 md:right-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/50 via-white/10 to-transparent hidden md:block" />
-
-          <div className="space-y-16">
-            {roadmap.map((step, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
-              >
-                <div className="absolute right-8 md:right-1/2 w-12 h-12 bg-gray-900 border border-amber-500/50 rounded-full flex items-center justify-center z-10 transform translate-x-1/2 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                  {step.icon}
-                </div>
-
-                <div className="w-full md:w-1/2 pr-20 md:pr-0">
-                  <div className={`p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all group ${index % 2 === 0 ? 'text-right' : 'md:text-left'}`}>
-                    <span className="text-amber-500 font-bold text-sm tracking-widest">{step.stage}</span>
-                    <h3 className="text-2xl font-bold text-white mt-2 mb-4">{step.title}</h3>
-                    <p className="text-gray-400 leading-relaxed font-light">{step.desc}</p>
-                    <div className={`mt-6 inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${step.status === 'در حال اجرا' ? 'bg-amber-500/20 text-amber-500' : 'bg-white/5 text-gray-500'}`}>
-                      {step.status}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+      {/* --- Partners Section (Wallester) --- */}
+      <section className="py-24 bg-white/[0.02] border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black mb-4">شرکای تجاری و تکنولوژی</h2>
+            <p className="text-gray-500 italic">همکاری با معتبرترین نهادهای مالی جهان برای تضمین کیفیت</p>
           </div>
-        </div>
-      </section>
 
-      {/* --- کارت‌های انتخاب مبلغ (Donation Cards) --- */}
-      <section className="py-24 bg-black/30 border-y border-white/5">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black mb-16">میزان تاثیرگذاری خود را انتخاب کنید</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {[
-              { amount: 10, label: "حامی همدل", desc: "کمکی کوچک، قلبی بزرگ" },
-              { amount: 25, label: "همراه رشد", desc: "تقویت زیرساخت‌های ما" },
-              { amount: 100, label: "سفیر تغییر", desc: "نقش کلیدی در موفقیت" },
-              { amount: "دلخواه", label: "شریک استراتژیک", desc: "میراث خود را بسازید", custom: true }
-            ].map((item, idx) => (
-              <motion.a
-                key={idx}
-                href={item.custom ? CAMPAIGN_LINK : `${CAMPAIGN_LINK}?amount=${item.amount}`}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className={`p-8 rounded-[2rem] border transition-all flex flex-col items-center justify-center gap-4 ${
-                  item.amount === 100 ? 'bg-amber-500 border-amber-500 text-black' : 'bg-gray-900/50 border-white/10 hover:border-amber-500/50 shadow-xl'
-                }`}
-              >
-                <span className={`text-4xl font-black ${item.amount === 100 ? 'text-black' : 'text-amber-500'}`} dir="ltr">
-                  {typeof item.amount === 'number' ? `$${item.amount}` : item.amount}
-                </span>
-                <div className="text-center">
-                  <div className={`font-bold tracking-widest text-sm ${item.amount === 100 ? 'text-black/80' : 'text-white'}`}>
-                    {item.label}
-                  </div>
-                  <div className={`text-xs mt-1 ${item.amount === 100 ? 'text-black/60' : 'text-gray-500'}`}>
-                    {item.desc}
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- بخش سوالات متداول (FAQ) --- */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-black text-center mb-16">سوالات متداول سرمایه‌گذاری</h2>
-          <div className="space-y-4">
-            {[
-              { q: "سرمایه من چگونه استفاده خواهد شد؟", a: "کمک‌های شما مستقیماً صرف هزینه‌های اخذ مجوزهای بانکی بین‌المللی، توسعه زیرساخت‌های فنی و رعایت استانداردهای قانونی در حوزه‌های قضایی مختلف می‌شود." },
-              { q: "آیا سافی‌پی یک نهاد ثبت شده است؟", a: "سافی‌پی در حال حاضر در مرحله پیش‌عملیاتی است. ما در فاز دوم نقشه راه خود، در حال نهایی کردن ساختار قانونی برای انطباق با مقررات مالی جهانی هستیم." },
-              { q: "حمایت از پروژه چه مزیتی برای من دارد؟", a: "علاوه بر حمایت از اولین نئوبانک افغان، حامیان سطوح بالا دسترسی زودهنگام به ویژگی‌های ویژه و کارت‌های نسخه Founder سافی‌پی را دریافت خواهند کرد." }
-            ].map((faq, i) => (
-              <div key={i} className="border border-white/5 bg-white/5 rounded-2xl overflow-hidden transition-all text-right">
-                <button 
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full px-8 py-6 flex justify-between items-center text-right hover:bg-white/5 transition-all"
-                >
-                  <span className="font-bold text-lg">{faq.q}</span>
-                  <ChevronDown className={`transition-transform duration-300 ${openFaq === i ? 'rotate-180 text-amber-500' : ''}`} />
-                </button>
-                {openFaq === i && (
-                  <motion.div 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    className="px-8 pb-6 text-gray-400 leading-relaxed font-light"
-                  >
-                    {faq.a}
-                  </motion.div>
-                )}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gray-900/50 p-12 rounded-[4rem] border border-white/10 flex flex-col md:flex-row items-center gap-12">
+              <div className="w-48 h-48 relative flex-shrink-0 bg-white rounded-[2rem] p-6 flex items-center justify-center">
+                {/* لوگوی Wallester باید اینجا قرار بگیرد */}
+                <span className="text-black font-black text-2xl uppercase">Wallester</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- بخش شفافیت (Transparency) --- */}
-      <section className="py-24 container mx-auto px-6 border-t border-white/5">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 order-2 md:order-1 text-right">
-            <h2 className="text-4xl font-bold">شفافیت کامل در عملکرد</h2>
-            <div className="space-y-6">
-              {[
-                { icon: <ShieldCheck className="text-amber-500" />, title: "تراکنش‌های امن", text: "تمام مبالغ از طریق پلتفرم GoGetFunding با امنیت کامل و رمزنگاری شده جابجا می‌شوند." },
-                { icon: <TrendingUp className="text-amber-500" />, title: "تخصیص استراتژیک", text: "سرمایه‌ها مستقیماً صرف اخذ مجوزهای بانکی و توسعه زیرساخت‌های فنی می‌شود." },
-                { icon: <Users className="text-amber-500" />, title: "گزارش‌های ماهانه", text: "تمامی حامیان هر ۳۰ روز یکبار گزارش دقیق از پیشرفت پروژه دریافت می‌کنند." }
-              ].map((feature, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="mt-1">{feature.icon}</div>
-                  <div>
-                    <h4 className="font-bold text-lg text-white">{feature.title}</h4>
-                    <p className="text-gray-400">{feature.text}</p>
-                  </div>
-                </div>
-              ))}
+              <div>
+                <h3 className="text-3xl font-black mb-4">Wallester AS</h3>
+                <p className="text-gray-400 leading-relaxed mb-6">
+                  ما مفتخریم که از زیرساخت‌های **Wallester**، یکی از برترین موسسات دارای مجوز VISA در اروپا، برای صدور کارت‌های اعتباری و نقدی خود استفاده می‌کنیم. این همکاری به کاربران SafiPay اجازه می‌دهد تا از کارت‌های اختصاصی با قابلیت استفاده در بیش از ۲۰۰ کشور جهان بهره‌مند شوند.
+                </p>
+                <ul className="grid grid-cols-2 gap-4 text-sm font-bold">
+                  <li className="flex items-center gap-2 text-amber-500/80"><ShieldCheck size={16}/> صدور کارت‌های VISA</li>
+                  <li className="flex items-center gap-2 text-amber-500/80"><ShieldCheck size={16}/> استانداردهای PCI-DSS</li>
+                  <li className="flex items-center gap-2 text-amber-500/80"><ShieldCheck size={16}/> لایه امنیتی 3D Secure</li>
+                  <li className="flex items-center gap-2 text-amber-500/80"><ShieldCheck size={16}/> پرداخت‌های Apple Pay</li>
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="bg-gradient-to-bl from-amber-600 to-amber-900 p-12 rounded-[3rem] text-center order-1 md:order-2 shadow-2xl shadow-amber-900/20">
-            <h3 className="text-3xl font-black mb-6 italic text-white leading-relaxed">"روی یک ملت سرمایه‌گذاری کنید، <br /> نه فقط روی یک بانک."</h3>
-            <p className="text-white/80 mb-8 font-light italic">هر سهم کوچک شما، ما را به استقلال مالی میلیون‌ها افغان نزدیک‌تر می‌کند.</p>
-            <motion.a 
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-all shadow-lg"
-            >
-              ارتباط با واحد سرمایه‌گذاری <ArrowLeft size={18} />
-            </motion.a>
-          </div>
+        </div>
+      </section>
+
+      {/* --- Partnership Tiers --- */}
+      <section className="py-24 container mx-auto px-6">
+        <h2 className="text-4xl font-black text-center mb-16">مسیرهای مشارکت</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {[
+            { 
+              title: "شریک استراتژیک", 
+              desc: "ویژه موسسات مالی و سرمایه‌گذاران خطرپذیر (VC) که تمایل به مشارکت در لایه‌های بنیادی پروژه دارند.",
+              icon: <BarChart3 size={32} />
+            },
+            { 
+              title: "همکار تکنولوژی", 
+              desc: "برای شرکت‌های نرم‌افزاری و فین‌تک جهت ادغام سرویس‌های پرداخت و APIهای متقابل.",
+              icon: <Rocket size={32} />
+            },
+            { 
+              title: "نماینده منطقه‌ای", 
+              desc: "برای کسب‌وکارهایی که تمایل دارند خدمات Safi را در مناطق جغرافیایی خاص گسترش دهند.",
+              icon: <Globe size={32} />
+            }
+          ].map((item, i) => (
+            <div key={i} className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-amber-500/40 transition-all group">
+              <div className="mb-6 text-amber-500 group-hover:scale-110 transition-transform duration-500">{item.icon}</div>
+              <h4 className="text-xl font-bold mb-4">{item.title}</h4>
+              <p className="text-gray-400 leading-relaxed mb-8 font-light text-sm">{item.desc}</p>
+              <button className="flex items-center gap-2 text-amber-500 font-bold text-sm">
+                ارسال درخواست همکاری <ArrowRight size={16} />
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- CTA / Contact --- */}
+      <section className="py-24 container mx-auto px-6">
+        <div className="bg-gradient-to-br from-amber-600 to-amber-900 rounded-[4rem] p-12 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-amber-900/40">
+           <div className="relative z-10">
+              <h2 className="text-4xl md:text-6xl font-black mb-8">آماده گفتگو هستید؟</h2>
+              <p className="max-w-2xl mx-auto text-white/80 text-lg mb-12">
+                برای دریافت **Pitch Deck** (طرح توجیهی) و اطلاعات تکمیلی در مورد نحوه مشارکت، از طریق فرم زیر با دپارتمان توسعه تجارت ما در تماس باشید.
+              </p>
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <a 
+                  href="mailto:partnership@safipay.net" 
+                  className="bg-white text-black px-10 py-4 rounded-2xl font-black flex items-center justify-center gap-2 hover:bg-gray-200 transition-all"
+                >
+                  <Mail size={20} /> ایمیل مستقیم
+                </a>
+                <button className="bg-black text-white px-10 py-4 rounded-2xl font-black border border-white/20 hover:bg-black/80 transition-all">
+                  درخواست مستندات فنی
+                </button>
+              </div>
+           </div>
         </div>
       </section>
 
