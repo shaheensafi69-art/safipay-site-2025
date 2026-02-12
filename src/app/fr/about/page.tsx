@@ -2,202 +2,204 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Shield, Globe, Zap, ArrowRight, Briefcase, Code2, Star, Rocket, Target } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function AboutUsPageFR() {
+  const pathname = usePathname();
+  const currentLang = pathname?.split('/')[1] || 'fr';
+
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans" dir="ltr">
+    <div className="min-h-screen bg-[#050505] text-white font-sans" dir="ltr">
       
-      {/* Section Hero - Présentation Générale */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
+      {/* --- Section Héro (Introduction) --- */}
+      <section className="relative pt-40 pb-24 overflow-hidden border-b border-amber-900/10">
         <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-amber-600/5 blur-[120px] rounded-full" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-amber-500 font-bold tracking-[0.2em] uppercase text-sm"
+            className="text-amber-500 font-bold tracking-[0.3em] uppercase text-xs"
           >
-            Changer le paradigme financier de l&apos;Afghanistan
+            Transformer le paradigme financier afghan
           </motion.span>
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black mt-6 mb-8 bg-gradient-to-r from-white via-amber-200 to-amber-500 bg-clip-text text-transparent"
+            className="text-6xl md:text-8xl font-black mt-8 mb-10 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter"
           >
-            Nous repoussons les <br /> limites bancaires
+            Repousser les <br /> frontières bancaires
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed"
+            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
           >
-            SafiPay n&apos;est pas seulement une application ; c&apos;est une infrastructure révolutionnaire conçue pour démocratiser l&apos;accès aux systèmes financiers internationaux pour chaque citoyen afghan, partout dans le monde.
+            SafiPay est bien plus qu'une application ; c'est une infrastructure révolutionnaire conçue pour démocratiser l'accès aux systèmes financiers mondiaux pour chaque citoyen afghan, partout dans le monde.
           </motion.p>
         </div>
       </section>
 
-      {/* Section Fondateurs - Détails Techniques et Professionnels */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="flex flex-col gap-32">
+      {/* --- Section Fondateurs --- */}
+      <section className="py-32 container mx-auto px-6">
+        <div className="flex flex-col gap-40">
           
-          {/* Shaheen Safi - CEO */}
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="lg:col-span-5 relative"
-            >
-              <div className="absolute -inset-4 bg-amber-600/20 blur-2xl rounded-full opacity-50" />
-              <Image 
-                src="/shaheen.jpeg" 
-                alt="Shaheen Safi - Fondateur & CEO" 
-                width={600} height={700}
-                className="relative rounded-[2rem] border-2 border-amber-500/30 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-              />
-            </motion.div>
+          {/* Shaheen Safi - Fondateur & CEO */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 space-y-6"
+              className="lg:col-span-5 relative group"
             >
-              <div className="inline-block px-4 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-sm mb-4 font-semibold">
-                Fondateur et Directeur Général
+              <div className="absolute -inset-4 bg-amber-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-amber-500/20 shadow-2xl">
+                <Image 
+                  src="/shaheen.jpeg" 
+                  alt="Shaheen Safi - Fondateur & CEO" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
               </div>
-              <h2 className="text-4xl font-bold">Shaheen Safi</h2>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed text-justify">
-                <p>
-                  Shaheen Safi (né en 2003) est un stratège de la FinTech et l&apos;architecte des systèmes de paiement numérique. Avec une vision qui transcende les frontières traditionnelles, il dirige l&apos;orientation stratégique globale de SafiPay et supervise le développement de son infrastructure technique.
-                </p>
-                <p>
-                  En maîtrisant les écosystèmes bancaires européens et en comprenant précisément les défis économiques de l&apos;Afghanistan, Shaheen a conçu un modèle qui allie sécurité de niveau mondial et facilité d&apos;accès. Son expertise dans la résolution de problèmes bancaires complexes est le moteur de SafiPay vers son ambition de devenir la première néobanque afghane.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">Expertise Technique</h4>
-                  <p className="text-sm text-gray-400">Architecture Cloud, Sécurité des Paiements & Blockchain</p>
-                </div>
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">Leadership</h4>
-                  <p className="text-sm text-gray-400">Gestion Stratégique & Développement International</p>
-                </div>
+              <div className="absolute -bottom-6 -right-6 bg-amber-600 px-8 py-4 rounded-2xl shadow-xl hidden md:block text-white font-black italic tracking-widest text-lg uppercase">
+                CEO / FONDATEUR
               </div>
             </motion.div>
-          </div>
 
-          {/* Mujtaba Rahmani - CCO */}
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 space-y-6 lg:order-1 order-2"
+              className="lg:col-span-7 space-y-8 text-left"
             >
-              <div className="inline-block px-4 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-sm mb-4 font-semibold">
-                Co-fondateur & Directeur de la Communication
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-bold uppercase tracking-widest">
+                <Star size={14} /> Leadership & Stratégie
               </div>
-              <h2 className="text-4xl font-bold">Mujtaba Rahmani</h2>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed text-justify">
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">Shaheen Safi <span className="text-gray-600 text-3xl font-light block mt-2">Fondateur & Directeur Général</span></h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed font-light">
                 <p>
-                  Mujtaba Rahmani (né en 2006) est un expert en communication stratégique et développement de marque. Il assume la responsabilité vitale de la gestion des relations publiques, de l&apos;expansion de l&apos;influence de la marque sur les marchés mondiaux et de la création de ponts entre SafiPay et la vaste diaspora afghane.
+                  Shaheen Safi (né en 2003) est un stratège de la FinTech et l'architecte principal de l'écosystème SafiPay. Animé par une vision visant à mettre fin à l'isolement financier de l'Afghanistan, il dirige la stratégie macro et supervise les partenariats internationaux avec les leaders bancaires mondiaux.
                 </p>
                 <p>
-                  Grâce à ses compétences uniques en négociation et à sa compréhension de la psychologie du marché, Mujtaba joue un rôle clé pour gagner la confiance des investisseurs et établir SafiPay comme une institution financière stable et communautaire. Sa mission dépasse le simple marketing ; il s&apos;agit d&apos;instaurer une nouvelle culture financière pour la jeunesse afghane.
+                  Grâce à son expertise en technologies financières natives du cloud et aux normes bancaires européennes modernes, Shaheen a permis à SafiPay de redéfinir la sécurité en tant que première véritable néobanque afghane. Sa mission est claire : "Restaurer le prestige et la crédibilité financière de l'identité afghane à l'échelle mondiale."
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">Communication</h4>
-                  <p className="text-sm text-gray-400">Branding Stratégique, Négociation & Relations Publiques</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors text-left">
+                  <Briefcase className="text-amber-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Gestion Stratégique</h4>
+                  <p className="text-sm text-gray-500">Modélisation commerciale et partenariats bancaires mondiaux.</p>
                 </div>
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1">Croissance</h4>
-                  <p className="text-sm text-gray-400">Acquisition de Clients & Soutien International</p>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors text-left">
+                  <Target className="text-amber-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Résolution de Crises Financières</h4>
+                  <p className="text-sm text-gray-500">Conception de solutions pour l'accès aux marchés mondiaux.</p>
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          {/* Mujtaba Rahmani - Co-Fondateur & CTO */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5 lg:order-2 order-1 relative"
+              className="lg:col-span-7 space-y-8 lg:order-1 order-2 text-left"
             >
-              <div className="absolute -inset-4 bg-amber-600/20 blur-2xl rounded-full opacity-50" />
-              <Image 
-                src="/mujtaba.jpeg" 
-                alt="Mujtaba Rahmani - Co-fondateur" 
-                width={600} height={700}
-                className="relative rounded-[2rem] border-2 border-amber-500/30 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-              />
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs font-bold uppercase tracking-widest">
+                <Code2 size={14} /> Ingénierie & Sécurité
+              </div>
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">Mujtaba Rahmani <span className="text-gray-600 text-3xl font-light block mt-2">Co-fondateur & CTO</span></h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed font-light">
+                <p>
+                  Mujtaba Rahmani (né en 2006) est le CTO et architecte de la cybersécurité de SafiPay. Il est la colonne vertébrale technologique de la plateforme, responsable d'assurer l'invulnérabilité absolue et la scalabilité des systèmes de transaction en temps réel.
+                </p>
+                <p>
+                  Exploitant son génie en développement de logiciels évolutifs et sa compréhension approfondie des infrastructures de paiement, Mujtaba a conçu un système qui rivalise en rapidité et précision avec les plus grandes banques mondiales. Sa mission est de construire une "Forteresse Digitale" où les actifs des utilisateurs sont protégés en toutes circonstances.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors text-left">
+                  <Rocket className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Architecture Système</h4>
+                  <p className="text-sm text-gray-500">Développement backend & microservices financiers.</p>
+                </div>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors text-left">
+                  <Shield className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Cybersécurité</h4>
+                  <p className="text-sm text-gray-500">Protocoles de cryptage avancés et protection des données.</p>
+                </div>
+              </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* Section Mission & Vision */}
-      <section className="py-24 bg-black/40 border-y border-white/5">
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16">
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-amber-500">Notre Mission</h3>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              Notre mission chez SafiPay est de donner à chaque Afghan le pouvoir financier. En exploitant les technologies émergentes, nous visons à minimiser les coûts de transfert et à offrir un accès aux cartes de crédit internationales et aux comptes multi-devises — transformant ce qui était autrefois un rêve pour notre peuple en une réalité quotidienne.
-            </p>
-          </div>
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-amber-500">Vision 2030</h3>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              Nous bâtissons un avenir où aucun Afghan n&apos;est exclu de l&apos;économie numérique en raison de sa situation géographique. Notre vision est de devenir la plus grande infrastructure financière de la région et un leader des services de néobanque pour les communautés en développement.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Valeurs Fondamentales */}
-      <section className="py-24 container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16">Les Piliers de SafiPay</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { 
-              title: "Transparence Absolue", 
-              desc: "Nous croyons que la confiance ne se construit pas sur le secret. Tous les processus financiers et les coûts chez SafiPay sont rapportés avec une transparence totale." 
-            },
-            { 
-              title: "Sécurité Bancaire Renforcée", 
-              desc: "Grâce à des protocoles de cryptage avancés et à l&apos;authentification biométrique, nous garantissons la sécurité des actifs au-delà des normes traditionnelles." 
-            },
-            { 
-              title: "Inclusion Financière", 
-              desc: "Nos services sont conçus sans discrimination, connectant même les zones les plus reculées d&apos;Afghanistan aux marchés mondiaux." 
-            }
-          ].map((item, index) => (
             <motion.div 
-              key={index}
-              whileHover={{ y: -10 }}
-              className="p-8 bg-gray-900/30 border border-white/5 rounded-3xl hover:border-amber-500/50 transition-all"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 lg:order-2 order-1 relative group"
             >
-              <h4 className="text-2xl font-bold text-amber-500 mb-4">{item.title}</h4>
-              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+              <div className="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-white/10 shadow-2xl">
+                <Image 
+                  src="/mujtaba.jpeg" 
+                  alt="Mujtaba Rahmani - CTO" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
+              </div>
+              <div className="absolute -bottom-6 -left-6 bg-white px-8 py-4 rounded-2xl shadow-xl hidden md:block text-black font-black italic tracking-widest text-lg uppercase">
+                CTO / ARCHITECTE
+              </div>
             </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Appel à l'action */}
-      <section className="py-24 text-center">
-        <div className="container mx-auto px-6 bg-gradient-to-r from-amber-600 to-amber-900 rounded-[3rem] py-16">
-          <h2 className="text-4xl font-black mb-6 text-white">Participez à la révolution financière</h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">
-            Nous changeons le destin financier d&apos;une nation. Que ce soit en tant qu&apos;utilisateur ou investisseur, votre place est chez SafiPay.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            <Link href="/invest" className="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-gray-200 transition-all">Investir</Link>
-            <Link href="/contact" className="border-2 border-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all">Contacter l&apos;équipe</Link>
           </div>
         </div>
       </section>
 
+      {/* --- Vision & Valeurs --- */}
+      <section className="py-32 bg-[#080808] border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Sécurité Absolue", desc: "Utilisation de protocoles de cryptage multicouches pour garantir l'intégrité des transactions.", icon: <Shield className="text-amber-500" size={32} /> },
+              { title: "Connectivité Globale", desc: "Ouverture des portes de l'économie numérique à l'Afghanistan sans intermédiaires traditionnels.", icon: <Globe className="text-amber-500" size={32} /> },
+              { title: "Innovation Inlassable", desc: "Évolution continue des capacités de la néobanque pour répondre aux besoins de la prochaine génération.", icon: <Zap className="text-amber-500" size={32} /> }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="p-10 bg-black border border-white/5 rounded-[2.5rem] hover:border-amber-500/30 transition-all text-left"
+              >
+                <div className="mb-6">{item.icon}</div>
+                <h4 className="text-2xl font-bold mb-4">{item.title}</h4>
+                <p className="text-gray-500 leading-relaxed italic">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section CTA Finale --- */}
+      <section className="py-32">
+        <div className="container mx-auto px-6 text-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="max-w-5xl mx-auto p-20 bg-gradient-to-br from-amber-600 to-amber-900 rounded-[4rem] relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
+          >
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase tracking-tighter">Prêt pour un Partenariat Stratégique?</h2>
+              <p className="text-white/80 text-xl mb-12 font-light">
+                Chez SafiPay, nous recherchons des élites financières et des partenaires stratégiques internationaux pour façonner l'avenir.
+              </p>
+              <Link href={`/${currentLang}/partners`} className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black text-xl rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105">
+                Demander un Partenariat <ArrowRight />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
