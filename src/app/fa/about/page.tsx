@@ -2,158 +2,201 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  Globe, Shield, Zap, CreditCard, ArrowRight, 
-  BarChart3, Handshake, Users, Trophy, Target 
-} from 'lucide-react';
+import { Shield, Globe, Zap, ArrowRight, Briefcase, Code2, Star, Rocket, Target } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
-export default function HomePageFA() {
+export default function AboutUsPage() {
   const pathname = usePathname();
   const currentLang = pathname?.split('/')[1] || 'fa';
 
   return (
-    <div className="bg-[#050505] text-white overflow-x-hidden selection:bg-amber-500/30" dir="rtl">
+    <div className="min-h-screen bg-[#050505] text-white font-sans" dir="rtl">
       
-      {/* --- بخش اول: هیرو (قدرت و تکنولوژی) --- */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/15 via-transparent to-transparent pointer-events-none" />
-        
-        <div className="relative z-10 text-center max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.2em] uppercase"
+      {/* --- بخش هیرو (معرفی کلان) --- */}
+      <section className="relative pt-40 pb-24 overflow-hidden border-b border-amber-900/10">
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-amber-600/5 blur-[120px] rounded-full" />
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-amber-500 font-bold tracking-[0.3em] uppercase text-xs"
           >
-            پیشرو در انقلاب بانکداری دیجیتال افغانستان
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[0.85]"
-          >
-            <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
-            <br />
-            <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-              قدرت مالی در دستان شما
-            </span>
-          </motion.h1>
-
-          <motion.p
+            تغییر پارادایم مالی افغانستان
+          </motion.span>
+          <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-light"
+            className="text-6xl md:text-8xl font-black mt-8 mb-10 bg-gradient-to-l from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter"
           >
-            ما با تکیه بر تکنولوژی بلاک‌چین و زیرساخت‌های بانکی مدرن، سیستم مالی افغانستان را به بازارهای جهانی متصل کرده‌ایم. SafiPay نماد اقتدار و شفافیت مالی است.
+            ما مرزهای بانکی را <br /> جابه‌جا می‌کنیم
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
+          >
+            SafiPay صرفاً یک اپلیکیشن نیست؛ یک زیرساخت انقلابی است که با هدف دموکراتیزه کردن دسترسی به سیستم‌های مالی بین‌المللی برای هر شهروند افغان، بنا شده است.
           </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-          >
-            <Link
-              href={`/${currentLang}/partners`}
-              className="px-10 py-5 bg-white text-black text-xl font-black rounded-2xl hover:bg-amber-500 transition-all flex items-center gap-2 group"
-            >
-              همکاری استراتژیک <ArrowRight className="group-hover:-translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="#leadership"
-              className="px-10 py-5 border-2 border-amber-600/50 text-amber-500 text-xl font-black rounded-2xl hover:bg-amber-600/10 transition-all"
-            >
-              شناخت تیم رهبری
-            </Link>
-          </motion.div>
         </div>
       </section>
 
-      {/* --- بخش دوم: درباره رهبران (شاهین و مجتبی) --- */}
-      <section id="leadership" className="py-32 bg-[#080808] border-y border-white/5">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-black mb-6 uppercase italic">معماران <span className="text-amber-500">آینده</span></h2>
-            <p className="text-gray-500 text-xl max-w-2xl mx-auto">ترکیب تجربه مدیریتی و نبوغ تکنولوژیک برای خلق یک امپراتوری مالی.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* شاهین */}
+      {/* --- بخش بنیان‌گذاران --- */}
+      <section className="py-32 container mx-auto px-6">
+        <div className="flex flex-col gap-40">
+          
+          {/* شاهین صافی - Founder & CEO */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
-              whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: 50 }}
-              className="bg-black/50 p-10 rounded-[3rem] border border-white/5 hover:border-amber-500/30 transition-all"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 relative group"
             >
-              <div className="flex items-center gap-6 mb-8">
-                <div className="w-20 h-20 bg-amber-500 rounded-2xl flex items-center justify-center font-black text-3xl text-black">S</div>
-                <div>
-                  <h3 className="text-3xl font-black">شاهین</h3>
-                  <p className="text-amber-500 font-bold uppercase tracking-widest">بنیان‌گذار و استراتژیست ارشد</p>
-                </div>
+              <div className="absolute -inset-4 bg-amber-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-amber-500/20 shadow-2xl">
+                <Image 
+                  src="/shaheen.jpeg" 
+                  alt="Shaheen Safi - Founder & CEO" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
               </div>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                شاهین با دیدگاهی تحول‌خواه، نیروی محرکه اصلی پشت اکوسیستم SafiPay است. او با درک عمیق از خلاءهای مالی در منطقه، استراتژی‌های کلانی را طراحی کرده که منجر به خروج افغانستان از انزوای بانکی می‌شود. تمرکز او بر ایجاد شبکه‌ای پایدار و نفوذ در بازارهای بین‌المللی، SafiPay را به یک نهاد قدرتمند تبدیل کرده است.
-              </p>
+              <div className="absolute -bottom-6 -left-6 bg-amber-600 px-8 py-4 rounded-2xl shadow-xl hidden md:block">
+                <p className="text-white font-black italic tracking-widest text-lg uppercase">CEO / FOUNDER</p>
+              </div>
             </motion.div>
 
-            {/* مجتبی */}
             <motion.div 
-              whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -50 }}
-              className="bg-black/50 p-10 rounded-[3rem] border border-white/5 hover:border-amber-500/30 transition-all"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7 space-y-8"
             >
-              <div className="flex items-center gap-6 mb-8">
-                <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center font-black text-3xl text-black">M</div>
-                <div>
-                  <h3 className="text-3xl font-black">مجتبی</h3>
-                  <p className="text-amber-500 font-bold uppercase tracking-widest">مدیر ارشد تکنولوژی (CTO)</p>
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-bold uppercase tracking-widest">
+                <Star size={14} /> رهبری و استراتژی
+              </div>
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">شاهین صافی <span className="text-gray-600 text-3xl font-light block mt-2">Shaheen Safi</span></h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed text-justify font-light">
+                <p>
+                  شاهین صافی (متولد ۲۰۰۳)، استراتژیست فین‌تک و معمار اصلی سیستم‌های پرداخت SafiPay است. او با درک عمیق از انزوای مالی افغانستان، مسئولیت هدایت کلان پروژه و مهندسی روابط بین‌المللی با غول‌های بانکی دنیا را بر عهده دارد.
+                </p>
+                <p>
+                  تخصص او در ترکیب تکنولوژی‌های ابری و متدهای بانکداری نوین اروپا، به SafiPay این قدرت را داده است که به عنوان اولین نئوبانک واقعی افغان، استانداردهای امنیتی را بازتعریف کند. شاهین با دیدگاهی مقتدرانه، به دنبال بازگرداندن اعتبار به هویت مالی شهروندان افغان در بازارهای جهانی است.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors">
+                  <Briefcase className="text-amber-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">مدیریت استراتژیک</h4>
+                  <p className="text-sm text-gray-500">توسعه بیزنس مدال و جذب شرکای بانکی</p>
+                </div>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors">
+                  <Target className="text-amber-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">حل بحران مالی</h4>
+                  <p className="text-sm text-gray-500">طراحی راهکارهای عبور از تحریم‌های بانکی</p>
                 </div>
               </div>
-              <p className="text-gray-400 leading-relaxed text-lg">
-                مجتبی مغز متفکر بخش فنی و معماری سیستم‌های SafiPay است. او با تخصص در امنیت سایبری و سیستم‌های پرداخت غیرمتمرکز، پلتفرمی را بنا کرده که از نظر امنیت و سرعت با بانک‌های تراز اول جهان رقابت می‌کند. تحت نظارت او، SafiPay به تکنولوژی‌های نوین مجهز شده که شفافیت کامل و حفاظت از دارایی‌های کاربران را تضمین می‌کند.
-              </p>
+            </motion.div>
+          </div>
+
+          {/* مجتبی رحمانی - Co-Founder & CTO */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7 space-y-8 lg:order-1 order-2"
+            >
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs font-bold uppercase tracking-widest">
+                <Code2 size={14} /> مهندسی و امنیت
+              </div>
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">مجتبی رحمانی <span className="text-gray-600 text-3xl font-light block mt-2">Mujtaba Rahmani</span></h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed text-justify font-light">
+                <p>
+                  مجتبی رحمانی (متولد ۲۰۰۶)، مدیر ارشد تکنولوژی و معمار امنیت سایبری SafiPay است. او ستون فقرات فنی پلتفرم را بنا کرده و مسئولیت تضمین نفوذناپذیری و پایداری سیستم‌های تراکنش در لحظه را بر عهده دارد.
+                </p>
+                <p>
+                  مجتبی با نبوغ خود در توسعه نرم‌افزارهای مقیاس‌پذیر و درک عمیق از زیرساخت‌های پرداخت، توانسته است سیستمی را خلق کند که از نظر سرعت و دقت با بانک‌های تراز اول جهان رقابت می‌کند. ماموریت او ساختن دژ دیجیتالی است که در آن دارایی‌های کاربران تحت هر شرایطی محافظت شوند.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors">
+                  <Rocket className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">معماری سیستم</h4>
+                  <p className="text-sm text-gray-500">توسعه بک‌اند و میکروسرویس‌های مالی</p>
+                </div>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors">
+                  <Shield className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">امنیت سایبری</h4>
+                  <p className="text-sm text-gray-500">رمزنگاری پیشرفته و حفاظت از داده‌ها</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 lg:order-2 order-1 relative group"
+            >
+              <div className="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-white/10 shadow-2xl">
+                <Image 
+                  src="/mujtaba.jpeg" 
+                  alt="Mujtaba Rahmani - CTO" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white px-8 py-4 rounded-2xl shadow-xl hidden md:block text-black font-black italic tracking-widest text-lg uppercase">
+                CTO / ARCHITECT
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* --- بخش سوم: ارزش‌های SafiPay --- */}
-      <section className="py-32 relative">
+      {/* --- چشم‌انداز و ارزش‌ها --- */}
+      <section className="py-32 bg-[#080808] border-y border-white/5">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-12 bg-black border border-white/5 rounded-[3rem] text-center group hover:bg-amber-500 transition-all duration-500">
-              <Shield size={50} className="mx-auto mb-6 text-amber-500 group-hover:text-black" />
-              <h4 className="text-2xl font-black mb-4 group-hover:text-black uppercase">امنیت پولادین</h4>
-              <p className="text-gray-500 group-hover:text-black/80 font-light">استفاده از پروتکل‌های امنیتی پیشرفته برای تضمین امنیت صد در صدی تراکنش‌ها.</p>
-            </div>
-            <div className="p-12 bg-black border border-white/5 rounded-[3rem] text-center group hover:bg-amber-500 transition-all duration-500">
-              <Trophy size={50} className="mx-auto mb-6 text-amber-500 group-hover:text-black" />
-              <h4 className="text-2xl font-black mb-4 group-hover:text-black uppercase">استاندارد جهانی</h4>
-              <p className="text-gray-500 group-hover:text-black/80 font-light">ارائه خدماتی که با قوانین مالی بین‌المللی و نیازهای کاربران مدرن مطابقت دارد.</p>
-            </div>
-            <div className="p-12 bg-black border border-white/5 rounded-[3rem] text-center group hover:bg-amber-500 transition-all duration-500">
-              <Target size={50} className="mx-auto mb-6 text-amber-500 group-hover:text-black" />
-              <h4 className="text-2xl font-black mb-4 group-hover:text-black uppercase">ماموریت ما</h4>
-              <p className="text-gray-500 group-hover:text-black/80 font-light">حذف واسطه‌های ناکارآمد و بازگرداندن قدرت خرید و مدیریت مالی به مردم.</p>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "امنیت مطلق", desc: "استفاده از پروتکل‌های رمزنگاری لایه‌بندی شده برای تضمین امنیت تراکنش‌ها.", icon: <Shield className="text-amber-500" size={32} /> },
+              { title: "اتصال جهانی", desc: "باز کردن دروازه‌های اقتصاد دیجیتال به روی افغانستان بدون واسطه‌های سنتی.", icon: <Globe className="text-amber-500" size={32} /> },
+              { title: "نوآوری بی‌وقفه", desc: "توسعه مداوم قابلیت‌های نئوبانک برای انطباق با نیازهای نسل آینده.", icon: <Zap className="text-amber-500" size={32} /> }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="p-10 bg-black border border-white/5 rounded-[2.5rem] hover:border-amber-500/30 transition-all"
+              >
+                <div className="mb-6">{item.icon}</div>
+                <h4 className="text-2xl font-bold mb-4">{item.title}</h4>
+                <p className="text-gray-500 leading-relaxed italic">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* --- بخش آخر: فراخوان همکاری (بدون درخواست کمک) --- */}
+      {/* --- بخش نهایی (CTA) --- */}
       <section className="py-32">
-        <div className="container mx-auto px-6">
-          <motion.div
-            className="max-w-5xl mx-auto bg-gradient-to-r from-amber-600 to-amber-900 rounded-[4rem] p-16 text-center relative overflow-hidden"
+        <div className="container mx-auto px-6 text-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="max-w-5xl mx-auto p-20 bg-gradient-to-br from-amber-600 to-amber-900 rounded-[4rem] relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight italic uppercase">
-              به شبکه نخبگان مالی <br /> بپیوندید
-            </h2>
-            <p className="text-white/80 text-xl mb-12 max-w-2xl mx-auto font-light">
-              SafiPay در حال گسترش مرزهای خود است. ما از شرکت‌ها و موسساتی که به دنبال تحول در نظام پرداخت هستند، دعوت به همکاری می‌کنیم.
-            </p>
-            <Link
-              href={`/${currentLang}/partners`}
-              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:scale-105 transition-all"
-            >
-              درخواست همکاری تجاری <Handshake size={28} />
-            </Link>
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase tracking-tighter">آماده همکاری هستید؟</h2>
+              <p className="text-white/80 text-xl mb-12 font-light">
+                ما در SafiPay به دنبال ایجاد شبکه نخبگان مالی و شرکای استراتژیک بین‌المللی هستیم.
+              </p>
+              <Link href={`/${currentLang}/partners`} className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black text-xl rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105">
+                ارسال درخواست شراکت تجاری <ArrowRight className="rotate-180" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
