@@ -1,6 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
-import { TrendingUp, Users, Target, ShieldCheck, ArrowRight } from 'lucide-react';
+import { 
+  TrendingUp, Users, Target, ShieldCheck, ArrowRight, 
+  Rocket, Globe, Landmark, CreditCard, ChevronDown 
+} from 'lucide-react';
+import { useState } from 'react';
 
 export default function InvestPageFR() {
   const CAMPAIGN_LINK = "https://gogetfunding.com/safipay-%d8%a7%d9%88%d9%84%db%8c%d9%86-%d8%a8%d8%a7%d9%86%da%a9-%d8%af%db%8c%d8%ac%db%8c%d8%aa%d8%a7%d9%84-%d8%a8%d8%b1%d8%a7%db%8c-%d9%85%db%8c%d9%84%db%8c%d9%88%d9%86%d9%87%d8%a7-%d8%a7/";
@@ -8,6 +12,39 @@ export default function InvestPageFR() {
   const goal = 80000;
   const percentage = Math.round((raised / goal) * 100);
   const donors = 0;
+
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const roadmap = [
+    {
+      stage: "Phase 1",
+      title: "Infrastructure & Communauté",
+      status: "En cours",
+      desc: "Lancement de la campagne mondiale, construction d'une communauté de 10 000 soutiens et finalisation de l'architecture système.",
+      icon: <Users className="text-amber-500" />
+    },
+    {
+      stage: "Phase 2",
+      title: "Licences & Conformité",
+      status: "À venir",
+      desc: "Obtention des licences internationales d'établissement de monnaie électronique (EME) et cadre juridique stratégique.",
+      icon: <Landmark className="text-amber-500" />
+    },
+    {
+      stage: "Phase 3",
+      title: "Lancement Bêta",
+      status: "À venir",
+      desc: "Déploiement de l'application SafiPay pour les premiers testeurs, transferts instantanés et portefeuilles numériques.",
+      icon: <Rocket className="text-amber-500" />
+    },
+    {
+      stage: "Phase 4",
+      title: "Cartes Internationales",
+      status: "À venir",
+      desc: "Partenariats avec les réseaux mondiaux pour l'émission de cartes physiques et virtuelles SafiPay.",
+      icon: <CreditCard className="text-amber-500" />
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30" dir="ltr">
@@ -39,13 +76,12 @@ export default function InvestPageFR() {
             transition={{ delay: 0.2 }}
             className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed font-light"
           >
-            SafiPay construit la première néobanque mondiale pour les Afghans. Avec votre soutien, nous obtenons les licences nécessaires, 
-            développons des technologies de pointe et comblons le fossé financier pour des millions de personnes.
+            SafiPay construit la première néobanque mondiale pour les Afghans. Avec votre aide, nous obtenons les licences, développons des technologies de pointe et comblons le fossé financier.
           </motion.p>
         </div>
       </section>
 
-      {/* --- Section Progression (Progress Section) --- */}
+      {/* --- Section Progression --- */}
       <section className="py-24 container mx-auto px-6">
         <div className="max-w-5xl mx-auto relative">
           <div className="absolute -inset-4 bg-gradient-to-r from-amber-600/20 to-amber-900/20 blur-3xl opacity-30 rounded-[3rem]" />
@@ -87,17 +123,56 @@ export default function InvestPageFR() {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-white mb-1">{donors.toLocaleString()}</div>
-                <div className="text-sm text-gray-500 font-bold uppercase tracking-tighter">Contributeurs Visionnaires</div>
+                <div className="text-sm text-gray-500 font-bold uppercase tracking-tighter">Contributeurs</div>
               </div>
               <div className="text-center">
-                <div className="text-sm text-amber-500/80 font-mono">Mise à jour : {new Date().toLocaleDateString('fr-FR')}</div>
+                <div className="text-sm text-amber-500/80 font-mono">MàJ : {new Date().toLocaleDateString('fr-FR')}</div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- Cartes d'Impact (Donation Cards) --- */}
+      {/* --- Section Roadmap --- */}
+      <section className="py-24 container mx-auto px-6 overflow-hidden">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-black mb-6">Notre Feuille de Route</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">De la vision à la réalité globale. Voici comment nous bâtissons SafiPay.</p>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative">
+          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/50 via-white/10 to-transparent hidden md:block" />
+
+          <div className="space-y-16">
+            {roadmap.map((step, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
+              >
+                <div className="absolute left-8 md:left-1/2 w-12 h-12 bg-gray-900 border border-amber-500/50 rounded-full flex items-center justify-center z-10 transform -translate-x-1/2 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                  {step.icon}
+                </div>
+
+                <div className="w-full md:w-1/2 pl-20 md:pl-0">
+                  <div className={`p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all group ${index % 2 === 0 ? 'text-left' : 'md:text-right'}`}>
+                    <span className="text-amber-500 font-bold text-sm tracking-widest uppercase">{step.stage}</span>
+                    <h3 className="text-2xl font-bold text-white mt-2 mb-4">{step.title}</h3>
+                    <p className="text-gray-400 leading-relaxed font-light">{step.desc}</p>
+                    <div className={`mt-6 inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${step.status === 'En cours' ? 'bg-amber-500/20 text-amber-500' : 'bg-white/5 text-gray-500'}`}>
+                      {step.status}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- Cartes d'Impact --- */}
       <section className="py-24 bg-black/30 border-y border-white/5">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-black mb-16">Choisissez Votre Impact</h2>
@@ -106,14 +181,14 @@ export default function InvestPageFR() {
               { amount: 10, label: "Contributeur", desc: "Petite aide, grand cœur" },
               { amount: 25, label: "Soutien Actif", desc: "Propulser notre croissance" },
               { amount: 100, label: "Ambassadeur", desc: "Rôle clé dans le succès" },
-              { amount: "Libre", label: "Partenaire", desc: "Définissez votre héritage", custom: true }
+              { amount: "Libre", label: "Partenaire Strategique", desc: "Définissez votre héritage", custom: true }
             ].map((item, idx) => (
               <motion.a
                 key={idx}
                 href={item.custom ? CAMPAIGN_LINK : `${CAMPAIGN_LINK}?amount=${item.amount}`}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -10, scale: 1.02 }}
                 className={`p-8 rounded-[2rem] border transition-all flex flex-col items-center justify-center gap-4 ${
-                  item.amount === 100 ? 'bg-amber-500 border-amber-500 text-black' : 'bg-gray-900/50 border-white/10 hover:border-amber-500/50'
+                  item.amount === 100 ? 'bg-amber-500 border-amber-500 text-black' : 'bg-gray-900/50 border-white/10 hover:border-amber-500/50 shadow-xl'
                 }`}
               >
                 <span className={`text-4xl font-black ${item.amount === 100 ? 'text-black' : 'text-amber-500'}`}>
@@ -133,16 +208,49 @@ export default function InvestPageFR() {
         </div>
       </section>
 
-      {/* --- Transparence --- */}
+      {/* --- FAQ Section --- */}
       <section className="py-24 container mx-auto px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-black text-center mb-16">Questions Fréquentes</h2>
+          <div className="space-y-4">
+            {[
+              { q: "Comment mon investissement sera-t-il utilisé ?", a: "Vos contributions financent directement les licences bancaires internationales, l'infrastructure technique et la conformité juridique." },
+              { q: "SafiPay est-elle une entité enregistrée ?", a: "SafiPay est en phase pré-opérationnelle. Nous finalisons notre structure juridique pour nous conformer aux réglementations financières mondiales." },
+              { q: "Quels sont les avantages pour les donateurs ?", a: "En plus de soutenir la première néobanque afghane, les partenaires clés recevront un accès anticipé et des cartes SafiPay 'Founder Edition'." }
+            ].map((faq, i) => (
+              <div key={i} className="border border-white/5 bg-white/5 rounded-2xl overflow-hidden transition-all">
+                <button 
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-white/5 transition-all"
+                >
+                  <span className="font-bold text-lg">{faq.q}</span>
+                  <ChevronDown className={`transition-transform duration-300 ${openFaq === i ? 'rotate-180 text-amber-500' : ''}`} />
+                </button>
+                {openFaq === i && (
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    className="px-8 pb-6 text-gray-400 leading-relaxed font-light"
+                  >
+                    {faq.a}
+                  </motion.div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- Section Transparence --- */}
+      <section className="py-24 container mx-auto px-6 border-t border-white/5">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 text-left">
             <h2 className="text-4xl font-bold">Transparence Totale</h2>
             <div className="space-y-6">
               {[
                 { icon: <ShieldCheck className="text-amber-500" />, title: "Transactions Sécurisées", text: "Tous les fonds sont gérés via la plateforme sécurisée GoGetFunding." },
-                { icon: <TrendingUp className="text-amber-500" />, title: "Allocation Stratégique", text: "Les fonds vont directement aux licences bancaires et à l'infrastructure technique." },
-                { icon: <Users className="text-amber-500" />, title: "Audits Mensuels", text: "Les donateurs reçoivent un rapport détaillé sur l'utilisation de chaque dollar." }
+                { icon: <TrendingUp className="text-amber-500" />, title: "Allocation Stratégique", text: "Fonds dédiés aux licences bancaires et à l'infrastructure technique." },
+                { icon: <Users className="text-amber-500" />, title: "Rapports Mensuels", text: "Les soutiens reçoivent un rapport détaillé sur l'avancement tous les 30 jours." }
               ].map((feature, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="mt-1">{feature.icon}</div>
@@ -155,17 +263,18 @@ export default function InvestPageFR() {
             </div>
           </div>
           <div className="bg-gradient-to-br from-amber-600 to-amber-900 p-12 rounded-[3rem] text-center shadow-2xl shadow-amber-900/20">
-            <h3 className="text-3xl font-black mb-6 italic text-white leading-relaxed">"Investissez dans une nation, <br /> pas seulement dans une banque."</h3>
-            <p className="text-white/80 mb-8 font-light">Chaque contribution nous rapproche de l&apos;indépendance financière de millions d&apos;Afghans.</p>
+            <h3 className="text-3xl font-black mb-6 italic text-white leading-tight">"Investissez dans une nation, <br /> pas seulement dans une banque."</h3>
+            <p className="text-white/80 mb-8 font-light italic">Chaque contribution nous rapproche de la souveraineté financière de millions d&apos;Afghans.</p>
             <motion.a 
               href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-all"
+              className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-all shadow-lg"
             >
-              Contact Relations Investisseurs <ArrowRight size={18} />
+              Contactez les Relations Investisseurs <ArrowRight size={18} />
             </motion.a>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
