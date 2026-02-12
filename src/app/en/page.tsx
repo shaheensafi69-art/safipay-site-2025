@@ -6,14 +6,18 @@ import {
   AlertCircle, CheckCircle2, Globe, Shield, Zap, 
   CreditCard, ArrowRight, BarChart3, Handshake 
 } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
-export default function HomePage() {
+export default function HomePageEN() {
+  const pathname = usePathname();
+  // استخراج زبان فعلی از آدرس برای حفظ پایداری مسیرها
+  const currentLang = pathname?.split('/')[1] || 'en';
+
   return (
     <div className="bg-[#050505] text-white overflow-x-hidden selection:bg-amber-500/30" dir="ltr">
       
       {/* --- Hero Section --- */}
       <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden">
-        {/* افکت نوری پس‌زمینه */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/15 via-transparent to-transparent pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-5 pointer-events-none -z-10 blur-3xl">
            <Image src="/logo.png" alt="" fill className="object-contain animate-pulse" />
@@ -26,7 +30,7 @@ export default function HomePage() {
             transition={{ duration: 1 }}
             className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase"
           >
-            Breaking Financial Borders
+            Breaking Financial Borders for all Afghans
           </motion.div>
 
           <motion.h1
@@ -62,10 +66,11 @@ export default function HomePage() {
               href="#problems"
               className="px-10 py-5 bg-white text-black text-xl font-black rounded-2xl hover:bg-amber-500 transition-all flex items-center gap-2 group"
             >
-              Learn More <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              See Problems <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
+            {/* اصلاح مسیر به /partners مطابق ساختار گیت‌هاب شما */}
             <Link
-              href="/partnership"
+              href={`/${currentLang}/partners`}
               className="px-10 py-5 border-2 border-amber-600/50 text-amber-500 text-xl font-black rounded-2xl hover:bg-amber-600/10 transition-all shadow-[0_0_30px_rgba(217,119,6,0.2)] flex items-center gap-3"
             >
               <Handshake size={24} /> Join Partnership
@@ -77,17 +82,17 @@ export default function HomePage() {
       {/* --- Problems Section --- */}
       <section id="problems" className="py-32 relative bg-black">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center mb-24">
+          <div className="flex flex-col items-center mb-24 text-center">
             <motion.div 
               whileInView={{ opacity: [0, 1], scale: [0.8, 1] }}
               className="p-4 bg-red-500/10 rounded-3xl mb-6"
             >
               <AlertCircle size={48} className="text-red-500" />
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black text-center text-white mb-6 uppercase italic">
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase italic">
               The Banking <span className="text-red-600">Crisis</span>
             </h2>
-            <p className="text-gray-500 text-xl text-center max-w-2xl font-light">
+            <p className="text-gray-500 text-xl max-w-2xl font-light">
               Current financial systems in Afghanistan are broken, isolated, and outdated. 
               Millions are left behind in a digital world.
             </p>
@@ -141,7 +146,7 @@ export default function HomePage() {
               The <span className="text-amber-500">Future</span> is Here
             </h2>
             <p className="text-gray-400 text-xl font-light italic">
-              SafiPay isn&apos;t just an app; it&apos;s a bridge connecting Afghans to the global marketplace.
+              SafiPay isn't just an app; it's a bridge connecting Afghans to the global marketplace.
             </p>
           </div>
 
@@ -165,14 +170,14 @@ export default function HomePage() {
                 <h3 className="text-2xl font-black mb-4 text-white uppercase tracking-tighter italic">
                   {item.title}
                 </h3>
-                <p className="text-gray-500 leading-relaxed font-light">
+                <p className="text-gray-500 leading-relaxed font-light group-hover:text-gray-300 transition-colors">
                   {item.desc}
                 </p>
               </motion.div>
             ))}
           </div>
 
-          {/* نهایی CTA - کارت همکاری استراتژیک */}
+          {/* Final CTA Card */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -180,10 +185,10 @@ export default function HomePage() {
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -mr-32 -mt-32" />
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-              Ready to rebuild <br /> Afghanistan&apos;s economy?
+              Ready to rebuild <br /> Afghanistan's economy?
             </h2>
             <Link
-              href="/partnership"
+              href={`/${currentLang}/partners`}
               className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105"
             >
               Apply for Partnership <Handshake size={28} />
