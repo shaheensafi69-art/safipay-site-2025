@@ -48,13 +48,12 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#050505] border-t border-white/5 pt-24 pb-12 overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
-      {/* افکت نوری پس‌زمینه مشابه هدر */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-amber-600/5 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
           
-          {/* ستون برند - بزرگتر و متمرکز */}
+          {/* ستون برند */}
           <div className="lg:col-span-4 space-y-8">
             <Link href={`/${currentLang}`} className="inline-flex items-center gap-4 group">
               <div className="relative w-14 h-14 p-1 rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10 group-hover:border-amber-500/50 transition-all duration-500">
@@ -68,57 +67,41 @@ export default function Footer() {
             <p className="text-gray-400 leading-relaxed text-base max-w-sm font-light">
               {descriptions}
             </p>
+            {/* لینک‌های اجتماعی برند */}
             <div className="flex gap-3">
-              {[
-                { icon: <Instagram size={18} />, link: "https://www.instagram.com/safipay2022" },
-                { icon: <Facebook size={18} />, link: "https://www.facebook.com/share/1GFFGouwff/" },
-                { icon: <MessageCircle size={18} />, link: "https://wa.me/33753928913" }
-              ].map((social, i) => (
-                <Link 
-                  key={i}
-                  href={social.link} 
-                  target="_blank" 
-                  className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 text-gray-400 hover:border-amber-500/50 hover:text-amber-500 hover:bg-amber-500/5 transition-all duration-300"
-                >
-                  {social.icon}
-                </Link>
-              ))}
+              <Link href="https://www.instagram.com/safipay2022" target="_blank" className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 text-gray-400 hover:border-amber-500 hover:text-amber-500 transition-all"><Instagram size={18} /></Link>
+              <Link href="https://www.facebook.com/share/1GFFGouwff/" target="_blank" className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 text-gray-400 hover:border-amber-500 hover:text-amber-500 transition-all"><Facebook size={18} /></Link>
+              <Link href="https://wa.me/33753928913" target="_blank" className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/5 text-gray-400 hover:border-amber-500 hover:text-amber-500 transition-all"><MessageCircle size={18} /></Link>
             </div>
           </div>
 
-          {/* بخش تیم مدیریتی - استایل کارتی مشابه هدر */}
+          {/* بخش تیم - Shaheen & Mujtaba */}
           <div className="lg:col-span-5 grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Shaheen */}
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="p-6 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all group relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
-                <ArrowUpRight size={16} className="text-amber-500" />
-              </div>
+            <motion.div whileHover={{ y: -5 }} className="p-6 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all group relative">
+              <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:opacity-100 transition-opacity"><ArrowUpRight size={14} className="text-amber-500" /></div>
               <h4 className="text-[10px] font-black text-amber-500 uppercase tracking-[0.2em] mb-4">{labels.founder}</h4>
-              <p className="text-xl font-bold text-white mb-4 tracking-tight">Shaheen Safi</p>
-              <div className="flex flex-wrap gap-3">
-                <Link href="https://www.linkedin.com/in/shaheen-safi-b73a30299" className="text-gray-500 hover:text-white transition-colors"><Linkedin size={16} /></Link>
-                <Link href="https://www.instagram.com/top_g_official1" className="text-gray-500 hover:text-white transition-colors"><Instagram size={16} /></Link>
-                <Link href="https://www.tiktok.com/@safi_sahib6" className="text-gray-500 hover:text-white transition-colors"><TikTokIcon /></Link>
+              <p className="text-xl font-bold text-white mb-6 tracking-tight">Shaheen Safi</p>
+              <div className="grid grid-cols-5 gap-2">
+                <Link href="https://www.linkedin.com/in/shaheen-safi-b73a30299" target="_blank" className="text-gray-500 hover:text-white transition-colors"><Linkedin size={18} /></Link>
+                <Link href="https://www.instagram.com/top_g_official1" target="_blank" className="text-gray-500 hover:text-white transition-colors"><Instagram size={18} /></Link>
+                <Link href="https://www.facebook.com/share/1H1vuV1i9Z/" target="_blank" className="text-gray-500 hover:text-white transition-colors"><Facebook size={18} /></Link>
+                <Link href="https://www.tiktok.com/@safi_sahib6" target="_blank" className="text-gray-500 hover:text-white transition-colors"><TikTokIcon /></Link>
+                <Link href="https://Wa.me/+19342032497" target="_blank" className="text-gray-500 hover:text-white transition-colors"><MessageCircle size={18} /></Link>
               </div>
             </motion.div>
 
             {/* Mujtaba */}
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="p-6 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all group relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
-                <ArrowUpRight size={16} className="text-amber-500" />
-              </div>
+            <motion.div whileHover={{ y: -5 }} className="p-6 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all group relative">
+              <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:opacity-100 transition-opacity"><ArrowUpRight size={14} className="text-amber-500" /></div>
               <h4 className="text-[10px] font-black text-amber-500 uppercase tracking-[0.2em] mb-4">{labels.cofounder}</h4>
-              <p className="text-xl font-bold text-white mb-4 tracking-tight">Mujtaba Rahmani</p>
-              <div className="flex flex-wrap gap-3">
-                <Link href="https://www.linkedin.com/mwlite/profile/me" className="text-gray-500 hover:text-white transition-colors"><Linkedin size={16} /></Link>
-                <Link href="https://www.instagram.com/bigshot_tradez" className="text-gray-500 hover:text-white transition-colors"><Instagram size={16} /></Link>
-                <Link href="https://wa.me/+93793035609" className="text-gray-500 hover:text-white transition-colors"><MessageCircle size={16} /></Link>
+              <p className="text-xl font-bold text-white mb-6 tracking-tight">Mujtaba Rahmani</p>
+              <div className="grid grid-cols-5 gap-2">
+                <Link href="https://www.linkedin.com/mwlite/profile/me" target="_blank" className="text-gray-500 hover:text-white transition-colors"><Linkedin size={18} /></Link>
+                <Link href="https://www.instagram.com/bigshot_tradez" target="_blank" className="text-gray-500 hover:text-white transition-colors"><Instagram size={18} /></Link>
+                <Link href="https://www.facebook.com/share/1DJJUX1TS2/" target="_blank" className="text-gray-500 hover:text-white transition-colors"><Facebook size={18} /></Link>
+                <Link href="https://www.tiktok.com/@chill_asf_fr" target="_blank" className="text-gray-500 hover:text-white transition-colors"><TikTokIcon /></Link>
+                <Link href="https://wa.me/+93793035609" target="_blank" className="text-gray-500 hover:text-white transition-colors"><MessageCircle size={18} /></Link>
               </div>
             </motion.div>
           </div>
@@ -127,44 +110,32 @@ export default function Footer() {
           <div className="lg:col-span-3 space-y-8">
             <h4 className="text-white font-black uppercase tracking-[0.2em] text-[10px]">{labels.quickLinks}</h4>
             <nav className="flex flex-col gap-4">
-              {[
-                { name: labels.about, href: `/${currentLang}/about` },
-                { name: labels.invest, href: `/${currentLang}/invest` },
-                { name: labels.contact, href: `/${currentLang}/contact` }
-              ].map((link, idx) => (
-                <Link 
-                  key={idx}
-                  href={link.href} 
-                  className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group"
-                >
-                  <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />
-                  {link.name}
-                </Link>
-              ))}
+              <Link href={`/${currentLang}/about`} className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group">
+                <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />{labels.about}
+              </Link>
+              <Link href={`/${currentLang}/invest`} className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group">
+                <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />{labels.invest}
+              </Link>
+              <Link href={`/${currentLang}/contact`} className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group">
+                <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />{labels.contact}
+              </Link>
               <span className="text-gray-700 text-sm font-medium flex items-center gap-3 cursor-not-allowed italic">
-                <span className="w-6 h-[1px] bg-gray-900" />
-                {labels.privacy}
+                <span className="w-6 h-[1px] bg-gray-900" />{labels.privacy}
               </span>
             </nav>
           </div>
-
         </div>
 
-        {/* کپی‌رایت نهایی با استایل کشیده و مینیمال */}
+        {/* کپی‌رایت */}
         <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-6">
-            <p className="text-gray-600 text-[9px] font-bold tracking-[0.4em] uppercase">
-              © 2026 SAFIPAY GLOBAL. ENGINEERED FOR THE FUTURE.
-            </p>
-          </div>
-          
-          <div className="flex gap-8 items-center text-gray-500">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5 text-[10px] font-bold tracking-widest uppercase">
-              <Globe size={12} className="text-amber-500" /> 
-              <span>Kabul</span>
-              <span className="w-1 h-1 rounded-full bg-gray-700 mx-1" />
-              <span>Paris</span>
-            </div>
+          <p className="text-gray-600 text-[9px] font-bold tracking-[0.4em] uppercase text-center md:text-left">
+            © 2026 SAFIPAY DIGITAL BANKING SYSTEM. ALL RIGHTS RESERVED.
+          </p>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5 text-[10px] font-bold tracking-widest uppercase text-gray-500">
+            <Globe size={12} className="text-amber-500" /> 
+            <span>KABUL</span>
+            <span className="w-1 h-1 rounded-full bg-gray-700 mx-1" />
+            <span>PARIS</span>
           </div>
         </div>
       </div>
