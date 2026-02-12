@@ -44,15 +44,17 @@ export default function Header() {
 
   const translations: any = {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite', tr: 'Ana Sayfa', ar: 'الرئيسية', ru: 'Главная' },
-    invest: { fa: 'سرمایه‌گذاری', ps: 'پانګونه', en: 'Invest', fr: 'Investir', de: 'Investieren', tr: 'Yatırım', ar: 'استثمار', ru: 'Инвестиции' },
-    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişim', ar: 'اتصل بنا', ru: 'Контакт' },
+    // نام کلید را برای نظم بیشتر تغییر دادیم
+    partnerships: { fa: 'سرمایه‌گذاری', ps: 'پانګونه', en: 'Partnerships', fr: 'Partenariats', de: 'Partnerschaften', tr: 'Ortaklıklar', ar: 'الشراکات', ru: 'Инвестиции' },
+    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletیشیم', ar: 'اتصل بنا', ru: 'Контакт' },
     about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızda', ar: 'من نحن', ru: 'О нас' },
-    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Язык' }
+    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Языک' }
   };
 
   const navItems = [
     { href: `/${currentLang}`, label: translations.home[currentLang] || translations.home.en },
-    { href: `/${currentLang}/invest`, label: translations.invest[currentLang] || translations.invest.en },
+    // اصلاح اصلی اینجا صورت گرفت: تغییر invest به partnerships
+    { href: `/${currentLang}/partnerships`, label: translations.partnerships[currentLang] || translations.partnerships.en },
     { href: `/${currentLang}/contact`, label: translations.contact[currentLang] || translations.contact.en },
     { href: `/${currentLang}/about`, label: translations.about[currentLang] || translations.about.en },
   ];
@@ -67,7 +69,6 @@ export default function Header() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
-          {/* لوگو با افکت هاور */}
           <Link href={`/${currentLang}`} className="flex items-center gap-3 group relative z-[110]">
             <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
               <Image src="/logo.png" alt="SafiPay" fill className="object-contain" priority />
@@ -77,14 +78,13 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* منوی اصلی با هاله چرخشی پرچم (Spin Effect) */}
           <nav className="hidden md:flex items-center relative group/nav">
             <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
-               <img 
-                 src={activeLangObj.flagUrl} 
-                 className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" 
-                 alt="" 
-               />
+                <img 
+                  src={activeLangObj.flagUrl} 
+                  className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" 
+                  alt="" 
+                />
             </div>
 
             <div className="flex items-center gap-8 bg-black/80 border border-white/30 rounded-full px-8 py-2.5 backdrop-blur-2xl relative z-10 shadow-2xl">
@@ -101,10 +101,8 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* انتخاب زبان با Glow Effect */}
           <div className="hidden md:flex items-center gap-4">
             <div className="relative group/lang flex items-center justify-center">
-              
               <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
                  <img 
                    src={activeLangObj.flagUrl} 
@@ -153,7 +151,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* دکمه موبایل */}
           <button
             className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl active:scale-95 transition-transform"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
@@ -163,7 +160,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* منوی موبایل با تمام افکت‌های قبلی */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
