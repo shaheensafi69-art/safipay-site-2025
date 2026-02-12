@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Heart } from 'lucide-react'; // اضافه شدن Heart برای دکمه
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -47,7 +47,17 @@ export default function Header() {
     invest: { fa: 'سرمایه‌گذاری', ps: 'پانګونه', en: 'Invest', fr: 'Investir', de: 'Investieren', tr: 'Yatırım', ar: 'استثمار', ru: 'Инвестиции' },
     contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişim', ar: 'اتصل بنا', ru: 'Контакт' },
     about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızda', ar: 'من نحن', ru: 'О нас' },
-    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Язык' }
+    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Язык' },
+    support: { 
+        fa: 'حمایت از پروژه', 
+        ps: 'د پروژې ملاتړ', 
+        en: 'Support Project', 
+        fr: 'Soutenir', 
+        de: 'Unterstützen', 
+        tr: 'Destek Ol', 
+        ar: 'دعم المشروع', 
+        ru: 'Поддержать' 
+    }
   };
 
   const navItems = [
@@ -67,7 +77,7 @@ export default function Header() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
           
-          {/* لوگو با افکت هاور */}
+          {/* لوگو */}
           <Link href={`/${currentLang}`} className="flex items-center gap-3 group relative z-[110]">
             <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
               <Image src="/logo.png" alt="SafiPay" fill className="object-contain" priority />
@@ -77,7 +87,7 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* منوی اصلی با هاله چرخشی پرچم (Spin Effect) */}
+          {/* منوی اصلی با هاله چرخشی */}
           <nav className="hidden md:flex items-center relative group/nav">
             <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
                <img 
@@ -101,10 +111,22 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* انتخاب زبان با Glow Effect */}
+          {/* انتخاب زبان و دکمه جدید حمایت مالی */}
           <div className="hidden md:flex items-center gap-4">
+            
+            {/* دکمه طلایی حمایت مالی (جدید) */}
+            <Link 
+              href={`/${currentLang}/invest`}
+              className="relative group/btn overflow-hidden px-6 py-2.5 rounded-xl bg-amber-500 text-black font-black text-xs uppercase tracking-widest flex items-center gap-2 hover:scale-105 transition-all shadow-[0_0_20px_rgba(245,158,11,0.4)]"
+            >
+              <Heart size={14} fill="currentColor" />
+              {translations.support[currentLang] || translations.support.en}
+              <motion.div 
+                className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-500"
+              />
+            </Link>
+
             <div className="relative group/lang flex items-center justify-center">
-              
               <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
                  <img 
                    src={activeLangObj.flagUrl} 
@@ -136,14 +158,13 @@ export default function Header() {
                           key={lang.code}
                           onClick={() => changeLanguage(lang.code)}
                           className={`flex items-center justify-between w-full px-4 py-3.5 rounded-2xl transition-all group mb-1 last:mb-0 ${
-                            currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/40' : 'text-gray-400 hover:bg-white/10 hover:text-white'
+                            currentLang === lang.code ? 'bg-amber-500 text-black' : 'text-gray-400 hover:bg-white/10 hover:text-white'
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                             <span className="text-lg opacity-90 group-hover:opacity-100">{lang.flag}</span>
+                             <span className="text-lg">{lang.flag}</span>
                              <span className="font-bold text-xs tracking-widest uppercase">{lang.label}</span>
                           </div>
-                          {currentLang === lang.code && <div className="w-2 h-2 rounded-full bg-black shadow-inner" />}
                         </button>
                       ))}
                     </div>
@@ -154,16 +175,25 @@ export default function Header() {
           </div>
 
           {/* دکمه موبایل */}
-          <button
-            className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl active:scale-95 transition-transform"
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-          >
-            {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+             {/* دکمه کوچک حمایت در موبایل (قبل از همبرگر منو) */}
+            <Link 
+              href={`/${currentLang}/invest`}
+              className="p-3 bg-amber-500 text-black rounded-2xl shadow-lg shadow-amber-500/30"
+            >
+              <Heart size={20} fill="currentColor" />
+            </Link>
+            <button
+              className="p-3 text-white bg-white/10 border border-white/20 rounded-2xl"
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+            >
+              {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* منوی موبایل با تمام افکت‌های قبلی */}
+      {/* منوی موبایل */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
@@ -176,7 +206,7 @@ export default function Header() {
                <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
             </div>
 
-            <div className="flex justify-between items-center mb-16 text-white">
+            <div className="flex justify-between items-center mb-16 text-white text-left">
               <div className="flex items-center gap-3">
                 <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
                 <span className="font-black text-lg tracking-tighter">SAFIPAY</span>
@@ -186,39 +216,40 @@ export default function Header() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-6 mb-12">
+            <nav className="flex flex-col gap-6 mb-8 text-left">
               {navItems.map((item, idx) => (
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  key={item.href}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsMobileOpen(false)}
-                    className="text-4xl font-black text-white hover:text-amber-500 transition-colors uppercase tracking-tighter block"
-                  >
+                <motion.div key={item.href} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }}>
+                  <Link href={item.href} onClick={() => setIsMobileOpen(false)} className="text-4xl font-black text-white uppercase tracking-tighter">
                     {item.label}
                   </Link>
                 </motion.div>
               ))}
             </nav>
 
+            {/* دکمه بزرگ حمایت در منوی موبایل */}
+            <Link 
+              href={`/${currentLang}/invest`}
+              onClick={() => setIsMobileOpen(false)}
+              className="w-full py-5 rounded-[2rem] bg-amber-500 text-black font-black text-center uppercase tracking-[0.2em] shadow-2xl shadow-amber-500/40 mb-12 flex items-center justify-center gap-3"
+            >
+              <Heart size={20} fill="currentColor" />
+              {translations.support[currentLang] || translations.support.en}
+            </Link>
+
             <div className="mt-auto pb-10">
-              <p className="text-[10px] text-gray-400 mb-6 font-black uppercase tracking-[0.3em] opacity-70">
+              <p className="text-[10px] text-gray-400 mb-6 font-black uppercase tracking-[0.3em] opacity-70 text-left">
                 {translations.language[currentLang] || translations.language.en}
               </p>
-              <div className="grid grid-cols-2 gap-4 max-h-[250px] overflow-y-auto pr-2">
+              <div className="grid grid-cols-2 gap-4 max-h-[200px] overflow-y-auto pr-2">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className={`flex items-center justify-center gap-3 py-5 rounded-[2rem] font-bold text-xs transition-all border ${
-                      currentLang === lang.code ? 'bg-amber-500 border-amber-500 text-black' : 'bg-white/5 border-white/10 text-white shadow-xl'
+                    className={`flex items-center justify-center gap-3 py-4 rounded-[1.5rem] font-bold text-[10px] border ${
+                      currentLang === lang.code ? 'bg-amber-500 border-amber-500 text-black' : 'bg-white/5 border-white/10 text-white'
                     }`}
                   >
-                    <span className="text-xl">{lang.flag}</span>
+                    <span>{lang.flag}</span>
                     <span className="uppercase tracking-widest">{lang.label}</span>
                   </button>
                 ))}
