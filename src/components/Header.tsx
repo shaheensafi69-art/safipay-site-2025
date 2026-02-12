@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const languages = [
@@ -20,6 +20,7 @@ const languages = [
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -30,39 +31,38 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const currentLang = pathname.split('/')[1] || 'en';
+  const segments = pathname.split('/');
+  const currentLang = segments[1] || 'en';
   const activeLangObj = languages.find(l => l.code === currentLang) || languages[2];
   const isRtl = ['fa', 'ps', 'ar'].includes(currentLang);
 
+  // اصلاح منطق تغییر زبان برای جلوگیری از ارور 404
   const changeLanguage = (lng: string) => {
-    if (typeof window !== 'undefined') {
-      const pathWithoutLang = pathname.split('/').slice(2).join('/');
-      const newPath = `/${lng}${pathWithoutLang ? `/${pathWithoutLang}` : ''}`;
-      window.location.href = newPath;
-    }
+    const newPath = pathname.replace(`/${currentLang}`, `/${lng}`);
+    window.location.href = newPath;
   };
 
   const translations: any = {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite', tr: 'Ana Sayfa', ar: 'الرئيسية', ru: 'Главная' },
-    partnerships: { 
+    partners: { 
       fa: 'شراکت‌ها', 
       ps: 'شراکتونه', 
       en: 'Partnerships', 
       fr: 'Partenariats', 
       de: 'Partnerschaften', 
       tr: 'Ortaklıklar', 
-      ar: 'الشراکات', 
+      ar: 'الشراكات', 
       ru: 'Партнерство' 
     },
-    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletیشیم', ar: 'اتصل بنا', ru: 'Контакт' },
-    about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızدا', ar: 'من نحن', ru: 'О нас' },
-    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Языک' }
+    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişim', ar: 'اتصل بنا', ru: 'Контакт' },
+    about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızda', ar: 'من نحن', ru: 'О нас' },
+    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Язык' }
   };
 
+  // لینک‌ها دقیقا با نام پوشه (partners) تنظیم شده است
   const navItems = [
     { href: `/${currentLang}`, label: translations.home[currentLang] || translations.home.en },
-    // اصلاح شد: لینک از partnerships به partners تغییر کرد تا با نام پوشه شما یکی شود
-    { href: `/${currentLang}/partners`, label: translations.partnerships[currentLang] || translations.partnerships.en },
+    { href: `/${currentLang}/partners`, label: translations.partners[currentLang] || translations.partners.en },
     { href: `/${currentLang}/contact`, label: translations.contact[currentLang] || translations.contact.en },
     { href: `/${currentLang}/about`, label: translations.about[currentLang] || translations.about.en },
   ];
