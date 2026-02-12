@@ -2,17 +2,24 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AlertCircle, CheckCircle2, Globe, Shield, Zap, CreditCard, ArrowRight, BarChart3 } from 'lucide-react';
+import { 
+  AlertCircle, CheckCircle2, Globe, Shield, Zap, 
+  CreditCard, ArrowRight, BarChart3, Handshake 
+} from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function HomePageTR() {
+  const pathname = usePathname();
+  const currentLang = pathname?.split('/')[1] || 'tr';
+
   return (
-    <div className="bg-gray-950 text-white overflow-x-hidden selection:bg-amber-500/30" dir="ltr">
+    <div className="bg-[#050505] text-white overflow-x-hidden selection:bg-amber-500/30" dir="ltr">
       
-      {/* --- Hero Section --- */}
+      {/* --- Hero Bölümü (Hero Section) --- */}
       <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden">
-        {/* Arka Plan Efektleri */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-10 pointer-events-none -z-10 blur-3xl">
+        {/* Arka Plan Işık Efektleri */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/15 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-5 pointer-events-none -z-10 blur-3xl">
            <Image src="/logo.png" alt="" fill className="object-contain animate-pulse" />
         </div>
 
@@ -21,7 +28,7 @@ export default function HomePageTR() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-sm font-bold tracking-widest uppercase"
+            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.2em] uppercase"
           >
             TÜM AFGANLAR İÇİN FİNANSAL SINIRLARI KALDIRIYORUZ
           </motion.div>
@@ -30,12 +37,12 @@ export default function HomePageTR() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[0.9]"
+            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[0.85]"
           >
-            <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent">SafiPay</span>
+            <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
             <br />
-            <span className="text-3xl md:text-5xl lg:text-6xl text-amber-500 mt-6 block font-bold italic">
-              Afganlar İçin Dijital Bankacılık
+            <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
+              Afganistan İçin Dijital Bankacılık
             </span>
           </motion.h1>
 
@@ -45,8 +52,8 @@ export default function HomePageTR() {
             transition={{ duration: 1.2, delay: 0.3 }}
             className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-light"
           >
-            İlk uluslararası dijital banka ile milyonları güçlendiriyoruz. 
-            Sınır yok, kısıtlama yok; sadece kolay ve küresel bir bankacılık deneyimi.
+            İlk uluslararası dijital bankacılık ekosistemiyle milyonları güçlendiriyoruz. 
+            Sınır yok, kısıtlama yok; dünya standartlarında güvenlik ve hız.
           </motion.p>
 
           <motion.div
@@ -59,47 +66,47 @@ export default function HomePageTR() {
               href="#problems"
               className="px-10 py-5 bg-white text-black text-xl font-black rounded-2xl hover:bg-amber-500 transition-all flex items-center gap-2 group"
             >
-              Sorunları İncele <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              Zorlukları İncele <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/tr/invest"
-              className="px-10 py-5 border-2 border-amber-600/50 text-amber-500 text-xl font-black rounded-2xl hover:bg-amber-600/10 transition-all shadow-[0_0_30_px_rgba(217,119,6,0.2)]"
+              href={`/${currentLang}/partners`}
+              className="px-10 py-5 border-2 border-amber-600/50 text-amber-500 text-xl font-black rounded-2xl hover:bg-amber-600/10 transition-all shadow-[0_0_30px_rgba(217,119,6,0.2)] flex items-center gap-3"
             >
-              Kampanyayı Destekle
+              <Handshake size={24} /> Stratejik Ortaklık
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* --- Sorunlar Bölümü (Problems Section) --- */}
+      {/* --- Bankacılık Krizi Bölümü (Problems Section) --- */}
       <section id="problems" className="py-32 relative bg-black">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="flex flex-col items-center mb-24">
+          <div className="flex flex-col items-center mb-24 text-center">
             <motion.div 
               whileInView={{ opacity: [0, 1], scale: [0.8, 1] }}
               className="p-4 bg-red-500/10 rounded-3xl mb-6"
             >
               <AlertCircle size={48} className="text-red-500" />
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black text-center text-white mb-6">
-              Afganistan <span className="text-red-600">Bankacılık</span> Krizi
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase italic tracking-tighter">
+              Afganistan <span className="text-red-600">Bankacılık Krizi</span>
             </h2>
-            <p className="text-gray-500 text-xl text-center max-w-2xl font-light">
-              Afganistan'daki mevcut finansal sistemler verimsiz, izole ve eskidir. 
-              Bugünün dijital dünyasında milyonlarca insan görmezden geliniyor.
+            <p className="text-gray-500 text-xl max-w-2xl font-light leading-relaxed">
+              Mevcut finansal sistemler verimsiz, kopuk ve köhnemiş durumda. 
+              Milyonlarca Afgan, modern dijital ekonominin dışında kalıyor.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
             {[
-              { title: '%85 Hesap Sahibi Değil', desc: 'Nüfusun çoğunluğu, özellikle kadınlar ve kırsal bölgeler temel bankacılık hizmetlerine erişemiyor.' },
-              { title: 'SWIFT İzolasyonu', desc: 'Küresel ağlardan kopuk olmak, resmi ve güvenli para transferinin imkansız olması demektir.' },
-              { title: 'Geçersiz Kartlar', desc: 'Mevcut kartlar Amazon, Netflix veya Google gibi uluslararası platformlarda çalışmıyor.' },
-              { title: '%15 Havale Komisyonu', desc: 'Kayıt dışı sistemlere (Havala) güvenmek, ağır mali kayıplara ve şeffaflık eksikliğine yol açıyor.' },
-              { title: 'Aşırı Enflasyon', desc: 'Aile birikimlerini korumak için Dolar veya Euro gibi istikrarlı varlıkları tutmanın kolay bir yolu yok.' },
-              { title: 'Dijital Kimlik Yokluğu', desc: 'Hesap açmak hala fiziksel varlık ve çok karmaşık, eski idari süreçler gerektiriyor.' },
-              { title: 'Şeffaflık Eksikliği', desc: 'Zayıf güvenlik altyapısı sık sık dolandırıcılığa ve kara para aklama risklerine neden oluyor.' },
-              { title: 'Geleneksel Ekonomi', desc: 'Yerel işletmeler küresel ödemeleri kabul edemiyor, bu da milli ekonomik büyümeyi engelliyor.' },
+              { title: '%85 Bankasız', desc: 'Nüfusun büyük çoğunluğu, özellikle kadınlar, temel bankacılık hizmetlerine erişemiyor.' },
+              { title: 'SWIFT İzolasyonu', desc: 'Küresel ağlardan kopukluk, resmi para transferlerini imkansız ve tehlikeli hale getirdi.' },
+              { title: 'Geçersiz Kartlar', desc: 'Mevcut yerel kartlar Amazon, Netflix veya Google gibi küresel platformlarda çalışmıyor.' },
+              { title: '%15 Transfer Ücreti', desc: 'Geleneksel "Havale" sistemlerine bağımlılık, büyük finansal kayıplara ve şeffaflık eksikliğine neden oluyor.' },
+              { title: 'Aşırı Enflasyon', desc: 'Stabil para birimlerini (USD/EUR) tutacak altyapı eksikliği, aile birikimlerini yok ediyor.' },
+              { title: 'Dijital Kimlik Yok', desc: 'Hesap açmak hala fiziksel varlık ve ağır bir bürokrasi gerektiriyor.' },
+              { title: 'Zayıf Güvenlik', desc: 'Kırılgan güvenlik altyapısı, dolandırıcılık ve finansal tehdit riskini artırıyor.' },
+              { title: 'Çevrimdışı Ekonomi', desc: 'Yerel işletmeler küresel ödemeleri kabul edemiyor, bu da ulusal büyümeyi engelliyor.' },
             ].map((problem, i) => (
               <motion.div
                 key={i}
@@ -107,7 +114,7 @@ export default function HomePageTR() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-gray-950 border border-white/5 p-8 rounded-[2rem] hover:border-red-500/30 transition-all group text-left"
+                className="bg-[#050505] border border-white/5 p-8 rounded-[2rem] hover:border-red-500/30 transition-all group text-left"
               >
                 <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <div className="w-2 h-2 rounded-full bg-red-500" />
@@ -115,7 +122,7 @@ export default function HomePageTR() {
                 <h3 className="text-xl font-bold mb-4 text-gray-200 group-hover:text-red-500 transition-colors tracking-tight">
                   {problem.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed font-light">
                   {problem.desc}
                 </p>
               </motion.div>
@@ -125,7 +132,7 @@ export default function HomePageTR() {
       </section>
 
       {/* --- Çözümler Bölümü (Solutions Section) --- */}
-      <section className="py-32 bg-gray-950">
+      <section className="py-32 bg-[#050505]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.div 
@@ -134,29 +141,27 @@ export default function HomePageTR() {
             >
               <Zap size={48} className="text-amber-500" />
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8">
-              Gelecek <span className="text-amber-500 italic">Burada</span>
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase italic">
+              Gelecek <span className="text-amber-500">Burada</span>
             </h2>
-            <p className="text-gray-400 text-xl font-light">
-              SafiPay sadece bir uygulama değil; Afganları küresel pazarlara bağlayan bir köprüdür.
+            <p className="text-gray-400 text-xl font-light italic">
+              SafiPay sadece bir uygulama değil; Afganistan'ı küresel finans piyasalarına bağlayan bir köprüdür.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              { icon: <Globe />, title: 'Küresel Erişim', desc: 'Dünya genelindeki Afganlar için fiziksel şubeye gitmeden anında uluslararası hesap açılışı.' },
-              { icon: <CreditCard />, title: 'Sanal Kartlar', desc: 'Küresel online alışverişler ve abonelik ödemeleri için anında Visa ve Mastercard tahsisi.' },
-              { icon: <Zap />, title: '%1 İşlem Ücreti', desc: 'Hızlı, ucuz ve tamamen şeffaf transferlerle pahalı havale sistemlerini devre dışı bırakın.' },
-              { icon: <Shield />, title: 'Gelişmiş Güvenlik', desc: 'Tam huzur için küresel banka düzeyinde şifreleme ve dijital kimlik doğrulama.' },
-              { icon: <BarChart3 />, title: 'Çoklu Döviz', desc: 'Enflasyona karşı korunmak için Dolar, Euro ve diğer para birimlerini tutun ve dönüştürün.' },
-              { icon: <CheckCircle2 />, title: 'Yasal Uyumluluk', desc: 'Kullanıcı varlıklarını güvence altına almak için uluslararası bankacılık kuralları çerçevesinde faaliyet.' },
+              { icon: <Globe />, title: 'Küresel Erişim', desc: 'Dünyanın her yerindeki Afganlar için fiziksel şubeye gitmeden anında uluslararası hesap.' },
+              { icon: <CreditCard />, title: 'Sanal Kartlar', desc: 'Küresel alışveriş ve online abonelikler için anında Visa ve Mastercard ihracı.' },
+              { icon: <Zap />, title: '%1 Komisyon', desc: 'Pahalı havale sistemlerine akıllı bir alternatif; hızlı, ucuz ve şeffaf transferler.' },
+              { icon: <Shield />, title: 'Gelişmiş Güvenlik', desc: 'Varlıklarınızın tam güvenliği için banka düzeyinde şifreleme ve dijital kimlik doğrulama.' },
+              { icon: <BarChart3 />, title: 'Çoklu Para Birimi', desc: 'Piyasa dalgalanmalarından korunmak için küresel para birimlerini tutun ve dönüştürün.' },
+              { icon: <CheckCircle2 />, title: 'Yasal Uyumluluk', desc: 'Güvenilirlik ve sürdürülebilirlik için uluslararası finansal düzenlemeler çerçevesinde faaliyet.' },
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="group p-10 bg-black/50 border border-amber-900/20 rounded-[2.5rem] hover:bg-amber-950/10 hover:border-amber-500/50 transition-all duration-500 shadow-2xl text-left"
+                whileHover={{ y: -10 }}
+                className="group p-10 bg-black/40 border border-white/5 rounded-[2.5rem] hover:border-amber-500/50 transition-all duration-500 shadow-2xl text-left"
               >
                 <div className="text-amber-500 mb-8 transform group-hover:scale-110 transition-transform duration-500">
                   {item.icon}
@@ -164,28 +169,28 @@ export default function HomePageTR() {
                 <h3 className="text-2xl font-black mb-4 text-white uppercase tracking-tighter italic">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed group-hover:text-gray-200 transition-colors">
+                <p className="text-gray-500 leading-relaxed font-light group-hover:text-gray-300 transition-colors">
                   {item.desc}
                 </p>
               </motion.div>
             ))}
           </div>
 
-          {/* Final CTA */}
+          {/* Final Çağrısı (Final CTA) */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="mt-32 max-w-5xl mx-auto bg-gradient-to-r from-amber-600 to-amber-800 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
+            className="mt-32 max-w-5xl mx-auto bg-gradient-to-l from-amber-600 to-amber-800 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -mr-32 -mt-32" />
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
-              Afganistan ekonomisini yeniden <br /> inşa etmeye hazır mısınız?
+            <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -ml-32 -mt-32" />
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
+              Afgan ekonomisini yeniden inşa <br /> etmeye hazır mısınız?
             </h2>
             <Link
-              href="/tr/invest"
-              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105"
+              href={`/${currentLang}/partners`}
+              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
             >
-              Bu Harekete Katılın <ArrowRight />
+              Partner Ağımıza Katılın <Handshake size={28} />
             </Link>
           </motion.div>
         </div>
