@@ -6,7 +6,7 @@ import {
   Wifi, Smartphone, Cpu, CheckCircle2, HelpCircle
 } from 'lucide-react';
 
-// إعدادات الأنيميشن الأساسية
+// Animationseinstellungen
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
@@ -21,9 +21,9 @@ const staggerContainer = {
 
 export default function AnimatedPartnershipPage() {
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="rtl">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
       
-      {/* --- ۱. الهيدر (Header) مع أنيميشن الدخول --- */}
+      {/* --- 1. HERO SECTION --- */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <motion.div 
           initial={{ scale: 0.8, opacity: 0 }}
@@ -38,7 +38,7 @@ export default function AnimatedPartnershipPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-6xl md:text-9xl font-black mb-10 tracking-tighter leading-tight">
-              منظومة <span className="text-amber-500 inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]">SAFI</span>
+              DAS <span className="text-amber-500 inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]">SAFI</span> ÖKOSYSTEM
             </h1>
           </motion.div>
           <motion.p 
@@ -47,12 +47,12 @@ export default function AnimatedPartnershipPage() {
             transition={{ duration: 1, delay: 0.5 }}
             className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
           >
-            إعادة تعريف المعايير المالية والاتصالية للمجتمعات التي حُرمت لسنوات من الخدمات العالمية الحديثة.
+            Neudefinition finanzieller und kommunikativer Standards für Gemeinschaften, die bisher von globalen modernen Dienstleistungen unterversorgt waren.
           </motion.p>
         </div>
       </section>
 
-      {/* --- ۲. المميزات مع أنيميشن Stagger --- */}
+      {/* --- 2. KERNMERKMALE --- */}
       <motion.section 
         variants={staggerContainer}
         initial="initial"
@@ -62,50 +62,50 @@ export default function AnimatedPartnershipPage() {
       >
         <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12">
           {[
-            { title: "حل تحديات الوصول", desc: "صافي تسد فجوة المدفوعات الدولية في أفغانستان باستخدام تقنيات الفنتك الأوروبية." },
-            { title: "أمان من الطراز الأول", desc: "استخدام بروتوكولات PCI-DSS لضمان سلامة كل معاملة في الشبكة العالمية." },
-            { title: "اتصال بلا حدود", desc: "من دفع الرسوم الدراسية في أوروبا إلى شحن رصيد الهاتف في كابل؛ كل ذلك في منظومة واحدة." }
+            { title: "Zugang Gelöst", desc: "Safi schließt die Lücke im internationalen Zahlungsverkehr in Afghanistan mit europäischer Fintech-Technologie." },
+            { title: "Erstklassige Sicherheit", desc: "Nutzung von PCI-DSS-Protokollen zur Gewährleistung der Integrität jeder Transaktion in unserem globalen Netzwerk." },
+            { title: "Grenzenlose Verbindung", desc: "Von Studiengebühren in Europa bis zu mobilen Aufladungen in Kabul; alles in einem Ökosystem." }
           ].map((item, i) => (
             <motion.div key={i} variants={fadeInUp} className="space-y-4 group p-4">
-              <h3 className="text-2xl font-bold text-amber-500 group-hover:translate-x-[-8px] transition-transform">{item.title}</h3>
+              <h3 className="text-2xl font-bold text-amber-500 group-hover:translate-x-2 transition-transform">{item.title}</h3>
               <p className="text-gray-400 leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
       </motion.section>
 
-      {/* --- ۳. SafiPay & Wallester (أنيميشن البطاقة البنكية) --- */}
+      {/* --- 3. SafiPay & Wallester (Bankkarten-Animation) --- */}
       <section className="py-24 container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="lg:w-1/2 space-y-8"
           >
             <div className="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold uppercase tracking-widest">
-              Fintech Infrastructure
+              Fintech-Infrastruktur
             </div>
-            <h2 className="text-5xl font-black text-white leading-tight">SafiPay: الخدمات المصرفية العابرة للحدود</h2>
+            <h2 className="text-5xl font-black text-white leading-tight">SafiPay: Grenzüberschreitendes Banking</h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              صافي بي ليست مجرد محفظة إلكترونية؛ بل هي بنك رقمي متكامل بالتعاون مع **Wallester AS** وشبكة **VISA** العالمية.
+              SafiPay ist mehr als eine Wallet; es ist ein vollständiges Neobanking-Erlebnis, unterstützt durch **Wallester AS** und das **VISA**-Netzwerk.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
                 <CheckCircle2 className="text-amber-500" size={20} />
-                <span className="text-sm">إصدار بطاقات VISA فيزيائية وافتراضية</span>
+                <span className="text-sm">Ausgabe von physischen & virtuellen VISA-Karten</span>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
                 <CheckCircle2 className="text-amber-500" size={20} />
-                <span className="text-sm">حساب بنكي برقم IBAN أوروبي مخصص</span>
+                <span className="text-sm">Dedizierte europäische IBAN-Konten</span>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* أنيميشن البطاقة العائمة */}
+          {/* Schwebendes Karten-UI */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1 }}
             className="lg:w-1/2 w-full"
@@ -115,7 +115,7 @@ export default function AnimatedPartnershipPage() {
               <div className="bg-[#0a0a0a] rounded-[2.8rem] p-10 space-y-8 relative z-10">
                 <div className="flex justify-between items-center text-[10px] font-mono text-gray-500">
                   <span>ID: 2026_WALLESTER_PARTNER</span>
-                  <span className="text-green-500">● LIVE_CONNECTION</span>
+                  <span className="text-green-500">● LIVE_VERBINDUNG</span>
                 </div>
                 <div className="py-10 text-center border-y border-white/5">
                   <motion.h3 
@@ -125,36 +125,36 @@ export default function AnimatedPartnershipPage() {
                   >
                     Wallester
                   </motion.h3>
-                  <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">الشريك الاستراتيجي الرسمي</p>
+                  <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">Offizieller Strategischer Partner</p>
                 </div>
-                <p className="text-gray-400 text-sm italic text-center text-[12px]">"مدعوم ببنية تحتية مصرفية مرخصة من الاتحاد الأوروبي"</p>
+                <p className="text-gray-400 text-sm italic text-center text-[12px]">"Unterstützt durch eine EU-lizenzierte Bankeninfrastruktur"</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- ۴. Safi TopUp (أنيميشن النبض والأيقونات) --- */}
+      {/* --- 4. Safi TopUp (Globale Konnektivität) --- */}
       <section className="py-24 container mx-auto px-6 bg-blue-500/[0.02] rounded-[5rem] my-10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] animate-pulse" />
-        <div className="flex flex-col lg:flex-row-reverse gap-16 items-center relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 items-center relative z-10">
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="lg:w-1/2 space-y-8"
           >
             <div className="inline-block px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-xs font-bold uppercase tracking-widest">
-              Global Connectivity
+              Globale Konnektivität
             </div>
-            <h2 className="text-5xl font-black text-white leading-tight">Safi TopUp: اتصال فوري</h2>
+            <h2 className="text-5xl font-black text-white leading-tight">Safi TopUp: Sofortige Verbindung</h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              بالاعتماد على شبكة **Ding**، قمنا ببناء جسر بين أفغانستان ومشغلي الاتصالات في 500 دولة حول العالم.
+              Durch die Nutzung des **Ding**-Netzwerks haben wir eine Brücke zwischen Afghanistan und Mobilfunkanbietern in 500 Ländern geschlagen.
             </p>
             <div className="space-y-4">
                {[
-                 { icon: <Wifi size={20} />, t: "تقنية E-SIM", d: "بطاقة SIM افتراضية في 150 دولة." },
-                 { icon: <Smartphone size={20} />, t: "المشغلون المحليون", d: "شحن فوري لشبكات روشان، أفغان بيسيم، وغيرها." }
+                 { icon: <Wifi size={20} />, t: "E-SIM Technologie", d: "Virtuelle SIM-Karten in über 150 Ländern." },
+                 { icon: <Smartphone size={20} />, t: "Lokale Anbieter", d: "Sofortige Aufladung für Roshan, Afghan Wireless, etc." }
                ].map((item, i) => (
                  <motion.div key={i} whileHover={{ x: 10 }} className="flex gap-4 p-5 bg-white/5 rounded-3xl border border-white/5 items-center">
                     <div className="text-blue-500">{item.icon}</div>
@@ -181,20 +181,20 @@ export default function AnimatedPartnershipPage() {
                 >
                   <span className="text-white font-black text-3xl italic">d.</span>
                 </motion.div>
-                <h3 className="text-3xl font-black mb-4">Ding Strategic Partner</h3>
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">سرعة معاملات أقل من 3 ثوانٍ على مستوى العالم.</p>
+                <h3 className="text-3xl font-black mb-4">Strategischer Partner: Ding</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6">Globale Transaktionsgeschwindigkeit in weniger als 3 Sekunden.</p>
                 <div className="flex justify-center gap-10">
-                   <div className="text-center"><div className="text-2xl font-black">500+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">مشغل</div></div>
-                   <div className="text-center"><div className="text-2xl font-black">150+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">دولة</div></div>
+                   <div className="text-center"><div className="text-2xl font-black">500+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Anbieter</div></div>
+                   <div className="text-center"><div className="text-2xl font-black">150+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Länder</div></div>
                 </div>
              </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- ۵. خارطة الطريق (Roadmap) --- */}
+      {/* --- 5. ROADMAP 2026 --- */}
       <section className="py-24 container mx-auto px-6">
-        <motion.h2 {...fadeInUp} className="text-4xl font-black text-center mb-20 italic uppercase">خارطة الطريق 2026</motion.h2>
+        <motion.h2 {...fadeInUp} className="text-4xl font-black text-center mb-20 italic">ROADMAP 2026</motion.h2>
         <motion.div 
           variants={staggerContainer}
           initial="initial"
@@ -202,10 +202,10 @@ export default function AnimatedPartnershipPage() {
           className="grid md:grid-cols-4 gap-6"
         >
           {[
-            { q: "Q1", title: "ترسيخ البنية التحتية", items: ["الحصول على التراخيص", "الاختبار التجريبي"] },
-            { q: "Q2", title: "الإطلاق الأولي", items: ["الإطلاق الرسمي", "خدمات E-SIM"] },
-            { q: "Q3", title: "التوسع العالمي", items: ["تكامل Ding", "لوحة التحكم التجارية"] },
-            { q: "Q4", title: "الذكاء والولاء", items: ["نظام المكافآت", "البطاقات الفيزيائية"] },
+            { q: "Q1", title: "Infrastruktur", items: ["Lizenzierung", "Beta-Tests"] },
+            { q: "Q2", title: "Markteinführung", items: ["Offizieller Start", "E-SIM Rollout"] },
+            { q: "Q3", title: "Expansion", items: ["Ding-Integration", "Business-Portal"] },
+            { q: "Q4", title: "Intelligenz", items: ["Belohnungssysteme", "Physische Karten"] },
           ].map((item, i) => (
             <motion.div 
               key={i} 
@@ -213,7 +213,7 @@ export default function AnimatedPartnershipPage() {
               whileHover={{ y: -10, borderColor: 'rgba(245,158,11,0.5)' }}
               className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden transition-colors"
             >
-              <div className="text-6xl font-black text-white/5 absolute -top-2 -right-2">{item.q}</div>
+              <div className="text-6xl font-black text-white/5 absolute -top-2 -left-2">{item.q}</div>
               <h4 className="text-xl font-bold mb-4 text-amber-500 relative z-10">{item.title}</h4>
               <ul className="space-y-2 text-xs text-gray-400 relative z-10">
                 {item.items.map((li, j) => <li key={j}>• {li}</li>)}
@@ -223,13 +223,13 @@ export default function AnimatedPartnershipPage() {
         </motion.div>
       </section>
 
-      {/* --- ۶. الأسئلة الشائعة (FAQs) --- */}
+      {/* --- 6. FAQs --- */}
       <section className="py-24 max-w-3xl mx-auto px-6">
-        <h2 className="text-3xl font-black text-center mb-12 italic uppercase">الأسئلة الشائعة</h2>
+        <h2 className="text-3xl font-black text-center mb-12 italic">FAQs</h2>
         <div className="space-y-4">
           {[
-            { q: "ما مدى أمان رأس المال؟", a: "تأمين يصل إلى 100,000 يورو وفقاً للقوانين الأوروبية." },
-            { q: "كيف يمكننا البدء بالتعاون؟", a: "يرجى إكمال النموذج في أسفل الصفحة للحصول على ملف العرض الاستثماري (Pitch Deck)." }
+            { q: "Kapitalsicherheit?", a: "Absicherung bis zu 100.000 € gemäß EU-Richtlinien." },
+            { q: "Partnerschaft?", a: "Füllen Sie das Formular unten aus, um unser Pitch Deck zu erhalten." }
           ].map((faq, i) => (
             <motion.div 
               key={i} 
@@ -246,7 +246,7 @@ export default function AnimatedPartnershipPage() {
         </div>
       </section>
 
-      {/* --- ۷. CTA النهائي --- */}
+      {/* --- 7. FINAL CTA --- */}
       <section className="py-24 container mx-auto px-6">
         <motion.div 
           whileHover={{ scale: 1.02 }}
@@ -254,19 +254,19 @@ export default function AnimatedPartnershipPage() {
           className="relative rounded-[4rem] overflow-hidden bg-gradient-to-r from-amber-600 to-amber-800 p-12 md:p-24 text-center"
         >
           <div className="relative z-10">
-            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">هل أنت مستعد للمشاركة؟</h2>
+            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">Bereit zur Teilnahme?</h2>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
                <motion.button 
                  whileTap={{ scale: 0.9 }}
                  className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3"
                >
-                 <Mail size={24} /> اتصل بنا مباشرة
+                 <Mail size={24} /> Direkter Kontakt
                </motion.button>
                <motion.button 
                  whileTap={{ scale: 0.9 }}
                  className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg"
                >
-                 تحميل الكتالوج
+                 Katalog erhalten
                </motion.button>
             </div>
           </div>
@@ -274,7 +274,7 @@ export default function AnimatedPartnershipPage() {
       </section>
 
       <footer className="py-10 text-center text-gray-700 text-[10px] uppercase tracking-[0.5em]">
-        © 2026 SafiPay & Safi TopUp | Strategic Partner Infrastructure
+        © 2026 SafiPay & Safi TopUp | Strategische Partnerinfrastruktur
       </footer>
     </div>
   );
