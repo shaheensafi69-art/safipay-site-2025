@@ -2,202 +2,204 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Shield, Globe, Zap, ArrowLeft, Briefcase, Code2, Star, Rocket, Target } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function AboutUsPagePS() {
+  const pathname = usePathname();
+  const currentLang = pathname?.split('/')[1] || 'ps';
+
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans" dir="rtl">
+    <div className="min-h-screen bg-[#050505] text-white font-sans" dir="rtl">
       
-      {/* هیرو برخه - پیژندنه */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
+      {/* --- د هیرو برخه (Hero Section) --- */}
+      <section className="relative pt-40 pb-24 overflow-hidden border-b border-amber-900/10">
         <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-amber-600/5 blur-[120px] rounded-full" />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-amber-500 font-bold tracking-widest uppercase text-sm"
+            className="text-amber-500 font-bold tracking-[0.3em] uppercase text-xs"
           >
-            د افغانستان د مالي نظام د بدلون پیل
+            د افغانستان مالي پاراډایم بدلول
           </motion.span>
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black mt-6 mb-8 bg-gradient-to-l from-white via-amber-200 to-amber-500 bg-clip-text text-transparent"
+            className="text-6xl md:text-8xl font-black mt-8 mb-10 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter"
           >
-            موږ بانکي پولې <br /> له منځه وړو
+            موږ د بانکوالۍ <br /> سرحدونه ماتوو
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed"
+            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
           >
-            SafiPay یوازې یو اپلیکیشن نه دی؛ دا یو انقلابي بنسټ دی چې هدف یې نړۍوالو مالي سیسټمونو ته د هر افغان لاسرسی دی، په هر ځای کې چې وي.
+            SafiPay یوازې یو اپلیکیشن نه دی؛ دا یو انقلابي زیربنا ده چې په ټوله نړۍ کې هر افغان تبعه ته د نړیوالو مالي سیسټمونو د لاسرسي په موخه ډیزاین شوې ده.
           </motion.p>
         </div>
       </section>
 
-      {/* بنسټ ایښودونکي - تخصصي معلومات */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="flex flex-col gap-32">
+      {/* --- د بنسټ ایښودونکو برخه (Founders Section) --- */}
+      <section className="py-32 container mx-auto px-6">
+        <div className="flex flex-col gap-40">
           
-          {/* شاهین صافی - CEO */}
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="lg:col-span-5 relative"
-            >
-              <div className="absolute -inset-4 bg-amber-600/20 blur-2xl rounded-full opacity-50" />
-              <Image 
-                src="/shaheen.jpeg" 
-                alt="Shaheen Safi - Founder & CEO" 
-                width={600} height={700}
-                className="relative rounded-[2rem] border-2 border-amber-500/30 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-              />
-            </motion.div>
+          {/* شاهین صافی - Founder & CEO */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 space-y-6"
+              className="lg:col-span-5 relative group"
             >
-              <div className="inline-block px-4 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-sm mb-4">
-                Founder & Chief Executive Officer
+              <div className="absolute -inset-4 bg-amber-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-amber-500/20 shadow-2xl">
+                <Image 
+                  src="/shaheen.jpeg" 
+                  alt="Shaheen Safi - بنسټ ایښودونکی او CEO" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
               </div>
-              <h2 className="text-4xl font-bold">شاهین صافی <span className="text-gray-500 text-2xl font-light">(Shaheen Safi)</span></h2>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed text-justify">
-                <p>
-                  شاهین صافی (زیږون ۲۰۰۳)، د فین‌ټک (FinTech) ستراتیژیست او د ډیجیټل تادیاتو سیسټمونو معمار دی. هغه د دودیزو پولو هاخوا لیدلوري سره، د SafiPay پروژې د رهبرۍ او تخنیکي زیربناوو د پراختیا مسولیت پر غاړه لري.
-                </p>
-                <p>
-                  شاهین د اروپا په بانکي نظامونو د پوهې او د افغانستان د اقتصادي ننګونو په پیژندلو سره، داسې یو ماډل ډیزاین کړی چې د نړۍوالې کچې امنیت له اسانه لاسرسي سره یوځای کوي. د مالي بحرانونو په مدیریت کې د هغه تخصص، د صافي‌پی د بریا اصلي انجن دی.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4 mt-8 text-right">
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1 text-right">تخنیکي تخصص</h4>
-                  <p className="text-sm text-gray-400">د سیسټمونو امنیت، تادیات او بلاکچین</p>
-                </div>
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1 text-right">رهبري</h4>
-                  <p className="text-sm text-gray-400">ستراتژیک مدیریت او نړۍواله پراختیا</p>
-                </div>
+              <div className="absolute -bottom-6 -left-6 bg-amber-600 px-8 py-4 rounded-2xl shadow-xl hidden md:block text-white font-black italic tracking-widest text-lg uppercase">
+                بنسټ ایښودونکی / CEO
               </div>
             </motion.div>
-          </div>
 
-          {/* مجتبی رحمانی - CCO */}
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 space-y-6 lg:order-1 order-2"
+              className="lg:col-span-7 space-y-8 text-right"
             >
-              <div className="inline-block px-4 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-sm mb-4">
-                Co-Founder & Chief Communications Officer
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-bold uppercase tracking-widest">
+                <Star size={14} /> رهبري او ستراتیژي
               </div>
-              <h2 className="text-4xl font-bold">مجتبی رحمانی <span className="text-gray-500 text-2xl font-light">(Mujtaba Rahmani)</span></h2>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed text-justify">
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">شاهین صافی <span className="text-gray-600 text-3xl font-light block mt-2">بنسټ ایښودونکی او عمومي رییس</span></h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed font-light">
                 <p>
-                  مجتبی رحمانی (زیږون ۲۰۰۶)، د ستراتیژیکو اړیکو او د برانډ پراختیا متخصص دی. هغه د عامه اړیکو، په نړۍواله کچه د برانډ معرفي کولو او د SafiPay او له هیواده بهر افغانانو ترمنځ د اړیکو د پله رامینځته کولو مسولیت لري.
+                  شاهین صافی (زېږېدنه ۲۰۰۳) د FinTech ستراتیژیست او د SafiPay اکوسیستم اصلي معمار دی. هغه د یوې داسې لیدلوري په درلودلو سره چې هدف یې د افغانستان مالي انزوا پای ته رسول دي، د مکروسټراتیژۍ مشري کوي او د نړۍ له مخکښو بانکي مشرانو سره پر نړیوالو همکاریو څارنه کوي.
                 </p>
                 <p>
-                  مجتبی په مذاکراتو او بازار پیژندنې کې د خپلو وړتیاوو په کارولو سره، د پانګوالو د باور په ترلاسه کولو کې مهم رول لوبوي. د هغه هدف یوازې اعلانونه نه، بلکې د افغانستان د ځوان نسل لپاره د نوي مالي کلتور رامینځته کول دي.
+                  د کلاوډ پر بنسټ مالي ټیکنالوژیو او د اروپا عصري بانکي معیارونو کې د خپل مهارت له لارې، شاهین SafiPay ته اجازه ورکړه چې امنیت د افغانستان د لومړني ریښتیني نیوبنک په توګه بیا تعریف کړي. د هغه ماموریت روښانه دی: "په نړیواله کچه د افغان هویت مالي اعتبار او وقار بیا رغول."
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-4 mt-8 text-right">
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1 text-right">اړیکې</h4>
-                  <p className="text-sm text-gray-400">ستراتژیک برندینګ او عامه اړیکې</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors text-right">
+                  <Briefcase className="text-amber-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">ستراتژیک مدیریت</h4>
+                  <p className="text-sm text-gray-500">سوداګریز ماډلینګ او نړیوال بانکي مشارکتونه.</p>
                 </div>
-                <div className="p-4 bg-gray-900/50 rounded-xl border border-white/5">
-                  <h4 className="text-amber-500 font-bold mb-1 text-right">پراختیا</h4>
-                  <p className="text-sm text-gray-400">د نړۍوالو ملاتړونو راجلبول</p>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors text-right">
+                  <Target className="text-amber-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">د مالي بحرانونو حل</h4>
+                  <p className="text-sm text-gray-500">نړیوالو بازارونو ته د لاسرسي لپاره د حل لارو ډیزاین.</p>
                 </div>
               </div>
             </motion.div>
+          </div>
+
+          {/* مجتبی رحمانی - Co-Founder & CTO */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5 lg:order-2 order-1 relative"
+              className="lg:col-span-7 space-y-8 lg:order-1 order-2 text-right"
             >
-              <div className="absolute -inset-4 bg-amber-600/20 blur-2xl rounded-full opacity-50" />
-              <Image 
-                src="/mujtaba.jpeg" 
-                alt="Mujtaba Rahmani - Co-Founder" 
-                width={600} height={700}
-                className="relative rounded-[2rem] border-2 border-amber-500/30 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-              />
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs font-bold uppercase tracking-widest">
+                <Code2 size={14} /> انجینري او امنیت
+              </div>
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">مجتبی رحماني <span className="text-gray-600 text-3xl font-light block mt-2">شریک بنسټ ایښودونکی او CTO</span></h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed font-light">
+                <p>
+                  مجتبی رحماني (زېږېدنه ۲۰۰۶) د SafiPay د سایبري امنیت معمار او CTO دی. هغه د پلیټ فارم تخنیکي ستون دی چې د ریښتیني وخت لیږد سیسټمونو مطلق خوندیتوب او ثبات تضمین کولو مسؤلیت لري.
+                </p>
+                <p>
+                  د سافټویر پراختیا کې د خپل بې ساري استعداد او د تادیاتو زیربناوو په اړه د ژورې پوهې په کارولو سره، مجتبی یو داسې سیسټم ډیزاین کړی چې په سرعت او دقت کې له سترو نړیوالو بانکونو سره سیالي کوي. د هغه ماموریت د یوې "ډیجیټلي کلا" جوړول دي چیرې چې د کاروونکو شتمنۍ په هر ډول شرایطو کې خوندي وي.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors text-right">
+                  <Rocket className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">د سیسټم معمارۍ</h4>
+                  <p className="text-sm text-gray-500">د بیک‌اینډ پراختیا او مالي مایکرو سرویسونه.</p>
+                </div>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors text-right">
+                  <Shield className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">سایبري امنیت</h4>
+                  <p className="text-sm text-gray-500">پرمختللي کوډینګ پروتوکولونه او د ډیټا ساتنه.</p>
+                </div>
+              </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
 
-      {/* موخه او لیدلوری */}
-      <section className="py-24 bg-black/40 border-y border-white/5">
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16">
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-amber-500">زموږ موخه</h3>
-            <p className="text-gray-400 text-lg leading-relaxed text-right text-justify">
-              زموږ موخه دا ده چې هر افغان ته مالي ازادي ورکړو. موږ د نوې ټکنالوژۍ په کارولو سره د پیسو د لیږد لګښتونه کموو او نړۍوالو بانکي کارتونو ته لاسرسی، چې یو وخت زموږ د خلکو لپاره خوب و، په حقیقت بدلوو.
-            </p>
-          </div>
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-amber-500">لیدلوری (۲۰۳۰)</h3>
-            <p className="text-gray-400 text-lg leading-relaxed text-right text-justify">
-              موږ داسې راتلونکې جوړوو چې هیڅ افغان د جغرافیې له امله له ډیجیټل اقتصاد څخه بې برخې پاتې نشي. زموږ لیدلوری په سیمه کې د ترټولو لوی مالي بنسټ کیدل دي.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* بنسټیز ارزښتونه */}
-      <section className="py-24 container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16">د SafiPay اخلاقي او تخنیکي ستنې</h2>
-        <div className="grid md:grid-cols-3 gap-8 text-right">
-          {[
-            { 
-              title: "بشپړ شفافیت", 
-              desc: "موږ باور لرو چې باور په پټکاري نه ترلاسه کیږي. په SafiPay کې ټول مالي لګښتونه په بشپړ شفافیت سره راپور کیږي." 
-            },
-            { 
-              title: "لوړ بانکي امنیت", 
-              desc: "موږ د کاروونکو د شتمنیو د خوندیتوب لپاره د نړۍوالو کوډینګ سیسټمونو او پرمختللي امنیت څخه کار اخلو." 
-            },
-            { 
-              title: "مالي پراختیا", 
-              desc: "زموږ خدمتونه له هر ډول تبعیض پرته ډیزاین شوي ترڅو د افغانستان لیرې پرتې سیمې له نړۍوالو بازارونو سره وصل کړي." 
-            }
-          ].map((item, index) => (
             <motion.div 
-              key={index}
-              whileHover={{ y: -10 }}
-              className="p-8 bg-gray-900/30 border border-white/5 rounded-3xl hover:border-amber-500/50 transition-all"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 lg:order-2 order-1 relative group"
             >
-              <h4 className="text-2xl font-bold text-amber-500 mb-4">{item.title}</h4>
-              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+              <div className="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-white/10 shadow-2xl">
+                <Image 
+                  src="/mujtaba.jpeg" 
+                  alt="Mujtaba Rahmani - CTO" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white px-8 py-4 rounded-2xl shadow-xl hidden md:block text-black font-black italic tracking-widest text-lg uppercase">
+                CTO / معمار
+              </div>
             </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* د همکارۍ بلنه */}
-      <section className="py-24 text-center">
-        <div className="container mx-auto px-6 bg-gradient-to-r from-amber-600 to-amber-900 rounded-[3rem] py-16">
-          <h2 className="text-4xl font-black mb-6">پدې مالي انقلاب کې شریک شئ</h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">
-            موږ د یو ملت مالي برخلیک بدلوو. که د یو کاروونکي په توګه وي او که د پانګوال، ستاسو ځای په SafiPay کې خالي دی.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6">
-            <Link href="/invest" className="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-gray-200 transition-all">پانګونه وکړئ</Link>
-            <Link href="/contact" className="border-2 border-white px-10 py-4 rounded-full font-bold hover:bg-white/10 transition-all">له موږ سره اړیکه</Link>
           </div>
         </div>
       </section>
 
+      {/* --- لیدلوری او ارزښتونه (Vision & Values) --- */}
+      <section className="py-32 bg-[#080808] border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "مطلق امنیت", desc: "د معاملاتو د بشپړ خوندیتوب لپاره د څو اړخیزه کوډینګ پروتوکولونو کارول.", icon: <Shield className="text-amber-500" size={32} /> },
+              { title: "نړیوال پیوستون", desc: "پرته له کوم دودیز منځګړي د افغانستان لپاره د ډیجیټلي اقتصاد د دروازو پرانیستل.", icon: <Globe className="text-amber-500" size={32} /> },
+              { title: "نه ستړې کېدونکې نوښت", desc: "د راتلونکي نسل اړتیاوو پوره کولو لپاره د نیوبنک وړتیاوو ته دوامداره وده ورکول.", icon: <Zap className="text-amber-500" size={32} /> }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="p-10 bg-black border border-white/5 rounded-[2.5rem] hover:border-amber-500/30 transition-all text-right"
+              >
+                <div className="mb-6">{item.icon}</div>
+                <h4 className="text-2xl font-bold mb-4">{item.title}</h4>
+                <p className="text-gray-500 leading-relaxed italic">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- وروستۍ برخه (CTA) --- */}
+      <section className="py-32">
+        <div className="container mx-auto px-6 text-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="max-w-5xl mx-auto p-20 bg-gradient-to-br from-amber-600 to-amber-900 rounded-[4rem] relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
+          >
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase tracking-tighter">ستراتژیک مشارکت ته چمتو یاست؟</h2>
+              <p className="text-white/80 text-xl mb-12 font-light">
+                موږ په SafiPay کې د نړۍ له مالي نخبه ګانو او ستراتیژیکو شریکانو سره د راتلونکي جوړولو په لټه کې یو.
+              </p>
+              <Link href={`/${currentLang}/partners`} className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black text-xl rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105">
+                د مشارکت غوښتنه <ArrowLeft className="mr-2" />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
