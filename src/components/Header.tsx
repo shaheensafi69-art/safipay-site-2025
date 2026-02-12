@@ -44,17 +44,25 @@ export default function Header() {
 
   const translations: any = {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite', tr: 'Ana Sayfa', ar: 'الرئيسية', ru: 'Главная' },
-    // نام کلید را برای نظم بیشتر تغییر دادیم
-    partnerships: { fa: 'سرمایه‌گذاری', ps: 'پانګونه', en: 'Partnerships', fr: 'Partenariats', de: 'Partnerschaften', tr: 'Ortaklıklar', ar: 'الشراکات', ru: 'Инвестиции' },
-    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletیشیم', ar: 'اتصل بنا', ru: 'Контакт' },
+    partners: { 
+      fa: 'شراکت‌ها', 
+      ps: 'شراکتونه', 
+      en: 'Partners', 
+      fr: 'Partenariats', 
+      de: 'Partnerschaften', 
+      tr: 'Ortaklıklar', 
+      ar: 'الشراكات', 
+      ru: 'Партнерство' 
+    },
+    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişیم', ar: 'اتصل بنا', ru: 'Контакт' },
     about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızda', ar: 'من نحن', ru: 'О нас' },
     language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Языک' }
   };
 
   const navItems = [
     { href: `/${currentLang}`, label: translations.home[currentLang] || translations.home.en },
-    // اصلاح اصلی اینجا صورت گرفت: تغییر invest به partnerships
-    { href: `/${currentLang}/partnerships`, label: translations.partnerships[currentLang] || translations.partnerships.en },
+    // لینک دقیقا با نام پوشه جدید (partners) یکی شد
+    { href: `/${currentLang}/partners`, label: translations.partners[currentLang] || translations.partners.en },
     { href: `/${currentLang}/contact`, label: translations.contact[currentLang] || translations.contact.en },
     { href: `/${currentLang}/about`, label: translations.about[currentLang] || translations.about.en },
   ];
