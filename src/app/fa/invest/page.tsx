@@ -3,16 +3,15 @@ import { motion } from 'framer-motion';
 import { 
   Handshake, Rocket, Globe, ShieldCheck, 
   ArrowRight, CreditCard, Zap, BarChart3, Mail, 
-  Wifi, Smartphone, Cpu, CheckCircle2, HelpCircle, ChevronLeft
+  Wifi, Smartphone, Cpu, CheckCircle2, HelpCircle
 } from 'lucide-react';
-import Image from 'next/image';
 
-// تنظیمات انیمیشن برای ظهور نرم بخش‌ها
+// تنظیمات انیمیشن پایه
 const fadeInUp = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.8, ease: "easeOut" }
+  transition: { duration: 0.6 }
 };
 
 const staggerContainer = {
@@ -24,189 +23,258 @@ export default function AnimatedPartnershipPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="rtl">
       
-      {/* --- ۱. هدر حماسی با انیمیشن ذرات پس‌زمینه --- */}
-      <section className="relative pt-48 pb-32 overflow-hidden">
+      {/* --- ۱. هدر حماسی با انیمیشن ورود --- */}
+      <section className="relative pt-40 pb-20 overflow-hidden">
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.15 }}
-          className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-amber-600/5 blur-[150px] rounded-full" 
         />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-amber-600/10 blur-[180px] rounded-full" />
-        
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h1 className="text-7xl md:text-9xl font-black mb-10 tracking-tighter leading-none uppercase">
-              <span className="text-white">SAFI</span>
-              <span className="text-amber-500 inline-block drop-shadow-[0_0_30px_rgba(245,158,11,0.5)]">ECOSYSTEM</span>
+            <h1 className="text-6xl md:text-9xl font-black mb-10 tracking-tighter leading-tight">
+              اکوسیستم <span className="text-amber-500 inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]">SAFI</span>
             </h1>
           </motion.div>
-          
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="max-w-3xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
+            transition={{ duration: 1, delay: 0.5 }}
+            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
           >
-            ترکیب قدرت بانکداری اروپایی و اتصال مخابراتی جهانی برای خلق آینده‌ای هوشمند.
+            بازتعریف استانداردهای مالی و ارتباطی برای جامعه‌ای که سال‌ها از خدمات نوین جهانی محروم بوده‌اند.
           </motion.p>
         </div>
       </section>
 
-      {/* --- ۲. بخش SafiPay & Wallester (انیمیشن کارت چرخشی) --- */}
+      {/* --- ۲. ویژگی‌ها با انیمیشن Stagger --- */}
+      <motion.section 
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 border-y border-white/5 bg-white/[0.01]"
+      >
+        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12">
+          {[
+            { title: "حل چالش دسترسی", desc: "صافی شکاف پرداخت‌های بین‌المللی افغانستان را با تکنولوژی فین‌تک اروپا پر می‌کند." },
+            { title: "امنیت تراز اول", desc: "استفاده از پروتکل‌های PCI-DSS برای تضمین سلامت هر تراکنش در شبکه جهانی." },
+            { title: "اتصال بدون مرز", desc: "از پرداخت شهریه در اروپا تا شارژ موبایل در کابل؛ همه در یک اکوسیستم." }
+          ].map((item, i) => (
+            <motion.div key={i} variants={fadeInUp} className="space-y-4 group p-4">
+              <h3 className="text-2xl font-bold text-amber-500 group-hover:translate-x-2 transition-transform">{item.title}</h3>
+              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* --- ۳. SafiPay & Wallester (انیمیشن کارت بانکی) --- */}
       <section className="py-24 container mx-auto px-6">
-        <motion.div {...fadeInUp} className="flex flex-col lg:flex-row gap-16 items-center bg-white/[0.02] p-12 rounded-[4rem] border border-white/5">
-          <div className="lg:w-1/2 space-y-8">
-            <div className="flex items-center gap-3 text-amber-500 font-black tracking-widest text-sm uppercase">
-              <div className="w-10 h-[2px] bg-amber-500" /> نئوبانک هوشمند
-            </div>
-            <h2 className="text-5xl font-black">SafiPay & Wallester</h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              با افتخار، صافی‌پی از زیرساخت‌های **Wallester AS** استفاده می‌کند. این یعنی شما مستقیماً به شبکه VISA متصل هستید. هر کاربر یک حساب با کد **IBAN اختصاصی** دریافت می‌کند که قابلیت دریافت و ارسال پول از تمام بانک‌های دنیا را دارد.
-            </p>
-            <div className="space-y-4 text-gray-300">
-               {[
-                 "صدور کارت‌های فیزیکی VISA با نام کاربر",
-                 "اتصال به Apple Pay و Google Pay",
-                 "امنیت سطح بانکی با لایسنس اتحادیه اروپا"
-               ].map((text, i) => (
-                 <motion.div key={i} className="flex items-center gap-3" whileHover={{ x: 10 }}>
-                   <CheckCircle2 className="text-amber-500" size={20} /> <span>{text}</span>
-                 </motion.div>
-               ))}
-            </div>
-          </div>
-          
-          {/* تصویر کارت با انیمیشن شناور */}
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           <motion.div 
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="lg:w-1/2 relative group"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/2 space-y-8"
           >
-            <div className="absolute inset-0 bg-amber-500/20 blur-[100px] group-hover:bg-amber-500/40 transition-all" />
-            <div className="relative bg-gradient-to-br from-gray-800 to-black w-full aspect-[1.6/1] rounded-[2rem] border border-white/20 p-8 shadow-2xl flex flex-col justify-between">
-               <div className="flex justify-between items-start">
-                  <Cpu size={40} className="text-amber-500/50" />
-                  <span className="font-black italic text-xl">SafiPay</span>
-               </div>
-               <div className="space-y-2">
-                  <div className="text-2xl font-mono tracking-widest">**** **** **** 2026</div>
-                  <div className="text-[10px] text-gray-500 uppercase tracking-[0.3em]">Official Partner: Wallester</div>
-               </div>
+            <div className="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold uppercase tracking-widest">
+              Fintech Infrastructure
+            </div>
+            <h2 className="text-5xl font-black text-white leading-tight">SafiPay: بانکداری فرامرزی</h2>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              صافی‌پی تنها یک کیف‌پول نیست؛ یک نئوبانک کامل با همکاری **Wallester AS** و شبکه **VISA** است.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+                <CheckCircle2 className="text-amber-500" size={20} />
+                <span className="text-sm">صدور کارت فیزیکی و مجازی VISA</span>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+                <CheckCircle2 className="text-amber-500" size={20} />
+                <span className="text-sm">حساب با IBAN اختصاصی اروپا</span>
+              </motion.div>
             </div>
           </motion.div>
-        </motion.div>
-      </section>
 
-      {/* --- ۳. بخش Safi TopUp & Ding (انیمیشن پالس ارتباطی) --- */}
-      <section className="py-24 container mx-auto px-6">
-        <motion.div {...fadeInUp} className="flex flex-col lg:flex-row-reverse gap-16 items-center">
-          <div className="lg:w-1/2 space-y-8">
-            <div className="flex items-center gap-3 text-blue-500 font-black tracking-widest text-sm uppercase">
-              <div className="w-10 h-[2px] bg-blue-500" /> اتصال جهانی
-            </div>
-            <h2 className="text-5xl font-black">Safi TopUp & Ding</h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              با همکاری **Ding Global**، ما دسترسی به ۵۰۰ اپراتور در ۱۵۰ کشور را فراهم کردیم. اما تخصص ما، افغانستان است. ما تنها پلتفرمی هستیم که کریدت تمام اپراتورهای داخلی را با نرخ مستقیم و بدون واسطه به شما می‌رساند.
-            </p>
-            
-            <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-               <div className="p-6 bg-blue-500/5 border border-blue-500/10 rounded-3xl group hover:bg-blue-500/10 transition-all">
-                  <Wifi className="text-blue-500 mb-4" />
-                  <h4 className="font-bold mb-2 text-white">E-SIM جهانی</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">سیم‌کارت‌های مجازی برای مسافرانی که نمی‌خواهند در سفرها دغدغه رومینگ داشته باشند.</p>
-               </div>
-               <div className="p-6 bg-blue-500/5 border border-blue-500/10 rounded-3xl group hover:bg-blue-500/10 transition-all">
-                  <Smartphone className="text-blue-500 mb-4" />
-                  <h4 className="font-bold mb-2 text-white">اپراتورهای داخلی</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">پشتیبانی کامل از روشن، افغان‌بیسیم، اتصالات و ام‌تی‌ان با تاییدیه Ding.</p>
-               </div>
-            </motion.div>
-          </div>
-
-          <div className="lg:w-1/2 relative">
-             <div className="absolute inset-0 bg-blue-600/10 blur-[100px]" />
-             <div className="grid grid-cols-2 gap-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <motion.div 
-                    key={i}
-                    whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? 2 : -2 }}
-                    className="h-32 bg-gray-900 border border-white/5 rounded-3xl flex items-center justify-center text-gray-500 font-black text-2xl uppercase"
-                  >
-                    Operator {i}
-                  </motion.div>
-                ))}
-             </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* --- ۴. نقشه راه متحرک (Roadmap) --- */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6">
-          <motion.h2 {...fadeInUp} className="text-4xl font-black text-center mb-24">مسیر توسعه ۲۰۲۶</motion.h2>
-          
+          {/* انیمیشن شناور برای بخش پارتنر */}
           <motion.div 
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="whileInView"
-            className="grid md:grid-cols-4 gap-8"
+            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1 }}
+            className="lg:w-1/2 w-full"
           >
-            {[
-              { q: "فصل اول", t: "تثبیت زیرساخت", d: "اتصال به APIهای Wallester و تست امنیت." },
-              { q: "فصل دوم", t: "عرضه خدمات", d: "فعال‌سازی بخش E-SIM و صدور کارت‌های مجازی." },
-              { q: "فصل سوم", t: "توسعه جهانی", d: "ادغام کامل با سیستم Ding برای ۵۰۰ اپراتور." },
-              { q: "فصل چهارم", t: "نئوبانک کامل", d: "صدور کارت‌های فیزیکی و سیستم کش‌بک." },
-            ].map((step, i) => (
-              <motion.div 
-                key={i}
-                variants={fadeInUp}
-                whileHover={{ y: -20 }}
-                className="relative p-10 bg-white/[0.03] border border-white/10 rounded-[3rem] group overflow-hidden"
-              >
-                <div className="absolute -top-4 -right-4 text-9xl font-black text-white/[0.02] group-hover:text-amber-500/10 transition-all">{i+1}</div>
-                <h3 className="text-amber-500 font-black mb-2 text-xl">{step.q}</h3>
-                <h4 className="text-white font-bold mb-4">{step.t}</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.d}</p>
-              </motion.div>
-            ))}
+            <div className="bg-gradient-to-br from-gray-900 to-black p-1 rounded-[3rem] border border-white/10 shadow-2xl relative group">
+              <div className="absolute inset-0 bg-amber-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="bg-[#0a0a0a] rounded-[2.8rem] p-10 space-y-8 relative z-10">
+                <div className="flex justify-between items-center text-[10px] font-mono text-gray-500">
+                  <span>ID: 2026_WALLESTER_PARTNER</span>
+                  <span className="text-green-500">● LIVE_CONNECTION</span>
+                </div>
+                <div className="py-10 text-center border-y border-white/5">
+                  <motion.h3 
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="text-4xl font-black mb-2 tracking-widest"
+                  >
+                    Wallester
+                  </motion.h3>
+                  <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">Official Strategic Partner</p>
+                </div>
+                <p className="text-gray-400 text-sm italic text-center">"قدرت گرفته از زیرساخت‌های بانکی دارای لایسنس اتحادیه اروپا"</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- ۵. فرم تماس و شراکت (CTA) --- */}
+      {/* --- ۴. Safi TopUp (انیمیشن پالس و آیکون‌ها) --- */}
+      <section className="py-24 container mx-auto px-6 bg-blue-500/[0.02] rounded-[5rem] my-10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] animate-pulse" />
+        <div className="flex flex-col lg:flex-row-reverse gap-16 items-center relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/2 space-y-8"
+          >
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-xs font-bold uppercase tracking-widest">
+              Global Connectivity
+            </div>
+            <h2 className="text-5xl font-black text-white leading-tight">Safi TopUp: اتصال آنی</h2>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              با تکیه بر شبکه **Ding**، ما پلی میان افغانستان و اپراتورهای مخابراتی ۵۰۰ کشور جهان ساخته‌ایم.
+            </p>
+            <div className="space-y-4">
+               {[
+                 { icon: <Wifi size={20} />, t: "تکنولوژی E-SIM", d: "سیم‌کارت مجازی در ۱۵۰ کشور." },
+                 { icon: <Smartphone size={20} />, t: "اپراتورهای داخلی", d: "شارژ آنی روشن، افغان‌بیسیم و..." }
+               ].map((item, i) => (
+                 <motion.div key={i} whileHover={{ x: -10 }} className="flex gap-4 p-5 bg-white/5 rounded-3xl border border-white/5 items-center">
+                    <div className="text-blue-500">{item.icon}</div>
+                    <div>
+                      <h4 className="font-bold text-sm">{item.t}</h4>
+                      <p className="text-gray-500 text-xs">{item.d}</p>
+                    </div>
+                 </motion.div>
+               ))}
+            </div>
+          </motion.div>
+
+          <motion.div 
+             initial={{ opacity: 0, scale: 0.8 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             transition={{ duration: 0.8 }}
+             className="lg:w-1/2"
+          >
+             <div className="relative p-12 bg-[#ff4d00]/5 border border-[#ff4d00]/20 rounded-[4rem] text-center group">
+                <motion.div 
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="w-24 h-24 bg-[#ff4d00] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_50px_rgba(255,77,0,0.3)]"
+                >
+                  <span className="text-white font-black text-3xl italic">d.</span>
+                </motion.div>
+                <h3 className="text-3xl font-black mb-4">Ding Strategic Partner</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6">سرعت تراکنش کمتر از ۳ ثانیه در سطح جهانی.</p>
+                <div className="flex justify-center gap-10">
+                   <div className="text-center"><div className="text-2xl font-black">500+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Operators</div></div>
+                   <div className="text-center"><div className="text-2xl font-black">150+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Countries</div></div>
+                </div>
+             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- ۵. رودمپ با انیمیشن ظهور پله‌ای --- */}
+      <section className="py-24 container mx-auto px-6">
+        <motion.h2 {...fadeInUp} className="text-4xl font-black text-center mb-20 italic">ROADMAP 2026</motion.h2>
+        <motion.div 
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          className="grid md:grid-cols-4 gap-6"
+        >
+          {[
+            { q: "Q1", title: "تثبیت زیرساخت", items: ["اخذ مجوزها", "تست بتا"] },
+            { q: "Q2", title: "عرضه اولیه", items: ["لانچ رسمی", "E-SIM"] },
+            { q: "Q3", title: "گسترش", items: ["ادغام Ding", "پنل تجاری"] },
+            { q: "Q4", title: "هوشمندی", items: ["سیستم پاداش", "کارت فیزیکی"] },
+          ].map((item, i) => (
+            <motion.div 
+              key={i} 
+              variants={fadeInUp}
+              whileHover={{ y: -10, borderColor: 'rgba(245,158,11,0.5)' }}
+              className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden transition-colors"
+            >
+              <div className="text-6xl font-black text-white/5 absolute -top-2 -left-2">{item.q}</div>
+              <h4 className="text-xl font-bold mb-4 text-amber-500 relative z-10">{item.title}</h4>
+              <ul className="space-y-2 text-xs text-gray-400 relative z-10">
+                {item.items.map((li, j) => <li key={j}>• {li}</li>)}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* --- ۶. سوالات متداول با انیمیشن ساده --- */}
+      <section className="py-24 max-w-3xl mx-auto px-6">
+        <h2 className="text-3xl font-black text-center mb-12 italic">FAQs</h2>
+        <div className="space-y-4">
+          {[
+            { q: "امنیت سرمایه؟", a: "بیمه تا سقف ۱۰۰ هزار یورو طبق قوانین اروپا." },
+            { q: "نحوه همکاری؟", a: "تکمیل فرم انتهای صفحه برای دریافت Pitch Deck." }
+          ].map((faq, i) => (
+            <motion.div 
+              key={i} 
+              initial={{ opacity: 0 }} 
+              whileInView={{ opacity: 1 }}
+              className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 shadow-inner"
+            >
+              <h4 className="font-bold text-amber-500 mb-2 flex items-center gap-2">
+                <div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> {faq.q}
+              </h4>
+              <p className="text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- ۷. CTA نهایی با افکت بزرگنمایی --- */}
       <section className="py-24 container mx-auto px-6">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="bg-gradient-to-br from-amber-600 to-amber-900 p-16 rounded-[4rem] text-center shadow-3xl relative overflow-hidden"
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          className="relative rounded-[4rem] overflow-hidden bg-gradient-to-r from-amber-600 to-amber-800 p-12 md:p-24 text-center"
         >
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')] opacity-20" />
           <div className="relative z-10">
-            <h2 className="text-5xl font-black mb-8">فرصت همکاری را از دست ندهید</h2>
-            <p className="max-w-xl mx-auto text-white/80 mb-12 text-lg">
-              اگر شما یک موسسه مالی، شرکت تکنولوژی یا توزیع‌کننده منطقه‌ای هستید، ما منتظر شنیدن پیشنهادات شما هستیم.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <motion.button whileTap={{ scale: 0.95 }} className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center gap-3">
-                <Mail size={24} /> ارسال ایمیل رسمی
-              </motion.button>
-              <motion.button whileTap={{ scale: 0.95 }} className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg">
-                دریافت Pitch Deck
-              </motion.button>
+            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">آماده مشارکت هستید؟</h2>
+            <div className="flex flex-col md:flex-row gap-6 justify-center">
+               <motion.button 
+                 whileTap={{ scale: 0.9 }}
+                 className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3"
+               >
+                 <Mail size={24} /> تماس مستقیم
+               </motion.button>
+               <motion.button 
+                 whileTap={{ scale: 0.9 }}
+                 className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg"
+               >
+                 دریافت کاتالوگ
+               </motion.button>
             </div>
           </div>
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-20 border-t border-white/5 text-center">
-        <p className="text-gray-600 font-mono text-xs uppercase tracking-[0.6em]">
-          Strategic Partnership Ecosystem © 2026 | SafiPay & Safi TopUp
-        </p>
+      <footer className="py-10 text-center text-gray-700 text-[10px] uppercase tracking-[0.5em]">
+        © 2026 SafiPay & Safi TopUp | Strategic Partner Infrastructure
       </footer>
     </div>
   );
