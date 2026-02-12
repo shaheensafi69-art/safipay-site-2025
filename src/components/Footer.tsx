@@ -25,15 +25,15 @@ export default function Footer() {
   const isRtl = ['fa', 'ps', 'ar'].includes(currentLang);
 
   const labels: any = {
-    fa: { about: 'درباره ما', invest: 'سرمایه‌گذاری', contact: 'تماس با ما', privacy: 'حریم خصوصی', founder: 'بنیان‌گذار', cofounder: 'هم‌بنیان‌گذار', quickLinks: 'دسترسی سریع' },
-    ps: { about: 'زمونږ په اړه', invest: 'پانګونه', contact: 'اړیکه', privacy: 'حریم خصوصی', founder: 'بنسټ اېښودونکی', cofounder: 'ملگری بنسټ اېښودونکی', quickLinks: 'چټک لاسرسی' },
-    en: { about: 'About Us', invest: 'Invest', contact: 'Contact', privacy: 'Privacy', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' },
-    fr: { about: 'À propos', invest: 'Investir', contact: 'Contact', privacy: 'Confidentialité', founder: 'Fondateur', cofounder: 'Co-fondateur', quickLinks: 'Accès Rapide' },
-    de: { about: 'Über uns', invest: 'Investieren', contact: 'Kontakt', privacy: 'Datenschutz', founder: 'Gründer', cofounder: 'Mitbegründer', quickLinks: 'Schnellzugriff' },
-    tr: { about: 'Hakkımızda', invest: 'Yatırım', contact: 'İletişim', privacy: 'Gizlilik', founder: 'Kurucu', cofounder: 'Kurucu Ortak', quickLinks: 'Hızlı Erişim' },
-    ar: { about: 'من نحن', invest: 'استثمار', contact: 'اتصل بنا', privacy: 'الخصوصية', founder: 'المؤسس', cofounder: 'مؤسس مشارك', quickLinks: 'روابط سريعة' },
-    ru: { about: 'О нас', invest: 'Инвестиции', contact: 'Контакт', privacy: 'Конфиденциальность', founder: 'Основатель', cofounder: 'Соучредитель', quickLinks: 'Быстрый доступ' }
-  }[currentLang] || { about: 'About Us', invest: 'Invest', contact: 'Contact', privacy: 'Privacy', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' };
+    fa: { about: 'درباره ما', partners: 'مشارکت استراتژیک', contact: 'تماس با ما', privacy: 'حریم خصوصی', founder: 'بنیان‌گذار', cofounder: 'هم‌بنیان‌گذار', quickLinks: 'دسترسی سریع' },
+    ps: { about: 'زمونږ په اړه', partners: 'ستراتژیک مشارکت', contact: 'اړیکه', privacy: 'حریم خصوصی', founder: 'بنسټ اېښودونکی', cofounder: 'ملگری بنسټ اېښودونکی', quickLinks: 'چټک لاسرسی' },
+    en: { about: 'About Us', partners: 'Partnerships', contact: 'Contact', privacy: 'Privacy', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' },
+    fr: { about: 'À propos', partners: 'Partenariats', contact: 'Contact', privacy: 'Confidentialité', founder: 'Fondateur', cofounder: 'Co-fondateur', quickLinks: 'Accès Rapide' },
+    de: { about: 'Über uns', partners: 'Partnerschaften', contact: 'Kontakt', privacy: 'Datenschutz', founder: 'Gründer', cofounder: 'Mitbegründer', quickLinks: 'Schnellzugriff' },
+    tr: { about: 'Hakkımızda', partners: 'İş Ortaklığı', contact: 'İletişim', privacy: 'Gizlilik', founder: 'Kurucu', cofounder: 'Kurucu Ortak', quickLinks: 'Hızlı Erişim' },
+    ar: { about: 'من نحن', partners: 'الشراكات', contact: 'اتصل بنا', privacy: 'الخصوصية', founder: 'المؤسس', cofounder: 'مؤسس مشارك', quickLinks: 'روابط سريعة' },
+    ru: { about: 'О нас', partners: 'Партнерство', contact: 'Контакт', privacy: 'Конфиденциальность', founder: 'Основатель', cofounder: 'Соучредитель', quickLinks: 'Быстрый доступ' }
+  }[currentLang] || { about: 'About Us', partners: 'Partnerships', contact: 'Contact', privacy: 'Privacy', founder: 'Founder', cofounder: 'Co-Founder', quickLinks: 'Quick Access' };
 
   const descriptions: any = {
     fa: "اولین سیستم بانکداری دیجیتال بین‌المللی برای افغانستان. اتصال به بازارهای جهانی با امنیت و سرعت فوق‌العاده.",
@@ -113,8 +113,8 @@ export default function Footer() {
               <Link href={`/${currentLang}/about`} className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group">
                 <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />{labels.about}
               </Link>
-              <Link href={`/${currentLang}/invest`} className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group">
-                <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />{labels.invest}
+              <Link href={`/${currentLang}/partners`} className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group">
+                <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />{labels.partners}
               </Link>
               <Link href={`/${currentLang}/contact`} className="text-gray-500 hover:text-amber-500 text-sm font-medium transition-all flex items-center gap-3 group">
                 <span className="w-6 h-[1px] bg-gray-800 group-hover:w-8 group-hover:bg-amber-500 transition-all" />{labels.contact}
@@ -136,6 +136,8 @@ export default function Footer() {
             <span>KABUL</span>
             <span className="w-1 h-1 rounded-full bg-gray-700 mx-1" />
             <span>PARIS</span>
+            <span className="w-1 h-1 rounded-full bg-gray-700 mx-1" />
+            <span>ISTANBUL</span>
           </div>
         </div>
       </div>
