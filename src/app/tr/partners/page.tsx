@@ -1,280 +1,280 @@
 'use client';
 import { motion } from 'framer-motion';
 import { 
-  TrendingUp, Users, Target, ShieldCheck, ArrowRight, 
-  Rocket, Globe, Landmark, CreditCard, ChevronDown 
+  Handshake, Rocket, Globe, ShieldCheck, 
+  ArrowRight, CreditCard, Zap, BarChart3, Mail, 
+  Wifi, Smartphone, Cpu, CheckCircle2, HelpCircle
 } from 'lucide-react';
-import { useState } from 'react';
 
-export default function InvestPageTR() {
-  const CAMPAIGN_LINK = "https://gogetfunding.com/safipay-%d8%a7%d9%88%d9%84%db%8c%d9%86-%d8%a8%d8%a7%d9%86%da%a9-%d8%af%db%8c%d8%ac%db%8c%d8%aa%d8%a7%d9%84-%d8%a8%d8%b1%d8%a7%db%8c-%d9%85%db%8c%d9%84%db%8c%d9%88%d9%86%d9%87%d8%a7-%d8%a7/";
-  const raised = 0;
-  const goal = 80000;
-  const percentage = Math.round((raised / goal) * 100);
-  const donors = 0;
+// Animasyon Ayarları
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 }
+};
 
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.2 } }
+};
 
-  const roadmap = [
-    {
-      stage: "Aşama 1",
-      title: "Temel ve Topluluk",
-      status: "Devam Ediyor",
-      desc: "Küresel kampanya lansmanı, 10.000 kişilik destekçi topluluğu oluşturma ve sistem mimarisinin kesinleşmesi.",
-      icon: <Users className="text-amber-500" />
-    },
-    {
-      stage: "Aşama 2",
-      title: "Lisanslama ve Uyum",
-      status: "Planlandı",
-      desc: "Uluslararası EMI (Elektronik Para Kuruluşu) lisanslarının alınması ve yasal yapılandırmanın tamamlanması.",
-      icon: <Landmark className="text-amber-500" />
-    },
-    {
-      stage: "Aşama 3",
-      title: "Beta Lansmanı",
-      status: "Planlandı",
-      desc: "SafiPay uygulamasının ilk test kullanıcılarına açılması, anlık transferlerin ve dijital cüzdanların aktivasyonu.",
-      icon: <Rocket className="text-amber-500" />
-    },
-    {
-      stage: "Aşama 4",
-      title: "Küresel Kartlar",
-      status: "Planlandı",
-      desc: "Dünya çapındaki ödeme ağları ile ortaklık kurarak fiziksel ve sanal SafiPay kartlarının dağıtımı.",
-      icon: <CreditCard className="text-amber-500" />
-    }
-  ];
-
+export default function AnimatedPartnershipPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30" dir="ltr">
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
       
-      {/* --- Hero Bölümü --- */}
-      <section className="relative pt-32 pb-20 overflow-hidden border-b border-amber-900/20">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -ml-48 -mt-48" />
+      {/* --- 1. HERO BÖLÜMÜ --- */}
+      <section className="relative pt-40 pb-20 overflow-hidden">
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-amber-600/5 blur-[150px] rounded-full" 
+        />
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-sm font-bold mb-8"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Target size={16} />
-            <span>RESMİ YATIRIM VE TOPLULUK DESTEK KAMPANYASI</span>
+            <h1 className="text-6xl md:text-9xl font-black mb-10 tracking-tighter leading-tight">
+              <span className="text-amber-500 inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]">SAFI</span> EKOSİSTEMİ
+            </h1>
           </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent leading-tight"
-          >
-            Afganistan'ın Finansal Geleceğini <br /> Birlikte İnşa Edelim
-          </motion.h1>
-          
           <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="max-w-3xl mx-auto text-xl text-gray-400 leading-relaxed font-light"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
           >
-            SafiPay, Afgan halkı için dünyanın ilk küresel neobankasını kuruyor. Desteğinizle lisanslarımızı alıyor, teknolojimizi geliştiriyor ve finansal erişimi kolaylaştırıyoruz.
+            Küresel modern hizmetlerden yeterince yararlanamayan topluluklar için finansal ve bağlantı standartlarını yeniden tanımlıyoruz.
           </motion.p>
         </div>
       </section>
 
-      {/* --- İlerleme Bölümü --- */}
+      {/* --- 2. TEMEL ÖZELLİKLER --- */}
+      <motion.section 
+        variants={staggerContainer}
+        initial="initial"
+        whileInView="whileInView"
+        viewport={{ once: true }}
+        className="py-20 border-y border-white/5 bg-white/[0.01]"
+      >
+        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12">
+          {[
+            { title: "Erişim Çözüldü", desc: "Safi, Avrupa fintech teknolojisini kullanarak Afganistan'daki uluslararası ödeme açığını kapatıyor." },
+            { title: "Üst Düzey Güvenlik", desc: "Küresel ağımızdaki her işlemin bütünlüğünü garanti etmek için PCI-DSS protokollerini kullanıyoruz." },
+            { title: "Sınır Tanımayan Bağlantı", desc: "Avrupa'daki okul ücreti ödemelerinden Kabil'deki mobil yüklemelere kadar her şey tek bir ekosistemde." }
+          ].map((item, i) => (
+            <motion.div key={i} variants={fadeInUp} className="space-y-4 group p-4">
+              <h3 className="text-2xl font-bold text-amber-500 group-hover:translate-x-2 transition-transform">{item.title}</h3>
+              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* --- 3. SafiPay & Wallester --- */}
       <section className="py-24 container mx-auto px-6">
-        <div className="max-w-5xl mx-auto relative">
-          <div className="absolute -inset-4 bg-gradient-to-r from-amber-600/20 to-amber-900/20 blur-3xl opacity-30 rounded-[3rem]" />
-          
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative bg-gray-900/50 border border-white/10 rounded-[3rem] p-8 md:p-16 backdrop-blur-xl"
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/2 space-y-8"
           >
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 text-left">
-              <div>
-                <span className="text-gray-500 uppercase tracking-widest font-bold text-sm">Kampanya Hedefi</span>
-                <div className="text-5xl md:text-7xl font-black text-white mt-2">
-                  ${goal.toLocaleString()}
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-6xl md:text-8xl font-black text-amber-500">
-                  %{percentage}
-                </div>
-                <span className="text-amber-500/60 uppercase tracking-widest font-bold text-sm">TAMAMLANDI</span>
-              </div>
+            <div className="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold uppercase tracking-widest">
+              Fintech Altyapısı
             </div>
-
-            <div className="relative w-full h-8 bg-black/50 rounded-full border border-white/5 overflow-hidden mb-12 shadow-inner">
-              <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: `${percentage}%` }}
-                transition={{ duration: 2, ease: "circOut" }}
-                className="absolute top-0 left-0 h-full bg-gradient-to-r from-amber-700 via-amber-500 to-yellow-400 shadow-[0_0_20px_rgba(245,158,11,0.5)]"
-              />
+            <h2 className="text-5xl font-black text-white leading-tight">SafiPay: Sınır Ötesi Bankacılık</h2>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              SafiPay bir cüzdandan daha fazlasıdır; **Wallester AS** ve **VISA** ağı tarafından desteklenen tam bir yeni nesil bankacılık (neobanking) deneyimidir.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+                <CheckCircle2 className="text-amber-500" size={20} />
+                <span className="text-sm">Fiziksel ve Sanal VISA Kart İhracı</span>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
+                <CheckCircle2 className="text-amber-500" size={20} />
+                <span className="text-sm">Özel Avrupa IBAN Hesapları</span>
+              </motion.div>
             </div>
+          </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/5 pt-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">${raised.toLocaleString()}</div>
-                <div className="text-sm text-gray-500 font-bold uppercase tracking-tighter">TOPLANAN FON</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">{donors.toLocaleString()}</div>
-                <div className="text-sm text-gray-500 font-bold uppercase tracking-tighter">DESTEKÇİLER</div>
-              </div>
-              <div className="text-center">
-                <div className="text-sm text-amber-500/80 font-mono">Güncelleme: {new Date().toLocaleDateString('tr-TR')}</div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1 }}
+            className="lg:w-1/2 w-full"
+          >
+            <div className="bg-gradient-to-br from-gray-900 to-black p-1 rounded-[3rem] border border-white/10 shadow-2xl relative group">
+              <div className="absolute inset-0 bg-amber-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="bg-[#0a0a0a] rounded-[2.8rem] p-10 space-y-8 relative z-10">
+                <div className="flex justify-between items-center text-[10px] font-mono text-gray-500">
+                  <span>ID: 2026_WALLESTER_PARTNER</span>
+                  <span className="text-green-500">● CANLI_BAGLANTI</span>
+                </div>
+                <div className="py-10 text-center border-y border-white/5">
+                  <motion.h3 
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                    className="text-4xl font-black mb-2 tracking-widest"
+                  >
+                    Wallester
+                  </motion.h3>
+                  <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">Resmi Stratejik Ortak</p>
+                </div>
+                <p className="text-gray-400 text-sm italic text-center text-[12px]">"AB lisanslı bankacılık altyapısı ile desteklenmektedir"</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- Yol Haritası (Roadmap) --- */}
-      <section className="py-24 container mx-auto px-6 overflow-hidden">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-black mb-6">Yol Haritamız</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">Vizyondan gerçeğe: SafiPay'i nasıl küresel bir güç haline getiriyoruz.</p>
-        </div>
-
-        <div className="max-w-4xl mx-auto relative">
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/50 via-white/10 to-transparent hidden md:block" />
-
-          <div className="space-y-16">
-            {roadmap.map((step, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
-              >
-                <div className="absolute left-8 md:left-1/2 w-12 h-12 bg-gray-900 border border-amber-500/50 rounded-full flex items-center justify-center z-10 transform -translate-x-1/2 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                  {step.icon}
-                </div>
-
-                <div className="w-full md:w-1/2 pl-20 md:pl-0">
-                  <div className={`p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all group ${index % 2 === 0 ? 'text-left' : 'md:text-right'}`}>
-                    <span className="text-amber-500 font-bold text-sm tracking-widest uppercase">{step.stage}</span>
-                    <h3 className="text-2xl font-bold text-white mt-2 mb-4">{step.title}</h3>
-                    <p className="text-gray-400 leading-relaxed font-light">{step.desc}</p>
-                    <div className={`mt-6 inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${step.status === 'Devam Ediyor' ? 'bg-amber-500/20 text-amber-500' : 'bg-white/5 text-gray-500'}`}>
-                      {step.status}
+      {/* --- 4. Safi TopUp --- */}
+      <section className="py-24 container mx-auto px-6 bg-blue-500/[0.02] rounded-[5rem] my-10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] animate-pulse" />
+        <div className="flex flex-col lg:flex-row gap-16 items-center relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/2 space-y-8"
+          >
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-xs font-bold uppercase tracking-widest">
+              Küresel Bağlantı
+            </div>
+            <h2 className="text-5xl font-black text-white leading-tight">Safi TopUp: Anında Bağlantı</h2>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              **Ding** ağını kullanarak, Afganistan ile 500 ülkedeki telekom operatörleri arasında bir köprü kurduk.
+            </p>
+            <div className="space-y-4">
+               {[
+                 { icon: <Wifi size={20} />, t: "E-SIM Teknolojisi", d: "150'den fazla ülkede sanal SIM kartlar." },
+                 { icon: <Smartphone size={20} />, t: "Yerel Operatörler", d: "Roshan, Afghan Wireless ve daha fazlası için anında yükleme." }
+               ].map((item, i) => (
+                 <motion.div key={i} whileHover={{ x: 10 }} className="flex gap-4 p-5 bg-white/5 rounded-3xl border border-white/5 items-center">
+                    <div className="text-blue-500">{item.icon}</div>
+                    <div>
+                      <h4 className="font-bold text-sm">{item.t}</h4>
+                      <p className="text-gray-500 text-xs">{item.d}</p>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                 </motion.div>
+               ))}
+            </div>
+          </motion.div>
 
-      {/* --- Bağış Paketleri --- */}
-      <section className="py-24 bg-black/30 border-y border-white/5">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-black mb-16">Katkı Seviyenizi Seçin</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {[
-              { amount: 10, label: "Gönüllü Destekçi", desc: "Küçük bir katkı, büyük bir umut" },
-              { amount: 25, label: "Büyüme Ortağı", desc: "Altyapımızı güçlendirin" },
-              { amount: 100, label: "Değişim Elçisi", desc: "Başarıda kilit rol oynayın" },
-              { amount: "Özel", label: "Stratejik Ortak", desc: "Kendi mirasınızı inşa edin", custom: true }
-            ].map((item, idx) => (
-              <motion.a
-                key={idx}
-                href={item.custom ? CAMPAIGN_LINK : `${CAMPAIGN_LINK}?amount=${item.amount}`}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className={`p-8 rounded-[2rem] border transition-all flex flex-col items-center justify-center gap-4 ${
-                  item.amount === 100 ? 'bg-amber-500 border-amber-500 text-black' : 'bg-gray-900/50 border-white/10 hover:border-amber-500/50 shadow-xl'
-                }`}
-              >
-                <span className={`text-4xl font-black ${item.amount === 100 ? 'text-black' : 'text-amber-500'}`}>
-                  {typeof item.amount === 'number' ? `$${item.amount}` : item.amount}
-                </span>
-                <div className="text-center">
-                  <div className={`font-bold uppercase tracking-widest text-sm ${item.amount === 100 ? 'text-black/80' : 'text-white'}`}>
-                    {item.label}
-                  </div>
-                  <div className={`text-xs mt-1 ${item.amount === 100 ? 'text-black/60' : 'text-gray-500'}`}>
-                    {item.desc}
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- FAQ Bölümü --- */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-black text-center mb-16">Sıkça Sorulan Sorular</h2>
-          <div className="space-y-4">
-            {[
-              { q: "Yatırımım nasıl kullanılacak?", a: "Katkılarınız doğrudan uluslararası bankacılık lisanslarının alınması, teknik altyapı ve yasal süreçlerin yönetimi için kullanılır." },
-              { q: "SafiPay tescilli bir kuruluş mu?", a: "SafiPay şu an operasyon öncesi aşamadadır. Küresel finans düzenlemelerine uyum için yasal yapılandırmamızı tamamlıyoruz." },
-              { q: "Destekçilere ne gibi avantajlar sunuluyor?", a: "İlk Afgan neobankasını desteklemenin yanı sıra, stratejik ortaklarımız erken erişim ve özel 'Founder Edition' kartlara sahip olacak." }
-            ].map((faq, i) => (
-              <div key={i} className="border border-white/5 bg-white/5 rounded-2xl overflow-hidden transition-all">
-                <button 
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full px-8 py-6 flex justify-between items-center text-left hover:bg-white/5 transition-all"
+          <motion.div 
+             initial={{ opacity: 0, scale: 0.8 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             transition={{ duration: 0.8 }}
+             className="lg:w-1/2"
+          >
+             <div className="relative p-12 bg-[#ff4d00]/5 border border-[#ff4d00]/20 rounded-[4rem] text-center group">
+                <motion.div 
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="w-24 h-24 bg-[#ff4d00] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_50px_rgba(255,77,0,0.3)]"
                 >
-                  <span className="font-bold text-lg">{faq.q}</span>
-                  <ChevronDown className={`transition-transform duration-300 ${openFaq === i ? 'rotate-180 text-amber-500' : ''}`} />
-                </button>
-                {openFaq === i && (
-                  <motion.div 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    className="px-8 pb-6 text-gray-400 leading-relaxed font-light"
-                  >
-                    {faq.a}
-                  </motion.div>
-                )}
-              </div>
-            ))}
-          </div>
+                  <span className="text-white font-black text-3xl italic">d.</span>
+                </motion.div>
+                <h3 className="text-3xl font-black mb-4">Ding Stratejik Ortağı</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6">3 saniyenin altında küresel işlem hızı.</p>
+                <div className="flex justify-center gap-10">
+                   <div className="text-center"><div className="text-2xl font-black">500+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Operatör</div></div>
+                   <div className="text-center"><div className="text-2xl font-black">150+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Ülke</div></div>
+                </div>
+             </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* --- Şeffaflık Bölümü --- */}
-      <section className="py-24 container mx-auto px-6 border-t border-white/5">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 text-left">
-            <h2 className="text-4xl font-bold">Tam Şeffaflık</h2>
-            <div className="space-y-6">
-              {[
-                { icon: <ShieldCheck className="text-amber-500" />, title: "Güvenli İşlemler", text: "Tüm fonlar uluslararası GoGetFunding platformu üzerinden güvence altına alınır." },
-                { icon: <TrendingUp className="text-amber-500" />, title: "Stratejik Tahsis", text: "Fonlar sadece bankacılık lisansları ve teknoloji geliştirme için kullanılır." },
-                { icon: <Users className="text-amber-500" />, title: "Aylık Raporlama", text: "Destekçilerimize her 30 günde bir detaylı ilerleme raporu sunulur." }
-              ].map((feature, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="mt-1">{feature.icon}</div>
-                  <div>
-                    <h4 className="font-bold text-lg text-white">{feature.title}</h4>
-                    <p className="text-gray-400">{feature.text}</p>
-                  </div>
-                </div>
-              ))}
+      {/* --- 5. YOL HARİTASI 2026 --- */}
+      <section className="py-24 container mx-auto px-6">
+        <motion.h2 {...fadeInUp} className="text-4xl font-black text-center mb-20 italic">YOL HARİTASI 2026</motion.h2>
+        <motion.div 
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="whileInView"
+          className="grid md:grid-cols-4 gap-6"
+        >
+          {[
+            { q: "Ç1", title: "Altyapı", items: ["Lisanslama", "Beta Testleri"] },
+            { q: "Ç2", title: "İlk Lansman", items: ["Resmi Açılış", "E-SIM Dağıtımı"] },
+            { q: "Ç3", title: "Genişleme", items: ["Ding Entegrasyonu", "İş Paneli"] },
+            { q: "Ç4", title: "Zeka", items: ["Ödül Sistemleri", "Fiziksel Kartlar"] },
+          ].map((item, i) => (
+            <motion.div 
+              key={i} 
+              variants={fadeInUp}
+              whileHover={{ y: -10, borderColor: 'rgba(245,158,11,0.5)' }}
+              className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden transition-colors"
+            >
+              <div className="text-6xl font-black text-white/5 absolute -top-2 -left-2">{item.q}</div>
+              <h4 className="text-xl font-bold mb-4 text-amber-500 relative z-10">{item.title}</h4>
+              <ul className="space-y-2 text-xs text-gray-400 relative z-10">
+                {item.items.map((li, j) => <li key={j}>• {li}</li>)}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* --- 6. SSS --- */}
+      <section className="py-24 max-w-3xl mx-auto px-6">
+        <h2 className="text-3xl font-black text-center mb-12 italic">Sıkça Sorulan Sorular</h2>
+        <div className="space-y-4">
+          {[
+            { q: "Sermaye Güvenliği?", a: "AB düzenlemeleri uyarınca 100.000 €'ya kadar sigorta." },
+            { q: "Nasıl ortak olunur?", a: "Pitch Deck'imizi almak için sayfanın altındaki formu doldurun." }
+          ].map((faq, i) => (
+            <motion.div 
+              key={i} 
+              initial={{ opacity: 0 }} 
+              whileInView={{ opacity: 1 }}
+              className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 shadow-inner"
+            >
+              <h4 className="font-bold text-amber-500 mb-2 flex items-center gap-2">
+                <div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> {faq.q}
+              </h4>
+              <p className="text-gray-400 text-sm leading-relaxed">{faq.a}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- 7. FINAL CTA --- */}
+      <section className="py-24 container mx-auto px-6">
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          className="relative rounded-[4rem] overflow-hidden bg-gradient-to-r from-amber-600 to-amber-800 p-12 md:p-24 text-center"
+        >
+          <div className="relative z-10">
+            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">Katılmaya Hazır mısınız?</h2>
+            <div className="flex flex-col md:flex-row gap-6 justify-center">
+               <motion.button 
+                 whileTap={{ scale: 0.9 }}
+                 className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3"
+               >
+                 <Mail size={24} /> Doğrudan İletişim
+               </motion.button>
+               <motion.button 
+                 whileTap={{ scale: 0.9 }}
+                 className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg"
+               >
+                 Kataloğu Al
+               </motion.button>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-amber-600 to-amber-900 p-12 rounded-[3rem] text-center shadow-2xl shadow-amber-900/20">
-            <h3 className="text-3xl font-black mb-6 italic text-white leading-tight">"Sadece bir bankaya değil, <br /> bir millete yatırım yapın."</h3>
-            <p className="text-white/80 mb-8 font-light italic">Katkınız, milyonlarca Afgan'ın finansal özgürlüğüne giden yolu açıyor.</p>
-            <motion.a 
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-200 transition-all shadow-lg"
-            >
-              Yatırım Birimiyle İletişime Geçin <ArrowRight size={18} />
-            </motion.a>
-          </div>
-        </div>
+        </motion.div>
       </section>
 
+      <footer className="py-10 text-center text-gray-700 text-[10px] uppercase tracking-[0.5em]">
+        © 2026 SafiPay & Safi TopUp | Stratejik Ortaklık Altyapısı
+      </footer>
     </div>
   );
 }
