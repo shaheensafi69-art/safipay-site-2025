@@ -1,280 +1,286 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { 
-  Handshake, Rocket, Globe, ShieldCheck, 
-  ArrowRight, CreditCard, Zap, BarChart3, Mail, 
-  Wifi, Smartphone, Cpu, CheckCircle2, HelpCircle
+  Globe, ShieldCheck, ArrowRight, CreditCard, Zap, 
+  Wifi, Smartphone, CheckCircle2, Coins, 
+  Lock, Server, Briefcase, Car, Cpu, Landmark, BadgeCheck, ShieldAlert
 } from 'lucide-react';
 
-// تنظیمات انیمیشن پایه
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 }
-};
+export default function PersianElitePartnership() {
+  const containerRef = useRef(null);
+  
+  // تنظیمات اسکرول برای حرکت فوق‌العاده نرم ماشین
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.2 } }
-};
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 30, 
+    damping: 20,
+    restDelta: 0.001
+  });
 
-export default function AnimatedPartnershipPage() {
+  const carY = useTransform(smoothProgress, [0, 1], ["0%", "98%"]);
+
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="rtl">
+    <div className="min-h-screen bg-[#020202] text-white font-sans overflow-x-hidden selection:bg-amber-500/30 text-right" dir="rtl">
       
-      {/* --- ۱. هدر حماسی با انیمیشن ورود --- */}
-      <section className="relative pt-40 pb-20 overflow-hidden">
-        <motion.div 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-amber-600/5 blur-[150px] rounded-full" 
-        />
+      {/* --- ۱. بخش هیرو (قهرمان) --- */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,11,0.15),transparent_70%)]" />
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-6xl md:text-9xl font-black mb-10 tracking-tighter leading-tight">
-              اکوسیستم <span className="text-amber-500 inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]">SAFI</span>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
+            <span className="inline-block px-8 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-black uppercase tracking-[0.6em] mb-12">
+              شبکه مالی مستقل و جهانی ۲۰۲۶
+            </span>
+            <h1 className="text-6xl md:text-[10rem] font-black leading-[0.75] mb-16 italic tracking-tighter">
+              قدرت <br/> <span className="text-amber-500 text-glow text-8xl md:text-[12rem]">بی‌رقیب.</span>
             </h1>
-          </motion.div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
-          >
-            بازتعریف استانداردهای مالی و ارتباطی برای جامعه‌ای که سال‌ها از خدمات نوین جهانی محروم بوده‌اند.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* --- ۲. ویژگی‌ها با انیمیشن Stagger --- */}
-      <motion.section 
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 border-y border-white/5 bg-white/[0.01]"
-      >
-        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12">
-          {[
-            { title: "حل چالش دسترسی", desc: "صافی شکاف پرداخت‌های بین‌المللی افغانستان را با تکنولوژی فین‌تک اروپا پر می‌کند." },
-            { title: "امنیت تراز اول", desc: "استفاده از پروتکل‌های PCI-DSS برای تضمین سلامت هر تراکنش در شبکه جهانی." },
-            { title: "اتصال بدون مرز", desc: "از پرداخت شهریه در اروپا تا شارژ موبایل در کابل؛ همه در یک اکوسیستم." }
-          ].map((item, i) => (
-            <motion.div key={i} variants={fadeInUp} className="space-y-4 group p-4">
-              <h3 className="text-2xl font-bold text-amber-500 group-hover:translate-x-2 transition-transform">{item.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* --- ۳. SafiPay & Wallester (انیمیشن کارت بانکی) --- */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:w-1/2 space-y-8"
-          >
-            <div className="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold uppercase tracking-widest">
-              Fintech Infrastructure
-            </div>
-            <h2 className="text-5xl font-black text-white leading-tight">SafiPay: بانکداری فرامرزی</h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              صافی‌پی تنها یک کیف‌پول نیست؛ یک نئوبانک کامل با همکاری **Wallester AS** و شبکه **VISA** است.
+            <p className="max-w-4xl mx-auto text-xl md:text-3xl text-gray-500 font-light leading-relaxed">
+              اکوسیستم صافی تنها یک اپلیکیشن نیست؛ یک زیرساخت جهانی است که حاکمیت مالی را برای بیش از ۴۰ میلیون کاربر تعریف می‌کند.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-                <CheckCircle2 className="text-amber-500" size={20} />
-                <span className="text-sm">صدور کارت فیزیکی و مجازی VISA</span>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-                <CheckCircle2 className="text-amber-500" size={20} />
-                <span className="text-sm">حساب با IBAN اختصاصی اروپا</span>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* انیمیشن شناور برای بخش پارتنر */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1 }}
-            className="lg:w-1/2 w-full"
-          >
-            <div className="bg-gradient-to-br from-gray-900 to-black p-1 rounded-[3rem] border border-white/10 shadow-2xl relative group">
-              <div className="absolute inset-0 bg-amber-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bg-[#0a0a0a] rounded-[2.8rem] p-10 space-y-8 relative z-10">
-                <div className="flex justify-between items-center text-[10px] font-mono text-gray-500">
-                  <span>ID: 2026_WALLESTER_PARTNER</span>
-                  <span className="text-green-500">● LIVE_CONNECTION</span>
-                </div>
-                <div className="py-10 text-center border-y border-white/5">
-                  <motion.h3 
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="text-4xl font-black mb-2 tracking-widest"
-                  >
-                    Wallester
-                  </motion.h3>
-                  <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">Official Strategic Partner</p>
-                </div>
-                <p className="text-gray-400 text-sm italic text-center">"قدرت گرفته از زیرساخت‌های بانکی دارای لایسنس اتحادیه اروپا"</p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- ۴. Safi TopUp (انیمیشن پالس و آیکون‌ها) --- */}
-      <section className="py-24 container mx-auto px-6 bg-blue-500/[0.02] rounded-[5rem] my-10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] animate-pulse" />
-        <div className="flex flex-col lg:flex-row-reverse gap-16 items-center relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:w-1/2 space-y-8"
-          >
-            <div className="inline-block px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-xs font-bold uppercase tracking-widest">
-              Global Connectivity
-            </div>
-            <h2 className="text-5xl font-black text-white leading-tight">Safi TopUp: اتصال آنی</h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              با تکیه بر شبکه **Ding**، ما پلی میان افغانستان و اپراتورهای مخابراتی ۵۰۰ کشور جهان ساخته‌ایم.
+      {/* --- ۲. والستر (ستون بانکی) --- */}
+      <section className="py-40 container mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-20 items-center">
+          <div className="lg:col-span-6 space-y-10 order-2 lg:order-1">
+            <h3 className="text-amber-500 font-black tracking-widest text-sm uppercase">ستون استراتژیک اول: Wallester AS</h3>
+            <h2 className="text-6xl font-black italic leading-[0.9]">هسته بانکی <br/> اروپایی.</h2>
+            <p className="text-gray-400 text-lg leading-relaxed font-light">
+              ما با **Wallester AS**، موسسه مالی دارای مجوز و عضو اصلی VISA در استونی، وارد شراکت مستقیم شده‌ایم. این یک اتصال ساده نیست؛ بلکه یک دسترسی مستقیم به شبکه مالی اروپا است. در حالی که بانک‌های منطقه با تحریم‌ها و سیستم‌های قدیمی دست و پنجه نرم می‌کنند، کاربران صافی‌پی از مزایای زیر بهره‌مند می‌شوند:
             </p>
-            <div className="space-y-4">
-               {[
-                 { icon: <Wifi size={20} />, t: "تکنولوژی E-SIM", d: "سیم‌کارت مجازی در ۱۵۰ کشور." },
-                 { icon: <Smartphone size={20} />, t: "اپراتورهای داخلی", d: "شارژ آنی روشن، افغان‌بیسیم و..." }
-               ].map((item, i) => (
-                 <motion.div key={i} whileHover={{ x: -10 }} className="flex gap-4 p-5 bg-white/5 rounded-3xl border border-white/5 items-center">
-                    <div className="text-blue-500">{item.icon}</div>
-                    <div>
-                      <h4 className="font-bold text-sm">{item.t}</h4>
-                      <p className="text-gray-500 text-xs">{item.d}</p>
-                    </div>
-                 </motion.div>
-               ))}
-            </div>
-          </motion.div>
-
-          <motion.div 
-             initial={{ opacity: 0, scale: 0.8 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             transition={{ duration: 0.8 }}
-             className="lg:w-1/2"
-          >
-             <div className="relative p-12 bg-[#ff4d00]/5 border border-[#ff4d00]/20 rounded-[4rem] text-center group">
-                <motion.div 
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="w-24 h-24 bg-[#ff4d00] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_50px_rgba(255,77,0,0.3)]"
-                >
-                  <span className="text-white font-black text-3xl italic">d.</span>
-                </motion.div>
-                <h3 className="text-3xl font-black mb-4">Ding Strategic Partner</h3>
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">سرعت تراکنش کمتر از ۳ ثانیه در سطح جهانی.</p>
-                <div className="flex justify-center gap-10">
-                   <div className="text-center"><div className="text-2xl font-black">500+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Operators</div></div>
-                   <div className="text-center"><div className="text-2xl font-black">150+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Countries</div></div>
+            <div className="grid grid-cols-2 gap-8">
+                <div className="space-y-2">
+                    <div className="text-amber-500 font-black text-xl italic">01. PCI-DSS</div>
+                    <p className="text-gray-600 text-[10px] uppercase font-bold">بالاترین سطح امنیت جهانی</p>
                 </div>
-             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* --- ۵. رودمپ با انیمیشن ظهور پله‌ای --- */}
-      <section className="py-24 container mx-auto px-6">
-        <motion.h2 {...fadeInUp} className="text-4xl font-black text-center mb-20 italic">ROADMAP 2026</motion.h2>
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          className="grid md:grid-cols-4 gap-6"
-        >
-          {[
-            { q: "Q1", title: "تثبیت زیرساخت", items: ["اخذ مجوزها", "تست بتا"] },
-            { q: "Q2", title: "عرضه اولیه", items: ["لانچ رسمی", "E-SIM"] },
-            { q: "Q3", title: "گسترش", items: ["ادغام Ding", "پنل تجاری"] },
-            { q: "Q4", title: "هوشمندی", items: ["سیستم پاداش", "کارت فیزیکی"] },
-          ].map((item, i) => (
-            <motion.div 
-              key={i} 
-              variants={fadeInUp}
-              whileHover={{ y: -10, borderColor: 'rgba(245,158,11,0.5)' }}
-              className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden transition-colors"
-            >
-              <div className="text-6xl font-black text-white/5 absolute -top-2 -left-2">{item.q}</div>
-              <h4 className="text-xl font-bold mb-4 text-amber-500 relative z-10">{item.title}</h4>
-              <ul className="space-y-2 text-xs text-gray-400 relative z-10">
-                {item.items.map((li, j) => <li key={j}>• {li}</li>)}
-              </ul>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* --- ۶. سوالات متداول با انیمیشن ساده --- */}
-      <section className="py-24 max-w-3xl mx-auto px-6">
-        <h2 className="text-3xl font-black text-center mb-12 italic">FAQs</h2>
-        <div className="space-y-4">
-          {[
-            { q: "امنیت سرمایه؟", a: "بیمه تا سقف ۱۰۰ هزار یورو طبق قوانین اروپا." },
-            { q: "نحوه همکاری؟", a: "تکمیل فرم انتهای صفحه برای دریافت Pitch Deck." }
-          ].map((faq, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0 }} 
-              whileInView={{ opacity: 1 }}
-              className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 shadow-inner"
-            >
-              <h4 className="font-bold text-amber-500 mb-2 flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> {faq.q}
-              </h4>
-              <p className="text-gray-400 text-sm leading-relaxed">{faq.a}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- ۷. CTA نهایی با افکت بزرگنمایی --- */}
-      <section className="py-24 container mx-auto px-6">
-        <motion.div 
-          whileHover={{ scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 300 }}
-          className="relative rounded-[4rem] overflow-hidden bg-gradient-to-r from-amber-600 to-amber-800 p-12 md:p-24 text-center"
-        >
-          <div className="relative z-10">
-            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">آماده مشارکت هستید؟</h2>
-            <div className="flex flex-col md:flex-row gap-6 justify-center">
-               <motion.button 
-                 whileTap={{ scale: 0.9 }}
-                 className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3"
-               >
-                 <Mail size={24} /> تماس مستقیم
-               </motion.button>
-               <motion.button 
-                 whileTap={{ scale: 0.9 }}
-                 className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg"
-               >
-                 دریافت کاتالوگ
-               </motion.button>
+                <div className="space-y-2">
+                    <div className="text-amber-500 font-black text-xl italic">02. VISA BIN</div>
+                    <p className="text-gray-600 text-[10px] uppercase font-bold">صدور رسمی کارت‌های ویزا</p>
+                </div>
             </div>
           </div>
-        </motion.div>
+          <motion.div 
+            whileHover={{ scale: 1.02, borderColor: 'rgba(245,158,11,0.4)' }}
+            className="lg:col-span-6 order-1 lg:order-2 p-12 rounded-[5rem] bg-gradient-to-br from-white/10 to-transparent border border-white/10 relative overflow-hidden transition-all duration-500 shadow-2xl"
+          >
+             <CreditCard size={180} className="absolute -left-10 -top-10 opacity-5" />
+             <ul className="space-y-6 relative z-10 text-gray-300 font-bold">
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> حساب‌های شخصی با IBAN اروپایی</li>
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> صدور آنی کارت‌های مجازی ویزا</li>
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> تسویه حساب جهانی SEPA و SWIFT</li>
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> مدیریت دارایی‌های متصل به یورو</li>
+             </ul>
+          </motion.div>
+        </div>
       </section>
 
-      <footer className="py-10 text-center text-gray-700 text-[10px] uppercase tracking-[0.5em]">
-        © 2026 SafiPay & Safi TopUp | Strategic Partner Infrastructure
+      {/* --- ۳. دینگ (اتصال جهانی) --- */}
+      <section className="py-40 bg-white/[0.02] border-y border-white/5">
+        <div className="container mx-auto px-6 grid lg:grid-cols-12 gap-20 items-center">
+          <motion.div 
+            whileHover={{ scale: 1.02, borderColor: 'rgba(59,130,246,0.4)' }}
+            className="lg:col-span-6 p-12 rounded-[5rem] bg-gradient-to-bl from-blue-500/10 to-transparent border border-blue-500/10 transition-all duration-500"
+          >
+                <h4 className="text-blue-500 font-black mb-8">گستره زیرساخت</h4>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                    <div className="p-6 bg-black rounded-3xl border border-white/5">
+                        <div className="text-4xl font-black italic">500+</div>
+                        <div className="text-[10px] text-gray-500 uppercase">اپراتور جهانی</div>
+                    </div>
+                    <div className="p-6 bg-black rounded-3xl border border-white/5">
+                        <div className="text-4xl font-black italic">150+</div>
+                        <div className="text-[10px] text-gray-500 uppercase">کشور پوشش‌دهی</div>
+                    </div>
+                </div>
+          </motion.div>
+          <div className="lg:col-span-6 space-y-10">
+            <h3 className="text-blue-500 font-black tracking-widest text-sm uppercase">ستون استراتژیک دوم: Ding Network</h3>
+            <h2 className="text-6xl font-black italic leading-[0.9]">اتصال <br/> توقف‌ناپذیر.</h2>
+            <p className="text-gray-400 text-lg leading-relaxed font-light">
+              **Ding** بزرگترین موتور شارژ موبایل در جهان است. صافی تاپ‌آپ با استفاده از این شبکه، شارژ آنی، بسته‌های انترنت و خدمات E-SIM را فراهم می‌کند. برای اولین بار، کاربران در مناطق دشوار می‌توانند با تاخیر ۰.۱ ثانیه به جهان متصل بمانند.
+            </p>
+            <div className="flex gap-4">
+                <span className="px-6 py-2 rounded-xl bg-blue-500/20 text-blue-500 text-xs font-black italic">تسویه حساب آنی</span>
+                <span className="px-6 py-2 rounded-xl bg-blue-500/20 text-blue-500 text-xs font-black italic">آماده برای E-SIM 5G</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- ۴. خدمات صافی --- */}
+      <section className="py-40 container mx-auto px-6">
+        <div className="text-center mb-32 space-y-4">
+          <h2 className="text-6xl font-black italic uppercase tracking-tighter">لیست خدمات <span className="text-amber-500 text-glow">اختصاصی.</span></h2>
+          <p className="text-gray-500 max-w-2xl mx-auto font-light">آنچه در صافی تجربه می‌کنید، فرسنگ‌ها جلوتر از بانکداری سنتی است.</p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-12">
+            {[
+                { t: "کارت مجازی ویزا", d: "صدور در چند ثانیه. قابل استفاده برای تبلیغات فیس‌بوک، گوگل کلاد، نتفلیکس، آمازون و بیش از ۱۰۰ میلیون فروشگاه در سراسر جهان.", icon: <CreditCard className="text-amber-500" size={40}/> },
+                { t: "حساب IBAN اروپایی", d: "حقوق یا پرداخت‌های فریلنسری خود را مستقیم از اروپا و آمریکا دریافت کنید. تحت نظارت مقامات مالی اتحادیه اروپا.", icon: <Globe className="text-amber-500" size={40}/> },
+                { t: "سیم‌کارت الکترونیک (E-SIM)", d: "فعال‌سازی آنی برای ۱۵۰ کشور. از کابل تا دبی و پاریس بدون تعویض سیم‌کارت فیزیکی متصل بمانید.", icon: <Smartphone className="text-amber-500" size={40}/> },
+                { t: "پل تبدیل کریپتو", d: "دارایی‌های دیجیتال خود را به صورت آنی به موجودی قابل خرج در کارت ویزا تبدیل کنید. سریع‌ترین مسیر نقدینگی.", icon: <Coins className="text-amber-500" size={40}/> },
+                { t: "پنل تجاری اختصاصی", d: "برای بیزینس‌هایی که نیاز به پرداخت‌های ارزی به تامین‌کنندگان خارجی دارند. بدون محدودیت و بروکراسی.", icon: <Briefcase className="text-amber-500" size={40}/> },
+                { t: "محافظ هوشمند دارایی", d: "هوش مصنوعی که هزینه‌های شما را مانیتور کرده و بهترین زمان تبدیل ارز را پیشنهاد می‌دهد.", icon: <Cpu className="text-amber-500" size={40}/> }
+            ].map((srv, i) => (
+                <motion.div 
+                    key={i} 
+                    whileHover={{ y: -15, backgroundColor: 'rgba(245,158,11,0.05)', borderColor: 'rgba(245,158,11,0.3)' }}
+                    className="p-12 rounded-[4rem] bg-white/[0.03] border border-white/5 transition-all duration-300 group"
+                >
+                    <div className="mb-10 group-hover:scale-110 transition-transform duration-500">{srv.icon}</div>
+                    <h4 className="text-2xl font-black mb-6 italic">{srv.t}</h4>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">{srv.d}</p>
+                </motion.div>
+            ))}
+        </div>
+      </section>
+
+      {/* --- ۵. مقایسه با بانک‌های منطقه --- */}
+      <section className="py-40 bg-amber-500/5">
+        <div className="container mx-auto px-6">
+            <h2 className="text-6xl font-black text-center mb-32 italic">فراتر از <span className="text-amber-500">مرزها.</span></h2>
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 font-bold">
+                <motion.div whileHover={{ scale: 0.98 }} className="p-12 bg-black rounded-[4rem] border border-red-500/20 text-right">
+                    <ShieldAlert className="text-red-500 mb-8 mr-auto lg:mr-0" size={50} />
+                    <h3 className="text-3xl font-black mb-8 italic text-red-500">بانک‌های سنتی منطقه</h3>
+                    <ul className="space-y-6 text-gray-600 text-sm">
+                        <li>• شبکه‌های محدود و تحت تحریم شدید</li>
+                        <li>• احراز هویت کاغذی (هفته‌ها زمان می‌برد)</li>
+                        <li>• عدم پشتیبانی از پرداخت‌های جهانی (نتفلیکس/تبلیغات)</li>
+                        <li>• هزینه‌های بالای حواله و سیستم‌های قدیمی</li>
+                    </ul>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.02 }} className="p-12 bg-black rounded-[4rem] border border-amber-500/50 shadow-[0_0_50px_rgba(245,158,11,0.1)] text-right">
+                    <BadgeCheck className="text-amber-500 mb-8 mr-auto lg:mr-0" size={50} />
+                    <h3 className="text-3xl font-black mb-8 italic text-amber-500">اکوسیستم جهانی صافی</h3>
+                    <ul className="space-y-6 text-amber-400 text-sm">
+                        <li>• زیرساخت دارای مجوز اتحادیه اروپا و عضو VISA</li>
+                        <li>• احراز هویت با هوش مصنوعی (آماده در ۲ دقیقه)</li>
+                        <li>• قبولی ۱۰۰٪ در تمامی درگاه‌های پرداخت جهانی</li>
+                        <li>• تسویه‌ حساب‌های آنی و مبتنی بر API مدرن</li>
+                    </ul>
+                </motion.div>
+            </div>
+        </div>
+      </section>
+
+      {/* --- ۶. رودمپ با ماشین متحرک --- */}
+      <section className="py-60 container mx-auto px-6 relative" ref={containerRef}>
+        <h2 className="text-7xl font-black text-center mb-60 italic tracking-tighter uppercase">مسیر <span className="text-amber-500 text-glow">پیشرفت.</span></h2>
+        
+        <div className="relative max-w-5xl mx-auto px-4 h-[2500px]">
+          {/* جاده */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[8px] h-full bg-white/5 rounded-full overflow-hidden">
+            <motion.div 
+                style={{ scaleY: smoothProgress, originY: 0 }}
+                className="absolute top-0 left-0 w-full bg-amber-500 rounded-full"
+            />
+          </div>
+
+          {/* ماشین آهسته و لوکس */}
+          <motion.div 
+            style={{ top: carY }}
+            className="absolute left-1/2 -translate-x-1/2 -mt-10 z-50 flex flex-col items-center"
+          >
+            <div className="bg-amber-500 p-4 rounded-2xl shadow-[0_0_60px_rgba(245,158,11,1)] rotate-90">
+                <Car size={32} className="text-black fill-black" />
+            </div>
+            <div className="w-1 h-32 bg-gradient-to-t from-amber-500 to-transparent mt-2 mx-auto" />
+          </motion.div>
+
+          {/* مراحل جاده */}
+          {[
+            { phase: "فاز اول", title: "تولد سازمانی", desc: "نهایی‌سازی پروتکل‌های مجوز اتحادیه اروپا. ادغام کامل API با هسته بانکی Wallester AS. ایجاد پل‌های نقدینگی سطح یک.", year: "Q1 2026", y: "10%" },
+            { phase: "فاز دوم", title: "توسعه اتصال", desc: "شراکت رسمی با Ding Global. راه‌اندازی صافی تاپ‌آپ برای ۵۰۰+ اپراتور. عرضه بسته‌های انترنت جهانی E-SIM.", year: "Q2 2026", y: "35%" },
+            { phase: "فاز سوم", title: "تسلط بر بازار خرد", desc: "عرضه عمومی اپلیکیشن صافی‌پی (iOS/Android). صدور کارت‌های مجازی ویزا و حساب‌های IBAN برای عموم کاربران.", year: "Q3 2026", y: "60%" },
+            { phase: "فاز چهارم", title: "حاکمیت فیزیکی", desc: "صدور کارت‌های فیزیکی تیتانیوم صافی. نصب ترمینال‌های پرداخت در بازارهای لوکس استانبول، دبی و کابل.", year: "Q4 2026", y: "85%" },
+          ].map((step, i) => (
+            <div 
+                key={i} 
+                className={`absolute w-full flex items-center ${i % 2 !== 0 ? "justify-start text-right" : "justify-end text-left"}`}
+                style={{ top: step.y }}
+            >
+                <motion.div 
+                    initial={{ opacity: 0, x: i % 2 !== 0 ? -100 : 100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{ scale: 1.05, borderColor: 'rgba(245,158,11,0.5)' }}
+                    transition={{ duration: 0.8 }}
+                    className="md:w-[42%] p-12 bg-[#0a0a0a] border border-white/10 rounded-[4rem] transition-all shadow-2xl cursor-default"
+                >
+                    <span className="text-amber-500 font-black text-xs block mb-4 tracking-[0.4em]">{step.year}</span>
+                    <h4 className="text-amber-600 font-bold uppercase text-[10px] mb-2">{step.phase}</h4>
+                    <h3 className="text-4xl font-black mb-6 italic">{step.title}</h3>
+                    <p className="text-gray-500 leading-relaxed font-light">{step.desc}</p>
+                </motion.div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- ۷. فرم درخواست همکاری --- */}
+      <section className="py-60 container mx-auto px-6" id="partner-form">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-20 items-center">
+            <div className="lg:col-span-5 space-y-12">
+                <h2 className="text-7xl font-black italic leading-[0.8]">به تیم <br/> <span className="text-amber-500">رهبری</span> بپیوندید.</h2>
+                <p className="text-gray-400 text-2xl font-light">ما در حال گزینش ۵ پارتنر استراتژیک برای فاز توسعه Q3 هستیم. درخواست خود را برای رزرو جایگاه ارسال کنید.</p>
+                <div className="flex items-center gap-6 p-8 rounded-[3rem] bg-white/5 border border-white/10">
+                    <Landmark size={40} className="text-amber-500" />
+                    <div>
+                        <p className="text-xs text-gray-500 uppercase font-black">سطح همکاری سازمانی</p>
+                        <p className="font-bold font-sans tracking-tighter">بررسی تاییدیه در کمتر از ۲۴ ساعت</p>
+                    </div>
+                </div>
+            </div>
+            <motion.div 
+              whileHover={{ scale: 1.01 }}
+              className="lg:col-span-7 p-12 md:p-20 bg-black border border-white/10 rounded-[5rem] shadow-2xl relative overflow-hidden"
+            >
+                <form action="https://formspree.io/f/maqbrkgq" method="POST" className="space-y-10 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-10">
+                        <div className="space-y-4">
+                            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">نام سازمان / نهاد</label>
+                            <input name="entity" type="text" required placeholder="بانک / شرکت" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all text-left font-sans" dir="ltr" />
+                        </div>
+                        <div className="space-y-4">
+                            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">ایمیل رسمی</label>
+                            <input name="email" type="email" required placeholder="ceo@company.com" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all text-left font-sans" dir="ltr" />
+                        </div>
+                    </div>
+                    <div className="space-y-4">
+                        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">نوع همکاری استراتژیک</label>
+                        <select name="intent" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 text-gray-400 font-sans">
+                            <option>سرمایه‌گذاری نهادی</option>
+                            <option>تامین‌کننده زیرساخت</option>
+                            <option>توسعه بازار و نمایندگی</option>
+                        </select>
+                    </div>
+                    <div className="space-y-4">
+                        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">پیشنهاد اجرایی</label>
+                        <textarea name="proposal" rows={6} required placeholder="چشم‌انداز و پتانسیل همکاری شما..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all resize-none"></textarea>
+                    </div>
+                    <button type="submit" className="w-full bg-amber-500 text-black font-black py-8 rounded-3xl text-2xl uppercase tracking-tighter hover:bg-amber-400 transition-all shadow-[0_30px_60px_rgba(245,158,11,0.3)]">
+                        شروع گفتگوهای استراتژیک
+                    </button>
+                </form>
+            </motion.div>
+        </div>
+      </section>
+
+      {/* --- ۸. فوتر میراث --- */}
+      <footer className="py-20 text-center border-t border-white/5">
+        <div className="flex justify-center gap-12 mb-10 opacity-20 italic font-black text-[9px] uppercase tracking-[0.8em] font-sans">
+            <span>Wallester Licensed</span>
+            <span>Ding Official</span>
+            <span>VISA Principal</span>
+        </div>
+        <p className="text-gray-800 text-[10px] uppercase tracking-[0.5em] font-sans">SafiPay Global Infrastructure © 2026 | Built for the Frontier Markets.</p>
       </footer>
     </div>
   );
