@@ -19,6 +19,12 @@ const staggerContainer = {
   whileInView: { transition: { staggerChildren: 0.2 } }
 };
 
+const TikTokIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
 export default function AnimatedPartnershipPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
@@ -74,7 +80,7 @@ export default function AnimatedPartnershipPage() {
         </div>
       </motion.section>
 
-      {/* --- 3. SafiPay & Wallester (Bank Card Animation) --- */}
+      {/* --- 3. SafiPay & Wallester --- */}
       <section className="py-24 container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <motion.div 
@@ -103,7 +109,6 @@ export default function AnimatedPartnershipPage() {
             </div>
           </motion.div>
 
-          {/* Floating Card UI */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -127,14 +132,14 @@ export default function AnimatedPartnershipPage() {
                   </motion.h3>
                   <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">Official Strategic Partner</p>
                 </div>
-                <p className="text-gray-400 text-sm italic text-center text-[12px]">"Powered by EU-licensed banking infrastructure"</p>
+                <p className="text-gray-400 text-sm italic text-center">"Powered by EU-licensed banking infrastructure"</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- 4. Safi TopUp (Global Connectivity) --- */}
+      {/* --- 4. Safi TopUp --- */}
       <section className="py-24 container mx-auto px-6 bg-blue-500/[0.02] rounded-[5rem] my-10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] animate-pulse" />
         <div className="flex flex-col lg:flex-row gap-16 items-center relative z-10">
@@ -223,20 +228,83 @@ export default function AnimatedPartnershipPage() {
         </motion.div>
       </section>
 
-      {/* --- 6. FAQs --- */}
+      {/* --- 6. STRATEGIC PARTNERSHIP FORM (THE NEW PART) --- */}
+      <section className="py-24 container mx-auto px-6 relative" id="partner-form">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-16 items-start">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-5 space-y-8"
+          >
+            <h2 className="text-5xl font-black italic tracking-tighter leading-tight">
+              Become a <span className="text-amber-500">Safi</span> Partner
+            </h2>
+            <p className="text-gray-400 text-lg font-light leading-relaxed">
+              Join our mission to bridge the gap between global finance and the Afghan market. We are looking for banks, technology providers, and investors.
+            </p>
+            <div className="space-y-6">
+              <div className="flex gap-4 items-center p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
+                <ShieldCheck className="text-amber-500" />
+                <div>
+                  <h4 className="font-bold text-sm">Verified Security</h4>
+                  <p className="text-gray-500 text-xs">High-end encryption for all data.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-center p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
+                <Cpu className="text-amber-500" />
+                <div>
+                  <h4 className="font-bold text-sm">API Integration</h4>
+                  <p className="text-gray-500 text-xs">Direct ecosystem connectivity.</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="lg:col-span-7 bg-[#0c0c0c] border border-white/10 p-8 md:p-12 rounded-[3rem] shadow-2xl relative"
+          >
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Full Name</label>
+                  <input type="text" placeholder="John Doe" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-amber-500/50 transition-all text-sm" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Email</label>
+                  <input type="email" placeholder="name@company.com" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-amber-500/50 transition-all text-sm" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Partnership Type</label>
+                <select className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-amber-500/50 transition-all text-sm text-gray-400">
+                  <option>Financial Institution</option>
+                  <option>Technology Provider</option>
+                  <option>Strategic Investor</option>
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Proposal</label>
+                <textarea rows={4} placeholder="Your vision..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-amber-500/50 transition-all text-sm resize-none"></textarea>
+              </div>
+              <motion.button whileHover={{ scale: 1.02 }} className="w-full bg-amber-600 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3">
+                Send Proposal <ArrowRight size={20} />
+              </motion.button>
+            </form>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- 7. FAQs --- */}
       <section className="py-24 max-w-3xl mx-auto px-6">
         <h2 className="text-3xl font-black text-center mb-12 italic">FAQs</h2>
         <div className="space-y-4">
           {[
             { q: "Capital Security?", a: "Insurance up to €100,000 in accordance with EU regulations." },
-            { q: "How to partner?", a: "Complete the form at the bottom of the page to receive our Pitch Deck." }
+            { q: "How to partner?", a: "Complete the form above to receive our official Pitch Deck." }
           ].map((faq, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0 }} 
-              whileInView={{ opacity: 1 }}
-              className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 shadow-inner"
-            >
+            <motion.div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-white/5">
               <h4 className="font-bold text-amber-500 mb-2 flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> {faq.q}
               </h4>
@@ -246,26 +314,19 @@ export default function AnimatedPartnershipPage() {
         </div>
       </section>
 
-      {/* --- 7. FINAL CTA --- */}
+      {/* --- 8. FINAL CTA --- */}
       <section className="py-24 container mx-auto px-6">
         <motion.div 
           whileHover={{ scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 300 }}
           className="relative rounded-[4rem] overflow-hidden bg-gradient-to-r from-amber-600 to-amber-800 p-12 md:p-24 text-center"
         >
           <div className="relative z-10">
             <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">Ready to Participate?</h2>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
-               <motion.button 
-                 whileTap={{ scale: 0.9 }}
-                 className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3"
-               >
+               <motion.button className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3">
                  <Mail size={24} /> Direct Contact
                </motion.button>
-               <motion.button 
-                 whileTap={{ scale: 0.9 }}
-                 className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg"
-               >
+               <motion.button className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg">
                  Get Catalogue
                </motion.button>
             </div>
