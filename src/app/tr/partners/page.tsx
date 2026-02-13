@@ -1,279 +1,288 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { 
-  Handshake, Rocket, Globe, ShieldCheck, 
-  ArrowRight, CreditCard, Zap, BarChart3, Mail, 
-  Wifi, Smartphone, Cpu, CheckCircle2, HelpCircle
+  Globe, ShieldCheck, ArrowRight, CreditCard, Zap, 
+  Wifi, Smartphone, CheckCircle2, Coins, 
+  Lock, Server, Briefcase, Car, Cpu, Landmark, BadgeCheck, ShieldAlert
 } from 'lucide-react';
 
-// Animasyon Ayarları
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6 }
-};
+export default function TurkishElitePartnership() {
+  const containerRef = useRef(null);
+  
+  // Araç için sinematik kaydırma ayarları
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
-const staggerContainer = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.2 } }
-};
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 25, 
+    damping: 20,
+    restDelta: 0.001
+  });
 
-export default function AnimatedPartnershipPage() {
+  const carY = useTransform(smoothProgress, [0, 1], ["0%", "98%"]);
+
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
+    <div className="min-h-screen bg-[#020202] text-white font-sans overflow-x-hidden selection:bg-amber-500/30" dir="ltr">
       
-      {/* --- 1. HERO BÖLÜMÜ --- */}
-      <section className="relative pt-40 pb-20 overflow-hidden">
-        <motion.div 
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-amber-600/5 blur-[150px] rounded-full" 
-        />
+      {/* --- 1. HERO: FİNANSAL DEV --- */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,11,0.15),transparent_70%)]" />
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1 className="text-6xl md:text-9xl font-black mb-10 tracking-tighter leading-tight">
-              <span className="text-amber-500 inline-block drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]">SAFI</span> EKOSİSTEMİ
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
+            <span className="inline-block px-8 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-black uppercase tracking-[0.6em] mb-12">
+              Egemen Finansal Ağ 2026
+            </span>
+            <h1 className="text-7xl md:text-[10rem] font-black leading-[0.75] mb-16 italic tracking-tighter">
+              EŞSİZ <br/> <span className="text-amber-500 text-glow">GÜÇ.</span>
             </h1>
-          </motion.div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
-          >
-            Küresel modern hizmetlerden yeterince yararlanamayan topluluklar için finansal ve bağlantı standartlarını yeniden tanımlıyoruz.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* --- 2. TEMEL ÖZELLİKLER --- */}
-      <motion.section 
-        variants={staggerContainer}
-        initial="initial"
-        whileInView="whileInView"
-        viewport={{ once: true }}
-        className="py-20 border-y border-white/5 bg-white/[0.01]"
-      >
-        <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12">
-          {[
-            { title: "Erişim Çözüldü", desc: "Safi, Avrupa fintech teknolojisini kullanarak Afganistan'daki uluslararası ödeme açığını kapatıyor." },
-            { title: "Üst Düzey Güvenlik", desc: "Küresel ağımızdaki her işlemin bütünlüğünü garanti etmek için PCI-DSS protokollerini kullanıyoruz." },
-            { title: "Sınır Tanımayan Bağlantı", desc: "Avrupa'daki okul ücreti ödemelerinden Kabil'deki mobil yüklemelere kadar her şey tek bir ekosistemde." }
-          ].map((item, i) => (
-            <motion.div key={i} variants={fadeInUp} className="space-y-4 group p-4">
-              <h3 className="text-2xl font-bold text-amber-500 group-hover:translate-x-2 transition-transform">{item.title}</h3>
-              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* --- 3. SafiPay & Wallester --- */}
-      <section className="py-24 container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:w-1/2 space-y-8"
-          >
-            <div className="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold uppercase tracking-widest">
-              Fintech Altyapısı
-            </div>
-            <h2 className="text-5xl font-black text-white leading-tight">SafiPay: Sınır Ötesi Bankacılık</h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              SafiPay bir cüzdandan daha fazlasıdır; **Wallester AS** ve **VISA** ağı tarafından desteklenen tam bir yeni nesil bankacılık (neobanking) deneyimidir.
+            <p className="max-w-4xl mx-auto text-xl md:text-3xl text-gray-500 font-light leading-relaxed italic">
+              Safi ekosistemi, Avrupa'nın fintech mükemmelliği ile Orta Asya'nın gelişmekte olan pazarları arasındaki kesin köprüdür.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-                <CheckCircle2 className="text-amber-500" size={20} />
-                <span className="text-sm">Fiziksel ve Sanal VISA Kart İhracı</span>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} className="flex items-start gap-3 bg-white/5 p-4 rounded-2xl">
-                <CheckCircle2 className="text-amber-500" size={20} />
-                <span className="text-sm">Özel Avrupa IBAN Hesapları</span>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1 }}
-            className="lg:w-1/2 w-full"
-          >
-            <div className="bg-gradient-to-br from-gray-900 to-black p-1 rounded-[3rem] border border-white/10 shadow-2xl relative group">
-              <div className="absolute inset-0 bg-amber-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bg-[#0a0a0a] rounded-[2.8rem] p-10 space-y-8 relative z-10">
-                <div className="flex justify-between items-center text-[10px] font-mono text-gray-500">
-                  <span>ID: 2026_WALLESTER_PARTNER</span>
-                  <span className="text-green-500">● CANLI_BAGLANTI</span>
-                </div>
-                <div className="py-10 text-center border-y border-white/5">
-                  <motion.h3 
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="text-4xl font-black mb-2 tracking-widest"
-                  >
-                    Wallester
-                  </motion.h3>
-                  <p className="text-amber-500 text-xs font-bold uppercase tracking-[0.2em]">Resmi Stratejik Ortak</p>
-                </div>
-                <p className="text-gray-400 text-sm italic text-center text-[12px]">"AB lisanslı bankacılık altyapısı ile desteklenmektedir"</p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- 4. Safi TopUp --- */}
-      <section className="py-24 container mx-auto px-6 bg-blue-500/[0.02] rounded-[5rem] my-10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[100px] animate-pulse" />
-        <div className="flex flex-col lg:flex-row gap-16 items-center relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:w-1/2 space-y-8"
-          >
-            <div className="inline-block px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-xs font-bold uppercase tracking-widest">
-              Küresel Bağlantı
-            </div>
-            <h2 className="text-5xl font-black text-white leading-tight">Safi TopUp: Anında Bağlantı</h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
-              **Ding** ağını kullanarak, Afganistan ile 500 ülkedeki telekom operatörleri arasında bir köprü kurduk.
+      {/* --- 2. SÜTUN I: WALLESTER AS --- */}
+      <section className="py-40 container mx-auto px-6">
+        <div className="grid lg:grid-cols-12 gap-20 items-center">
+          <div className="lg:col-span-6 space-y-10">
+            <h3 className="text-amber-500 font-black tracking-widest text-sm uppercase">Stratejik Sütun I: Wallester AS</h3>
+            <h2 className="text-6xl font-black italic leading-[0.9]">Avrupa <br/> Bankacılık Merkezi.</h2>
+            <p className="text-gray-400 text-lg leading-relaxed font-light">
+              Estonya'da lisanslı bir EMI ve VISA ana üyesi olan **Wallester AS** ile doğrudan 1. seviye ortaklık kurduk. Bu, kırılgan bölgesel bankacılık sistemlerini devre dışı bırakarak kullanıcılara AB finansal ağına doğrudan API bağlantısı sağlar.
             </p>
-            <div className="space-y-4">
-               {[
-                 { icon: <Wifi size={20} />, t: "E-SIM Teknolojisi", d: "150'den fazla ülkede sanal SIM kartlar." },
-                 { icon: <Smartphone size={20} />, t: "Yerel Operatörler", d: "Roshan, Afghan Wireless ve daha fazlası için anında yükleme." }
-               ].map((item, i) => (
-                 <motion.div key={i} whileHover={{ x: 10 }} className="flex gap-4 p-5 bg-white/5 rounded-3xl border border-white/5 items-center">
-                    <div className="text-blue-500">{item.icon}</div>
-                    <div>
-                      <h4 className="font-bold text-sm">{item.t}</h4>
-                      <p className="text-gray-500 text-xs">{item.d}</p>
-                    </div>
-                 </motion.div>
-               ))}
-            </div>
-          </motion.div>
-
-          <motion.div 
-             initial={{ opacity: 0, scale: 0.8 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             transition={{ duration: 0.8 }}
-             className="lg:w-1/2"
-          >
-             <div className="relative p-12 bg-[#ff4d00]/5 border border-[#ff4d00]/20 rounded-[4rem] text-center group">
-                <motion.div 
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="w-24 h-24 bg-[#ff4d00] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-[0_0_50px_rgba(255,77,0,0.3)]"
-                >
-                  <span className="text-white font-black text-3xl italic">d.</span>
-                </motion.div>
-                <h3 className="text-3xl font-black mb-4">Ding Stratejik Ortağı</h3>
-                <p className="text-gray-300 text-sm leading-relaxed mb-6">3 saniyenin altında küresel işlem hızı.</p>
-                <div className="flex justify-center gap-10">
-                   <div className="text-center"><div className="text-2xl font-black">500+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Operatör</div></div>
-                   <div className="text-center"><div className="text-2xl font-black">150+</div><div className="text-[8px] uppercase text-gray-500 tracking-widest">Ülke</div></div>
+            <div className="grid grid-cols-2 gap-8">
+                <div className="space-y-2">
+                    <div className="text-amber-500 font-black text-xl italic">01. PCI-DSS</div>
+                    <p className="text-gray-600 text-[10px] uppercase font-bold tracking-tighter">Maksimum Güvenlik Uyumluluğu</p>
                 </div>
-             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* --- 5. YOL HARİTASI 2026 --- */}
-      <section className="py-24 container mx-auto px-6">
-        <motion.h2 {...fadeInUp} className="text-4xl font-black text-center mb-20 italic">YOL HARİTASI 2026</motion.h2>
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          className="grid md:grid-cols-4 gap-6"
-        >
-          {[
-            { q: "Ç1", title: "Altyapı", items: ["Lisanslama", "Beta Testleri"] },
-            { q: "Ç2", title: "İlk Lansman", items: ["Resmi Açılış", "E-SIM Dağıtımı"] },
-            { q: "Ç3", title: "Genişleme", items: ["Ding Entegrasyonu", "İş Paneli"] },
-            { q: "Ç4", title: "Zeka", items: ["Ödül Sistemleri", "Fiziksel Kartlar"] },
-          ].map((item, i) => (
-            <motion.div 
-              key={i} 
-              variants={fadeInUp}
-              whileHover={{ y: -10, borderColor: 'rgba(245,158,11,0.5)' }}
-              className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden transition-colors"
-            >
-              <div className="text-6xl font-black text-white/5 absolute -top-2 -left-2">{item.q}</div>
-              <h4 className="text-xl font-bold mb-4 text-amber-500 relative z-10">{item.title}</h4>
-              <ul className="space-y-2 text-xs text-gray-400 relative z-10">
-                {item.items.map((li, j) => <li key={j}>• {li}</li>)}
-              </ul>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* --- 6. SSS --- */}
-      <section className="py-24 max-w-3xl mx-auto px-6">
-        <h2 className="text-3xl font-black text-center mb-12 italic">Sıkça Sorulan Sorular</h2>
-        <div className="space-y-4">
-          {[
-            { q: "Sermaye Güvenliği?", a: "AB düzenlemeleri uyarınca 100.000 €'ya kadar sigorta." },
-            { q: "Nasıl ortak olunur?", a: "Pitch Deck'imizi almak için sayfanın altındaki formu doldurun." }
-          ].map((faq, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0 }} 
-              whileInView={{ opacity: 1 }}
-              className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 shadow-inner"
-            >
-              <h4 className="font-bold text-amber-500 mb-2 flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-amber-500 rounded-full" /> {faq.q}
-              </h4>
-              <p className="text-gray-400 text-sm leading-relaxed">{faq.a}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- 7. FINAL CTA --- */}
-      <section className="py-24 container mx-auto px-6">
-        <motion.div 
-          whileHover={{ scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 300 }}
-          className="relative rounded-[4rem] overflow-hidden bg-gradient-to-r from-amber-600 to-amber-800 p-12 md:p-24 text-center"
-        >
-          <div className="relative z-10">
-            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight">Katılmaya Hazır mısınız?</h2>
-            <div className="flex flex-col md:flex-row gap-6 justify-center">
-               <motion.button 
-                 whileTap={{ scale: 0.9 }}
-                 className="bg-black text-white px-12 py-5 rounded-2xl font-black text-lg flex items-center justify-center gap-3"
-               >
-                 <Mail size={24} /> Doğrudan İletişim
-               </motion.button>
-               <motion.button 
-                 whileTap={{ scale: 0.9 }}
-                 className="bg-white text-black px-12 py-5 rounded-2xl font-black text-lg"
-               >
-                 Kataloğu Al
-               </motion.button>
+                <div className="space-y-2">
+                    <div className="text-amber-500 font-black text-xl italic">02. VISA BIN</div>
+                    <p className="text-gray-600 text-[10px] uppercase font-bold tracking-tighter">Doğrudan VISA Kart İhraç Yetkisi</p>
+                </div>
             </div>
           </div>
-        </motion.div>
+          <motion.div 
+            whileHover={{ scale: 1.02, borderColor: 'rgba(245,158,11,0.4)' }}
+            className="lg:col-span-6 p-12 rounded-[5rem] bg-gradient-to-br from-white/10 to-transparent border border-white/10 relative overflow-hidden transition-all duration-500 shadow-2xl"
+          >
+             <CreditCard size={180} className="absolute -right-10 -top-10 opacity-5" />
+             <ul className="space-y-6 relative z-10 text-gray-300 font-bold">
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> Kişisel Avrupa IBAN Hesapları</li>
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> Anında Sanal VISA Kart İhracı</li>
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> Küresel SEPA ve SWIFT Transferleri</li>
+                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> Euro Endeksli Çoklu Döviz Cüzdanları</li>
+             </ul>
+          </motion.div>
+        </div>
       </section>
 
-      <footer className="py-10 text-center text-gray-700 text-[10px] uppercase tracking-[0.5em]">
-        © 2026 SafiPay & Safi TopUp | Stratejik Ortaklık Altyapısı
+      {/* --- 3. SÜTUN II: DING GLOBAL --- */}
+      <section className="py-40 bg-white/[0.02] border-y border-white/5">
+        <div className="container mx-auto px-6 grid lg:grid-cols-12 gap-20 items-center">
+          <motion.div 
+            whileHover={{ scale: 1.02, borderColor: 'rgba(59,130,246,0.4)' }}
+            className="lg:col-span-6 p-12 rounded-[5rem] bg-gradient-to-bl from-blue-500/10 to-transparent border border-blue-500/10 transition-all duration-500"
+          >
+                <h4 className="text-blue-500 font-black mb-8 text-center">AĞ HIZI</h4>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                    <div className="p-6 bg-black rounded-3xl border border-white/5">
+                        <div className="text-4xl font-black italic">500+</div>
+                        <div className="text-[10px] text-gray-500 uppercase">Küresel Operatör</div>
+                    </div>
+                    <div className="p-6 bg-black rounded-3xl border border-white/5">
+                        <div className="text-4xl font-black italic">150+</div>
+                        <div className="text-[10px] text-gray-500 uppercase">Ülke Kapsamı</div>
+                    </div>
+                </div>
+          </motion.div>
+          <div className="lg:col-span-6 space-y-10">
+            <h3 className="text-blue-500 font-black tracking-widest text-sm uppercase">Stratejik Sütun II: Ding Ağı</h3>
+            <h2 className="text-6xl font-black italic leading-[0.9]">Sınırsız <br/> Bağlantı.</h2>
+            <p className="text-gray-400 text-lg leading-relaxed font-light">
+              **Ding**, dünyanın en güçlü mobil değer transfer motorudur. Safi TopUp, anında mobil bakiye ve E-SIM hizmetleri sunmak için bu altyapıyı entegre eder. İlk kez, volatil pazarlardaki kullanıcılar küresel düğümlerimiz aracılığıyla 0.1s gecikme ile bağlantıda kalabilirler.
+            </p>
+            <div className="flex gap-4">
+                <span className="px-6 py-2 rounded-xl bg-blue-500/20 text-blue-500 text-xs font-black italic">GERÇEK ZAMANLI MUTABAKAT</span>
+                <span className="px-6 py-2 rounded-xl bg-blue-500/20 text-blue-500 text-xs font-black italic">5G E-SIM HAZIR</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- 4. HİZMET KATALOĞU --- */}
+      <section className="py-40 container mx-auto px-6">
+        <div className="text-center mb-32 space-y-4">
+          <h2 className="text-6xl font-black italic uppercase tracking-tighter">Hizmet <span className="text-amber-500 text-glow">Matrisi</span>.</h2>
+          <p className="text-gray-500 max-w-2xl mx-auto font-light italic">Modern çağ için tasarlanmış üstün finansal araçlar.</p>
+        </div>
+        
+        <div className="grid md:grid-cols-3 gap-12">
+            {[
+                { t: "Sanal VISA", d: "Saniyeler içinde ihraç edilir. FB Ads, Google Cloud, Netflix ve 100M+ satıcıda geçerli. Bölgesel blokaj yok.", icon: <CreditCard className="text-amber-500" size={40}/> },
+                { t: "Kişisel IBAN", d: "Küresel maaşları veya freelance ödemeleri doğrudan AB/ABD'den alın. Avrupa finans hukuku güvencesinde.", icon: <Globe className="text-amber-500" size={40}/> },
+                { t: "Küresel E-SIM", d: "150+ ülke için anında aktivasyon. Fiziksel kart değiştirmeden dünyayı dolaşın.", icon: <Smartphone className="text-amber-500" size={40}/> },
+                { t: "Kripto Köprüsü", d: "En hızlı çıkış rampası. Dijital varlıklarınızı askeri düzeyde güvenlikle anında VISA bakiyesine dönüştürün.", icon: <Coins className="text-amber-500" size={40}/> },
+                { t: "İş Dünyası Motoru", d: "Küresel tedarikçilere USD/EUR ödemesi yapması gereken bölgesel şirketler için kurumsal hesaplar.", icon: <Briefcase className="text-amber-500" size={40}/> },
+                { t: "Varlık Yapay Zekası", d: "Piyasa volatilitesini izleyen ve para birimleri arasında en iyi hedge seçeneklerini sunan algoritmalar.", icon: <Cpu className="text-amber-500" size={40}/> }
+            ].map((srv, i) => (
+                <motion.div 
+                    key={i} 
+                    whileHover={{ y: -15, backgroundColor: 'rgba(245,158,11,0.05)', borderColor: 'rgba(245,158,11,0.3)' }}
+                    className="p-12 rounded-[4rem] bg-white/[0.03] border border-white/5 transition-all duration-300 group"
+                >
+                    <div className="mb-10 group-hover:scale-110 transition-transform duration-500">{srv.icon}</div>
+                    <h4 className="text-2xl font-black mb-6 italic">{srv.t}</h4>
+                    <p className="text-gray-500 text-sm leading-relaxed font-light">{srv.d}</p>
+                </motion.div>
+            ))}
+        </div>
+      </section>
+
+      {/* --- 5. BÖLGESEL ÜSTÜNLÜK --- */}
+      <section className="py-40 bg-amber-500/5">
+        <div className="container mx-auto px-6">
+            <h2 className="text-6xl font-black text-center mb-32 italic">TAM <span className="text-amber-500">HAKİMİYET.</span></h2>
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                <motion.div whileHover={{ scale: 0.98 }} className="p-12 bg-black rounded-[4rem] border border-red-500/20">
+                    <ShieldAlert className="text-red-500 mb-8" size={50} />
+                    <h3 className="text-3xl font-black mb-8 italic text-red-500 uppercase tracking-tighter">Klasik Bölge Bankaları</h3>
+                    <ul className="space-y-6 text-gray-600 text-sm font-bold">
+                        <li>• Ağır Yaptırımlar & Kısıtlı Ağlar</li>
+                        <li>• Kağıt Üzerinde KYC (7-14 gün sürer)</li>
+                        <li>• Küresel Dijital Satıcı Desteği Yok</li>
+                        <li>• Yüksek Ücretler & Eskimiş SWIFT Protokolleri</li>
+                    </ul>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.02 }} className="p-12 bg-black rounded-[4rem] border border-amber-500/50 shadow-[0_0_50px_rgba(245,158,11,0.1)]">
+                    <BadgeCheck className="text-amber-500 mb-8" size={50} />
+                    <h3 className="text-3xl font-black mb-8 italic text-amber-500 uppercase tracking-tighter">Safi Küresel Ekosistemi</h3>
+                    <ul className="space-y-6 text-amber-400 text-sm font-bold italic">
+                        <li>• AB Lisanslı Altyapı & VISA Ana Üyeliği</li>
+                        <li>• Yapay Zeka Destekli KYC (120 saniyede hazır)</li>
+                        <li>• Reklam ve Streaming Platformlarında %100 Kabul</li>
+                        <li>• API Üzerinden Sıfıra Yakın Gecikmeli Mutabakat</li>
+                    </ul>
+                </motion.div>
+            </div>
+        </div>
+      </section>
+
+      {/* --- 6. MİSYON YOL HARİTASI --- */}
+      <section className="py-60 container mx-auto px-6 relative" ref={containerRef}>
+        <h2 className="text-7xl font-black text-center mb-60 italic tracking-tighter uppercase">Görev <span className="text-amber-500 text-glow">Günlüğü.</span></h2>
+        
+        <div className="relative max-w-5xl mx-auto px-4 h-[2500px]">
+          {/* PİST */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[8px] h-full bg-white/5 rounded-full overflow-hidden">
+            <motion.div 
+                style={{ scaleY: smoothProgress, originY: 0 }}
+                className="absolute top-0 left-0 w-full bg-amber-500 rounded-full shadow-[0_0_30px_rgba(245,158,11,0.5)]"
+            />
+          </div>
+
+          {/* LÜKS ARAÇ */}
+          <motion.div 
+            style={{ top: carY }}
+            className="absolute left-1/2 -translate-x-1/2 -mt-10 z-50 flex flex-col items-center"
+          >
+            <div className="bg-amber-500 p-4 rounded-2xl shadow-[0_0_60px_rgba(245,158,11,1)] rotate-90 transition-transform duration-500">
+                <Car size={32} className="text-black fill-black" />
+            </div>
+            <div className="w-1 h-32 bg-gradient-to-t from-amber-500 to-transparent mt-2 mx-auto" />
+          </motion.div>
+
+          {/* AŞAMALAR */}
+          {[
+            { phase: "AŞAMA 01", title: "Kurumsal Doğuş", desc: "AB bankacılık protokollerinin alımı. Wallester AS ile API entegrasyonu. 1. Seviye likidite köprülerinin kurulması.", year: "2026 Q1", y: "10%", side: "right" },
+            { phase: "AŞAMA 02", title: "Bağlantı Pulsarı", desc: "Ding Global ağı entegrasyonu. 500+ operatörü kapsayan Safi TopUp. Uluslararası 5G E-SIM paketlerinin lansmanı.", year: "2026 Q2", y: "35%", side: "left" },
+            { phase: "AŞAMA 03", title: "Perakende Hakimiyeti", desc: "SafiPay Uygulamasının (iOS/Android) resmi lansmanı. Sanal VISA kart ve IBAN'ların halka arzı.", year: "2026 Q3", y: "60%", side: "right" },
+            { phase: "AŞAMA 04", title: "Fiziksel Egemenlik", desc: "Safi Titanium fiziksel kartlarının ihracı. Lüks merkezlerde ödeme terminallerinin devreye alınması.", year: "2026 Q4", y: "85%", side: "left" },
+          ].map((step, i) => (
+            <div 
+                key={i} 
+                className={`absolute w-full flex items-center ${step.side === "left" ? "justify-start text-left" : "justify-end text-right"}`}
+                style={{ top: step.y }}
+            >
+                <motion.div 
+                    initial={{ opacity: 0, x: step.side === "left" ? -100 : 100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{ scale: 1.05, borderColor: 'rgba(245,158,11,0.5)' }}
+                    transition={{ duration: 0.8 }}
+                    className="md:w-[42%] p-12 bg-[#0a0a0a] border border-white/10 rounded-[4rem] transition-all shadow-2xl cursor-default"
+                >
+                    <span className="text-amber-500 font-black text-xs block mb-4 tracking-[0.4em] uppercase">{step.year}</span>
+                    <h4 className="text-amber-600 font-bold uppercase text-[10px] mb-2">{step.phase}</h4>
+                    <h3 className="text-4xl font-black mb-6 italic tracking-tighter uppercase">{step.title}</h3>
+                    <p className="text-gray-500 leading-relaxed font-light text-sm italic">{step.desc}</p>
+                </motion.div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- 7. STRATEJİK İŞBİRLİĞİ FORMU --- */}
+      <section className="py-60 container mx-auto px-6" id="partner-form">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-20 items-center">
+            <div className="lg:col-span-5 space-y-12">
+                <h2 className="text-7xl font-black italic leading-[0.8]">Konseye <br/> <span className="text-amber-500">Katılın.</span></h2>
+                <p className="text-gray-400 text-2xl font-light italic leading-relaxed">
+                  "Q3 genişleme aşaması için 5 stratejik ortak seçiyoruz. Kurumsal bir slot için başvurun."
+                </p>
+                <div className="flex items-center gap-6 p-8 rounded-[3rem] bg-white/5 border border-white/10">
+                    <Landmark size={40} className="text-amber-500" />
+                    <div>
+                        <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">Kurumsal Derece</p>
+                        <p className="font-bold">24 Saatte İnceleme Garantisi</p>
+                    </div>
+                </div>
+            </div>
+            <motion.div 
+              whileHover={{ scale: 1.01 }}
+              className="lg:col-span-7 p-12 md:p-20 bg-black border border-white/10 rounded-[5rem] shadow-2xl relative overflow-hidden"
+            >
+                <form action="https://formspree.io/f/maqbrkgq" method="POST" className="space-y-10 relative z-10">
+                    <div className="grid md:grid-cols-2 gap-10">
+                        <div className="space-y-4">
+                            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Kurum Adı</label>
+                            <input name="entity" type="text" required placeholder="Banka / Firma" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all font-sans" />
+                        </div>
+                        <div className="space-y-4">
+                            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Resmi E-posta</label>
+                            <input name="email" type="email" required placeholder="ceo@sirket.com" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all font-sans" />
+                        </div>
+                    </div>
+                    <div className="space-y-4">
+                        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Stratejik Niyet</label>
+                        <select name="intent" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 text-gray-400 font-bold">
+                            <option>Kurumsal Yatırım</option>
+                            <option>Altyapı Sağlayıcı</option>
+                            <option>Pazar Genişlemesi / Franchise</option>
+                        </select>
+                    </div>
+                    <div className="space-y-4">
+                        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Yönetici Teklifi</label>
+                        <textarea name="proposal" rows={6} required placeholder="Vizyon ve Sinerji..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all resize-none font-sans"></textarea>
+                    </div>
+                    <button type="submit" className="w-full bg-amber-500 text-black font-black py-8 rounded-3xl text-2xl uppercase tracking-tighter hover:bg-amber-400 transition-all shadow-[0_30px_60px_rgba(245,158,11,0.3)]">
+                        Görüşmeleri Başlat
+                    </button>
+                </form>
+            </motion.div>
+        </div>
+      </section>
+
+      {/* --- 8. FOOTER --- */}
+      <footer className="py-20 text-center border-t border-white/5">
+        <div className="flex justify-center gap-12 mb-10 opacity-20 italic font-black text-[9px] uppercase tracking-[1em]">
+            <span>Wallester Licensed</span>
+            <span>Ding Official</span>
+            <span>VISA Principal Member</span>
+        </div>
+        <p className="text-gray-800 text-[10px] uppercase tracking-[0.5em]">SafiPay Küresel Altyapısı © 2026 | Sınır Pazarlar İçin İnşa Edildi.</p>
       </footer>
     </div>
   );
