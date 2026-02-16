@@ -2,17 +2,17 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Shield, Globe, Zap, ArrowRight, Briefcase, Code2, Star, Rocket, Target } from 'lucide-react';
+import { Shield, Globe, Zap, ArrowRight, Briefcase, Code2, Star, Rocket, Target, Banknote } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
-export default function AboutUsPageTR() {
+export default function AboutUsPage() {
   const pathname = usePathname();
-  const currentLang = pathname?.split('/')[1] || 'tr';
+  const currentLang = pathname?.split('/')[1] || 'ru';
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans" dir="ltr">
       
-      {/* --- Hero Bölümü (Giriş) --- */}
+      {/* --- Hero Section (Введение) --- */}
       <section className="relative pt-40 pb-24 overflow-hidden border-b border-amber-900/10">
         <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-amber-600/5 blur-[120px] rounded-full" />
         <div className="container mx-auto px-6 relative z-10 text-center">
@@ -21,14 +21,14 @@ export default function AboutUsPageTR() {
             animate={{ opacity: 1 }}
             className="text-amber-500 font-bold tracking-[0.3em] uppercase text-xs"
           >
-            Afganistan'ın Finansal Paradigmasını Dönüştürüyoruz
+            Новый финансовый парадигм в Афганистане
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-black mt-8 mb-10 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter"
           >
-            Bankacılık Sınırlarını <br /> Yeniden Çiziyoruz
+            Больше чем <br /> просто Банкинг
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -36,16 +36,16 @@ export default function AboutUsPageTR() {
             transition={{ delay: 0.2 }}
             className="max-w-4xl mx-auto text-xl md:text-2xl text-gray-400 leading-relaxed font-light"
           >
-            SafiPay sadece bir uygulama değil; dünyanın her yerindeki her Afgan vatandaşı için küresel finansal sistemlere erişimi demokratikleştirmek üzere tasarlanmış devrim niteliğinde bir altyapıdır.
+            SafiPay — это не просто приложение; это революционная инфраструктура, созданная для демократизации доступа к международным финансовым системам для каждого гражданина Афганистана.
           </motion.p>
         </div>
       </section>
 
-      {/* --- Kurucular Bölümü --- */}
+      {/* --- Section Founders & Team --- */}
       <section className="py-32 container mx-auto px-6">
         <div className="flex flex-col gap-40">
           
-          {/* Shaheen Safi - Kurucu & CEO */}
+          {/* Shaheen Safi - Founder & CEO */}
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
@@ -57,13 +57,13 @@ export default function AboutUsPageTR() {
               <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-amber-500/20 shadow-2xl">
                 <Image 
                   src="/shaheen.jpeg" 
-                  alt="Shaheen Safi - Kurucu & CEO" 
+                  alt="Shaheen Safi - Founder & CEO" 
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-amber-600 px-8 py-4 rounded-2xl shadow-xl hidden md:block text-white font-black italic tracking-widest text-lg uppercase">
-                CEO / KURUCU
+              <div className="absolute -bottom-6 -right-6 bg-amber-600 px-8 py-4 rounded-2xl shadow-xl hidden md:block">
+                <p className="text-white font-black italic tracking-widest text-lg uppercase">CEO / ОСНОВАТЕЛЬ</p>
               </div>
             </motion.div>
 
@@ -71,65 +71,65 @@ export default function AboutUsPageTR() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 space-y-8 text-left"
+              className="lg:col-span-7 space-y-8"
             >
               <div className="inline-flex items-center gap-2 px-5 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-xs font-bold uppercase tracking-widest">
-                <Star size={14} /> Liderlik & Strateji
+                <Star size={14} /> Лидерство и Стратегия
               </div>
-              <h2 className="text-5xl font-black italic uppercase tracking-tighter">Shaheen Safi <span className="text-gray-600 text-3xl font-light block mt-2">Kurucu & Genel Müdür</span></h2>
-              <div className="space-y-6 text-gray-300 text-xl leading-relaxed font-light">
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">Shaheen Safi</h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed text-justify font-light">
                 <p>
-                  Shaheen Safi (d. 2003), FinTech stratejisti ve SafiPay ekosisteminin baş mimarıdır. Afganistan'ın finansal izolasyonuna son verme vizyonuyla hareket ederek, makro stratejiyi yönetmekte ve küresel bankacılık liderleriyle uluslararası ortaklıkları koordine etmektedir.
+                  Шахин Сафи (род. 2003) — стратег в области финансовых технологий и главный архитектор платежных систем SafiPay. Обладая глубоким пониманием финансовой изоляции Афганистана, он руководит глобальным видением проекта и выстраивает международные отношения с мировыми банковскими гигантами.
                 </p>
                 <p>
-                  Bulut tabanlı finansal teknolojiler ve modern Avrupa bankacılık standartlarındaki uzmanlığıyla Shaheen, SafiPay'in Afganistan'ın ilk gerçek neobankası olarak güvenliği yeniden tanımlamasını sağladı. Misyonu net: "Afgan finansal kimliğinin küresel ölçekte itibarını ve güvenilirliğini yeniden tesis etmek."
+                  Его опыт в интеграции облачных технологий с современными европейскими банковскими методами позволил SafiPay установить новые стандарты безопасности в качестве первого настоящего необанка Афганистана. Миссия Шахина — восстановить финансовую репутацию афганских граждан на мировых рынках.
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
-                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors text-left">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors">
                   <Briefcase className="text-amber-500 mb-3" />
-                  <h4 className="text-white font-bold mb-1">Stratejik Yönetim</h4>
-                  <p className="text-sm text-gray-500">İş modelleme ve küresel bankacılık ortaklıkları.</p>
+                  <h4 className="text-white font-bold mb-1">Стратегическое управление</h4>
+                  <p className="text-sm text-gray-500">Развитие бизнес-модели и банковское партнерство</p>
                 </div>
-                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors text-left">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-amber-500/30 transition-colors">
                   <Target className="text-amber-500 mb-3" />
-                  <h4 className="text-white font-bold mb-1">Finansal Kriz Çözümleri</h4>
-                  <p className="text-sm text-gray-500">Küresel pazarlara erişim için çözüm tasarımı.</p>
+                  <h4 className="text-white font-bold mb-1">Кризисные решения</h4>
+                  <p className="text-sm text-gray-500">Разработка путей обхода банковских санкций</p>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Mujtaba Rahmani - Kurucu Ortak & CTO */}
+          {/* Sahel Salem - Head of Ecosystem Banking */}
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-7 space-y-8 lg:order-1 order-2 text-left"
+              className="lg:col-span-7 space-y-8 lg:order-2 order-2"
             >
-              <div className="inline-flex items-center gap-2 px-5 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs font-bold uppercase tracking-widest">
-                <Code2 size={14} /> Mühendislik & Güvenlik
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-xs font-bold uppercase tracking-widest">
+                <Banknote size={14} /> Банковская экосистема
               </div>
-              <h2 className="text-5xl font-black italic uppercase tracking-tighter">Mujtaba Rahmani <span className="text-gray-600 text-3xl font-light block mt-2">Kurucu Ortak & CTO</span></h2>
-              <div className="space-y-6 text-gray-300 text-xl leading-relaxed font-light">
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">Sahel Salem</h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed text-justify font-light">
                 <p>
-                  Mujtaba Rahmani (d. 2006), SafiPay'in CTO'su ve siber güvenlik mimarıdır. Gerçek zamanlı işlem sistemlerinin mutlak güvenliğini ve ölçeklenebilirliğini sağlamaktan sorumlu olan teknolojik omurgadır.
+                  Сахель Салем (род. 2007) — мозг банковской экосистемы и инфраструктуры счетов SafiPay. Он отвечает за проектирование и внедрение финансовых структур, которые предоставляют афганским пользователям беспрецедентный доступ к международным банковским услугам.
                 </p>
                 <p>
-                  Ölçeklenebilir yazılım geliştirme konusundaki dehası ve ödeme altyapılarına dair derin bilgisiyle Mujtaba, hız ve hassasiyet açısından dünyanın en büyük bankalarıyla yarışan bir sistem tasarladı. Misyonu, kullanıcı varlıklarının her koşulda korunduğu bir "Dijital Kale" inşa etmektir.
+                  Экспертиза Сахеля в создании бесшовных и безопасных финансовых потоков гарантирует, что каждый пользователь SafiPay получает цифровой банковский опыт мирового уровня. Сосредоточившись на прозрачности и доступности, он строит столпы справедливой финансовой системы.
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
-                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors text-left">
-                  <Rocket className="text-blue-500 mb-3" />
-                  <h4 className="text-white font-bold mb-1">Sistem Mimarisi</h4>
-                  <p className="text-sm text-gray-500">Backend geliştirme ve finansal mikro hizmetler.</p>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-green-500/30 transition-colors">
+                  <Globe className="text-green-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Развитие экосистемы</h4>
+                  <p className="text-sm text-gray-500">Наведение мостов с мировыми финансовыми сетями</p>
                 </div>
-                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors text-left">
-                  <Shield className="text-blue-500 mb-3" />
-                  <h4 className="text-white font-bold mb-1">Siber Güvenlik</h4>
-                  <p className="text-sm text-gray-500">Gelişmiş şifreleme protokolleri ve veri koruma.</p>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-green-500/30 transition-colors">
+                  <Shield className="text-green-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Управление счетами</h4>
+                  <p className="text-sm text-gray-500">Инновационные системы банковского менеджмента</p>
                 </div>
               </div>
             </motion.div>
@@ -138,38 +138,93 @@ export default function AboutUsPageTR() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-5 lg:order-2 order-1 relative group"
+              className="lg:col-span-5 lg:order-1 order-1 relative group"
             >
-              <div className="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute -inset-4 bg-green-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-white/10 shadow-2xl">
                 <Image 
-                  src="/mujtaba.jpeg" 
-                  alt="Mujtaba Rahmani - CTO" 
+                  src="/sahel.jpeg" 
+                  alt="Sahel Salem" 
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-white px-8 py-4 rounded-2xl shadow-xl hidden md:block text-black font-black italic tracking-widest text-lg uppercase">
-                CTO / MİMAR
+                ГЛАВА ЭКОСИСТЕМЫ
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Mujtaba Rahmani - CTO */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 relative group"
+            >
+              <div className="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-white/10 shadow-2xl">
+                <Image 
+                  src="/mujtaba.jpeg" 
+                  alt="Mujtaba Rahmani" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white px-8 py-4 rounded-2xl shadow-xl hidden md:block text-black font-black italic tracking-widest text-lg uppercase">
+                CTO / АРХИТЕКТОР
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7 space-y-8"
+            >
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs font-bold uppercase tracking-widest">
+                <Code2 size={14} /> Инженерия и Безопасность
+              </div>
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">Mujtaba Rahmani</h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed text-justify font-light">
+                <p>
+                  Муджтаба Рахмани (род. 2006) — технический директор и архитектор кибербезопасности SafiPay. Он построил технический фундамент платформы, обеспечив неуязвимость и стабильность транзакционных систем в реальном времени.
+                </p>
+                <p>
+                  Благодаря своему таланту в разработке масштабируемого ПО и владению платежной инфраструктурой, Муджтаба создал систему, которая конкурирует с крупнейшими банками мира по скорости и точности. Его миссия — построить цифровую крепость для защиты активов пользователей.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors">
+                  <Rocket className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Архитектура систем</h4>
+                  <p className="text-sm text-gray-500">Backend-разработка и финансовые микросервисы</p>
+                </div>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-blue-500/30 transition-colors">
+                  <Shield className="text-blue-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">Кибербезопасность</h4>
+                  <p className="text-sm text-gray-500">Продвинутое шифрование и защита данных</p>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* --- Vizyon & Değerler --- */}
+      {/* --- Vision & Values --- */}
       <section className="py-32 bg-[#080808] border-y border-white/5">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Mutlak Güvenlik", desc: "İşlem bütünlüğünü garanti altına almak için çok katmanlı şifreleme protokolleri kullanımı.", icon: <Shield className="text-amber-500" size={32} /> },
-              { title: "Küresel Bağlantı", desc: "Geleneksel aracılar olmadan Afganistan için dijital ekonominin kapılarını açmak.", icon: <Globe className="text-amber-500" size={32} /> },
-              { title: "Sürekli İnovasyon", desc: "Gelecek neslin ihtiyaçlarını karşılamak için neobanka yeteneklerinin sürekli gelişimi.", icon: <Zap className="text-amber-500" size={32} /> }
+              { title: "Абсолютная безопасность", desc: "Использование многослойных протоколов шифрования для гарантии безопасности транзакций.", icon: <Shield className="text-amber-500" size={32} /> },
+              { title: "Глобальная связь", desc: "Открытие дверей в цифровую экономику для Афганистана без традиционных посредников.", icon: <Globe className="text-amber-500" size={32} /> },
+              { title: "Постоянные инновации", desc: "Непрерывная разработка необанковских функций для удовлетворения потребностей будущих поколений.", icon: <Zap className="text-amber-500" size={32} /> }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
                 whileHover={{ y: -10 }}
-                className="p-10 bg-black border border-white/5 rounded-[2.5rem] hover:border-amber-500/30 transition-all text-left"
+                className="p-10 bg-black border border-white/5 rounded-[2.5rem] hover:border-amber-500/30 transition-all"
               >
                 <div className="mb-6">{item.icon}</div>
                 <h4 className="text-2xl font-bold mb-4">{item.title}</h4>
@@ -180,7 +235,7 @@ export default function AboutUsPageTR() {
         </div>
       </section>
 
-      {/* --- Final CTA Bölümü --- */}
+      {/* --- Call to Action (CTA) --- */}
       <section className="py-32">
         <div className="container mx-auto px-6 text-center">
           <motion.div 
@@ -189,12 +244,12 @@ export default function AboutUsPageTR() {
             className="max-w-5xl mx-auto p-20 bg-gradient-to-br from-amber-600 to-amber-900 rounded-[4rem] relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
           >
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase tracking-tighter">Stratejik Ortaklığa Hazır mısınız?</h2>
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase tracking-tighter">Готовы к сотрудничеству?</h2>
               <p className="text-white/80 text-xl mb-12 font-light">
-                SafiPay olarak, geleceği birlikte şekillendirmek için küresel finans elitleri ve uluslararası stratejik ortaklar arıyoruz.
+                В SafiPay мы стремимся построить сеть финансовых экспертов и международных стратегических партнеров.
               </p>
               <Link href={`/${currentLang}/partners`} className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black text-xl rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105">
-                Ortaklık Talebi <ArrowRight />
+                Стать бизнес-партнером <ArrowRight size={24} />
               </Link>
             </div>
           </motion.div>
