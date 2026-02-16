@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Shield, Globe, Zap, ArrowRight, Briefcase, Code2, Star, Rocket, Target } from 'lucide-react';
+import { Shield, Globe, Zap, ArrowRight, Briefcase, Code2, Star, Rocket, Target, Banknote } from 'lucide-react'; // Added Banknote icon
 import { usePathname } from 'next/navigation';
 
 export default function AboutUsPage() {
@@ -41,7 +41,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* --- بخش بنیان‌گذاران --- */}
+      {/* --- بخش بنیان‌گذاران و تیم --- */}
       <section className="py-32 container mx-auto px-6">
         <div className="flex flex-col gap-40">
           
@@ -96,6 +96,61 @@ export default function AboutUsPage() {
                   <h4 className="text-white font-bold mb-1">حل بحران مالی</h4>
                   <p className="text-sm text-gray-500">طراحی راهکارهای عبور از تحریم‌های بانکی</p>
                 </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Sahel Salem - Head of Ecosystem Banking */}
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-7 space-y-8 lg:order-1 order-2"
+            >
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-xs font-bold uppercase tracking-widest">
+                <Banknote size={14} /> اکوسیستم بانکداری
+              </div>
+              <h2 className="text-5xl font-black italic uppercase tracking-tighter">ساحل سالم <span className="text-gray-600 text-3xl font-light block mt-2">Sahel Salem</span></h2>
+              <div className="space-y-6 text-gray-300 text-xl leading-relaxed text-justify font-light">
+                <p>
+                  ساحل سالم (متولد ۲۰۰۲)، مغز متفکر پشت اکوسیستم بانکداری و حساب‌های کاربری SafiPay است. او مسئول طراحی و اجرای چارچوب‌های مالی است که به کاربران افغان امکان دسترسی بی‌سابقه به خدمات بانکی بین‌المللی و مدیریت حساب‌های خود را می‌دهد.
+                </p>
+                <p>
+                  تخصص ساحل در ایجاد جریان‌های مالی روان و ایمن، تضمین می‌کند که هر کاربر SafiPay تجربه‌ای بی‌نظیر از بانکداری دیجیتال داشته باشد. او با تمرکز بر شفافیت و دسترس‌پذیری، پایه‌های یک اکوسیستم مالی عادلانه را برای افغانستان بنا می‌کند.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-green-500/30 transition-colors">
+                  <Globe className="text-green-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">توسعه اکوسیستم</h4>
+                  <p className="text-sm text-gray-500">ایجاد پل‌های ارتباطی با شبکه‌های مالی جهانی</p>
+                </div>
+                <div className="p-6 bg-[#0c0c0c] rounded-2xl border border-white/5 hover:border-green-500/30 transition-colors">
+                  <Shield className="text-green-500 mb-3" />
+                  <h4 className="text-white font-bold mb-1">مدیریت حساب‌ها</h4>
+                  <p className="text-sm text-gray-500">طراحی سیستم‌های نوین برای حساب‌های بانکی</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:col-span-5 lg:order-2 order-1 relative group"
+            >
+              <div className="absolute -inset-4 bg-green-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border-2 border-white/10 shadow-2xl">
+                <Image 
+                  src="/sahel.jpeg" // Make sure this path is correct
+                  alt="Sahel Salem - Head of Ecosystem Banking" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white px-8 py-4 rounded-2xl shadow-xl hidden md:block text-black font-black italic tracking-widest text-lg uppercase">
+                ECOSYSTEM LEAD
               </div>
             </motion.div>
           </div>
