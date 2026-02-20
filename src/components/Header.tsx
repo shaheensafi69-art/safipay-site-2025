@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Download } from 'lucide-react'; // Download اضافه شد
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -42,26 +42,32 @@ export default function Header() {
     }
   };
 
+  // تابع هندل کردن کلیک روی دانلود
+  const handleDownloadClick = () => {
+    const messages: any = {
+      fa: 'اپلیکیشن SafiPay به زودی لانچ می‌شود. منتظر باشید!',
+      ps: 'د SafiPay اپلیکیشن به ژر لانچ شي. انتظار اوسئ!',
+      en: 'SafiPay App is launching soon. Stay tuned!',
+      tr: 'SafiPay uygulaması yakında yayında. Takipte kalın!',
+      ar: 'تطبيق SafiPay سيصدر قريباً. ترقبوا!',
+      ru: 'Приложение SafiPay скоро будет запущено. Следите за новостями!',
+      fr: 'L\'application SafiPay sera bientôt lancée. Restez à l\'écoute!',
+      de: 'SafiPay App wird bald gestartet. Bleiben Sie dran!'
+    };
+    alert(messages[currentLang] || messages.en);
+  };
+
   const translations: any = {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite', tr: 'Ana Sayfa', ar: 'الرئيسية', ru: 'Главная' },
-    partners: { 
-      fa: 'شراکت‌ها', 
-      ps: 'شراکتونه', 
-      en: 'Partners', 
-      fr: 'Partenariats', 
-      de: 'Partnerschaften', 
-      tr: 'Ortaklıklar', 
-      ar: 'الشراكات', 
-      ru: 'Партнерство' 
-    },
-    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişیم', ar: 'اتصل بنا', ru: 'Контакт' },
+    partners: { fa: 'شراکت‌ها', ps: 'شراکتونه', en: 'Partners', fr: 'Partenariats', de: 'Partnerschaften', tr: 'Ortaklıklar', ar: 'الشراكات', ru: 'Партнерство' },
+    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişim', ar: 'اتصل بنا', ru: 'Контакт' },
     about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızda', ar: 'من نحن', ru: 'О нас' },
-    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Языک' }
+    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Язык' },
+    download: { fa: 'دانلود اپلیکیشن', ps: 'اپلیکیشن ډاونلوډ', en: 'Download App', fr: 'Télécharger', de: 'App Herunterladen', tr: 'Uygulamayı İndir', ar: 'تحميل التطبيق', ru: 'Скачать приложение' }
   };
 
   const navItems = [
     { href: `/${currentLang}`, label: translations.home[currentLang] || translations.home.en },
-    // لینک دقیقا با نام پوشه جدید (partners) یکی شد
     { href: `/${currentLang}/partners`, label: translations.partners[currentLang] || translations.partners.en },
     { href: `/${currentLang}/contact`, label: translations.contact[currentLang] || translations.contact.en },
     { href: `/${currentLang}/about`, label: translations.about[currentLang] || translations.about.en },
@@ -110,6 +116,15 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
+            {/* دکمه دانلود جدید */}
+            <button
+              onClick={handleDownloadClick}
+              className="px-6 py-2.5 bg-amber-500 hover:bg-amber-600 text-black font-black text-xs uppercase tracking-widest rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-amber-500/20 active:scale-95"
+            >
+              <Download size={16} />
+              {translations.download[currentLang] || translations.download.en}
+            </button>
+
             <div className="relative group/lang flex items-center justify-center">
               <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
                  <img 
@@ -190,7 +205,7 @@ export default function Header() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-6 mb-12">
+            <nav className="flex flex-col gap-6 mb-8">
               {navItems.map((item, idx) => (
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -208,6 +223,15 @@ export default function Header() {
                 </motion.div>
               ))}
             </nav>
+
+            {/* دکمه دانلود در موبایل */}
+            <button
+              onClick={handleDownloadClick}
+              className="w-full py-6 bg-amber-500 text-black font-black text-lg uppercase tracking-widest rounded-[2rem] mb-12 flex items-center justify-center gap-3 shadow-2xl shadow-amber-500/40"
+            >
+              <Download size={24} />
+              {translations.download[currentLang] || translations.download.en}
+            </button>
 
             <div className="mt-auto pb-10">
               <p className="text-[10px] text-gray-400 mb-6 font-black uppercase tracking-[0.3em] opacity-70">
