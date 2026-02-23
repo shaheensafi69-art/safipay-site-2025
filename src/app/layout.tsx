@@ -15,28 +15,84 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // ۱. اسکیمای سازمان (SafiPay)
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SafiPay",
+    "url": "https://safipay.com",
+    "logo": "https://safipay.com/logo.png",
+    "description": "SafiPay provides a modern international digital banking ecosystem for Afghans worldwide.",
+    "founder": {
+      "@id": "https://safipay.com/#person"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/safipay",
+      "https://twitter.com/SafiPay",
+      "https://www.instagram.com/safipayofficial",
+      "https://www.crunchbase.com/organization/safipay"
+    ]
+  };
+
+  // ۲. اسکیمای شخص (Shaheen Safi) - با اصلاح نام فایل عکس
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://safipay.com/#person",
+    "name": "Shaheen Safi",
+    "alternateName": "شاهین صافی",
+    "birthDate": "2003-04-02",
+    "birthPlace": {
+      "@type": "Place",
+      "name": "Kapisa, Afghanistan"
+    },
+    "jobTitle": "CEO & Founder",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "SafiPay"
+    },
+    "url": "https://safipay.com/founders/shaheen-safi",
+    "image": "https://safipay.com/shaheen.jpeg", // اصلاح شده به نام فایل شما
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Kardan University"
+    },
+    "knowsAbout": ["FinTech", "Digital Banking", "Blockchain", "Trading", "Network Security"],
+    "address": [
+      { "@type": "PostalAddress", "addressLocality": "Kabul" },
+      { "@type": "PostalAddress", "addressLocality": "Dubai" },
+      { "@type": "PostalAddress", "addressLocality": "Paris" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/shaheensafi",
+      "https://twitter.com/ShaheenSafi_",
+      "https://www.instagram.com/safipayofficial"
+    ]
+  };
+
   return (
     <html lang="fa" dir="rtl" className="scroll-smooth">
       <head>
-        {/* متا تگ تأیید گوگل */}
         <meta
           name="google-site-verification"
           content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE"
         />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ 
+            __html: JSON.stringify([organizationSchema, personSchema]) 
+          }}
+        />
       </head>
 
       <body className={`${inter.className} antialiased bg-gray-950 text-white min-h-screen flex flex-col`}>
-        {/* هدر سایت */}
         <Header />
-
-        {/* محتوای اصلی صفحات */}
         <main className="flex-grow">
           {children}
         </main>
-
-        {/* فوتری که با هم ساختیم اینجا فراخوانی می‌شود */}
         <Footer />
       </body>
     </html>
