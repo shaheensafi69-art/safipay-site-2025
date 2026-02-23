@@ -15,71 +15,65 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // ۱. اسکیمای سازمان (SafiPay)
+  // ۱. اسکیمای سازمان (SafiPay) - بهینه شده برای دامنه .net
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://www.safipay.net/#organization",
     "name": "SafiPay",
-    "url": "https://safipay.com",
-    "logo": "https://safipay.com/logo.png",
-    "description": "SafiPay provides a modern international digital banking ecosystem for Afghans worldwide.",
-    "founder": {
-      "@id": "https://safipay.com/#person"
+    "url": "https://www.safipay.net",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.safipay.net/logo.png"
     },
+    "description": "SafiPay provides a modern international digital banking ecosystem for Afghans worldwide.",
+    "founder": { "@id": "https://www.safipay.net/founders/shaheen-safi/#person" },
     "sameAs": [
       "https://www.linkedin.com/company/safipay",
-      "https://twitter.com/SafiPay",
-      "https://www.instagram.com/safipayofficial",
-      "https://www.crunchbase.com/organization/safipay"
+      "https://twitter.com/SafiPay", // اگر اکانت ایکس دارید جایگزین کنید
+      "https://www.instagram.com/safipayofficial"
     ]
   };
 
-  // ۲. اسکیمای شخص (Shaheen Safi) - با اصلاح نام فایل عکس
+  // ۲. اسکیمای شخص (Shaheen Safi) - با جزئیات هویتی دقیق برای گوگل نالج
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://safipay.com/#person",
+    "@id": "https://www.safipay.net/founders/shaheen-safi/#person",
     "name": "Shaheen Safi",
-    "alternateName": "شاهین صافی",
+    "alternateName": ["شاهین ساپی", "Shaheen Safi Sahib"],
+    "givenName": "Shaheen",
+    "familyName": "Safi",
+    "gender": "Male",
     "birthDate": "2003-04-02",
-    "birthPlace": {
-      "@type": "Place",
-      "name": "Kapisa, Afghanistan"
-    },
-    "jobTitle": "CEO & Founder",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "SafiPay"
-    },
-    "url": "https://safipay.com/founders/shaheen-safi",
-    "image": "https://safipay.com/shaheen.jpeg", // اصلاح شده به نام فایل شما
+    "jobTitle": "Founder & CEO of SafiPay",
+    "description": "Shaheen Safi is an IT expert and entrepreneur, founder of SafiPay, focused on digital banking and FinTech solutions.",
+    "image": "https://www.safipay.net/shaheen.jpeg",
+    "url": "https://www.safipay.net/founders/shaheen-safi",
     "alumniOf": {
       "@type": "CollegeOrUniversity",
-      "name": "Kardan University"
+      "name": ["Istanbul Technical University", "ITU"]
     },
-    "knowsAbout": ["FinTech", "Digital Banking", "Blockchain", "Trading", "Network Security"],
-    "address": [
-      { "@type": "PostalAddress", "addressLocality": "Kabul" },
-      { "@type": "PostalAddress", "addressLocality": "Dubai" },
-      { "@type": "PostalAddress", "addressLocality": "Paris" }
-    ],
+    "knowsAbout": ["FinTech", "Digital Banking", "Software Architecture", "Cybersecurity", "Blockchain"],
     "sameAs": [
-      "https://www.linkedin.com/in/shaheensafi",
-      "https://twitter.com/ShaheenSafi_",
-      "https://www.instagram.com/safipayofficial"
+      "https://www.linkedin.com/in/shaheen-safi-b73a30299",
+      "https://www.instagram.com/top_g_official1",
+      "https://www.facebook.com/share/1H1vuV1i9Z/",
+      "https://www.tiktok.com/@safi_sahib6",
+      "https://wa.me/19342032497"
     ]
   };
 
   return (
     <html lang="fa" dir="rtl" className="scroll-smooth">
       <head>
+        {/* تاییدیه سرچ کنسول شما */}
         <meta
           name="google-site-verification"
           content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE"
         />
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        
+        {/* کدهای اسکیما برای گوگل */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ 
@@ -88,7 +82,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={`${inter.className} antialiased bg-gray-950 text-white min-h-screen flex flex-col`}>
+      <body className={`${inter.className} antialiased bg-[#020202] text-white min-h-screen flex flex-col`}>
         <Header />
         <main className="flex-grow">
           {children}
