@@ -28,7 +28,7 @@ export default function Footer() {
   const currentLang = pathname ? pathname.split('/')[1] || 'fa' : 'fa';
   const isRtl = ['fa', 'ps', 'ar'].includes(currentLang);
 
-  const content: any = {
+  const allContent: any = {
     fa: {
       slogan: "صافی‌پی؛ فراتر از یک سیستم مالی، ما پلی می‌سازیم برای اتصال افغانستان به اقتصاد نوین جهانی.",
       navTitle: 'دسترسی سریع',
@@ -69,7 +69,9 @@ export default function Footer() {
         { name: 'FinTech Revolution', href: `/${currentLang}/blog/about-shaheen-safi` },
       ]
     }
-  }[currentLang] || content.fa;
+  };
+
+  const content = allContent[currentLang] || allContent.fa;
 
   return (
     <footer className="bg-[#030303] border-t border-white/5 pt-32 pb-12 font-sans relative overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>

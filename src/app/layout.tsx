@@ -15,7 +15,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // ۱. اسکیمای سازمان (SafiPay) - بهینه شده برای دامنه .net
+  // ۱. اسکیمای سازمان
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -30,12 +30,12 @@ export default function RootLayout({
     "founder": { "@id": "https://www.safipay.net/founders/shaheen-safi/#person" },
     "sameAs": [
       "https://www.linkedin.com/company/safipay",
-      "https://twitter.com/SafiPay", // اگر اکانت ایکس دارید جایگزین کنید
+      "https://twitter.com/SafiPay",
       "https://www.instagram.com/safipayofficial"
     ]
   };
 
-  // ۲. اسکیمای شخص (Shaheen Safi) - با جزئیات هویتی دقیق برای گوگل نالج
+  // ۲. اسکیمای شخص
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -44,17 +44,8 @@ export default function RootLayout({
     "alternateName": ["شاهین ساپی", "Shaheen Safi Sahib"],
     "givenName": "Shaheen",
     "familyName": "Safi",
-    "gender": "Male",
-    "birthDate": "2003-04-02",
     "jobTitle": "Founder & CEO of SafiPay",
-    "description": "Shaheen Safi is an IT expert and entrepreneur, founder of SafiPay, focused on digital banking and FinTech solutions.",
     "image": "https://www.safipay.net/shaheen.jpeg",
-    "url": "https://www.safipay.net/founders/shaheen-safi",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": ["Istanbul Technical University", "ITU"]
-    },
-    "knowsAbout": ["FinTech", "Digital Banking", "Software Architecture", "Cybersecurity", "Blockchain"],
     "sameAs": [
       "https://www.linkedin.com/in/shaheen-safi-b73a30299",
       "https://www.instagram.com/top_g_official1",
@@ -65,15 +56,9 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="fa" dir="rtl" className="scroll-smooth">
+    <html lang="fa" dir="rtl" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        {/* تاییدیه سرچ کنسول شما */}
-        <meta
-          name="google-site-verification"
-          content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE"
-        />
-        
-        {/* کدهای اسکیما برای گوگل */}
+        <meta name="google-site-verification" content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ 

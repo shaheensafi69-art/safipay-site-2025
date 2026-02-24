@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 
 export default function AboutUsPageEnglish() {
   const pathname = usePathname();
+  // گرفتن زبان فعلی از URL (مثلاً en یا fa)
   const currentLang = pathname?.split('/')[1] || 'en';
 
   return (
@@ -91,7 +92,7 @@ export default function AboutUsPageEnglish() {
         </div>
       </section>
 
-      {/* --- Leadership Team Section --- */}
+      {/* --- Leadership Team Section (کل لینک‌ها اینجا اصلاح شد) --- */}
       <section className="py-32 bg-[#080808] border-y border-white/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
@@ -123,10 +124,10 @@ export default function AboutUsPageEnglish() {
                 color: "border-green-500/30"
               }
             ].map((member, i) => (
-              <Link key={i} href={member.href}>
+              <Link key={i} href={member.href} className="block group">
                 <motion.div 
                   whileHover={{ y: -10 }}
-                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all group overflow-hidden`}
+                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden`}
                 >
                   <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
                     <Image 
