@@ -34,18 +34,18 @@ export default function Footer() {
       blogTitle: 'دانشنامه و اخبار',
       teamTitle: 'شورای رهبری SAFIPAY',
       links: [
-        { name: 'صفحه اصلی', href: `/${currentLang}` },
-        { name: 'شرکای تجاری', href: `/${currentLang}/partners` },
-        { name: 'ارتباط با ما', href: `/${currentLang}/contact` },
-        { name: 'درباره اکوسیستم', href: `/${currentLang}/about` },
-        { name: 'پروفایل شاهین صافی', href: `/${currentLang}/founder/shaheen-safi` },
-        { name: 'پروفایل مجتبی رحمانی', href: `/${currentLang}/founder/mujtaba-rahmani` },
-        { name: 'پروفایل ساحل سالم', href: `/${currentLang}/founder/sahel-salem` },
+        { name: 'صفحه اصلی', href: `/fa` },
+        { name: 'شرکای تجاری', href: `/fa/partners` },
+        { name: 'ارتباط با ما', href: `/fa/contact` },
+        { name: 'درباره ما', href: `/fa/about` },
+        { name: 'شاهین صافی', href: `/fa/founder/shaheen-safi` },
+        { name: 'مجتبی رحمانی', href: `/fa/founder/mujtaba-rahmani` },
+        { name: 'ساحل سالم', href: `/fa/founder/sahel-salem` },
       ],
       blogs: [
-        { name: 'امنیت در تراکنش‌های صافی‌پی', href: `/${currentLang}/blog/safipay-system-security` },
-        { name: 'داستان تولد یک رویا', href: `/${currentLang}/blog/what-is-safipay` },
-        { name: 'آینده بلاک‌چین در افغانستان', href: `/${currentLang}/blog/about-shaheen-safi` },
+        { name: 'امنیت در تراکنش‌های صافی‌پی', href: `/fa/blog/safipay-system-security` },
+        { name: 'داستان تولد یک رویا', href: `/fa/blog/what-is-safipay` },
+        { name: 'آینده بلاک‌چین در افغانستان', href: `/fa/blog/about-shaheen-safi` },
       ]
     },
     ps: {
@@ -54,18 +54,18 @@ export default function Footer() {
       blogTitle: 'پوهنغونډ او خبرونه',
       teamTitle: 'د SAFIPAY د رهبرۍ شورا',
       links: [
-        { name: 'اصلي پاڼه', href: `/${currentLang}` },
-        { name: 'سوداګریز شریکان', href: `/${currentLang}/partners` },
-        { name: 'اړیکه', href: `/${currentLang}/contact` },
-        { name: 'زموږ په اړه', href: `/${currentLang}/about` },
-        { name: 'شاهین صافی', href: `/${currentLang}/founder/shaheen-safi` },
-        { name: 'مجتبی رحماني', href: `/${currentLang}/founder/mujtaba-rahmani` },
-        { name: 'ساحل سالم', href: `/${currentLang}/founder/sahel-salem` },
+        { name: 'اصلي پاڼه', href: `/ps` },
+        { name: 'سوداګریز شریکان', href: `/ps/partners` },
+        { name: 'اړیکه', href: `/ps/contact` },
+        { name: 'زموږ په اړه', href: `/ps/about` },
+        { name: 'شاهین صافی', href: `/ps/founder/shaheen-safi` },
+        { name: 'مجتبی رحماني', href: `/ps/founder/mujtaba-rahmani` },
+        { name: 'ساحل سالم', href: `/ps/founder/sahel-salem` },
       ],
       blogs: [
-        { name: 'په صافي پي کې امنیت', href: `/${currentLang}/blog/safipay-system-security` },
-        { name: 'د یو خوب کیسه', href: `/${currentLang}/blog/what-is-safipay` },
-        { name: 'په افغانستان کې بلاکچین', href: `/${currentLang}/blog/about-shaheen-safi` },
+        { name: 'په صافي پي کې امنیت', href: `/ps/blog/safipay-system-security` },
+        { name: 'د یو خوب کیسه', href: `/ps/blog/what-is-safipay` },
+        { name: 'په افغانستان کې بلاکچین', href: `/ps/blog/about-shaheen-safi` },
       ]
     },
     en: {
@@ -74,38 +74,38 @@ export default function Footer() {
       blogTitle: 'INSIGHTS & NEWS',
       teamTitle: 'CORE LEADERSHIP TEAM',
       links: [
-        { name: 'Home', href: `/${currentLang}` },
-        { name: 'Partners', href: `/${currentLang}/partners` },
-        { name: 'Contact Us', href: `/${currentLang}/contact` },
-        { name: 'About Us', href: `/${currentLang}/about` },
-        { name: 'Shaheen Safi', href: `/${currentLang}/founder/shaheen-safi` },
-        { name: 'Mujtaba Rahmani', href: `/${currentLang}/founder/mujtaba-rahmani` },
-        { name: 'Sahel Salem', href: `/${currentLang}/founder/sahel-salem` },
+        { name: 'Home', href: `/en` },
+        { name: 'Partners', href: `/en/partners` },
+        { name: 'Contact', href: `/en/contact` },
+        { name: 'About Us', href: `/en/about` },
+        { name: 'Shaheen Safi', href: `/en/founder/shaheen-safi` },
+        { name: 'Mujtaba Rahmani', href: `/en/founder/mujtaba-rahmani` },
+        { name: 'Sahel Salem', href: `/en/founder/sahel-salem` },
       ],
       blogs: [
-        { name: 'Security & Encryption', href: `/${currentLang}/blog/safipay-system-security` },
-        { name: 'The Birth of SafiPay', href: `/${currentLang}/blog/what-is-safipay` },
-        { name: 'FinTech Revolution', href: `/${currentLang}/blog/about-shaheen-safi` },
+        { name: 'SafiPay Security', href: `/en/blog/safipay-system-security` },
+        { name: 'The Birth of a Dream', href: `/en/blog/what-is-safipay` },
+        { name: 'Future of Blockchain', href: `/en/blog/about-shaheen-safi` },
       ]
     },
     ru: {
-      slogan: "SafiPay: больше, чем просто система, мы строим мост для интеграции Афганистана в мировую экономику.",
+      slogan: "SafiPay: Больше чем финансовая система, мы строим мост для интеграции Афганистана в мировую экономику.",
       navTitle: 'БЫСТРЫЕ ССЫЛКИ',
       blogTitle: 'БЛОГ И НОВОСТИ',
       teamTitle: 'РУКОВОДСТВО SAFIPAY',
       links: [
-        { name: 'Главная', href: `/${currentLang}` },
-        { name: 'Партнеры', href: `/${currentLang}/partners` },
-        { name: 'Контакты', href: `/${currentLang}/contact` },
-        { name: 'О нас', href: `/${currentLang}/about` },
-        { name: 'Шахин Сафи', href: `/${currentLang}/founder/shaheen-safi` },
-        { name: 'Муджтаба Рахмани', href: `/${currentLang}/founder/mujtaba-rahmani` },
-        { name: 'Сахель Салем', href: `/${currentLang}/founder/sahel-salem` },
+        { name: 'Главная', href: `/ru` },
+        { name: 'Партнеры', href: `/ru/partners` },
+        { name: 'Контакты', href: `/ru/contact` },
+        { name: 'О нас', href: `/ru/about` },
+        { name: 'Шахин Сафи', href: `/ru/founder/shaheen-safi` },
+        { name: 'Муджтаба Рахмани', href: `/ru/founder/mujtaba-rahmani` },
+        { name: 'Сахель Салем', href: `/ru/founder/sahel-salem` },
       ],
       blogs: [
-        { name: 'Безопасность SafiPay', href: `/${currentLang}/blog/safipay-system-security` },
-        { name: 'История создания', href: `/${currentLang}/blog/what-is-safipay` },
-        { name: 'Будущее блокчейна', href: `/${currentLang}/blog/about-shaheen-safi` },
+        { name: 'Безопасность SafiPay', href: `/ru/blog/safipay-system-security` },
+        { name: 'История создания', href: `/ru/blog/what-is-safipay` },
+        { name: 'Будущее блокчейна', href: `/ru/blog/about-shaheen-safi` },
       ]
     },
     tr: {
@@ -114,18 +114,18 @@ export default function Footer() {
       blogTitle: 'BLOG VE HABERLER',
       teamTitle: 'SAFIPAY LİDERLİK KONSEYİ',
       links: [
-        { name: 'Ana Sayfa', href: `/${currentLang}` },
-        { name: 'İş Ortakları', href: `/${currentLang}/partners` },
-        { name: 'İletişim', href: `/${currentLang}/contact` },
-        { name: 'Hakkımızda', href: `/${currentLang}/about` },
-        { name: 'Shaheen Safi', href: `/${currentLang}/founder/shaheen-safi` },
-        { name: 'Mujtaba Rahmani', href: `/${currentLang}/founder/mujtaba-rahmani` },
-        { name: 'Sahel Salem', href: `/${currentLang}/founder/sahel-salem` },
+        { name: 'Ana Sayfa', href: `/tr` },
+        { name: 'İş Ortakları', href: `/tr/partners` },
+        { name: 'İletişim', href: `/tr/contact` },
+        { name: 'Hakkımızda', href: `/tr/about` },
+        { name: 'Shaheen Safi', href: `/tr/founder/shaheen-safi` },
+        { name: 'Mujtaba Rahmani', href: `/tr/founder/mujtaba-rahmani` },
+        { name: 'Sahel Salem', href: `/tr/founder/sahel-salem` },
       ],
       blogs: [
-        { name: 'SafiPay Güvenliği', href: `/${currentLang}/blog/safipay-system-security` },
-        { name: 'Bir Rüyanın Doğuşu', href: `/${currentLang}/blog/what-is-safipay` },
-        { name: 'Blockchain Geleceği', href: `/${currentLang}/blog/about-shaheen-safi` },
+        { name: 'SafiPay Güvenliği', href: `/tr/blog/safipay-system-security` },
+        { name: 'Bir Rüyanın Doğuşu', href: `/tr/blog/what-is-safipay` },
+        { name: 'Blockchain Geleceği', href: `/tr/blog/about-shaheen-safi` },
       ]
     },
     fr: {
@@ -134,18 +134,58 @@ export default function Footer() {
       blogTitle: 'BLOG ET ACTUALITÉS',
       teamTitle: 'CONSEIL DE DIRECTION',
       links: [
-        { name: 'Accueil', href: `/${currentLang}` },
-        { name: 'Partenaires', href: `/${currentLang}/partners` },
-        { name: 'Contactez-nous', href: `/${currentLang}/contact` },
-        { name: 'À propos', href: `/${currentLang}/about` },
-        { name: 'Shaheen Safi', href: `/${currentLang}/founder/shaheen-safi` },
-        { name: 'Mujtaba Rahmani', href: `/${currentLang}/founder/mujtaba-rahmani` },
-        { name: 'Sahel Salem', href: `/${currentLang}/founder/sahel-salem` },
+        { name: 'Accueil', href: `/fr` },
+        { name: 'Partenaires', href: `/fr/partners` },
+        { name: 'Contact', href: `/fr/contact` },
+        { name: 'À propos', href: `/fr/about` },
+        { name: 'Shaheen Safi', href: `/fr/founder/shaheen-safi` },
+        { name: 'Mujtaba Rahmani', href: `/fr/founder/mujtaba-rahmani` },
+        { name: 'Sahel Salem', href: `/fr/founder/sahel-salem` },
       ],
       blogs: [
-        { name: 'Sécurité SafiPay', href: `/${currentLang}/blog/safipay-system-security` },
-        { name: 'L\'histoire d\'un rêve', href: `/${currentLang}/blog/what-is-safipay` },
-        { name: 'L\'avenir du Blockchain', href: `/${currentLang}/blog/about-shaheen-safi` },
+        { name: 'Sécurité SafiPay', href: `/fr/blog/safipay-system-security` },
+        { name: 'Histoire d\'un rêve', href: `/fr/blog/what-is-safipay` },
+        { name: 'Avenir de la Blockchain', href: `/fr/blog/about-shaheen-safi` },
+      ]
+    },
+    de: {
+      slogan: "SafiPay: Mehr als ein System, eine Brücke, die Afghanistan mit der modernen Weltwirtschaft verbindet.",
+      navTitle: 'SCHNELLZUGRIFF',
+      blogTitle: 'BLOG & NEWS',
+      teamTitle: 'SAFIPAY FÜHRUNGSRAT',
+      links: [
+        { name: 'Startseite', href: `/de` },
+        { name: 'Partner', href: `/de/partners` },
+        { name: 'Kontakt', href: `/de/contact` },
+        { name: 'Über uns', href: `/de/about` },
+        { name: 'Shaheen Safi', href: `/de/founder/shaheen-safi` },
+        { name: 'Mujtaba Rahmani', href: `/de/founder/mujtaba-rahmani` },
+        { name: 'Sahel Salem', href: `/de/founder/sahel-salem` },
+      ],
+      blogs: [
+        { name: 'SafiPay Sicherheit', href: `/de/blog/safipay-system-security` },
+        { name: 'Geburt eines Traums', href: `/de/blog/what-is-safipay` },
+        { name: 'Blockchain Zukunft', href: `/de/blog/about-shaheen-safi` },
+      ]
+    },
+    ar: {
+      slogan: "صافي بي؛ أكثر من مجرد نظام مالي، نحن نبني جسراً لربط أفغانستان بالاقتصاد العالمي الحديث.",
+      navTitle: 'روابط سريعة',
+      blogTitle: 'المدونة والأخبار',
+      teamTitle: 'مجلس قيادة SAFIPAY',
+      links: [
+        { name: 'الرئيسية', href: `/ar` },
+        { name: 'الشركاء', href: `/ar/partners` },
+        { name: 'اتصل بنا', href: `/ar/contact` },
+        { name: 'عن الشركة', href: `/ar/about` },
+        { name: 'شاهين صافي', href: `/ar/founder/shaheen-safi` },
+        { name: 'مجتبى رحماني', href: `/ar/founder/mujtaba-rahmani` },
+        { name: 'ساحل سالم', href: `/ar/founder/sahel-salem` },
+      ],
+      blogs: [
+        { name: 'الأمن في صافي بي', href: `/ar/blog/safipay-system-security` },
+        { name: 'قصة ولادة حلم', href: `/ar/blog/what-is-safipay` },
+        { name: 'مستقبل البلوكشين', href: `/ar/blog/about-shaheen-safi` },
       ]
     }
   };
@@ -191,11 +231,10 @@ export default function Footer() {
               <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-blue-500/50 transition-all duration-500 group">
                 <p className="text-white font-black text-sm mb-5 group-hover:text-blue-400 transition-colors">MUJTABA RAHMANI</p>
                 <div className="flex flex-wrap gap-4 text-gray-500 group-hover:text-gray-300">
-                  <Link href="#" target="_blank" className="hover:text-[#1877F2] transition-colors"><Facebook size={18}/></Link>
-                  <Link href="#" target="_blank" className="hover:text-white transition-colors"><XIcon size={16}/></Link>
-                  <Link href="#" target="_blank" className="hover:text-[#0A66C2] transition-colors"><Linkedin size={18}/></Link>
+                  <Link href="https://www.facebook.com/share/1DJJUX1TS2/" target="_blank" className="hover:text-[#1877F2] transition-colors"><Facebook size={18}/></Link>
+                  <Link href="https://www.linkedin.com/mwlite/profile/me" target="_blank" className="hover:text-[#0A66C2] transition-colors"><Linkedin size={18}/></Link>
                   <Link href="https://www.instagram.com/bigshot_tradez" target="_blank" className="hover:text-[#E4405F] transition-colors"><Instagram size={18}/></Link>
-                  <Link href="#" target="_blank" className="hover:text-white transition-colors"><TikTokIcon size={18}/></Link>
+                  <Link href="https://www.tiktok.com/@chill_asf_fr" target="_blank" className="hover:text-white transition-colors"><TikTokIcon size={18}/></Link>
                   <Link href="https://wa.me/+93793035609" target="_blank" className="hover:text-[#25D366] transition-colors"><MessageCircle size={18}/></Link>
                 </div>
               </div>
@@ -235,7 +274,7 @@ export default function Footer() {
               {content.blogs.map((blog: any) => (
                 <Link key={blog.href} href={blog.href} className="flex items-center justify-between p-5 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-amber-500/20 transition-all group">
                   <span className="text-gray-400 group-hover:text-white transition-colors text-sm font-medium">{blog.name}</span>
-                  <ArrowUpRight size={16} className="text-gray-700 group-hover:text-amber-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  <ArrowUpRight size={16} className={`text-gray-700 group-hover:text-amber-500 group-hover:-translate-y-1 transition-all ${isRtl ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
                 </Link>
               ))}
             </div>
