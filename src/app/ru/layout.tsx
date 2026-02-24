@@ -6,11 +6,10 @@ export const metadata = {
 };
 
 export default function RULayout({ children }: { children: React.ReactNode }) {
+  // تگ‌های html و body حذف شدند تا پروژه اجازه Build پیدا کند
   return (
-    <html lang="ru" dir="ltr">
-      <body className="antialiased font-sans">
-        {children}
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }

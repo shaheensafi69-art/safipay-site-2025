@@ -6,11 +6,10 @@ export const metadata = {
 };
 
 export default function GERLayout({ children }: { children: React.ReactNode }) {
+  // تگ‌های html و body حذف شدند تا با لایوت اصلی تداخل نداشته باشند
   return (
-    <html lang="de" dir="ltr">
-      <body className="antialiased selection:bg-amber-500/30">
-        {children}
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }

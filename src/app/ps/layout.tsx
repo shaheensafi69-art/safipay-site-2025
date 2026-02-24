@@ -1,12 +1,15 @@
-// src/app/ps/layout.tsx (یا ps)
+// src/app/ps/layout.tsx
+
 export const metadata = {
-  title: 'SafiPay - بانک دیجیتال',
+  title: 'SafiPay - ډیجیټل بانک',
+  description: 'د افغانستان لپاره د نړیوال ډیجیټل بانکدارۍ لومړنی سیسټم.',
 };
 
-export default function RTLLayout({ children }: { children: React.ReactNode }) {
+export default function PSLayout({ children }: { children: React.ReactNode }) {
+  // تمام تگ‌های ریشه حذف شدند تا ارور Hydration برطرف شود
   return (
-    <html lang="fa" dir="rtl">
-      <body>{children}</body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }

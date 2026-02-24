@@ -6,11 +6,10 @@ export const metadata = {
 };
 
 export default function ARLayout({ children }: { children: React.ReactNode }) {
+  // تمام تگ‌های html و body را حذف کردیم
   return (
-    <html lang="ar" dir="rtl">
-      <body className="antialiased">
-        {children}
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }

@@ -6,11 +6,10 @@ export const metadata = {
 };
 
 export default function TRLayout({ children }: { children: React.ReactNode }) {
+  // تگ‌های html و body حذف شدند تا از تداخل ساختاری جلوگیری شود
   return (
-    <html lang="tr" dir="ltr">
-      <body className="antialiased">
-        {children}
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }

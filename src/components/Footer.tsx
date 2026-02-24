@@ -9,7 +9,6 @@ import {
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
-// آیکون‌های سفارشی دقیق
 const TikTokIcon = ({ size = 16 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -49,6 +48,26 @@ export default function Footer() {
         { name: 'آینده بلاک‌چین در افغانستان', href: `/${currentLang}/blog/about-shaheen-safi` },
       ]
     },
+    ps: {
+      slogan: "صافي پي؛ له مالي سیستم اخوا، موږ د نړیوال نوي اقتصاد سره د افغانستان د نښلولو لپاره یو پل جوړوو.",
+      navTitle: 'چټک لاسرسی',
+      blogTitle: 'پوهنغونډ او خبرونه',
+      teamTitle: 'د SAFIPAY د رهبرۍ شورا',
+      links: [
+        { name: 'اصلي پاڼه', href: `/${currentLang}` },
+        { name: 'سوداګریز شریکان', href: `/${currentLang}/partners` },
+        { name: 'اړیکه', href: `/${currentLang}/contact` },
+        { name: 'زموږ په اړه', href: `/${currentLang}/about` },
+        { name: 'شاهین صافی', href: `/${currentLang}/founder/shaheen-safi` },
+        { name: 'مجتبی رحماني', href: `/${currentLang}/founder/mujtaba-rahmani` },
+        { name: 'ساحل سالم', href: `/${currentLang}/founder/sahel-salem` },
+      ],
+      blogs: [
+        { name: 'په صافي پي کې امنیت', href: `/${currentLang}/blog/safipay-system-security` },
+        { name: 'د یو خوب کیسه', href: `/${currentLang}/blog/what-is-safipay` },
+        { name: 'په افغانستان کې بلاکچین', href: `/${currentLang}/blog/about-shaheen-safi` },
+      ]
+    },
     en: {
       slogan: "SafiPay: More than a system, a bridge connecting Afghanistan to the modern global economy.",
       navTitle: 'QUICK LINKS',
@@ -68,6 +87,66 @@ export default function Footer() {
         { name: 'The Birth of SafiPay', href: `/${currentLang}/blog/what-is-safipay` },
         { name: 'FinTech Revolution', href: `/${currentLang}/blog/about-shaheen-safi` },
       ]
+    },
+    ru: {
+      slogan: "SafiPay: больше, чем просто система, мы строим мост для интеграции Афганистана в мировую экономику.",
+      navTitle: 'БЫСТРЫЕ ССЫЛКИ',
+      blogTitle: 'БЛОГ И НОВОСТИ',
+      teamTitle: 'РУКОВОДСТВО SAFIPAY',
+      links: [
+        { name: 'Главная', href: `/${currentLang}` },
+        { name: 'Партнеры', href: `/${currentLang}/partners` },
+        { name: 'Контакты', href: `/${currentLang}/contact` },
+        { name: 'О нас', href: `/${currentLang}/about` },
+        { name: 'Шахин Сафи', href: `/${currentLang}/founder/shaheen-safi` },
+        { name: 'Муджтаба Рахмани', href: `/${currentLang}/founder/mujtaba-rahmani` },
+        { name: 'Сахель Салем', href: `/${currentLang}/founder/sahel-salem` },
+      ],
+      blogs: [
+        { name: 'Безопасность SafiPay', href: `/${currentLang}/blog/safipay-system-security` },
+        { name: 'История создания', href: `/${currentLang}/blog/what-is-safipay` },
+        { name: 'Будущее блокчейна', href: `/${currentLang}/blog/about-shaheen-safi` },
+      ]
+    },
+    tr: {
+      slogan: "SafiPay: Bir sistemden daha fazlası, Afganistan'ı küresel ekonomiye bağlayan bir köprü kuruyoruz.",
+      navTitle: 'HIZLI ERİŞİM',
+      blogTitle: 'BLOG VE HABERLER',
+      teamTitle: 'SAFIPAY LİDERLİK KONSEYİ',
+      links: [
+        { name: 'Ana Sayfa', href: `/${currentLang}` },
+        { name: 'İş Ortakları', href: `/${currentLang}/partners` },
+        { name: 'İletişim', href: `/${currentLang}/contact` },
+        { name: 'Hakkımızda', href: `/${currentLang}/about` },
+        { name: 'Shaheen Safi', href: `/${currentLang}/founder/shaheen-safi` },
+        { name: 'Mujtaba Rahmani', href: `/${currentLang}/founder/mujtaba-rahmani` },
+        { name: 'Sahel Salem', href: `/${currentLang}/founder/sahel-salem` },
+      ],
+      blogs: [
+        { name: 'SafiPay Güvenliği', href: `/${currentLang}/blog/safipay-system-security` },
+        { name: 'Bir Rüyanın Doğuşu', href: `/${currentLang}/blog/what-is-safipay` },
+        { name: 'Blockchain Geleceği', href: `/${currentLang}/blog/about-shaheen-safi` },
+      ]
+    },
+    fr: {
+      slogan: "SafiPay : plus qu'un système financier, nous construisons un pont pour connecter l'Afghanistan à l'économie mondiale.",
+      navTitle: 'ACCÈS RAPIDE',
+      blogTitle: 'BLOG ET ACTUALITÉS',
+      teamTitle: 'CONSEIL DE DIRECTION',
+      links: [
+        { name: 'Accueil', href: `/${currentLang}` },
+        { name: 'Partenaires', href: `/${currentLang}/partners` },
+        { name: 'Contactez-nous', href: `/${currentLang}/contact` },
+        { name: 'À propos', href: `/${currentLang}/about` },
+        { name: 'Shaheen Safi', href: `/${currentLang}/founder/shaheen-safi` },
+        { name: 'Mujtaba Rahmani', href: `/${currentLang}/founder/mujtaba-rahmani` },
+        { name: 'Sahel Salem', href: `/${currentLang}/founder/sahel-salem` },
+      ],
+      blogs: [
+        { name: 'Sécurité SafiPay', href: `/${currentLang}/blog/safipay-system-security` },
+        { name: 'L\'histoire d\'un rêve', href: `/${currentLang}/blog/what-is-safipay` },
+        { name: 'L\'avenir du Blockchain', href: `/${currentLang}/blog/about-shaheen-safi` },
+      ]
     }
   };
 
@@ -75,13 +154,11 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#030303] border-t border-white/5 pt-32 pb-12 font-sans relative overflow-hidden" dir={isRtl ? 'rtl' : 'ltr'}>
-      {/* Background Glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-600/5 blur-[150px] rounded-full" />
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         
-        {/* ردیف اول: لوگو و تیم (باکس‌های هم‌اندازه) */}
-        <div className="grid lg:grid-cols-12 gap-12 mb-20 items-start">
+        <div className="grid lg:grid-cols-12 gap-12 mb-20 items-start text-start">
           
           <div className="lg:col-span-3 space-y-6">
             <div className={`flex items-center gap-3 ${isRtl ? 'flex-row' : 'flex-row-reverse justify-end'}`}>
@@ -99,7 +176,6 @@ export default function Footer() {
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               
-              {/* شاهین صافی */}
               <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-amber-500/20 hover:border-amber-500/50 transition-all duration-500 group">
                 <p className="text-white font-black text-sm mb-5 group-hover:text-amber-500 transition-colors">SHAHEEN SAFI</p>
                 <div className="flex flex-wrap gap-4 text-gray-500 group-hover:text-gray-300">
@@ -112,7 +188,6 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* مجتبی رحمانی */}
               <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-blue-500/50 transition-all duration-500 group">
                 <p className="text-white font-black text-sm mb-5 group-hover:text-blue-400 transition-colors">MUJTABA RAHMANI</p>
                 <div className="flex flex-wrap gap-4 text-gray-500 group-hover:text-gray-300">
@@ -125,7 +200,6 @@ export default function Footer() {
                 </div>
               </div>
 
-              {/* ساحل سالم */}
               <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 hover:border-green-500/50 transition-all duration-500 group">
                 <p className="text-white font-black text-sm mb-5 group-hover:text-green-400 transition-colors">SAHEL SALEM</p>
                 <div className="flex flex-wrap gap-4 text-gray-500 group-hover:text-gray-300">
@@ -142,8 +216,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ردیف دوم: نویگیشن و وبلاگ */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 py-16 border-t border-white/5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 py-16 border-t border-white/5 text-start">
           <div className="space-y-8">
             <h4 className="text-amber-500 font-black text-[10px] tracking-[0.4em] uppercase">{content.navTitle}</h4>
             <div className="grid grid-cols-2 gap-y-4 gap-x-8">
@@ -169,9 +242,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* کپی رایت نهایی */}
         <div className="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-start">
             <p className="text-gray-600 text-[9px] font-bold tracking-[0.5em] uppercase mb-2">
               © 2026 SAFIPAY GLOBAL DIGITAL BANKING SYSTEM.
             </p>
