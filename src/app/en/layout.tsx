@@ -1,12 +1,10 @@
-// src/app/en/layout.tsx (یا fr)
+// src/app/en/layout.tsx
+
 export const metadata = {
   title: 'SafiPay - Digital Bank',
 };
 
 export default function LTRLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" dir="ltr">
-      <body>{children}</body>
-    </html>
-  );
+  // تگ‌های html و body کاملاً حذف شدند
+  return <>{children}</>;
 }

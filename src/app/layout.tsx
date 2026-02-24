@@ -15,7 +15,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // ۱. اسکیمای سازمان
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -26,37 +25,19 @@ export default function RootLayout({
       "@type": "ImageObject",
       "url": "https://www.safipay.net/logo.png"
     },
-    "description": "SafiPay provides a modern international digital banking ecosystem for Afghans worldwide.",
-    "founder": { "@id": "https://www.safipay.net/founders/shaheen-safi/#person" },
-    "sameAs": [
-      "https://www.linkedin.com/company/safipay",
-      "https://twitter.com/SafiPay",
-      "https://www.instagram.com/safipayofficial"
-    ]
+    "description": "SafiPay provides a modern international digital banking ecosystem for Afghans worldwide."
   };
 
-  // ۲. اسکیمای شخص
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": "https://www.safipay.net/founders/shaheen-safi/#person",
     "name": "Shaheen Safi",
-    "alternateName": ["شاهین ساپی", "Shaheen Safi Sahib"],
-    "givenName": "Shaheen",
-    "familyName": "Safi",
-    "jobTitle": "Founder & CEO of SafiPay",
-    "image": "https://www.safipay.net/shaheen.jpeg",
-    "sameAs": [
-      "https://www.linkedin.com/in/shaheen-safi-b73a30299",
-      "https://www.instagram.com/top_g_official1",
-      "https://www.facebook.com/share/1H1vuV1i9Z/",
-      "https://www.tiktok.com/@safi_sahib6",
-      "https://wa.me/19342032497"
-    ]
+    "jobTitle": "Founder & CEO of SafiPay"
   };
 
   return (
-    <html lang="fa" dir="rtl" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE" />
         <script
@@ -66,7 +47,6 @@ export default function RootLayout({
           }}
         />
       </head>
-
       <body className={`${inter.className} antialiased bg-[#020202] text-white min-h-screen flex flex-col`}>
         <Header />
         <main className="flex-grow">
