@@ -18,21 +18,44 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const organizationSchema = {
+  // این بخش جادوی اصلی برای معرفی تو به گوگل است
+  const unifiedSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://www.safipay.net/#organization",
-    "name": "SafiPay",
-    "url": "https://www.safipay.net",
-    "logo": "https://www.safipay.net/logo.png",
-  };
-
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://www.safipay.net/founders/shaheen-safi/#person",
-    "name": "Shaheen Safi",
-    "jobTitle": "Founder & CEO of SafiPay"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.safipay.net/#organization",
+        "name": "SafiPay",
+        "url": "https://www.safipay.net",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.safipay.net/logo.png"
+        },
+        "sameAs": [
+          "https://www.facebook.com/share/16XvE4V4fF/",
+          "https://www.instagram.com/safipay_official",
+          "https://wa.me/+19342032497"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.safipay.net/founder/shaheen-safi/#person",
+        "name": "Shaheen Safi",
+        "jobTitle": "Founder & CEO",
+        "description": "Afghan entrepreneur and founder of SafiPay digital banking system.",
+        "image": "https://www.safipay.net/shaheen.jpeg",
+        "worksFor": { "@id": "https://www.safipay.net/#organization" },
+        "sameAs": [
+          "https://www.wikidata.org/wiki/Q138427366", // اتصال مستقیم به ویکی‌دیتای تو
+          "https://www.linkedin.com/in/shaheen-safi-b73a30299",
+          "https://www.instagram.com/top_g_official1",
+          "https://www.facebook.com/share/1H1vuV1i9Z/",
+          "https://x.com/safi_sahib01",
+          "https://www.tiktok.com/@safi_sahib6",
+          "https://wa.me/+19342032497"
+        ]
+      }
+    ]
   };
 
   return (
@@ -42,7 +65,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ 
-            __html: JSON.stringify([organizationSchema, personSchema]) 
+            __html: JSON.stringify(unifiedSchema) 
           }}
         />
       </head>
@@ -50,14 +73,10 @@ export default function RootLayout({
         className={`${inter.className} antialiased bg-[#020202] text-white min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        {/* هدر در اینجا قرار می‌گیرد تا در همه صفحات باشد */}
         <Header />
-        
         <main className="flex-grow">
           {children}
         </main>
-        
-        {/* فوتر در اینجا قرار می‌گیرد تا در همه صفحات باشد */}
         <Footer />
       </body>
     </html>
