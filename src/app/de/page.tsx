@@ -7,30 +7,71 @@ import {
   CreditCard, ArrowRight, BarChart3, Handshake 
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import React, { Suspense, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera, Float, Stars } from '@react-three/drei';
+import * as THREE from 'three';
+
+function GlobalScene() {
+  const meshRef = useRef<THREE.Group>(null);
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.002;
+      meshRef.current.rotation.x += 0.001;
+    }
+  });
+
+  return (
+    <>
+      <PerspectiveCamera makeDefault position={[0, 0, 8]} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} intensity={2} color="#f59e0b" />
+      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1.5} />
+      
+      <Suspense fallback={null}>
+        <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+          <group ref={meshRef}>
+            <points>
+              <sphereGeometry args={[3, 64, 64]} />
+              <pointsMaterial color="#f59e0b" size={0.025} transparent opacity={0.3} sizeAttenuation={true} />
+            </points>
+            <mesh>
+              <sphereGeometry args={[2.98, 32, 32]} />
+              <meshBasicMaterial color="#f59e0b" wireframe transparent opacity={0.03} />
+            </mesh>
+          </group>
+        </Float>
+      </Suspense>
+    </>
+  );
+}
 
 export default function HomePageDE() {
   const pathname = usePathname();
   const currentLang = pathname?.split('/')[1] || 'de';
 
   return (
-    <div className="bg-[#050505] text-white overflow-x-hidden selection:bg-amber-500/30" dir="ltr">
+    <div className="bg-[#050505] text-white overflow-x-hidden selection:bg-amber-500/30 relative font-sans" dir="ltr">
       
-      {/* --- Hero Section --- */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/15 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-5 pointer-events-none -z-10 blur-3xl">
-           <Image src="/logo.png" alt="" fill className="object-contain animate-pulse" />
-        </div>
+      {/* 3D Hintergrund */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Canvas>
+          <GlobalScene />
+        </Canvas>
+      </div>
 
-        <div className="relative z-10 text-center max-w-6xl">
+      {/* --- Hero Section --- */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent pointer-events-none" />
+        
+        <div className="relative z-10 text-center max-w-6xl pointer-events-none">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.2em] uppercase"
+            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase pointer-events-auto"
           >
-            Finanzielle Grenzen für alle Afghanen durchbrechen
+            Finanzielle Freiheit für alle Afghanen
           </motion.div>
 
           <motion.h1
@@ -42,7 +83,7 @@ export default function HomePageDE() {
             <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
             <br />
             <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-              Digital Banking für Afghanen
+              Digital Banking für Afghanistan
             </span>
           </motion.h1>
 
@@ -52,15 +93,15 @@ export default function HomePageDE() {
             transition={{ duration: 1.2, delay: 0.3 }}
             className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-light"
           >
-            Wir stärken Millionen von Menschen mit dem ersten internationalen digitalen Banking-Ökosystem. 
-            Ohne Grenzen, ohne Einschränkungen; Erleben Sie Sicherheit und Geschwindigkeit auf Weltniveau.
+            Empowerment für Millionen mit der ersten internationalen Digitalbank. 
+            Keine Grenzen, keine Einschränkungen – einfach nahtlose globale Finanzen.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center pointer-events-auto"
           >
             <Link
               href="#problems"
@@ -72,15 +113,15 @@ export default function HomePageDE() {
               href={`/${currentLang}/partners`}
               className="px-10 py-5 border-2 border-amber-600/50 text-amber-500 text-xl font-black rounded-2xl hover:bg-amber-600/10 transition-all shadow-[0_0_30px_rgba(217,119,6,0.2)] flex items-center gap-3"
             >
-              <Handshake size={24} /> Strategische Partnerschaft
+              <Handshake size={24} /> Partner werden
             </Link>
           </motion.div>
         </div>
       </section>
 
       {/* --- Problems Section --- */}
-      <section id="problems" className="py-32 relative bg-black">
-        <div className="container mx-auto px-6 relative z-10">
+      <section id="problems" className="py-32 relative z-10">
+        <div className="container mx-auto px-6">
           <div className="flex flex-col items-center mb-24 text-center">
             <motion.div 
               whileInView={{ opacity: [0, 1], scale: [0.8, 1] }}
@@ -88,38 +129,36 @@ export default function HomePageDE() {
             >
               <AlertCircle size={48} className="text-red-500" />
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase italic tracking-tighter">
-              Die afghanische <span className="text-red-600">Bankenkrise</span>
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase italic">
+              Die <span className="text-red-600">Bankenkrise</span>
             </h2>
-            <p className="text-gray-500 text-xl max-w-2xl font-light leading-relaxed">
-              Die derzeitigen Finanzsysteme sind ineffizient, isoliert und veraltet. 
-              Millionen von Afghanen sind von der modernen digitalen Wirtschaft ausgeschlossen.
+            <p className="text-gray-500 text-xl max-w-2xl font-light">
+              Das aktuelle Finanzsystem in Afghanistan ist isoliert, veraltet und bricht zusammen.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
             {[
-              { title: '85% ohne Konto', desc: 'Die Mehrheit der Bevölkerung, insbesondere Frauen und Bewohner entlegener Gebiete, hat keinen Zugang zu Basis-Bankdienstleistungen.' },
-              { title: 'SWIFT-Isolation', desc: 'Die Trennung von globalen Bankennetzwerken macht den Geldtransfer zu einem gefährlichen und inoffiziellen Weg.' },
-              { title: 'Ungültige Karten', desc: 'Aktuelle lokale Karten werden auf globalen Plattformen wie Amazon, Netflix oder Google nicht unterstützt.' },
-              { title: '15% Transfergebühr', desc: 'Die Abhängigkeit von traditionellen „Hawala“-Systemen führt zu massiven finanziellen Verlusten und mangelnder Transparenz.' },
-              { title: 'Starke Inflation', desc: 'Das Fehlen einer Infrastruktur zur Haltung stabiler Währungen (USD/EUR) vernichtet die Ersparnisse der Familien.' },
-              { title: 'Keine digitale Identität', desc: 'Kontoeröffnungen erfordern immer noch physische Präsenz und komplizierte, veraltete Bürokratie.' },
-              { title: 'Schwache Sicherheit', desc: 'Instabile Sicherheitsinfrastrukturen erhöhen das Risiko von Betrug und finanziellen Bedrohungen im aktuellen System.' },
-              { title: 'Offline-Wirtschaft', desc: 'Lokale Unternehmen können keine globalen Zahlungen annehmen, was das Wachstum der nationalen Wirtschaft bremst.' },
+              { title: '85% ohne Konto', desc: 'Die Mehrheit der Bevölkerung, insbesondere Frauen, hat keinen Zugang zu Basiskonten.' },
+              { title: 'SWIFT Isolation', desc: 'Die Trennung vom globalen Netzwerk macht internationale Überweisungen unmöglich.' },
+              { title: 'Ungültige Karten', desc: 'Inländische Karten funktionieren nicht auf Plattformen wie Amazon, Netflix oder Google.' },
+              { title: '15% Gebühren', desc: 'Informelle Systeme führen zu massiven finanziellen Verlusten und fehlender Transparenz.' },
+              { title: 'Hohe Inflation', desc: 'Es gibt kaum Möglichkeiten, Ersparnisse in stabilen Währungen wie USD oder EUR zu halten.' },
+              { title: 'Kein Digital-KYC', desc: 'Kontoeröffnungen erfordern noch immer physische Präsenz und veraltete Bürokratie.' },
+              { title: 'Mangelnde Transparenz', desc: 'Schwache Infrastruktur führt zu hohen Risiken für Betrug und Geldwäsche.' },
+              { title: 'Offline-Wirtschaft', desc: 'Unternehmen können keine globalen Zahlungen annehmen, was das Wachstum stoppt.' },
             ].map((problem, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-[#050505] border border-white/5 p-8 rounded-[2rem] hover:border-red-500/30 transition-all group text-left"
+                whileHover={{ y: -8, borderColor: 'rgba(239, 68, 68, 0.4)', backgroundColor: 'rgba(5, 5, 5, 0.9)' }}
+                className="bg-[#050505]/70 backdrop-blur-md border border-white/5 p-8 rounded-[2rem] transition-all group cursor-pointer"
               >
                 <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <div className="w-2 h-2 rounded-full bg-red-500" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-200 group-hover:text-red-500 transition-colors tracking-tight">
+                <h3 className="text-xl font-bold mb-4 text-gray-200 group-hover:text-red-500 transition-colors">
                   {problem.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed font-light">
@@ -132,7 +171,7 @@ export default function HomePageDE() {
       </section>
 
       {/* --- Solutions Section --- */}
-      <section className="py-32 bg-[#050505]">
+      <section className="py-32 relative z-10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.div 
@@ -142,28 +181,35 @@ export default function HomePageDE() {
               <Zap size={48} className="text-amber-500" />
             </motion.div>
             <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase italic">
-              Die Zukunft <span className="text-amber-500">ist hier</span>
+              Die <span className="text-amber-500">Zukunft</span> ist hier
             </h2>
             <p className="text-gray-400 text-xl font-light italic">
-              SafiPay ist mehr als nur eine App – es ist eine Brücke, die Afghanistan mit den globalen Finanzmärkten verbindet.
+              SafiPay ist nicht nur eine App – es ist eine Brücke zum globalen Markt.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              { icon: <Globe />, title: 'Globaler Zugang', desc: 'Sofortige Eröffnung internationaler Konten für Afghanen weltweit, ohne physische Anwesenheit.' },
-              { icon: <CreditCard />, title: 'Echte virtuelle Karten', desc: 'Sofortige Ausstellung von Visa- und Mastercard-Karten für weltweite Einkäufe und Online-Abonnements.' },
-              { icon: <Zap />, title: '1% Transfergebühr', desc: 'Eine intelligente Alternative zum teuren Hawala-System mit schnellen, günstigen und transparenten Überweisungen.' },
-              { icon: <Shield />, title: 'Erweiterte Sicherheit', desc: 'Verschlüsselung auf Bankenniveau und digitale Identitätsprüfung für die vollständige Sicherheit Ihres Vermögens.' },
-              { icon: <BarChart3 />, title: 'Multiwährungsmanagement', desc: 'Halten und Konvertieren weltweit anerkannter Währungen zum Schutz vor Marktschwankungen.' },
-              { icon: <CheckCircle2 />, title: 'Rechtliche Compliance', desc: 'Betrieb im Rahmen internationaler Finanzgesetze zur Gewährleistung von Stabilität und Glaubwürdigkeit.' },
+              { icon: <Globe />, title: 'Globaler Zugang', desc: 'Sofortige internationale Konten ohne physische Bankbesuche.' },
+              { icon: <CreditCard />, title: 'Virtuelle Karten', desc: 'Echte Visa/Mastercards für globales Shopping und Abonnements.' },
+              { icon: <Zap />, title: '1% Gebühren', desc: 'Umgehung teurer Hawala-Systeme durch schnelle, transparente Transfers.' },
+              { icon: <Shield />, title: 'Top Sicherheit', desc: 'Banken-Verschlüsselung und digitales KYC für maximale Sicherheit.' },
+              { icon: <BarChart3 />, title: 'Multi-Währung', desc: 'USD, EUR und mehr halten, um sich vor lokaler Inflation zu schützen.' },
+              { icon: <CheckCircle2 />, title: 'Full Compliance', desc: 'Betrieb innerhalb globaler Rechtsrahmen für die Unbanked-Bevölkerung.' },
             ].map((item, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -10 }}
-                className="group p-10 bg-black/40 border border-white/5 rounded-[2.5rem] hover:border-amber-500/50 transition-all duration-500 shadow-2xl text-left"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ 
+                  y: -12, 
+                  borderColor: 'rgba(245, 158, 11, 0.5)', 
+                  boxShadow: '0 20px 40px rgba(245, 158, 11, 0.1)',
+                  backgroundColor: 'rgba(5, 5, 5, 0.8)'
+                }}
+                className="group p-10 bg-black/50 backdrop-blur-xl border border-white/5 rounded-[2.5rem] transition-all duration-500 cursor-pointer"
               >
-                <div className="text-amber-500 mb-8 transform group-hover:scale-110 transition-transform duration-500">
+                <div className="text-amber-500 mb-8 transform group-hover:scale-125 transition-transform duration-500">
                   {item.icon}
                 </div>
                 <h3 className="text-2xl font-black mb-4 text-white uppercase tracking-tighter italic">
@@ -176,21 +222,20 @@ export default function HomePageDE() {
             ))}
           </div>
 
-          {/* Final CTA Card */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="mt-32 max-w-5xl mx-auto bg-gradient-to-l from-amber-600 to-amber-800 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
+            whileHover={{ scale: 1.02 }}
+            className="mt-32 max-w-5xl mx-auto bg-gradient-to-r from-amber-600 to-amber-800 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)] transition-transform"
           >
-            <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -ml-32 -mt-32" />
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-              Bereit, die afghanische Wirtschaft <br /> neu aufzubauen?
+             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
+              Bereit, Afghanistans <br /> Wirtschaft neu zu bauen?
             </h2>
             <Link
               href={`/${currentLang}/partners`}
-              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-amber-500 hover:text-white transition-all transform"
             >
-              Werden Sie Teil unseres Partnernetzwerks <Handshake size={28} />
+              Partnerschaft anfragen <Handshake size={28} />
             </Link>
           </motion.div>
         </div>
