@@ -4,31 +4,72 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { 
   AlertCircle, CheckCircle2, Globe, Shield, Zap, 
-  CreditCard, ArrowLeft, BarChart3, Handshake 
+  CreditCard, ArrowRight, BarChart3, Handshake 
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import React, { Suspense, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera, Float, Stars } from '@react-three/drei';
+import * as THREE from 'three';
+
+function GlobalScene() {
+  const meshRef = useRef<THREE.Group>(null);
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.002;
+      meshRef.current.rotation.x += 0.001;
+    }
+  });
+
+  return (
+    <>
+      <PerspectiveCamera makeDefault position={[0, 0, 8]} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} intensity={2} color="#f59e0b" />
+      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1.5} />
+      
+      <Suspense fallback={null}>
+        <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+          <group ref={meshRef}>
+            <points>
+              <sphereGeometry args={[3, 64, 64]} />
+              <pointsMaterial color="#f59e0b" size={0.025} transparent opacity={0.3} sizeAttenuation={true} />
+            </points>
+            <mesh>
+              <sphereGeometry args={[2.98, 32, 32]} />
+              <meshBasicMaterial color="#f59e0b" wireframe transparent opacity={0.03} />
+            </mesh>
+          </group>
+        </Float>
+      </Suspense>
+    </>
+  );
+}
 
 export default function HomePageFA() {
   const pathname = usePathname();
   const currentLang = pathname?.split('/')[1] || 'fa';
 
   return (
-    <div className="bg-[#050505] text-white overflow-x-hidden selection:bg-amber-500/30" dir="rtl">
+    <div className="bg-[#050505] text-white overflow-x-hidden selection:bg-amber-500/30 relative font-sans" dir="rtl">
       
-      {/* --- بخش هیرو (Hero Section) --- */}
-      <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden">
-        {/* افکت‌های نوری پس‌زمینه */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/15 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-6xl opacity-5 pointer-events-none -z-10 blur-3xl">
-           <Image src="/logo.png" alt="" fill className="object-contain animate-pulse" />
-        </div>
+      {/* پس‌زمینه سه بعدی ثابت */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Canvas>
+          <GlobalScene />
+        </Canvas>
+      </div>
 
-        <div className="relative z-10 text-center max-w-6xl">
+      {/* --- بخش هیرو (Hero) --- */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent pointer-events-none" />
+        
+        <div className="relative z-10 text-center max-w-6xl pointer-events-none">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.2em] uppercase"
+            className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-[11px] font-black tracking-widest uppercase pointer-events-auto"
           >
             شکستن مرزهای مالی برای تمام افغان‌ها
           </motion.div>
@@ -39,10 +80,10 @@ export default function HomePageFA() {
             transition={{ duration: 1.2 }}
             className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[0.85]"
           >
-            <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">سافی‌پی</span>
+            <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
             <br />
             <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-              بانکداری دیجیتال برای افغان‌ها
+              بانکداری دیجیتال برای افغانستان
             </span>
           </motion.h1>
 
@@ -52,36 +93,35 @@ export default function HomePageFA() {
             transition={{ duration: 1.2, delay: 0.3 }}
             className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-light"
           >
-            توانمندسازی میلیون‌ها نفر با اولین اکوسیستم بانکداری دیجیتال بین‌المللی. 
-            بدون محدودیت، بدون مرز؛ تجربه امنیت و سرعت در تراز جهانی.
+            توانمندسازی میلیون‌ها نفر با اولین بانک دیجیتال بین‌المللی.
+            بدون مرز، بدون محدودیت؛ فقط تجربه مالی جهانی و بی‌نقص.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center pointer-events-auto"
           >
             <Link
               href="#problems"
-              className="px-10 py-5 bg-white text-black text-xl font-black rounded-2xl hover:bg-amber-500 transition-all flex items-center gap-2 group"
+              className="px-10 py-5 bg-white text-black text-xl font-black rounded-2xl hover:bg-amber-500 hover:text-white transition-all flex items-center gap-2 group"
             >
-              بررسی چالش‌ها <ArrowLeft className="group-hover:-translate-x-1 transition-transform" />
+              مشاهده چالش‌ها <ArrowRight className="group-hover:-translate-x-1 rotate-180 transition-transform" />
             </Link>
-            {/* لینک به صفحه پارتنرز با حفظ زبان */}
             <Link
               href={`/${currentLang}/partners`}
               className="px-10 py-5 border-2 border-amber-600/50 text-amber-500 text-xl font-black rounded-2xl hover:bg-amber-600/10 transition-all shadow-[0_0_30px_rgba(217,119,6,0.2)] flex items-center gap-3"
             >
-              <Handshake size={24} /> مشارکت استراتژیک
+              <Handshake size={24} /> جذب همکاری
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* --- بخش بحران بانکی (Problems Section) --- */}
-      <section id="problems" className="py-32 relative bg-black">
-        <div className="container mx-auto px-6 relative z-10">
+      {/* --- بخش چالش‌ها (Problems) --- */}
+      <section id="problems" className="py-32 relative z-10">
+        <div className="container mx-auto px-6">
           <div className="flex flex-col items-center mb-24 text-center">
             <motion.div 
               whileInView={{ opacity: [0, 1], scale: [0.8, 1] }}
@@ -89,38 +129,36 @@ export default function HomePageFA() {
             >
               <AlertCircle size={48} className="text-red-500" />
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase italic tracking-tighter">
-              بحران <span className="text-red-600">بانکی</span> افغانستان
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase italic">
+              بحران <span className="text-red-600">بانکداری</span>
             </h2>
-            <p className="text-gray-500 text-xl max-w-2xl font-light leading-relaxed">
-              سیستم‌های مالی فعلی ناکارآمد، منزوی و فرسوده هستند. 
-              میلیون‌ها افغان در اقتصاد مدرن دیجیتال نادیده گرفته شده‌اند.
+            <p className="text-gray-500 text-xl max-w-2xl font-light">
+              سیستم‌های مالی فعلی در افغانستان از کار افتاده، منزوی و قدیمی هستند.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
             {[
-              { title: '۸۵٪ فاقد حساب', desc: 'اکثریت جمعیت، به ویژه بانوان و ساکنان مناطق دوردست، به خدمات بانکی پایه دسترسی ندارند.' },
-              { title: 'انزوای سوئیفت', desc: 'قطع ارتباط با شبکه‌های بانکی جهانی، انتقال سرمایه را به مسیری خطرناک و غیررسمی تبدیل کرده است.' },
-              { title: 'کارت‌های غیرمعتبر', desc: 'کارت‌های داخلی فعلی در پلتفرم‌های جهانی مثل Amazon، Netflix یا Google پشتیبانی نمی‌شوند.' },
-              { title: '۱۵٪ کارمزد حواله', desc: 'تکیه بر سیستم‌های سنتی حواله منجر به ضرر مالی سنگین و عدم شفافیت در جابجایی پول می‌شود.' },
-              { title: 'تورم افسارگسیخته', desc: 'نبود زیرساخت برای نگهداری دارایی‌های پایدار (دلار/یورو)، ارزش پس‌انداز خانواده‌ها را نابود می‌کند.' },
-              { title: 'فقدان KYC دیجیتال', desc: 'افتتاح حساب هنوز نیازمند حضور فیزیکی و بروکراسی‌های اداری پیچیده و قدیمی است.' },
-              { title: 'امنیت ضعیف', desc: 'زیرساخت‌های لرزان امنیتی باعث افزایش ریسک کلاهبرداری و خطرات مالی در سیستم فعلی شده است.' },
-              { title: 'اقتصاد آفلاین', desc: 'کسب‌وکارهای داخلی توان پذیرش پرداخت‌های جهانی را ندارند و این مانع رشد اقتصاد ملی است.' },
+              { title: '۸۵٪ فاقد حساب', desc: 'اکثریت جمعیت، به ویژه زنان و شهروندان روستایی، به حساب‌های بانکی اولیه دسترسی ندارند.' },
+              { title: 'انزوای سوئیفت', desc: 'قطع بودن از شبکه‌های جهانی به معنای غیرممکن بودن یا خطرناک بودن حواله‌های بین‌المللی است.' },
+              { title: 'کارت‌های نامعتبر', desc: 'کارت‌های داخلی فعلی در پلتفرم‌های جهانی مثل آمازون، نتفلیکس یا گوگل کار نمی‌کنند.' },
+              { title: '۱۵٪ هزینه انتقال', desc: 'تکیه بر سیستم‌های غیررسمی باعث ضرر مالی هنگفت و عدم شفافیت در پیگیری می‌شود.' },
+              { title: 'تورم بالا', desc: 'هیچ راه آسانی برای نگهداری دارایی‌های پایدار مثل دلار یا یورو جهت حفظ پس‌انداز خانواده وجود ندارد.' },
+              { title: 'نبود KYC دیجیتال', desc: 'افتتاح حساب هنوز نیازمند حضور فیزیکی و طی کردن مراحل بوروکراسی قدیمی است.' },
+              { title: 'عدم شفافیت', desc: 'زیرساخت‌های امنیتی ضعیف منجر به خطرات مکرر کلاهبرداری و پول‌شویی می‌شود.' },
+              { title: 'اقتصاد آفلاین', desc: 'کسب‌وکارها نمی‌توانند پرداخت‌های جهانی را بپذیرند که این امر مانع رشد اقتصادی ملی است.' },
             ].map((problem, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-[#050505] border border-white/5 p-8 rounded-[2rem] hover:border-red-500/30 transition-all group"
+                whileHover={{ y: -8, borderColor: 'rgba(239, 68, 68, 0.4)', backgroundColor: 'rgba(5, 5, 5, 0.9)' }}
+                className="bg-[#050505]/70 backdrop-blur-md border border-white/5 p-8 rounded-[2rem] transition-all group cursor-pointer"
               >
                 <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <div className="w-2 h-2 rounded-full bg-red-500" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-gray-200 group-hover:text-red-500 transition-colors tracking-tight">
+                <h3 className="text-xl font-bold mb-4 text-gray-200 group-hover:text-red-500 transition-colors">
                   {problem.title}
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed font-light">
@@ -132,8 +170,8 @@ export default function HomePageFA() {
         </div>
       </section>
 
-      {/* --- بخش راه‌حل‌ها (Solutions Section) --- */}
-      <section className="py-32 bg-[#050505]">
+      {/* --- بخش راهکارها (Solutions) --- */}
+      <section className="py-32 relative z-10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-24">
             <motion.div 
@@ -143,28 +181,35 @@ export default function HomePageFA() {
               <Zap size={48} className="text-amber-500" />
             </motion.div>
             <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter uppercase italic">
-              آینده <span className="text-amber-500">اینجاست</span>
+              آینده همین <span className="text-amber-500">جاست</span>
             </h2>
             <p className="text-gray-400 text-xl font-light italic">
-              سافی‌پی فراتر از یک اپلیکیشن، پلی است برای اتصال افغانستان به بازارهای مالی جهان.
+              SafiPay فقط یک اپلیکیشن نیست؛ پلی است که افغان‌ها را به بازار جهانی متصل می‌کند.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              { icon: <Globe />, title: 'دسترسی جهانی', desc: 'افتتاح حساب بین‌المللی آنی برای افغان‌ها در هر نقطه از جهان، بدون نیاز به حضور فیزیکی.' },
-              { icon: <CreditCard />, title: 'ویزا کارت‌های واقعی', desc: 'صدور آنی کارت‌های مجازی و فیزیکی برای خریدهای بین‌المللی و اشتراک‌های آنلاین.' },
-              { icon: <Zap />, title: '۱٪ کارمزد انتقال', desc: 'جایگزینی هوشمند برای سیستم گران حواله با جابجایی سریع، ارزان و کاملاً شفاف.' },
-              { icon: <Shield />, title: 'امنیت پیشرفته', desc: 'رمزنگاری در سطح بانک‌های جهانی و احراز هویت دیجیتال برای امنیت کامل دارایی‌ها.' },
-              { icon: <BarChart3 />, title: 'مدیریت چند ارزی', desc: 'نگهداری و تبدیل ارزهای معتبر جهانی جهت محافظت از سرمایه در برابر نوسانات بازار.' },
-              { icon: <CheckCircle2 />, title: 'انطباق قانونی', desc: 'فعالیت در چارچوب قوانین مالی بین‌المللی برای تضمین پایداری و اعتبار خدمات.' },
+              { icon: <Globe />, title: 'دسترسی جهانی', desc: 'حساب‌های بین‌المللی فوری برای افغان‌های سراسر جهان بدون نیاز به مراجعه حضوری.' },
+              { icon: <CreditCard />, title: 'کارت‌های مجازی واقعی', desc: 'صدور فوری ویزا/مسترکارت برای خرید آنلاین جهانی و اشتراک سرویس‌ها.' },
+              { icon: <Zap />, title: 'کارمزد ۱٪ انتقال', desc: 'عبور از سیستم گران حواله با انتقال‌های سریع، شفاف و فوق‌العاده ارزان.' },
+              { icon: <Shield />, title: 'امنیت پیشرفته', desc: 'رمزنگاری در سطح بانکی و KYC دیجیتال برای آرامش خاطر کامل کاربران.' },
+              { icon: <BarChart3 />, title: 'چند ارز متداول', desc: 'نگهداری و تبدیل دلار، یورو و سایر ارزها برای محافظت در برابر تورم.' },
+              { icon: <CheckCircle2 />, title: 'انطباق کامل قانونی', desc: 'فعالیت در چارچوب‌های قانونی جهانی در عین خدمت‌رسانی به افراد فاقد بانک.' },
             ].map((item, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -10 }}
-                className="group p-10 bg-black/40 border border-white/5 rounded-[2.5rem] hover:border-amber-500/50 transition-all duration-500 shadow-2xl"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ 
+                  y: -12, 
+                  borderColor: 'rgba(245, 158, 11, 0.5)', 
+                  boxShadow: '0 20px 40px rgba(245, 158, 11, 0.1)',
+                  backgroundColor: 'rgba(5, 5, 5, 0.8)'
+                }}
+                className="group p-10 bg-black/50 backdrop-blur-xl border border-white/5 rounded-[2.5rem] transition-all duration-500 cursor-pointer"
               >
-                <div className="text-amber-500 mb-8 transform group-hover:scale-110 transition-transform duration-500">
+                <div className="text-amber-500 mb-8 transform group-hover:scale-125 transition-transform duration-500">
                   {item.icon}
                 </div>
                 <h3 className="text-2xl font-black mb-4 text-white uppercase tracking-tighter italic">
@@ -177,21 +222,20 @@ export default function HomePageFA() {
             ))}
           </div>
 
-          {/* کارت فراخوان نهایی (Final CTA) */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="mt-32 max-w-5xl mx-auto bg-gradient-to-l from-amber-600 to-amber-800 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)]"
+            whileHover={{ scale: 1.02 }}
+            className="mt-32 max-w-5xl mx-auto bg-gradient-to-r from-amber-600 to-amber-800 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden shadow-[0_40px_100px_rgba(217,119,6,0.3)] transition-transform"
           >
-            <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 blur-[100px] rounded-full -ml-32 -mt-32" />
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-              آماده‌اید اقتصاد افغانستان را <br /> دوباره بسازیم؟
+             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
+              آماده‌اید اقتصاد افغانستان <br /> را بازسازی کنیم؟
             </h2>
             <Link
               href={`/${currentLang}/partners`}
-              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+              className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black text-2xl font-black rounded-2xl hover:bg-amber-500 hover:text-white transition-all transform"
             >
-              به شبکه شرکای ما بپیوندید <Handshake size={28} />
+              درخواست همکاری <Handshake size={28} />
             </Link>
           </motion.div>
         </div>
