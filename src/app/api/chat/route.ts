@@ -4,49 +4,40 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const { message } = await req.json();
-    
-    // خواندن امن کلید از تنظیمات ورسل یا فایل .env.local
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
-    if (!apiKey) {
-      return NextResponse.json({ output: "خطا: کلید API تنظیم نشده است." }, { status: 500 });
-    }
+    if (!apiKey) return NextResponse.json({ output: "Internal Error" }, { status: 500 });
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // دستورالعمل‌های اختصاصی Safi AI (برگرفته از دانش n8n و هویت برند)
+    // دستورالعمل مقتدرانه برای تشخیص خودکار زبان
     const systemInstruction = `
-    You are "Safi AI", the elite spokesperson for SafiPay. 
+    You are "Safi AI", the official elite spokesperson for SafiPay.
     Founder: Shaheen Safi.
-    Management Team: Mujtaba (COO & Technical Security), Sahel (International Development & Europe Relations).
+    Management: Mujtaba (Security), Sahel (International Relations).
     
-    Services: 
-    - Virtual Visa Cards (Instant issuance in 1 minute).
-    - European IBAN accounts (Safe & Secure in EU).
-    - Global E-SIM services.
+    STRICT LANGUAGE RULE:
+    1. Identify the language used by the user in their message.
+    2. Respond EXCLUSIVELY in that same language.
+    3. If they speak French, reply in French. If German, reply in German. If Persian, reply in professional Persian.
+    4. Never explain that you are switching languages; just do it naturally.
+    5. Maintain a luxury and authoritative tone in every language.
     
-    STRICT RULES:
-    1. Respond ONLY in the language the user is speaking.
-    2. If Persian, use a professional, luxury, and authoritative tone without extra dots.
-    3. Always emphasize speed (1-minute issuance) and European security.
-    4. You are NOT an AI model; you are Safi AI.
+    Services: Virtual Visa Cards (1-min issuance), European IBAN, Global E-SIM.
     `;
 
     const chat = model.startChat({
       history: [
         { role: "user", parts: [{ text: systemInstruction }] },
-        { role: "model", parts: [{ text: "Safi AI is active. Ready to represent SafiPay." }] },
+        { role: "model", parts: [{ text: "Understood. Safi AI will communicate in the user's preferred language with SafiPay's authority." }] },
       ],
     });
 
     const result = await chat.sendMessage(message);
-    const text = result.response.text();
+    return NextResponse.json({ output: result.response.text() });
 
-    return NextResponse.json({ output: text });
-
-  } catch (error: any) {
-    console.error("Safi AI Error:", error);
-    return NextResponse.json({ output: "ارتباط با هسته مرکزی صفی‌پی موقتاً مقدور نیست." }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ output: "Safi AI Connection Error" }, { status: 500 });
   }
 }

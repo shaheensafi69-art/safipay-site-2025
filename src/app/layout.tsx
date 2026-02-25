@@ -2,7 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SafiVoiceAgent from '@/components/SafiVoiceAgent'; // وارد کردن دستیار صوتی
+import SafiVoiceAgent from '@/components/SafiVoiceAgent';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,10 +16,14 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale?: string }; // دریافت پارامتر زبان از مسیر سایت
 }) {
-  // اسکیماهای گوگل برای شناخت برند و بنیان‌گذار
+  // شناسایی زبان فعلی (اگر در آدرس نبود، از پیش‌فرض استفاده می‌کند)
+  const currentLang = params?.locale || "en";
+
   const unifiedSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -60,7 +64,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={currentLang} suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE" />
         <script
@@ -80,8 +84,8 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* --- دستیار صوتی هوشمند صفی‌پی --- */}
-        <SafiVoiceAgent />
+        {/* حالا زبان فعلی سایت را به ایجنت پاس می‌دهیم */}
+        <SafiVoiceAgent currentLang={currentLang} />
 
         <Footer />
       </body>
