@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SafiVoiceAgent from '@/components/SafiVoiceAgent'; // وارد کردن دستیار صوتی
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,7 +19,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // این بخش جادوی اصلی برای معرفی تو به گوگل است
+  // اسکیماهای گوگل برای شناخت برند و بنیان‌گذار
   const unifiedSchema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -46,7 +47,7 @@ export default function RootLayout({
         "image": "https://www.safipay.net/shaheen.jpeg",
         "worksFor": { "@id": "https://www.safipay.net/#organization" },
         "sameAs": [
-          "https://www.wikidata.org/wiki/Q138427366", // اتصال مستقیم به ویکی‌دیتای تو
+          "https://www.wikidata.org/wiki/Q138427366",
           "https://www.linkedin.com/in/shaheen-safi-b73a30299",
           "https://www.instagram.com/top_g_official1",
           "https://www.facebook.com/share/1H1vuV1i9Z/",
@@ -74,9 +75,14 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Header />
+        
         <main className="flex-grow">
           {children}
         </main>
+
+        {/* --- دستیار صوتی هوشمند صفی‌پی --- */}
+        <SafiVoiceAgent />
+
         <Footer />
       </body>
     </html>
