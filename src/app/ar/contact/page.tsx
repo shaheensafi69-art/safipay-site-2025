@@ -1,13 +1,16 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Phone, MessageSquare, Mail, Send, MapPin, Globe, ShieldCheck, ArrowRight } from 'lucide-react';
+import { 
+  Phone, MessageSquare, Mail, Send, MapPin, Globe, 
+  ShieldCheck, Instagram, Facebook, Linkedin, Twitter 
+} from 'lucide-react';
 import { useState } from 'react';
 
 export default function ContactPageAR() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
-    // Formspree يعمل تلقائياً، هذا المعالج لعرض حالة النجاح فقط
+    // فرم به Formspree متصل است، این تابع فقط برای نمایش پیام موفقیت است
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
@@ -15,9 +18,9 @@ export default function ContactPageAR() {
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="rtl">
       
-      {/* --- قسم الهيرو (Cinematic Hero) --- */}
+      {/* --- Cinematic Hero Section --- */}
       <section className="relative pt-40 pb-24 overflow-hidden">
-        {/* تأثيرات الإضاءة في الخلفية */}
+        {/* تأثيرات الإضاءة المحيطة */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -mr-64 -mt-64" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/5 blur-[120px] rounded-full -ml-32 -mb-32" />
 
@@ -31,15 +34,15 @@ export default function ContactPageAR() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
             </span>
-            دعم نشط وعالمي
+            الدعم العالمي نشط 24/7
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-black mb-8 tracking-tighter"
+            className="text-6xl md:text-8xl font-black mb-8 tracking-tighter uppercase"
           >
-            تواصل <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent px-2">معنا</span> الآن
+            تواصل <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">معنا</span>
           </motion.h1>
           
           <motion.p 
@@ -48,34 +51,35 @@ export default function ContactPageAR() {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 font-light leading-relaxed"
           >
-            نحن هنا للإجابة على استفساراتكم حول مستقبل الخدمات المصرفية الرقمية. 
-            فريق سافي بي (SafiPay) معكم في كل خطوة.
+            لديك استفسارات حول مستقبل الصيرفة الرقمية؟ 
+            فريق SafiPay التنفيذي هنا لإرشادك في رحلتك المالية.
           </motion.p>
         </div>
       </section>
 
-      {/* --- المحتوى الرئيسي --- */}
+      {/* --- Main Content --- */}
       <section className="pb-32 container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* عمود معلومات الاتصال */}
+          {/* قنوات الاتصال والشبكات الاجتماعية */}
           <motion.div 
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-5 space-y-6"
+            className="lg:col-span-5 space-y-6 text-right"
           >
-            <div className="p-8 md:p-10 bg-white/5 border border-white/10 rounded-[2.5rem] space-y-10">
+            <div className="p-8 md:p-10 bg-white/5 border border-white/10 rounded-[2.5rem] h-full space-y-10">
               <div className="space-y-2">
-                <h2 className="text-3xl font-black text-white uppercase tracking-tight">قنوات التواصل</h2>
+                <h2 className="text-3xl font-black text-white uppercase tracking-tight">القنوات الرسمية</h2>
                 <div className="h-1 w-20 bg-amber-500 rounded-full" />
               </div>
 
-              <div className="space-y-6">
+              {/* روابط التواصل */}
+              <div className="space-y-4">
                 {[
-                  { icon: <MessageSquare />, title: "واتساب الرسمي", value: "+33 7 53 92 89 13", link: "https://wa.me/33753928913", color: "hover:text-green-400" },
-                  { icon: <Phone />, title: "قسم الدعم", value: "+33 7 53 92 89 13", link: "tel:+33753928913", color: "hover:text-amber-400" },
-                  { icon: <Mail />, title: "المراسلات الرسمية", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
+                  { icon: <MessageSquare />, title: "واتساب الرسمي", value: "+44 7476 620282", link: "https://wa.me/447476620282", color: "hover:text-green-400" },
+                  { icon: <Phone />, title: "خط الدعم الساخن", value: "+44 7476 620282", link: "tel:+447476620282", color: "hover:text-amber-400" },
+                  { icon: <Mail />, title: "البريد الإلكتروني", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
                 ].map((item, index) => (
                   <motion.a
                     key={index}
@@ -95,29 +99,53 @@ export default function ContactPageAR() {
                 ))}
               </div>
 
+              {/* شبكات التواصل الاجتماعي */}
+              <div className="space-y-4">
+                <h4 className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mr-2">تابعنا على</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: <Facebook size={20} />, name: "فيسبوك", link: "https://www.facebook.com/share/1FDnCCnwJ4/" },
+                    { icon: <Instagram size={20} />, name: "إنستغرام", link: "https://www.instagram.com/safipay2022?igsh=ZW9tdHRidHI1d2gz" },
+                    { icon: <Linkedin size={20} />, name: "لينكد إن", link: "https://www.linkedin.com/company/safipay" },
+                    { icon: <Twitter size={20} />, name: "إكس (تويتر)", link: "https://x.com/safipay" },
+                  ].map((social, idx) => (
+                    <a 
+                      key={idx} 
+                      href={social.link} 
+                      target="_blank" 
+                      className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 hover:bg-amber-500/5 transition-all group"
+                    >
+                      <div className="text-gray-400 group-hover:text-amber-500 transition-colors">
+                        {social.icon}
+                      </div>
+                      <span className="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">{social.name}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
               <div className="pt-6 border-t border-white/5">
                 <div className="flex items-center gap-4 text-amber-500/80 mb-4">
                   <ShieldCheck size={20} />
-                  <span className="text-xs font-bold uppercase tracking-widest">ضمان الخصوصية</span>
+                  <span className="text-xs font-bold uppercase tracking-widest">خصوصية مضمونة</span>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed font-light">
-                  يتم تشفير جميع الرسائل المرسلة من طرف إلى طرف ويتم مراجعتها مباشرة من قبل فريق الإدارة لدينا.
+                  وصول مباشر ومشفر إلى بروتوكولات الإدارة لدينا.
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* عمود نموذج الاتصال */}
+          {/* نموذج الاتصال */}
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <div className="h-full bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group">
+            <div className="h-full bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden text-right">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-              
-              <h3 className="text-3xl font-black mb-10 tracking-tight">إرسال رسالة مباشرة</h3>
+              <h3 className="text-3xl font-black mb-10 tracking-tight uppercase">استفسار مباشر</h3>
               
               <form
                 action="https://formspree.io/f/maqbrkgq"
@@ -127,36 +155,36 @@ export default function ContactPageAR() {
               >
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest text-right block">الاسم واللقب</label>
+                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest block">الاسم الكامل</label>
                     <input
                       type="text"
                       name="name"
                       required
                       placeholder="مثال: شاهين صافي"
-                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
+                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700 text-right"
                     />
                   </div>
                   <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest text-right block">البريد الإلكتروني</label>
+                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest block">البريد الإلكتروني</label>
                     <input
                       type="email"
                       name="email"
                       required
-                      dir="ltr"
-                      placeholder="your@email.com"
+                      placeholder="name@email.com"
                       className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700 text-right"
+                      dir="ltr"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest text-right block">محتوى رسالتك</label>
+                  <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest block">تفاصيل الرسالة</label>
                   <textarea
                     name="message"
                     required
                     rows={5}
-                    placeholder="اكتب تفاصيل طلبك هنا..."
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all resize-none placeholder:text-gray-700"
+                    placeholder="اشرح استفسارك أو مشروعك هنا..."
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all resize-none placeholder:text-gray-700 text-right"
                   />
                 </div>
 
@@ -164,7 +192,7 @@ export default function ContactPageAR() {
                   whileHover={{ scale: 1.01, boxShadow: "0 0 40px rgba(245, 158, 11, 0.2)" }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all uppercase tracking-tighter"
+                  className="w-full py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all uppercase tracking-widest"
                 >
                   إرسال رسالة آمنة
                   <Send size={20} className="rotate-180" />
@@ -177,7 +205,7 @@ export default function ContactPageAR() {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-center text-green-400 text-sm font-bold"
                 >
-                  تم إرسال رسالتك بنجاح إلى بروتوكول سافي بي.
+                  تم إرسال الاستفسار بنجاح إلى بروتوكولات SafiPay.
                 </motion.div>
               )}
             </div>
@@ -185,19 +213,19 @@ export default function ContactPageAR() {
         </div>
       </section>
 
-      {/* بخش فوتر اطلاعاتی */}
+      {/* Footer Badges */}
       <section className="py-20 border-t border-white/5 bg-black/20">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-10 md:gap-20 text-gray-600 font-bold uppercase tracking-widest text-[10px]">
-              <div className="flex items-center gap-2 hover:text-amber-500 transition-colors cursor-default">
-                <MapPin size={16} /> Paris, France
-              </div>
-              <div className="flex items-center gap-2 hover:text-amber-500 transition-colors cursor-default">
-                <Globe size={16} /> Global Operations
-              </div>
-              <div className="flex items-center gap-2 hover:text-amber-500 transition-colors cursor-default">
-                <ShieldCheck size={16} /> AES-256 Encryption
-              </div>
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <MapPin size={16} /> باريس، فرنسا
+             </div>
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <Globe size={16} /> عمليات عالمية
+             </div>
+             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+               <ShieldCheck size={16} /> تشفير AES-256
+             </div>
           </div>
         </div>
       </section>

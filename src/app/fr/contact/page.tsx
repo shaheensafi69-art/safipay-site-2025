@@ -1,21 +1,16 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Phone, MessageSquare, Mail, Send, MapPin, Globe, ShieldCheck } from 'lucide-react';
+import { 
+  Phone, MessageSquare, Mail, Send, MapPin, Globe, 
+  ShieldCheck, Instagram, Facebook, Linkedin, Twitter 
+} from 'lucide-react';
 import { useState } from 'react';
 
 export default function ContactPageFR() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
+    // Formulaire connecté à Formspree
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
@@ -23,7 +18,7 @@ export default function ContactPageFR() {
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="ltr">
       
-      {/* --- Section Hero Cinématique --- */}
+      {/* --- Cinematic Hero Section --- */}
       <section className="relative pt-40 pb-24 overflow-hidden">
         {/* Effets de lumière ambiante */}
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -ml-64 -mt-64" />
@@ -47,7 +42,7 @@ export default function ContactPageFR() {
             animate={{ opacity: 1, y: 0 }}
             className="text-6xl md:text-8xl font-black mb-8 tracking-tighter uppercase"
           >
-            CONTACTEZ-<span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">NOUS</span>
+            CONTACTEZ <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">NOUS</span>
           </motion.h1>
           
           <motion.p 
@@ -56,17 +51,17 @@ export default function ContactPageFR() {
             transition={{ delay: 0.2 }}
             className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 font-light leading-relaxed"
           >
-            Une question sur l'avenir de la banque digitale ? 
-            L'équipe exécutive de SafiPay est là pour accompagner votre parcours financier.
+            Des questions sur l'avenir de la finance digitale ? 
+            L'équipe exécutive de SafiPay est là pour guider votre parcours financier.
           </motion.p>
         </div>
       </section>
 
-      {/* --- Contenu Principal --- */}
+      {/* --- Main Content --- */}
       <section className="pb-32 container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* Colonne Informations de Contact */}
+          {/* Infos de Contact & Réseaux Sociaux */}
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -75,14 +70,15 @@ export default function ContactPageFR() {
           >
             <div className="p-8 md:p-10 bg-white/5 border border-white/10 rounded-[2.5rem] h-full space-y-10">
               <div className="space-y-2">
-                <h2 className="text-3xl font-black text-white uppercase tracking-tight">Canaux</h2>
+                <h2 className="text-3xl font-black text-white uppercase tracking-tight">Canaux Officiels</h2>
                 <div className="h-1 w-20 bg-amber-500 rounded-full" />
               </div>
 
-              <div className="space-y-6">
+              {/* Liens de communication */}
+              <div className="space-y-4">
                 {[
-                  { icon: <MessageSquare />, title: "WhatsApp Officiel", value: "+33 7 53 92 89 13", link: "https://wa.me/33753928913", color: "hover:text-green-400" },
-                  { icon: <Phone />, title: "Ligne d'assistance", value: "+33 7 53 92 89 13", link: "tel:+33753928913", color: "hover:text-amber-400" },
+                  { icon: <MessageSquare />, title: "WhatsApp Officiel", value: "+44 7476 620282", link: "https://wa.me/447476620282", color: "hover:text-green-400" },
+                  { icon: <Phone />, title: "Ligne Directe Support", value: "+44 7476 620282", link: "tel:+447476620282", color: "hover:text-amber-400" },
                   { icon: <Mail />, title: "Email Officiel", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
                 ].map((item, index) => (
                   <motion.a
@@ -103,20 +99,44 @@ export default function ContactPageFR() {
                 ))}
               </div>
 
+              {/* Réseaux Sociaux */}
+              <div className="space-y-4">
+                <h4 className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] ml-2">Suivez-nous</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: <Facebook size={20} />, name: "Facebook", link: "https://www.facebook.com/share/1FDnCCnwJ4/" },
+                    { icon: <Instagram size={20} />, name: "Instagram", link: "https://www.instagram.com/safipay2022?igsh=ZW9tdHRidHI1d2gz" },
+                    { icon: <Linkedin size={20} />, name: "LinkedIn", link: "https://www.linkedin.com/company/safipay" },
+                    { icon: <Twitter size={20} />, name: "X (Twitter)", link: "https://x.com/safipay" },
+                  ].map((social, idx) => (
+                    <a 
+                      key={idx} 
+                      href={social.link} 
+                      target="_blank" 
+                      className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 hover:bg-amber-500/5 transition-all group"
+                    >
+                      <div className="text-gray-400 group-hover:text-amber-500 transition-colors">
+                        {social.icon}
+                      </div>
+                      <span className="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">{social.name}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
               <div className="pt-6 border-t border-white/5">
                 <div className="flex items-center gap-4 text-amber-500/80 mb-4">
                   <ShieldCheck size={20} />
                   <span className="text-xs font-bold uppercase tracking-widest">Confidentialité Garantie</span>
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed font-light">
-                  Vos communications sont protégées par le cryptage AES-256. 
-                  Accès direct à notre équipe de direction.
+                  Accès direct et crypté à nos protocoles de gestion.
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Colonne Formulaire de Contact */}
+          {/* Formulaire de Contact */}
           <motion.div 
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -125,7 +145,6 @@ export default function ContactPageFR() {
           >
             <div className="h-full bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-              
               <h3 className="text-3xl font-black mb-10 tracking-tight uppercase">Demande Directe</h3>
               
               <form
@@ -151,7 +170,7 @@ export default function ContactPageFR() {
                       type="email"
                       name="email"
                       required
-                      placeholder="nom@email.com"
+                      placeholder="nom@exemple.fr"
                       className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700"
                     />
                   </div>
@@ -174,7 +193,7 @@ export default function ContactPageFR() {
                   type="submit"
                   className="w-full py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all uppercase tracking-widest"
                 >
-                  ENVOYER MESSAGE SÉCURISÉ
+                  ENVOYER UN MESSAGE SÉCURISÉ
                   <Send size={20} />
                 </motion.button>
               </form>
@@ -193,7 +212,7 @@ export default function ContactPageFR() {
         </div>
       </section>
 
-      {/* Badges de bas de page */}
+      {/* Footer Badges */}
       <section className="py-20 border-t border-white/5 bg-black/20">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-center gap-10 md:gap-20 text-gray-600 font-bold uppercase tracking-widest text-[10px]">
