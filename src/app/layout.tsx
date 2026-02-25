@@ -2,7 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SafiVoiceAgent from '@/components/SafiVoiceAgent';
+     
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -85,8 +85,7 @@ export default function RootLayout({
         </main>
 
         {/* حالا زبان فعلی سایت را به ایجنت پاس می‌دهیم */}
-        <SafiVoiceAgent currentLang={currentLang} />
-
+             
         <Footer />
       </body>
     </html>
