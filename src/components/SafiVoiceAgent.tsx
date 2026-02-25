@@ -16,35 +16,55 @@ export default function SafiVoiceAgent() {
   const [isThinking, setIsThinking] = useState(false);
   const [inputText, setInputText] = useState('');
   
-  // آرایه ذخیره تاریخچه پیام‌ها
+  // سیستم هوشمند تشخیص ۸ زبان در پرامپت اصلی
   const [messages, setMessages] = useState<any[]>([
-    { role: "system", content: "You are the official assistant of SafiPay. Founded by Shaheen Safi. Partners: Wallester AS and Ding. Services: Virtual VISA, IBAN, E-SIM. Keep answers professional and short." }
+    { 
+      role: "system", 
+      content: `You are the official assistant of SafiPay. Founded by Shaheen Safi. 
+      STRICT RULES:
+      1. Detect the user's language automatically.
+      2. Respond ONLY in the same language the user used (Persian, Pashto, English, Arabic, Turkish, Russian, German, Uzbek).
+      3. Never use extra dots (...) between words. 
+      4. Keep answers professional, concise, and friendly.
+      5. Information: Partners are Wallester AS and Ding. Services: Virtual VISA, IBAN, E-SIM.` 
+    }
   ]);
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<any>(null);
 
-  // اسکرول خودکار به پایین
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages, isThinking]);
 
-  // سیستم سخنگو
+  // سیستم سخنگو با تشخیص خودکار لهجه (Voice Accent Detector)
   const speak = (text: string) => {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = /[آ-ی]/.test(text) ? 'fa-IR' : 'en-US';
+    
+    // تشخیص زبان برای انتخاب لهجه درست
+    if (/[آ-ی]/.test(text)) {
+      utterance.lang = 'fa-IR'; // فارسی و پشتو
+    } else if (/[а-яА-Я]/.test(text)) {
+      utterance.lang = 'ru-RU'; // روسی
+    } else if (/[a-zA-Z]/.test(text)) {
+      utterance.lang = 'en-US'; // انگلیسی و آلمانی
+    } else if (/[ء-ي]/.test(text)) {
+      utterance.lang = 'ar-SA'; // عربی
+    }
+
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
     window.speechSynthesis.speak(utterance);
   };
 
-  // تابع اصلی ارسال پیام (متنی و صوتی)
   const getAIResponse = async (userText: string) => {
     if (!userText.trim()) return;
 
     const newMessages = [...messages, { role: "user", content: userText }];
-    setMessages(newMessages); // اضافه کردن پیام جدید به لیست بدون حذف قبلی‌ها
+    setMessages(newMessages);
     setIsThinking(true);
     setInputText('');
 
@@ -61,22 +81,35 @@ export default function SafiVoiceAgent() {
       setMessages(prev => [...prev, { role: "assistant", content: answer }]);
       speak(answer);
     } catch (error) {
-      setMessages(prev => [...prev, { role: "assistant", content: "خطا در اتصال. لطفاً دوباره تلاش کنید." }]);
+      setMessages(prev => [...prev, { role: "assistant", content: "Connection error. Please check your internet (Turn off VPN if needed)." }]);
     } finally {
       setIsThinking(false);
     }
   };
 
-  // مدیریت میکروفون
+  // مدیریت میکروفون با تشخیص خودکار زبان محیطی (Language Detector)
   const handleVoiceInput = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) return alert("Browser not supported");
 
     recognitionRef.current = new SpeechRecognition();
-    recognitionRef.current.lang = 'fa-IR';
+    
+    // تنظیم خودکار بر اساس لوکیشن سایت (en/fa/ps)
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('/en')) recognitionRef.current.lang = 'en-US';
+    else if (currentPath.includes('/ps')) recognitionRef.current.lang = 'ps-AF';
+    else recognitionRef.current.lang = 'fa-IR';
+
+    recognitionRef.current.continuous = false;
+    
     recognitionRef.current.onstart = () => setIsListening(true);
-    recognitionRef.current.onresult = (event: any) => getAIResponse(event.results[0][0].transcript);
+    recognitionRef.current.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript;
+      getAIResponse(transcript);
+    };
+    recognitionRef.current.onerror = () => setIsListening(false);
     recognitionRef.current.onend = () => setIsListening(false);
+    
     recognitionRef.current.start();
   };
 
@@ -93,16 +126,22 @@ export default function SafiVoiceAgent() {
             {/* Header */}
             <div className="p-5 bg-amber-500 flex justify-between items-center shrink-0 shadow-lg">
               <div className="flex items-center gap-2 text-black font-black text-[10px] tracking-widest uppercase italic">
-                <Sparkles size={14} fill="black" /> Safi AI Hybrid
+                <Sparkles size={14} fill="black" /> Safi AI Multilingual
               </div>
               <div className="flex gap-3">
-                <button onClick={() => setMessages([messages[0]])} className="text-black/60 hover:text-black"><Trash2 size={16} /></button>
-                <button onClick={() => setIsOpen(false)} className="text-black"><X size={20} /></button>
+                <button 
+                   onClick={() => setMessages([messages[0]])} 
+                   className="text-black/50 hover:text-black transition-colors"
+                   title="Clear Chat"
+                >
+                  <Trash2 size={16} />
+                </button>
+                <button onClick={() => setIsOpen(false)} className="text-black hover:scale-110 transition-transform"><X size={20} /></button>
               </div>
             </div>
 
             {/* Chat Body */}
-            <div ref={chatContainerRef} className="p-6 space-y-4 overflow-y-auto flex-grow bg-white/[0.02] custom-scrollbar">
+            <div ref={chatContainerRef} className="p-6 space-y-4 overflow-y-auto flex-grow bg-white/[0.01] custom-scrollbar scroll-smooth">
               {messages.filter(m => m.role !== 'system').map((m, i) => (
                 <motion.div 
                   key={i} 
@@ -110,10 +149,10 @@ export default function SafiVoiceAgent() {
                   animate={{ opacity: 1, y: 0 }}
                   className={m.role === 'user' ? 'flex justify-end' : 'flex justify-start'}
                 >
-                  <div className={`max-w-[85%] p-3 rounded-2xl text-[11px] leading-relaxed ${
+                  <div className={`max-w-[85%] p-3 rounded-2xl text-[11px] leading-relaxed shadow-sm ${
                     m.role === 'user' 
-                      ? 'bg-amber-500 text-black rounded-tr-none font-medium shadow-md' 
-                      : 'bg-white/10 text-gray-200 rounded-tl-none border border-white/5'
+                      ? 'bg-amber-500 text-black rounded-tr-none font-medium' 
+                      : 'bg-white/10 text-gray-200 rounded-tl-none border border-white/5 italic'
                   }`}>
                     {m.content}
                   </div>
@@ -121,7 +160,7 @@ export default function SafiVoiceAgent() {
               ))}
               {isThinking && (
                 <div className="flex items-center gap-2 text-amber-500/50 text-[10px] italic">
-                  <Loader2 size={12} className="animate-spin" /> Safi AI is typing...
+                  <Loader2 size={12} className="animate-spin" /> Safi AI is processing...
                 </div>
               )}
             </div>
@@ -134,27 +173,36 @@ export default function SafiVoiceAgent() {
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && getAIResponse(inputText)}
-                  placeholder="Type or use voice..."
-                  className="flex-grow bg-transparent border-none text-[11px] text-white focus:outline-none py-3"
+                  placeholder="Ask in any language..."
+                  className="flex-grow bg-transparent border-none text-[11px] text-white focus:outline-none py-3 placeholder:text-white/20"
                 />
-                <button onClick={() => getAIResponse(inputText)} className="text-amber-500 hover:scale-110 transition-transform"><Send size={18} /></button>
+                <button 
+                  onClick={() => getAIResponse(inputText)} 
+                  className="text-amber-500 hover:text-amber-400 transition-colors"
+                >
+                  <Send size={18} />
+                </button>
               </div>
               
               <button 
                 onClick={isListening ? () => recognitionRef.current.stop() : handleVoiceInput}
-                className={`w-full py-4 rounded-2xl flex justify-center items-center gap-3 transition-all ${
-                  isListening ? 'bg-red-500 animate-pulse' : 'bg-amber-500 text-black hover:bg-amber-400 font-black shadow-lg shadow-amber-500/20'
+                className={`w-full py-4 rounded-2xl flex justify-center items-center gap-3 transition-all duration-300 ${
+                  isListening 
+                    ? 'bg-red-500 animate-pulse shadow-[0_0_20px_rgba(239,68,68,0.4)]' 
+                    : 'bg-amber-500 text-black hover:bg-amber-400 font-black shadow-lg shadow-amber-500/20'
                 }`}
               >
                 {isListening ? <MicOff size={18} /> : <Mic size={18} />}
-                <span className="text-[10px] uppercase tracking-[0.2em]">{isListening ? 'Listening...' : 'Push to Talk'}</span>
+                <span className="text-[10px] uppercase tracking-[0.2em]">
+                  {isListening ? 'Listening...' : 'Push to Talk'}
+                </span>
               </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Main Button */}
+      {/* Main Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="p-4 rounded-full bg-amber-500 text-black shadow-[0_10px_30px_rgba(245,158,11,0.4)] hover:scale-110 active:scale-95 transition-all group relative border-2 border-white/10"
