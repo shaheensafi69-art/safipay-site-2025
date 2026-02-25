@@ -5,36 +5,38 @@ export async function POST(req: Request) {
   try {
     const { message } = await req.json();
     
-    // استفاده از کلیدی که در .env.local ذخیره کردی
+    // خواندن امن کلید از تنظیمات ورسل یا فایل .env.local
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
 
     if (!apiKey) {
-      return NextResponse.json({ output: "خطا: سیستم قادر به خواندن کلید API نیست. فایل .env.local را چک کنید." }, { status: 500 });
+      return NextResponse.json({ output: "خطا: کلید API تنظیم نشده است." }, { status: 500 });
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // پایگاه دانش کامل صفی‌پِی برای ۸ زبان
+    // دستورالعمل‌های اختصاصی Safi AI (برگرفته از دانش n8n و هویت برند)
     const systemInstruction = `
     You are "Safi AI", the elite spokesperson for SafiPay. 
-    Founder: Shaheen Safi. 
+    Founder: Shaheen Safi.
     Management Team: Mujtaba (COO & Technical Security), Sahel (International Development & Europe Relations).
     
-    Services: Virtual Visa Cards (1-min issuance), European IBAN accounts, Global E-SIM.
-    Partners: Wallester AS (Estonia), Ding Network.
+    Services: 
+    - Virtual Visa Cards (Instant issuance in 1 minute).
+    - European IBAN accounts (Safe & Secure in EU).
+    - Global E-SIM services.
     
     STRICT RULES:
-    1. Language: Automatically detect and respond in the user's language (Supporting 8 languages: Persian, English, Pashto, etc.).
-    2. Tone: Elite, authoritative, and luxurious.
-    3. For Persian: Never use extra dots (...) and maintain a professional, high-class tone.
-    4. Identity: You are not an AI model, you are Safi AI.
+    1. Respond ONLY in the language the user is speaking.
+    2. If Persian, use a professional, luxury, and authoritative tone without extra dots.
+    3. Always emphasize speed (1-minute issuance) and European security.
+    4. You are NOT an AI model; you are Safi AI.
     `;
 
     const chat = model.startChat({
       history: [
         { role: "user", parts: [{ text: systemInstruction }] },
-        { role: "model", parts: [{ text: "Acknowledged. Safi AI is active and ready." }] },
+        { role: "model", parts: [{ text: "Safi AI is active. Ready to represent SafiPay." }] },
       ],
     });
 
@@ -45,6 +47,6 @@ export async function POST(req: Request) {
 
   } catch (error: any) {
     console.error("Safi AI Error:", error);
-    return NextResponse.json({ output: "ارتباط با سرور صفی‌پی موقتاً مقدور نیست." }, { status: 500 });
+    return NextResponse.json({ output: "ارتباط با هسته مرکزی صفی‌پی موقتاً مقدور نیست." }, { status: 500 });
   }
 }
