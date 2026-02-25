@@ -108,7 +108,7 @@ export default function MujtabaRahmaniFullBio() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2"><MapPin size={16}/> District 5, Charahi Qambar, Kaboul</span>
+               <span className="flex items-center gap-2"><MapPin size={16}/> Kaboul, Afghanistan</span>
                <span className="flex items-center gap-2"><User size={16}/> 28 Juillet 2006</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline">@bigshot_tradez</span>
             </div>

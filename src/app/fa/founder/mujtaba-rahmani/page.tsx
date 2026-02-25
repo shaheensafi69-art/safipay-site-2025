@@ -108,7 +108,7 @@ export default function MujtabaRahmaniFullBio() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2" dir="ltr"><MapPin size={16}/> کابل، چهارراهی قمبر، ناحیه ۵</span>
+               <span className="flex items-center gap-2" dir="ltr"><MapPin size={16}/>کابل، افغانستان</span>
                <span className="flex items-center gap-2" dir="ltr"><User size={16}/> ۲۸ جولای ۲۰۰۶</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline" dir="ltr">@bigshot_tradez</span>
             </div>
