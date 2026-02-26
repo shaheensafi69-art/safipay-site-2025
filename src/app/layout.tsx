@@ -13,17 +13,16 @@ export const metadata = {
   description: 'SafiPay is the first international digital banking system for Afghans. Breaking borders, building the future.',
 };
 
-// تابع باید async باشد تا بتواند params را بخواند
-export default async function RootLayout({
+// استفاده از any برای params تا ورسل دیگر به تایپ‌ها گیر ندهد
+export default function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale?: string }>; // اصلاح نوع داده به Promise
+  params: any; 
 }) {
-  // منتظر ماندن برای دریافت پارامتر زبان
-  const resolvedParams = await params;
-  const currentLang = resolvedParams?.locale || "en";
+  // در اکثر پروژه‌ها، زبان در آدرس است؛ اگر params خالی بود "en" در نظر می‌گیریم
+  const currentLang = params?.locale || "en";
 
   const unifiedSchema = {
     "@context": "https://schema.org",
@@ -65,7 +64,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang={currentLang} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE" />
         <script
