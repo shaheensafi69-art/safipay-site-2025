@@ -2,7 +2,6 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-     
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,15 +13,17 @@ export const metadata = {
   description: 'SafiPay is the first international digital banking system for Afghans. Breaking borders, building the future.',
 };
 
-export default function RootLayout({
+// تابع باید async باشد تا بتواند params را بخواند
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale?: string }; // دریافت پارامتر زبان از مسیر سایت
+  params: Promise<{ locale?: string }>; // اصلاح نوع داده به Promise
 }) {
-  // شناسایی زبان فعلی (اگر در آدرس نبود، از پیش‌فرض استفاده می‌کند)
-  const currentLang = params?.locale || "en";
+  // منتظر ماندن برای دریافت پارامتر زبان
+  const resolvedParams = await params;
+  const currentLang = resolvedParams?.locale || "en";
 
   const unifiedSchema = {
     "@context": "https://schema.org",
@@ -84,8 +85,6 @@ export default function RootLayout({
           {children}
         </main>
 
-        {/* حالا زبان فعلی سایت را به ایجنت پاس می‌دهیم */}
-             
         <Footer />
       </body>
     </html>
