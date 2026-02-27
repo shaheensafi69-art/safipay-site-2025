@@ -1,102 +1,206 @@
+'use client';
+
+import React from 'react';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { Metadata } from 'next';
+import { 
+  Landmark, ArrowRight, ShieldCheck, 
+  Zap, Globe, Crown, Sparkles, TrendingUp,
+  Fingerprint
+} from 'lucide-react';
 import Link from 'next/link';
-import { ChevronLeft, Shield, Zap } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'صافی‌پی چیست؟ | آینده بانکداری دیجیتال افغان‌ها',
-  description: 'کشف اکوسیستم انقلابی صافی‌پی، طراحی شده برای اتصال جامعه افغانستان به بازارهای جهانی.',
-};
+export default function IbanBenefitsPage() {
+  const params = useParams();
+  const lang = params?.lang || 'fa';
 
-export default function WhatIsSafiPayFa() {
   return (
-    // تنظیم جهت به راست به چپ (RTL)
-    <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 font-sans" dir="rtl">
-      <div className="container mx-auto px-6 max-w-4xl">
-        
-        {/* Header - Right Aligned */}
-        <div className="text-right mb-16">
-          <div className="relative w-20 h-20 mb-8 bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl mr-0 ml-auto">
-            <Image 
-              src="/blog/logo.png" 
-              alt="لوگوی صافی‌پی" 
-              fill 
-              className="object-contain p-2 brightness-125" 
-            />
-          </div>
-          <h1 className="text-5xl md:text-8xl font-black tracking-tighter italic leading-[1.2] mb-8 uppercase">
-            تعریف دوباره <br />
-            <span className="text-amber-500">بانکداری دیجیتال.</span>
-          </h1>
-          <div className="h-1 w-24 bg-amber-500 rounded-full mr-0 ml-auto" />
-        </div>
+    <main className="min-h-screen bg-[#000] text-[#d4d4d8] selection:bg-[#D4AF37] selection:text-black overflow-x-hidden font-sans" dir="rtl">
+      
+      {/* Heavy CSS Animations & Global Styles */}
+      <style jsx global>{`
+        @keyframes gold-pulse {
+          0%, 100% { opacity: 0.1; transform: scale(1); }
+          50% { opacity: 0.2; transform: scale(1.1); }
+        }
+        @keyframes reveal-up {
+          from { opacity: 0; transform: translateY(50px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes border-flow {
+          0% { border-color: rgba(212,175,55,0.1); }
+          50% { border-color: rgba(212,175,55,0.6); }
+          100% { border-color: rgba(212,175,55,0.1); }
+        }
+        .animate-reveal { animation: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .gold-glow { box-shadow: 0 0 30px rgba(212,175,55,0.15); }
+        .gold-text-stroke { -webkit-text-stroke: 1px #D4AF37; color: transparent; }
+        .vertical-text { writing-mode: vertical-rl; }
+      `}</style>
 
-        {/* Banner Image */}
-        <div className="relative w-full h-[400px] md:h-[550px] mb-20 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-white/[0.02]">
+      {/* Ambient Luxury Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full animate-[gold-pulse_8s_infinite]" />
+        <div className="absolute bottom-0 left-1/4 w-[800px] h-[800px] bg-[#D4AF37]/10 blur-[180px] rounded-full" />
+      </div>
+
+      {/* Hero Section - The Financial Gateway */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-30">
           <Image 
-            src="/blog/banner.png" 
-            alt="بنر سیستم صافی‌پی" 
+            src="/blog/iban-account-benefits/hero.jpg" 
+            alt="SafiPay European IBAN" 
             fill 
-            className="object-cover hover:scale-105 transition-transform duration-[2s]"
+            className="object-cover grayscale brightness-50"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         </div>
 
-        {/* Main Content */}
-        <div className="space-y-16">
-          
-          <section className="space-y-6">
-            <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-200 italic border-r-4 border-amber-500 pr-8">
-              "صافی‌پی فقط یک اپلیکیشن نیست؛ یک دروازه مالی بدون مرز است که برای نسل جدید افغان‌های سراسر جهان مهندسی شده است."
-            </p>
-          </section>
-
-          {/* Feature Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
-            <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/30 transition-all group">
-              <Zap className="text-amber-500 mb-6 group-hover:scale-110 transition-transform" size={32} />
-              <h3 className="text-white font-black italic text-2xl mb-4 uppercase">سرعت آنی</h3>
-              <p className="text-gray-400 leading-relaxed">
-                عبور از بروکراسی‌های سنتی بانکی برای ارائه تسویه‌حساب‌های لحظه‌ای در میان قاره‌ها.
-              </p>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-6xl animate-reveal">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-[2px] w-24 bg-gradient-to-l from-[#D4AF37] to-transparent" />
+              <span className="text-[#D4AF37] font-black tracking-[0.8em] text-[10px] uppercase flex items-center gap-2">
+                <Crown size={12} /> SafiPay Prestige
+              </span>
             </div>
 
-            <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/30 transition-all group">
-              <Shield className="text-amber-500 mb-6 group-hover:scale-110 transition-transform" size={32} />
-              <h3 className="text-white font-black italic text-2xl mb-4 uppercase">امنیت کامل</h3>
-              <p className="text-gray-400 leading-relaxed">
-                معماری ساخته شده با پروتکل‌های رمزنگاری سطح بالا، که تغییرناپذیری هر تراکنش را تضمین می‌کند.
+            <h1 className="text-[10vw] md:text-[7vw] font-black leading-[0.85] tracking-tighter uppercase italic mb-10 text-white">
+              حساب بانکی <br />
+              <span className="gold-text-stroke hover:text-[#D4AF37] transition-all duration-700 cursor-default">
+                IBAN اختصاصی اروپا
+              </span>
+            </h1>
+
+            <div className="max-w-3xl border-r-4 border-[#D4AF37] pr-10 py-6 bg-white/5 backdrop-blur-sm rounded-l-3xl">
+              <p className="text-white text-2xl md:text-4xl leading-tight font-light italic">
+                "ما فقط حساب صادر نمی‌کنیم؛ ما به هر شهروند افغانستان یک گاوصندوق امن در قلب اروپا هدیه می‌دهیم. سرعت سلاح ما و امنیت سپر ماست."
               </p>
             </div>
           </div>
-
-          {/* Detailed Article Section */}
-          <article className="prose prose-invert prose-amber max-w-none text-gray-400 text-lg leading-relaxed text-right">
-            <p className="mb-8">
-              تحت چشم‌انداز استراتژیک <span className="text-white font-bold">شاهین صافی</span>، صافی‌پی به عنوان یک قدرت نوظهور در بخش فین‌تک ظاهر شده است. ما فقط یک کیف پول نساختیم؛ ما یک زیرساخت کامل مالی را مهندسی کردیم.
-            </p>
-            <p className="mb-8">
-              سیستم ما از ادغام اختصاصی API و شبکه‌های نقدینگی جهانی استفاده می‌کند تا اطمینان حاصل شود که کاربران ما در کابل، پاریس یا استانبول، همان کیفیت بالای بانکی استاندارد را تجربه می‌کنند.
-            </p>
-          </article>
-
-          {/* Call to Action */}
-          <div className="mt-20 p-10 rounded-[3rem] bg-gradient-to-l from-amber-500/10 to-transparent border border-amber-500/20 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-right">
-              <h4 className="text-2xl font-bold text-white mb-2">آماده بررسی سیستم هستید؟</h4>
-              <p className="text-gray-400 text-sm">در پروتکل‌های امنیتی سطح نظامی ما عمیق شوید.</p>
-            </div>
-            <Link 
-              href="/fa/blog/safipay-system-security" 
-              className="group flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-black text-xs tracking-widest hover:bg-amber-500 transition-all uppercase"
-            >
-              <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> امنیت سیستم
-            </Link>
-          </div>
-
         </div>
+      </section>
+
+      {/* Strategic Content Grid */}
+      <section className="relative py-40 px-6 z-10">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+            
+            {/* Sidebar: Sahel's Executive Oversight */}
+            <div className="lg:col-span-4 order-2 lg:order-2">
+              <div className="sticky top-32 space-y-8">
+                <div className="p-10 rounded-[3rem] bg-black border border-[#D4AF37]/30 gold-glow relative overflow-hidden group hover:animate-[border-flow_2s_infinite]">
+                  <div className="absolute -left-10 -top-10 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+                    <Globe size={200} className="text-[#D4AF37]" />
+                  </div>
+                  <h3 className="text-[#D4AF37] font-black text-xs uppercase tracking-[0.4em] mb-8 text-left">نظارت اجرایی</h3>
+                  <p className="text-gray-300 italic text-lg leading-relaxed mb-12 relative z-10 text-justify">
+                    "تحت استراتژی توسعه بین‌الملل ساحل، حساب IBAN اروپایی شما به صورت آنی در شبکه SEPA فعال شده و امنیت قانونی و نقدینگی جهانی شما را تضمین می‌کند."
+                  </p>
+                  
+                  {/* Sahel's Profile Section with Image */}
+                  <div className="flex items-center gap-5 relative z-10">
+                    <div className="relative w-16 h-16">
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#8A6D3B] p-[1px] shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                        <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black">
+                          <Image 
+                            src="/sahel.jpeg" 
+                            alt="Sahel - International Development Director"
+                            fill
+                            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                          />
+                        </div>
+                      </div>
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#D4AF37] border-2 border-black rounded-full shadow-lg z-20"></div>
+                    </div>
+                    
+                    <div>
+                      <p className="font-black text-white text-lg tracking-tight">ساحل</p>
+                      <p className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-bold">مدیر توسعه بین‌الملل</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 text-center hover:bg-[#D4AF37]/5 transition-colors group">
+                    <p className="text-4xl font-black text-[#D4AF37] group-hover:scale-110 transition-transform">۱ دقیقه</p>
+                    <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">صدور آنی</p>
+                  </div>
+                  <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 text-center hover:bg-[#D4AF37]/5 transition-colors group">
+                    <p className="text-4xl font-black text-[#D4AF37] group-hover:scale-110 transition-transform">EU</p>
+                    <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">تحت نظارت اروپا</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Content Area */}
+            <div className="lg:col-span-8 order-1 lg:order-1 space-y-32">
+              <div className="space-y-16 animate-reveal">
+                <div className="flex items-center gap-6">
+                  <div className="w-24 h-24 rounded-[2rem] bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] border border-[#D4AF37]/40 gold-glow">
+                    <Landmark size={48} />
+                  </div>
+                  <h2 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter text-white">
+                    پل طلایی <span className="text-[#D4AF37]">IBAN</span>
+                  </h2>
+                </div>
+
+                <p className="text-gray-400 text-2xl leading-[2] font-light text-justify">
+                  SafiPay یک پل مستقیم به سیستم مالی اروپا فراهم می‌کند. با هسته امنیتی نظامی **مجتبی**، ما تمام تأخیرهای بانکی سنتی را حذف کرده‌ایم. حساب اختصاصی شما امکان انتقال آنی وجه در شبکه SEPA را فراهم کرده و قدرت مدیریت ثروت در سطح جهانی را با سرعتی بی‌نظیر به شما می‌دهد.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="p-12 rounded-[3.5rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 group hover:border-[#D4AF37]/50 transition-all duration-500">
+                    <Zap className="text-[#D4AF37] mb-8 group-hover:scale-125 transition-transform duration-500" size={44} />
+                    <h4 className="text-2xl font-black uppercase mb-4 text-white italic tracking-tight">سرعت SEPA</h4>
+                    <p className="text-gray-500 text-lg leading-relaxed text-justify">صدور حساب در کمتر از ۱ دقیقه. انتقال جهانی وجوه بدون بوروکراسی اداری.</p>
+                  </div>
+                  <div className="p-12 rounded-[3.5rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 group hover:border-[#D4AF37]/50 transition-all duration-500">
+                    <Fingerprint className="text-[#D4AF37] mb-8 group-hover:scale-125 transition-transform duration-500" size={44} />
+                    <h4 className="text-2xl font-black uppercase mb-4 text-white italic tracking-tight">امنیت مجتبی</h4>
+                    <p className="text-gray-500 text-lg leading-relaxed text-justify">محافظت شده توسط پیشرفته‌ترین پروتکل‌های رمزنگاری در اتحادیه اروپا.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Shaheen Safi's Founder Quote */}
+              <div className="relative py-24 border-y border-[#D4AF37]/20">
+                <div className="absolute -right-6 top-1/2 -translate-y-1/2 w-2 h-32 bg-[#D4AF37] rounded-full shadow-[0_0_20px_#D4AF37]" />
+                <blockquote className="text-4xl md:text-6xl font-extralight italic leading-[1.1] text-white px-12">
+                  "SafiPay آینده آزادی مالی افغانستان است. ما اینجا هستیم تا رهبری کنیم، محافظت کنیم و قدرت ببخشیم."
+                </blockquote>
+                <div className="mt-16 px-12 flex items-center gap-6">
+                  <p className="text-2xl font-black tracking-[0.5em] uppercase text-[#D4AF37]">Shaheen Safi</p>
+                  <div className="h-[1px] w-20 bg-gray-800" />
+                  <p className="text-xs text-gray-600 uppercase font-black">بنیان‌گذار و مدیر ارشد</p>
+                </div>
+              </div>
+
+              {/* Luxury Navigation */}
+              <div className="flex justify-start pt-10 pb-40">
+                <Link href={`/${lang}/blog`} className="group flex items-center gap-12">
+                  <div className="w-28 h-28 rounded-full border-2 border-[#D4AF37]/30 flex items-center justify-center group-hover:bg-[#D4AF37] transition-all duration-700 gold-glow order-1">
+                    <ArrowRight size={48} className="text-[#D4AF37] group-hover:text-black group-hover:-translate-x-3 transition-all duration-500 rotate-180" />
+                  </div>
+                  <div className="text-left order-2">
+                    <span className="block text-[#D4AF37] font-black uppercase tracking-[0.4em] text-xs mb-3 text-right">بازگشت به مرکز اطلاعات</span>
+                    <span className="text-5xl font-black uppercase italic text-white group-hover:text-[#D4AF37] transition-all duration-500">دایره‌المعارف</span>
+                  </div>
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Decorative Branding Sidebar */}
+      <div className="fixed bottom-10 right-10 z-50 pointer-events-none hidden xl:block">
+        <p className="text-[10px] font-black text-[#D4AF37] uppercase tracking-[1.5em] vertical-text opacity-40">SAFIPAY EUROPE ELITE</p>
       </div>
+
     </main>
   );
 }
