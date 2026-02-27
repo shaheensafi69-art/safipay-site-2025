@@ -1,94 +1,146 @@
+'use client';
+
+import React from 'react';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { Metadata } from 'next';
-import Link from 'next/link';
+import { 
+  Crown, Star, Award, ShieldCheck, 
+  Quote, Zap, CheckCircle2 
+} from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'شاهین صافی | بینش پشت سیستم صافی‌پی',
-  description: 'داستان شخصی و فلسفه مهندسی شاهین صافی، بنیان‌گذار و مدیرعامل صافی‌پی.',
-};
-
-export default function ShaheenBlogFa() {
+export default function AboutFounderPage() {
+  const params = useParams();
+  
   return (
-    // استفاده از dir="rtl" برای چیدمان راست به چپ
-    <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 font-sans" dir="rtl">
-      <div className="container mx-auto px-6 max-w-4xl">
-        
-        {/* Header - Right Aligned */}
-        <div className="text-right mb-16">
-          <span className="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-black tracking-[0.1em] uppercase mb-6">
-            مانیفست شخصی بنیان‌گذار
-          </span>
-          <h1 className="text-5xl md:text-8xl font-black tracking-tighter italic leading-[1.2] mb-8">
-            فراتر از <br />
-            <span className="text-amber-500">الگوریتم‌ها.</span>
-          </h1>
-          <div className="h-1 w-24 bg-amber-500 rounded-full mr-0 ml-auto" />
-        </div>
+    <main className="min-h-screen bg-black text-[#d4d4d8] selection:bg-[#D4AF37] selection:text-black font-sans" dir="rtl">
+      
+      {/* استایل‌های اختصاصی برای فریم عکس و انیمیشن‌ها */}
+      <style jsx global>{`
+        .gold-glow {
+          filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+        }
+        .founder-frame {
+          position: relative;
+          border: 1px solid rgba(212, 175, 55, 0.3);
+          background: linear-gradient(145deg, #0a0a0a, #000);
+          overflow: hidden;
+        }
+        .founder-frame::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border: 8px solid transparent;
+          border-image: linear-gradient(to bottom, #D4AF37, transparent) 1;
+          pointer-events: none;
+        }
+        .reveal-up {
+          animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes reveal {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
 
-        {/* Portrait Photo Section */}
-        <div className="relative w-full max-w-2xl ml-auto mr-0 h-[600px] md:h-[800px] mb-20 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl">
-          <Image 
-            src="/blog/shaheen.jpeg" 
-            alt="شاهین صافی" 
-            fill 
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-70" />
-          
-          <div className="absolute bottom-12 right-12 left-12 text-right">
-            <p className="text-4xl font-black italic tracking-tighter text-white">شاهین صافی</p>
-            <p className="text-amber-500 font-bold tracking-[0.2em] text-xs uppercase mt-2">بنیان‌گذار و مدیرعامل صافی‌پی</p>
-          </div>
-        </div>
-
-        {/* Blog Content - Right Aligned */}
-        <div className="max-w-3xl mr-0 ml-auto text-right">
-          <div className="space-y-12 text-justify">
+      {/* Hero Section: لوگو + عنوان + عکس کادربندی شده */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Quote - Border on the Right */}
-            <p className="text-2xl md:text-3xl font-light leading-relaxed italic text-gray-200 border-r-4 border-amber-500 pr-8 py-2">
-              "مهندسی فقط درباره نحو (Syntax) کدها نیست؛ بلکه درباره ساختن پل‌هایی برای افرادی است که توسط اقتصاد جهانی نادیده گرفته شده‌اند."
-            </p>
-
-            <div className="space-y-8 text-lg md:text-xl text-gray-400 leading-relaxed font-light">
-              <p>
-                نام من <span className="text-white font-bold">شاهین صافی</span> است. به عنوان یک مهندس نرم‌افزار، سال‌ها جهان را از دریچه منطق و داده‌ها دیدم. اما متوجه شدم که برای جامعه من در افغانستان و مهاجران در سراسر جهان، منطق بانکداری جهانی در حال شکست خوردن است.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-16 text-right">
-                <div className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-amber-500/20 transition-colors">
-                  <h3 className="text-white font-black italic text-xl mb-4">ماموریت ما</h3>
-                  <p className="text-sm">تمرکززدایی از قدرت مالی و ارائه ابزارهایی به هر افغان برای انجام معاملات جهانی، ایمن و آنی.</p>
-                </div>
-                <div className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 hover:border-amber-500/20 transition-colors">
-                  <h3 className="text-white font-black italic text-xl mb-4">کد و سیستم</h3>
-                  <p className="text-sm">صافی‌پی فقط یک اپلیکیشن نیست؛ یک اکوسیستم با امنیت بالا است که برای مقابله با پیچیدگی‌های مالی بین‌المللی مهندسی شده است.</p>
-                </div>
-              </div>
-
-              <p>
-                وقتی <span className="text-amber-500 font-bold">صافی‌پی</span> را تأسیس کردم، فقط نمی‌خواستم یک شرکت بسازم. می‌خواستم یک میراث ماندگار ایجاد کنم. سیستمی که وقتی دیگران کار نمی‌کنند، کار کند. پلتفرمی که به زبان آینده صحبت می‌کند.
-              </p>
-            </div>
-
-            {/* Final CTA - Right Aligned Layout */}
-            <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden relative border border-amber-500 bg-white/5">
-                  <Image src="/blog/logo.png" alt="SafiPay" fill className="object-contain p-2" />
-                </div>
-                <p className="text-gray-500 text-sm italic underline decoration-amber-500/20">سفر نوآوری همچنان ادامه دارد.</p>
+            {/* سمت راست (در حالت RTL): هویت و لوگو */}
+            <div className="reveal-up z-20 order-2 lg:order-1 text-right">
+              <div className="flex items-center gap-4 mb-8 justify-start">
+                <Image 
+                  src="/logo.png" 
+                  alt="SafiPay Logo" 
+                  width={60} 
+                  height={60} 
+                  className="gold-glow"
+                />
+                <div className="h-[2px] w-12 bg-[#D4AF37]" />
+                <span className="text-[#D4AF37] font-bold tracking-[0.4em] text-xs uppercase">هویت بنیان‌گذار</span>
               </div>
               
-              <Link href="/fa/blog/what-is-safipay" className="px-8 py-4 rounded-full bg-white text-black font-black text-xs tracking-widest hover:bg-amber-500 transition-all uppercase">
-                بررسی سیستم صافی‌پی
-              </Link>
+              <h1 className="text-6xl md:text-8xl font-black text-white italic leading-tight mb-6">
+                شاهین <br />
+                <span className="text-[#D4AF37] gold-glow">صافی</span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl font-light text-gray-400 italic border-r-4 border-[#D4AF37] pr-6 max-w-lg">
+                معمار اصلی SafiPay؛ بازتعریف آزادی مالی برای نسل نوین شهروندان جهانی.
+              </p>
+            </div>
+
+            {/* سمت چپ (در حالت RTL): عکس در باکس طراحی شده */}
+            <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+              <div className="founder-frame w-full max-w-[500px] aspect-[4/5] rounded-[2rem] shadow-2xl shadow-[#D4AF37]/10">
+                <Image 
+                  src="/blog/about-shaheen-safi/hero.jpg" 
+                  alt="شاهین صافی" 
+                  fill 
+                  className="object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              </div>
+              {/* المان تزئینی پشت عکس */}
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#D4AF37]/10 blur-3xl rounded-full animate-pulse" />
             </div>
 
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* بخش چشم‌انداز و فلسفه */}
+      <section className="py-32 bg-[#050505]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-24">
+            <Quote className="mx-auto text-[#D4AF37] mb-8 opacity-40" size={60} />
+            <h2 className="text-4xl md:text-6xl font-black text-white italic mb-10">فراتر از یک <span className="text-[#D4AF37]">بنیان‌گذاری</span></h2>
+            <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light italic">
+              "هدف من هرگز تنها ساخت یک اپلیکیشن نبود. هدف، ساختن یک پل بود؛ دروازه‌ای که جامعه ما را با سرعت و امنیتی که شایسته آن هستند، به قلب مالی اروپا متصل کند."
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:border-[#D4AF37]/50 transition-all group">
+              <Award className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={32} />
+              <h4 className="text-white text-2xl font-bold mb-3">اصالت</h4>
+              <p className="text-gray-500 italic leading-relaxed text-sm">بنا شده بر پایه اعتماد جهانی و شفافیت مطلق در تمامی تراکنش‌ها.</p>
+            </div>
+
+            <div className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:border-[#D4AF37]/50 transition-all group">
+              <ShieldCheck className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={32} />
+              <h4 className="text-white text-2xl font-bold mb-3">استاندارد اروپا</h4>
+              <p className="text-gray-500 italic leading-relaxed text-sm">تضمین امنیت دارایی‌ها تحت نظارت مستقیم مجتبی در چهارچوب‌های اتحادیه اروپا.</p>
+            </div>
+
+            <div className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:border-[#D4AF37]/50 transition-all group">
+              <Zap className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={32} />
+              <h4 className="text-white text-2xl font-bold mb-3">قدرت آنی</h4>
+              <p className="text-gray-500 italic leading-relaxed text-sm">صدور ابزارهای مالی در کمتر از ۶۰ ثانیه و حذف کامل کاغذبازی‌های سنتی.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* فوتر رسمی با امضای دیجیتال */}
+      <footer className="py-40 border-t border-white/10 bg-black text-center">
+        <div className="container mx-auto px-6">
+          <p className="text-[#D4AF37] font-black tracking-[1em] text-[10px] uppercase mb-8 opacity-60">پورتفولیو رسمی</p>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12">
+            <h2 className="text-4xl md:text-6xl font-black italic text-white uppercase tracking-tighter">شاهین صافی</h2>
+            <div className="h-[2px] w-20 bg-[#D4AF37] hidden md:block" />
+            <h2 className="text-4xl md:text-6xl font-black italic text-[#D4AF37] uppercase tracking-tighter opacity-80">بنیان‌گذار SafiPay</h2>
+          </div>
+          <div className="mt-20 flex justify-center gap-8 opacity-30">
+            <Star size={20} />
+            <Crown size={20} />
+            <CheckCircle2 size={20} />
+          </div>
+        </div>
+      </footer>
+
     </main>
   );
 }

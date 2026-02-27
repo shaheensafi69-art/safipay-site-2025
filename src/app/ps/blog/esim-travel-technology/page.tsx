@@ -1,102 +1,175 @@
+'use client';
+
+import React from 'react';
 import Image from 'next/image';
-import { Metadata } from 'next';
-import Link from 'next/link';
-import { ChevronLeft, Shield, Zap } from 'lucide-react';
+import { 
+  Globe2, Wifi, Zap, ShieldCheck, 
+  Smartphone, BarChart3, ArrowRight 
+} from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'صافی‌پی چیست؟ | آینده بانکداری دیجیتال افغان‌ها',
-  description: 'کشف اکوسیستم انقلابی صافی‌پی، طراحی شده برای اتصال جامعه افغانستان به بازارهای جهانی.',
-};
-
-export default function WhatIsSafiPayFa() {
+export default function ESimTechnologyPage() {
   return (
-    // تنظیم جهت به راست به چپ (RTL)
-    <main className="min-h-screen bg-[#050505] text-white pt-32 pb-20 font-sans" dir="rtl">
-      <div className="container mx-auto px-6 max-w-4xl">
-        
-        {/* Header - Right Aligned */}
-        <div className="text-right mb-16">
-          <div className="relative w-20 h-20 mb-8 bg-white/5 rounded-2xl p-4 border border-white/10 shadow-2xl mr-0 ml-auto">
-            <Image 
-              src="/blog/logo.png" 
-              alt="لوگوی صافی‌پی" 
-              fill 
-              className="object-contain p-2 brightness-125" 
-            />
-          </div>
-          <h1 className="text-5xl md:text-8xl font-black tracking-tighter italic leading-[1.2] mb-8 uppercase">
-            تعریف دوباره <br />
-            <span className="text-amber-500">بانکداری دیجیتال.</span>
-          </h1>
-          <div className="h-1 w-24 bg-amber-500 rounded-full mr-0 ml-auto" />
-        </div>
-
-        {/* Banner Image */}
-        <div className="relative w-full h-[400px] md:h-[550px] mb-20 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-white/[0.02]">
-          <Image 
-            src="/blog/banner.png" 
-            alt="بنر سیستم صافی‌پی" 
-            fill 
-            className="object-cover hover:scale-105 transition-transform duration-[2s]"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
-        </div>
-
-        {/* Main Content */}
-        <div className="space-y-16">
-          
-          <section className="space-y-6">
-            <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-200 italic border-r-4 border-amber-500 pr-8">
-              "صافی‌پی فقط یک اپلیکیشن نیست؛ یک دروازه مالی بدون مرز است که برای نسل جدید افغان‌های سراسر جهان مهندسی شده است."
-            </p>
-          </section>
-
-          {/* Feature Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
-            <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/30 transition-all group">
-              <Zap className="text-amber-500 mb-6 group-hover:scale-110 transition-transform" size={32} />
-              <h3 className="text-white font-black italic text-2xl mb-4 uppercase">سرعت آنی</h3>
-              <p className="text-gray-400 leading-relaxed">
-                عبور از بروکراسی‌های سنتی بانکی برای ارائه تسویه‌حساب‌های لحظه‌ای در میان قاره‌ها.
-              </p>
-            </div>
-
-            <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/30 transition-all group">
-              <Shield className="text-amber-500 mb-6 group-hover:scale-110 transition-transform" size={32} />
-              <h3 className="text-white font-black italic text-2xl mb-4 uppercase">امنیت کامل</h3>
-              <p className="text-gray-400 leading-relaxed">
-                معماری ساخته شده با پروتکل‌های رمزنگاری سطح بالا، که تغییرناپذیری هر تراکنش را تضمین می‌کند.
-              </p>
-            </div>
-          </div>
-
-          {/* Detailed Article Section */}
-          <article className="prose prose-invert prose-amber max-w-none text-gray-400 text-lg leading-relaxed text-right">
-            <p className="mb-8">
-              تحت چشم‌انداز استراتژیک <span className="text-white font-bold">شاهین صافی</span>، صافی‌پی به عنوان یک قدرت نوظهور در بخش فین‌تک ظاهر شده است. ما فقط یک کیف پول نساختیم؛ ما یک زیرساخت کامل مالی را مهندسی کردیم.
-            </p>
-            <p className="mb-8">
-              سیستم ما از ادغام اختصاصی API و شبکه‌های نقدینگی جهانی استفاده می‌کند تا اطمینان حاصل شود که کاربران ما در کابل، پاریس یا استانبول، همان کیفیت بالای بانکی استاندارد را تجربه می‌کنند.
-            </p>
-          </article>
-
-          {/* Call to Action */}
-          <div className="mt-20 p-10 rounded-[3rem] bg-gradient-to-l from-amber-500/10 to-transparent border border-amber-500/20 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-right">
-              <h4 className="text-2xl font-bold text-white mb-2">آماده بررسی سیستم هستید؟</h4>
-              <p className="text-gray-400 text-sm">در پروتکل‌های امنیتی سطح نظامی ما عمیق شوید.</p>
-            </div>
-            <Link 
-              href="/fa/blog/safipay-system-security" 
-              className="group flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full font-black text-xs tracking-widest hover:bg-amber-500 transition-all uppercase"
-            >
-              <ChevronLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> امنیت سیستم
-            </Link>
-          </div>
-
-        </div>
+    <main className="min-h-screen bg-black text-[#d4d4d8] selection:bg-[#D4AF37] selection:text-black font-sans overflow-x-hidden" dir="rtl">
+      
+      {/* د شالید متحرک تاثیرات */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#D4AF37]/5 blur-[120px] rounded-full" />
       </div>
+
+      <style jsx global>{`
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+          animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .glass-card {
+          background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 100%);
+          border: 1px solid rgba(212, 175, 55, 0.1);
+          backdrop-filter: blur(10px);
+        }
+        .gold-text-glow {
+          text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+      `}</style>
+
+      {/* هیرو برخه (Hero Section) */}
+      <section className="relative pt-32 pb-20 px-6 z-10">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div className="animate-fade-up text-right">
+              <div className="flex items-center gap-3 mb-6 justify-start">
+                <span className="h-[1px] w-10 bg-[#D4AF37]" />
+                <span className="text-[#D4AF37] text-xs font-bold tracking-[0.5em] uppercase">د نړیوالو اړیکو راتلونکی</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight italic">
+                بې پولې <br />
+                <span className="text-[#D4AF37] gold-text-glow">اړیکې</span>
+              </h1>
+              
+              <p className="text-lg md:text-xl text-gray-400 font-light leading-relaxed max-w-xl mb-10">
+                د سفر تکامل تجربه کړئ. د صافي‌پی (E-SIM) ټیکنالوژي تاسو په لږه موده کې له ۲۰۰ څخه زیاتو هیوادونو سره وصلوي. فزیکي سیمکارت ته اړتیا نشته؛ خالص ډیجیټل ځواک ستاسو په لاس کې دی.
+              </p>
+
+              <div className="flex flex-wrap gap-6 justify-start">
+                <div className="flex items-center gap-3 px-8 py-4 bg-[#D4AF37] text-black font-bold rounded-full hover:scale-105 transition-transform cursor-pointer">
+                  سمدستي فعالول <ArrowRight size={18} className="rotate-180" />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative animate-fade-up [animation-delay:200ms]">
+              <div className="relative aspect-square w-full max-w-lg mx-auto">
+                <div className="absolute inset-0 bg-[#D4AF37]/20 blur-[80px] rounded-full animate-pulse" />
+                <Image 
+                  src="/blog/esim-travel-technology/hero.jpg"
+                  alt="صافي‌پی E-SIM ټیکنالوژي"
+                  fill
+                  className="object-cover rounded-[3rem] border border-[#D4AF37]/30 shadow-2xl"
+                  priority
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* د نړیوالو ګټو برخه */}
+      <section className="py-24 px-6 z-10 relative">
+        <div className="container mx-auto">
+          <div className="text-center mb-20 animate-fade-up">
+            <h2 className="text-4xl md:text-5xl font-black text-white italic mb-6">نړیوالې <span className="text-[#D4AF37]">ګټې</span></h2>
+            <p className="text-gray-500 max-w-2xl mx-auto italic font-light">د SafiPay لخوا د نړۍ د غوره مسافرینو لپاره ډیزاین شوی.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* لومړۍ ځانګړنه */}
+            <div className="glass-card p-10 rounded-[2.5rem] group hover:border-[#D4AF37]/50 transition-all duration-500 text-right">
+              <Zap className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={40} />
+              <h3 className="text-white text-2xl font-bold mb-4">چټک تنظیمول</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">خپله نړیواله ډیټا بسته په ۶۰ ثانیو کې فعاله کړئ. سرعت زموږ د کار نښه ده.</p>
+            </div>
+
+            {/* دویمه ځانګړنه */}
+            <div className="glass-card p-10 rounded-[2.5rem] group hover:border-[#D4AF37]/50 transition-all duration-500 text-right">
+              <Globe2 className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={40} />
+              <h3 className="text-white text-2xl font-bold mb-4">له ۲۰۰ څخه زیات هیوادونه</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">له لندن څخه تر دوبۍ؛ په هر ځای کې چې یئ، د سیمه ییزو تیزو 5G شبکو سره وصل پاتې شئ.</p>
+            </div>
+
+            {/* دریمه ځانګړنه */}
+            <div className="glass-card p-10 rounded-[2.5rem] group hover:border-[#D4AF37]/50 transition-all duration-500 text-right">
+              <ShieldCheck className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={40} />
+              <h3 className="text-white text-2xl font-bold mb-4">اروپايي امنیت</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">د اروپا د معلوماتو د محرمیت معیارونو سره سم کوډ شوې اړیکې. ستاسو معلومات خوندي دي.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* تخنیکي مشخصاتو برخه */}
+      <section className="py-24 bg-[#050505] z-10 relative">
+        <div className="container mx-auto px-6">
+          <div className="glass-card rounded-[3.5rem] p-8 md:p-16 overflow-hidden relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="text-right">
+                <h2 className="text-3xl md:text-5xl font-black text-white italic mb-8">د نوي نسل <br /><span className="text-[#D4AF37]">زېربنا</span></h2>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 justify-start">
+                    <div className="bg-[#D4AF37]/10 p-2 rounded-lg"><Smartphone className="text-[#D4AF37]" size={24} /></div>
+                    <div>
+                      <h4 className="text-white font-bold">د ټولو وسایلو ملاتړ</h4>
+                      <p className="text-gray-500 text-sm">له ټولو آیفون او انډرایډ موبایلونو سره چې E-SIM ټیکنالوژي لري، برابر دی.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 justify-start">
+                    <div className="bg-[#D4AF37]/10 p-2 rounded-lg"><Wifi className="text-[#D4AF37]" size={24} /></div>
+                    <div>
+                      <h4 className="text-white font-bold">5G ته چمتووالی</h4>
+                      <p className="text-gray-500 text-sm">بې له ځنډه ویډیوګانو او کاري اړیکو لپاره خورا لوړ سرعت.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 justify-start">
+                    <div className="bg-[#D4AF37]/10 p-2 rounded-lg"><BarChart3 className="text-[#D4AF37]" size={24} /></div>
+                    <div>
+                      <h4 className="text-white font-bold">ژوندۍ اداره کول</h4>
+                      <p className="text-gray-500 text-sm">خپله ډیټا مصرف په ژوندۍ بڼه د صافي‌پی کنټرول پینل له لارې وګورئ.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="relative aspect-square lg:aspect-video rounded-3xl overflow-hidden border border-white/5">
+                <Image 
+                  src="/blog/esim-travel-technology/hero.jpg"
+                  alt="د ټیکنالوژۍ انټرفیس"
+                  fill
+                  className="object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* عمل ته د بلنې برخه (CTA) */}
+      <footer className="py-32 text-center z-10 relative border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <Zap className="mx-auto text-[#D4AF37] mb-8 animate-bounce" size={48} />
+          <h2 className="text-4xl md:text-6xl font-black text-white italic mb-8 tracking-tighter uppercase">الوتنې ته چمتو یئ؟</h2>
+          <p className="text-gray-400 mb-12 max-w-lg mx-auto italic">له زرګونو هغو مسافرو سره یوځای شئ چې د خپلو نړیوالو اړیکو لپاره پر صافي‌پی باور لري.</p>
+          <button className="px-12 py-5 bg-white text-black font-black uppercase tracking-widest hover:bg-[#D4AF37] transition-colors rounded-xl shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+            خپل E-SIM ترلاسه کړئ
+          </button>
+        </div>
+      </footer>
+
     </main>
   );
 }
