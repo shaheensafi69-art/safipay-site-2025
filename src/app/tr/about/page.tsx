@@ -118,7 +118,7 @@ export default function AboutUsPageTurkish() {
               },
               { 
                 name: "Sahel Salem", 
-                role: "Yönetim Kurulu Üyesi", 
+                role: "Ekosistem Lideri", 
                 img: "/sahel.jpeg", 
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: "border-green-500/30"

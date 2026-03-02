@@ -2,29 +2,19 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { 
-  ShieldCheck, Zap, Globe, GraduationCap, 
-  Award, BookOpen, Cpu, Lightbulb,
-  Code2, BarChart3, User,
-  Layout, Languages, Briefcase, Mail, MapPin,
-  Linkedin, Facebook, Instagram, MessageCircle,
-  Compass, Shield, Heart
+  ShieldCheck, Globe, Star, 
+  History, School, Facebook, ArrowUpRight, 
+  Instagram, MessageCircle, Landmark 
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef } from 'react';
 
-// --- Custom TikTok Icon ---
-const TikTokIcon = ({ size = 18 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-  </svg>
-);
-
-// --- 3D Floating Objects Component ---
+// کامپوننت اشیاء شناور سه بعدی
 const Floating3DObject = ({ children, x, y, translateZ, rotate }: any) => (
   <motion.div
     style={{ x, y, translateZ, rotateZ: rotate, transformStyle: "preserve-3d" }}
-    className="absolute z-20 p-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl text-emerald-500"
+    className="absolute z-20 p-5 bg-[#0a0a0a]/80 backdrop-blur-2xl border border-emerald-500/20 rounded-3xl shadow-[0_0_50px_rgba(16,185,129,0.1)] text-emerald-500"
   >
     {children}
   </motion.div>
@@ -38,11 +28,11 @@ export default function SahelSalemBio() {
   const springX = useSpring(mouseX, { stiffness: 80, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 80, damping: 20 });
 
-  const rotateX = useTransform(springY, [-0.5, 0.5], ["12deg", "-12deg"]);
-  const rotateY = useTransform(springX, [-0.5, 0.5], ["-12deg", "12deg"]);
+  const rotateX = useTransform(springY, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], ["-15deg", "15deg"]);
   
-  const moveX = useTransform(springX, [-0.5, 0.5], [-30, 30]);
-  const moveY = useTransform(springY, [-0.5, 0.5], [-30, 30]);
+  const moveX = useTransform(springX, [-0.5, 0.5], [-40, 40]);
+  const moveY = useTransform(springY, [-0.5, 0.5], [-40, 40]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
@@ -52,105 +42,136 @@ export default function SahelSalemBio() {
   };
 
   const socialLinks = [
-    { icon: <Linkedin size={20} />, href: "#" },
-    { icon: <Instagram size={20} />, href: "#" },
-    { icon: <MessageCircle size={20} />, href: "#" },
+    { icon: <Facebook size={22} />, href: "https://www.facebook.com/share/1A6hht1gio/?mibextid=wwXIfr" },
+    { icon: <Instagram size={22} />, href: "https://www.instagram.com/s4_hel1?igsh=a3k3YW8zNHRxZXUx&utm_source=qr" },
+    { icon: <MessageCircle size={22} />, href: "https://wa.me/+93700582033" },
   ];
 
   return (
-    <div className="min-h-screen bg-[#020202] text-white pb-20 font-sans overflow-x-hidden selection:bg-emerald-500 selection:text-black" dir="ltr" onMouseMove={handleMouseMove}>
+    <div className="min-h-screen bg-[#000] text-white pb-32 font-sans overflow-x-hidden selection:bg-emerald-500/30" dir="rtl" onMouseMove={handleMouseMove}>
       
-      {/* Background FX - تم سبز برای ساحل */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-emerald-600/10 blur-[140px] rounded-full" />
-        <div className="absolute bottom-[-5%] left-[-5%] w-[40%] h-[40%] bg-blue-900/5 blur-[120px] rounded-full" />
+      {/* افکت‌های نوری پس‌زمینه */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-20%] right-[-10%] w-[70%] h-[70%] bg-emerald-600/5 blur-[160px] rounded-full" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/5 blur-[160px] rounded-full" />
       </div>
 
       <div className="relative z-10">
         
-        {/* --- HERO SECTION --- */}
-        <section ref={containerRef} className="relative pt-32 pb-20 flex flex-col items-center">
+        {/* --- بخش هیرو (Hero) --- */}
+        <section ref={containerRef} className="relative pt-40 pb-20 flex flex-col items-center">
           <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="relative">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 z-10">
-              <div className="absolute inset-0 bg-emerald-500/30 blur-[100px] rounded-full opacity-50" />
-              <div className="relative h-full w-full rounded-[4rem] overflow-hidden border-2 border-emerald-500/30 p-2 bg-[#050505]">
-                <Image src="/sahel.jpeg" alt="Sahel Salem" fill className="object-cover rounded-[3.5rem]" priority />
+            <div className="relative w-72 h-72 md:w-96 md:h-96 z-10">
+              <div className="absolute inset-0 bg-emerald-500/20 blur-[120px] rounded-full" />
+              <div className="relative h-full w-full rounded-[5rem] overflow-hidden border border-emerald-500/20 p-3 bg-[#050505]">
+                <Image 
+                  src="/sahel.jpeg" 
+                  alt="ساحل سالم" 
+                  fill 
+                  className="object-cover rounded-[4.5rem] grayscale hover:grayscale-0 transition-all duration-700" 
+                  priority 
+                />
               </div>
             </div>
 
-            {/* Floating 3D Icons */}
-            <Floating3DObject x={moveX} y={moveY} translateZ={120} rotate="-10deg">
-              <Compass size={30} />
+            <Floating3DObject x={moveX} y={moveY} translateZ={150} rotate="15deg">
+              <Star size={35} fill="currentColor" />
             </Floating3DObject>
-            <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -left-16 top-20">
-                <div className="bg-emerald-600 text-white px-6 py-3 rounded-full shadow-2xl font-black tracking-widest uppercase">Strategist</div>
-            </motion.div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-12 px-6">
-            <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter text-white">SAHEL <span className="text-emerald-500">SALEM</span></h1>
-            <p className="text-emerald-400 font-bold tracking-[0.5em] text-xl mt-4 uppercase">Ecosystem Developer & Core Leader</p>
+          <div className="text-center mt-16 px-6">
+            <h1 className="text-6xl md:text-[9vw] font-black italic tracking-tighter leading-[0.8] mb-6 uppercase">
+              SAHEL <span className="text-transparent stroke-emerald-500" style={{ WebkitTextStroke: '2px #10b981' }}>SALEM</span>
+            </h1>
+            <p className="text-emerald-500 font-bold tracking-[0.3em] text-lg md:text-2xl uppercase mt-4">د نړیوالې پراختیا مدیر</p>
             
-            <div className="flex justify-center gap-4 mt-8">
+            <div className="flex justify-center gap-6 mt-12">
               {socialLinks.map((social, idx) => (
-                <Link key={idx} href={social.href} className="w-12 h-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-gray-400 hover:border-emerald-500 hover:text-emerald-500 transition-all duration-300 backdrop-blur-md">
+                <Link 
+                  key={idx} 
+                  href={social.href} 
+                  target="_blank"
+                  className="group relative w-16 h-16 flex items-center justify-center rounded-3xl bg-white/[0.03] border border-white/10 text-gray-400 hover:border-emerald-500 hover:text-emerald-500 transition-all duration-500 backdrop-blur-xl"
+                >
+                  <div className="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-10 transition-opacity" />
                   {social.icon}
                 </Link>
               ))}
             </div>
-
-            <div className="flex justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2"><MapPin size={16}/> Kabul, Afghanistan</span>
-               <span className="flex items-center gap-2"><Globe size={16}/> Global Operations</span>
-            </div>
-          </motion.div>
+          </div>
         </section>
 
-        {/* --- BIO --- */}
-        <section className="py-20 container mx-auto max-w-5xl px-6">
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="bg-[#080808] border border-white/5 p-10 md:p-16 rounded-[4rem] shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-3xl rounded-full" />
-            <h2 className="text-4xl font-black mb-10 border-l-8 border-emerald-500 pl-6 italic">Professional Profile</h2>
-            <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
-              <p>
-                Sahel Salem is a key member of the SafiPay leadership council, specializing in ecosystem growth and strategic partnerships. With a focus on sustainable digital infrastructure, he plays a vital role in bridge-building between traditional finance and modern digital banking.
-              </p>
-              <div className="bg-emerald-500/10 p-8 rounded-[2.5rem] italic border-l-8 border-emerald-500 text-emerald-100">
-                "Leadership is not about being in charge. It's about taking care of those in your charge and building a future where technology serves everyone equally."
+        {/* --- بیوګرافي او اکاډمیک --- */}
+        <section className="py-20 container mx-auto max-w-6xl px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 text-right">
+            <div className="lg:col-span-7">
+              <div className="p-10 md:p-14 rounded-[4rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl relative overflow-hidden">
+                <div className="flex items-center gap-4 mb-8 text-emerald-500">
+                  <History size={28} />
+                  <h3 className="text-lg font-black uppercase tracking-widest">لیدلوری</h3>
+                </div>
+                <p className="text-gray-400 text-xl md:text-2xl leading-[2.2] text-justify font-light italic">
+                  ساحل سالم، چې د **۲۰۰۷ کال د مارچ په ۱۹مه** زیږیدلی، د SafiPay مدیریت یو له مهمو ستراتیژیکو ستنو څخه دی. نوموړی د **University of the People (USA)** علمي پوهه او د نړیوالو مالي بازارونو په اړه خپل لید ترکیبوي ترڅو افغانستان له نړیوال بانکي سیسټم سره وصل کړي. ساحل په اروپا کې زموږ د پراختیا اصلي معمار دی.
+                </p>
+                <div className="mt-12 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80 text-lg">
+                   "زموږ هدف په ټوله نړۍ کې د افغانانو لپاره د اروپایي ټولنې تر څارنې لاندې د خوندي مالي زیربنا رامینځته کول دي."
+                </div>
               </div>
             </div>
-          </motion.div>
-        </section>
 
-        {/* --- CORE PILLARS --- */}
-        <section className="py-20 bg-emerald-500/[0.02]">
-          <div className="container mx-auto max-w-6xl px-6">
-            <h2 className="text-center text-4xl font-black mb-20 italic uppercase tracking-widest">Core Pillars</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-10 bg-black border border-white/5 rounded-[3rem] hover:border-emerald-500/40 transition-all group text-center">
-                <Shield className="text-emerald-500 mb-6 mx-auto group-hover:rotate-12 transition-transform" size={50} />
-                <h3 className="text-xl font-bold mb-4">Integrity</h3>
-                <p className="text-gray-500 text-sm font-mono">Ensuring the highest standards of transparency in every SafiPay operation.</p>
+            <div className="lg:col-span-5 space-y-6">
+              <div className="p-10 rounded-[3.5rem] bg-gradient-to-br from-emerald-600/20 to-transparent border border-emerald-500/20 shadow-xl">
+                <School className="text-emerald-500 mb-6" size={40} />
+                <h4 className="text-2xl font-black italic uppercase mb-2">اکاډمیک تمایز</h4>
+                <p className="text-gray-300 text-lg font-bold">University of the People, USA</p>
+                <p className="text-emerald-400 font-mono tracking-widest uppercase text-xs mt-1">Bachelor of Business Administration (BBA)</p>
               </div>
-              <div className="p-10 bg-black border border-white/5 rounded-[3rem] hover:border-emerald-500/40 transition-all group text-center">
-                <Zap className="text-emerald-500 mb-6 mx-auto group-hover:scale-125 transition-transform" size={50} />
-                <h3 className="text-xl font-bold mb-4">Innovation</h3>
-                <p className="text-gray-500 text-sm font-mono">Driving creative solutions for complex financial challenges in Afghanistan.</p>
-              </div>
-              <div className="p-10 bg-black border border-white/5 rounded-[3rem] hover:border-emerald-500/40 transition-all group text-center">
-                <Heart className="text-emerald-500 mb-6 mx-auto group-hover:scale-110 transition-transform" size={50} />
-                <h3 className="text-xl font-bold mb-4">Community</h3>
-                <p className="text-gray-500 text-sm font-mono">Building a digital bank that truly belongs to and supports the local people.</p>
+
+              <div className="p-10 rounded-[3.5rem] bg-white/[0.02] border border-white/5 flex items-center justify-between group cursor-pointer hover:bg-white/[0.05] transition-all duration-500">
+                 <div>
+                    <p className="text-[10px] uppercase font-black text-gray-500 mb-1">مستقیمه اړیکه</p>
+                    <p className="text-xl font-bold italic">رسمي واټساپ</p>
+                 </div>
+                 <Link href="https://wa.me/+93700582033" target="_blank" className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black transition-all">
+                    <ArrowUpRight size={24} />
+                 </Link>
               </div>
             </div>
           </div>
         </section>
 
-        <footer className="py-20 text-center">
-          <p className="opacity-30 text-xs tracking-[0.5em] uppercase mb-4">
-            Sahel Salem • SafiPay Strategic Leader • 2026
+        {/* --- نړیواله تګلاره --- */}
+        <section className="py-24 bg-emerald-500/[0.02]">
+          <div className="container mx-auto px-6 max-w-6xl text-right">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              {[
+                { icon: <Globe size={40} />, title: "اروپایي پراختیا", desc: "په اروپایي ټولنه کې د SafiPay د بانکي حضور ستراتیژیک مدیریت او رهبري." },
+                { icon: <Landmark size={40} />, title: "د IBAN امنیت", desc: "د افغان کاروونکو لپاره د SEPA حسابونو د تنظیم او ادغام څارنه." },
+                { icon: <ShieldCheck size={40} />, title: "قانوني اطاعت", desc: "د پیسو مینځلو ضد (AML) نړیوالو قوانینو سره د ۱۰۰٪ مطابقت ډاډ ترلاسه کول." }
+              ].map((pill, i) => (
+                <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700">
+                  <div className="text-emerald-500 mb-8 group-hover:scale-110 transition-transform duration-500">{pill.icon}</div>
+                  <h4 className="text-2xl font-black italic uppercase mb-4 tracking-tighter">{pill.title}</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed">{pill.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* --- فوټر --- */}
+        <footer className="py-20 text-center relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-[1px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-30" />
+          <p className="text-gray-600 text-[11px] uppercase font-black tracking-[0.5em] mb-8 italic">
+            ساحل سالم • د SafiPay جګپوړی نړیوال مدیر • ۲۰۲۶
           </p>
-          <div className="h-1 w-20 bg-emerald-500/50 mx-auto rounded-full" />
+          <div className="flex justify-center gap-8">
+             {socialLinks.map((social, i) => (
+               <Link key={i} href={social.href} target="_blank" className="text-gray-400 hover:text-emerald-500 transition-colors duration-300">
+                  {social.icon}
+               </Link>
+             ))}
+          </div>
         </footer>
       </div>
     </div>

@@ -118,7 +118,7 @@ export default function AboutUsPagePashto() {
               },
               { 
                 name: "ساحل سالم", 
-                role: "د مدیره هیئت غړی", 
+                role: "د ایکوسیستم مشر", 
                 img: "/sahel.jpeg", 
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: "border-green-500/30"

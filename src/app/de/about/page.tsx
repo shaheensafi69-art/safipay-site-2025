@@ -118,7 +118,7 @@ export default function AboutUsPageGerman() {
               },
               { 
                 name: "Sahel Salem", 
-                role: "Vorstandsmitglied", 
+                role: "Ökosystemführer", 
                 img: "/sahel.jpeg", 
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: "border-green-500/30"

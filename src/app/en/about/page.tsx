@@ -118,7 +118,7 @@ export default function AboutUsPageEnglish() {
               },
               { 
                 name: "Sahel Salem", 
-                role: "Board Member", 
+                role: "EcoSystem Leader", 
                 img: "/sahel.jpeg", 
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: "border-green-500/30"

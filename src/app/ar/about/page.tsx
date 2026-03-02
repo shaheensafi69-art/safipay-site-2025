@@ -118,7 +118,7 @@ export default function AboutUsPageArabic() {
               },
               { 
                 name: "ساحل سالم", 
-                role: "عضو مجلس الإدارة", 
+                role: "قائد النظام البيئي", 
                 img: "/sahel.jpeg", 
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: "border-green-500/30"

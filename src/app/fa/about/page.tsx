@@ -118,7 +118,7 @@ export default function AboutUsPagePersian() {
               },
               { 
                 name: "ساحل سالم", 
-                role: "عضو هیئت مدیره", 
+                role: "رهبر اکوسیستم", 
                 img: "/sahel.jpeg", 
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: "border-green-500/30"

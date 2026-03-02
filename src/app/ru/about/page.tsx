@@ -118,7 +118,7 @@ export default function AboutUsPageRussian() {
               },
               { 
                 name: "Сахель Салем", 
-                role: "Член совета директоров", 
+                role: "Лидер экосистемы", 
                 img: "/sahel.jpeg", 
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: "border-green-500/30"
