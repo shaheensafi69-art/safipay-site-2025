@@ -1,293 +1,218 @@
 'use client';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
+import { useRef, useState } from 'react';
 import { 
-  Globe, ShieldCheck, ArrowRight, CreditCard, Zap, 
-  Wifi, Smartphone, CheckCircle2, Coins, 
-  Lock, Server, Briefcase, Car, Cpu, Landmark, BadgeCheck, ShieldAlert
+  Globe, ShieldCheck, CreditCard, Smartphone, Coins, 
+  Briefcase, Car, Cpu, Landmark, BadgeCheck, 
+  MapPin, FileText, Zap, Lock, Server, Wifi, ArrowRight
 } from 'lucide-react';
 
-export default function GlobalElitePartnership() {
-  const containerRef = useRef(null);
-  
-  // Cinematic Slow Scroll Settings for the Car
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+// --- Interactive Card Component ---
+const InteractiveCard = ({ children, className }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 25, // Even smoother and slower
-    damping: 20,
-    restDelta: 0.001
-  });
-
-  const carY = useTransform(smoothProgress, [0, 1], ["0%", "98%"]);
+  function onMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
   return (
-    <div className="min-h-screen bg-[#020202] text-white font-sans overflow-x-hidden selection:bg-amber-500/30" dir="ltr">
+    <motion.div
+      onMouseMove={onMouseMove}
+      whileHover={{ scale: 1.02 }}
+      className={`relative group overflow-hidden border border-white/10 bg-black rounded-[3rem] p-10 transition-colors hover:border-amber-500/50 ${className}`}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[3rem] opacity-0 group-hover:opacity-100 transition duration-300"
+        style={{
+          background: useTransform(
+            [mouseX, mouseY],
+            ([x, y]) => `radial-gradient(600px circle at ${x}px ${y}px, rgba(245,158,11,0.1), transparent 40%)`
+          ),
+        }}
+      />
+      {children}
+    </motion.div>
+  );
+};
+
+export default function SafiEliteEcosystem() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+  return (
+    <div className="min-h-screen bg-[#020202] text-white font-sans overflow-x-hidden selection:bg-amber-500" dir="ltr">
       
-      {/* --- 1. HERO: THE FINANCIAL GOLIATH --- */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,11,0.15),transparent_70%)]" />
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.5 }}>
-            <span className="inline-block px-8 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[10px] font-black uppercase tracking-[0.6em] mb-12">
-              The Sovereign Financial Network 2026
+      {/* Custom Cursor Progress Bar */}
+      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-amber-500 origin-left z-[100]" style={{ scaleX }} />
+
+      {/* --- HERO SECTION --- */}
+      <section className="relative h-screen flex items-center justify-center">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-50"></div>
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <span className="px-6 py-2 rounded-full border border-amber-500/30 text-amber-500 text-[10px] font-black tracking-[0.5em] uppercase mb-8 inline-block">
+              Safi International Capital LTD
             </span>
-            <h1 className="text-7xl md:text-[12rem] font-black leading-[0.75] mb-16 italic tracking-tighter">
-              UNRIVALED <br/> <span className="text-amber-500 text-glow">POWER.</span>
+            <h1 className="text-7xl md:text-[12rem] font-black italic tracking-tighter leading-none mb-10">
+              ELITE <span className="text-amber-500 text-glow">BANKING.</span>
             </h1>
-            <p className="max-w-4xl mx-auto text-xl md:text-3xl text-gray-500 font-light leading-relaxed italic">
-              Safi Ecosystem is the definitive bridge between European fintech excellence 
-              and the emerging markets of Central Asia.
+            <p className="max-w-3xl mx-auto text-xl md:text-2xl text-gray-500 font-light italic leading-relaxed">
+              Redefining global liquidity through institutional-grade infrastructure and instant digital connectivity.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* --- 2. PILLAR I: WALLESTER AS --- */}
-      <section className="py-40 container mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-20 items-center">
-          <div className="lg:col-span-6 space-y-10">
-            <h3 className="text-amber-500 font-black tracking-widest text-sm uppercase">Strategic Pillar I: Wallester AS</h3>
-            <h2 className="text-6xl font-black italic italic leading-[0.9]">European <br/> Banking Core.</h2>
-            <p className="text-gray-400 text-lg leading-relaxed font-light">
-              We have established a direct Tier-1 partnership with **Wallester AS**, an Estonian-licensed EMI and VISA Principal Member. 
-              This bypasses the fragile regional banking systems, offering our users a direct API handshake with the EU financial grid.
+      {/* --- SAFIPAY SECTION --- */}
+      <section className="py-32 container mx-auto px-6">
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          whileInView={{ opacity: 1 }} 
+          className="mb-20"
+        >
+          <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-4">SafiPay Infrastructure</h2>
+          <div className="h-1 w-24 bg-amber-500"></div>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          <InteractiveCard className="lg:col-span-2">
+            <Landmark className="text-amber-500 mb-8" size={48} />
+            <h3 className="text-4xl font-black italic mb-6 uppercase">Personal vIBAN Accounts</h3>
+            <p className="text-gray-400 text-lg italic leading-relaxed mb-10">
+              We provide fully-regulated, personal bank accounts in 10 major global currencies. Each account is opened under the customer's legal name in its respective country, providing authentic local bank details.
             </p>
-            <div className="grid grid-cols-2 gap-8">
-                <div className="space-y-2">
-                    <div className="text-amber-500 font-black text-xl italic">01. PCI-DSS</div>
-                    <p className="text-gray-600 text-[10px] uppercase font-bold tracking-tighter">Maximum Security Compliance</p>
-                </div>
-                <div className="space-y-2">
-                    <div className="text-amber-500 font-black text-xl italic">02. VISA BIN</div>
-                    <p className="text-gray-600 text-[10px] uppercase font-bold tracking-tighter">Direct Card Issuance Rights</p>
-                </div>
+            <div className="grid grid-cols-5 gap-4">
+              {['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK', 'DKK'].map(c => (
+                <div key={c} className="text-center p-4 rounded-2xl bg-white/5 border border-white/5 font-black text-xs text-amber-500 uppercase">{c}</div>
+              ))}
             </div>
-          </div>
-          <motion.div 
-            whileHover={{ scale: 1.02, borderColor: 'rgba(245,158,11,0.4)' }}
-            className="lg:col-span-6 p-12 rounded-[5rem] bg-gradient-to-br from-white/10 to-transparent border border-white/10 relative overflow-hidden transition-all duration-500 shadow-2xl"
-          >
-             <CreditCard size={180} className="absolute -right-10 -top-10 opacity-5" />
-             <ul className="space-y-6 relative z-10 text-gray-300 font-bold">
-                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> Personal European IBAN Accounts</li>
-                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> Instant Virtual VISA Card Issuance</li>
-                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> SEPA & SWIFT Global Settlement</li>
-                <li className="flex items-center gap-4"><BadgeCheck className="text-amber-500" /> Euro-Pegged Multi-Currency Wallets</li>
-             </ul>
-          </motion.div>
-        </div>
-      </section>
+          </InteractiveCard>
 
-      {/* --- 3. PILLAR II: DING GLOBAL --- */}
-      <section className="py-40 bg-white/[0.02] border-y border-white/5">
-        <div className="container mx-auto px-6 grid lg:grid-cols-12 gap-20 items-center">
-          <motion.div 
-            whileHover={{ scale: 1.02, borderColor: 'rgba(59,130,246,0.4)' }}
-            className="lg:col-span-6 p-12 rounded-[5rem] bg-gradient-to-bl from-blue-500/10 to-transparent border border-blue-500/10 transition-all duration-500"
-          >
-                <h4 className="text-blue-500 font-black mb-8 text-center">NETWORK VELOCITY</h4>
-                <div className="grid grid-cols-2 gap-4 text-center">
-                    <div className="p-6 bg-black rounded-3xl border border-white/5">
-                        <div className="text-4xl font-black italic">500+</div>
-                        <div className="text-[10px] text-gray-500 uppercase">Global Operators</div>
-                    </div>
-                    <div className="p-6 bg-black rounded-3xl border border-white/5">
-                        <div className="text-4xl font-black italic">150+</div>
-                        <div className="text-[10px] text-gray-500 uppercase">Countries Covered</div>
-                    </div>
-                </div>
-          </motion.div>
-          <div className="lg:col-span-6 space-y-10">
-            <h3 className="text-blue-500 font-black tracking-widest text-sm uppercase">Strategic Pillar II: Ding Network</h3>
-            <h2 className="text-6xl font-black italic italic leading-[0.9]">Limitless <br/> Connectivity.</h2>
-            <p className="text-gray-400 text-lg leading-relaxed font-light">
-              **Ding** is the world’s most powerful mobile value-transfer engine. Safi TopUp integrates this backbone to provide 
-              instant airtime and E-SIM services. For the first time, users in volatile markets can stay connected with 
-              0.1s latency through our global nodes.
+          <InteractiveCard className="bg-amber-500 text-black border-none">
+            <Zap size={48} className="mb-8" />
+            <h3 className="text-4xl font-black italic mb-6 uppercase tracking-tighter">60 Sec Issuance</h3>
+            <p className="font-bold text-sm leading-relaxed mb-8">
+              Our automated API bypasses traditional banking delays, delivering Virtual VISA cards and IBAN details in under a minute.
             </p>
-            <div className="flex gap-4">
-                <span className="px-6 py-2 rounded-xl bg-blue-500/20 text-blue-500 text-xs font-black italic italic">REAL-TIME SETTLEMENT</span>
-                <span className="px-6 py-2 rounded-xl bg-blue-500/20 text-blue-500 text-xs font-black italic italic">5G E-SIM READY</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 4. SERVICES CATALOGUE --- */}
-      <section className="py-40 container mx-auto px-6">
-        <div className="text-center mb-32 space-y-4">
-          <h2 className="text-6xl font-black italic uppercase tracking-tighter">The <span className="text-amber-500 text-glow">Service</span> Grid.</h2>
-          <p className="text-gray-500 max-w-2xl mx-auto font-light italic">Superior financial instruments designed for the modern era.</p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-12">
-            {[
-                { t: "Virtual VISA", d: "Issued in seconds. Valid for FB Ads, Google Cloud, Netflix, and 100M+ merchants globally. Zero regional blocks.", icon: <CreditCard className="text-amber-500" size={40}/> },
-                { t: "Personal IBAN", d: "Receive global salaries or freelance payments directly from EU/USA. Regulated by European Union financial law.", icon: <Globe className="text-amber-500" size={40}/> },
-                { t: "Global E-SIM", d: "Instant activation for 150+ countries. Travel from Kabul to Dubai to London without switching physical cards.", icon: <Smartphone className="text-amber-500" size={40}/> },
-                { t: "Crypto Bridge", d: "The fastest off-ramp. Convert digital assets into a usable VISA balance instantly with military-grade security.", icon: <Coins className="text-amber-500" size={40}/> },
-                { t: "Business Engine", d: "Corporate accounts for regional enterprises needing to pay international suppliers in USD/EUR without delays.", icon: <Briefcase className="text-amber-500" size={40}/> },
-                { t: "Wealth AI", d: "Proprietary algorithms that monitor market volatility and suggest currency hedges between AFN, USD, and EUR.", icon: <Cpu className="text-amber-500" size={40}/> }
-            ].map((srv, i) => (
+            <div className="h-2 w-full bg-black/20 rounded-full overflow-hidden">
                 <motion.div 
-                    key={i} 
-                    whileHover={{ y: -15, backgroundColor: 'rgba(245,158,11,0.05)', borderColor: 'rgba(245,158,11,0.3)' }}
-                    className="p-12 rounded-[4rem] bg-white/[0.03] border border-white/5 transition-all duration-300 group"
+                    initial={{ x: "-100%" }} 
+                    whileInView={{ x: "0%" }} 
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="h-full bg-black w-1/2" 
+                />
+            </div>
+          </InteractiveCard>
+        </div>
+      </section>
+
+      {/* --- SAFI TOPUP SECTION --- */}
+      <section className="py-32 bg-white/[0.02]">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <motion.div 
+              initial={{ x: -50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              className="space-y-8"
+            >
+              <h2 className="text-7xl font-black italic uppercase leading-none">Safi <span className="text-amber-500">TopUp</span></h2>
+              <p className="text-gray-400 text-xl font-light italic leading-relaxed">
+                Empowering over 5 billion prepaid devices globally. Our connectivity hub links 150+ countries through 500+ direct mobile operator integrations.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {['Global E-SIM', 'Instant Airtime', '500+ Operators', '150 Countries'].map(t => (
+                  <span key={t} className="px-6 py-3 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest">{t}</span>
+                ))}
+              </div>
+            </motion.div>
+
+            <div className="grid grid-cols-2 gap-6">
+                <InteractiveCard>
+                    <Wifi className="text-amber-500 mb-4" />
+                    <h4 className="text-2xl font-black italic uppercase">E-SIM Hub</h4>
+                    <p className="text-gray-500 text-xs">Global high-speed 5G data roaming.</p>
+                </InteractiveCard>
+                <InteractiveCard className="translate-y-12">
+                    <Smartphone className="text-amber-500 mb-4" />
+                    <h4 className="text-2xl font-black italic uppercase">Direct API</h4>
+                    <p className="text-gray-500 text-xs">Instant top-up delivery nodes.</p>
+                </InteractiveCard>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- INNOVATIVE ROADMAP (The "Vortex" Design) --- */}
+      <section className="py-60 container mx-auto px-6 overflow-hidden">
+        <div className="text-center mb-40">
+            <h2 className="text-8xl font-black italic uppercase tracking-tighter">Imperial <span className="text-amber-500 text-glow">Roadmap</span></h2>
+            <div className="w-px h-24 bg-amber-500 mx-auto mt-8"></div>
+        </div>
+
+        <div className="relative flex flex-col gap-24 items-center">
+            {[
+                { phase: "01", title: "GENESIS", date: "MARCH 2026", desc: "Official UK Incorporation (No. 17063286). Acquisition of European Banking Nodes and Tier-1 Settlement Protocols." },
+                { phase: "02", title: "NETWORK", date: "JUNE 2026", desc: "Launch of Safi TopUp global hub. Integration of 500+ carrier APIs for instant global mobile credit." },
+                { phase: "03", title: "PLATFORM", date: "SEPT 2026", desc: "Public release of SafiPay App. Automated KYC onboarding and instant multi-currency IBAN generation." },
+                { phase: "04", title: "EXPANSION", date: "DEC 2026", desc: "Corporate Treasury solutions. B2B cross-border payment engine for high-volume enterprise clients." },
+                { phase: "05", title: "LEGACY", date: "2027", desc: "Issuance of Safi Titanium Physical cards. Opening regional flagship centers in London & Dubai." },
+            ].map((item, idx) => (
+                <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, rotateX: -45 }}
+                    whileInView={{ opacity: 1, rotateX: 0 }}
+                    viewport={{ margin: "-100px" }}
+                    className="group relative w-full max-w-4xl"
                 >
-                    <div className="mb-10 group-hover:scale-110 transition-transform duration-500">{srv.icon}</div>
-                    <h4 className="text-2xl font-black mb-6 italic">{srv.t}</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed font-light">{srv.d}</p>
+                    <div className="flex items-start gap-12 p-12 bg-white/[0.03] border border-white/5 rounded-[4rem] hover:border-amber-500/30 transition-all duration-700">
+                        <span className="text-9xl font-black italic opacity-10 absolute -left-10 -top-10 group-hover:text-amber-500 transition-colors">{item.phase}</span>
+                        <div className="relative z-10 w-full">
+                            <div className="flex justify-between items-center mb-6">
+                                <h3 className="text-5xl font-black italic uppercase tracking-tighter">{item.title}</h3>
+                                <span className="text-amber-500 font-black text-xs tracking-[0.4em]">{item.date}</span>
+                            </div>
+                            <p className="text-gray-500 text-xl font-light italic leading-relaxed max-w-2xl">{item.desc}</p>
+                        </div>
+                    </div>
+                    {idx !== 4 && <div className="absolute left-1/2 -bottom-24 w-px h-24 bg-gradient-to-b from-amber-500 to-transparent"></div>}
                 </motion.div>
             ))}
         </div>
       </section>
 
-      {/* --- 5. REGIONAL SUPERIORITY --- */}
-      <section className="py-40 bg-amber-500/5">
+      {/* --- CTA FOOTER --- */}
+      <footer className="py-40 bg-black border-t border-white/5 text-center relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
         <div className="container mx-auto px-6">
-            <h2 className="text-6xl font-black text-center mb-32 italic">TOTAL <span className="text-amber-500">SUPERIORITY.</span></h2>
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-                <motion.div whileHover={{ scale: 0.98 }} className="p-12 bg-black rounded-[4rem] border border-red-500/20">
-                    <ShieldAlert className="text-red-500 mb-8" size={50} />
-                    <h3 className="text-3xl font-black mb-8 italic text-red-500 uppercase tracking-tighter">Legacy Regional Banks</h3>
-                    <ul className="space-y-6 text-gray-600 text-sm font-bold">
-                        <li>• Heavy Sanctions & Restricted Networks</li>
-                        <li>• Paper-based KYC (Takes 7-14 Days)</li>
-                        <li>• No Support for Global Digital Merchants</li>
-                        <li>• High Fees & Outdated SWIFT Protocols</li>
-                    </ul>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.02 }} className="p-12 bg-black rounded-[4rem] border border-amber-500/50 shadow-[0_0_50px_rgba(245,158,11,0.1)]">
-                    <BadgeCheck className="text-amber-500 mb-8" size={50} />
-                    <h3 className="text-3xl font-black mb-8 italic text-amber-500 uppercase tracking-tighter">Safi Global Ecosystem</h3>
-                    <ul className="space-y-6 text-amber-400 text-sm font-bold italic">
-                        <li>• EU-Licensed & VISA Principal Infrastructure</li>
-                        <li>• AI-Driven KYC (Ready in 120 Seconds)</li>
-                        <li>• 100% Acceptance for Global Ad/Stream Platforms</li>
-                        <li>• Near-Zero Latency API-Driven Settlements</li>
-                    </ul>
-                </motion.div>
-            </div>
-        </div>
-      </section>
-
-      {/* --- 6. MISSION ROADMAP WITH SLOW CAR --- */}
-      <section className="py-60 container mx-auto px-6 relative" ref={containerRef}>
-        <h2 className="text-7xl font-black text-center mb-60 italic tracking-tighter uppercase">Mission <span className="text-amber-500 text-glow">Logbook.</span></h2>
-        
-        <div className="relative max-w-5xl mx-auto px-4 h-[2500px]">
-          {/* THE TRACK */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[8px] h-full bg-white/5 rounded-full overflow-hidden">
-            <motion.div 
-                style={{ scaleY: smoothProgress, originY: 0 }}
-                className="absolute top-0 left-0 w-full bg-amber-500 rounded-full shadow-[0_0_30px_rgba(245,158,11,0.5)]"
-            />
-          </div>
-
-          {/* THE LUXURY CAR (SLOW & SMOOTH) */}
-          <motion.div 
-            style={{ top: carY }}
-            className="absolute left-1/2 -translate-x-1/2 -mt-10 z-50 flex flex-col items-center"
-          >
-            <div className="bg-amber-500 p-4 rounded-2xl shadow-[0_0_60px_rgba(245,158,11,1)] rotate-90 transition-transform duration-500">
-                <Car size={32} className="text-black fill-black" />
-            </div>
-            <div className="w-1 h-32 bg-gradient-to-t from-amber-500 to-transparent mt-2 mx-auto" />
-          </motion.div>
-
-          {/* ROADMAP PHASES */}
-          {[
-            { phase: "PHASE 01", title: "Institutional Genesis", desc: "Acquisition of EU banking protocols. Full API handshake with Wallester AS. Establishing Tier-1 liquidity bridges for the region.", year: "Q1 2026", y: "10%", side: "right" },
-            { phase: "PHASE 02", title: "Connectivity Pulsar", desc: "Ding Global network integration. Safi TopUp covering 500+ operators. Rollout of international 5G E-SIM packages.", year: "Q2 2026", y: "35%", side: "left" },
-            { phase: "PHASE 03", title: "Retail Domination", desc: "Official SafiPay App launch (iOS/Android). Public issuance of Virtual VISA cards and IBANs for the 40M+ community.", year: "Q3 2026", y: "60%", side: "right" },
-            { phase: "PHASE 04", title: "Physical Sovereignty", desc: "Issuance of Physical Titanium Safi Cards. Deployment of merchant POS terminals in high-end retail hubs like Istanbul, Dubai, and Kabul.", year: "Q4 2026", y: "85%", side: "left" },
-          ].map((step, i) => (
-            <div 
-                key={i} 
-                className={`absolute w-full flex items-center ${step.side === "left" ? "justify-start text-left" : "justify-end text-right"}`}
-                style={{ top: step.y }}
-            >
-                <motion.div 
-                    initial={{ opacity: 0, x: step.side === "left" ? -100 : 100 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{ scale: 1.05, borderColor: 'rgba(245,158,11,0.5)' }}
-                    transition={{ duration: 0.8 }}
-                    className="md:w-[42%] p-12 bg-[#0a0a0a] border border-white/10 rounded-[4rem] transition-all shadow-2xl cursor-default"
-                >
-                    <span className="text-amber-500 font-black text-xs block mb-4 tracking-[0.4em] uppercase">{step.year}</span>
-                    <h4 className="text-amber-600 font-bold uppercase text-[10px] mb-2">{step.phase}</h4>
-                    <h3 className="text-4xl font-black mb-6 italic tracking-tighter uppercase">{step.title}</h3>
-                    <p className="text-gray-500 leading-relaxed font-light text-sm italic">{step.desc}</p>
-                </motion.div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* --- 7. STRATEGIC INQUIRY FORM --- */}
-      <section className="py-60 container mx-auto px-6" id="partner-form">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-20 items-center">
-            <div className="lg:col-span-5 space-y-12">
-                <h2 className="text-7xl font-black italic italic leading-[0.8]">Join the <br/> <span className="text-amber-500">Board.</span></h2>
-                <p className="text-gray-400 text-2xl font-light italic leading-relaxed">
-                  "We are selecting 5 strategic partners for the Q3 expansion phase. Apply for an institutional slot."
-                </p>
-                <div className="flex items-center gap-6 p-8 rounded-[3rem] bg-white/5 border border-white/10">
-                    <Landmark size={40} className="text-amber-500" />
-                    <div>
-                        <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">Institutional Grade</p>
-                        <p className="font-bold">24-Hour Review Guaranteed</p>
-                    </div>
+            <motion.div whileHover={{ scale: 1.05 }} className="inline-block cursor-pointer mb-20">
+                <h2 className="text-6xl md:text-9xl font-black italic uppercase tracking-tighter">Start Your <span className="text-amber-500">Empire.</span></h2>
+            </motion.div>
+            <div className="grid md:grid-cols-3 gap-12 text-[10px] font-black uppercase tracking-[0.6em] text-gray-600 mb-20">
+                <div className="flex flex-col gap-4">
+                    <span className="text-amber-500">Headquarters</span>
+                    <span className="text-white">71-75 Shelton St, London</span>
+                </div>
+                <div className="flex flex-col gap-4">
+                    <span className="text-amber-500">Legal</span>
+                    <span className="text-white">Registered No. 17063286</span>
+                </div>
+                <div className="flex flex-col gap-4">
+                    <span className="text-amber-500">Ecosystem</span>
+                    <span className="text-white">SafiPay & Safi TopUp</span>
                 </div>
             </div>
-            <motion.div 
-              whileHover={{ scale: 1.01 }}
-              className="lg:col-span-7 p-12 md:p-20 bg-black border border-white/10 rounded-[5rem] shadow-2xl relative overflow-hidden"
-            >
-                <form action="https://formspree.io/f/maqbrkgq" method="POST" className="space-y-10 relative z-10">
-                    <div className="grid md:grid-cols-2 gap-10">
-                        <div className="space-y-4">
-                            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Entity Name</label>
-                            <input name="entity" type="text" required placeholder="Bank / Firm" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all font-sans" />
-                        </div>
-                        <div className="space-y-4">
-                            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Official Email</label>
-                            <input name="email" type="email" required placeholder="ceo@company.com" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all font-sans" />
-                        </div>
-                    </div>
-                    <div className="space-y-4">
-                        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Strategic Intent</label>
-                        <select name="intent" className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 text-gray-400 font-bold">
-                            <option>Institutional Investment</option>
-                            <option>Infrastructure Provider</option>
-                            <option>Market Expansion / Franchise</option>
-                        </select>
-                    </div>
-                    <div className="space-y-4">
-                        <label className="text-[10px] uppercase tracking-widest text-gray-500 font-black">Executive Proposal</label>
-                        <textarea name="proposal" rows={6} required placeholder="Vision and Synergy..." className="w-full bg-white/5 border border-white/10 rounded-2xl px-8 py-6 focus:outline-none focus:border-amber-500 transition-all resize-none font-sans"></textarea>
-                    </div>
-                    <button type="submit" className="w-full bg-amber-500 text-black font-black py-8 rounded-3xl text-2xl uppercase tracking-tighter hover:bg-amber-400 transition-all shadow-[0_30px_60px_rgba(245,158,11,0.3)]">
-                        Initialize Strategic Talks
-                    </button>
-                </form>
-            </motion.div>
+            <p className="text-gray-800 text-[10px] tracking-[1em] uppercase">Safi International Capital LTD © 2026 | All Rights Reserved</p>
         </div>
-      </section>
-
-      {/* --- 8. FOOTER LEGACY --- */}
-      <footer className="py-20 text-center border-t border-white/5">
-        <div className="flex justify-center gap-12 mb-10 opacity-20 italic font-black text-[9px] uppercase tracking-[1em]">
-            <span>Wallester Licensed</span>
-            <span>Ding Official</span>
-            <span>VISA Principal Member</span>
-        </div>
-        <p className="text-gray-800 text-[10px] uppercase tracking-[0.5em]">SafiPay Global Infrastructure © 2026 | Built for the Frontier Markets.</p>
       </footer>
+
     </div>
   );
 }
