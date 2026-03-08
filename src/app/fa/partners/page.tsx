@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 
 // --- Magnetic Component ---
-const MagneticElement = ({ children, distance = 0.4 }) => {
+const MagneticElement = ({ children, distance = 0.4 }: { children: React.ReactNode; distance?: number }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const x = useSpring(mouseX, { stiffness: 150, damping: 15 });
@@ -32,7 +32,7 @@ const MagneticElement = ({ children, distance = 0.4 }) => {
 };
 
 // --- Interactive Bento Card ---
-const BentoCard = ({ children, className = "" }) => {
+const BentoCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]));
