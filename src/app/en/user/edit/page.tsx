@@ -1,15 +1,26 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Camera, User, Mail, Phone, Lock, 
-  Save, ChevronLeft, ShieldCheck, Loader2, CheckCircle2 
+  Camera, User, Lock, Save, ChevronLeft, Loader2, CheckCircle2 
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { createClientSideSupabase } from '@/lib/supabase';
+import Select from 'react-select';
+
+const countryOptions = [
+  { value: 'Afghanistan', label: 'Afghanistan' },
+  { value: 'Turkey', label: 'Turkey' },
+  { value: 'United Kingdom', label: 'United Kingdom' },
+  { value: 'Germany', label: 'Germany' },
+  { value: 'United States', label: 'United States' },
+  { value: 'Canada', label: 'Canada' },
+  { value: 'United Arab Emirates', label: 'United Arab Emirates' },
+  { value: 'Poland', label: 'Poland' },
+];
 
 export default function EditProfilePage() {
   const [user, setUser] = useState<any>(null);
@@ -19,71 +30,99 @@ export default function EditProfilePage() {
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const params = useParams();
-  const locale = params.locale || 'en';
+  // استفاده ایمن از پارامترها در سمت کلاینت
+  const locale = params?.locale || 'en';
   const supabase = createClientSideSupabase();
 
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     phone: '',
-    country: '', // فیلد جدید برای دیتابیس
+    country: '',
   });
 
+  const customSelectStyles = {
+    control: (base: any, state: any) => ({
+      ...base,
+      backgroundColor: 'rgba(0, 0, 0, 0.6)',
+      borderColor: state.isFocused ? '#f59e0b' : 'rgba(255, 255, 255, 0.1)',
+      borderRadius: '1.25rem',
+      padding: '0.5rem',
+      color: 'white',
+      boxShadow: 'none',
+      '&:hover': { borderColor: '#f59e0b' }
+    }),
+    menu: (base: any) => ({
+      ...base,
+      backgroundColor: '#0a0a0a',
+      borderRadius: '1.25rem',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      overflow: 'hidden',
+      zIndex: 100
+    }),
+    option: (base: any, state: any) => ({
+      ...base,
+      backgroundColor: state.isFocused ? '#f59e0b' : 'transparent',
+      color: state.isFocused ? 'black' : 'white',
+      cursor: 'pointer',
+      padding: '12px 20px',
+      fontSize: '14px',
+      '&:active': { backgroundColor: '#f59e0b' }
+    }),
+    singleValue: (base: any) => ({ ...base, color: 'white', fontWeight: '600' }),
+    input: (base: any) => ({ ...base, color: 'white' }),
+    placeholder: (base: any) => ({ ...base, color: '#52525b' })
+  };
+
   useEffect(() => {
-    const fetchUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        setUser(user);
-        
-        // ابتدا سعی می‌کنیم اطلاعات را از جدول profiles بخوانیم
+    const fetchUserData = async () => {
+      const { data: { user: authUser } } = await supabase.auth.getUser();
+      if (authUser) {
+        setUser(authUser);
         const { data: profile } = await supabase
           .from('profiles')
           .select('*')
-          .eq('id', user.id)
+          .eq('id', authUser.id)
           .single();
 
-        setFormData({
-          firstName: profile?.full_name?.split(' ')[0] || user.user_metadata?.first_name || '',
-          lastName: profile?.full_name?.split(' ')[1] || user.user_metadata?.last_name || '',
-          phone: profile?.phone_number || user.user_metadata?.phone || '',
-          country: profile?.country || '',
-        });
+        if (profile) {
+          const names = profile.full_name?.split(' ') || [];
+          setFormData({
+            firstName: names[0] || '',
+            lastName: names.slice(1).join(' ') || '',
+            phone: profile.phone_number || '',
+            country: profile.country || '',
+          });
+        }
       }
     };
-    fetchUser();
+    fetchUserData();
   }, [supabase]);
 
-  // --- آپدیت همزمان Auth و دیتابیس Profiles ---
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
-    
     try {
-      // ۱. آپدیت در بخش Authentication
-      const { error: authError } = await supabase.auth.updateUser({
-        data: { 
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          phone: formData.phone 
-        }
-      });
-      if (authError) throw authError;
-
-      // ۲. آپدیت (Upsert) در جدول دیتابیس profiles (مطابق اسکرین‌شات شما)
+      const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+      
       const { error: dbError } = await supabase
         .from('profiles')
         .upsert({
           id: user.id,
-          full_name: `${formData.firstName} ${formData.lastName}`,
+          full_name: fullName,
           phone_number: formData.phone,
           country: formData.country,
           updated_at: new Date().toISOString(),
         });
 
       if (dbError) throw dbError;
+      
+      await supabase.auth.updateUser({
+        data: { first_name: formData.firstName, last_name: formData.lastName }
+      });
 
-      setStatus({ type: 'success', msg: 'Database & Profile Updated!' });
+      setStatus({ type: 'success', msg: 'Identity Updated Successfully' });
     } catch (error: any) {
       setStatus({ type: 'error', msg: error.message });
     } finally {
@@ -91,138 +130,113 @@ export default function EditProfilePage() {
     }
   };
 
-  // --- آپلود عکس و ثبت آنی در دیتابیس ---
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
       setUploading(true);
       if (!event.target.files || event.target.files.length === 0) return;
-      
       const file = event.target.files[0];
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${user.id}-${Date.now()}.${fileExt}`;
-      const filePath = `${user.id}/${fileName}`;
+      const filePath = `${user.id}/avatar-${Date.now()}.${file.name.split('.').pop()}`;
 
-      const { error: uploadError } = await supabase.storage
-        .from('profiles')
-        .upload(filePath, file);
-
+      const { error: uploadError } = await supabase.storage.from('profiles').upload(filePath, file);
       if (uploadError) throw uploadError;
 
-      const { data: { publicUrl } } = supabase.storage
-        .from('profiles')
-        .getPublicUrl(filePath);
+      const { data: { publicUrl } } = supabase.storage.from('profiles').getPublicUrl(filePath);
 
-      // ثبت در Auth و جدول Profiles به صورت همزمان
+      await supabase.from('profiles').update({ avatar_url: publicUrl }).eq('id', user.id);
       await supabase.auth.updateUser({ data: { avatar_url: publicUrl } });
-      await supabase.from('profiles').upsert({ id: user.id, avatar_url: publicUrl });
 
       setUser({ ...user, user_metadata: { ...user.user_metadata, avatar_url: publicUrl } });
-      setStatus({ type: 'success', msg: 'Photo Synced with Database!' });
-
+      setStatus({ type: 'success', msg: 'Photo Synchronized' });
     } catch (error: any) {
-      alert(error.message);
+      setStatus({ type: 'error', msg: 'Upload failed' });
     } finally {
       setUploading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32 pb-20 px-6 font-sans">
+    <div className="min-h-screen bg-black text-white pt-32 pb-20 px-6">
       <div className="container mx-auto max-w-5xl">
-        
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-          <div>
-            <Link href={`/${locale}/user/dashboard`} className="flex items-center gap-2 text-zinc-500 hover:text-amber-500 transition-all mb-4 group">
-              <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-              <span className="font-black text-[10px] uppercase tracking-[0.2em]">Back to Dashboard</span>
-            </Link>
-            <h1 className="text-3xl font-black uppercase tracking-tighter italic">
-              Edit <span className="text-amber-500">Profile</span>
-            </h1>
-          </div>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+          <Link href={`/${locale}/user/dashboard`} className="flex items-center gap-2 text-zinc-500 hover:text-amber-500 transition-all group">
+            <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="font-black text-[10px] uppercase tracking-[0.2em]">Dashboard</span>
+          </Link>
           
-          {status && (
-            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} 
-              className={`px-6 py-3 rounded-2xl flex items-center gap-3 border ${status.type === 'success' ? 'bg-amber-500/10 border-amber-500/50 text-amber-500' : 'bg-red-500/10 border-red-500/50 text-red-500'}`}>
-              <CheckCircle2 size={20} />
-              <span className="text-xs font-black uppercase tracking-widest">{status.msg}</span>
-            </motion.div>
-          )}
+          <AnimatePresence>
+            {status && (
+              <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                className={`px-5 py-3 rounded-2xl border text-[10px] font-black uppercase tracking-widest flex items-center gap-3 ${status.type === 'success' ? 'bg-amber-500/10 border-amber-500/40 text-amber-500' : 'bg-red-500/10 border-red-500/40 text-red-500'}`}>
+                {status.type === 'success' ? <CheckCircle2 size={16} /> : <div className="w-2 h-2 bg-red-500 rounded-full" />}
+                {status.msg}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* Avatar Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-4">
-            <motion.div className="bg-zinc-900/40 border border-white/5 rounded-[2.5rem] p-8 flex flex-col items-center text-center backdrop-blur-3xl">
-              <div 
-                className="relative group cursor-pointer mb-6"
-                onClick={() => fileInputRef.current?.click()}
-              >
-                <div className="absolute -inset-2 bg-gradient-to-tr from-amber-600 to-yellow-200 rounded-full opacity-30 blur-md group-hover:opacity-60 transition duration-500" />
-                <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-black bg-zinc-800 shadow-2xl">
+            <div className="bg-zinc-900/30 border border-white/5 rounded-[3rem] p-10 flex flex-col items-center backdrop-blur-3xl shadow-2xl">
+              <div className="relative group cursor-pointer mb-8" onClick={() => fileInputRef.current?.click()}>
+                <div className="absolute -inset-3 bg-amber-500/20 rounded-full blur-2xl group-hover:bg-amber-500/40 transition duration-500" />
+                <div className="relative w-44 h-44 rounded-full overflow-hidden border-2 border-amber-500/30 bg-zinc-800">
                   {user?.user_metadata?.avatar_url ? (
-                    <Image src={user.user_metadata.avatar_url} alt="Profile" fill className="object-cover" />
+                    <Image src={user.user_metadata.avatar_url} alt="SafiPay User" fill className="object-cover" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-zinc-700">
-                      <User size={60} />
-                    </div>
+                    <div className="w-full h-full flex items-center justify-center text-zinc-600"><User size={60} /></div>
                   )}
-                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm">
-                    {uploading ? <Loader2 className="animate-spin text-amber-500" size={32} /> : <Camera size={32} className="text-amber-500" />}
+                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    {uploading ? <Loader2 className="animate-spin text-amber-500" /> : <Camera className="text-amber-500" />}
                   </div>
                 </div>
-                <input type="file" ref={fileInputRef} onChange={handleImageUpload} accept="image/*" className="hidden" />
               </div>
-              <h2 className="font-black text-xl uppercase tracking-tighter italic">Personal Identity</h2>
-              <p className="text-[10px] text-zinc-500 mt-2 font-bold uppercase tracking-[0.2em]">Click photo to change</p>
-            </motion.div>
+              <h2 className="font-black italic uppercase tracking-tighter text-xl">SafiPay <span className="text-amber-500">ID</span></h2>
+              <input type="file" ref={fileInputRef} onChange={handleImageUpload} hidden accept="image/*" />
+            </div>
           </div>
 
-          {/* Form Section */}
           <div className="lg:col-span-8">
-            <motion.form onSubmit={handleUpdate} className="bg-zinc-900/40 border border-white/5 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl backdrop-blur-3xl">
-              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-amber-500 mb-10 flex items-center gap-3 italic">
-                Account Details
-              </h3>
-              
+            <form onSubmit={handleUpdate} className="bg-zinc-900/30 border border-white/5 rounded-[3rem] p-8 lg:p-12 backdrop-blur-3xl shadow-2xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">First Name</label>
-                  <input type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">First Name</label>
+                  <input type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Last Name</label>
-                  <input type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Last Name</label>
+                  <input type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
               </div>
 
-              <div className="space-y-8 mb-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Phone Number</label>
-                    <input type="text" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} placeholder="+44 000" className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
-                  </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Country</label>
-                    <input type="text" value={formData.country} onChange={(e) => setFormData({...formData, country: e.target.value})} placeholder="Afghanistan" className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
-                  </div>
-                </div>
-
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Official Email (Locked)</label>
-                  <div className="relative">
-                    <input type="email" value={user?.email || ''} disabled className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-4 text-sm font-bold text-zinc-600 cursor-not-allowed" />
-                    <Lock className="absolute right-5 top-1/2 -translate-y-1/2 text-zinc-800" size={16} />
-                  </div>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Phone</label>
+                  <input type="text" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Country</label>
+                  <Select
+                    options={countryOptions}
+                    styles={customSelectStyles}
+                    value={countryOptions.find(c => c.value === formData.country)}
+                    onChange={(val: any) => setFormData({...formData, country: val.value})}
+                    placeholder="Select..."
+                  />
                 </div>
               </div>
 
-              <button type="submit" disabled={loading} className="w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-5 rounded-2xl shadow-xl shadow-amber-500/20 flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-[11px]">
-                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Update Database</>}
+              <div className="mb-12">
+                <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Registered Email</label>
+                <div className="relative mt-3">
+                  <input type="text" value={user?.email || ''} disabled className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-4 text-sm font-bold text-zinc-600 cursor-not-allowed" />
+                  <Lock size={14} className="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-800" />
+                </div>
+              </div>
+
+              <button type="submit" disabled={loading} className="w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-5 rounded-2xl flex items-center justify-center gap-4 uppercase tracking-[0.2em] text-[11px] transition-all shadow-xl shadow-amber-500/10">
+                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Sync with SafiPay Database</>}
               </button>
-            </motion.form>
+            </form>
           </div>
         </div>
       </div>

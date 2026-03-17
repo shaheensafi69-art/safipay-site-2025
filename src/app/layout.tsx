@@ -1,4 +1,3 @@
-// دایرکتیو use client حذف شد تا متادیتا کار کند
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
@@ -6,7 +5,7 @@ import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
-// اکنون متادیتا بدون خطا کار می‌کند
+// تنظیمات متادیتا در سمت سرور
 export const metadata = {
   title: {
     default: 'SafiPay - Digital Bank for Afghans',
@@ -15,14 +14,16 @@ export const metadata = {
   description: 'SafiPay is the first international digital banking system for Afghans. Breaking borders, building the future.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: any; 
 }) {
-  const currentLang = params?.locale || "en";
+  // حل مشکل خط ۹۰: استخراج پارامترها به صورت Async
+  const resolvedParams = await params;
+  const currentLang = resolvedParams?.locale || "en";
 
   const unifiedSchema = {
     "@context": "https://schema.org",
@@ -79,7 +80,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang={currentLang}>
+    <html lang={currentLang} suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE" />
         <script
@@ -87,7 +88,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(unifiedSchema) }}
         />
       </head>
-      <body className={`${inter.className} antialiased bg-[#020202] text-white min-h-screen flex flex-col`}>
+      <body 
+        className={`${inter.className} antialiased bg-[#020202] text-white min-h-screen flex flex-col`}
+        suppressHydrationWarning
+      >
         <Header />
         <main className="flex-grow">
           {children}

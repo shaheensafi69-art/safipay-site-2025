@@ -1,11 +1,19 @@
-import type { NextConfig } from 'next';
-import createNextIntlPlugin from 'next-intl/plugin';
-
-// مسیر دقیق به فایل request
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
-
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cishnxqxaieaxmdglnpl.supabase.co', // آدرس اختصاصی باکت شما
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+      }
+    ],
+  },
 };
 
-export default withNextIntl(nextConfig);
+export default nextConfig;
