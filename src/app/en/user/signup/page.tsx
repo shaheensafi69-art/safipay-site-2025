@@ -1,13 +1,37 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars, Sphere } from '@react-three/drei';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { createClientSideSupabase } from '@/lib/supabase';
-import { User, Mail, Lock, ArrowRight, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
+import { User, Mail, Lock, ArrowRight, Sparkles, CheckCircle2, Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+
+// بخش ذرات برای شبیه‌سازی ترقه (Simple Confetti)
+function ConfettiParticle({ color }: { color: string }) {
+  const [position] = useState(() => [
+    (Math.random() - 0.5) * 10,
+    (Math.random() - 0.5) * 10,
+    (Math.random() - 0.5) * 10
+  ]);
+  
+  return (
+    <motion.div
+      initial={{ scale: 0, opacity: 1, x: 0, y: 0 }}
+      animate={{ 
+        x: (Math.random() - 0.5) * 500, 
+        y: (Math.random() - 0.5) * 500, 
+        opacity: 0, 
+        scale: Math.random() * 2 
+      }}
+      transition={{ duration: 2, ease: "easeOut" }}
+      className="absolute w-2 h-2 rounded-full"
+      style={{ backgroundColor: color }}
+    />
+  );
+}
 
 function MiniRotatingGlobe() {
   const meshRef = useRef<any>(null);
@@ -28,9 +52,11 @@ function MiniRotatingGlobe() {
 export default function SignUpPage() {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false); // وضعیت نمایش موفقیت
   const [error, setError] = useState(null);
 
   const pathname = usePathname();
+  const router = useRouter();
   const lang = pathname.split('/')[1] || 'en';
   const isRtl = ['fa', 'ps', 'ar'].includes(lang);
   const supabase = createClientSideSupabase();
@@ -40,19 +66,73 @@ export default function SignUpPage() {
     setLoading(true);
     setError(null);
     
-    const { error } = await supabase.auth.signUp({
-      email: formData.email,
-      password: formData.password,
-      options: { data: { first_name: formData.firstName, last_name: formData.lastName } }
-    });
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: formData.email,
+        password: formData.password,
+        options: { 
+          data: { 
+            first_name: formData.firstName, 
+            last_name: formData.lastName 
+          } 
+        }
+      });
 
-    if (error) { setError(error.message as any); setLoading(false); }
-    else { window.location.href = `/${lang}/user/verify-email`; }
+      if (error) throw error;
+
+      // نمایش انیمیشن موفقیت
+      setShowSuccess(true);
+      
+      // هدایت به داشبورد بعد از ۲ ثانیه
+      setTimeout(() => {
+        router.push(`/${lang}/user/dashboard`);
+      }, 2500);
+
+    } catch (err: any) {
+      setError(err.message);
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#000000] text-white flex flex-col md:flex-row overflow-hidden relative" dir={isRtl ? 'rtl' : 'ltr'}>
       
+      {/* انیمیشن موفقیت (Success Overlay) */}
+      <AnimatePresence>
+        {showSuccess && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-2xl bg-black/60"
+          >
+            {/* افکت ترقه */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              {Array.from({ length: 50 }).map((_, i) => (
+                <ConfettiParticle key={i} color={i % 2 === 0 ? '#f59e0b' : '#22c55e'} />
+              ))}
+            </div>
+
+            <motion.div 
+              initial={{ scale: 0, rotate: -20 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: "spring", damping: 12 }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-green-500/20 blur-[100px] rounded-full" />
+              <div className="bg-zinc-900 border border-green-500/30 p-12 rounded-[4rem] flex flex-col items-center gap-6 shadow-[0_0_50px_rgba(34,197,94,0.2)]">
+                <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(34,197,94,0.4)]">
+                  <CheckCircle2 size={50} className="text-black" />
+                </div>
+                <div className="text-center">
+                  <h2 className="text-2xl font-black uppercase tracking-tighter">Welcome to SafiPay</h2>
+                  <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-2">Securing your financial future...</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* پس‌زمینه کاینات */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 100], fov: 60 }}>
@@ -70,7 +150,7 @@ export default function SignUpPage() {
         </div>
       </div>
 
-      {/* فرم ثبت‌نام عریض (Landscape) */}
+      {/* فرم ثبت‌نام */}
       <div className="flex-[1.4] flex items-center justify-center p-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -80,7 +160,6 @@ export default function SignUpPage() {
           <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-amber-500/10 rounded-full blur-[120px]" />
           
           <div className="flex flex-col lg:flex-row gap-12 items-start relative z-10">
-            
             <div className="flex-1 space-y-6">
               <div className="flex items-center gap-2 text-amber-500">
                 <Sparkles size={20} />
@@ -93,56 +172,40 @@ export default function SignUpPage() {
                   : "Join the first connected banking system for Afghanistan and the world. Fill all fields carefully."
                 }
               </p>
-              
-              <div className="space-y-3 pt-4">
-                {[
-                  { id: 1, text: isRtl ? "تایید آنی هویت" : "Instant Identity Check" },
-                  { id: 2, text: isRtl ? "دسترسی به حساب Multi-Currency" : "Multi-Currency Access" }
-                ].map(item => (
-                  <div key={item.id} className="flex items-center gap-2 text-zinc-400 text-xs font-bold">
-                    <CheckCircle2 size={14} className="text-amber-500" />
-                    {item.text}
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="flex-[1.2] w-full">
               <form onSubmit={handleSignUp} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* نام */}
                 <div className="relative group">
                   <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
                     type="text" required placeholder={isRtl ? "نام" : "First Name"}
                     onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                    className="w-full bg-black/40 border border-white/5 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
-                {/* نام خانوادگی */}
                 <div className="relative group">
                   <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
                     type="text" required placeholder={isRtl ? "نام خانوادگی" : "Last Name"}
                     onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                    className="w-full bg-black/40 border border-white/5 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
-                {/* ایمیل */}
                 <div className="md:col-span-2 relative group">
                   <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
                     type="email" required placeholder="Email Address"
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-black/40 border border-white/5 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
-                {/* پسورد */}
                 <div className="md:col-span-2 relative group">
                   <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
                     type="password" required placeholder="Password"
                     onChange={(e) => setFormData({...formData, password: e.target.value})}
-                    className="w-full bg-black/40 border border-white/5 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
 
@@ -152,8 +215,10 @@ export default function SignUpPage() {
                   type="submit" disabled={loading}
                   className="md:col-span-2 bg-white text-black font-black py-5 rounded-2xl hover:bg-amber-500 transition-all duration-500 flex items-center justify-center gap-3 group mt-2 shadow-xl shadow-white/5"
                 >
-                  <span className="uppercase tracking-widest text-xs">{loading ? 'Creating...' : 'Register Securely'}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="uppercase tracking-widest text-xs">
+                    {loading ? <Loader2 className="animate-spin" /> : 'Register Securely'}
+                  </span>
+                  {!loading && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
                 </button>
               </form>
 
@@ -163,7 +228,6 @@ export default function SignUpPage() {
                 </Link>
               </div>
             </div>
-
           </div>
         </motion.div>
       </div>
