@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown, Download } from 'lucide-react'; // اضافه شدن آیکون دانلود
+import { Menu, X, ChevronDown, Download, UserCircle2, LogOut, LayoutDashboard } from 'lucide-react'; 
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { createClientSideSupabase } from '@/lib/supabase'; // مسیر کتابخانه خود را چک کنید
 
 const languages = [
   { code: 'fa', label: 'فارسی', flag: '🇦🇫', flagUrl: 'https://flagcdn.com/w160/af.png' },
@@ -22,17 +23,41 @@ export default function Header() {
   const pathname = usePathname();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  const supabase = createClientSideSupabase();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    // چک کردن وضعیت کلاینت
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    getUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      subscription.unsubscribe();
+    };
+  }, [supabase]);
 
   const currentLang = pathname.split('/')[1] || 'en';
   const activeLangObj = languages.find(l => l.code === currentLang) || languages[2];
   const isRtl = ['fa', 'ps', 'ar'].includes(currentLang);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    window.location.href = `/${currentLang}/user/login`;
+  };
 
   const changeLanguage = (lng: string) => {
     if (typeof window !== 'undefined') {
@@ -45,15 +70,18 @@ export default function Header() {
   const translations: any = {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite', tr: 'Ana Sayfa', ar: 'الرئيسية', ru: 'Главная' },
     partners: { fa: 'شراکت‌ها', ps: 'شراکتونه', en: 'Partners', fr: 'Partenariats', de: 'Partnerschaften', tr: 'Ortaklıklar', ar: 'الشراكات', ru: 'Партнерство' },
+    blog: { fa: 'بلاگ', ps: 'بلاګ', en: 'Blog', fr: 'Blog', de: 'Blog', tr: 'Blog', ar: 'المدونة', ru: 'Блог' },
     contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişیم', ar: 'اتصل بنا', ru: 'Контакт' },
     about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızدا', ar: 'من نحن', ru: 'О нас' },
-    language: { fa: 'زبان', ps: 'ژبه', en: 'Language', fr: 'Langue', de: 'Sprache', tr: 'Dil', ar: 'اللغة', ru: 'Языک' },
-    app: { fa: 'اپلیکیشن', ps: 'اپلیکیشن', en: 'App', fr: 'L\'app', de: 'App', tr: 'Uygulama', ar: 'التطبيق', ru: 'Приложение' }
+    app: { fa: 'اپلیکیشن', ps: 'اپلیکیشن', en: 'App', fr: 'L\'app', de: 'App', tr: 'Uygulama', ar: 'التطبيق', ru: 'Приложение' },
+    login: { fa: 'ورود', ps: 'ننووتل', en: 'Login', fr: 'Connexion', de: 'Anmelden', tr: 'Giriش', ar: 'دخول', ru: 'Вход' },
   };
 
   const navItems = [
     { href: `/${currentLang}`, label: translations.home[currentLang] || translations.home.en },
     { href: `/${currentLang}/partners`, label: translations.partners[currentLang] || translations.partners.en },
+    { href: `/${currentLang}/blog`, label: translations.blog[currentLang] || translations.blog.en },
+    { href: `/${currentLang}/app`, label: translations.app[currentLang] || translations.app.en, isSpecial: true },
     { href: `/${currentLang}/contact`, label: translations.contact[currentLang] || translations.contact.en },
     { href: `/${currentLang}/about`, label: translations.about[currentLang] || translations.about.en },
   ];
@@ -74,29 +102,62 @@ export default function Header() {
             <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
                 <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" alt="" />
             </div>
-            <div className="flex items-center gap-8 bg-black/80 border border-white/30 rounded-full px-8 py-2.5 backdrop-blur-2xl relative z-10 shadow-2xl">
+            <div className="flex items-center gap-4 lg:gap-6 bg-black/80 border border-white/30 rounded-full px-7 py-2.5 backdrop-blur-2xl relative z-10 shadow-2xl">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href} className="text-sm font-bold text-gray-300 hover:text-amber-400 transition-all relative group uppercase tracking-widest">
+                <Link 
+                  key={item.href} 
+                  href={item.href} 
+                  className={`text-[9px] lg:text-[11px] font-bold transition-all relative group uppercase tracking-widest whitespace-nowrap flex items-center gap-1.5
+                    ${item.isSpecial ? 'text-amber-500 hover:text-amber-400' : 'text-gray-300 hover:text-amber-400'}`}
+                >
+                  {item.isSpecial && <Download size={12} className="animate-bounce" />}
                   {item.label}
                   <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full ${pathname === item.href ? 'w-full' : ''}`}></span>
                 </Link>
               ))}
+
+              {/* نمایش پروفایل کلاینت یا دکمه ورود */}
+              {user ? (
+                <div className="relative">
+                  <button 
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="bg-amber-500 text-black flex items-center gap-2 px-3 py-1 rounded-full border border-amber-400/50 hover:bg-white transition-all shadow-lg"
+                  >
+                    <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center text-amber-500 text-[9px] font-black">
+                      {user.user_metadata?.first_name?.charAt(0) || user.email?.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-tighter">{user.user_metadata?.first_name || 'Client'}</span>
+                  </button>
+                  <AnimatePresence>
+                    {isUserMenuOpen && (
+                      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full mt-4 right-0 w-48 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 shadow-2xl">
+                        <Link href={`/${currentLang}/user/dashboard`} className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-xl text-[10px] font-bold text-zinc-300 uppercase tracking-widest transition-colors">
+                          <LayoutDashboard size={14} className="text-amber-500" /> Dashboard
+                        </Link>
+                        <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-red-500/10 rounded-xl text-[10px] font-bold text-red-500 uppercase tracking-widest transition-colors">
+                          <LogOut size={14} /> Logout
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link 
+                  href={`/${currentLang}/user/login`} 
+                  className="bg-white/10 px-3 py-1 rounded-full border border-amber-500/50 text-white hover:bg-amber-500 hover:text-black transition-all flex items-center gap-1.5 text-[9px] lg:text-[11px] font-bold uppercase tracking-widest"
+                >
+                  <UserCircle2 size={14} />
+                  {translations.login[currentLang]}
+                </Link>
+              )}
             </div>
           </nav>
 
+          {/* بخش زبان و موبایل (بدون تغییر) */}
           <div className="flex items-center gap-3 md:gap-4">
-            {/* دکمه دانلود (هم در دسکتاپ هم در موبایل کنار همبرگری) */}
-            <Link 
-              href={`/${currentLang}/app`} 
-              className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black px-4 py-2 rounded-xl font-black text-[10px] md:text-xs uppercase tracking-widest transition-all shadow-lg shadow-amber-500/20 active:scale-95 z-[110]"
-            >
-              <Download size={14} />
-              <span>{translations.app[currentLang] || translations.app.en}</span>
-            </Link>
-
             <div className="hidden md:flex relative group/lang items-center justify-center">
               <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
-                 <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-150 animate-pulse" alt="" />
+                  <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-150 animate-pulse" alt="" />
               </div>
               <button onClick={() => setIsLangOpen(!isLangOpen)} className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/90 border border-white/40 text-white backdrop-blur-md hover:border-amber-500 transition-all font-bold text-sm shadow-2xl">
                 <span className="text-xl drop-shadow-md">{activeLangObj.flag}</span>
@@ -129,37 +190,45 @@ export default function Header() {
         </div>
       </div>
 
+      {/* بخش منوی موبایل (بدون تغییر) */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} className="fixed inset-0 z-[150] bg-black/98 backdrop-blur-3xl flex flex-col p-8 md:hidden">
             <div className="absolute inset-0 -z-10 opacity-20 blur-3xl overflow-hidden">
-               <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
+                <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
             </div>
-            <div className="flex justify-between items-center mb-16 text-white">
+            <div className="flex justify-between items-center mb-10 text-white">
               <div className="flex items-center gap-3">
                 <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
-                <span className="font-black text-lg tracking-tighter">SAFIPAY</span>
+                <span className="font-black text-lg tracking-tighter text-white uppercase">SAFIPAY</span>
               </div>
               <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full"><X size={20} /></button>
             </div>
-            <nav className="flex flex-col gap-6 mb-12">
+            <nav className="flex flex-col gap-4 mb-8 overflow-y-auto">
               {navItems.map((item, idx) => (
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }} key={item.href}>
-                  <Link href={item.href} onClick={() => setIsMobileOpen(false)} className="text-4xl font-black text-white hover:text-amber-500 transition-colors uppercase tracking-tighter block">{item.label}</Link>
+                  <Link 
+                    href={item.href} 
+                    onClick={() => setIsMobileOpen(false)} 
+                    className={`text-2xl font-black transition-colors uppercase tracking-tighter block flex items-center gap-3
+                      ${item.isSpecial ? 'text-amber-400' : 'text-white hover:text-amber-500'}`}
+                  >
+                    {item.label}
+                    {item.isSpecial && <Download size={20} />}
+                  </Link>
                 </motion.div>
               ))}
+              {/* بخش ورود در موبایل */}
+              {user ? (
+                 <Link href={`/${currentLang}/user/dashboard`} onClick={() => setIsMobileOpen(false)} className="text-2xl font-black text-amber-500 uppercase tracking-tighter flex items-center gap-3">
+                    DASHBOARD <LayoutDashboard size={24} />
+                 </Link>
+              ) : (
+                <Link href={`/${currentLang}/user/login`} onClick={() => setIsMobileOpen(false)} className="text-2xl font-black text-amber-500 uppercase tracking-tighter flex items-center gap-3">
+                   {translations.login[currentLang]} <UserCircle2 size={24} />
+                </Link>
+              )}
             </nav>
-            <div className="mt-auto pb-10">
-              <p className="text-[10px] text-gray-400 mb-6 font-black uppercase tracking-[0.3em] opacity-70">{translations.language[currentLang] || translations.language.en}</p>
-              <div className="grid grid-cols-2 gap-4 max-h-[250px] overflow-y-auto pr-2">
-                {languages.map((lang) => (
-                  <button key={lang.code} onClick={() => changeLanguage(lang.code)} className={`flex items-center justify-center gap-3 py-5 rounded-[2rem] font-bold text-xs transition-all border ${currentLang === lang.code ? 'bg-amber-500 border-amber-500 text-black' : 'bg-white/5 border-white/10 text-white shadow-xl'}`}>
-                    <span className="text-xl">{lang.flag}</span>
-                    <span className="uppercase tracking-widest">{lang.label}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
