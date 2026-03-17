@@ -5,37 +5,24 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { createClientSideSupabase } from '@/lib/supabase';
-import { Mail, Lock, ArrowRight, ShieldCheck, Sparkles, Globe } from 'lucide-react';
+import { Mail, Lock, ArrowRight, ShieldCheck, Globe } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import * as THREE from 'three';
+import { usePathname, useRouter } from 'next/navigation';
 
-// کامپوننت کره زمین نوری کوچک و چرخان
 function SmallRotatingGlobe() {
   const meshRef = useRef<any>(null);
-  
-  // انیمیشن چرخش خودکار کره به دور خود
-  useFrame((state) => {
+  useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += 0.006; // سرعت چرخش را کمی بیشتر کردم
+      meshRef.current.rotation.y += 0.006;
     }
   });
 
   return (
     <group ref={meshRef}>
-      {/* شبکه نقاط نوری زمین (کوچک‌تر شده) */}
       <points>
-        <sphereGeometry args={[1.5, 64, 64]} /> {/* اندازه را از 2.5 به 1.5 کاهش دادم */}
-        <pointsMaterial 
-          size={0.02} 
-          color="#f59e0b" 
-          transparent 
-          opacity={0.8} 
-          sizeAttenuation 
-        />
+        <sphereGeometry args={[1.5, 64, 64]} />
+        <pointsMaterial size={0.02} color="#f59e0b" transparent opacity={0.8} sizeAttenuation />
       </points>
-
-      {/* هاله‌ی نوری ظریف دور کره */}
       <Sphere args={[1.52, 32, 32]}>
         <meshBasicMaterial color="#f59e0b" wireframe opacity={0.03} transparent />
       </Sphere>
@@ -47,8 +34,9 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
+  const router = useRouter();
   const pathname = usePathname();
   const lang = pathname.split('/')[1] || 'en';
   const isRtl = ['fa', 'ps', 'ar'].includes(lang);
@@ -58,70 +46,51 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) { setError(error.message as any); setLoading(false); }
-    else { window.location.href = `/${lang}/user/dashboard`; }
+
+    const { error: loginError } = await supabase.auth.signInWithPassword({ 
+      email, 
+      password 
+    });
+
+    if (loginError) {
+      setError(loginError.message);
+      setLoading(false);
+    } else {
+      // استفاده از router.push برای انتقال امن و سریع به داشبورد
+      router.push(`/${lang}/user/dashboard`);
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#000000] text-white flex flex-col md:flex-row overflow-hidden relative" dir={isRtl ? 'rtl' : 'ltr'}>
-      
-      {/* ۱. پس‌زمینه کهکشانی کل صفحه (کاینات و ستاره‌ها) */}
+      {/* پس‌زمینه کهکشانی SafiPay */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 100], fov: 60 }}>
-          <Stars 
-            radius={150} // شعاع کهکشان
-            depth={50} // عمق ستاره‌ها
-            count={7000} // تعداد ستاره‌ها (بیشتر کردم برای حس کاینات)
-            factor={6} // اندازه ستاره‌ها
-            saturation={0} // اشباع رنگ (تک‌رنگ سفید/آبی)
-            fade // محو شدن ستاره‌های دور
-            speed={1} // سرعت حرکت ستاره‌ها
-          />
+          <Stars radius={150} depth={50} count={7000} factor={6} saturation={0} fade speed={1} />
         </Canvas>
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 pointer-events-none"></div>
       </div>
 
-      {/* بخش اول: کره زمین کوچک و چرخان (در گوشه دیگر) */}
       <div className="hidden md:flex flex-[0.8] relative items-center justify-center z-10">
         <div className="w-[400px] h-[400px]">
           <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} color="#f59e0b" intensity={2} />
             <SmallRotatingGlobe />
-            {/* کنترل موس را غیرفعال کردم تا فقط خودش بچرخه */}
             <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
           </Canvas>
         </div>
-
-        <div className="absolute bottom-12 left-0 right-0 text-center pointer-events-none">
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: [0.2, 0.5, 0.2] }} 
-            transition={{ duration: 4, repeat: Infinity }}
-            className="flex items-center justify-center gap-2 text-amber-500/50"
-          >
-            <Globe size={12} />
-            <p className="font-black tracking-[0.6em] text-[9px] uppercase">
-              Connected Infrastructure
-            </p>
-          </motion.div>
-        </div>
       </div>
 
-      {/* بخش دوم: فرم لاگین Landscape و شیشه‌ای (روی پس‌زمینه کاینات) */}
       <div className="flex-[1.2] flex items-center justify-center p-6 lg:p-12 relative z-10">
         <motion.div 
           initial={{ opacity: 0, x: isRtl ? -50 : 50 }}
           animate={{ opacity: 1, x: 0 }}
-          className="w-full max-w-[750px] bg-white/[0.01] backdrop-blur-3xl border border-white/5 rounded-[4rem] p-10 lg:p-16 shadow-[0_0_150px_rgba(0,0,0,1)] relative overflow-hidden"
+          className="w-full max-w-[750px] bg-white/[0.01] backdrop-blur-3xl border border-white/5 rounded-[4rem] p-10 lg:p-16 shadow-2xl relative overflow-hidden"
         >
-          {/* افکت نورانی طلایی درخشان‌تر */}
           <div className="absolute -top-32 -right-32 w-80 h-80 bg-amber-500/15 rounded-full blur-[120px]" />
           
           <div className="flex flex-col lg:flex-row gap-16 items-center relative z-10">
-            
-            {/* محتوا */}
             <div className="flex-1 space-y-8">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/20">
@@ -130,41 +99,33 @@ export default function LoginPage() {
                 <h2 className="text-xs font-black tracking-[0.3em] text-zinc-600 uppercase">Safi Secure ID</h2>
               </div>
               
-              <h1 className="text-5xl font-black tracking-tighter leading-[0.9] text-white">
-                GLOBAL <br/> <span className="text-amber-500">ACCESS</span>
+              <h1 className="text-5xl font-black tracking-tighter leading-[0.9] text-white uppercase italic">
+                Global <br/> <span className="text-amber-500 text-6xl">Access</span>
               </h1>
               
               <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                {isRtl 
-                  ? "وارد شبکه اختصاصی صافی‌پی شوید. امنیت شما، اولویت بی‌پایان ماست."
-                  : "Enter the SafiPay private network. Your security is our infinite priority."
-                }
+                Unlock your private gateway to SafiPay. Security is our infinite priority.
               </p>
             </div>
 
-            {/* فیلدها */}
             <div className="w-full lg:w-[320px] space-y-4">
               <form onSubmit={handleLogin} className="space-y-4">
-                <div className="space-y-2">
-                  <div className="relative group">
-                    <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
-                    <input 
-                      type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
-                      className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
-                    />
-                  </div>
+                <div className="relative group">
+                  <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
+                  <input 
+                    type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
+                  />
                 </div>
 
-                <div className="space-y-2">
-                  <div className="relative group">
-                    <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
-                    <input 
-                      type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
-                      className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
-                    />
-                  </div>
+                <div className="relative group">
+                  <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
+                  <input 
+                    type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
+                  />
                 </div>
 
                 {error && <p className="text-red-500 text-[10px] font-bold text-center uppercase tracking-tighter">{error}</p>}
@@ -180,12 +141,11 @@ export default function LoginPage() {
 
               <div className="text-center pt-2">
                 <Link href={`/${lang}/user/signup`} className="group flex items-center justify-center gap-2">
-                  <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest group-hover:text-zinc-400 transition-colors">New here?</span>
-                  <span className="text-amber-500 text-[10px] font-black uppercase tracking-widest border-b border-amber-500/0 group-hover:border-amber-500 transition-all">Join Waitlist</span>
+                  <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">New here?</span>
+                  <span className="text-amber-500 text-[10px] font-black uppercase tracking-widest group-hover:border-b border-amber-500 transition-all">Join Waitlist</span>
                 </Link>
               </div>
             </div>
-
           </div>
         </motion.div>
       </div>
