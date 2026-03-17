@@ -7,7 +7,7 @@ const defaultLocale = 'en';
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // ۱. نادیده گرفتن فایل‌های سیستمی، تصاویر و API (بهینه شده)
+  // ۱. نادیده گرفتن فایل‌های سیستمی و تصاویر
   if (
     pathname.startsWith('/_next') || 
     pathname.includes('/api/') ||
@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // ایجاد ریسپانس اولیه
+  // ایجاد ریسپانس اولیه با هدرهای درخواست
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -36,18 +36,14 @@ export async function middleware(request: NextRequest) {
         set(name: string, value: string, options: CookieOptions) {
           request.cookies.set({ name, value, ...options });
           response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
+            request: { headers: request.headers },
           });
           response.cookies.set({ name, value, ...options });
         },
         remove(name: string, options: CookieOptions) {
           request.cookies.set({ name, value: '', ...options });
           response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
+            request: { headers: request.headers },
           });
           response.cookies.set({ name, value: '', ...options });
         },
@@ -55,7 +51,7 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  // دریافت سشن کاربر
+  // دریافت سشن کاربر (بسیار مهم: از getUser برای امنیت بیشتر در Middleware استفاده کنید)
   const { data: { session } } = await supabase.auth.getSession();
 
   // ۳. مدیریت زبان (i18n)
@@ -69,24 +65,22 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // استخراج زبان فعلی از آدرس
   const currentLang = pathname.split('/')[1] || defaultLocale;
 
-  // ۴. امنیت مسیرهای حساس (Protective Routes)
-  // اگر کاربر لاگین نباشد و بخواهد به صفحات شخصی (/user/...) برود
-  // استثنا: صفحه لاگین و ثبت‌نام نباید قفل باشند
-  const isUserPage = pathname.includes(`/${currentLang}/user`) && 
-                    !pathname.includes('/login') && 
-                    !pathname.includes('/register');
+  // ۴. اصلاح منطق صفحات محافظت شده
+  // نکته: نام مسیرها را دقیقاً مطابق با پروژه (signup و login) قرار دادیم
+  const isAuthPage = pathname.includes('/login') || pathname.includes('/signup');
+  const isUserPage = pathname.includes(`/${currentLang}/user`) && !isAuthPage;
 
+  // اگر کاربر لاگین نیست و می‌خواهد به داشبورد برود
   if (isUserPage && !session) {
     const url = request.nextUrl.clone();
-    url.pathname = `/${currentLang}/login`; // هدایت به صفحه لاگین اصلی
+    url.pathname = `/${currentLang}/login`;
     return NextResponse.redirect(url);
   }
 
-  // ۵. جلوگیری از دسترسی مجدد به لاگین/ثبت‌نام برای کاربران وارد شده
-  if (session && (pathname.includes('/login') || pathname.includes('/register'))) {
+  // اگر کاربر لاگین است و می‌خواهد دوباره به لاگین یا ثبت‌نام برود
+  if (session && isAuthPage) {
     const url = request.nextUrl.clone();
     url.pathname = `/${currentLang}/user/dashboard`;
     return NextResponse.redirect(url);
@@ -96,6 +90,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // مچر بهینه شده برای تمام صفحات به جز موارد استثنا
   matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
 }
