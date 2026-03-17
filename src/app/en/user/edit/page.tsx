@@ -26,6 +26,7 @@ export default function EditProfilePage() {
     firstName: '',
     lastName: '',
     phone: '',
+    country: '', // فیلد جدید برای دیتابیس
   });
 
   useEffect(() => {
@@ -33,39 +34,64 @@ export default function EditProfilePage() {
       const { data: { user } } = await supabase.auth.getUser();
       if (user) {
         setUser(user);
+        
+        // ابتدا سعی می‌کنیم اطلاعات را از جدول profiles بخوانیم
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+
         setFormData({
-          firstName: user.user_metadata?.first_name || '',
-          lastName: user.user_metadata?.last_name || '',
-          phone: user.user_metadata?.phone || '',
+          firstName: profile?.full_name?.split(' ')[0] || user.user_metadata?.first_name || '',
+          lastName: profile?.full_name?.split(' ')[1] || user.user_metadata?.last_name || '',
+          phone: profile?.phone_number || user.user_metadata?.phone || '',
+          country: profile?.country || '',
         });
       }
     };
     fetchUser();
   }, [supabase]);
 
-  // --- Handle Real-time Profile Update ---
+  // --- آپدیت همزمان Auth و دیتابیس Profiles ---
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
     
-    const { error } = await supabase.auth.updateUser({
-      data: { 
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        phone: formData.phone 
-      }
-    });
+    try {
+      // ۱. آپدیت در بخش Authentication
+      const { error: authError } = await supabase.auth.updateUser({
+        data: { 
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          phone: formData.phone 
+        }
+      });
+      if (authError) throw authError;
 
-    if (!error) {
-      setStatus({ type: 'success', msg: 'Profile updated successfully!' });
-    } else {
+      // ۲. آپدیت (Upsert) در جدول دیتابیس profiles (مطابق اسکرین‌شات شما)
+      const { error: dbError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          full_name: `${formData.firstName} ${formData.lastName}`,
+          phone_number: formData.phone,
+          country: formData.country,
+          updated_at: new Date().toISOString(),
+        });
+
+      if (dbError) throw dbError;
+
+      setStatus({ type: 'success', msg: 'Database & Profile Updated!' });
+    } catch (error: any) {
       setStatus({ type: 'error', msg: error.message });
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
-  // --- Handle Instant Image Upload ---
+  // --- آپلود عکس و ثبت آنی در دیتابیس ---
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
       setUploading(true);
@@ -73,31 +99,25 @@ export default function EditProfilePage() {
       
       const file = event.target.files[0];
       const fileExt = file.name.split('.').pop();
-      const fileName = `${user.id}-${Math.random()}.${fileExt}`;
-      const filePath = `avatars/${fileName}`;
+      const fileName = `${user.id}-${Date.now()}.${fileExt}`;
+      const filePath = `${user.id}/${fileName}`;
 
-      // 1. Upload to Supabase Storage
       const { error: uploadError } = await supabase.storage
-        .from('profiles') // Make sure you have a bucket named 'profiles'
+        .from('profiles')
         .upload(filePath, file);
 
       if (uploadError) throw uploadError;
 
-      // 2. Get Public URL
       const { data: { publicUrl } } = supabase.storage
         .from('profiles')
         .getPublicUrl(filePath);
 
-      // 3. Update User Metadata (Database)
-      const { error: updateError } = await supabase.auth.updateUser({
-        data: { avatar_url: publicUrl }
-      });
+      // ثبت در Auth و جدول Profiles به صورت همزمان
+      await supabase.auth.updateUser({ data: { avatar_url: publicUrl } });
+      await supabase.from('profiles').upsert({ id: user.id, avatar_url: publicUrl });
 
-      if (updateError) throw updateError;
-
-      // Update Local State
       setUser({ ...user, user_metadata: { ...user.user_metadata, avatar_url: publicUrl } });
-      setStatus({ type: 'success', msg: 'Photo updated instantly!' });
+      setStatus({ type: 'success', msg: 'Photo Synced with Database!' });
 
     } catch (error: any) {
       alert(error.message);
@@ -153,14 +173,7 @@ export default function EditProfilePage() {
                     {uploading ? <Loader2 className="animate-spin text-amber-500" size={32} /> : <Camera size={32} className="text-amber-500" />}
                   </div>
                 </div>
-                {/* Hidden File Input */}
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  onChange={handleImageUpload} 
-                  accept="image/*" 
-                  className="hidden" 
-                />
+                <input type="file" ref={fileInputRef} onChange={handleImageUpload} accept="image/*" className="hidden" />
               </div>
               <h2 className="font-black text-xl uppercase tracking-tighter italic">Personal Identity</h2>
               <p className="text-[10px] text-zinc-500 mt-2 font-bold uppercase tracking-[0.2em]">Click photo to change</p>
@@ -177,25 +190,26 @@ export default function EditProfilePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
                   <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">First Name</label>
-                  <input 
-                    type="text" 
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                    className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" 
-                  />
+                  <input type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
                 </div>
                 <div className="space-y-3">
                   <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Last Name</label>
-                  <input 
-                    type="text" 
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                    className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" 
-                  />
+                  <input type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
                 </div>
               </div>
 
               <div className="space-y-8 mb-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Phone Number</label>
+                    <input type="text" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} placeholder="+44 000" className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Country</label>
+                    <input type="text" value={formData.country} onChange={(e) => setFormData({...formData, country: e.target.value})} placeholder="Afghanistan" className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 outline-none" />
+                  </div>
+                </div>
+
                 <div className="space-y-3">
                   <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Official Email (Locked)</label>
                   <div className="relative">
@@ -203,29 +217,13 @@ export default function EditProfilePage() {
                     <Lock className="absolute right-5 top-1/2 -translate-y-1/2 text-zinc-800" size={16} />
                   </div>
                 </div>
-
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Phone Number</label>
-                  <input 
-                    type="text" 
-                    value={formData.phone}
-                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    placeholder="+44 000 000 000"
-                    className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" 
-                  />
-                </div>
               </div>
 
-              <button 
-                type="submit" 
-                disabled={loading}
-                className="w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-5 rounded-2xl transition-all shadow-xl shadow-amber-500/20 flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-[11px]"
-              >
+              <button type="submit" disabled={loading} className="w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-5 rounded-2xl shadow-xl shadow-amber-500/20 flex items-center justify-center gap-3 uppercase tracking-[0.2em] text-[11px]">
                 {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Update Database</>}
               </button>
             </motion.form>
           </div>
-
         </div>
       </div>
     </div>

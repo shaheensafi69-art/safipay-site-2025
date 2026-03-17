@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Menu, X, ChevronDown, Download, UserCircle2, LogOut, LayoutDashboard } from 'lucide-react'; 
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { createClientSideSupabase } from '@/lib/supabase'; // مسیر کتابخانه خود را چک کنید
+import { createClientSideSupabase } from '@/lib/supabase';
 
 const languages = [
   { code: 'fa', label: 'فارسی', flag: '🇦🇫', flagUrl: 'https://flagcdn.com/w160/af.png' },
@@ -33,7 +33,6 @@ export default function Header() {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
 
-    // چک کردن وضعیت کلاینت
     const getUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
@@ -98,6 +97,7 @@ export default function Header() {
             <span className="text-xl font-black tracking-tighter text-white group-hover:text-amber-500 transition-colors uppercase">SAFIPAY</span>
           </Link>
 
+          {/* Navigation - Desktop */}
           <nav className="hidden md:flex items-center relative group/nav">
             <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
                 <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" alt="" />
@@ -116,15 +116,18 @@ export default function Header() {
                 </Link>
               ))}
 
-              {/* نمایش پروفایل کلاینت یا دکمه ورود */}
               {user ? (
                 <div className="relative">
                   <button 
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                     className="bg-amber-500 text-black flex items-center gap-2 px-3 py-1 rounded-full border border-amber-400/50 hover:bg-white transition-all shadow-lg"
                   >
-                    <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center text-amber-500 text-[9px] font-black">
-                      {user.user_metadata?.first_name?.charAt(0) || user.email?.charAt(0).toUpperCase()}
+                    <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center text-amber-500 text-[9px] font-black overflow-hidden">
+                      {user.user_metadata?.avatar_url ? (
+                        <Image src={user.user_metadata.avatar_url} alt="P" width={20} height={20} className="object-cover" />
+                      ) : (
+                        user.user_metadata?.first_name?.charAt(0) || user.email?.charAt(0).toUpperCase()
+                      )}
                     </div>
                     <span className="text-[10px] font-black uppercase tracking-tighter">{user.user_metadata?.first_name || 'Client'}</span>
                   </button>
@@ -153,28 +156,28 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* بخش زبان و موبایل (بدون تغییر) */}
           <div className="flex items-center gap-3 md:gap-4">
+            {/* Language Selector - Desktop */}
             <div className="hidden md:flex relative group/lang items-center justify-center">
               <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
                   <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-150 animate-pulse" alt="" />
               </div>
-              <button onClick={() => setIsLangOpen(!isLangOpen)} className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/90 border border-white/40 text-white backdrop-blur-md hover:border-amber-500 transition-all font-bold text-sm shadow-2xl">
+              <button onClick={() => setIsLangOpen(!isLangOpen)} className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/90 border border-white/40 text-white backdrop-blur-md hover:border-amber-500 transition-all font-bold text-sm shadow-2xl uppercase">
                 <span className="text-xl drop-shadow-md">{activeLangObj.flag}</span>
-                <span className="tracking-wide uppercase">{activeLangObj.label}</span>
+                <span className="tracking-wide">{activeLangObj.label}</span>
                 <ChevronDown size={14} className={`transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
               </button>
               <AnimatePresence>
                 {isLangOpen && (
                   <motion.div initial={{ opacity: 0, y: 15, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 15, scale: 0.95 }} className={`absolute ${isRtl ? 'left-0' : 'right-0'} top-full mt-5 w-56 bg-black/95 backdrop-blur-3xl border border-white/20 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden p-2.5`}>
-                    <div className="max-h-[280px] overflow-y-auto custom-scrollbar pr-1">
+                    <div className="max-h-[280px] overflow-y-auto custom-scrollbar">
                       {languages.map((lang) => (
                         <button key={lang.code} onClick={() => changeLanguage(lang.code)} className={`flex items-center justify-between w-full px-4 py-3.5 rounded-2xl transition-all group mb-1 last:mb-0 ${currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/40' : 'text-gray-400 hover:bg-white/10 hover:text-white'}`}>
                           <div className="flex items-center gap-3">
                              <span className="text-lg opacity-90 group-hover:opacity-100">{lang.flag}</span>
                              <span className="font-bold text-xs tracking-widest uppercase">{lang.label}</span>
                           </div>
-                          {currentLang === lang.code && <div className="w-2 h-2 rounded-full bg-black shadow-inner" />}
+                          {currentLang === lang.code && <div className="w-2 h-2 rounded-full bg-black" />}
                         </button>
                       ))}
                     </div>
@@ -190,13 +193,14 @@ export default function Header() {
         </div>
       </div>
 
-      {/* بخش منوی موبایل (بدون تغییر) */}
+      {/* Mobile Menu - (Fixed with Language Selector) */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} className="fixed inset-0 z-[150] bg-black/98 backdrop-blur-3xl flex flex-col p-8 md:hidden">
             <div className="absolute inset-0 -z-10 opacity-20 blur-3xl overflow-hidden">
                 <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
             </div>
+            
             <div className="flex justify-between items-center mb-10 text-white">
               <div className="flex items-center gap-3">
                 <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
@@ -204,6 +208,7 @@ export default function Header() {
               </div>
               <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full"><X size={20} /></button>
             </div>
+
             <nav className="flex flex-col gap-4 mb-8 overflow-y-auto">
               {navItems.map((item, idx) => (
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }} key={item.href}>
@@ -218,7 +223,7 @@ export default function Header() {
                   </Link>
                 </motion.div>
               ))}
-              {/* بخش ورود در موبایل */}
+              
               {user ? (
                  <Link href={`/${currentLang}/user/dashboard`} onClick={() => setIsMobileOpen(false)} className="text-2xl font-black text-amber-500 uppercase tracking-tighter flex items-center gap-3">
                     DASHBOARD <LayoutDashboard size={24} />
@@ -229,6 +234,26 @@ export default function Header() {
                 </Link>
               )}
             </nav>
+
+            {/* Language Selection Grid at the bottom of Mobile Menu */}
+            <div className="mt-auto pt-6 border-t border-white/10 overflow-y-auto">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-4 italic">Select Language</p>
+              <div className="grid grid-cols-2 gap-2 pb-6">
+                {languages.map((lang) => (
+                  <button 
+                    key={lang.code} 
+                    onClick={() => {
+                      changeLanguage(lang.code);
+                      setIsMobileOpen(false);
+                    }} 
+                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all ${currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/30' : 'bg-white/5 text-zinc-400'}`}
+                  >
+                    <span className="text-lg">{lang.flag}</span>
+                    <span className="font-bold text-[10px] uppercase tracking-widest">{lang.label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
