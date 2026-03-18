@@ -5,7 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { createClientSideSupabase } from '@/lib/supabase';
-import { Mail, Lock, ArrowRight, ShieldCheck, Globe } from 'lucide-react';
+import { Mail, Lock, ArrowRight, ArrowLeft, ShieldCheck, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -38,7 +38,7 @@ export default function LoginPage() {
 
   const router = useRouter();
   const pathname = usePathname();
-  const lang = pathname.split('/')[1] || 'en';
+  const lang = pathname.split('/')[1] || 'fa';
   const isRtl = ['fa', 'ps', 'ar'].includes(lang);
   const supabase = createClientSideSupabase();
 
@@ -88,23 +88,23 @@ export default function LoginPage() {
           animate={{ opacity: 1, x: 0 }}
           className="w-full max-w-[750px] bg-white/[0.01] backdrop-blur-3xl border border-white/5 rounded-[4rem] p-10 lg:p-16 shadow-2xl relative overflow-hidden"
         >
-          <div className="absolute -top-32 -right-32 w-80 h-80 bg-amber-500/15 rounded-full blur-[120px]" />
+          <div className={`${isRtl ? 'absolute -top-32 -left-32' : 'absolute -top-32 -right-32'} w-80 h-80 bg-amber-500/15 rounded-full blur-[120px]`} />
           
           <div className="flex flex-col lg:flex-row gap-16 items-center relative z-10">
-            <div className="flex-1 space-y-8">
-              <div className="flex items-center gap-3">
+            <div className={`flex-1 space-y-8 ${isRtl ? 'text-right' : 'text-left'}`}>
+              <div className={`flex items-center gap-3 ${isRtl ? 'justify-start' : 'justify-start'}`}>
                 <div className="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/20">
                   <ShieldCheck className="text-black w-7 h-7" />
                 </div>
-                <h2 className="text-xs font-black tracking-[0.3em] text-zinc-600 uppercase">Safi Secure ID</h2>
+                <h2 className="text-xs font-black tracking-[0.3em] text-zinc-600 uppercase">شناسه امن Safi</h2>
               </div>
               
               <h1 className="text-5xl font-black tracking-tighter leading-[0.9] text-white uppercase italic">
-                Global <br/> <span className="text-amber-500 text-6xl">Access</span>
+                دسترسی <br/> <span className="text-amber-500 text-6xl">جهانی</span>
               </h1>
               
               <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                Unlock your private gateway to SafiPay. Security is our infinite priority.
+                دروازه خصوصی خود به SafiPay را باز کنید. امنیت، اولویت همیشگی ما است.
               </p>
             </div>
 
@@ -113,36 +113,49 @@ export default function LoginPage() {
                 <div className="relative group">
                   <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
                   <input 
-                    type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="ایمیل"
+                    dir={isRtl ? 'rtl' : 'ltr'}
+                    className={`w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm ${isRtl ? 'text-right' : 'text-left'}`}
                   />
                 </div>
 
                 <div className="relative group">
                   <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
                   <input 
-                    type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="رمز عبور"
+                    dir={isRtl ? 'rtl' : 'ltr'}
+                    className={`w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm ${isRtl ? 'text-right' : 'text-left'}`}
                   />
                 </div>
 
                 {error && <p className="text-red-500 text-[10px] font-bold text-center uppercase tracking-tighter">{error}</p>}
 
                 <button 
-                  type="submit" disabled={loading}
+                  type="submit"
+                  disabled={loading}
                   className="w-full bg-amber-500 text-black font-black py-5 rounded-3xl hover:bg-white transition-all duration-500 flex items-center justify-center gap-3 group"
                 >
-                  <span className="uppercase tracking-widest text-xs">{loading ? 'Verifying...' : 'Unlock Gateway'}</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <span className="uppercase tracking-widest text-xs">{loading ? 'در حال تایید...' : 'ورود به دروازه'}</span>
+                  {isRtl ? (
+                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  ) : (
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  )}
                 </button>
               </form>
 
               <div className="text-center pt-2">
                 <Link href={`/${lang}/user/signup`} className="group flex items-center justify-center gap-2">
-                  <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">New here?</span>
-                  <span className="text-amber-500 text-[10px] font-black uppercase tracking-widest group-hover:border-b border-amber-500 transition-all">Join Waitlist</span>
+                  <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">تازه اینجا آمدید؟</span>
+                  <span className="text-amber-500 text-[10px] font-black uppercase tracking-widest group-hover:border-b border-amber-500 transition-all">پیوستن به ویټ‌لیست</span>
                 </Link>
               </div>
             </div>

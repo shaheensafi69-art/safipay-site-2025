@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, ShieldCheck, ExternalLink, Sparkles, MoveRight, Loader2, CheckCircle2 } from 'lucide-react';
+import { Mail, ShieldCheck, ExternalLink, Sparkles, MoveLeft, Loader2, CheckCircle2 } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 // استفاده از متد جدید برای کلاینت
 import { createBrowserClient } from '@supabase/ssr';
@@ -10,7 +10,7 @@ import { createBrowserClient } from '@supabase/ssr';
 export default function VerifyEmailLandscape() {
   const params = useParams();
   const router = useRouter();
-  const locale = params.locale || 'en';
+  const locale = params.locale || 'fa';
 
   // ایجاد کلاینت سوپابیس به روش جدید
   const supabase = createBrowserClient(
@@ -52,12 +52,12 @@ export default function VerifyEmailLandscape() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020202] text-white flex items-center justify-center px-6 relative overflow-hidden font-sans">
+    <div dir="rtl" className="min-h-screen bg-[#020202] text-white flex items-center justify-center px-6 relative overflow-hidden font-sans">
       
-      {/* Cosmos Background */}
+      {/* پس‌زمینه کیهانی */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-amber-500/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-600/5 blur-[150px] rounded-full" />
+        <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-amber-500/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-600/5 blur-[150px] rounded-full" />
       </div>
 
       <motion.div 
@@ -67,8 +67,8 @@ export default function VerifyEmailLandscape() {
       >
         <div className="flex flex-col md:flex-row min-h-[500px]">
           
-          {/* Left: Branding Area */}
-          <div className="w-full md:w-[40%] bg-gradient-to-b from-zinc-800/40 to-black p-12 flex flex-col justify-between border-r border-white/5">
+          {/* بخش چپ: برندینگ */}
+          <div className="w-full md:w-[40%] bg-gradient-to-b from-zinc-800/40 to-black p-12 flex flex-col justify-between border-l border-white/5">
              <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.4)]">
                   <Sparkles size={20} className="text-black" />
@@ -86,17 +86,17 @@ export default function VerifyEmailLandscape() {
              </div>
 
              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">
-                <ShieldCheck size={14} className="text-green-600" /> End-to-End Encrypted
+                <ShieldCheck size={14} className="text-green-600" /> رمزنگاری سرتاسری
              </div>
           </div>
 
-          {/* Right: Interaction Area */}
-          <div className="w-full md:w-[60%] p-12 md:p-20 flex flex-col justify-center bg-black/40">
+          {/* بخش راست: تعامل کاربر */}
+          <div className="w-full md:w-[60%] p-12 md:p-20 flex flex-col justify-center bg-black/40 text-right">
             <h1 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6 leading-[0.85]">
-              Verify <br/><span className="text-amber-500 text-6xl md:text-8xl">Identity</span>
+              تایید <br/><span className="text-amber-500 text-6xl md:text-8xl">هویت</span>
             </h1>
             <p className="text-zinc-500 text-lg mb-10 max-w-sm leading-relaxed">
-              We have dispatched a secure gateway link to your inbox. Activate your <span className="text-white">Elite Status</span> to begin international banking.
+              ما یک لینک امن به صندوق ایمیل شما ارسال کرده‌ایم. برای آغاز بانکداری بین‌المللی، <span className="text-white">وضعیت ویژه</span> خود را فعال کنید.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -105,27 +105,27 @@ export default function VerifyEmailLandscape() {
                 target="_blank"
                 className="flex-1 min-w-[200px] flex items-center justify-center gap-3 py-6 bg-white text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl hover:bg-amber-500 hover:text-white transition-all shadow-xl active:scale-95"
               >
-                OPEN MAILBOX <ExternalLink size={14} />
+                باز کردن ایمیل <ExternalLink size={14} />
               </a>
               
               <button 
-                onClick={() => router.push(`/en/user/signup`)}
+                onClick={() => router.push(`/${locale}/user/signup`)}
                 className="flex-1 min-w-[200px] flex items-center justify-center gap-3 py-6 bg-zinc-900/50 text-zinc-400 font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl border border-white/5 hover:border-white/20 transition-all active:scale-95"
               >
-                BACK TO SIGN UP <MoveRight size={14} />
+                بازگشت به ثبت‌نام <MoveLeft size={14} />
               </button>
             </div>
 
-            {/* Resend Logic Section */}
+            {/* بخش ارسال دوباره */}
             <div className="mt-12">
               <AnimatePresence mode="wait">
                 {status === 'success' ? (
                   <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-2 text-green-500 text-[10px] font-black uppercase tracking-widest">
-                    <CheckCircle2 size={14} /> New secure link dispatched!
+                    <CheckCircle2 size={14} /> لینک جدید با موفقیت ارسال شد
                   </motion.div>
                 ) : status === 'error' ? (
                   <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-red-500 text-[10px] font-black uppercase tracking-widest">
-                    Failed to resend. Try again later.
+                    ارسال دوباره موفق نشد. بعداً دوباره تلاش کنید
                   </motion.div>
                 ) : (
                   <button 
@@ -134,7 +134,7 @@ export default function VerifyEmailLandscape() {
                     className="group text-[10px] text-zinc-600 font-bold uppercase tracking-widest hover:text-white transition-all flex items-center gap-2"
                   >
                     {isResending && <Loader2 size={12} className="animate-spin text-amber-500" />}
-                    Not in inbox? <span className="text-amber-500 group-hover:underline">Resend Link</span>
+                    ایمیل را دریافت نکردید؟ <span className="text-amber-500 group-hover:underline">ارسال دوباره لینک</span>
                   </button>
                 )}
               </AnimatePresence>

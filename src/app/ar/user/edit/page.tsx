@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Camera, User, Lock, Save, ChevronLeft, Loader2, CheckCircle2 
+  Camera, User, Lock, Save, ChevronRight, Loader2, CheckCircle2 
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,201 +12,201 @@ import { createClientSideSupabase } from '@/lib/supabase';
 import Select from 'react-select';
 
 const countryOptions = [
-  { value: 'Afghanistan', label: 'Afghanistan' },
-  { value: 'Albania', label: 'Albania' },
-  { value: 'Algeria', label: 'Algeria' },
-  { value: 'Andorra', label: 'Andorra' },
-  { value: 'Angola', label: 'Angola' },
-  { value: 'Antigua and Barbuda', label: 'Antigua and Barbuda' },
-  { value: 'Argentina', label: 'Argentina' },
-  { value: 'Armenia', label: 'Armenia' },
-  { value: 'Australia', label: 'Australia' },
-  { value: 'Austria', label: 'Austria' },
-  { value: 'Azerbaijan', label: 'Azerbaijan' },
-  { value: 'Bahamas', label: 'Bahamas' },
-  { value: 'Bahrain', label: 'Bahrain' },
-  { value: 'Bangladesh', label: 'Bangladesh' },
-  { value: 'Barbados', label: 'Barbados' },
-  { value: 'Belarus', label: 'Belarus' },
-  { value: 'Belgium', label: 'Belgium' },
-  { value: 'Belize', label: 'Belize' },
-  { value: 'Benin', label: 'Benin' },
-  { value: 'Bhutan', label: 'Bhutan' },
-  { value: 'Bolivia', label: 'Bolivia' },
-  { value: 'Bosnia and Herzegovina', label: 'Bosnia and Herzegovina' },
-  { value: 'Botswana', label: 'Botswana' },
-  { value: 'Brazil', label: 'Brazil' },
-  { value: 'Brunei', label: 'Brunei' },
-  { value: 'Bulgaria', label: 'Bulgaria' },
-  { value: 'Burkina Faso', label: 'Burkina Faso' },
-  { value: 'Burundi', label: 'Burundi' },
-  { value: 'Cabo Verde', label: 'Cabo Verde' },
-  { value: 'Cambodia', label: 'Cambodia' },
-  { value: 'Cameroon', label: 'Cameroon' },
-  { value: 'Canada', label: 'Canada' },
-  { value: 'Central African Republic', label: 'Central African Republic' },
-  { value: 'Chad', label: 'Chad' },
-  { value: 'Chile', label: 'Chile' },
-  { value: 'China', label: 'China' },
-  { value: 'Colombia', label: 'Colombia' },
-  { value: 'Comoros', label: 'Comoros' },
-  { value: 'Congo (Congo-Brazzaville)', label: 'Congo (Congo-Brazzaville)' },
-  { value: 'Costa Rica', label: 'Costa Rica' },
-  { value: 'Croatia', label: 'Croatia' },
-  { value: 'Cuba', label: 'Cuba' },
-  { value: 'Cyprus', label: 'Cyprus' },
-  { value: 'Czechia (Czech Republic)', label: 'Czechia (Czech Republic)' },
-  { value: 'Denmark', label: 'Denmark' },
-  { value: 'Djibouti', label: 'Djibouti' },
-  { value: 'Dominica', label: 'Dominica' },
-  { value: 'Dominican Republic', label: 'Dominican Republic' },
-  { value: 'Ecuador', label: 'Ecuador' },
-  { value: 'Egypt', label: 'Egypt' },
-  { value: 'El Salvador', label: 'El Salvador' },
-  { value: 'Equatorial Guinea', label: 'Equatorial Guinea' },
-  { value: 'Eritrea', label: 'Eritrea' },
-  { value: 'Estonia', label: 'Estonia' },
-  { value: 'Eswatini', label: 'Eswatini' },
-  { value: 'Ethiopia', label: 'Ethiopia' },
-  { value: 'Fiji', label: 'Fiji' },
-  { value: 'Finland', label: 'Finland' },
-  { value: 'France', label: 'France' },
-  { value: 'Gabon', label: 'Gabon' },
-  { value: 'Gambia', label: 'Gambia' },
-  { value: 'Georgia', label: 'Georgia' },
-  { value: 'Germany', label: 'Germany' },
-  { value: 'Ghana', label: 'Ghana' },
-  { value: 'Greece', label: 'Greece' },
-  { value: 'Grenada', label: 'Grenada' },
-  { value: 'Guatemala', label: 'Guatemala' },
-  { value: 'Guinea', label: 'Guinea' },
-  { value: 'Guinea-Bissau', label: 'Guinea-Bissau' },
-  { value: 'Guyana', label: 'Guyana' },
-  { value: 'Haiti', label: 'Haiti' },
-  { value: 'Holy See', label: 'Holy See' },
-  { value: 'Honduras', label: 'Honduras' },
-  { value: 'Hungary', label: 'Hungary' },
-  { value: 'Iceland', label: 'Iceland' },
-  { value: 'India', label: 'India' },
-  { value: 'Indonesia', label: 'Indonesia' },
-  { value: 'Iran', label: 'Iran' },
-  { value: 'Iraq', label: 'Iraq' },
-  { value: 'Ireland', label: 'Ireland' },
-  { value: 'Israel', label: 'Israel' },
-  { value: 'Italy', label: 'Italy' },
-  { value: 'Ivory Coast', label: 'Ivory Coast' },
-  { value: 'Jamaica', label: 'Jamaica' },
-  { value: 'Japan', label: 'Japan' },
-  { value: 'Jordan', label: 'Jordan' },
-  { value: 'Kazakhstan', label: 'Kazakhstan' },
-  { value: 'Kenya', label: 'Kenya' },
-  { value: 'Kiribati', label: 'Kiribati' },
-  { value: 'Kuwait', label: 'Kuwait' },
-  { value: 'Kyrgyzstan', label: 'Kyrgyzstan' },
-  { value: 'Laos', label: 'Laos' },
-  { value: 'Latvia', label: 'Latvia' },
-  { value: 'Lebanon', label: 'Lebanon' },
-  { value: 'Lesotho', label: 'Lesotho' },
-  { value: 'Liberia', label: 'Liberia' },
-  { value: 'Libya', label: 'Libya' },
-  { value: 'Liechtenstein', label: 'Liechtenstein' },
-  { value: 'Lithuania', label: 'Lithuania' },
-  { value: 'Luxembourg', label: 'Luxembourg' },
-  { value: 'Madagascar', label: 'Madagascar' },
-  { value: 'Malawi', label: 'Malawi' },
-  { value: 'Malaysia', label: 'Malaysia' },
-  { value: 'Maldives', label: 'Maldives' },
-  { value: 'Mali', label: 'Mali' },
-  { value: 'Malta', label: 'Malta' },
-  { value: 'Marshall Islands', label: 'Marshall Islands' },
-  { value: 'Mauritania', label: 'Mauritania' },
-  { value: 'Mauritius', label: 'Mauritius' },
-  { value: 'Mexico', label: 'Mexico' },
-  { value: 'Micronesia', label: 'Micronesia' },
-  { value: 'Moldova', label: 'Moldova' },
-  { value: 'Monaco', label: 'Monaco' },
-  { value: 'Mongolia', label: 'Mongolia' },
-  { value: 'Montenegro', label: 'Montenegro' },
-  { value: 'Morocco', label: 'Morocco' },
-  { value: 'Mozambique', label: 'Mozambique' },
-  { value: 'Myanmar (Burma)', label: 'Myanmar (Burma)' },
-  { value: 'Namibia', label: 'Namibia' },
-  { value: 'Nauru', label: 'Nauru' },
-  { value: 'Nepal', label: 'Nepal' },
-  { value: 'Netherlands', label: 'Netherlands' },
-  { value: 'New Zealand', label: 'New Zealand' },
-  { value: 'Nicaragua', label: 'Nicaragua' },
-  { value: 'Niger', label: 'Niger' },
-  { value: 'Nigeria', label: 'Nigeria' },
-  { value: 'North Korea', label: 'North Korea' },
-  { value: 'North Macedonia', label: 'North Macedonia' },
-  { value: 'Norway', label: 'Norway' },
-  { value: 'Oman', label: 'Oman' },
-  { value: 'Pakistan', label: 'Pakistan' },
-  { value: 'Palau', label: 'Palau' },
-  { value: 'Palestine State', label: 'Palestine State' },
-  { value: 'Panama', label: 'Panama' },
-  { value: 'Papua New Guinea', label: 'Papua New Guinea' },
-  { value: 'Paraguay', label: 'Paraguay' },
-  { value: 'Peru', label: 'Peru' },
-  { value: 'Philippines', label: 'Philippines' },
-  { value: 'Poland', label: 'Poland' },
-  { value: 'Portugal', label: 'Portugal' },
-  { value: 'Qatar', label: 'Qatar' },
-  { value: 'Romania', label: 'Romania' },
-  { value: 'Russia', label: 'Russia' },
-  { value: 'Rwanda', label: 'Rwanda' },
-  { value: 'Saint Kitts and Nevis', label: 'Saint Kitts and Nevis' },
-  { value: 'Saint Lucia', label: 'Saint Lucia' },
-  { value: 'Saint Vincent and the Grenadines', label: 'Saint Vincent and the Grenadines' },
-  { value: 'Samoa', label: 'Samoa' },
-  { value: 'San Marino', label: 'San Marino' },
-  { value: 'Sao Tome and Principe', label: 'Sao Tome and Principe' },
-  { value: 'Saudi Arabia', label: 'Saudi Arabia' },
-  { value: 'Senegal', label: 'Senegal' },
-  { value: 'Serbia', label: 'Serbia' },
-  { value: 'Seychelles', label: 'Seychelles' },
-  { value: 'Sierra Leone', label: 'Sierra Leone' },
-  { value: 'Singapore', label: 'Singapore' },
-  { value: 'Slovakia', label: 'Slovakia' },
-  { value: 'Slovenia', label: 'Slovenia' },
-  { value: 'Solomon Islands', label: 'Solomon Islands' },
-  { value: 'Somalia', label: 'Somalia' },
-  { value: 'South Africa', label: 'South Africa' },
-  { value: 'South Korea', label: 'South Korea' },
-  { value: 'South Sudan', label: 'South Sudan' },
-  { value: 'Spain', label: 'Spain' },
-  { value: 'Sri Lanka', label: 'Sri Lanka' },
-  { value: 'Sudan', label: 'Sudan' },
-  { value: 'Suriname', label: 'Suriname' },
-  { value: 'Sweden', label: 'Sweden' },
-  { value: 'Switzerland', label: 'Switzerland' },
-  { value: 'Syria', label: 'Syria' },
-  { value: 'Taiwan', label: 'Taiwan' },
-  { value: 'Tajikistan', label: 'Tajikistan' },
-  { value: 'Tanzania', label: 'Tanzania' },
-  { value: 'Thailand', label: 'Thailand' },
-  { value: 'Timor-Leste', label: 'Timor-Leste' },
-  { value: 'Togo', label: 'Togo' },
-  { value: 'Tonga', label: 'Tonga' },
-  { value: 'Trinidad and Tobago', label: 'Trinidad and Tobago' },
-  { value: 'Tunisia', label: 'Tunisia' },
-  { value: 'Turkey', label: 'Turkey' },
-  { value: 'Turkmenistan', label: 'Turkmenistan' },
-  { value: 'Tuvalu', label: 'Tuvalu' },
-  { value: 'Uganda', label: 'Uganda' },
-  { value: 'Ukraine', label: 'Ukraine' },
-  { value: 'United Arab Emirates', label: 'United Arab Emirates' },
-  { value: 'United Kingdom', label: 'United Kingdom' },
-  { value: 'United States of America', label: 'United States of America' },
-  { value: 'Uruguay', label: 'Uruguay' },
-  { value: 'Uzbekistan', label: 'Uzbekistan' },
-  { value: 'Vanuatu', label: 'Vanuatu' },
-  { value: 'Venezuela', label: 'Venezuela' },
-  { value: 'Vietnam', label: 'Vietnam' },
-  { value: 'Yemen', label: 'Yemen' },
-  { value: 'Zambia', label: 'Zambia' },
-  { value: 'Zimbabwe', label: 'Zimbabwe' }
+  { value: 'Afghanistan', label: 'أفغانستان' },
+  { value: 'Albania', label: 'ألبانيا' },
+  { value: 'Algeria', label: 'الجزائر' },
+  { value: 'Andorra', label: 'أندورا' },
+  { value: 'Angola', label: 'أنغولا' },
+  { value: 'Antigua and Barbuda', label: 'أنتيغوا وباربودا' },
+  { value: 'Argentina', label: 'الأرجنتين' },
+  { value: 'Armenia', label: 'أرمينيا' },
+  { value: 'Australia', label: 'أستراليا' },
+  { value: 'Austria', label: 'النمسا' },
+  { value: 'Azerbaijan', label: 'أذربيجان' },
+  { value: 'Bahamas', label: 'الباهاما' },
+  { value: 'Bahrain', label: 'البحرين' },
+  { value: 'Bangladesh', label: 'بنغلاديش' },
+  { value: 'Barbados', label: 'باربادوس' },
+  { value: 'Belarus', label: 'بيلاروسيا' },
+  { value: 'Belgium', label: 'بلجيكا' },
+  { value: 'Belize', label: 'بليز' },
+  { value: 'Benin', label: 'بنين' },
+  { value: 'Bhutan', label: 'بوتان' },
+  { value: 'Bolivia', label: 'بوليفيا' },
+  { value: 'Bosnia and Herzegovina', label: 'البوسنة والهرسك' },
+  { value: 'Botswana', label: 'بوتسوانا' },
+  { value: 'Brazil', label: 'البرازيل' },
+  { value: 'Brunei', label: 'بروناي' },
+  { value: 'Bulgaria', label: 'بلغاريا' },
+  { value: 'Burkina Faso', label: 'بوركينا فاسو' },
+  { value: 'Burundi', label: 'بوروندي' },
+  { value: 'Cabo Verde', label: 'الرأس الأخضر' },
+  { value: 'Cambodia', label: 'كمبوديا' },
+  { value: 'Cameroon', label: 'الكاميرون' },
+  { value: 'Canada', label: 'كندا' },
+  { value: 'Central African Republic', label: 'جمهورية أفريقيا الوسطى' },
+  { value: 'Chad', label: 'تشاد' },
+  { value: 'Chile', label: 'تشيلي' },
+  { value: 'China', label: 'الصين' },
+  { value: 'Colombia', label: 'كولومبيا' },
+  { value: 'Comoros', label: 'جزر القمر' },
+  { value: 'Congo (Congo-Brazzaville)', label: 'الكونغو' },
+  { value: 'Costa Rica', label: 'كوستاريكا' },
+  { value: 'Croatia', label: 'كرواتيا' },
+  { value: 'Cuba', label: 'كوبا' },
+  { value: 'Cyprus', label: 'قبرص' },
+  { value: 'Czechia (Czech Republic)', label: 'جمهورية التشيك' },
+  { value: 'Denmark', label: 'الدنمارك' },
+  { value: 'Djibouti', label: 'جيبوتي' },
+  { value: 'Dominica', label: 'دومينيكا' },
+  { value: 'Dominican Republic', label: 'جمهورية الدومينيكان' },
+  { value: 'Ecuador', label: 'الإكوادور' },
+  { value: 'Egypt', label: 'مصر' },
+  { value: 'El Salvador', label: 'السلفادور' },
+  { value: 'Equatorial Guinea', label: 'غينيا الاستوائية' },
+  { value: 'Eritrea', label: 'إريتريا' },
+  { value: 'Estonia', label: 'إستونيا' },
+  { value: 'Eswatini', label: 'إسواتيني' },
+  { value: 'Ethiopia', label: 'إثيوبيا' },
+  { value: 'Fiji', label: 'فيجي' },
+  { value: 'Finland', label: 'فنلندا' },
+  { value: 'France', label: 'فرنسا' },
+  { value: 'Gabon', label: 'الغابون' },
+  { value: 'Gambia', label: 'غامبيا' },
+  { value: 'Georgia', label: 'جورجيا' },
+  { value: 'Germany', label: 'ألمانيا' },
+  { value: 'Ghana', label: 'غانا' },
+  { value: 'Greece', label: 'اليونان' },
+  { value: 'Grenada', label: 'غرينادا' },
+  { value: 'Guatemala', label: 'غواتيمالا' },
+  { value: 'Guinea', label: 'غينيا' },
+  { value: 'Guinea-Bissau', label: 'غينيا بيساو' },
+  { value: 'Guyana', label: 'غيانا' },
+  { value: 'Haiti', label: 'هايتي' },
+  { value: 'Holy See', label: 'الفاتيكان' },
+  { value: 'Honduras', label: 'هندوراس' },
+  { value: 'Hungary', label: 'المجر' },
+  { value: 'Iceland', label: 'آيسلندا' },
+  { value: 'India', label: 'الهند' },
+  { value: 'Indonesia', label: 'إندونيسيا' },
+  { value: 'Iran', label: 'إيران' },
+  { value: 'Iraq', label: 'العراق' },
+  { value: 'Ireland', label: 'إيرلندا' },
+  { value: 'Israel', label: 'إسرائيل' },
+  { value: 'Italy', label: 'إيطاليا' },
+  { value: 'Ivory Coast', label: 'ساحل العاج' },
+  { value: 'Jamaica', label: 'جامايكا' },
+  { value: 'Japan', label: 'اليابان' },
+  { value: 'Jordan', label: 'الأردن' },
+  { value: 'Kazakhstan', label: 'كازاخستان' },
+  { value: 'Kenya', label: 'كينيا' },
+  { value: 'Kiribati', label: 'كيريباتي' },
+  { value: 'Kuwait', label: 'الكويت' },
+  { value: 'Kyrgyzstan', label: 'قيرغيزستان' },
+  { value: 'Laos', label: 'لاوس' },
+  { value: 'Latvia', label: 'لاتفيا' },
+  { value: 'Lebanon', label: 'لبنان' },
+  { value: 'Lesotho', label: 'ليسوتو' },
+  { value: 'Liberia', label: 'ليبيريا' },
+  { value: 'Libya', label: 'ليبيا' },
+  { value: 'Liechtenstein', label: 'ليختنشتاين' },
+  { value: 'Lithuania', label: 'ليتوانيا' },
+  { value: 'Luxembourg', label: 'لوكسمبورغ' },
+  { value: 'Madagascar', label: 'مدغشقر' },
+  { value: 'Malawi', label: 'مالاوي' },
+  { value: 'Malaysia', label: 'ماليزيا' },
+  { value: 'Maldives', label: 'المالديف' },
+  { value: 'Mali', label: 'مالي' },
+  { value: 'Malta', label: 'مالطا' },
+  { value: 'Marshall Islands', label: 'جزر مارشال' },
+  { value: 'Mauritania', label: 'موريتانيا' },
+  { value: 'Mauritius', label: 'موريشيوس' },
+  { value: 'Mexico', label: 'المكسيك' },
+  { value: 'Micronesia', label: 'ميكرونيزيا' },
+  { value: 'Moldova', label: 'مولدوفا' },
+  { value: 'Monaco', label: 'موناكو' },
+  { value: 'Mongolia', label: 'منغوليا' },
+  { value: 'Montenegro', label: 'مونتينيغرو' },
+  { value: 'Morocco', label: 'المغرب' },
+  { value: 'Mozambique', label: 'موزمبيق' },
+  { value: 'Myanmar (Burma)', label: 'ميانمار' },
+  { value: 'Namibia', label: 'ناميبيا' },
+  { value: 'Nauru', label: 'ناورو' },
+  { value: 'Nepal', label: 'نيبال' },
+  { value: 'Netherlands', label: 'هولندا' },
+  { value: 'New Zealand', label: 'نيوزيلندا' },
+  { value: 'Nicaragua', label: 'نيكاراغوا' },
+  { value: 'Niger', label: 'النيجر' },
+  { value: 'Nigeria', label: 'نيجيريا' },
+  { value: 'North Korea', label: 'كوريا الشمالية' },
+  { value: 'North Macedonia', label: 'مقدونيا الشمالية' },
+  { value: 'Norway', label: 'النرويج' },
+  { value: 'Oman', label: 'عُمان' },
+  { value: 'Pakistan', label: 'باكستان' },
+  { value: 'Palau', label: 'بالاو' },
+  { value: 'Palestine State', label: 'فلسطين' },
+  { value: 'Panama', label: 'بنما' },
+  { value: 'Papua New Guinea', label: 'بابوا غينيا الجديدة' },
+  { value: 'Paraguay', label: 'باراغواي' },
+  { value: 'Peru', label: 'بيرو' },
+  { value: 'Philippines', label: 'الفلبين' },
+  { value: 'Poland', label: 'بولندا' },
+  { value: 'Portugal', label: 'البرتغال' },
+  { value: 'Qatar', label: 'قطر' },
+  { value: 'Romania', label: 'رومانيا' },
+  { value: 'Russia', label: 'روسيا' },
+  { value: 'Rwanda', label: 'رواندا' },
+  { value: 'Saint Kitts and Nevis', label: 'سانت كيتس ونيفيس' },
+  { value: 'Saint Lucia', label: 'سانت لوسيا' },
+  { value: 'Saint Vincent and the Grenadines', label: 'سانت فنسنت والغرينادين' },
+  { value: 'Samoa', label: 'ساموا' },
+  { value: 'San Marino', label: 'سان مارينو' },
+  { value: 'Sao Tome and Principe', label: 'ساو تومي وبرينسيب' },
+  { value: 'Saudi Arabia', label: 'المملكة العربية السعودية' },
+  { value: 'Senegal', label: 'السنغال' },
+  { value: 'Serbia', label: 'صربيا' },
+  { value: 'Seychelles', label: 'سيشل' },
+  { value: 'Sierra Leone', label: 'سيراليون' },
+  { value: 'Singapore', label: 'سنغافورة' },
+  { value: 'Slovakia', label: 'سلوفاكيا' },
+  { value: 'Slovenia', label: 'سلوفينيا' },
+  { value: 'Solomon Islands', label: 'جزر سليمان' },
+  { value: 'Somalia', label: 'الصومال' },
+  { value: 'South Africa', label: 'جنوب أفريقيا' },
+  { value: 'South Korea', label: 'كوريا الجنوبية' },
+  { value: 'South Sudan', label: 'جنوب السودان' },
+  { value: 'Spain', label: 'إسبانيا' },
+  { value: 'Sri Lanka', label: 'سريلانكا' },
+  { value: 'Sudan', label: 'السودان' },
+  { value: 'Suriname', label: 'سورينام' },
+  { value: 'Sweden', label: 'السويد' },
+  { value: 'Switzerland', label: 'سويسرا' },
+  { value: 'Syria', label: 'سوريا' },
+  { value: 'Taiwan', label: 'تايوان' },
+  { value: 'Tajikistan', label: 'طاجيكستان' },
+  { value: 'Tanzania', label: 'تنزانيا' },
+  { value: 'Thailand', label: 'تايلاند' },
+  { value: 'Timor-Leste', label: 'تيمور الشرقية' },
+  { value: 'Togo', label: 'توغو' },
+  { value: 'Tonga', label: 'تونغا' },
+  { value: 'Trinidad and Tobago', label: 'ترينيداد وتوباغو' },
+  { value: 'Tunisia', label: 'تونس' },
+  { value: 'Turkey', label: 'تركيا' },
+  { value: 'Turkmenistan', label: 'تركمانستان' },
+  { value: 'Tuvalu', label: 'توفالو' },
+  { value: 'Uganda', label: 'أوغندا' },
+  { value: 'Ukraine', label: 'أوكرانيا' },
+  { value: 'United Arab Emirates', label: 'الإمارات العربية المتحدة' },
+  { value: 'United Kingdom', label: 'المملكة المتحدة' },
+  { value: 'United States of America', label: 'الولايات المتحدة الأمريكية' },
+  { value: 'Uruguay', label: 'أوروغواي' },
+  { value: 'Uzbekistan', label: 'أوزبكستان' },
+  { value: 'Vanuatu', label: 'فانواتو' },
+  { value: 'Venezuela', label: 'فنزويلا' },
+  { value: 'Vietnam', label: 'فيتنام' },
+  { value: 'Yemen', label: 'اليمن' },
+  { value: 'Zambia', label: 'زامبيا' },
+  { value: 'Zimbabwe', label: 'زيمبابوي' }
 ];
 
 export default function EditProfilePage() {
@@ -217,8 +217,8 @@ export default function EditProfilePage() {
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const params = useParams();
-  // استفاده ایمن از پارامترها در سمت کلاینت
-  const locale = params?.locale || 'en';
+  // استخدام آمن للبارامترات في جهة العميل
+  const locale = params?.locale || 'fa';
   const supabase = createClientSideSupabase();
 
   const [formData, setFormData] = useState({
@@ -245,7 +245,8 @@ export default function EditProfilePage() {
       borderRadius: '1.25rem',
       border: '1px solid rgba(255, 255, 255, 0.1)',
       overflow: 'hidden',
-      zIndex: 100
+      zIndex: 100,
+      textAlign: 'right' as const
     }),
     option: (base: any, state: any) => ({
       ...base,
@@ -254,6 +255,7 @@ export default function EditProfilePage() {
       cursor: 'pointer',
       padding: '12px 20px',
       fontSize: '14px',
+      textAlign: 'right' as const,
       '&:active': { backgroundColor: '#f59e0b' }
     }),
     singleValue: (base: any) => ({ ...base, color: 'white', fontWeight: '600' }),
@@ -309,7 +311,7 @@ export default function EditProfilePage() {
         data: { first_name: formData.firstName, last_name: formData.lastName }
       });
 
-      setStatus({ type: 'success', msg: 'Identity Updated Successfully' });
+      setStatus({ type: 'success', msg: 'تم تحديث البيانات بنجاح' });
     } catch (error: any) {
       setStatus({ type: 'error', msg: error.message });
     } finally {
@@ -333,21 +335,21 @@ export default function EditProfilePage() {
       await supabase.auth.updateUser({ data: { avatar_url: publicUrl } });
 
       setUser({ ...user, user_metadata: { ...user.user_metadata, avatar_url: publicUrl } });
-      setStatus({ type: 'success', msg: 'Photo Synchronized' });
+      setStatus({ type: 'success', msg: 'تمت مزامنة الصورة بنجاح' });
     } catch (error: any) {
-      setStatus({ type: 'error', msg: 'Upload failed' });
+      setStatus({ type: 'error', msg: 'فشل رفع الصورة' });
     } finally {
       setUploading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-32 pb-20 px-6">
+    <div dir="rtl" className="min-h-screen bg-black text-white pt-32 pb-20 px-6">
       <div className="container mx-auto max-w-5xl">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
           <Link href={`/${locale}/user/dashboard`} className="flex items-center gap-2 text-zinc-500 hover:text-amber-500 transition-all group">
-            <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="font-black text-[10px] uppercase tracking-[0.2em]">Dashboard</span>
+            <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <span className="font-black text-[10px] uppercase tracking-[0.2em]">لوحة التحكم</span>
           </Link>
           
           <AnimatePresence>
@@ -368,7 +370,7 @@ export default function EditProfilePage() {
                 <div className="absolute -inset-3 bg-amber-500/20 rounded-full blur-2xl group-hover:bg-amber-500/40 transition duration-500" />
                 <div className="relative w-44 h-44 rounded-full overflow-hidden border-2 border-amber-500/30 bg-zinc-800">
                   {user?.user_metadata?.avatar_url ? (
-                    <Image src={user.user_metadata.avatar_url} alt="SafiPay User" fill className="object-cover" />
+                    <Image src={user.user_metadata.avatar_url} alt="مستخدم SafiPay" fill className="object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-zinc-600"><User size={60} /></div>
                   )}
@@ -383,45 +385,68 @@ export default function EditProfilePage() {
           </div>
 
           <div className="lg:col-span-8">
-            <form onSubmit={handleUpdate} className="bg-zinc-900/30 border border-white/5 rounded-[3rem] p-8 lg:p-12 backdrop-blur-3xl shadow-2xl">
+            <form onSubmit={handleUpdate} className="bg-zinc-900/30 border border-white/5 rounded-[3rem] p-8 lg:p-12 backdrop-blur-3xl shadow-2xl text-right">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">First Name</label>
-                  <input type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
+                  <label className="text-[10px] font-black uppercase text-zinc-500 mr-2 tracking-widest">الاسم الأول</label>
+                  <input
+                    type="text"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none text-right"
+                  />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Last Name</label>
-                  <input type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
+                  <label className="text-[10px] font-black uppercase text-zinc-500 mr-2 tracking-widest">اسم العائلة</label>
+                  <input
+                    type="text"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none text-right"
+                  />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Phone</label>
-                  <input type="text" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
+                  <label className="text-[10px] font-black uppercase text-zinc-500 mr-2 tracking-widest">رقم الهاتف</label>
+                  <input
+                    type="text"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    dir="ltr"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none text-left"
+                  />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Country</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 mr-2 tracking-widest">الدولة</label>
                   <Select
                     options={countryOptions}
                     styles={customSelectStyles}
+                    isRtl={true}
                     value={countryOptions.find(c => c.value === formData.country)}
                     onChange={(val: any) => setFormData({...formData, country: val.value})}
-                    placeholder="Select..."
+                    placeholder="اختر..."
                   />
                 </div>
               </div>
 
               <div className="mb-12">
-                <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Registered Email</label>
+                <label className="text-[10px] font-black uppercase text-zinc-500 mr-2 tracking-widest">البريد الإلكتروني المسجل</label>
                 <div className="relative mt-3">
-                  <input type="text" value={user?.email || ''} disabled className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-4 text-sm font-bold text-zinc-600 cursor-not-allowed" />
-                  <Lock size={14} className="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-800" />
+                  <input
+                    type="text"
+                    value={user?.email || ''}
+                    disabled
+                    dir="ltr"
+                    className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-4 text-sm font-bold text-zinc-600 cursor-not-allowed text-left"
+                  />
+                  <Lock size={14} className="absolute left-6 top-1/2 -translate-y-1/2 text-zinc-800" />
                 </div>
               </div>
 
               <button type="submit" disabled={loading} className="w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-5 rounded-2xl flex items-center justify-center gap-4 uppercase tracking-[0.2em] text-[11px] transition-all shadow-xl shadow-amber-500/10">
-                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Sync with SafiPay Database</>}
+                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> مزامنة مع قاعدة بيانات SafiPay</>}
               </button>
             </form>
           </div>
