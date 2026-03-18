@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   Linkedin, Facebook, Instagram, MessageCircle, 
-  Globe, ArrowUpRight, ChevronRight, LayoutGrid
+  Globe, ArrowUpRight, ChevronRight, LayoutGrid, UserCircle2
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -34,6 +34,7 @@ export default function Footer() {
       blogTitle: 'دانشنامه و اخبار',
       blogBtn: 'مشاهده تمام مقالات صافی‌پی',
       teamTitle: 'شورای رهبری SAFIPAY',
+      authText: 'ورود / ثبت‌نام',
       links: [
         { name: 'صفحه اصلی', href: `/fa` },
         { name: 'شرکای تجاری', href: `/fa/partners` },
@@ -50,6 +51,7 @@ export default function Footer() {
       blogTitle: 'پوهنغونډ او خبرونه',
       blogBtn: 'د صافي پي ټولې مقالې وګورئ',
       teamTitle: 'د SAFIPAY د رهبرۍ شورا',
+      authText: 'ننووتل / نوم لیکنه',
       links: [
         { name: 'اصلي پاڼه', href: `/ps` },
         { name: 'سوداګریز شریکان', href: `/ps/partners` },
@@ -66,6 +68,7 @@ export default function Footer() {
       blogTitle: 'INSIGHTS & NEWS',
       blogBtn: 'VIEW ALL INSIGHTS',
       teamTitle: 'CORE LEADERSHIP TEAM',
+      authText: 'SIGN UP / LOGIN',
       links: [
         { name: 'Home', href: `/en` },
         { name: 'Partners', href: `/en/partners` },
@@ -82,6 +85,7 @@ export default function Footer() {
       blogTitle: 'WISSEN & NEWS',
       blogBtn: 'ALLE ARTIKEL ANSEHEN',
       teamTitle: 'FÜHRUNGSRAT VON SAFIPAY',
+      authText: 'ANMELDEN / REGISTRIEREN',
       links: [
         { name: 'Startseite', href: `/de` },
         { name: 'Partner', href: `/de/partners` },
@@ -98,6 +102,7 @@ export default function Footer() {
       blogTitle: 'ЗНАНИЯ И НОВОСТИ',
       blogBtn: 'ПОСМОТРЕТЬ ВСЕ СТАТЬИ',
       teamTitle: 'СОВЕТ ДИРЕКТОРОВ SAFIPAY',
+      authText: 'ВХОД / РЕГИСТРАЦИЯ',
       links: [
         { name: 'Главная', href: `/ru` },
         { name: 'Партнеры', href: `/ru/partners` },
@@ -114,6 +119,7 @@ export default function Footer() {
       blogTitle: 'BİLGİ VE HABERLER',
       blogBtn: 'TÜM MAKALELERİ GÖR',
       teamTitle: 'SAFIPAY LİDERLİK KONSEYİ',
+      authText: 'GİRİŞ / KAYIT',
       links: [
         { name: 'Anasayfa', href: `/tr` },
         { name: 'Ortaklar', href: `/tr/partners` },
@@ -130,6 +136,7 @@ export default function Footer() {
       blogTitle: 'INSIGHTS & ACTUALITÉS',
       blogBtn: 'VOIR TOUS LES ARTICLES',
       teamTitle: 'CONSEIL DE DIRECTION SAFIPAY',
+      authText: 'S\'INSCRIRE / CONNEXION',
       links: [
         { name: 'Accueil', href: `/fr` },
         { name: 'Partenaires', href: `/fr/partners` },
@@ -146,6 +153,7 @@ export default function Footer() {
       blogTitle: 'الموسوعة والأخبار',
       blogBtn: 'مشاهدة جميع المقالات',
       teamTitle: 'مجلس قيادة SAFIPAY',
+      authText: 'تسجيل الدخول / اشتراک',
       links: [
         { name: 'الصفحة الرئيسية', href: `/ar` },
         { name: 'شركاء الأعمال', href: `/ar/partners` },
@@ -236,12 +244,16 @@ export default function Footer() {
                   {link.name}
                 </Link>
               ))}
+              {/* بخش ورود / ثبت‌نام در لیست لینک‌ها */}
+              <Link href={`/${currentLang}/user/login`} className="text-amber-500 hover:text-white transition-all text-sm flex items-center gap-2 group font-bold">
+                  <UserCircle2 size={14} className="group-hover:scale-110 transition-transform" />
+                  {content.authText}
+              </Link>
             </div>
           </div>
 
           <div className="space-y-8">
             <h4 className="text-amber-500 font-black text-[10px] tracking-[0.4em] uppercase">{content.blogTitle}</h4>
-            {/* بخش بلاگ: لینک داینامیک بر اساس زبان انتخاب شده */}
             <Link href={`/${currentLang}/blog`} className="flex items-center justify-between p-6 rounded-[1.5rem] bg-white/[0.02] border border-white/5 hover:border-amber-500/30 transition-all group">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-amber-500/10 text-amber-500">

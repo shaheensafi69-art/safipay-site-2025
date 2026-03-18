@@ -70,10 +70,19 @@ export default function Header() {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite', tr: 'Ana Sayfa', ar: 'الرئيسية', ru: 'Главная' },
     partners: { fa: 'شراکت‌ها', ps: 'شراکتونه', en: 'Partners', fr: 'Partenariats', de: 'Partnerschaften', tr: 'Ortaklıklar', ar: 'الشراكات', ru: 'Партнерство' },
     blog: { fa: 'بلاگ', ps: 'بلاګ', en: 'Blog', fr: 'Blog', de: 'Blog', tr: 'Blog', ar: 'المدونة', ru: 'Блог' },
-    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişیم', ar: 'اتصل بنا', ru: 'Контакт' },
-    about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızدا', ar: 'من نحن', ru: 'О нас' },
+    contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişim', ar: 'اتصل بنا', ru: 'Контакт' },
+    about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızda', ar: 'من نحن', ru: 'О нас' },
     app: { fa: 'اپلیکیشن', ps: 'اپلیکیشن', en: 'App', fr: 'L\'app', de: 'App', tr: 'Uygulama', ar: 'التطبيق', ru: 'Приложение' },
-    login: { fa: 'ورود', ps: 'ننووتل', en: 'Login', fr: 'Connexion', de: 'Anmelden', tr: 'Giriش', ar: 'دخول', ru: 'Вход' },
+    auth: { 
+      fa: 'ورود / ثبت‌نام', 
+      ps: 'ننووتل / نوم لیکنه', 
+      en: 'SIGN UP / LOGIN', 
+      fr: 'S\'INSCRIRE / CONNEXION', 
+      de: 'ANMELDEN / REGISTRIEREN', 
+      tr: 'GİRİŞ / KAYIT', 
+      ar: 'تسجيل الدخول / اشتراک', 
+      ru: 'ВХОД / РЕГИСТРАЦИЯ' 
+    },
   };
 
   const navItems = [
@@ -112,7 +121,7 @@ export default function Header() {
                 >
                   {item.isSpecial && <Download size={12} className="animate-bounce" />}
                   {item.label}
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full ${pathname === item.href ? 'w-full' : ''}`}></span>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full ${pathname === item.href ? 'w-full' : 'w-0'}`} />
                 </Link>
               ))}
 
@@ -122,9 +131,9 @@ export default function Header() {
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                     className="bg-amber-500 text-black flex items-center gap-2 px-3 py-1 rounded-full border border-amber-400/50 hover:bg-white transition-all shadow-lg"
                   >
-                    <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center text-amber-500 text-[9px] font-black overflow-hidden">
+                    <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center text-amber-500 text-[9px] font-black overflow-hidden relative">
                       {user.user_metadata?.avatar_url ? (
-                        <Image src={user.user_metadata.avatar_url} alt="P" width={20} height={20} className="object-cover" />
+                        <Image src={user.user_metadata.avatar_url} alt="P" fill className="object-cover" />
                       ) : (
                         user.user_metadata?.first_name?.charAt(0) || user.email?.charAt(0).toUpperCase()
                       )}
@@ -147,10 +156,10 @@ export default function Header() {
               ) : (
                 <Link 
                   href={`/${currentLang}/user/login`} 
-                  className="bg-white/10 px-3 py-1 rounded-full border border-amber-500/50 text-white hover:bg-amber-500 hover:text-black transition-all flex items-center gap-1.5 text-[9px] lg:text-[11px] font-bold uppercase tracking-widest"
+                  className="bg-white/10 px-4 py-1.5 rounded-full border border-amber-500/50 text-white hover:bg-amber-500 hover:text-black transition-all flex items-center gap-2 text-[9px] lg:text-[10px] font-black uppercase tracking-widest whitespace-nowrap shadow-[0_0_15px_rgba(245,158,11,0.2)]"
                 >
                   <UserCircle2 size={14} />
-                  {translations.login[currentLang]}
+                  {translations.auth[currentLang]}
                 </Link>
               )}
             </div>
@@ -193,7 +202,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu - (Fixed with Language Selector) */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} className="fixed inset-0 z-[150] bg-black/98 backdrop-blur-3xl flex flex-col p-8 md:hidden">
@@ -209,33 +218,57 @@ export default function Header() {
               <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full"><X size={20} /></button>
             </div>
 
-            <nav className="flex flex-col gap-4 mb-8 overflow-y-auto">
+            {/* Main Navigation Grid */}
+            <nav className="grid grid-cols-2 gap-3 mb-8 overflow-y-auto pt-2">
               {navItems.map((item, idx) => (
-                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: idx * 0.1 }} key={item.href}>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ delay: idx * 0.05 }} 
+                  key={item.href}
+                >
                   <Link 
                     href={item.href} 
                     onClick={() => setIsMobileOpen(false)} 
-                    className={`text-2xl font-black transition-colors uppercase tracking-tighter block flex items-center gap-3
-                      ${item.isSpecial ? 'text-amber-400' : 'text-white hover:text-amber-500'}`}
+                    className={`flex items-center justify-center gap-2 h-16 rounded-2xl transition-all border font-black text-[11px] uppercase tracking-tighter
+                      ${item.isSpecial 
+                        ? 'bg-amber-500 text-black border-amber-400 shadow-lg shadow-amber-500/20' 
+                        : 'bg-white/5 text-white border-white/10 hover:bg-white/10'}`}
                   >
                     {item.label}
-                    {item.isSpecial && <Download size={20} />}
+                    {item.isSpecial && <Download size={16} className="animate-bounce" />}
                   </Link>
                 </motion.div>
               ))}
               
-              {user ? (
-                 <Link href={`/${currentLang}/user/dashboard`} onClick={() => setIsMobileOpen(false)} className="text-2xl font-black text-amber-500 uppercase tracking-tighter flex items-center gap-3">
-                    DASHBOARD <LayoutDashboard size={24} />
-                 </Link>
-              ) : (
-                <Link href={`/${currentLang}/user/login`} onClick={() => setIsMobileOpen(false)} className="text-2xl font-black text-amber-500 uppercase tracking-tighter flex items-center gap-3">
-                   {translations.login[currentLang]} <UserCircle2 size={24} />
-                </Link>
-              )}
+              {/* Dashboard / Login Button - Full Width */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ delay: navItems.length * 0.05 }}
+                className="col-span-2"
+              >
+                {user ? (
+                  <Link 
+                    href={`/${currentLang}/user/dashboard`} 
+                    onClick={() => setIsMobileOpen(false)} 
+                    className="flex items-center justify-center gap-3 h-16 rounded-2xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] shadow-xl"
+                  >
+                    DASHBOARD <LayoutDashboard size={18} />
+                  </Link>
+                ) : (
+                  <Link 
+                    href={`/${currentLang}/user/login`} 
+                    onClick={() => setIsMobileOpen(false)} 
+                    className="flex items-center justify-center gap-3 h-16 rounded-2xl bg-white text-black font-black text-[11px] uppercase tracking-[0.1em] shadow-xl"
+                  >
+                    {translations.auth[currentLang]} <UserCircle2 size={18} />
+                  </Link>
+                )}
+              </motion.div>
             </nav>
 
-            {/* Language Selection Grid at the bottom of Mobile Menu */}
+            {/* Language Selection Grid */}
             <div className="mt-auto pt-6 border-t border-white/10 overflow-y-auto">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-4 italic">Select Language</p>
               <div className="grid grid-cols-2 gap-2 pb-6">
