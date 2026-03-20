@@ -56,14 +56,14 @@ export default function LoginPage() {
       setError(loginError.message);
       setLoading(false);
     } else {
-      // استفاده از router.push برای انتقال امن و سریع به داشبورد
+      // Verwendung von router.push für eine sichere und schnelle Weiterleitung zum Dashboard
       router.push(`/${lang}/user/dashboard`);
     }
   };
 
   return (
     <div className="min-h-screen bg-[#000000] text-white flex flex-col md:flex-row overflow-hidden relative" dir={isRtl ? 'rtl' : 'ltr'}>
-      {/* پس‌زمینه کهکشانی SafiPay */}
+      {/* Galaktischer SafiPay-Hintergrund */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 100], fov: 60 }}>
           <Stars radius={150} depth={50} count={7000} factor={6} saturation={0} fade speed={1} />
@@ -96,15 +96,15 @@ export default function LoginPage() {
                 <div className="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/20">
                   <ShieldCheck className="text-black w-7 h-7" />
                 </div>
-                <h2 className="text-xs font-black tracking-[0.3em] text-zinc-600 uppercase">Safi Secure ID</h2>
+                <h2 className="text-xs font-black tracking-[0.3em] text-zinc-600 uppercase">Safi Sichere ID</h2>
               </div>
               
               <h1 className="text-5xl font-black tracking-tighter leading-[0.9] text-white uppercase italic">
-                Global <br/> <span className="text-amber-500 text-6xl">Access</span>
+                Globaler <br/> <span className="text-amber-500 text-6xl">Zugang</span>
               </h1>
               
               <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                Unlock your private gateway to SafiPay. Security is our infinite priority.
+                Öffnen Sie Ihr privates Gateway zu SafiPay. Sicherheit ist unsere unendliche Priorität.
               </p>
             </div>
 
@@ -114,7 +114,7 @@ export default function LoginPage() {
                   <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
                   <input 
                     type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
+                    placeholder="E-Mail"
                     className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
                   />
                 </div>
@@ -123,7 +123,7 @@ export default function LoginPage() {
                   <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
                   <input 
                     type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
+                    placeholder="Passwort"
                     className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
                   />
                 </div>
@@ -134,15 +134,15 @@ export default function LoginPage() {
                   type="submit" disabled={loading}
                   className="w-full bg-amber-500 text-black font-black py-5 rounded-3xl hover:bg-white transition-all duration-500 flex items-center justify-center gap-3 group"
                 >
-                  <span className="uppercase tracking-widest text-xs">{loading ? 'Verifying...' : 'Unlock Gateway'}</span>
+                  <span className="uppercase tracking-widest text-xs">{loading ? 'Wird überprüft...' : 'Gateway entsperren'}</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </form>
 
               <div className="text-center pt-2">
                 <Link href={`/${lang}/user/signup`} className="group flex items-center justify-center gap-2">
-                  <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">New here?</span>
-                  <span className="text-amber-500 text-[10px] font-black uppercase tracking-widest group-hover:border-b border-amber-500 transition-all">Join Waitlist</span>
+                  <span className="text-zinc-600 text-[10px] font-bold uppercase tracking-widest">Neu hier?</span>
+                  <span className="text-amber-500 text-[10px] font-black uppercase tracking-widest group-hover:border-b border-amber-500 transition-all">Zur Warteliste</span>
                 </Link>
               </div>
             </div>

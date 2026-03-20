@@ -13,199 +13,199 @@ import Select from 'react-select';
 
 const countryOptions = [
   { value: 'Afghanistan', label: 'Afghanistan' },
-  { value: 'Albania', label: 'Albania' },
-  { value: 'Algeria', label: 'Algeria' },
-  { value: 'Andorra', label: 'Andorra' },
+  { value: 'Albanie', label: 'Albanie' },
+  { value: 'Algérie', label: 'Algérie' },
+  { value: 'Andorre', label: 'Andorre' },
   { value: 'Angola', label: 'Angola' },
-  { value: 'Antigua and Barbuda', label: 'Antigua and Barbuda' },
-  { value: 'Argentina', label: 'Argentina' },
-  { value: 'Armenia', label: 'Armenia' },
-  { value: 'Australia', label: 'Australia' },
-  { value: 'Austria', label: 'Austria' },
-  { value: 'Azerbaijan', label: 'Azerbaijan' },
+  { value: 'Antigua-et-Barbuda', label: 'Antigua-et-Barbuda' },
+  { value: 'Argentine', label: 'Argentine' },
+  { value: 'Arménie', label: 'Arménie' },
+  { value: 'Australie', label: 'Australie' },
+  { value: 'Autriche', label: 'Autriche' },
+  { value: 'Azerbaïdjan', label: 'Azerbaïdjan' },
   { value: 'Bahamas', label: 'Bahamas' },
-  { value: 'Bahrain', label: 'Bahrain' },
+  { value: 'Bahreïn', label: 'Bahreïn' },
   { value: 'Bangladesh', label: 'Bangladesh' },
-  { value: 'Barbados', label: 'Barbados' },
-  { value: 'Belarus', label: 'Belarus' },
-  { value: 'Belgium', label: 'Belgium' },
+  { value: 'Barbade', label: 'Barbade' },
+  { value: 'Biélorussie', label: 'Biélorussie' },
+  { value: 'Belgique', label: 'Belgique' },
   { value: 'Belize', label: 'Belize' },
-  { value: 'Benin', label: 'Benin' },
-  { value: 'Bhutan', label: 'Bhutan' },
-  { value: 'Bolivia', label: 'Bolivia' },
-  { value: 'Bosnia and Herzegovina', label: 'Bosnia and Herzegovina' },
+  { value: 'Bénin', label: 'Bénin' },
+  { value: 'Bhoutan', label: 'Bhoutan' },
+  { value: 'Bolivie', label: 'Bolivie' },
+  { value: 'Bosnie-Herzégovine', label: 'Bosnie-Herzégovine' },
   { value: 'Botswana', label: 'Botswana' },
-  { value: 'Brazil', label: 'Brazil' },
-  { value: 'Brunei', label: 'Brunei' },
-  { value: 'Bulgaria', label: 'Bulgaria' },
+  { value: 'Brésil', label: 'Brésil' },
+  { value: 'Brunéi', label: 'Brunéi' },
+  { value: 'Bulgarie', label: 'Bulgarie' },
   { value: 'Burkina Faso', label: 'Burkina Faso' },
   { value: 'Burundi', label: 'Burundi' },
-  { value: 'Cabo Verde', label: 'Cabo Verde' },
-  { value: 'Cambodia', label: 'Cambodia' },
-  { value: 'Cameroon', label: 'Cameroon' },
+  { value: 'Cap-Vert', label: 'Cap-Vert' },
+  { value: 'Cambodge', label: 'Cambodge' },
+  { value: 'Cameroun', label: 'Cameroun' },
   { value: 'Canada', label: 'Canada' },
-  { value: 'Central African Republic', label: 'Central African Republic' },
-  { value: 'Chad', label: 'Chad' },
-  { value: 'Chile', label: 'Chile' },
-  { value: 'China', label: 'China' },
-  { value: 'Colombia', label: 'Colombia' },
-  { value: 'Comoros', label: 'Comoros' },
+  { value: 'République centrafricaine', label: 'République centrafricaine' },
+  { value: 'Tchad', label: 'Tchad' },
+  { value: 'Chili', label: 'Chili' },
+  { value: 'Chine', label: 'Chine' },
+  { value: 'Colombie', label: 'Colombie' },
+  { value: 'Comores', label: 'Comores' },
   { value: 'Congo (Congo-Brazzaville)', label: 'Congo (Congo-Brazzaville)' },
   { value: 'Costa Rica', label: 'Costa Rica' },
-  { value: 'Croatia', label: 'Croatia' },
+  { value: 'Croatie', label: 'Croatie' },
   { value: 'Cuba', label: 'Cuba' },
-  { value: 'Cyprus', label: 'Cyprus' },
-  { value: 'Czechia (Czech Republic)', label: 'Czechia (Czech Republic)' },
-  { value: 'Denmark', label: 'Denmark' },
+  { value: 'Chypre', label: 'Chypre' },
+  { value: 'Tchéquie (République tchèque)', label: 'Tchéquie (République tchèque)' },
+  { value: 'Danemark', label: 'Danemark' },
   { value: 'Djibouti', label: 'Djibouti' },
-  { value: 'Dominica', label: 'Dominica' },
-  { value: 'Dominican Republic', label: 'Dominican Republic' },
-  { value: 'Ecuador', label: 'Ecuador' },
-  { value: 'Egypt', label: 'Egypt' },
-  { value: 'El Salvador', label: 'El Salvador' },
-  { value: 'Equatorial Guinea', label: 'Equatorial Guinea' },
-  { value: 'Eritrea', label: 'Eritrea' },
-  { value: 'Estonia', label: 'Estonia' },
+  { value: 'Dominique', label: 'Dominique' },
+  { value: 'République dominicaine', label: 'République dominicaine' },
+  { value: 'Équateur', label: 'Équateur' },
+  { value: 'Égypte', label: 'Égypte' },
+  { value: 'Salvador', label: 'Salvador' },
+  { value: 'Guinée équatoriale', label: 'Guinée équatoriale' },
+  { value: 'Érythrée', label: 'Érythrée' },
+  { value: 'Estonie', label: 'Estonie' },
   { value: 'Eswatini', label: 'Eswatini' },
-  { value: 'Ethiopia', label: 'Ethiopia' },
-  { value: 'Fiji', label: 'Fiji' },
-  { value: 'Finland', label: 'Finland' },
+  { value: 'Éthiopie', label: 'Éthiopie' },
+  { value: 'Fidji', label: 'Fidji' },
+  { value: 'Finlande', label: 'Finlande' },
   { value: 'France', label: 'France' },
   { value: 'Gabon', label: 'Gabon' },
-  { value: 'Gambia', label: 'Gambia' },
-  { value: 'Georgia', label: 'Georgia' },
-  { value: 'Germany', label: 'Germany' },
+  { value: 'Gambie', label: 'Gambie' },
+  { value: 'Géorgie', label: 'Géorgie' },
+  { value: 'Allemagne', label: 'Allemagne' },
   { value: 'Ghana', label: 'Ghana' },
-  { value: 'Greece', label: 'Greece' },
-  { value: 'Grenada', label: 'Grenada' },
+  { value: 'Grèce', label: 'Grèce' },
+  { value: 'Grenade', label: 'Grenade' },
   { value: 'Guatemala', label: 'Guatemala' },
-  { value: 'Guinea', label: 'Guinea' },
-  { value: 'Guinea-Bissau', label: 'Guinea-Bissau' },
+  { value: 'Guinée', label: 'Guinée' },
+  { value: 'Guinée-Bissau', label: 'Guinée-Bissau' },
   { value: 'Guyana', label: 'Guyana' },
-  { value: 'Haiti', label: 'Haiti' },
-  { value: 'Holy See', label: 'Holy See' },
+  { value: 'Haïti', label: 'Haïti' },
+  { value: 'Saint-Siège', label: 'Saint-Siège' },
   { value: 'Honduras', label: 'Honduras' },
-  { value: 'Hungary', label: 'Hungary' },
-  { value: 'Iceland', label: 'Iceland' },
-  { value: 'India', label: 'India' },
-  { value: 'Indonesia', label: 'Indonesia' },
+  { value: 'Hongrie', label: 'Hongrie' },
+  { value: 'Islande', label: 'Islande' },
+  { value: 'Inde', label: 'Inde' },
+  { value: 'Indonésie', label: 'Indonésie' },
   { value: 'Iran', label: 'Iran' },
-  { value: 'Iraq', label: 'Iraq' },
-  { value: 'Ireland', label: 'Ireland' },
-  { value: 'Israel', label: 'Israel' },
-  { value: 'Italy', label: 'Italy' },
-  { value: 'Ivory Coast', label: 'Ivory Coast' },
-  { value: 'Jamaica', label: 'Jamaica' },
-  { value: 'Japan', label: 'Japan' },
-  { value: 'Jordan', label: 'Jordan' },
+  { value: 'Irak', label: 'Irak' },
+  { value: 'Irlande', label: 'Irlande' },
+  { value: 'Israël', label: 'Israël' },
+  { value: 'Italie', label: 'Italie' },
+  { value: "Côte d'Ivoire", label: "Côte d'Ivoire" },
+  { value: 'Jamaïque', label: 'Jamaïque' },
+  { value: 'Japon', label: 'Japon' },
+  { value: 'Jordanie', label: 'Jordanie' },
   { value: 'Kazakhstan', label: 'Kazakhstan' },
   { value: 'Kenya', label: 'Kenya' },
   { value: 'Kiribati', label: 'Kiribati' },
-  { value: 'Kuwait', label: 'Kuwait' },
-  { value: 'Kyrgyzstan', label: 'Kyrgyzstan' },
+  { value: 'Koweït', label: 'Koweït' },
+  { value: 'Kirghizistan', label: 'Kirghizistan' },
   { value: 'Laos', label: 'Laos' },
-  { value: 'Latvia', label: 'Latvia' },
-  { value: 'Lebanon', label: 'Lebanon' },
+  { value: 'Lettonie', label: 'Lettonie' },
+  { value: 'Liban', label: 'Liban' },
   { value: 'Lesotho', label: 'Lesotho' },
-  { value: 'Liberia', label: 'Liberia' },
-  { value: 'Libya', label: 'Libya' },
+  { value: 'Libéria', label: 'Libéria' },
+  { value: 'Libye', label: 'Libye' },
   { value: 'Liechtenstein', label: 'Liechtenstein' },
-  { value: 'Lithuania', label: 'Lithuania' },
+  { value: 'Lituanie', label: 'Lituanie' },
   { value: 'Luxembourg', label: 'Luxembourg' },
   { value: 'Madagascar', label: 'Madagascar' },
   { value: 'Malawi', label: 'Malawi' },
-  { value: 'Malaysia', label: 'Malaysia' },
+  { value: 'Malaisie', label: 'Malaisie' },
   { value: 'Maldives', label: 'Maldives' },
   { value: 'Mali', label: 'Mali' },
-  { value: 'Malta', label: 'Malta' },
-  { value: 'Marshall Islands', label: 'Marshall Islands' },
-  { value: 'Mauritania', label: 'Mauritania' },
-  { value: 'Mauritius', label: 'Mauritius' },
-  { value: 'Mexico', label: 'Mexico' },
-  { value: 'Micronesia', label: 'Micronesia' },
-  { value: 'Moldova', label: 'Moldova' },
+  { value: 'Malte', label: 'Malte' },
+  { value: 'Îles Marshall', label: 'Îles Marshall' },
+  { value: 'Mauritanie', label: 'Mauritanie' },
+  { value: 'Maurice', label: 'Maurice' },
+  { value: 'Mexique', label: 'Mexique' },
+  { value: 'Micronésie', label: 'Micronésie' },
+  { value: 'Moldavie', label: 'Moldavie' },
   { value: 'Monaco', label: 'Monaco' },
-  { value: 'Mongolia', label: 'Mongolia' },
-  { value: 'Montenegro', label: 'Montenegro' },
-  { value: 'Morocco', label: 'Morocco' },
+  { value: 'Mongolie', label: 'Mongolie' },
+  { value: 'Monténégro', label: 'Monténégro' },
+  { value: 'Maroc', label: 'Maroc' },
   { value: 'Mozambique', label: 'Mozambique' },
-  { value: 'Myanmar (Burma)', label: 'Myanmar (Burma)' },
-  { value: 'Namibia', label: 'Namibia' },
+  { value: 'Myanmar (Birmanie)', label: 'Myanmar (Birmanie)' },
+  { value: 'Namibie', label: 'Namibie' },
   { value: 'Nauru', label: 'Nauru' },
-  { value: 'Nepal', label: 'Nepal' },
-  { value: 'Netherlands', label: 'Netherlands' },
-  { value: 'New Zealand', label: 'New Zealand' },
+  { value: 'Népal', label: 'Népal' },
+  { value: 'Pays-Bas', label: 'Pays-Bas' },
+  { value: 'Nouvelle-Zélande', label: 'Nouvelle-Zélande' },
   { value: 'Nicaragua', label: 'Nicaragua' },
   { value: 'Niger', label: 'Niger' },
-  { value: 'Nigeria', label: 'Nigeria' },
-  { value: 'North Korea', label: 'North Korea' },
-  { value: 'North Macedonia', label: 'North Macedonia' },
-  { value: 'Norway', label: 'Norway' },
+  { value: 'Nigéria', label: 'Nigéria' },
+  { value: 'Corée du Nord', label: 'Corée du Nord' },
+  { value: 'Macédoine du Nord', label: 'Macédoine du Nord' },
+  { value: 'Norvège', label: 'Norvège' },
   { value: 'Oman', label: 'Oman' },
   { value: 'Pakistan', label: 'Pakistan' },
-  { value: 'Palau', label: 'Palau' },
-  { value: 'Palestine State', label: 'Palestine State' },
+  { value: 'Palaos', label: 'Palaos' },
+  { value: 'État de Palestine', label: 'État de Palestine' },
   { value: 'Panama', label: 'Panama' },
-  { value: 'Papua New Guinea', label: 'Papua New Guinea' },
+  { value: 'Papouasie-Nouvelle-Guinée', label: 'Papouasie-Nouvelle-Guinée' },
   { value: 'Paraguay', label: 'Paraguay' },
-  { value: 'Peru', label: 'Peru' },
+  { value: 'Pérou', label: 'Pérou' },
   { value: 'Philippines', label: 'Philippines' },
-  { value: 'Poland', label: 'Poland' },
+  { value: 'Pologne', label: 'Pologne' },
   { value: 'Portugal', label: 'Portugal' },
   { value: 'Qatar', label: 'Qatar' },
-  { value: 'Romania', label: 'Romania' },
-  { value: 'Russia', label: 'Russia' },
+  { value: 'Roumanie', label: 'Roumanie' },
+  { value: 'Russie', label: 'Russie' },
   { value: 'Rwanda', label: 'Rwanda' },
-  { value: 'Saint Kitts and Nevis', label: 'Saint Kitts and Nevis' },
-  { value: 'Saint Lucia', label: 'Saint Lucia' },
-  { value: 'Saint Vincent and the Grenadines', label: 'Saint Vincent and the Grenadines' },
+  { value: 'Saint-Christophe-et-Niévès', label: 'Saint-Christophe-et-Niévès' },
+  { value: 'Sainte-Lucie', label: 'Sainte-Lucie' },
+  { value: 'Saint-Vincent-et-les-Grenadines', label: 'Saint-Vincent-et-les-Grenadines' },
   { value: 'Samoa', label: 'Samoa' },
-  { value: 'San Marino', label: 'San Marino' },
-  { value: 'Sao Tome and Principe', label: 'Sao Tome and Principe' },
-  { value: 'Saudi Arabia', label: 'Saudi Arabia' },
-  { value: 'Senegal', label: 'Senegal' },
-  { value: 'Serbia', label: 'Serbia' },
+  { value: 'Saint-Marin', label: 'Saint-Marin' },
+  { value: 'Sao Tomé-et-Principe', label: 'Sao Tomé-et-Principe' },
+  { value: 'Arabie saoudite', label: 'Arabie saoudite' },
+  { value: 'Sénégal', label: 'Sénégal' },
+  { value: 'Serbie', label: 'Serbie' },
   { value: 'Seychelles', label: 'Seychelles' },
   { value: 'Sierra Leone', label: 'Sierra Leone' },
-  { value: 'Singapore', label: 'Singapore' },
-  { value: 'Slovakia', label: 'Slovakia' },
-  { value: 'Slovenia', label: 'Slovenia' },
-  { value: 'Solomon Islands', label: 'Solomon Islands' },
-  { value: 'Somalia', label: 'Somalia' },
-  { value: 'South Africa', label: 'South Africa' },
-  { value: 'South Korea', label: 'South Korea' },
-  { value: 'South Sudan', label: 'South Sudan' },
-  { value: 'Spain', label: 'Spain' },
+  { value: 'Singapour', label: 'Singapour' },
+  { value: 'Slovaquie', label: 'Slovaquie' },
+  { value: 'Slovénie', label: 'Slovénie' },
+  { value: 'Îles Salomon', label: 'Îles Salomon' },
+  { value: 'Somalie', label: 'Somalie' },
+  { value: 'Afrique du Sud', label: 'Afrique du Sud' },
+  { value: 'Corée du Sud', label: 'Corée du Sud' },
+  { value: 'Soudan du Sud', label: 'Soudan du Sud' },
+  { value: 'Espagne', label: 'Espagne' },
   { value: 'Sri Lanka', label: 'Sri Lanka' },
-  { value: 'Sudan', label: 'Sudan' },
+  { value: 'Soudan', label: 'Soudan' },
   { value: 'Suriname', label: 'Suriname' },
-  { value: 'Sweden', label: 'Sweden' },
-  { value: 'Switzerland', label: 'Switzerland' },
-  { value: 'Syria', label: 'Syria' },
-  { value: 'Taiwan', label: 'Taiwan' },
-  { value: 'Tajikistan', label: 'Tajikistan' },
-  { value: 'Tanzania', label: 'Tanzania' },
-  { value: 'Thailand', label: 'Thailand' },
-  { value: 'Timor-Leste', label: 'Timor-Leste' },
+  { value: 'Suède', label: 'Suède' },
+  { value: 'Suisse', label: 'Suisse' },
+  { value: 'Syrie', label: 'Syrie' },
+  { value: 'Taïwan', label: 'Taïwan' },
+  { value: 'Tadjikistan', label: 'Tadjikistan' },
+  { value: 'Tanzanie', label: 'Tanzanie' },
+  { value: 'Thaïlande', label: 'Thaïlande' },
+  { value: 'Timor oriental', label: 'Timor oriental' },
   { value: 'Togo', label: 'Togo' },
   { value: 'Tonga', label: 'Tonga' },
-  { value: 'Trinidad and Tobago', label: 'Trinidad and Tobago' },
-  { value: 'Tunisia', label: 'Tunisia' },
-  { value: 'Turkey', label: 'Turkey' },
-  { value: 'Turkmenistan', label: 'Turkmenistan' },
+  { value: 'Trinité-et-Tobago', label: 'Trinité-et-Tobago' },
+  { value: 'Tunisie', label: 'Tunisie' },
+  { value: 'Turquie', label: 'Turquie' },
+  { value: 'Turkménistan', label: 'Turkménistan' },
   { value: 'Tuvalu', label: 'Tuvalu' },
-  { value: 'Uganda', label: 'Uganda' },
+  { value: 'Ouganda', label: 'Ouganda' },
   { value: 'Ukraine', label: 'Ukraine' },
-  { value: 'United Arab Emirates', label: 'United Arab Emirates' },
-  { value: 'United Kingdom', label: 'United Kingdom' },
-  { value: 'United States of America', label: 'United States of America' },
+  { value: 'Émirats arabes unis', label: 'Émirats arabes unis' },
+  { value: 'Royaume-Uni', label: 'Royaume-Uni' },
+  { value: "États-Unis d'Amérique", label: "États-Unis d'Amérique" },
   { value: 'Uruguay', label: 'Uruguay' },
-  { value: 'Uzbekistan', label: 'Uzbekistan' },
+  { value: 'Ouzbékistan', label: 'Ouzbékistan' },
   { value: 'Vanuatu', label: 'Vanuatu' },
   { value: 'Venezuela', label: 'Venezuela' },
-  { value: 'Vietnam', label: 'Vietnam' },
-  { value: 'Yemen', label: 'Yemen' },
-  { value: 'Zambia', label: 'Zambia' },
+  { value: 'Viêt Nam', label: 'Viêt Nam' },
+  { value: 'Yémen', label: 'Yémen' },
+  { value: 'Zambie', label: 'Zambie' },
   { value: 'Zimbabwe', label: 'Zimbabwe' }
 ];
 
@@ -217,8 +217,8 @@ export default function EditProfilePage() {
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const params = useParams();
-  // استفاده ایمن از پارامترها در سمت کلاینت
-  const locale = params?.locale || 'en';
+  // Utilisation sécurisée des paramètres côté client
+  const locale = params?.locale || 'fr';
   const supabase = createClientSideSupabase();
 
   const [formData, setFormData] = useState({
@@ -309,7 +309,7 @@ export default function EditProfilePage() {
         data: { first_name: formData.firstName, last_name: formData.lastName }
       });
 
-      setStatus({ type: 'success', msg: 'Identity Updated Successfully' });
+      setStatus({ type: 'success', msg: 'Identité mise à jour avec succès' });
     } catch (error: any) {
       setStatus({ type: 'error', msg: error.message });
     } finally {
@@ -333,9 +333,9 @@ export default function EditProfilePage() {
       await supabase.auth.updateUser({ data: { avatar_url: publicUrl } });
 
       setUser({ ...user, user_metadata: { ...user.user_metadata, avatar_url: publicUrl } });
-      setStatus({ type: 'success', msg: 'Photo Synchronized' });
+      setStatus({ type: 'success', msg: 'Photo synchronisée' });
     } catch (error: any) {
-      setStatus({ type: 'error', msg: 'Upload failed' });
+      setStatus({ type: 'error', msg: 'Échec du téléchargement' });
     } finally {
       setUploading(false);
     }
@@ -347,7 +347,7 @@ export default function EditProfilePage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
           <Link href={`/${locale}/user/dashboard`} className="flex items-center gap-2 text-zinc-500 hover:text-amber-500 transition-all group">
             <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="font-black text-[10px] uppercase tracking-[0.2em]">Dashboard</span>
+            <span className="font-black text-[10px] uppercase tracking-[0.2em]">Tableau de bord</span>
           </Link>
           
           <AnimatePresence>
@@ -368,7 +368,7 @@ export default function EditProfilePage() {
                 <div className="absolute -inset-3 bg-amber-500/20 rounded-full blur-2xl group-hover:bg-amber-500/40 transition duration-500" />
                 <div className="relative w-44 h-44 rounded-full overflow-hidden border-2 border-amber-500/30 bg-zinc-800">
                   {user?.user_metadata?.avatar_url ? (
-                    <Image src={user.user_metadata.avatar_url} alt="SafiPay User" fill className="object-cover" />
+                    <Image src={user.user_metadata.avatar_url} alt="Utilisateur SafiPay" fill className="object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-zinc-600"><User size={60} /></div>
                   )}
@@ -386,34 +386,34 @@ export default function EditProfilePage() {
             <form onSubmit={handleUpdate} className="bg-zinc-900/30 border border-white/5 rounded-[3rem] p-8 lg:p-12 backdrop-blur-3xl shadow-2xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">First Name</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Prénom</label>
                   <input type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Last Name</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Nom de famille</label>
                   <input type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Phone</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Téléphone</label>
                   <input type="text" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Country</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Pays</label>
                   <Select
                     options={countryOptions}
                     styles={customSelectStyles}
                     value={countryOptions.find(c => c.value === formData.country)}
                     onChange={(val: any) => setFormData({...formData, country: val.value})}
-                    placeholder="Select..."
+                    placeholder="Sélectionner..."
                   />
                 </div>
               </div>
 
               <div className="mb-12">
-                <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Registered Email</label>
+                <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">E-mail enregistré</label>
                 <div className="relative mt-3">
                   <input type="text" value={user?.email || ''} disabled className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-4 text-sm font-bold text-zinc-600 cursor-not-allowed" />
                   <Lock size={14} className="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-800" />
@@ -421,7 +421,7 @@ export default function EditProfilePage() {
               </div>
 
               <button type="submit" disabled={loading} className="w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-5 rounded-2xl flex items-center justify-center gap-4 uppercase tracking-[0.2em] text-[11px] transition-all shadow-xl shadow-amber-500/10">
-                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Sync with SafiPay Database</>}
+                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Synchroniser avec la base de données SafiPay</>}
               </button>
             </form>
           </div>

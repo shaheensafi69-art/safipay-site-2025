@@ -217,8 +217,7 @@ export default function EditProfilePage() {
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const params = useParams();
-  // استفاده ایمن از پارامترها در سمت کلاینت
-  const locale = params?.locale || 'en';
+  const locale = params?.locale || 'de';
   const supabase = createClientSideSupabase();
 
   const [formData, setFormData] = useState({
@@ -309,7 +308,7 @@ export default function EditProfilePage() {
         data: { first_name: formData.firstName, last_name: formData.lastName }
       });
 
-      setStatus({ type: 'success', msg: 'Identity Updated Successfully' });
+      setStatus({ type: 'success', msg: 'Identität erfolgreich aktualisiert' });
     } catch (error: any) {
       setStatus({ type: 'error', msg: error.message });
     } finally {
@@ -333,9 +332,9 @@ export default function EditProfilePage() {
       await supabase.auth.updateUser({ data: { avatar_url: publicUrl } });
 
       setUser({ ...user, user_metadata: { ...user.user_metadata, avatar_url: publicUrl } });
-      setStatus({ type: 'success', msg: 'Photo Synchronized' });
+      setStatus({ type: 'success', msg: 'Foto synchronisiert' });
     } catch (error: any) {
-      setStatus({ type: 'error', msg: 'Upload failed' });
+      setStatus({ type: 'error', msg: 'Upload fehlgeschlagen' });
     } finally {
       setUploading(false);
     }
@@ -368,7 +367,7 @@ export default function EditProfilePage() {
                 <div className="absolute -inset-3 bg-amber-500/20 rounded-full blur-2xl group-hover:bg-amber-500/40 transition duration-500" />
                 <div className="relative w-44 h-44 rounded-full overflow-hidden border-2 border-amber-500/30 bg-zinc-800">
                   {user?.user_metadata?.avatar_url ? (
-                    <Image src={user.user_metadata.avatar_url} alt="SafiPay User" fill className="object-cover" />
+                    <Image src={user.user_metadata.avatar_url} alt="SafiPay Benutzer" fill className="object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-zinc-600"><User size={60} /></div>
                   )}
@@ -386,34 +385,34 @@ export default function EditProfilePage() {
             <form onSubmit={handleUpdate} className="bg-zinc-900/30 border border-white/5 rounded-[3rem] p-8 lg:p-12 backdrop-blur-3xl shadow-2xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">First Name</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Vorname</label>
                   <input type="text" value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Last Name</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Nachname</label>
                   <input type="text" value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Phone</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Telefon</label>
                   <input type="text" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-sm font-bold focus:border-amber-500 transition-all outline-none" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Country</label>
+                  <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Land</label>
                   <Select
                     options={countryOptions}
                     styles={customSelectStyles}
                     value={countryOptions.find(c => c.value === formData.country)}
                     onChange={(val: any) => setFormData({...formData, country: val.value})}
-                    placeholder="Select..."
+                    placeholder="Auswählen..."
                   />
                 </div>
               </div>
 
               <div className="mb-12">
-                <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Registered Email</label>
+                <label className="text-[10px] font-black uppercase text-zinc-500 ml-2 tracking-widest">Registrierte E-Mail</label>
                 <div className="relative mt-3">
                   <input type="text" value={user?.email || ''} disabled className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-4 text-sm font-bold text-zinc-600 cursor-not-allowed" />
                   <Lock size={14} className="absolute right-6 top-1/2 -translate-y-1/2 text-zinc-800" />
@@ -421,7 +420,7 @@ export default function EditProfilePage() {
               </div>
 
               <button type="submit" disabled={loading} className="w-full bg-amber-500 hover:bg-amber-400 text-black font-black py-5 rounded-2xl flex items-center justify-center gap-4 uppercase tracking-[0.2em] text-[11px] transition-all shadow-xl shadow-amber-500/10">
-                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Sync with SafiPay Database</>}
+                {loading ? <Loader2 className="animate-spin" size={20} /> : <><Save size={18} /> Mit SafiPay-Datenbank synchronisieren</>}
               </button>
             </form>
           </div>

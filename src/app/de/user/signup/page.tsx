@@ -9,7 +9,7 @@ import { User, Mail, Lock, ArrowRight, Sparkles, CheckCircle2, Loader2 } from 'l
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-// بخش ذرات برای شبیه‌سازی ترقه (Simple Confetti)
+// Partikelbereich zur Simulation von Feuerwerk (Simple Confetti)
 function ConfettiParticle({ color }: { color: string }) {
   const [position] = useState(() => [
     (Math.random() - 0.5) * 10,
@@ -52,7 +52,7 @@ function MiniRotatingGlobe() {
 export default function SignUpPage() {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false); // وضعیت نمایش موفقیت
+  const [showSuccess, setShowSuccess] = useState(false); // Status für Erfolgsanzeige
   const [error, setError] = useState(null);
 
   const pathname = usePathname();
@@ -80,10 +80,10 @@ export default function SignUpPage() {
 
       if (error) throw error;
 
-      // نمایش انیمیشن موفقیت
+      // Erfolgsanimation anzeigen
       setShowSuccess(true);
       
-      // هدایت به داشبورد بعد از ۲ ثانیه
+      // Nach 2 Sekunden zum Dashboard weiterleiten
       setTimeout(() => {
         router.push(`/${lang}/user/dashboard`);
       }, 2500);
@@ -97,7 +97,7 @@ export default function SignUpPage() {
   return (
     <div className="min-h-screen bg-[#000000] text-white flex flex-col md:flex-row overflow-hidden relative" dir={isRtl ? 'rtl' : 'ltr'}>
       
-      {/* انیمیشن موفقیت (Success Overlay) */}
+      {/* Erfolgsanimation (Success Overlay) */}
       <AnimatePresence>
         {showSuccess && (
           <motion.div 
@@ -105,7 +105,7 @@ export default function SignUpPage() {
             animate={{ opacity: 1 }}
             className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-2xl bg-black/60"
           >
-            {/* افکت ترقه */}
+            {/* Feuerwerkseffekt */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {Array.from({ length: 50 }).map((_, i) => (
                 <ConfettiParticle key={i} color={i % 2 === 0 ? '#f59e0b' : '#22c55e'} />
@@ -124,8 +124,8 @@ export default function SignUpPage() {
                   <CheckCircle2 size={50} className="text-black" />
                 </div>
                 <div className="text-center">
-                  <h2 className="text-2xl font-black uppercase tracking-tighter">Welcome to SafiPay</h2>
-                  <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-2">Securing your financial future...</p>
+                  <h2 className="text-2xl font-black uppercase tracking-tighter">Willkommen bei SafiPay</h2>
+                  <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-2">Ihre finanzielle Zukunft wird gesichert...</p>
                 </div>
               </div>
             </motion.div>
@@ -133,14 +133,14 @@ export default function SignUpPage() {
         )}
       </AnimatePresence>
 
-      {/* پس‌زمینه کاینات */}
+      {/* Universum-Hintergrund */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 100], fov: 60 }}>
           <Stars radius={150} depth={50} count={5000} factor={6} fade speed={1.5} />
         </Canvas>
       </div>
 
-      {/* بخش کره چرخان */}
+      {/* Bereich mit rotierender Kugel */}
       <div className="hidden md:flex flex-[0.6] relative items-center justify-center z-10">
         <div className="w-[300px] h-[300px]">
           <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
@@ -150,7 +150,7 @@ export default function SignUpPage() {
         </div>
       </div>
 
-      {/* فرم ثبت‌نام */}
+      {/* Registrierungsformular */}
       <div className="flex-[1.4] flex items-center justify-center p-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -163,13 +163,13 @@ export default function SignUpPage() {
             <div className="flex-1 space-y-6">
               <div className="flex items-center gap-2 text-amber-500">
                 <Sparkles size={20} />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Join the Future</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Der Zukunft beitreten</span>
               </div>
-              <h1 className="text-4xl font-black tracking-tighter leading-none">CREATE <br/> <span className="text-amber-500">ACCOUNT</span></h1>
+              <h1 className="text-4xl font-black tracking-tighter leading-none">KONTO <br/> <span className="text-amber-500">ERSTELLEN</span></h1>
               <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
                 {isRtl 
-                  ? "به اولین سیستم بانکی متصل افغانستان و جهان بپیوندید. تمام فیلدها را با دقت و مطابق با اسناد قانونی خود پر کنید."
-                  : "Join the first connected banking system for Afghanistan and the world. Fill all fields carefully."
+                  ? "Treten Sie dem ersten vernetzten Bankensystem für Afghanistan und die Welt bei. Füllen Sie alle Felder sorgfältig und entsprechend Ihren rechtlichen Dokumenten aus."
+                  : "Treten Sie dem ersten vernetzten Bankensystem für Afghanistan und die Welt bei. Füllen Sie alle Felder sorgfältig aus."
                 }
               </p>
             </div>
@@ -179,7 +179,7 @@ export default function SignUpPage() {
                 <div className="relative group">
                   <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
-                    type="text" required placeholder={isRtl ? "نام" : "First Name"}
+                    type="text" required placeholder={isRtl ? "Vorname" : "First Name"}
                     onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
@@ -187,7 +187,7 @@ export default function SignUpPage() {
                 <div className="relative group">
                   <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
-                    type="text" required placeholder={isRtl ? "نام خانوادگی" : "Last Name"}
+                    type="text" required placeholder={isRtl ? "Nachname" : "Last Name"}
                     onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
@@ -195,7 +195,7 @@ export default function SignUpPage() {
                 <div className="md:col-span-2 relative group">
                   <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
-                    type="email" required placeholder="Email Address"
+                    type="email" required placeholder="E-Mail-Adresse"
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
@@ -203,7 +203,7 @@ export default function SignUpPage() {
                 <div className="md:col-span-2 relative group">
                   <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
                   <input 
-                    type="password" required placeholder="Password"
+                    type="password" required placeholder="Passwort"
                     onChange={(e) => setFormData({...formData, password: e.target.value})}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
@@ -216,7 +216,7 @@ export default function SignUpPage() {
                   className="md:col-span-2 bg-white text-black font-black py-5 rounded-2xl hover:bg-amber-500 transition-all duration-500 flex items-center justify-center gap-3 group mt-2 shadow-xl shadow-white/5"
                 >
                   <span className="uppercase tracking-widest text-xs">
-                    {loading ? <Loader2 className="animate-spin" /> : 'Register Securely'}
+                    {loading ? <Loader2 className="animate-spin" /> : 'Sicher registrieren'}
                   </span>
                   {!loading && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
                 </button>
@@ -224,7 +224,7 @@ export default function SignUpPage() {
 
               <div className="text-center pt-6">
                 <Link href={`/${lang}/user/login`} className="text-zinc-600 hover:text-white text-[10px] font-bold tracking-widest uppercase transition-all">
-                  Already a member? <span className="text-amber-500">Secure Login</span>
+                  Bereits Mitglied? <span className="text-amber-500">Sicherer Login</span>
                 </Link>
               </div>
             </div>
