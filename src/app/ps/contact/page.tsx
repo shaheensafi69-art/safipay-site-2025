@@ -1,235 +1,525 @@
 'use client';
-import { motion } from 'framer-motion';
-import { 
-  Phone, MessageSquare, Mail, Send, MapPin, Globe, 
-  ShieldCheck, Instagram, Facebook, Linkedin, Twitter 
-} from 'lucide-react';
-import { useState } from 'react';
 
-export default function ContactPagePS() {
+import { motion } from 'framer-motion';
+import {
+  Phone,
+  MessageSquare,
+  Mail,
+  Send,
+  MapPin,
+  Globe,
+  ShieldCheck,
+  Instagram,
+  Facebook,
+  Linkedin,
+  Twitter,
+  Sparkles,
+  Headphones,
+  BadgeCheck,
+  ArrowUpRight,
+} from 'lucide-react';
+import { useMemo, useRef, useState, Suspense } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, PerspectiveCamera, Stars } from '@react-three/drei';
+import * as THREE from 'three';
+
+const BRAND_GOLD = '#f59e0b';
+const BRAND_GOLD_SOFT = '#ffd27a';
+
+function FloatingRings() {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame(({ clock }) => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y = clock.elapsedTime * 0.12;
+    groupRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.2) * 0.08;
+  });
+
+  return (
+    <group ref={groupRef}>
+      <mesh position={[0, 0, -2]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[2.9, 0.03, 16, 200]} />
+        <meshStandardMaterial color={BRAND_GOLD} emissive={BRAND_GOLD} emissiveIntensity={0.25} metalness={1} roughness={0.2} />
+      </mesh>
+
+      <mesh position={[0, 0, -2.4]} rotation={[Math.PI / 2.4, 0.5, 0]}>
+        <torusGeometry args={[3.6, 0.02, 16, 200]} />
+        <meshStandardMaterial color="#fff1c7" emissive={BRAND_GOLD} emissiveIntensity={0.18} metalness={1} roughness={0.18} transparent opacity={0.85} />
+      </mesh>
+
+      <mesh position={[0, 0, -2.8]} rotation={[Math.PI / 1.8, -0.4, 0.2]}>
+        <torusGeometry args={[4.4, 0.018, 16, 220]} />
+        <meshStandardMaterial color={BRAND_GOLD_SOFT} emissive={BRAND_GOLD} emissiveIntensity={0.15} metalness={1} roughness={0.18} transparent opacity={0.55} />
+      </mesh>
+    </group>
+  );
+}
+
+function ContactOrb() {
+  const orbRef = useRef<THREE.Mesh>(null);
+  const particlesRef = useRef<THREE.Points>(null);
+
+  const particlePositions = useMemo(() => {
+    const count = 1400;
+    const positions = new Float32Array(count * 3);
+
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      const r = 1.6 + Math.random() * 0.25;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+
+      positions[i3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      positions[i3 + 2] = r * Math.cos(phi);
+    }
+
+    return positions;
+  }, []);
+
+  useFrame(({ clock }) => {
+    if (orbRef.current) {
+      orbRef.current.rotation.y += 0.003;
+      orbRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.4) * 0.08;
+      orbRef.current.rotation.z = Math.cos(clock.elapsedTime * 0.25) * 0.04;
+    }
+
+    if (particlesRef.current) {
+      particlesRef.current.rotation.y -= 0.0018;
+      particlesRef.current.rotation.x += 0.0008;
+    }
+  });
+
+  return (
+    <group position={[0, 0.2, 0]}>
+      <points ref={particlesRef}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[particlePositions, 3]} />
+        </bufferGeometry>
+        <pointsMaterial color={BRAND_GOLD} size={0.018} transparent opacity={0.95} sizeAttenuation />
+      </points>
+
+      <mesh ref={orbRef}>
+        <sphereGeometry args={[1.42, 64, 64]} />
+        <meshPhysicalMaterial
+          color="#050505"
+          emissive={BRAND_GOLD}
+          emissiveIntensity={0.14}
+          metalness={1}
+          roughness={0.12}
+          clearcoat={1}
+          clearcoatRoughness={0.12}
+          transparent
+          opacity={0.98}
+        />
+      </mesh>
+
+      <mesh>
+        <sphereGeometry args={[1.6, 48, 48]} />
+        <meshBasicMaterial color={BRAND_GOLD} transparent opacity={0.08} side={THREE.BackSide} />
+      </mesh>
+    </group>
+  );
+}
+
+function FloatingMiniShapes() {
+  return (
+    <>
+      <Float speed={1.4} floatIntensity={0.7} rotationIntensity={0.18}>
+        <mesh position={[-4.8, 1.7, -1.2]} rotation={[0.5, 0.4, 0.2]}>
+          <octahedronGeometry args={[0.34, 0]} />
+          <meshStandardMaterial color="#1a1a1a" emissive={BRAND_GOLD} emissiveIntensity={0.16} metalness={1} roughness={0.18} />
+        </mesh>
+      </Float>
+
+      <Float speed={1.8} floatIntensity={0.8} rotationIntensity={0.2}>
+        <mesh position={[4.7, -1.8, -1.5]}>
+          <icosahedronGeometry args={[0.32, 0]} />
+          <meshStandardMaterial color={BRAND_GOLD_SOFT} emissive={BRAND_GOLD} emissiveIntensity={0.2} metalness={1} roughness={0.12} />
+        </mesh>
+      </Float>
+
+      <Float speed={1.2} floatIntensity={0.6} rotationIntensity={0.16}>
+        <mesh position={[5.1, 2.2, -2.3]} rotation={[0.8, 0.3, 0.5]}>
+          <boxGeometry args={[0.55, 0.35, 0.06]} />
+          <meshStandardMaterial color="#171717" emissive={BRAND_GOLD} emissiveIntensity={0.14} metalness={0.9} roughness={0.22} />
+        </mesh>
+      </Float>
+    </>
+  );
+}
+
+function ContactScene() {
+  return (
+    <>
+      <color attach="background" args={['#020202']} />
+      <PerspectiveCamera makeDefault position={[0, 0, 8.5]} />
+      <ambientLight intensity={0.55} />
+      <directionalLight position={[7, 6, 5]} intensity={1.7} color={BRAND_GOLD} />
+      <pointLight position={[-6, -4, -6]} intensity={0.9} color="#fff2d4" />
+      <pointLight position={[0, 5, -4]} intensity={0.7} color="#ffcf70" />
+      <Stars radius={120} depth={70} count={3500} factor={3} saturation={0} fade speed={0.7} />
+
+      <Suspense fallback={null}>
+        <Float speed={1.1} rotationIntensity={0.08} floatIntensity={0.22}>
+          <ContactOrb />
+          <FloatingRings />
+        </Float>
+        <FloatingMiniShapes />
+      </Suspense>
+    </>
+  );
+}
+
+function ContactCard({
+  icon,
+  title,
+  value,
+  link,
+  color,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  value: string;
+  link: string;
+  color: string;
+}) {
+  return (
+    <motion.a
+      href={link}
+      target="_blank"
+      whileHover={{ y: -6 }}
+      className={`group flex items-center gap-5 rounded-[1.7rem] border border-white/8 bg-white/[0.03] p-5 backdrop-blur-xl transition-all ${color}`}
+    >
+      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-black/40 text-amber-500 transition-all group-hover:bg-amber-500 group-hover:text-black">
+        {icon}
+      </div>
+      <div className="min-w-0">
+        <h4 className="mb-1 text-[10px] font-black uppercase tracking-[0.24em] text-gray-500">
+          {title}
+        </h4>
+        <p dir="ltr" className="truncate text-left text-base md:text-lg font-bold tracking-tight text-white/90">
+          {value}
+        </p>
+      </div>
+    </motion.a>
+  );
+}
+
+function SocialCard({
+  icon,
+  name,
+  link,
+}: {
+  icon: React.ReactNode;
+  name: string;
+  link: string;
+}) {
+  return (
+    <motion.a
+      href={link}
+      target="_blank"
+      whileHover={{ y: -4 }}
+      className="group flex items-center gap-3 rounded-2xl border border-white/8 bg-white/[0.03] p-4 transition-all hover:border-amber-500/30 hover:bg-amber-500/[0.06]"
+    >
+      <div className="text-gray-400 transition-colors group-hover:text-amber-500">{icon}</div>
+      <span className="text-sm font-bold text-gray-300 transition-colors group-hover:text-white">
+        {name}
+      </span>
+    </motion.a>
+  );
+}
+
+function InfoBadge({
+  icon,
+  text,
+}: {
+  icon: React.ReactNode;
+  text: string;
+}) {
+  return (
+    <div className="flex items-center gap-3 rounded-full border border-white/8 bg-white/[0.03] px-4 py-2.5 text-[11px] font-black uppercase tracking-[0.22em] text-gray-300">
+      <span className="text-amber-500">{icon}</span>
+      {text}
+    </div>
+  );
+}
+
+export default function ContactPageEN() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    // فورمه له Formspree سره وصل ده
+  const handleSubmit = () => {
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white font-sans selection:bg-amber-500/30 overflow-x-hidden" dir="rtl">
-      
-      {/* --- Cinematic Hero Section --- */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
-        {/* محیطي رڼا اغیزې */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -mr-64 -mt-64" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/5 blur-[120px] rounded-full -ml-32 -mb-32" />
+    <div className="min-h-screen overflow-x-hidden bg-black text-white font-sans selection:bg-amber-500/30" dir="rtl">
+      <div className="fixed inset-0 z-0 pointer-events-none bg-black">
+        <Canvas dpr={[1, 2]} gl={{ antialias: true, alpha: false }}>
+          <ContactScene />
+        </Canvas>
+      </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
+      <section className="relative z-10 overflow-hidden pt-40 pb-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.10),transparent_35%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.0),rgba(0,0,0,0.25),rgba(0,0,0,0.6))]" />
+
+        <div className="container mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -18 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold tracking-widest uppercase mb-8"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.28em] text-amber-400"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500"></span>
             </span>
-            24/7 نړیوال ملاتړ فعال دی
+            نړیوال ملاتړ ۲۴/۷ فعال دی
           </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-black mb-8 tracking-tighter uppercase"
+            className="mb-8 text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter"
           >
-            له موږ سره <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">اړیکه</span> ونیسئ
+            د <span className="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">راتلونکې دورې</span> سره اړیکه ونیسئ
           </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+
+          <motion.p
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.12 }}
+            className="mx-auto mb-10 max-w-3xl text-lg md:text-xl font-light leading-relaxed text-gray-300"
+          >
+            که تاسو د نړیوال ډیجیټلي بانکدارۍ، شراکتونو، ملاتړ یا نړیوال مالي لاسرسي په اړه پوښتنې لرئ،
+            د SafiPay اجرائیوي چینلونه ستاسو د ځواب لپاره چمتو دي
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 font-light leading-relaxed"
+            className="flex flex-wrap justify-center gap-3"
           >
-            د ډیجیټل بانکدارۍ د راتلونکي په اړه پوښتنه لرئ؟ 
-            د SafiPay مشرتوب ټیم ستاسو د مالي سفر لارښوونې ته چمتو دی.
-          </motion.p>
+            <InfoBadge icon={<Headphones size={14} />} text="ژوندی ملاتړ" />
+            <InfoBadge icon={<ShieldCheck size={14} />} text="خوندي اړیکه" />
+            <InfoBadge icon={<BadgeCheck size={14} />} text="تأیید شوي چینلونه" />
+            <InfoBadge icon={<Sparkles size={14} />} text="پریمیوم مرسته" />
+          </motion.div>
         </div>
       </section>
 
-      {/* --- Main Content --- */}
-      <section className="pb-32 container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-12 gap-12 items-stretch">
-          
-          {/* د اړیکو معلومات او ټولنیزې پاڼې */}
-          <motion.div 
-            initial={{ opacity: 0, x: 40 }}
+      <section className="relative z-10 container mx-auto px-6 lg:px-10 pb-28">
+        <div className="grid items-stretch gap-8 lg:grid-cols-12">
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-5 space-y-6 text-right"
+            className="space-y-6 lg:col-span-5"
           >
-            <div className="p-8 md:p-10 bg-white/5 border border-white/10 rounded-[2.5rem] h-full space-y-10">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-black text-white uppercase tracking-tight">رسمي لارې</h2>
-                <div className="h-1 w-20 bg-amber-500 rounded-full" />
+            <div className="h-full rounded-[2.5rem] border border-white/8 bg-white/[0.04] p-7 md:p-9 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.30)]">
+              <div className="mb-8">
+                <div className="mb-4 inline-flex rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.28em] text-amber-400">
+                  د اړیکو چینلونه
+                </div>
+                <h2 className="mb-3 text-3xl md:text-4xl font-black uppercase tracking-tight text-white">
+                  له SafiPay سره اړیکه ونیسئ
+                </h2>
+                <div className="h-1 w-20 rounded-full bg-amber-500" />
               </div>
 
-              {/* د اړیکو لینکونه */}
               <div className="space-y-4">
-                {[
-                  { icon: <MessageSquare />, title: "رسمي واټس‌اپ", value: "+44 7476 620282", link: "https://wa.me/447476620282", color: "hover:text-green-400" },
-                  { icon: <Phone />, title: "د ملاتړ شمېره", value: "+44 7476 620282", link: "tel:+447476620282", color: "hover:text-amber-400" },
-                  { icon: <Mail />, title: "رسمي برېښنالیک", value: "safipay@hotmail.com", link: "mailto:safipay@hotmail.com", color: "hover:text-blue-400" },
-                ].map((item, index) => (
-                  <motion.a
-                    key={index}
-                    href={item.link}
-                    target="_blank"
-                    whileHover={{ scale: 1.02, x: -5 }}
-                    className={`flex items-center gap-5 p-5 rounded-2xl bg-black/40 border border-white/5 transition-all group ${item.color}`}
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h4 className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">{item.title}</h4>
-                      <p className="text-lg font-bold tracking-tight text-white/90" dir="ltr">{item.value}</p>
-                    </div>
-                  </motion.a>
-                ))}
+                <ContactCard
+                  icon={<MessageSquare size={22} />}
+                  title="رسمي واټساپ"
+                  value="+44 7476 620282"
+                  link="https://wa.me/447476620282"
+                  color="hover:border-green-500/30"
+                />
+                <ContactCard
+                  icon={<Phone size={22} />}
+                  title="د ملاتړ کرښه"
+                  value="+44 7476 620282"
+                  link="tel:+447476620282"
+                  color="hover:border-amber-500/30"
+                />
+                <ContactCard
+                  icon={<Mail size={22} />}
+                  title="رسمي ایمیل"
+                  value="safipay@hotmail.com"
+                  link="mailto:safipay@hotmail.com"
+                  color="hover:border-blue-500/30"
+                />
               </div>
 
-              {/* ټولنیزې رسنۍ */}
-              <div className="space-y-4">
-                <h4 className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mr-2">موږ تعقیب کړئ</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { icon: <Facebook size={20} />, name: "فیسبوک", link: "https://www.facebook.com/share/1FDnCCnwJ4/" },
-                    { icon: <Instagram size={20} />, name: "انسټاګرام", link: "https://www.instagram.com/safipay2022?igsh=ZW9tdHRidHI1d2gz" },
-                    { icon: <Linkedin size={20} />, name: "LinkedIn", link: "https://www.linkedin.com/company/safipay" },
-                    { icon: <Twitter size={20} />, name: "X (ټویټر)", link: "https://x.com/safipay" },
-                  ].map((social, idx) => (
-                    <a 
-                      key={idx} 
-                      href={social.link} 
-                      target="_blank" 
-                      className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-amber-500/50 hover:bg-amber-500/5 transition-all group"
-                    >
-                      <div className="text-gray-400 group-hover:text-amber-500 transition-colors">
-                        {social.icon}
-                      </div>
-                      <span className="text-xs font-bold text-gray-300 group-hover:text-white transition-colors">{social.name}</span>
-                    </a>
-                  ))}
+              <div className="my-8 border-t border-white/6 pt-8">
+                <h4 className="mb-5 text-[10px] font-black uppercase tracking-[0.22em] text-gray-500">
+                  زموږ سره وصل شئ
+                </h4>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <SocialCard icon={<Facebook size={20} />} name="فېسبوک" link="https://www.facebook.com/share/1FDnCCnwJ4/" />
+                  <SocialCard icon={<Instagram size={20} />} name="انسټاګرام" link="https://www.instagram.com/safipay2022?igsh=ZW9tdHRidHI1d2gz" />
+                  <SocialCard icon={<Linkedin size={20} />} name="لنکډین" link="https://www.linkedin.com/company/safipay" />
+                  <SocialCard icon={<Twitter size={20} />} name="ایکس (ټوېټر)" link="https://x.com/safipay" />
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-white/5">
-                <div className="flex items-center gap-4 text-amber-500/80 mb-4">
-                  <ShieldCheck size={20} />
-                  <span className="text-xs font-bold uppercase tracking-widest">خونديتوب تضمین دی</span>
+              <div className="rounded-[1.8rem] border border-amber-500/15 bg-gradient-to-br from-amber-500/10 to-transparent p-5">
+                <div className="mb-3 flex items-center gap-3 text-amber-400">
+                  <ShieldCheck size={18} />
+                  <span className="text-[10px] font-black uppercase tracking-[0.24em]">
+                    محرمیت تضمین شوی
+                  </span>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed font-light">
-                  زموږ د مدیریت پروتوکولونو ته مستقیم او کوډ شوی لاسرسی.
+                <p className="text-sm leading-7 text-gray-400">
+                  ټولې اړیکې د رسمي او خوندي چینلونو له لارې د مسلکي او محرمیت‌محور بهیر په بڼه ترسره کېږي
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* د اړیکو فورمه */}
-          <motion.div 
-            initial={{ opacity: 0, x: -40 }}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <div className="h-full bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden text-right">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
-              <h3 className="text-3xl font-black mb-10 tracking-tight uppercase">مستقیمه غوښتنه</h3>
-              
-              <form
-                action="https://formspree.io/f/maqbrkgq"
-                method="POST"
-                onSubmit={handleSubmit}
-                className="space-y-8"
-              >
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest block">بشپړ نوم</label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="مثلاً: شاهین صافي"
-                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700 text-right"
-                    />
+            <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-white/8 bg-white/[0.04] p-7 md:p-10 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.30)]">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
+              <div className="absolute -top-24 right-0 h-60 w-60 rounded-full bg-amber-500/8 blur-[100px]" />
+
+              <div className="relative z-10">
+                <div className="mb-8">
+                  <div className="mb-4 inline-flex rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.28em] text-amber-400">
+                    مستقیمه غوښتنه
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest block">برېښنالیک پته</label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="name@example.com"
-                      className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all placeholder:text-gray-700 text-left"
-                      dir="ltr"
-                    />
-                  </div>
+                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight">
+                    خپل خوندي پیغام ولېږئ
+                  </h3>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black text-gray-400 mr-1 uppercase tracking-widest block">د پیغام جزیات</label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    placeholder="خپله غوښتنه یا پروژه تشریح کړئ..."
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white focus:border-amber-500/50 focus:bg-amber-500/5 focus:outline-none transition-all resize-none placeholder:text-gray-700 text-right"
-                  />
+                <form
+                  action="https://formspree.io/f/maqbrkgq"
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="space-y-7"
+                >
+                  <div className="grid gap-7 md:grid-cols-2">
+                    <div className="space-y-3">
+                      <label className="block text-[10px] font-black uppercase tracking-[0.22em] text-gray-400">
+                        بشپړ نوم
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="لکه: Shaheen Safi"
+                        className="w-full rounded-2xl border border-white/10 bg-black/30 px-5 py-4 text-white outline-none transition-all placeholder:text-gray-700 focus:border-amber-500/40 focus:bg-amber-500/[0.04]"
+                      />
+                    </div>
+
+                    <div className="space-y-3">
+                      <label className="block text-[10px] font-black uppercase tracking-[0.22em] text-gray-400">
+                        د ایمیل پته
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="name@email.com"
+                        className="w-full rounded-2xl border border-white/10 bg-black/30 px-5 py-4 text-white outline-none transition-all placeholder:text-gray-700 focus:border-amber-500/40 focus:bg-amber-500/[0.04]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="block text-[10px] font-black uppercase tracking-[0.22em] text-gray-400">
+                      د پیغام جزییات
+                    </label>
+                    <textarea
+                      name="message"
+                      required
+                      rows={6}
+                      placeholder="خپله پوښتنه، د شراکت غوښتنه، د ملاتړ ستونزه یا د پروژې جزییات ولیکئ..."
+                      className="w-full resize-none rounded-2xl border border-white/10 bg-black/30 px-5 py-4 text-white outline-none transition-all placeholder:text-gray-700 focus:border-amber-500/40 focus:bg-amber-500/[0.04]"
+                    />
+                  </div>
+
+                  <motion.button
+                    whileHover={{ scale: 1.01, boxShadow: '0 0 40px rgba(245, 158, 11, 0.18)' }}
+                    whileTap={{ scale: 0.985 }}
+                    type="submit"
+                    className="flex w-full items-center justify-center gap-3 rounded-2xl bg-amber-500 py-5 text-base md:text-lg font-black uppercase tracking-[0.18em] text-black transition-all hover:bg-amber-400"
+                  >
+                    خوندي پیغام واستوئ
+                    <Send size={20} />
+                  </motion.button>
+                </form>
+
+                {submitted && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-6 rounded-2xl border border-green-500/20 bg-green-500/10 p-4 text-center text-sm font-bold text-green-400"
+                  >
+                    ستاسو غوښتنه په بریالیتوب سره د SafiPay چینلونو ته ولېږل شوه
+                  </motion.div>
+                )}
+
+                <div className="mt-8 grid gap-4 md:grid-cols-3">
+                  <div className="rounded-2xl border border-white/8 bg-black/25 p-4">
+                    <div className="mb-2 text-amber-500">
+                      <MapPin size={18} />
+                    </div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-gray-500">ځای</p>
+                    <p className="mt-2 text-sm font-bold text-white">پاریس، فرانسه</p>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/8 bg-black/25 p-4">
+                    <div className="mb-2 text-amber-500">
+                      <Globe size={18} />
+                    </div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-gray-500">عملیات</p>
+                    <p className="mt-2 text-sm font-bold text-white">نړیوال پوښښ</p>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/8 bg-black/25 p-4">
+                    <div className="mb-2 text-amber-500">
+                      <ShieldCheck size={18} />
+                    </div>
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-gray-500">امنیت</p>
+                    <p className="mt-2 text-sm font-bold text-white">د AES-256 په وسیله خوندي</p>
+                  </div>
                 </div>
-
-                <motion.button
-                  whileHover={{ scale: 1.01, boxShadow: "0 0 40px rgba(245, 158, 11, 0.2)" }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  className="w-full py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-2xl font-black text-lg flex items-center justify-center gap-3 transition-all uppercase tracking-widest"
-                >
-                  خوندي پیغام واستوئ
-                  <Send size={20} className="rotate-180" />
-                </motion.button>
-              </form>
-
-              {submitted && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-center text-green-400 text-sm font-bold"
-                >
-                  ستاسو پیغام په بریالیتوب سره SafiPay پروتوکولونو ته واستول شو.
-                </motion.div>
-              )}
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Footer Badges */}
-      <section className="py-20 border-t border-white/5 bg-black/20">
+      <section className="relative z-10 border-t border-white/5 bg-black/20 py-16">
         <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-10 md:gap-20 text-gray-600 font-bold uppercase tracking-widest text-[10px]">
-             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
-               <MapPin size={16} /> پاریس، فرانسه
-             </div>
-             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
-               <Globe size={16} /> نړیوال فعالیتونه
-             </div>
-             <div className="flex items-center gap-2 hover:text-amber-500 transition-colors">
-               <ShieldCheck size={16} /> AES-256 کوډول
-             </div>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-12">
+            {[
+              { icon: <MapPin size={16} />, text: 'پاریس، فرانسه' },
+              { icon: <Globe size={16} />, text: 'نړیوال عملیات' },
+              { icon: <ShieldCheck size={16} />, text: 'AES-256 کوډګري' },
+              { icon: <ArrowUpRight size={16} />, text: 'چټک اداري ځواب' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -3 }}
+                className="flex items-center gap-2 rounded-full border border-white/6 bg-white/[0.03] px-4 py-3 text-[11px] font-black uppercase tracking-[0.22em] text-gray-400 transition-all hover:border-amber-500/20 hover:text-amber-400"
+              >
+                {item.icon}
+                {item.text}
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-
     </div>
   );
 }

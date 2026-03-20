@@ -3,20 +3,30 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown, Download, UserCircle2, LogOut, LayoutDashboard } from 'lucide-react'; 
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Download,
+  UserCircle2,
+  LogOut,
+  LayoutDashboard,
+  Globe2,
+  ArrowUpRight,
+} from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClientSideSupabase } from '@/lib/supabase';
 
 const languages = [
-  { code: 'fa', label: 'فارسی', flag: '🇦🇫', flagUrl: 'https://flagcdn.com/w160/af.png' },
-  { code: 'ps', label: 'پښتو', flag: '🇦🇫', flagUrl: 'https://flagcdn.com/w160/af.png' },
-  { code: 'en', label: 'English', flag: '🇬🇧', flagUrl: 'https://flagcdn.com/w160/gb.png' },
-  { code: 'fr', label: 'Français', flag: '🇫🇷', flagUrl: 'https://flagcdn.com/w160/fr.png' },
-  { code: 'de', label: 'Deutsch', flag: '🇩🇪', flagUrl: 'https://flagcdn.com/w160/de.png' },
-  { code: 'tr', label: 'Türkçe', flag: '🇹🇷', flagUrl: 'https://flagcdn.com/w160/tr.png' },
-  { code: 'ar', label: 'العربية', flag: '🇦🇪', flagUrl: 'https://flagcdn.com/w160/ae.png' },
-  { code: 'ru', label: 'Русский', flag: '🇷🇺', flagUrl: 'https://flagcdn.com/w160/ru.png' },
+  { code: 'fa', label: 'فارسی', flag: '🇦🇫' },
+  { code: 'ps', label: 'پښتو', flag: '🇦🇫' },
+  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+  { code: 'tr', label: 'Türkçe', flag: '🇹🇷' },
+  { code: 'ar', label: 'العربية', flag: '🇦🇪' },
+  { code: 'ru', label: 'Русский', flag: '🇷🇺' },
 ];
 
 export default function Header() {
@@ -30,16 +40,20 @@ export default function Header() {
   const supabase = createClientSideSupabase();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener('scroll', handleScroll);
 
     const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       setUser(user);
     };
     getUser();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
 
@@ -49,8 +63,8 @@ export default function Header() {
     };
   }, [supabase]);
 
-  const currentLang = pathname.split('/')[1] || 'en';
-  const activeLangObj = languages.find(l => l.code === currentLang) || languages[2];
+  const currentLang = pathname?.split('/')[1] || 'en';
+  const activeLangObj = languages.find((l) => l.code === currentLang) || languages[2];
   const isRtl = ['fa', 'ps', 'ar'].includes(currentLang);
 
   const handleLogout = async () => {
@@ -68,20 +82,50 @@ export default function Header() {
 
   const translations: any = {
     home: { fa: 'خانه', ps: 'کور', en: 'Home', fr: 'Accueil', de: 'Startseite', tr: 'Ana Sayfa', ar: 'الرئيسية', ru: 'Главная' },
-    partners: { fa: 'شراکت‌ها', ps: 'شراکتونه', en: 'Partners', fr: 'Partenariats', de: 'Partnerschaften', tr: 'Ortaklıklar', ar: 'الشراكات', ru: 'Партнерство' },
+    partners: { fa: 'شراکت‌ها', ps: 'شراکتونه', en: 'Partners', fr: 'Partenariats', de: 'Partnerschaften', tr: 'Ortaklıklar', ar: 'الشراكات', ru: 'Партнеры' },
     blog: { fa: 'بلاگ', ps: 'بلاګ', en: 'Blog', fr: 'Blog', de: 'Blog', tr: 'Blog', ar: 'المدونة', ru: 'Блог' },
     contact: { fa: 'تماس با ما', ps: 'اړیکه', en: 'Contact', fr: 'Contact', de: 'Kontakt', tr: 'İletişim', ar: 'اتصل بنا', ru: 'Контакт' },
     about: { fa: 'درباره ما', ps: 'زمونږ په اړه', en: 'About Us', fr: 'À propos', de: 'Über uns', tr: 'Hakkımızda', ar: 'من نحن', ru: 'О нас' },
-    app: { fa: 'اپلیکیشن', ps: 'اپلیکیشن', en: 'App', fr: 'L\'app', de: 'App', tr: 'Uygulama', ar: 'التطبيق', ru: 'Приложение' },
-    auth: { 
-      fa: 'ورود / ثبت‌نام', 
-      ps: 'ننووتل / نوم لیکنه', 
-      en: 'SIGN UP / LOGIN', 
-      fr: 'S\'INSCRIRE / CONNEXION', 
-      de: 'ANMELDEN / REGISTRIEREN', 
-      tr: 'GİRİŞ / KAYIT', 
-      ar: 'تسجيل الدخول / اشتراک', 
-      ru: 'ВХОД / РЕГИСТРАЦИЯ' 
+    app: { fa: 'اپلیکیشن', ps: 'اپلیکیشن', en: 'App', fr: "L'app", de: 'App', tr: 'Uygulama', ar: 'التطبيق', ru: 'Приложение' },
+    auth: {
+      fa: 'ورود / ثبت‌نام',
+      ps: 'ننووتل / نوم لیکنه',
+      en: 'SIGN UP / LOGIN',
+      fr: "S'INSCRIRE / CONNEXION",
+      de: 'ANMELDEN / REGISTRIEREN',
+      tr: 'GİRİŞ / KAYIT',
+      ar: 'تسجيل الدخول / اشتراک',
+      ru: 'ВХОД / РЕГИСТРАЦИЯ',
+    },
+    dashboard: {
+      fa: 'داشبورد',
+      ps: 'ډشبورډ',
+      en: 'Dashboard',
+      fr: 'Dashboard',
+      de: 'Dashboard',
+      tr: 'Panel',
+      ar: 'لوحة التحكم',
+      ru: 'Панель',
+    },
+    logout: {
+      fa: 'خروج',
+      ps: 'وتل',
+      en: 'Logout',
+      fr: 'Déconnexion',
+      de: 'Abmelden',
+      tr: 'Çıkış',
+      ar: 'تسجيل الخروج',
+      ru: 'Выход',
+    },
+    language: {
+      fa: 'زبان',
+      ps: 'ژبه',
+      en: 'Language',
+      fr: 'Langue',
+      de: 'Sprache',
+      tr: 'Dil',
+      ar: 'اللغة',
+      ru: 'Язык',
     },
   };
 
@@ -95,195 +139,303 @@ export default function Header() {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? 'bg-black/90 backdrop-blur-xl border-b border-amber-500/30 py-3' : 'bg-transparent py-5'}`} dir={isRtl ? 'rtl' : 'ltr'}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between">
-          
-          <Link href={`/${currentLang}`} className="flex items-center gap-3 group relative z-[110]">
-            <div className="relative w-10 h-10 transition-transform duration-500 group-hover:scale-110">
-              <Image src="/logo.png" alt="SafiPay" fill className="object-contain" priority />
+    <header
+      dir={isRtl ? 'rtl' : 'ltr'}
+      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${scrolled ? 'py-3' : 'py-5'}`}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10">
+        <div
+          className={`relative mx-auto flex items-center justify-between rounded-[1.6rem] border transition-all duration-500 ${
+            scrolled
+              ? 'border-amber-500/20 bg-black/75 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl'
+              : 'border-white/10 bg-black/30 backdrop-blur-xl'
+          } px-4 sm:px-5 lg:px-6 py-3`}
+        >
+          <div className="absolute inset-0 rounded-[1.6rem] bg-[linear-gradient(135deg,rgba(245,158,11,0.10),transparent_35%,transparent_65%,rgba(245,158,11,0.05))]" />
+          <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/35 to-transparent" />
+
+          <Link href={`/${currentLang}`} className="relative z-[110] flex min-w-0 items-center gap-3 group">
+            <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-white/10 bg-white/5 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3">
+              <Image src="/logo.png" alt="SafiPay" fill className="object-contain p-1.5" priority />
             </div>
-            <span className="text-xl font-black tracking-tighter text-white group-hover:text-amber-500 transition-colors uppercase">SAFIPAY</span>
+            <div className="min-w-0">
+              <span className="block truncate text-lg sm:text-xl font-black tracking-tighter text-white transition-colors group-hover:text-amber-400 uppercase">
+                SAFIPAY
+              </span>
+              <span className="hidden sm:block text-[10px] uppercase tracking-[0.28em] text-gray-500">
+                Global Digital Banking
+              </span>
+            </div>
           </Link>
 
-          {/* Navigation - Desktop */}
-          <nav className="hidden md:flex items-center relative group/nav">
-            <div className="absolute -inset-[4px] -z-10 rounded-full overflow-hidden opacity-70 blur-[8px] group-hover/nav:opacity-100 group-hover/nav:blur-[5px] transition-all duration-700">
-                <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2.5] animate-[spin_20s_linear_infinite]" alt="" />
-            </div>
-            <div className="flex items-center gap-4 lg:gap-6 bg-black/80 border border-white/30 rounded-full px-7 py-2.5 backdrop-blur-2xl relative z-10 shadow-2xl">
-              {navItems.map((item) => (
-                <Link 
-                  key={item.href} 
-                  href={item.href} 
-                  className={`text-[9px] lg:text-[11px] font-bold transition-all relative group uppercase tracking-widest whitespace-nowrap flex items-center gap-1.5
-                    ${item.isSpecial ? 'text-amber-500 hover:text-amber-400' : 'text-gray-300 hover:text-amber-400'}`}
+          <nav className="relative z-[110] hidden xl:flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 shadow-[0_0_30px_rgba(245,158,11,0.04)]">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] transition-all ${
+                    item.isSpecial
+                      ? 'text-amber-400 hover:text-white hover:bg-amber-500/15'
+                      : isActive
+                      ? 'text-white bg-white/8'
+                      : 'text-gray-300 hover:text-white hover:bg-white/6'
+                  }`}
                 >
-                  {item.isSpecial && <Download size={12} className="animate-bounce" />}
+                  {item.isSpecial && <Download size={13} className="text-amber-500" />}
                   {item.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full ${pathname === item.href ? 'w-full' : 'w-0'}`} />
                 </Link>
-              ))}
-
-              {user ? (
-                <div className="relative">
-                  <button 
-                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="bg-amber-500 text-black flex items-center gap-2 px-3 py-1 rounded-full border border-amber-400/50 hover:bg-white transition-all shadow-lg"
-                  >
-                    <div className="w-5 h-5 bg-black rounded-full flex items-center justify-center text-amber-500 text-[9px] font-black overflow-hidden relative">
-                      {user.user_metadata?.avatar_url ? (
-                        <Image src={user.user_metadata.avatar_url} alt="P" fill className="object-cover" />
-                      ) : (
-                        user.user_metadata?.first_name?.charAt(0) || user.email?.charAt(0).toUpperCase()
-                      )}
-                    </div>
-                    <span className="text-[10px] font-black uppercase tracking-tighter">{user.user_metadata?.first_name || 'Client'}</span>
-                  </button>
-                  <AnimatePresence>
-                    {isUserMenuOpen && (
-                      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full mt-4 right-0 w-48 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 shadow-2xl">
-                        <Link href={`/${currentLang}/user/dashboard`} className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-xl text-[10px] font-bold text-zinc-300 uppercase tracking-widest transition-colors">
-                          <LayoutDashboard size={14} className="text-amber-500" /> Dashboard
-                        </Link>
-                        <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 hover:bg-red-500/10 rounded-xl text-[10px] font-bold text-red-500 uppercase tracking-widest transition-colors">
-                          <LogOut size={14} /> Logout
-                        </button>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <Link 
-                  href={`/${currentLang}/user/login`} 
-                  className="bg-white/10 px-4 py-1.5 rounded-full border border-amber-500/50 text-white hover:bg-amber-500 hover:text-black transition-all flex items-center gap-2 text-[9px] lg:text-[10px] font-black uppercase tracking-widest whitespace-nowrap shadow-[0_0_15px_rgba(245,158,11,0.2)]"
-                >
-                  <UserCircle2 size={14} />
-                  {translations.auth[currentLang]}
-                </Link>
-              )}
-            </div>
+              );
+            })}
           </nav>
 
-          <div className="flex items-center gap-3 md:gap-4">
-            {/* Language Selector - Desktop */}
-            <div className="hidden md:flex relative group/lang items-center justify-center">
-              <div className="absolute -inset-[5px] -z-10 rounded-xl overflow-hidden opacity-80 blur-[5px] group-hover/lang:opacity-100 group-hover/lang:blur-[3px] transition-all duration-500">
-                  <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-150 animate-pulse" alt="" />
-              </div>
-              <button onClick={() => setIsLangOpen(!isLangOpen)} className="relative z-10 flex items-center gap-3 px-5 py-2.5 rounded-xl bg-black/90 border border-white/40 text-white backdrop-blur-md hover:border-amber-500 transition-all font-bold text-sm shadow-2xl uppercase">
-                <span className="text-xl drop-shadow-md">{activeLangObj.flag}</span>
-                <span className="tracking-wide">{activeLangObj.label}</span>
-                <ChevronDown size={14} className={`transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
+          <div className="relative z-[110] hidden md:flex items-center gap-3">
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setIsLangOpen(!isLangOpen);
+                  setIsUserMenuOpen(false);
+                }}
+                className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2.5 text-white transition-all hover:border-amber-500/30 hover:bg-white/[0.05]"
+              >
+                <span className="text-base">{activeLangObj.flag}</span>
+                <span className="text-xs font-bold uppercase tracking-[0.18em]">{activeLangObj.code}</span>
+                <ChevronDown size={14} className={`transition-transform ${isLangOpen ? 'rotate-180' : ''}`} />
               </button>
+
               <AnimatePresence>
                 {isLangOpen && (
-                  <motion.div initial={{ opacity: 0, y: 15, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 15, scale: 0.95 }} className={`absolute ${isRtl ? 'left-0' : 'right-0'} top-full mt-5 w-56 bg-black/95 backdrop-blur-3xl border border-white/20 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] overflow-hidden p-2.5`}>
-                    <div className="max-h-[280px] overflow-y-auto custom-scrollbar">
-                      {languages.map((lang) => (
-                        <button key={lang.code} onClick={() => changeLanguage(lang.code)} className={`flex items-center justify-between w-full px-4 py-3.5 rounded-2xl transition-all group mb-1 last:mb-0 ${currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/40' : 'text-gray-400 hover:bg-white/10 hover:text-white'}`}>
-                          <div className="flex items-center gap-3">
-                             <span className="text-lg opacity-90 group-hover:opacity-100">{lang.flag}</span>
-                             <span className="font-bold text-xs tracking-widest uppercase">{lang.label}</span>
-                          </div>
-                          {currentLang === lang.code && <div className="w-2 h-2 rounded-full bg-black" />}
-                        </button>
-                      ))}
-                    </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 14, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 14, scale: 0.96 }}
+                    className={`absolute top-full mt-3 w-56 rounded-[1.4rem] border border-white/10 bg-black/90 p-2 shadow-2xl backdrop-blur-2xl ${
+                      isRtl ? 'left-0' : 'right-0'
+                    }`}
+                  >
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => changeLanguage(lang.code)}
+                        className={`mb-1 flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm transition-all last:mb-0 ${
+                          currentLang === lang.code
+                            ? 'bg-amber-500 text-black'
+                            : 'text-gray-300 hover:bg-white/6 hover:text-white'
+                        }`}
+                      >
+                        <span className="flex items-center gap-3">
+                          <span className="text-lg">{lang.flag}</span>
+                          <span className="font-bold">{lang.label}</span>
+                        </span>
+                        {currentLang === lang.code && <span className="h-2 w-2 rounded-full bg-black" />}
+                      </button>
+                    ))}
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            <button className="md:hidden p-3 text-white bg-white/10 border border-white/20 rounded-2xl active:scale-95 transition-transform z-[110]" onClick={() => setIsMobileOpen(!isMobileOpen)}>
-              {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {user ? (
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    setIsUserMenuOpen(!isUserMenuOpen);
+                    setIsLangOpen(false);
+                  }}
+                  className="flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-2 text-white transition-all hover:border-amber-500/40 hover:bg-amber-500/15"
+                >
+                  <div className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-black text-[11px] font-black text-amber-500">
+                    {user.user_metadata?.avatar_url ? (
+                      <Image src={user.user_metadata.avatar_url} alt="User" fill className="object-cover" />
+                    ) : (
+                      user.user_metadata?.first_name?.charAt(0) || user.email?.charAt(0)?.toUpperCase()
+                    )}
+                  </div>
+                  <span className="max-w-[100px] truncate text-[11px] font-black uppercase tracking-[0.12em]">
+                    {user.user_metadata?.first_name || 'Client'}
+                  </span>
+                  <ChevronDown size={14} className={`transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                <AnimatePresence>
+                  {isUserMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 14, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 14, scale: 0.96 }}
+                      className="absolute top-full right-0 mt-3 w-52 rounded-[1.4rem] border border-white/10 bg-black/90 p-2 shadow-2xl backdrop-blur-2xl"
+                    >
+                      <Link
+                        href={`/${currentLang}/user/dashboard`}
+                        className="mb-1 flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-gray-200 transition-all hover:bg-white/6 hover:text-white"
+                      >
+                        <LayoutDashboard size={16} className="text-amber-500" />
+                        {translations.dashboard[currentLang]}
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-red-400 transition-all hover:bg-red-500/10"
+                      >
+                        <LogOut size={16} />
+                        {translations.logout[currentLang]}
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link
+                href={`/${currentLang}/user/login`}
+                className="flex items-center gap-2 rounded-full border border-amber-500/25 bg-white px-4 py-2.5 text-[11px] font-black uppercase tracking-[0.16em] text-black transition-all hover:bg-amber-500"
+              >
+                <UserCircle2 size={15} />
+                {translations.auth[currentLang]}
+              </Link>
+            )}
           </div>
+
+          <button
+            className="relative z-[110] md:hidden flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-white transition-all active:scale-95"
+            onClick={() => setIsMobileOpen(true)}
+          >
+            <Menu size={22} />
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileOpen && (
-          <motion.div initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} className="fixed inset-0 z-[150] bg-black/98 backdrop-blur-3xl flex flex-col p-8 md:hidden">
-            <div className="absolute inset-0 -z-10 opacity-20 blur-3xl overflow-hidden">
-                <img src={activeLangObj.flagUrl} className="w-full h-full object-cover scale-[2]" alt="bg" />
-            </div>
-            
-            <div className="flex justify-between items-center mb-10 text-white">
-              <div className="flex items-center gap-3">
-                <Image src="/logo.png" alt="SafiPay" width={35} height={35} />
-                <span className="font-black text-lg tracking-tighter text-white uppercase">SAFIPAY</span>
-              </div>
-              <button onClick={() => setIsMobileOpen(false)} className="p-3 bg-white/10 border border-white/20 rounded-full"><X size={20} /></button>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed inset-0 z-[160] bg-black/96 backdrop-blur-2xl md:hidden"
+            dir={isRtl ? 'rtl' : 'ltr'}
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.12),transparent_30%)]" />
 
-            {/* Main Navigation Grid */}
-            <nav className="grid grid-cols-2 gap-3 mb-8 overflow-y-auto pt-2">
-              {navItems.map((item, idx) => (
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ delay: idx * 0.05 }} 
-                  key={item.href}
+            <div className="relative flex h-full flex-col px-5 pt-5 pb-6 overflow-y-auto">
+              <div className="mb-6 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="relative h-11 w-11 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                    <Image src="/logo.png" alt="SafiPay" fill className="object-contain p-1.5" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-black tracking-tighter text-white uppercase">SAFIPAY</p>
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-gray-500">
+                      {translations.language[currentLang]}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setIsMobileOpen(false)}
+                  className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] text-white"
                 >
-                  <Link 
-                    href={item.href} 
-                    onClick={() => setIsMobileOpen(false)} 
-                    className={`flex items-center justify-center gap-2 h-16 rounded-2xl transition-all border font-black text-[11px] uppercase tracking-tighter
-                      ${item.isSpecial 
-                        ? 'bg-amber-500 text-black border-amber-400 shadow-lg shadow-amber-500/20' 
-                        : 'bg-white/5 text-white border-white/10 hover:bg-white/10'}`}
-                  >
-                    {item.label}
-                    {item.isSpecial && <Download size={16} className="animate-bounce" />}
-                  </Link>
-                </motion.div>
-              ))}
-              
-              {/* Dashboard / Login Button - Full Width */}
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                transition={{ delay: navItems.length * 0.05 }}
-                className="col-span-2"
-              >
-                {user ? (
-                  <Link 
-                    href={`/${currentLang}/user/dashboard`} 
-                    onClick={() => setIsMobileOpen(false)} 
-                    className="flex items-center justify-center gap-3 h-16 rounded-2xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] shadow-xl"
-                  >
-                    DASHBOARD <LayoutDashboard size={18} />
-                  </Link>
-                ) : (
-                  <Link 
-                    href={`/${currentLang}/user/login`} 
-                    onClick={() => setIsMobileOpen(false)} 
-                    className="flex items-center justify-center gap-3 h-16 rounded-2xl bg-white text-black font-black text-[11px] uppercase tracking-[0.1em] shadow-xl"
-                  >
-                    {translations.auth[currentLang]} <UserCircle2 size={18} />
-                  </Link>
-                )}
-              </motion.div>
-            </nav>
+                  <X size={20} />
+                </button>
+              </div>
 
-            {/* Language Selection Grid */}
-            <div className="mt-auto pt-6 border-t border-white/10 overflow-y-auto">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 mb-4 italic">Select Language</p>
-              <div className="grid grid-cols-2 gap-2 pb-6">
-                {languages.map((lang) => (
-                  <button 
-                    key={lang.code} 
-                    onClick={() => {
-                      changeLanguage(lang.code);
-                      setIsMobileOpen(false);
-                    }} 
-                    className={`flex items-center gap-3 px-4 py-3 rounded-2xl transition-all ${currentLang === lang.code ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/30' : 'bg-white/5 text-zinc-400'}`}
+              {!user ? (
+                <div className="mb-5 rounded-[1.5rem] border border-amber-500/15 bg-gradient-to-br from-amber-500/10 to-white/[0.03] p-4 shadow-[0_0_30px_rgba(245,158,11,0.08)]">
+                  <div className="mb-3 text-[10px] font-black uppercase tracking-[0.24em] text-amber-400">
+                    Account Access
+                  </div>
+                  <Link
+                    href={`/${currentLang}/user/login`}
+                    onClick={() => setIsMobileOpen(false)}
+                    className="flex min-h-[56px] items-center justify-between rounded-[1.1rem] border border-white/10 bg-white px-4 py-4 text-sm font-black uppercase tracking-[0.14em] text-black"
                   >
-                    <span className="text-lg">{lang.flag}</span>
-                    <span className="font-bold text-[10px] uppercase tracking-widest">{lang.label}</span>
-                  </button>
+                    <span className="flex items-center gap-3">
+                      <UserCircle2 size={18} />
+                      {translations.auth[currentLang]}
+                    </span>
+                    <ArrowUpRight size={16} />
+                  </Link>
+                </div>
+              ) : (
+                <div className="mb-5 rounded-[1.5rem] border border-amber-500/15 bg-gradient-to-br from-amber-500/10 to-white/[0.03] p-4 shadow-[0_0_30px_rgba(245,158,11,0.08)]">
+                  <div className="mb-3 text-[10px] font-black uppercase tracking-[0.24em] text-amber-400">
+                    Account
+                  </div>
+                  <div className="space-y-3">
+                    <Link
+                      href={`/${currentLang}/user/dashboard`}
+                      onClick={() => setIsMobileOpen(false)}
+                      className="flex min-h-[56px] items-center justify-between rounded-[1.1rem] border border-amber-500/25 bg-amber-500/10 px-4 py-4 text-sm font-black uppercase tracking-[0.14em] text-white"
+                    >
+                      <span className="flex items-center gap-3">
+                        <LayoutDashboard size={18} className="text-amber-500" />
+                        {translations.dashboard[currentLang]}
+                      </span>
+                      <ArrowUpRight size={16} />
+                    </Link>
+
+                    <button
+                      onClick={handleLogout}
+                      className="flex w-full min-h-[56px] items-center justify-between rounded-[1.1rem] border border-red-500/20 bg-red-500/10 px-4 py-4 text-sm font-black uppercase tracking-[0.14em] text-red-400"
+                    >
+                      <span className="flex items-center gap-3">
+                        <LogOut size={18} />
+                        {translations.logout[currentLang]}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              <div className="mb-5 rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-4">
+                <div className="mb-3 flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
+                  <Globe2 size={15} className="text-amber-500" />
+                  {translations.language[currentLang]}
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        changeLanguage(lang.code);
+                        setIsMobileOpen(false);
+                      }}
+                      className={`flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-bold transition-all ${
+                        currentLang === lang.code
+                          ? 'bg-amber-500 text-black'
+                          : 'bg-black/40 text-gray-300 border border-white/6'
+                      }`}
+                    >
+                      <span className="text-base">{lang.flag}</span>
+                      <span>{lang.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2.5">
+                {navItems.map((item, idx) => (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.04 }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMobileOpen(false)}
+                      className={`flex min-h-[64px] flex-col items-center justify-center rounded-[1.2rem] border px-3 py-3 text-center text-[11px] font-black uppercase tracking-[0.12em] transition-all ${
+                        item.isSpecial
+                          ? 'border-amber-500/30 bg-amber-500/12 text-amber-400 shadow-[0_0_18px_rgba(245,158,11,0.08)]'
+                          : 'border-white/8 bg-white/[0.03] text-white'
+                      }`}
+                    >
+                      <div className="mb-1 flex items-center gap-2">
+                        {item.isSpecial && <Download size={15} className="text-amber-500" />}
+                        <span>{item.label}</span>
+                      </div>
+                      <ArrowUpRight size={14} className="text-gray-500" />
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </div>

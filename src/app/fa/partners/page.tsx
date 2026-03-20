@@ -1,322 +1,850 @@
 'use client';
-import React, { useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
-import { 
-  Landmark, Zap, Wifi, ArrowUpRight, Smartphone, 
-  Layers, Lock, Database, Briefcase, MousePointer2,
-  ShieldCheck, Globe, Cpu, CreditCard, CheckCircle2,
-  Server, BarChart3, ChevronDown
-} from 'lucide-react';
 
-// --- Magnetic Component ---
-const MagneticElement = ({ children, distance = 0.4 }: { children: React.ReactNode; distance?: number }) => {
+import React, { Suspense, useMemo, useRef } from 'react';
+import Link from 'next/link';
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
+import {
+  ArrowRight,
+  BadgeCheck,
+  BarChart3,
+  Briefcase,
+  Building2,
+  CheckCircle2,
+  ChevronDown,
+  CreditCard,
+  Database,
+  Globe,
+  Landmark,
+  Layers,
+  Lock,
+  Network,
+  Server,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Wallet,
+  Wifi,
+  Gift,
+  Radio,
+  MonitorSmartphone,
+  Users,
+  Cpu,
+  Rocket,
+  TimerReset,
+  Zap,
+} from 'lucide-react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, PerspectiveCamera, Stars, Text } from '@react-three/drei';
+import * as THREE from 'three';
+
+const GOLD = '#f59e0b';
+const GOLD_SOFT = '#ffd27a';
+const BLUE = '#3b82f6';
+const BLUE_SOFT = '#93c5fd';
+
+function MagneticElement({
+  children,
+  distance = 0.2,
+}: {
+  children: React.ReactNode;
+  distance?: number;
+}) {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const x = useSpring(mouseX, { stiffness: 150, damping: 15 });
-  const y = useSpring(mouseY, { stiffness: 150, damping: 15 });
+  const x = useSpring(mouseX, { stiffness: 180, damping: 18 });
+  const y = useSpring(mouseY, { stiffness: 180, damping: 18 });
 
   return (
-    <motion.div 
+    <motion.div
       onMouseMove={(e) => {
         const { clientX, clientY, currentTarget } = e;
-        const { left, top, width, height } = currentTarget.getBoundingClientRect();
-        mouseX.set((clientX - (left + width / 2)) * distance);
-        mouseY.set((clientY - (top + height / 2)) * distance);
+        const rect = currentTarget.getBoundingClientRect();
+        mouseX.set((clientX - (rect.left + rect.width / 2)) * distance);
+        mouseY.set((clientY - (rect.top + rect.height / 2)) * distance);
       }}
-      onMouseLeave={() => { mouseX.set(0); mouseY.set(0); }}
+      onMouseLeave={() => {
+        mouseX.set(0);
+        mouseY.set(0);
+      }}
       style={{ x, y }}
     >
       {children}
     </motion.div>
   );
-};
+}
 
-// --- Interactive Bento Card ---
-const BentoCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]));
-  const rotateY = useSpring(useTransform(x, [-100, 100], [-10, 10]));
+function FloatingPartnerOrb() {
+  const orbRef = useRef<THREE.Mesh>(null);
+  const ringRef = useRef<THREE.Group>(null);
+  const particlesRef = useRef<THREE.Points>(null);
+
+  const particlePositions = useMemo(() => {
+    const count = 2200;
+    const positions = new Float32Array(count * 3);
+
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      const r = 2.25 + Math.random() * 0.24;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+
+      positions[i3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      positions[i3 + 2] = r * Math.cos(phi);
+    }
+
+    return positions;
+  }, []);
+
+  useFrame(({ clock }) => {
+    if (orbRef.current) {
+      orbRef.current.rotation.y += 0.0025;
+      orbRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.3) * 0.08;
+      orbRef.current.rotation.z = Math.cos(clock.elapsedTime * 0.2) * 0.04;
+    }
+
+    if (ringRef.current) {
+      ringRef.current.rotation.y = clock.elapsedTime * 0.18;
+      ringRef.current.rotation.x = Math.sin(clock.elapsedTime * 0.16) * 0.12;
+    }
+
+    if (particlesRef.current) {
+      particlesRef.current.rotation.y -= 0.0013;
+      particlesRef.current.rotation.x += 0.0007;
+    }
+  });
+
+  return (
+    <group>
+      <points ref={particlesRef}>
+        <bufferGeometry>
+          <bufferAttribute attach="attributes-position" args={[particlePositions, 3]} />
+        </bufferGeometry>
+        <pointsMaterial color={GOLD} size={0.02} transparent opacity={0.95} sizeAttenuation />
+      </points>
+
+      <mesh ref={orbRef}>
+        <sphereGeometry args={[1.95, 64, 64]} />
+        <meshPhysicalMaterial
+          color="#060606"
+          emissive={GOLD}
+          emissiveIntensity={0.12}
+          metalness={1}
+          roughness={0.14}
+          clearcoat={1}
+          clearcoatRoughness={0.12}
+          transparent
+          opacity={0.98}
+        />
+      </mesh>
+
+      <mesh>
+        <sphereGeometry args={[2.2, 48, 48]} />
+        <meshBasicMaterial color={GOLD} transparent opacity={0.06} side={THREE.BackSide} />
+      </mesh>
+
+      <group ref={ringRef}>
+        <mesh rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[2.85, 0.03, 16, 220]} />
+          <meshStandardMaterial
+            color={GOLD}
+            emissive={GOLD}
+            emissiveIntensity={0.22}
+            metalness={1}
+            roughness={0.2}
+          />
+        </mesh>
+
+        <mesh rotation={[Math.PI / 2.45, 0.45, 0.24]}>
+          <torusGeometry args={[3.45, 0.018, 16, 220]} />
+          <meshStandardMaterial
+            color={GOLD_SOFT}
+            emissive={GOLD}
+            emissiveIntensity={0.14}
+            metalness={1}
+            roughness={0.18}
+            transparent
+            opacity={0.72}
+          />
+        </mesh>
+      </group>
+    </group>
+  );
+}
+
+function OrbitLabel({
+  text,
+  position,
+  color = GOLD,
+}: {
+  text: string;
+  position: [number, number, number];
+  color?: string;
+}) {
+  const ref = useRef<THREE.Group>(null);
+
+  useFrame(({ camera }) => {
+    if (!ref.current) return;
+    ref.current.lookAt(camera.position);
+  });
+
+  return (
+    <group ref={ref} position={position}>
+      <mesh>
+        <planeGeometry args={[2, 0.5]} />
+        <meshBasicMaterial color="#090909" transparent opacity={0.72} />
+      </mesh>
+      <Text fontSize={0.16} color={color} anchorX="center" anchorY="middle">
+        {text}
+      </Text>
+    </group>
+  );
+}
+
+function FloatingMiniShapes() {
+  return (
+    <>
+      <Float speed={1.3} floatIntensity={0.7} rotationIntensity={0.2}>
+        <mesh position={[-5.2, 2.2, -1.8]} rotation={[0.5, 0.4, 0.2]}>
+          <octahedronGeometry args={[0.34, 0]} />
+          <meshStandardMaterial color="#1a1a1a" emissive={GOLD} emissiveIntensity={0.15} metalness={1} roughness={0.18} />
+        </mesh>
+      </Float>
+
+      <Float speed={1.7} floatIntensity={0.85} rotationIntensity={0.24}>
+        <mesh position={[5.0, -1.8, -1.6]}>
+          <icosahedronGeometry args={[0.34, 0]} />
+          <meshStandardMaterial color={GOLD_SOFT} emissive={GOLD} emissiveIntensity={0.18} metalness={1} roughness={0.12} />
+        </mesh>
+      </Float>
+
+      <Float speed={1.4} floatIntensity={0.65} rotationIntensity={0.18}>
+        <mesh position={[5.5, 2.0, -2.3]} rotation={[0.8, 0.3, 0.5]}>
+          <boxGeometry args={[0.68, 0.4, 0.06]} />
+          <meshStandardMaterial color="#171717" emissive={BLUE} emissiveIntensity={0.12} metalness={0.9} roughness={0.22} />
+        </mesh>
+      </Float>
+
+      <Float speed={1.5} floatIntensity={0.75} rotationIntensity={0.16}>
+        <mesh position={[-4.7, -2.1, -1.6]} rotation={[0.2, 0.8, 0.3]}>
+          <torusGeometry args={[0.42, 0.08, 16, 80]} />
+          <meshStandardMaterial color={GOLD} emissive={GOLD} emissiveIntensity={0.18} metalness={1} roughness={0.18} />
+        </mesh>
+      </Float>
+    </>
+  );
+}
+
+function PartnerScene() {
+  return (
+    <>
+      <color attach="background" args={['#020202']} />
+      <PerspectiveCamera makeDefault position={[0, 0, 9]} />
+      <ambientLight intensity={0.55} />
+      <directionalLight position={[7, 6, 5]} intensity={1.7} color={GOLD} />
+      <pointLight position={[-6, -4, -6]} intensity={0.9} color="#fff2d4" />
+      <pointLight position={[0, 5, -4]} intensity={0.7} color="#ffcf70" />
+      <Stars radius={130} depth={80} count={4200} factor={3} saturation={0} fade speed={0.7} />
+
+      <Suspense fallback={null}>
+        <Float speed={1.1} rotationIntensity={0.08} floatIntensity={0.22}>
+          <FloatingPartnerOrb />
+          <OrbitLabel text="SafiPay" position={[3.4, 0.7, 0]} color={GOLD} />
+          <OrbitLabel text="Safi TopUp" position={[-3.8, -0.5, 0.6]} color={BLUE_SOFT} />
+        </Float>
+        <FloatingMiniShapes />
+      </Suspense>
+    </>
+  );
+}
+
+function BentoCard({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(my, [-120, 120], [8, -8]), {
+    stiffness: 120,
+    damping: 18,
+  });
+  const rotateY = useSpring(useTransform(mx, [-120, 120], [-8, 8]), {
+    stiffness: 120,
+    damping: 18,
+  });
 
   return (
     <motion.div
-      style={{ rotateX, rotateY, perspective: 1000 }}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       onMouseMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
-        x.set(e.clientX - rect.left - rect.width / 2);
-        y.set(e.clientY - rect.top - rect.height / 2);
+        mx.set(e.clientX - rect.left - rect.width / 2);
+        my.set(e.clientY - rect.top - rect.height / 2);
       }}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
-      className={`relative bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-10 overflow-hidden backdrop-blur-sm transition-all hover:border-amber-500/40 ${className}`}
+      onMouseLeave={() => {
+        mx.set(0);
+        my.set(0);
+      }}
+      className={`relative overflow-hidden rounded-[2rem] md:rounded-[2.4rem] border border-white/8 bg-white/[0.03] p-6 sm:p-8 md:p-10 backdrop-blur-2xl ${className}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/6 via-transparent to-blue-500/5 opacity-80" />
       <div className="relative z-10">{children}</div>
     </motion.div>
   );
-};
+}
 
-export default function SafiEmpireUltimate() {
+export default function SafiPartners3DEnglish() {
   const { scrollYProgress } = useScroll();
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-  
-  const heroOpacity = useTransform(smoothProgress, [0, 0.1], [1, 0]);
-  const heroScale = useTransform(smoothProgress, [0, 0.1], [1, 0.9]);
+  const smooth = useSpring(scrollYProgress, { stiffness: 100, damping: 28 });
+
+  const heroOpacity = useTransform(smooth, [0, 0.12], [1, 0.15]);
+  const heroScale = useTransform(smooth, [0, 0.12], [1, 0.95]);
+
+  const safiPayFeatures = [
+    'افتتاح حساب بین‌المللی حرفه‌ای برای کاربران متمرکز بر افغانستان و اپراتورهای جهانی',
+    'موجودی‌های چند ارزی شامل EUR، USD، GBP، PLN، SEK، NOK، RON، HUF، CZK و DKK',
+    'جزئیات بانکی محلی برای دریافت روان‌تر پرداخت‌ها، انتقالات عملیاتی و تسویه بین‌المللی',
+    'صدور فوری کارت‌های مجازی و فیزیکی که برای تجربه کاربری پریمیوم و دسترسی سریع طراحی شده‌اند',
+    'آن‌بوردینگ دیجیتال قدرتمند و منطق امنیتی در سطح اروپا برای عملیات مالی مدرن',
+    'یک پلتفرم جدی برای فریلنسرها، بنیان‌گذاران، کسب‌وکارها، تیم‌های دورکار و درآمدگیرندگان بین‌المللی',
+  ];
+
+  const topupFeatures = [
+    'تحویل شارژ و کریدت موبایل در بیش از ۱۵۰ کشور',
+    'پوشش برای بیش از ۷۰۰ اپراتور بین‌المللی',
+    'بسته‌های داده جهانی و خدمات اتصال دیجیتال',
+    'توزیع گیفت‌کارت دیجیتال و کارت‌های گیمینگ برای استفاده فرامرزی',
+    'پرداخت قبوض خدماتی پیش‌پرداخت بین‌المللی و دسترسی گسترده‌تر به خدمات دیجیتال',
+    'لایه تجارت دیجیتال سریع و پویا که برای مدل‌های شراکتی مبتنی بر حجم ایده‌آل است',
+  ];
+
+  const partnershipTracks = [
+    {
+      icon: <Landmark size={24} />,
+      title: 'شرکای بانکی و فین‌تک',
+      desc: 'ایده‌آل برای مؤسسات، اپراتورهای فین‌تک، ارائه‌دهندگان زیرساخت پرداخت و برندهایی که به دنبال فرصت‌های رشد چند ارزی و مبتنی بر کارت هستند.',
+    },
+    {
+      icon: <Wifi size={24} />,
+      title: 'توزیع دیجیتال و مخابرات',
+      desc: 'مناسب برای تجمیع‌کنندگان شارژ، شبکه‌های اپراتوری، ارائه‌دهندگان eSIM، توزیع‌کنندگان محصولات دیجیتال و فروشندگان تاپ‌آپ.',
+    },
+    {
+      icon: <Building2 size={24} />,
+      title: 'گسترش استراتژیک منطقه‌ای',
+      desc: 'طراحی‌شده برای همکاران ورود به بازار، شرکای تجاری محلی و سازمان‌هایی که می‌خواهند به مقیاس‌دهی هر دو اپ در قلمروهای جدید کمک کنند.',
+    },
+  ];
+
+  const metrics = [
+    { label: 'پوشش کشورها', val: '150+', icon: Globe },
+    { label: 'دسترسی اپراتورها', val: '700+', icon: Server },
+    { label: 'پلتفرم‌های اصلی', val: '2 Apps', icon: Layers },
+    { label: 'ظرفیت شراکت', val: 'Multi-Sector', icon: Briefcase },
+  ];
+
+  const infrastructure = [
+    { icon: Database, title: 'هسته مالی', desc: 'منطق حساب، کارت، ارز و بانکداری محلی که لایه SafiPay را قدرت می‌بخشد.' },
+    { icon: Smartphone, title: 'تجربه کاربری پریمیوم', desc: 'یک لایه رابط سریع، تمیز و مدرن که برای اعتماد، تبدیل و استفاده جدی روزانه ساخته شده است.' },
+    { icon: Layers, title: 'موتور توزیع', desc: 'معماری تحویل دیجیتال پشت شارژ، باندل‌ها، کارت‌های گیمینگ و خدمات پیش‌پرداخت.' },
+    { icon: Lock, title: 'امنیت و کنترل', desc: 'تمرکز جدی بر اعتماد، جهت‌گیری انطباق، تاب‌آوری عملیاتی و مقیاس‌پذیری امن‌تر در بلندمدت.' },
+  ];
+
+  const timeline = [
+    {
+      phase: '01',
+      title: 'لایه دسترسی',
+      desc: 'ایجاد آگاهی، اعتماد نهادی و داستانی قوی‌تر برای شرکا پیرامون SafiPay و Safi TopUp به‌عنوان یک اکوسیستم متصل.',
+      icon: <Rocket size={24} />,
+    },
+    {
+      phase: '02',
+      title: 'رشد توزیع',
+      desc: 'گسترش دسترسی اپراتورها، عمق محصولات دیجیتال، پوشش کشورها و کانال‌های توزیع تجاری مبتنی بر شریک.',
+      icon: <Network size={24} />,
+    },
+    {
+      phase: '03',
+      title: 'گسترش مالی',
+      desc: 'تعمیق لایه کاربری مالی پیرامون حساب‌ها، جزئیات بانکی محلی، موجودی‌های چند ارزی و تجربه‌های مبتنی بر کارت.',
+      icon: <Wallet size={24} />,
+    },
+    {
+      phase: '04',
+      title: 'مقیاس اکوسیستم',
+      desc: 'تبدیل برند Safi به یک شبکه استراتژیک گسترده‌تر با اهمیت فرامرزی قوی‌تر و شراکت‌های تجاری عمیق‌تر.',
+      icon: <BarChart3 size={24} />,
+    },
+  ];
 
   return (
     <div className="bg-[#020202] text-white overflow-x-hidden selection:bg-amber-500/30 font-sans" dir="rtl">
-      
-      {/* --- PROGRESS BAR --- */}
-      <motion.div className="fixed top-0 left-0 right-0 h-1 bg-amber-500 z-[100] origin-right shadow-[0_0_15px_rgba(245,158,11,0.5)]" style={{ scaleX: smoothProgress }} />
+      <motion.div
+        className="fixed top-0 right-0 left-0 h-1 bg-gradient-to-r from-amber-500 via-yellow-300 to-blue-500 z-[100] origin-right shadow-[0_0_20px_rgba(245,158,11,0.45)]"
+        style={{ scaleX: smooth }}
+      />
 
-      {/* --- SECTION 1: HERO (THE ENTRANCE) --- */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,11,0.08),transparent_70%)]" />
-        <motion.div style={{ opacity: heroOpacity, scale: heroScale }} className="container mx-auto px-6 text-center z-10">
-          <MagneticElement>
-            <span className="text-amber-500 text-[10px] font-black uppercase tracking-[0.8em] border border-amber-500/30 px-6 py-2 rounded-full mb-12 inline-block">
-              Safi International Capital LTD
+      <div className="fixed inset-0 z-0 pointer-events-none bg-[#020202]">
+        <Canvas dpr={[1, 2]} gl={{ antialias: true, alpha: false }}>
+          <PartnerScene />
+        </Canvas>
+      </div>
+
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden z-10 px-4 sm:px-6 pt-28 sm:pt-32 pb-16">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.10),transparent_35%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.0),rgba(0,0,0,0.28),rgba(0,0,0,0.7))]" />
+
+        <motion.div
+          style={{ opacity: heroOpacity, scale: heroScale }}
+          className="container mx-auto max-w-7xl relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="text-center lg:text-right order-2 lg:order-1">
+              <MagneticElement>
+                <span className="inline-flex items-center gap-2 text-amber-400 text-[10px] sm:text-xs font-black uppercase tracking-[0.28em] sm:tracking-[0.45em] border border-amber-500/30 px-4 sm:px-6 py-2 rounded-full mb-6 sm:mb-8 bg-amber-500/10">
+                  <Sparkles size={14} />
+                  جهان شراکت Safi
+                </span>
+              </MagneticElement>
+
+              <h1 className="text-4xl sm:text-5xl md:text-7xl xl:text-[7.5rem] font-black italic tracking-tighter leading-[0.92] uppercase mb-6 sm:mb-8">
+                بسازید
+                <br />
+                <span className="bg-gradient-to-r from-amber-400 via-amber-500 to-blue-500 bg-clip-text text-transparent">
+                  شبکه دوگانه بعدی را
+                </span>
+              </h1>
+
+              <p className="max-w-3xl mx-auto lg:mr-0 lg:ml-auto text-gray-300 text-base sm:text-lg md:text-xl xl:text-2xl font-light italic leading-relaxed text-right">
+                SafiPay و Safi TopUp دو موتور متصل درون یک اکوسیستم تجاری بزرگ‌تر هستند. یکی بر دسترسی مالی بین‌المللی، زیرساخت چند ارزی و تجربه‌های بانکداری مدرن مبتنی بر کارت تمرکز دارد.
+                دیگری بر توزیع دیجیتال جهانی، شارژ، داده، گیفت‌کارت‌ها، محصولات گیمینگ و کاربرد روزمره خدمات دیجیتال در مقیاس وسیع تمرکز می‌کند.
+              </p>
+
+              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row-reverse gap-4 justify-center lg:justify-start">
+                <Link
+                  href="/fa/contact"
+                  className="inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-4 bg-amber-500 text-black font-black rounded-2xl hover:bg-white transition-all"
+                >
+                  شروع شراکت
+                  <ArrowRight size={18} className="rotate-180" />
+                </Link>
+
+                <Link
+                  href="#ecosystem"
+                  className="inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-4 border border-white/15 bg-white/[0.03] text-white font-black rounded-2xl hover:border-amber-500/40 transition-all"
+                >
+                  بررسی اکوسیستم
+                  <ChevronDown size={18} />
+                </Link>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  { label: 'مالی', icon: Landmark },
+                  { label: 'تاپ‌آپ', icon: Wifi },
+                  { label: 'کارت‌ها', icon: CreditCard },
+                  { label: 'رشد', icon: BarChart3 },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-4 text-center"
+                  >
+                    <item.icon className="mx-auto text-amber-500 mb-2" size={18} />
+                    <div className="text-[10px] sm:text-xs font-black uppercase tracking-[0.22em] text-gray-300">
+                      {item.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="hidden lg:flex justify-center order-1 lg:order-2">
+              <div className="w-full max-w-[480px] rounded-[2.5rem] border border-white/10 bg-white/[0.03] backdrop-blur-2xl p-8">
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: Globe, title: 'دسترسی جهانی', text: 'آمادگی فرامرزی همراه با منطق گسترش خدمات مالی و دیجیتال.' },
+                    { icon: ShieldCheck, title: 'ساختار قابل اعتماد', text: 'یک روایت شراکتی قوی‌تر که بر پایه کارایی، مقیاس و ارزش بلندمدت ساخته شده است.' },
+                    { icon: Cpu, title: 'زیرساخت مدرن', text: 'دو لایه خدماتی متصل با ظرفیت یکپارچه‌سازی‌های عمیق‌تر و رشد آینده.' },
+                    { icon: TimerReset, title: 'فعال‌سازی سریع', text: 'جایگاه‌یابی دیجیتال‌محور برای شرکایی که استقرار سریع‌تر و دسترسی گسترده‌تر می‌خواهند.' },
+                  ].map((item, i) => (
+                    <div key={i} className="rounded-2xl border border-white/6 bg-black/25 p-5 text-right">
+                      <item.icon className="text-amber-500 mb-3 ml-auto" size={22} />
+                      <h3 className="font-black italic uppercase text-base mb-2">{item.title}</h3>
+                      <p className="text-sm text-gray-400 leading-6">{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <motion.div
+            animate={{ y: [0, 18, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="mt-10 sm:mt-14 flex flex-col items-center gap-3"
+          >
+            <span className="text-[10px] font-black tracking-[0.3em] text-gray-600 uppercase text-center">
+              اکوسیستم Safi را بررسی کنید
             </span>
-          </MagneticElement>
-          <h1 className="text-6xl md:text-[11rem] font-black italic tracking-tighter leading-[0.9] uppercase mb-10">
-            تعریف دوباره <br/> <span className="text-amber-500">نقدینگی</span>
-          </h1>
-          <p className="max-w-3xl mx-auto text-gray-500 text-2xl font-light italic leading-relaxed">
-            زیرساخت مالی حاکمیتی که برای اقتصاد دیجیتال نخبگان طراحی شده است
-            بانکداری آنی، گره‌های جهانی و اتصال مطلق
-          </p>
-          <motion.div animate={{ y: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="mt-24 flex flex-col items-center gap-4">
-            <span className="text-[10px] font-black tracking-widest text-gray-600 uppercase">کشف قلمرو صافی</span>
-            <ChevronDown className="text-amber-500" size={32} />
+            <ChevronDown className="text-amber-500" size={28} />
           </motion.div>
         </motion.div>
       </section>
 
-      {/* --- SECTION 2: STATS & TRUST --- */}
-      <section className="py-32 border-y border-white/5 bg-white/[0.01]">
-        <div className="container mx-auto px-6 grid md:grid-cols-4 gap-12 text-center">
-          {[
-            { label: "زمان اجرا", val: "۶۰ ثانیه", icon: Zap },
-            { label: "دسترسی جهانی", val: "+۱۵۰ کشور", icon: Globe },
-            { label: "امنیت سرمایه", val: "سطح ۱", icon: ShieldCheck },
-            { label: "گره‌های فعال", val: "+۵۰۰", icon: Server }
-          ].map((stat, i) => (
-            <motion.div key={i} whileHover={{ y: -10 }} className="space-y-4">
-              <stat.icon className="mx-auto text-amber-500/50" size={24} />
-              <div className="text-5xl font-black italic tracking-tighter uppercase">{stat.val}</div>
-              <div className="text-gray-600 text-[10px] font-black uppercase tracking-widest">{stat.label}</div>
+      {/* STATS */}
+      <section className="relative z-10 py-20 sm:py-24 border-y border-white/5 bg-white/[0.02]">
+        <div className="container mx-auto px-4 sm:px-6 grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 text-center">
+          {metrics.map((stat, i) => (
+            <motion.div key={i} whileHover={{ y: -8 }} className="space-y-4">
+              <stat.icon className="mx-auto text-amber-500/60" size={24} />
+              <div className="text-2xl sm:text-3xl md:text-4xl font-black italic tracking-tighter uppercase">{stat.val}</div>
+              <div className="text-gray-600 text-[10px] sm:text-xs font-black uppercase tracking-[0.28em]">{stat.label}</div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* --- SECTION 3: SAFIPAY DEEP DIVE --- */}
-      <section className="py-60 container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-10 text-right">
-          <div className="max-w-2xl">
-            <h2 className="text-7xl font-black italic uppercase tracking-tighter leading-none mb-8">زیرساخت <br/> <span className="text-amber-500">SafiPay</span></h2>
-            <p className="text-gray-500 text-xl font-light italic leading-relaxed">
-              ما بروکراسی بانکداری سنتی را دور می‌زنیم. تکنولوژی vIBAN ما به شما اجازه می‌دهد سرمایه خود را در سطح جهانی و تحت نام قانونی خودتان مدیریت کنید
-            </p>
-          </div>
-          <div className="bg-amber-500 text-black px-10 py-4 rounded-full font-black text-sm uppercase italic flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer">
-            ورود به پرتال vIBAN <ArrowUpRight />
-          </div>
+      {/* TWO APPS */}
+      <section id="ecosystem" className="relative z-10 py-24 sm:py-28 md:py-36 container mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-4xl mx-auto mb-14 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-6">
+            دو اپ <span className="text-amber-500">یک چشم‌انداز استراتژیک</span>
+          </h2>
+          <p className="text-gray-400 text-base sm:text-lg md:text-xl font-light leading-relaxed italic">
+            این داستان یک محصول تک‌منظوره نیست. این یک پیشنهاد اکوسیستمی جدی است. SafiPay لایه مالی را فراهم می‌کند. Safi TopUp لایه توزیع دیجیتال را می‌سازد.
+            این دو در کنار هم سطح وسیع‌تری برای رشد، شراکت و اهمیت بازار ایجاد می‌کنند.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8">
-          <BentoCard className="lg:col-span-8 group">
-            <div className="flex justify-between items-start mb-24">
-              <Landmark className="text-amber-500 group-hover:scale-110 transition-transform" size={60} />
-              <div className="text-right">
-                <span className="text-amber-500 font-black text-[10px] tracking-widest uppercase">گره چند ارزی</span>
-                <h3 className="text-4xl font-black italic uppercase mt-2">حساب‌های شخصی vIBAN</h3>
+        <div className="grid xl:grid-cols-2 gap-8 items-stretch">
+          <BentoCard className="group border-amber-500/20 hover:border-amber-500/40 text-right">
+            <div className="flex items-start justify-between gap-4 mb-8 sm:mb-10 flex-row-reverse">
+              <div>
+                <span className="text-amber-500 font-black text-[10px] sm:text-xs tracking-[0.25em] uppercase">SafiPay</span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black italic uppercase mt-3 tracking-tighter">
+                  لایه بانکداری جهانی
+                </h3>
               </div>
+              <Landmark className="text-amber-500 shrink-0 group-hover:scale-110 transition-transform" size={46} />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+
+            <p className="text-gray-300 text-base sm:text-lg leading-8 font-light mb-8 sm:mb-10 italic text-right">
+              SafiPay برای کاربرانی و شرکایی ساخته شده که به دسترسی جدی به زیرساخت حساب بین‌المللی، کارایی پریمیوم چند ارزی، جزئیات بانکی محلی و صدور فوری کارت نیاز دارند.
+              این پلتفرم به‌عنوان یک دروازه مدرن به امور مالی جهانی برای افغان‌ها و برای سازمان‌هایی که می‌خواهند این بازار را با ابزارهای قوی‌تر خدمت‌رسانی کنند، جایگاه‌سازی شده است.
+            </p>
+
+            <div className="grid gap-4 mb-8 sm:mb-10">
+              {safiPayFeatures.map((item, i) => (
+                <div key={i} className="flex items-start flex-row-reverse gap-3 rounded-2xl border border-white/6 bg-black/25 p-4 text-right">
+                  <CheckCircle2 size={18} className="text-amber-500 mt-1 shrink-0" />
+                  <p className="text-gray-300 leading-7 text-sm sm:text-base">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
               {['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK', 'DKK'].map((curr) => (
-                <div key={curr} className="p-6 bg-white/5 border border-white/5 rounded-2xl text-center group-hover:border-amber-500/20 transition-all">
-                  <div className="text-xl font-black italic mb-2 tracking-tighter uppercase">{curr}</div>
-                  <div className="text-[8px] text-gray-600 font-bold uppercase tracking-widest">تراکنش محلی</div>
+                <div key={curr} className="p-4 bg-white/5 border border-white/5 rounded-2xl text-center">
+                  <div className="text-base sm:text-lg font-black italic uppercase tracking-tighter">{curr}</div>
+                  <div className="text-[8px] text-gray-600 font-bold uppercase tracking-[0.2em] mt-1">پشتیبانی‌شده</div>
                 </div>
               ))}
             </div>
           </BentoCard>
 
-          <BentoCard className="lg:col-span-4 bg-amber-500 text-black border-none flex flex-col justify-between group text-right">
-            <div className="p-4 bg-black/10 w-fit rounded-2xl">
-              <CreditCard size={40} />
+          <BentoCard className="group border-blue-500/20 hover:border-blue-500/40 text-right">
+            <div className="flex items-start justify-between gap-4 mb-8 sm:mb-10 flex-row-reverse">
+              <div>
+                <span className="text-blue-400 font-black text-[10px] sm:text-xs tracking-[0.25em] uppercase">Safi TopUp</span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black italic uppercase mt-3 tracking-tighter">
+                  توزیع دیجیتال جهانی
+                </h3>
+              </div>
+              <Wifi className="text-blue-400 shrink-0 group-hover:scale-110 transition-transform" size={46} />
+            </div>
+
+            <p className="text-gray-300 text-base sm:text-lg leading-8 font-light mb-8 sm:mb-10 italic text-right">
+              Safi TopUp برای مقیاس طراحی شده است. این اپ شارژ، کریدت موبایل، باندل‌های داده، گیفت‌کارت‌های دیجیتال، محصولات گیمینگ و نیازهای خدمات پیش‌پرداخت را در یک گستره بین‌المللی وسیع پوشش می‌دهد.
+              این پلتفرم به شرکا دسترسی به یک مدل خدمات دیجیتال پرتکرار می‌دهد که سریع، کاربردی و قابل گسترش در سطح جهانی است.
+            </p>
+
+            <div className="grid gap-4 mb-8 sm:mb-10">
+              {topupFeatures.map((item, i) => (
+                <div key={i} className="flex items-start flex-row-reverse gap-3 rounded-2xl border border-white/6 bg-black/25 p-4 text-right">
+                  <CheckCircle2 size={18} className="text-blue-400 mt-1 shrink-0" />
+                  <p className="text-gray-300 leading-7 text-sm sm:text-base">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                { label: 'شارژ', icon: Smartphone },
+                { label: 'داده', icon: Radio },
+                { label: 'گیفت‌کارت', icon: Gift },
+                { label: 'گیمینگ', icon: MonitorSmartphone },
+              ].map((item) => (
+                <div key={item.label} className="p-4 bg-white/5 border border-white/5 rounded-2xl text-center">
+                  <item.icon className="mx-auto text-blue-400 mb-2" size={18} />
+                  <div className="text-[10px] font-black uppercase tracking-[0.18em] text-gray-300">{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </BentoCard>
+        </div>
+      </section>
+
+      {/* VALUE */}
+      <section className="relative z-10 py-24 sm:py-28 md:py-36 bg-white/[0.02] border-y border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 grid xl:grid-cols-12 gap-8 items-stretch">
+          <BentoCard className="xl:col-span-8 group text-right">
+            <div className="flex justify-between items-start gap-4 mb-10 sm:mb-12 flex-row-reverse">
+              <div>
+                <span className="text-amber-500 text-[10px] sm:text-xs font-black tracking-[0.25em] uppercase">ارزش شراکت</span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black italic uppercase mt-3 tracking-tighter">
+                  چرا این اکوسیستم اهرم ایجاد می‌کند
+                </h3>
+              </div>
+              <Briefcase className="text-amber-500 shrink-0" size={46} />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-5">
+              {[
+                {
+                  icon: ShieldCheck,
+                  title: 'اعتبار برند',
+                  desc: 'یک اکوسیستم دو اپی، داستانی قوی‌تر از یک محصول محدود و تک‌منظوره به شرکا می‌دهد. این ساختار جدیت، گستره و منطق گسترش را منتقل می‌کند.',
+                },
+                {
+                  icon: Globe,
+                  title: 'مقیاس‌پذیری جهانی',
+                  desc: 'از لایه‌های بانکداری بین‌المللی تا تحویل جهانی خدمات دیجیتال، این مدل برای گسترش منطقه‌ای و بین‌المللی ساخته شده است.',
+                },
+                {
+                  icon: CreditCard,
+                  title: 'سطوح متعدد درآمد',
+                  desc: 'مدل شراکت به یک جریان محدود نیست. این ساختار می‌تواند حساب‌ها، کارت‌ها، تاپ‌آپ، گیفت‌کارت‌ها، داده و خدمات دیجیتال گسترده‌تر را به هم وصل کند.',
+                },
+                {
+                  icon: BarChart3,
+                  title: 'منطق رشد بلندمدت',
+                  desc: 'ساختار اکوسیستم فضا را برای محصولات آینده، یکپارچه‌سازی‌های عمیق‌تر و ارزش گسترده‌تر پلتفرم در طول زمان فراهم می‌کند.',
+                },
+              ].map((item, i) => (
+                <div key={i} className="rounded-[1.8rem] border border-white/6 bg-black/20 p-6 text-right">
+                  <item.icon className="text-amber-500 mb-4 ml-auto" size={24} />
+                  <h4 className="text-lg sm:text-xl font-black italic uppercase tracking-tight mb-3">{item.title}</h4>
+                  <p className="text-gray-400 leading-7 font-light text-sm sm:text-base">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </BentoCard>
+
+          <BentoCard className="xl:col-span-4 bg-gradient-to-br from-amber-500 to-yellow-300 text-black border-none flex flex-col justify-between text-right">
+            <div className="p-4 bg-black/10 w-fit rounded-2xl ml-auto">
+              <Sparkles size={38} />
             </div>
             <div>
-              <h4 className="text-6xl font-black italic leading-[0.8] mb-6 uppercase tracking-tighter">۶۰ <br/> ثانیه</h4>
-              <p className="font-bold text-sm uppercase opacity-80 italic leading-tight">صدور آنی ویزا کارت از طریق حمایت BIN اروپایی در سطح ۱</p>
-            </div>
-          </BentoCard>
-        </div>
-      </section>
-
-      {/* --- SECTION 4: SECURITY & COMPLIANCE --- */}
-      <section className="py-40 bg-white/[0.01] border-y border-white/5 relative">
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-32 items-center">
-          <div className="space-y-12 text-right">
-            <h2 className="text-7xl font-black italic uppercase leading-none tracking-tighter">امنیت <br/> <span className="text-amber-500">حاکمیتی</span></h2>
-            <div className="space-y-8">
-              {[
-                { t: "دارای مجوز EFSA استونی", d: "زیرساخت تحت نظارت که حفاظت از سرمایه را با استانداردهای اتحادیه اروپا تضمین می‌کند" },
-                { t: "استاندارد PCI DSS سطح ۱", d: "بالاترین سطح امنیت برای پردازش پرداخت‌های بین‌المللی" },
-                { t: "vIBAN های نهادی", d: "حساب‌های صادر شده مستقیماً توسط گره‌های شرکت Safi International Capital LTD" }
-              ].map((item, i) => (
-                <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.2 }} key={i} className="flex gap-6 items-start flex-row-reverse">
-                  <CheckCircle2 className="text-amber-500 shrink-0" size={24} />
-                  <div>
-                    <h4 className="font-black italic uppercase tracking-tighter text-xl mb-1">{item.t}</h4>
-                    <p className="text-gray-500 font-light italic">{item.d}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          <div className="relative p-12 bg-black border border-white/10 rounded-[4rem] overflow-hidden group text-right">
-            <Lock className="text-amber-500/20 absolute -left-10 -bottom-10 group-hover:scale-125 transition-transform" size={300} />
-            <div className="relative z-10 space-y-8">
-              <div className="p-4 bg-amber-500/10 w-fit rounded-2xl"><ShieldCheck className="text-amber-500" size={48} /></div>
-              <h3 className="text-4xl font-black italic uppercase tracking-tighter">نظارت شده و تایید شده</h3>
-              <p className="text-gray-500 text-lg leading-relaxed italic">
-                زیرساخت ما بر پایه شفافیت بنا شده است. هر تراکنش توسط سیستم‌های AML مبتنی بر هوش مصنوعی نظارت می‌شود در حالی که حریم خصوصی مشتریان ویژه ما کاملاً حفظ می‌گردد
+              <h4 className="text-4xl sm:text-5xl md:text-6xl font-black italic leading-[0.86] mb-5 uppercase tracking-tighter">
+                مزیت
+                <br />
+                دو
+                <br />
+                اپ
+              </h4>
+              <p className="font-bold text-sm uppercase opacity-80 italic leading-relaxed">
+                یک اکوسیستم. دو موتور متفاوت بازار. یک فرصت تجاری بزرگ‌تر برای شرکای استراتژیک.
               </p>
-              <div className="pt-8 border-t border-white/5 flex gap-8 flex-row-reverse justify-end">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-700 mb-2">شماره ثبت</p>
-                  <p className="font-mono text-xs">UK #17063286</p>
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-700 mb-2">وضعیت مجوز</p>
-                  <p className="font-mono text-xs text-green-500 uppercase">فعال</p>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- SECTION 5: SAFI TOPUP (GLOBAL CONNECT) --- */}
-      <section className="py-60 container mx-auto px-6 overflow-hidden">
-        <div className="text-center mb-40">
-          <motion.h2 initial={{ scale: 0.8 }} whileInView={{ scale: 1 }} className="text-[10vw] font-black italic uppercase tracking-tighter leading-none mb-10">
-            اتصال <br/> <span className="text-blue-500">جهانی</span>
-          </motion.h2>
-          <div className="h-20 w-px bg-blue-500 mx-auto opacity-30" />
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <BentoCard className="aspect-square flex flex-col items-center justify-center border-blue-500/10 hover:border-blue-500/40">
-            <Wifi className="text-blue-500 mb-12 animate-pulse" size={100} />
-            <h3 className="text-6xl font-black italic uppercase tracking-tighter mb-4">Safi TopUp</h3>
-            <p className="text-gray-500 uppercase text-[10px] font-black tracking-[0.5em]">بیش از ۵۰۰ گره مستقیم اپراتور</p>
           </BentoCard>
-
-          <div className="space-y-16 text-right">
-            <h3 className="text-5xl font-black italic uppercase tracking-tighter leading-tight">اتصال <br/> ۵ میلیارد دستگاه</h3>
-            <p className="text-gray-400 text-2xl font-light italic leading-relaxed">
-              از خیابان‌های لندن تا هاب‌های دبی، ما شارژ آنی و بسته‌های دیتای ۵G E-SIM را در بیش از ۱۵۰ کشور جهان ارائه می‌دهیم
-            </p>
-            <div className="grid grid-cols-2 gap-8">
-              {[
-                { label: "اپراتورها", val: "+۶۰۰", icon: Layers },
-                { label: "تحویل آنی", val: "۹۹.۹٪", icon: Zap }
-              ].map((item, i) => (
-                <div key={i} className="p-8 border border-white/5 rounded-[2.5rem] hover:bg-white/5 transition-all">
-                  <item.icon className="text-blue-500 mb-4" size={24} />
-                  <div className="text-4xl font-black italic uppercase tracking-tighter">{item.val}</div>
-                  <div className="text-gray-600 text-[10px] uppercase font-bold tracking-widest mt-2">{item.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* --- SECTION 6: COMPARISON (THE DISRUPTOR) --- */}
-      <section className="py-40 container mx-auto px-6">
-        <div className="bg-white/[0.02] border border-white/10 rounded-[4rem] p-16 overflow-hidden relative">
-          <div className="relative z-10">
-            <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-20 text-center">بانک‌های سنتی در مقابل <span className="text-amber-500">امپراتوری صافی</span></h2>
-            <div className="grid md:grid-cols-2 gap-20 text-right">
-              <div className="space-y-10 opacity-40">
-                <h4 className="text-2xl font-black italic uppercase border-b border-white/10 pb-4">بانکداری قدیمی</h4>
-                {["هفته‌ها انتظار برای افتتاح حساب", "هزینه‌های مخفی تبدیل ارز", "کاغذبازی‌های فیزیکی", "کارت‌های مجازی محدود"].map(text => (
-                  <div key={text} className="flex gap-4 items-center justify-end line-through text-gray-500 font-light uppercase text-sm italic">
-                     {text} <span className="w-2 h-2 bg-red-500 rounded-full" />
-                  </div>
-                ))}
-              </div>
-              <div className="space-y-10">
-                <h4 className="text-2xl font-black italic uppercase border-b border-amber-500/30 pb-4 text-amber-500">اکوسیستم صافی</h4>
-                {["صدور در ۶۰ ثانیه", "نرخ‌های ارزی نهادی", "احراز هویت ۱۰۰٪ دیجیتال", "دارایی‌های نامحدود vIBAN"].map(text => (
-                  <div key={text} className="flex gap-4 items-center justify-end text-white font-black uppercase text-sm italic">
-                    {text} <span className="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_10px_#22c55e]" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* TRACKS */}
+      <section className="relative z-10 py-24 sm:py-28 md:py-36 container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-14 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-6">
+            مسیرهای <span className="text-blue-500">شراکت</span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-gray-400 text-base sm:text-lg md:text-xl font-light italic leading-relaxed">
+            شرکای مختلف با لایه‌های متفاوت اکوسیستم Safi سازگار هستند. این ساختار یک مدل یکسان برای همه نیست. پلتفرم طوری طراحی شده که از فین‌تک، مخابرات، زیرساخت و اتحادهای تجاری رشد‌محور استقبال کند.
+          </p>
         </div>
-      </section>
 
-      {/* --- SECTION 7: ROADMAP (THE FUTURE) --- */}
-      <section className="py-60 container mx-auto px-6">
-        <div className="max-w-4xl mx-auto space-y-64">
-          {[
-            { phase: "۰۱", title: "آغاز", date: "مارس ۲۰۲۶", desc: "ثبت در لندن. استقرار گره‌های API بانکی در سطح ۱ اروپا", icon: <Database /> },
-            { phase: "۰۲", title: "اتصال سریع", date: "ژوئن ۲۰۲۶", desc: "راه‌اندازی کامل Safi TopUp. ادغام هاب‌های جهانی E-SIM", icon: <Wifi /> },
-            { phase: "۰۳", title: "حاکمیت", date: "سپتامبر ۲۰۲۶", desc: "انتشار اپلیکیشن موبایل SafiPay. فعال‌سازی احراز هویت آنی خودکار", icon: <Smartphone /> },
-            { phase: "۰۴", title: "تسلط کامل", date: "۲۰۲۷", desc: "صدور کارت‌های تیتانیوم فیزیکی. افتتاح سالن‌های اختصاصی در لندن و دبی", icon: <Briefcase /> }
-          ].map((item, i) => (
-            <motion.div initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} key={i} className={`flex items-center gap-20 ${i % 2 !== 0 ? 'flex-row-reverse' : ''}`}>
-              <div className="text-[14rem] font-black italic opacity-5 select-none leading-none md:block hidden">{item.phase}</div>
-              <BentoCard className="flex-1 text-right">
-                <div className="flex justify-between items-center mb-8 border-b border-white/5 pb-6 flex-row-reverse">
-                  <div className="text-amber-500">{item.icon}</div>
-                  <span className="text-amber-500 font-black text-xs tracking-widest">{item.date}</span>
-                </div>
-                <h3 className="text-5xl font-black italic uppercase tracking-tighter mb-6">{item.title}</h3>
-                <p className="text-gray-500 text-xl font-light italic leading-relaxed">{item.desc}</p>
-              </BentoCard>
+        <div className="grid md:grid-cols-3 gap-6">
+          {partnershipTracks.map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -8 }}
+              className="rounded-[2rem] border border-white/6 bg-white/[0.03] p-8 backdrop-blur-xl text-right"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-white/5 text-amber-500 flex items-center justify-center mb-6 ml-auto">
+                {item.icon}
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black italic uppercase tracking-tight mb-4">{item.title}</h3>
+              <p className="text-gray-400 leading-7 font-light">{item.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* --- SECTION 8: FINAL CTA & FOOTER --- */}
-      <footer className="py-60 bg-black border-t border-white/5 text-center relative">
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500 to-transparent" />
-        <div className="container mx-auto px-6">
+      {/* INFRASTRUCTURE */}
+      <section className="relative z-10 py-24 sm:py-28 md:py-36 container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-14 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-6">
+            لایه‌های <span className="text-blue-500">زیرساخت</span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-gray-400 text-base sm:text-lg md:text-xl font-light italic leading-relaxed">
+            در پشت هویت بصری، اکوسیستم بر پایه لایه‌های عملیاتی واقعی جایگاه‌سازی شده است: مالی، توزیع، تجربه کاربری، امنیت و معماری رشد بلندمدت.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {infrastructure.map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -8 }}
+              className="rounded-[2rem] border border-white/6 bg-white/[0.03] p-7 backdrop-blur-xl text-right"
+            >
+              <item.icon className="text-blue-400 mb-5 ml-auto" size={26} />
+              <h3 className="text-lg sm:text-xl font-black italic uppercase tracking-tight mb-3">{item.title}</h3>
+              <p className="text-gray-400 leading-7 font-light">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* COMPARISON */}
+      <section className="relative z-10 py-24 sm:py-28 md:py-36 bg-white/[0.02] border-y border-white/5">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="bg-white/[0.02] border border-white/10 rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/8 via-transparent to-blue-500/8" />
+            <div className="relative z-10">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-12 sm:mb-16 text-center">
+                مدل‌های قدیمی در برابر <span className="text-amber-500">اکوسیستم SAFI</span>
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-10 sm:gap-14 text-right">
+                <div className="space-y-6 sm:space-y-8 opacity-45">
+                  <h4 className="text-xl sm:text-2xl font-black italic uppercase border-b border-white/10 pb-4">
+                    مدل‌های سنتی
+                  </h4>
+                  {[
+                    'فقط یک خدمت محدود',
+                    'مقیاس‌پذیری بین‌المللی ضعیف',
+                    'منطق محدود برای گسترش محصول',
+                    'تجربه کاربری سنگین و قدیمی',
+                  ].map((text) => (
+                    <div key={text} className="flex flex-row-reverse gap-4 items-center text-gray-500 font-light uppercase text-xs sm:text-sm italic line-through">
+                      <span className="w-2 h-2 bg-red-500 rounded-full shrink-0" /> {text}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-6 sm:space-y-8">
+                  <h4 className="text-xl sm:text-2xl font-black italic uppercase border-b border-amber-500/30 pb-4 text-amber-500">
+                    مدل Safi
+                  </h4>
+                  {[
+                    'دو اپ متصل با نقش‌های متفاوت در بازار',
+                    'ظرفیت واقعی برای رشد منطقه‌ای و جهانی',
+                    'امکان‌های متعدد درآمد برای شرکا',
+                    'طراحی مدرن، اعتبار بالاتر، تجربه سریع‌تر',
+                  ].map((text) => (
+                    <div key={text} className="flex flex-row-reverse gap-4 items-center text-white font-black uppercase text-xs sm:text-sm italic">
+                      <span className="w-2 h-2 bg-green-500 rounded-full shadow-[0_0_10px_#22c55e] shrink-0" /> {text}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ROADMAP */}
+      <section className="relative z-10 py-24 sm:py-28 md:py-36 container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-14 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-6">
+            منطق <span className="text-amber-500">نقشه راه رشد</span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-gray-400 text-base sm:text-lg md:text-xl font-light italic leading-relaxed">
+            این اکوسیستم ایستا نیست. این ساختار به‌گونه‌ای طراحی شده که در مراحل مختلف گسترش یابد؛ به‌طوری‌که شراکت، زیرساخت، خدمات مالی و توزیع دیجیتال در طول زمان با هم رشد کنند.
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto space-y-8 sm:space-y-10">
+          {timeline.map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -6 }}
+              className="flex flex-col md:flex-row-reverse gap-5 sm:gap-6 items-start rounded-[2rem] sm:rounded-[2.4rem] border border-white/6 bg-white/[0.03] p-6 sm:p-8 text-right"
+            >
+              <div className="text-5xl sm:text-6xl font-black italic text-white/10 leading-none shrink-0 md:w-[100px] text-right">
+                {item.phase}
+              </div>
+
+              <div className="flex-1">
+                <div className="flex items-center justify-between gap-4 mb-4 flex-row-reverse">
+                  <h3 className="text-2xl sm:text-3xl font-black italic uppercase tracking-tight">{item.title}</h3>
+                  <div className="text-amber-500 shrink-0">{item.icon}</div>
+                </div>
+                <p className="text-gray-400 text-base sm:text-lg leading-8 font-light">{item.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="relative z-10 py-24 sm:py-28 md:py-36 bg-black border-t border-white/5 text-center">
+        <div className="container mx-auto px-4 sm:px-6">
           <MagneticElement>
-            <h2 className="text-7xl md:text-[11rem] font-black italic uppercase tracking-tighter leading-none mb-20 hover:text-amber-500 transition-colors cursor-pointer">
-              میراث خود را <br/> <span className="text-amber-500">تضمین کنید</span>
+            <h2 className="text-4xl sm:text-5xl md:text-8xl font-black italic uppercase tracking-tighter leading-none mb-8 sm:mb-12">
+              بیایید بسازیم
+              <br />
+              <span className="text-amber-500">شبکه بعدی را</span>
             </h2>
           </MagneticElement>
 
-          <div className="grid md:grid-cols-4 gap-12 mt-40 text-[10px] font-black uppercase tracking-[0.5em] text-gray-700 border-t border-white/5 pt-20">
+          <p className="max-w-3xl mx-auto text-gray-400 text-base sm:text-lg md:text-xl font-light italic leading-relaxed mb-10 sm:mb-12">
+            اگر به دنبال شراکت با برندی آینده‌نگر هستید که زیرساخت مالی بین‌المللی را با توزیع دیجیتال در مقیاس بزرگ ترکیب می‌کند، اینجا جایی است که گفتگو آغاز می‌شود.
+            SafiPay و Safi TopUp در کنار هم یک پیشنهاد شراکتی جدی‌تر، قابل‌گسترش‌تر و از نظر تجاری جذاب‌تر ایجاد می‌کنند.
+          </p>
+
+          <Link
+            href="/fa/contact"
+            className="inline-flex items-center gap-4 px-8 sm:px-10 py-4 sm:py-5 bg-amber-500 text-black font-black text-base sm:text-lg rounded-2xl hover:bg-white transition-all group"
+          >
+            شروع گفتگوی شراکت
+            <ArrowRight className="group-hover:-translate-x-2 transition-transform rotate-180" />
+          </Link>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mt-16 sm:mt-24 text-[10px] font-black uppercase tracking-[0.24em] sm:tracking-[0.4em] text-gray-700 border-t border-white/5 pt-12 sm:pt-14">
             <div>
-              <p className="text-amber-500 mb-4 uppercase">نهاد رسمی</p>
-              <p className="text-white">شماره ثبت ۱۷۰۶۳۲۸۶</p>
+              <p className="text-amber-500 mb-3 sm:mb-4 uppercase">اپ‌ها</p>
+              <p className="text-white tracking-[0.12em]">SafiPay / Safi TopUp</p>
             </div>
             <div>
-              <p className="text-amber-500 mb-4 uppercase">دفتر مرکزی</p>
-              <p className="text-white">Shelton St, London</p>
+              <p className="text-amber-500 mb-3 sm:mb-4 uppercase">تمرکز</p>
+              <p className="text-white tracking-[0.12em]">مالی + خدمات دیجیتال</p>
             </div>
             <div>
-              <p className="text-amber-500 mb-4 uppercase">امنیت</p>
-              <p className="text-green-500">گره‌ها عملیاتی هستند</p>
+              <p className="text-amber-500 mb-3 sm:mb-4 uppercase">مقیاس</p>
+              <p className="text-green-500 tracking-[0.12em]">آماده جهانی</p>
             </div>
             <div>
-              <p className="text-amber-500 mb-4 uppercase">بنیان‌گذار</p>
-              <p className="text-white tracking-[0.1em]">شاهین صافی</p>
+              <p className="text-amber-500 mb-3 sm:mb-4 uppercase">چشم‌انداز</p>
+              <p className="text-white tracking-[0.12em]">ساخته‌شده برای رشد بلندمدت</p>
             </div>
           </div>
-          <p className="mt-20 text-[8px] tracking-[1.5em] text-gray-800 uppercase">Safi International Capital LTD © 2026 | تمامی حقوق محفوظ است</p>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
