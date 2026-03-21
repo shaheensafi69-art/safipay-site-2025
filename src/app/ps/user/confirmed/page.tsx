@@ -30,11 +30,11 @@ export default function ConfirmationSuccess() {
           </motion.div>
 
           <h1 className="text-4xl font-black italic uppercase tracking-tighter mb-4">
-            Verification <span className="text-amber-500">Complete</span>
+            تصدیق <span className="text-amber-500">بشپړ شو</span>
           </h1>
           
           <p className="text-zinc-400 text-lg mb-10 leading-relaxed font-light">
-            Your SafiPay digital identity has been verified. You now have full access to our global multi-currency ecosystem.
+            ستاسو د SafiPay ډیجیټل هویت تایید شو. اوس تاسو زموږ نړیوال څو-کرنسي سیستم ته بشپړ لاسرسی لرئ.
           </p>
 
           <div className="flex flex-col gap-4">
@@ -42,19 +42,19 @@ export default function ConfirmationSuccess() {
               href={`/${locale}/user/dashboard`}
               className="group flex items-center justify-center gap-3 w-full py-5 bg-white text-black font-black uppercase text-[11px] tracking-[0.3em] rounded-full hover:bg-amber-500 hover:text-white transition-all duration-500 shadow-lg"
             >
-              Access My Wallet
+              زما والټ ته لاسرسی
               <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-2 text-zinc-600">
             <ShieldCheck size={14} className="text-amber-500/50" />
-            <span className="text-[9px] font-black uppercase tracking-[0.2em]">Institutional Grade Security</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.2em]">اداري کچې امنیت</span>
           </div>
         </motion.div>
         
         <p className="mt-10 text-[10px] text-zinc-700 uppercase tracking-[0.4em] font-bold">
-          Official Spokesperson of SafiPay & Safi TopUp
+          د SafiPay او Safi TopUp رسمي ویاند
         </p>
       </div>
     </div>
