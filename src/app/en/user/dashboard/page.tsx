@@ -18,7 +18,7 @@ const fullCurrencies = [
   { 
     code: 'EUR', name: 'European Union', flag: '🇪🇺', balance: '0.00',
     details: [
-      { label: 'Beneficiary', value: 'Shaheen Safi' },
+      { label: 'Beneficiary', value: 'userName' },
       { label: 'IBAN', value: 'BE96 3633 1234 5678 9012' },
       { label: 'BIC / SWIFT', value: 'SAFIBEBBXXX' },
       { label: 'Bank', value: 'SafiPay Europe SA' }
@@ -27,7 +27,7 @@ const fullCurrencies = [
   { 
     code: 'GBP', name: 'United Kingdom', flag: '🇬🇧', balance: '0.00',
     details: [
-      { label: 'Account Holder', value: 'Shaheen Safi' },
+      { label: 'Account Holder', value: 'userName' },
       { label: 'Account Number', value: '88776655' },
       { label: 'Sort Code', value: '12-34-56' },
       { label: 'IBAN', value: 'GB29 SAFI 1234 5678 9012' },
@@ -37,7 +37,7 @@ const fullCurrencies = [
   { 
     code: 'USD', name: 'United States', flag: '🇺🇸', balance: '0.00',
     details: [
-      { label: 'Account Holder', value: 'Shaheen Safi' },
+      { label: 'Account Holder', value: 'userName' },
       { label: 'Account Number', value: '009876543210' },
       { label: 'ACH Routing', value: '123456789' },
       { label: 'Wire Routing', value: '987654321' },
@@ -47,7 +47,7 @@ const fullCurrencies = [
   { 
     code: 'PLN', name: 'Poland', flag: '🇵🇱', balance: '0.00',
     details: [
-      { label: 'Account Holder', value: 'Shaheen Safi' },
+      { label: 'Account Holder', value: 'userName' },
       { label: 'NRB (Local)', value: '91 1010 2020 3030 4040 5050' },
       { label: 'SWIFT / BIC', value: 'SAFIPLPL' }
     ]
@@ -55,7 +55,7 @@ const fullCurrencies = [
   { 
     code: 'SEK', name: 'Sweden', flag: '🇸🇪', balance: '0.00',
     details: [
-      { label: 'Account Holder', value: 'Shaheen Safi' },
+      { label: 'Account Holder', value: 'userName' },
       { label: 'IBAN', value: 'SE55 5000 0000 1111 2222' },
       { label: 'BIC', value: 'SAFISEXX' }
     ]
@@ -126,7 +126,7 @@ const features = [
         <div className="w-full h-36 bg-gradient-to-br from-amber-400 to-amber-700 rounded-2xl p-4 shadow-xl relative overflow-hidden">
            <div className="text-black font-black italic text-sm">SafiPay Elite</div>
            <div className="mt-10 font-mono text-black text-[10px] tracking-widest">**** **** **** 8842</div>
-           <div className="mt-2 flex justify-between text-black/70 text-[8px] font-bold uppercase"><span>SHAHEEN SAFI</span><span>02/29</span></div>
+           <div className="mt-2 flex justify-between text-black/70 text-[8px] font-bold uppercase"><span>userName</span><span>02/29</span></div>
            <div className="absolute -bottom-6 -right-6 w-20 h-20 bg-black/10 rounded-full" />
         </div>
         <div className="space-y-2">
@@ -266,7 +266,7 @@ export default function FinalEliteDashboard() {
                <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-500 text-[9px] font-black uppercase rounded-full tracking-widest italic flex items-center gap-1"><ShieldCheck size={10} /> Fully Secured</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-2">
-              {user?.user_metadata?.first_name || 'SHAHEEN'} <span className="text-amber-500">SAFI</span>
+              {user?.user_metadata?.first_name || 'userName'} <span className="text-amber-500">{user?.user_metadata?.last_name || 'userName'}</span>
             </h1>
             <p className="text-zinc-500 text-xs font-bold uppercase tracking-[0.4em]">Wilcome to SafiPay International</p>
           </div>
