@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars, Sphere } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,24 +9,17 @@ import { User, Mail, Lock, ArrowRight, Sparkles, CheckCircle2, Loader2 } from 'l
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
-// بخش ذرات برای شبیه‌سازی ترقه (Simple Confetti)
 function ConfettiParticle({ color }: { color: string }) {
-  const [position] = useState(() => [
-    (Math.random() - 0.5) * 10,
-    (Math.random() - 0.5) * 10,
-    (Math.random() - 0.5) * 10
-  ]);
-  
   return (
     <motion.div
       initial={{ scale: 0, opacity: 1, x: 0, y: 0 }}
-      animate={{ 
-        x: (Math.random() - 0.5) * 500, 
-        y: (Math.random() - 0.5) * 500, 
-        opacity: 0, 
-        scale: Math.random() * 2 
+      animate={{
+        x: (Math.random() - 0.5) * 500,
+        y: (Math.random() - 0.5) * 500,
+        opacity: 0,
+        scale: Math.random() * 2,
       }}
-      transition={{ duration: 2, ease: "easeOut" }}
+      transition={{ duration: 2, ease: 'easeOut' }}
       className="absolute w-2 h-2 rounded-full"
       style={{ backgroundColor: color }}
     />
@@ -35,7 +28,11 @@ function ConfettiParticle({ color }: { color: string }) {
 
 function MiniRotatingGlobe() {
   const meshRef = useRef<any>(null);
-  useFrame(() => { if (meshRef.current) meshRef.current.rotation.y += 0.004; });
+
+  useFrame(() => {
+    if (meshRef.current) meshRef.current.rotation.y += 0.004;
+  });
+
   return (
     <group ref={meshRef}>
       <points>
@@ -52,8 +49,8 @@ function MiniRotatingGlobe() {
 export default function SignUpPage() {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [loading, setLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false); // وضعیت نمایش موفقیت
-  const [error, setError] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const pathname = usePathname();
   const router = useRouter();
@@ -65,57 +62,54 @@ export default function SignUpPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    
+
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const redirectTo = `${window.location.origin}/${lang}/user/verify-email`;
+
+      const { error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
-        options: { 
-          data: { 
-            first_name: formData.firstName, 
-            last_name: formData.lastName 
-          } 
-        }
+        options: {
+          emailRedirectTo: redirectTo,
+          data: {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+          },
+        },
       });
 
       if (error) throw error;
 
-      // نمایش انیمیشن موفقیت
       setShowSuccess(true);
-      
-      // هدایت به داشبورد بعد از ۲ ثانیه
-      setTimeout(() => {
-        router.push(`/${lang}/user/dashboard`);
-      }, 2500);
 
+      setTimeout(() => {
+        router.push(`/${lang}/user/verify-email?email=${encodeURIComponent(formData.email)}`);
+      }, 1800);
     } catch (err: any) {
-      setError(err.message);
+      setError(err.message || 'Something went wrong');
       setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-[#000000] text-white flex flex-col md:flex-row overflow-hidden relative" dir={isRtl ? 'rtl' : 'ltr'}>
-      
-      {/* انیمیشن موفقیت (Success Overlay) */}
       <AnimatePresence>
         {showSuccess && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-2xl bg-black/60"
           >
-            {/* افکت ترقه */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {Array.from({ length: 50 }).map((_, i) => (
                 <ConfettiParticle key={i} color={i % 2 === 0 ? '#f59e0b' : '#22c55e'} />
               ))}
             </div>
 
-            <motion.div 
+            <motion.div
               initial={{ scale: 0, rotate: -20 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", damping: 12 }}
+              transition={{ type: 'spring', damping: 12 }}
               className="relative"
             >
               <div className="absolute inset-0 bg-green-500/20 blur-[100px] rounded-full" />
@@ -124,8 +118,10 @@ export default function SignUpPage() {
                   <CheckCircle2 size={50} className="text-black" />
                 </div>
                 <div className="text-center">
-                  <h2 className="text-2xl font-black uppercase tracking-tighter">Welcome to SafiPay</h2>
-                  <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-2">Securing your financial future...</p>
+                  <h2 className="text-2xl font-black uppercase tracking-tighter">Check Your Email</h2>
+                  <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-2">
+                    We have sent a verification link to your email address
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -133,14 +129,12 @@ export default function SignUpPage() {
         )}
       </AnimatePresence>
 
-      {/* پس‌زمینه کاینات */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 100], fov: 60 }}>
           <Stars radius={150} depth={50} count={5000} factor={6} fade speed={1.5} />
         </Canvas>
       </div>
 
-      {/* بخش کره چرخان */}
       <div className="hidden md:flex flex-[0.6] relative items-center justify-center z-10">
         <div className="w-[300px] h-[300px]">
           <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
@@ -150,27 +144,27 @@ export default function SignUpPage() {
         </div>
       </div>
 
-      {/* فرم ثبت‌نام */}
       <div className="flex-[1.4] flex items-center justify-center p-6 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="w-full max-w-[850px] bg-white/[0.01] backdrop-blur-3xl border border-white/5 rounded-[3.5rem] p-8 md:p-14 shadow-2xl relative overflow-hidden"
         >
           <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-amber-500/10 rounded-full blur-[120px]" />
-          
+
           <div className="flex flex-col lg:flex-row gap-12 items-start relative z-10">
             <div className="flex-1 space-y-6">
               <div className="flex items-center gap-2 text-amber-500">
                 <Sparkles size={20} />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em]">Join the Future</span>
               </div>
-              <h1 className="text-4xl font-black tracking-tighter leading-none">CREATE <br/> <span className="text-amber-500">ACCOUNT</span></h1>
+              <h1 className="text-4xl font-black tracking-tighter leading-none">
+                CREATE <br /> <span className="text-amber-500">ACCOUNT</span>
+              </h1>
               <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
-                {isRtl 
-                  ? "به اولین سیستم بانکی متصل افغانستان و جهان بپیوندید. تمام فیلدها را با دقت و مطابق با اسناد قانونی خود پر کنید."
-                  : "Join the first connected banking system for Afghanistan and the world. Fill all fields carefully."
-                }
+                {isRtl
+                  ? 'به اولین سیستم بانکی متصل افغانستان و جهان بپیوندید. تمام فیلدها را با دقت و مطابق با اسناد قانونی خود پر کنید.'
+                  : 'Join the first connected banking system for Afghanistan and the world. Fill all fields carefully.'}
               </p>
             </div>
 
@@ -178,41 +172,53 @@ export default function SignUpPage() {
               <form onSubmit={handleSignUp} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative group">
                   <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
-                  <input 
-                    type="text" required placeholder={isRtl ? "نام" : "First Name"}
-                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                  <input
+                    type="text"
+                    required
+                    placeholder={isRtl ? 'نام' : 'First Name'}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
+
                 <div className="relative group">
                   <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
-                  <input 
-                    type="text" required placeholder={isRtl ? "نام خانوادگی" : "Last Name"}
-                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                  <input
+                    type="text"
+                    required
+                    placeholder={isRtl ? 'نام خانوادگی' : 'Last Name'}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
+
                 <div className="md:col-span-2 relative group">
                   <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
-                  <input 
-                    type="email" required placeholder="Email Address"
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  <input
+                    type="email"
+                    required
+                    placeholder="Email Address"
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
+
                 <div className="md:col-span-2 relative group">
                   <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
-                  <input 
-                    type="password" required placeholder="Password"
-                    onChange={(e) => setFormData({...formData, password: e.target.value})}
+                  <input
+                    type="password"
+                    required
+                    placeholder="Password"
+                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
 
                 {error && <p className="md:col-span-2 text-red-500 text-[10px] font-bold uppercase text-center">{error}</p>}
 
-                <button 
-                  type="submit" disabled={loading}
+                <button
+                  type="submit"
+                  disabled={loading}
                   className="md:col-span-2 bg-white text-black font-black py-5 rounded-2xl hover:bg-amber-500 transition-all duration-500 flex items-center justify-center gap-3 group mt-2 shadow-xl shadow-white/5"
                 >
                   <span className="uppercase tracking-widest text-xs">

@@ -56,7 +56,6 @@ export default function LoginPage() {
       setError(loginError.message);
       setLoading(false);
     } else {
-      // استفاده از router.push برای انتقال امن و سریع به داشبورد
       router.push(`/${lang}/user/dashboard`);
     }
   };
@@ -119,13 +118,24 @@ export default function LoginPage() {
                   />
                 </div>
 
-                <div className="relative group">
-                  <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
-                  <input 
-                    type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
-                  />
+                <div className="space-y-2">
+                  <div className="relative group">
+                    <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 transition-colors w-5 h-5`} />
+                    <input 
+                      type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Password"
+                      className="w-full bg-black/50 border border-white/10 rounded-3xl px-7 py-5 outline-none focus:border-amber-500/50 focus:bg-black transition-all text-white font-bold text-sm"
+                    />
+                  </div>
+                  {/* دکمه فراموشی رمز عبور */}
+                  <div className={`flex ${isRtl ? 'justify-start' : 'justify-end'} px-2`}>
+                    <Link 
+                      href={`/${lang}/user/forgot-password`} 
+                      className="text-[9px] font-black text-zinc-500 hover:text-amber-500 uppercase tracking-[0.2em] transition-colors"
+                    >
+                      {lang === 'fa' ? 'فراموشی رمز عبور؟' : lang === 'ps' ? 'پاسورډ مو هیر شوی؟' : 'Forgot Password?'}
+                    </Link>
+                  </div>
                 </div>
 
                 {error && <p className="text-red-500 text-[10px] font-bold text-center uppercase tracking-tighter">{error}</p>}
