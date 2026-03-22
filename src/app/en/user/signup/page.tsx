@@ -5,7 +5,15 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars, Sphere } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClientSideSupabase } from '@/lib/supabase';
-import { User, Mail, Lock, ArrowRight, Sparkles, CheckCircle2, Loader2 } from 'lucide-react';
+import {
+  User,
+  Mail,
+  Lock,
+  ArrowRight,
+  Sparkles,
+  CheckCircle2,
+  Loader2,
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -47,7 +55,12 @@ function MiniRotatingGlobe() {
 }
 
 export default function SignUpPage() {
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', password: '' });
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -64,13 +77,13 @@ export default function SignUpPage() {
     setError(null);
 
     try {
-      const redirectTo = `${window.location.origin}/${lang}/user/verify-email`;
+      const emailRedirectTo = `${window.location.origin}/${lang}/auth/callback`;
 
-      const { error } = await supabase.auth.signUp({
+      const { error: signUpError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
-          emailRedirectTo: redirectTo,
+          emailRedirectTo,
           data: {
             first_name: formData.firstName,
             last_name: formData.lastName,
@@ -78,31 +91,39 @@ export default function SignUpPage() {
         },
       });
 
-      if (error) throw error;
+      if (signUpError) throw signUpError;
 
       setShowSuccess(true);
+      setLoading(false);
 
       setTimeout(() => {
         router.push(`/${lang}/user/verify-email?email=${encodeURIComponent(formData.email)}`);
-      }, 1800);
+      }, 1500);
     } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+      setError(err?.message || 'Something went wrong');
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white flex flex-col md:flex-row overflow-hidden relative" dir={isRtl ? 'rtl' : 'ltr'}>
+    <div
+      className="min-h-screen bg-[#000000] text-white flex flex-col md:flex-row overflow-hidden relative"
+      dir={isRtl ? 'rtl' : 'ltr'}
+    >
       <AnimatePresence>
         {showSuccess && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-2xl bg-black/60"
           >
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               {Array.from({ length: 50 }).map((_, i) => (
-                <ConfettiParticle key={i} color={i % 2 === 0 ? '#f59e0b' : '#22c55e'} />
+                <ConfettiParticle
+                  key={i}
+                  color={i % 2 === 0 ? '#f59e0b' : '#22c55e'}
+                />
               ))}
             </div>
 
@@ -118,9 +139,13 @@ export default function SignUpPage() {
                   <CheckCircle2 size={50} className="text-black" />
                 </div>
                 <div className="text-center">
-                  <h2 className="text-2xl font-black uppercase tracking-tighter">Check Your Email</h2>
+                  <h2 className="text-2xl font-black uppercase tracking-tighter">
+                    {isRtl ? 'ایمیل خود را بررسی کنید' : 'Check Your Email'}
+                  </h2>
                   <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-2">
-                    We have sent a verification link to your email address
+                    {isRtl
+                      ? 'لینک تایید به ایمیل شما ارسال شد'
+                      : 'We have sent a verification link to your email address'}
                   </p>
                 </div>
               </div>
@@ -156,11 +181,15 @@ export default function SignUpPage() {
             <div className="flex-1 space-y-6">
               <div className="flex items-center gap-2 text-amber-500">
                 <Sparkles size={20} />
-                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Join the Future</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">
+                  Join the Future
+                </span>
               </div>
+
               <h1 className="text-4xl font-black tracking-tighter leading-none">
                 CREATE <br /> <span className="text-amber-500">ACCOUNT</span>
               </h1>
+
               <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
                 {isRtl
                   ? 'به اولین سیستم بانکی متصل افغانستان و جهان بپیوندید. تمام فیلدها را با دقت و مطابق با اسناد قانونی خود پر کنید.'
@@ -171,65 +200,102 @@ export default function SignUpPage() {
             <div className="flex-[1.2] w-full">
               <form onSubmit={handleSignUp} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative group">
-                  <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
+                  <User
+                    className={`absolute top-1/2 -translate-y-1/2 ${
+                      isRtl ? 'left-5' : 'right-5'
+                    } text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`}
+                  />
                   <input
                     type="text"
                     required
                     placeholder={isRtl ? 'نام' : 'First Name'}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    value={formData.firstName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, firstName: e.target.value })
+                    }
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
 
                 <div className="relative group">
-                  <User className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
+                  <User
+                    className={`absolute top-1/2 -translate-y-1/2 ${
+                      isRtl ? 'left-5' : 'right-5'
+                    } text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`}
+                  />
                   <input
                     type="text"
                     required
                     placeholder={isRtl ? 'نام خانوادگی' : 'Last Name'}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    value={formData.lastName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, lastName: e.target.value })
+                    }
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
 
                 <div className="md:col-span-2 relative group">
-                  <Mail className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
+                  <Mail
+                    className={`absolute top-1/2 -translate-y-1/2 ${
+                      isRtl ? 'left-5' : 'right-5'
+                    } text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`}
+                  />
                   <input
                     type="email"
                     required
                     placeholder="Email Address"
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
 
                 <div className="md:col-span-2 relative group">
-                  <Lock className={`absolute top-1/2 -translate-y-1/2 ${isRtl ? 'left-5' : 'right-5'} text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`} />
+                  <Lock
+                    className={`absolute top-1/2 -translate-y-1/2 ${
+                      isRtl ? 'left-5' : 'right-5'
+                    } text-zinc-600 group-focus-within:text-amber-500 w-4 h-4`}
+                  />
                   <input
                     type="password"
                     required
                     placeholder="Password"
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                    value={formData.password}
+                    onChange={(e) =>
+                      setFormData({ ...formData, password: e.target.value })
+                    }
                     className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-amber-500/50 text-white font-bold text-sm"
                   />
                 </div>
 
-                {error && <p className="md:col-span-2 text-red-500 text-[10px] font-bold uppercase text-center">{error}</p>}
+                {error && (
+                  <p className="md:col-span-2 text-red-500 text-[10px] font-bold uppercase text-center">
+                    {error}
+                  </p>
+                )}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="md:col-span-2 bg-white text-black font-black py-5 rounded-2xl hover:bg-amber-500 transition-all duration-500 flex items-center justify-center gap-3 group mt-2 shadow-xl shadow-white/5"
+                  className="md:col-span-2 bg-white text-black font-black py-5 rounded-2xl hover:bg-amber-500 transition-all duration-500 flex items-center justify-center gap-3 group mt-2 shadow-xl shadow-white/5 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <span className="uppercase tracking-widest text-xs">
+                  <span className="uppercase tracking-widest text-xs flex items-center justify-center">
                     {loading ? <Loader2 className="animate-spin" /> : 'Register Securely'}
                   </span>
-                  {!loading && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+                  {!loading && (
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  )}
                 </button>
               </form>
 
               <div className="text-center pt-6">
-                <Link href={`/${lang}/user/login`} className="text-zinc-600 hover:text-white text-[10px] font-bold tracking-widest uppercase transition-all">
+                <Link
+                  href={`/${lang}/user/login`}
+                  className="text-zinc-600 hover:text-white text-[10px] font-bold tracking-widest uppercase transition-all"
+                >
                   Already a member? <span className="text-amber-500">Secure Login</span>
                 </Link>
               </div>
