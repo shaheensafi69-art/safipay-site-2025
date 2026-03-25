@@ -369,7 +369,7 @@ export default function FinalEliteDashboard() {
             <p className="text-zinc-500 text-xs font-bold uppercase tracking-[0.4em]">Welcome to SafiPay International</p>
           </div>
           <Link
-            href={`/${locale}/user/edit`}
+            href={`/${locale}/en/user/edit`}
             className="p-5 bg-white/5 rounded-[2rem] border border-white/5 hover:border-amber-500 transition-all group"
           >
             <Settings className="text-zinc-500 group-hover:rotate-90 group-hover:text-amber-500 transition-all duration-500" />
