@@ -274,7 +274,7 @@ export default function AboutUsPageEnglish() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative" dir="ltr">
+    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative" dir="rtl">
       <div className="fixed inset-0 z-0 pointer-events-none bg-[#050505]">
         <Canvas dpr={[1, 2]} gl={{ antialias: true, alpha: false }}>
           <AboutScene />
@@ -282,8 +282,8 @@ export default function AboutUsPageEnglish() {
       </div>
 
       <section className="relative z-10 pt-40 pb-28 overflow-hidden border-b border-white/5">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[140px] rounded-full translate-x-1/4 translate-y-1/4" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 blur-[140px] rounded-full -translate-x-1/4 translate-y-1/4" />
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span
@@ -478,7 +478,7 @@ export default function AboutUsPageEnglish() {
                 {coreValues.map((item, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.06 }}
@@ -566,7 +566,7 @@ export default function AboutUsPageEnglish() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 name: 'Shaheen Safi',
@@ -589,11 +589,18 @@ export default function AboutUsPageEnglish() {
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: 'border-green-500/30',
               },
+              {
+                name: 'Shirin Gol Ahmadi',
+                role: 'مديرة صافي بي',
+                img: '/shirin.jpeg',
+                href: `/${currentLang}/founder/shirin-gol-ahmadi`,
+                color: 'border-purple-500/30',
+              },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
                 <motion.div
                   whileHover={{ y: -10 }}
-                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden`}
+                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden h-full`}
                 >
                   <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
                     <Image
@@ -608,7 +615,7 @@ export default function AboutUsPageEnglish() {
                       <h4 className="text-xl font-black text-white italic">{member.name}</h4>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">{member.role}</p>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all shrink-0">
                       <ArrowUpRight size={20} />
                     </div>
                   </div>
@@ -629,7 +636,7 @@ export default function AboutUsPageEnglish() {
               هل أنت مستعد للانضمام إلى <br /> الاقتصاد العالمي
             </h2>
             <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-10">
-              يجري بناء SafiPay كجسر مالي جاد للجيل القادم من المستخدمين الأفغان. إذا كنت تريد أن تكون جزءاً من هذه المهمة، فاستكشف فرص الشراكة وساهم في تشكيل ما يأتي بعد ذلك.
+              يجري بناء SafiPay كجسر مالي جاد للجيل القادم من المستخدمين الأفغان. إذا كنت تريد أن تكون جزءاً من هذه المهمة, فاستكشف فرص الشراكة وساهم في تشكيل ما يأتي بعد ذلك.
             </p>
             <Link
               href={`/${currentLang}/partners`}

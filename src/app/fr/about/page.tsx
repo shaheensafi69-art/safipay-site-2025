@@ -181,7 +181,7 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Globe size={22} />,
       title: 'Accès mondial',
-      desc: 'Nous construisons des passerelles qui aident les Afghans à se connecter aux outils financiers internationaux, aux paiements numériques modernes et aux opportunités sans frontières.',
+      desc: 'We are building pathways that help Afghans connect with international financial tools, modern digital payments, and borderless opportunity.',
     },
     {
       icon: <Zap size={22} />,
@@ -319,7 +319,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.24 }}
             className="max-w-4xl mx-auto mt-6 text-base md:text-xl text-gray-500 leading-relaxed font-light"
           >
-            Ce système n’est pas simplement un outil de paiement, mais un concept d’écosystème centré sur l’utilisabilité, l’inclusion financière, l’infrastructure numérique, la sécurité et la valeur stratégique à long terme pour les particuliers et les entreprises afghanes.
+            Ce systeme n’est pas simplement un outil de paiement, mais un concept d’écosystème centré sur l’utilisabilité, l’inclusion financière, l’infrastructure numérique, la sécurité et la valeur stratégique à long terme pour les particuliers et les entreprises afghanes.
           </motion.p>
         </div>
       </section>
@@ -346,7 +346,7 @@ export default function AboutUsPageEnglish() {
                 Les freelances ont du mal à recevoir de l’argent. Les entreprises rencontrent des difficultés pour payer des outils mondiaux. Les familles n’ont pas de moyen simple de protéger la valeur de leurs actifs dans des devises plus fortes. Les professionnels, eux aussi, restent éloignés d’opportunités qui devraient déjà être à leur portée.
               </p>
               <p>
-                SafiPay est né de la nécessité de changer cette réalité. L’objectif est de créer une expérience financière plus pratique, plus sûre et plus internationale, façonnée précisément autour des besoins réels des Afghans.
+                SafiPay est né de la nécessité de changer cette reality. L’objectif est de créer une expérience financière plus pratique, plus sûre et plus internationale, façonnée précisément autour des besoins réels des Afghans.
               </p>
             </div>
           </motion.div>
@@ -566,7 +566,7 @@ export default function AboutUsPageEnglish() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 name: 'Shaheen Safi',
@@ -589,11 +589,18 @@ export default function AboutUsPageEnglish() {
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: 'border-green-500/30',
               },
+              {
+                name: 'Shirin Gol Ahmadi',
+                role: 'Manager de SafiPay',
+                img: '/shirin.jpeg',
+                href: `/${currentLang}/founder/shirin-gol-ahmadi`,
+                color: 'border-purple-500/30',
+              },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
                 <motion.div
                   whileHover={{ y: -10 }}
-                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden`}
+                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden h-full`}
                 >
                   <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
                     <Image
@@ -608,7 +615,7 @@ export default function AboutUsPageEnglish() {
                       <h4 className="text-xl font-black text-white italic">{member.name}</h4>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">{member.role}</p>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all shrink-0">
                       <ArrowUpRight size={20} />
                     </div>
                   </div>

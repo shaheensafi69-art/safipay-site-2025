@@ -176,22 +176,22 @@ export default function AboutUsPageEnglish() {
     {
       icon: <ShieldCheck size={22} />,
       title: 'امنیت در اولویت',
-      desc: 'هر لایه از اکوسیستم SafiPay بر پایه اعتماد، محافظت، دسترسی رمزنگاری‌شده و پایداری بلندمدت پلتفرم طراحی شده است.',
+      desc: 'هر لایه از اکوسیستم صافی‌پی بر اساس اعتماد، حفاظت، دسترسی رمزنگاری‌شده و پایداری بلندمدت پلتفرم طراحی شده است.',
     },
     {
       icon: <Globe size={22} />,
       title: 'دسترسی جهانی',
-      desc: 'ما در حال ساخت مسیرهایی هستیم که به افغان‌ها کمک می‌کند به ابزارهای مالی بین‌المللی، پرداخت‌های دیجیتال مدرن و فرصت‌های بدون مرز متصل شوند.',
+      desc: 'ما در حال ساخت مسیرهایی هستیم که به افغان‌ها کمک می‌کند تا با ابزارهای مالی بین‌المللی، پرداخت‌های دیجیتال مدرن و فرصت‌های بدون مرز ارتباط برقرار کنند.',
     },
     {
       icon: <Zap size={22} />,
       title: 'سرعت و سادگی',
-      desc: 'دسترسی مالی نباید کند، گیج‌کننده یا وابسته به سیستم‌های قدیمی باشد. SafiPay طوری طراحی شده که سریع، تمیز و مدرن احساس شود.',
+      desc: 'دسترسی مالی نباید کند، گیج‌کننده یا وابسته به سیستم‌های قدیمی باشد. صافی‌پی طوری طراحی شده که سریع، تمیز و مدرن احساس شود.',
     },
     {
       icon: <Target size={22} />,
       title: 'کاربرد واقعی',
-      desc: 'ماموریت ما فقط نوآوری ظاهری نیست. هدف ما ایجاد تأثیر عملی برای فریلنسرها، کسب‌وکارها، خانواده‌ها و متخصصان دیجیتال است.',
+      desc: 'ماموریت ما فقط نوآوری بصری نیست. هدف ما ایجاد تاثیر عملی برای فریلنسرها، کسب‌وکارها، خانواده‌ها و متخصصان دیجیتال است.',
     },
   ];
 
@@ -199,32 +199,32 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Landmark size={22} />,
       title: 'دسترسی مالی بین‌المللی',
-      desc: 'SafiPay تلاش می‌کند به کاربران افغان دسترسی به ابزارهای مالی قوی‌تر و کاربردی‌تری بدهد که آن‌ها را به اقتصاد دیجیتال گسترده‌تر متصل می‌کند.',
+      desc: 'صافی‌پی قصد دارد به کاربران افغان دسترسی به ابزارهای مالی قوی‌تر و کاربردی‌تری بدهد که آن‌ها را به اقتصاد دیجیتال گسترده‌تر متصل کند.',
     },
     {
       icon: <Wallet size={22} />,
       title: 'قابلیت چند ارزی',
-      desc: 'نگهداری و مدیریت ارزش در ارزهای بزرگ، محافظت بیشتر، انعطاف‌پذیری بالاتر و اعتماد مالی قوی‌تری ایجاد می‌کند.',
+      desc: 'نگهداری و مدیریت سرمایه در ارزهای معتبر، باعث ایجاد حفاظت بیشتر، انعطاف‌پذیری بالاتر و اعتماد مالی قوی‌تر می‌شود.',
     },
     {
       icon: <CreditCard size={22} />,
       title: 'زیرساخت کارت دیجیتال',
-      desc: 'راهکارهای کارت مجازی و فیزیکی بخشی از چشم‌انداز گسترده‌تر برای فعال‌سازی خریدها، اشتراک‌ها، خدمات جهانی و تجارت آنلاین هستند.',
+      desc: 'راه‌حل‌های کارت مجازی و فیزیکی بخشی از چشم‌انداز گسترده‌تر ما برای امکان‌پذیر ساختن خریدها، اشتراک‌ها، خدمات جهانی و تجارت آنلاین هستند.',
     },
     {
       icon: <Banknote size={22} />,
-      title: 'انتقال هوشمندتر پول',
-      desc: 'ما بر کاهش اصطکاک، کم کردن وابستگی به سیستم‌های ناکارآمد و بهبود نحوه جابه‌جایی ارزش توسط کاربران در مرزها تمرکز داریم.',
+      title: 'جابجایی هوشمندانه‌تر پول',
+      desc: 'تمرکز ما بر کاهش اصطکاک، کاهش وابستگی به سیستم‌های ناکارآمد و بهبود نحوه جابجایی سرمایه توسط کاربران در سراسر مرزها است.',
     },
     {
       icon: <Network size={22} />,
       title: 'اکوسیستم مالی متصل',
-      desc: 'SafiPay به‌عنوان یک محصول تک‌ویژگی برنامه‌ریزی نشده است. این سیستم به‌صورت یک اکوسیستم شکل می‌گیرد که در آن پرداخت، دسترسی، امنیت و کاربردپذیری با هم کار می‌کنند.',
+      desc: 'صافی‌پی به عنوان یک محصول تک‌ویژگی برنامه‌ریزی نشده است. این پلتفرم اکوسیستمی است که در آن پرداخت‌ها، دسترسی، امنیت و قابلیت استفاده در کنار هم کار می‌کنند.',
     },
     {
       icon: <BadgeCheck size={22} />,
-      title: 'نگرش جدی به انطباق',
-      desc: 'رشد بلندمدت به عملیات ساختارمند، پاسخ‌گویی، آن‌بوردینگ کنترل‌شده و معماری مالی مسئولانه وابسته است.',
+      title: 'رویکرد جدی به انطباق',
+      desc: 'رشد بلندمدت به عملیات ساختاریافته، پاسخگویی، پذیرش کنترل‌شده کاربران و معماری مالی مسئولانه بستگی دارد.',
     },
   ];
 
@@ -232,17 +232,17 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Users size={22} />,
       title: 'برای افراد',
-      desc: 'افرادی که به یک روش مدرن‌تر برای دسترسی به خدمات مالی، نگهداری امن‌تر ارزش و مشارکت در پرداخت‌های آنلاین نیاز دارند.',
+      desc: 'افرادی که به راهی مدرن‌تر برای دسترسی به خدمات مالی، نگهداری امن‌تر سرمایه و مشارکت در پرداخت‌های آنلاین نیاز دارند.',
     },
     {
       icon: <Briefcase size={22} />,
       title: 'برای فریلنسرها',
-      desc: 'حرفه‌ای‌هایی که می‌خواهند سیستم بهتری برای دریافت پول، پرداخت ابزارها و کار با مشتریان بین‌المللی داشته باشند.',
+      desc: 'متخصصانی که خواهان سیستم بهتری برای دریافت پول، پرداخت هزینه ابزارها و کار با مشتریان بین‌المللی هستند.',
     },
     {
       icon: <Building2 size={22} />,
       title: 'برای کسب‌وکارها',
-      desc: 'شرکت‌ها و تیم‌های دیجیتال که به اشتراک‌ها، پرداخت‌های بین‌المللی، انعطاف عملیاتی و دید مالی قوی‌تر نیاز دارند.',
+      desc: 'شرکت‌ها و تیم‌های دیجیتالی که به اشتراک‌ها، پرداخت‌های بین‌المللی، انعطاف‌پذیری عملیاتی و دیداری مالی قوی‌تر نیاز دارند.',
     },
   ];
 
@@ -250,31 +250,31 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Cpu size={24} />,
       title: 'منطق ریسک مبتنی بر هوش مصنوعی',
-      desc: 'نظارت پیشرفته و سیستم‌های هوشمند می‌توانند از آگاهی نسبت به ریسک، کاهش تقلب و لایه‌های تصمیم‌گیری بهتر پشتیبانی کنند.',
+      desc: 'نظارت پیشرفته و سیستم‌های هوشمند می‌توانند از آگاهی از ریسک، کاهش تقلب و تصمیم‌گیری بهتر پشتیبانی کنند.',
       color: 'text-amber-500 bg-amber-500/10',
     },
     {
       icon: <Network size={24} />,
       title: 'زیرساخت شفاف',
-      desc: 'زیرساخت مدرن، توزیع‌شده و دیجیتال‌محور به ایجاد دید بهتر، کنترل قوی‌تر و منطق مالی مقیاس‌پذیر کمک می‌کند.',
+      desc: 'زیرساخت مدرن، توزیع‌شده و دیجیتال-محور به ایجاد شفافیت قوی‌تر، کنترل بهتر و منطق مالی مقیاس‌پذیر کمک می‌کند.',
       color: 'text-blue-500 bg-blue-500/10',
     },
     {
       icon: <Wallet size={24} />,
       title: 'معماری کیف پول هوشمند',
-      desc: 'یک تجربه کیف پول پریمیوم باید از راحتی، تفکیک ارزها، شفافیت حساب و کنترل روان‌تر کاربر پشتیبانی کند.',
+      desc: 'یک تجربه کیف پول ممتاز باید از راحتی، تفکیک ارزها، شفافیت حساب و کنترل روان‌تر کاربر پشتیبانی کند.',
       color: 'text-green-500 bg-green-500/10',
     },
     {
       icon: <Layers3 size={24} />,
       title: 'طراحی اکوسیستم مقیاس‌پذیر',
-      desc: 'SafiPay به‌عنوان یک ساختار لایه‌ای فین‌تک تصور شده که می‌تواند به محصولات گسترده‌تر، یکپارچه‌سازی‌ها و خدمات مالی باارزش‌تر توسعه یابد.',
+      desc: 'صافی‌پی به عنوان یک ساختار فین‌تک لایه‌بندی شده طراحی شده که می‌تواند به محصولات گسترده‌تر و خدمات مالی با ارزش بالاتر تکامل یابد.',
       color: 'text-purple-400 bg-purple-500/10',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative" dir="ltr">
+    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative" dir="rtl">
       <div className="fixed inset-0 z-0 pointer-events-none bg-[#050505]">
         <Canvas dpr={[1, 2]} gl={{ antialias: true, alpha: false }}>
           <AboutScene />
@@ -282,14 +282,14 @@ export default function AboutUsPageEnglish() {
       </div>
 
       <section className="relative z-10 pt-40 pb-28 overflow-hidden border-b border-white/5">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[140px] rounded-full translate-x-1/4 translate-y-1/4" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 blur-[140px] rounded-full -translate-x-1/4 translate-y-1/4" />
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-[11px] font-black tracking-[0.28em] uppercase"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-xs font-black tracking-wider uppercase"
           >
             <Sparkles size={14} />
             بازنویسی آینده مالی افغانستان
@@ -299,9 +299,9 @@ export default function AboutUsPageEnglish() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-8 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter leading-[0.95]"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-8 bg-gradient-to-l from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic leading-[1.1]"
           >
-            اکوسیستم <br /> SAFIPAY
+            اکوسیستم <br /> صافی‌پی
           </motion.h1>
 
           <motion.p
@@ -310,7 +310,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.16 }}
             className="max-w-4xl mx-auto text-lg md:text-2xl text-gray-300 leading-relaxed font-light"
           >
-            SafiPay یک چشم‌انداز مدرن فین‌تک فرامرزی است که برای کاهش انزوای مالی، ایجاد دسترسی بین‌المللی و ساخت پلی قوی‌تر میان افغانستان و اقتصاد دیجیتال جهانی ساخته شده است.
+            صافی‌پی یک چشم‌انداز مدرن فین‌تک فرامرزی است که برای کاهش انزوای مالی، دسترسی بین‌المللی و ایجاد پلی قوی‌تر بین افغانستان و اقتصاد دیجیتال جهانی ساخته شده است.
           </motion.p>
 
           <motion.p
@@ -319,7 +319,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.24 }}
             className="max-w-4xl mx-auto mt-6 text-base md:text-xl text-gray-500 leading-relaxed font-light"
           >
-            این سیستم فقط یک ابزار پرداخت نیست. بلکه یک مفهوم اکوسیستمی است که بر کاربردپذیری، شمول مالی، زیرساخت دیجیتال، امنیت و ارزش استراتژیک بلندمدت برای افراد و کسب‌وکارهای افغان تمرکز دارد.
+            این پلتفرم فراتر از یک ابزار پرداخت طراحی شده است. این یک مفهوم اکوسیستمی است که بر قابلیت استفاده، شمول مالی، زیرساخت دیجیتال، امنیت و ارزش استراتژیک بلندمدت برای افراد و کسب‌وکارهای افغان تمرکز دارد.
           </motion.p>
         </div>
       </section>
@@ -335,18 +335,18 @@ export default function AboutUsPageEnglish() {
             <div className="inline-flex p-4 rounded-3xl bg-amber-500/10 text-amber-500 mb-6">
               <Rocket size={30} />
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white italic uppercase mb-6">
-              چرا SafiPay متولد شد
+            <h2 className="text-3xl md:text-5xl font-black text-white italic mb-6">
+              چرا صافی‌پی متولد شد؟
             </h2>
             <div className="space-y-5 text-gray-300 text-lg leading-8 font-light">
               <p>
-                افغانستان با پراکندگی شدید مالی روبه‌رو بوده است. دسترسی سنتی به بانکداری همچنان محدود است، اتصال بین‌المللی ضعیف مانده و بسیاری از مردم هنوز از سیستم‌های مالی مدرن محروم هستند.
+                افغانستان با گسستگی شدید مالی مواجه بوده است. دسترسی به بانکداری سنتی محدود مانده، ارتباطات بین‌المللی ضعیف است و بسیاری از مردم هنوز از سیستم‌های مالی مدرن محروم هستند.
               </p>
               <p>
-                فریلنسرها برای دریافت پول مشکل دارند. کسب‌وکارها در پرداخت برای ابزارهای جهانی با دشواری روبه‌رو هستند. خانواده‌ها راه ساده‌ای برای حفظ ارزش دارایی خود در ارزهای قوی‌تر ندارند. متخصصان نیز از فرصت‌هایی که باید در دسترس‌شان باشد، دور مانده‌اند.
+                فریلنسرها برای دریافت پول با مشکل مواجه‌اند. کسب‌وکارها در پرداخت هزینه ابزارهای جهانی مشکل دارند. خانواده‌ها راه‌های ساده‌ای برای حفظ ارزش پول خود در قالب ارزهای قوی‌تر ندارند. متخصصان از فرصت‌هایی که باید در دسترسشان باشد، دور مانده‌اند.
               </p>
               <p>
-                SafiPay از نیاز به تغییر این واقعیت متولد شد. هدف، ساخت یک تجربه مالی کاربردی‌تر، امن‌تر و بین‌المللی‌تر است که دقیقاً بر اساس نیازهای واقعی افغان‌ها شکل گرفته باشد.
+                صافی‌پی از نیاز به تغییر این واقعیت متولد شد. هدف، ایجاد یک تجربه مالی کاربردی‌تر، امن‌تر و با آگاهی بین‌المللی است که مشخصاً بر اساس نیازهای واقعی افغان‌ها ساخته شده است.
               </p>
             </div>
           </motion.div>
@@ -356,18 +356,18 @@ export default function AboutUsPageEnglish() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="rounded-[2.5rem] border border-amber-500/15 bg-gradient-to-br from-amber-500/10 to-transparent p-8 md:p-10"
+            className="rounded-[2.5rem] border border-amber-500/15 bg-gradient-to-bl from-amber-500/10 to-transparent p-8 md:p-10"
           >
             <div className="inline-flex p-4 rounded-3xl bg-white/5 text-amber-400 mb-6">
               <Target size={30} />
             </div>
-            <h2 className="text-3xl md:text-5xl font-black text-white italic uppercase mb-6">
+            <h2 className="text-3xl md:text-5xl font-black text-white italic mb-6">
               ماموریت اصلی
             </h2>
             <div className="space-y-4">
               {[
-                'شکستن انزوای مالی برای کاربران افغان',
-                'ایجاد دسترسی به امور مالی دیجیتال بین‌المللی',
+                'پایان دادن به انزوای مالی برای کاربران افغان',
+                'ایجاد دسترسی به مالیه دیجیتال بین‌المللی',
                 'کاهش وابستگی به سیستم‌های قدیمی',
                 'حمایت از فریلنسرها، خانواده‌ها و کسب‌وکارها',
                 'ایجاد یک برند فین‌تک جدی، امن و مقیاس‌پذیر',
@@ -385,11 +385,11 @@ export default function AboutUsPageEnglish() {
       <section className="relative z-10 py-28 bg-[#080808]/80 border-y border-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-6">
-              بحرانی که <span className="text-amber-500">حل می‌کنیم</span>
+            <h2 className="text-4xl md:text-6xl font-black italic text-white mb-6">
+              بحرانی که ما <span className="text-amber-500">حل می‌کنیم</span>
             </h2>
             <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
-              SafiPay بر اساس مشکلات ساختاری واقعی شکل می‌گیرد، نه مسائل خیالی. این یک پاسخ به دردهای مالی واقعی است که میلیون‌ها نفر با آن روبه‌رو هستند.
+              صافی‌پی حول مشکلات ساختاری واقعی شکل گرفته است، نه مشکلات خیالی. این پاسخی به نقاط درد مالی واقعی است که میلیون‌ها نفر با آن مواجه‌اند.
             </p>
           </div>
 
@@ -398,22 +398,22 @@ export default function AboutUsPageEnglish() {
               {
                 icon: <Globe size={22} />,
                 title: 'انزوای جهانی',
-                desc: 'ادغام ضعیف با سیستم‌های بانکی بین‌المللی، مشارکت دیجیتال را بسیار دشوارتر از آنچه باید باشد می‌کند.',
+                desc: 'یکپارچگی ضعیف با سیستم‌های بانکی بین‌المللی، مشارکت دیجیتال را بسیار دشوارتر از آنچه باید باشد، کرده است.',
               },
               {
                 icon: <Banknote size={22} />,
                 title: 'انتقال‌های پرهزینه',
-                desc: 'کانال‌های غیررسمی و ناکارآمد اغلب هزینه‌های بالاتر، شفافیت کمتر و اعتماد مالی ضعیف‌تری ایجاد می‌کنند.',
+                desc: 'کانال‌های غیررسمی و ناکارآمد اغلب باعث هزینه‌های بالاتر، شفافیت کمتر و اعتماد مالی ضعیف‌تر می‌شوند.',
               },
               {
                 icon: <CreditCard size={22} />,
                 title: 'موانع پرداخت',
-                desc: 'بسیاری از کاربران هنوز در پرداخت برای پلتفرم‌ها، اشتراک‌ها، خدمات، هاستینگ، ابزارها و تجارت آنلاین با مشکل روبه‌رو هستند.',
+                desc: 'بسیاری از کاربران هنوز در پرداخت هزینه پلتفرم‌ها، اشتراک‌ها، خدمات، هاستینگ، ابزارها و تجارت آنلاین با مشکل مواجه هستند.',
               },
               {
                 icon: <Landmark size={22} />,
-                title: 'دسترسی محدود مدرن',
-                desc: 'ابزارهای مالی حرفه‌ای که در جاهای دیگر رایج هستند، برای بسیاری از افغان‌ها همچنان غیرقابل دسترس یا پراکنده مانده‌اند.',
+                title: 'دسترسی محدود به امکانات مدرن',
+                desc: 'ابزارهای مالی حرفه‌ای که در جاهای دیگر رایج هستند، برای بسیاری از افغان‌ها غیرقابل دسترس یا پراکنده باقی مانده‌اند.',
               },
             ].map((item, i) => (
               <motion.div
@@ -438,11 +438,11 @@ export default function AboutUsPageEnglish() {
 
       <section className="relative z-10 py-28 container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-6">
-            چه چیزی <span className="text-amber-500">SafiPay را متفاوت می‌سازد</span>
+          <h2 className="text-4xl md:text-6xl font-black italic text-white mb-6">
+            چه چیزی صافی‌پی را <span className="text-amber-500">متمایز می‌کند؟</span>
           </h2>
           <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
-            SafiPay به‌عنوان یک اکوسیستم مالی باارزش بالا تصور شده، نه یک رابط تک‌ویژگی محدود.
+            صافی‌پی به عنوان یک اکوسیستم مالی با ارزش بالا در نظر گرفته شده است، نه یک رابط کاربری محدود با تنها یک ویژگی.
           </p>
         </div>
 
@@ -471,14 +471,14 @@ export default function AboutUsPageEnglish() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase mb-8">
+              <h2 className="text-4xl md:text-5xl font-black text-white italic mb-8">
                 ارزش‌های اصلی و اصول استراتژیک
               </h2>
               <div className="grid gap-5">
                 {coreValues.map((item, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.06 }}
@@ -502,8 +502,8 @@ export default function AboutUsPageEnglish() {
                 <div className="inline-flex p-4 rounded-3xl bg-amber-500/10 text-amber-500 mb-6">
                   <Layers3 size={30} />
                 </div>
-                <h3 className="text-3xl font-black text-white mb-8 italic uppercase">
-                  تکنالوژی اکوسیستم
+                <h3 className="text-3xl font-black text-white mb-8 italic">
+                  فناوری اکوسیستم
                 </h3>
                 <div className="space-y-6">
                   {technologyLayers.map((item, i) => (
@@ -526,11 +526,11 @@ export default function AboutUsPageEnglish() {
 
       <section className="relative z-10 py-28 container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-6">
-            SafiPay برای <span className="text-amber-500">چه کسانی ساخته شده</span>
+          <h2 className="text-4xl md:text-6xl font-black italic text-white mb-6">
+            صافی‌پی برای چه کسانی <span className="text-amber-500">ساخته شده است؟</span>
           </h2>
           <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
-            این پلتفرم برای استفاده اقتصادی واقعی طراحی شده، نه برای زبان برندینگ انتزاعی.
+            این پلتفرم برای استفاده واقعی اقتصادی طراحی شده است، نه صرفاً زبان برندسازی انتزاعی.
           </p>
         </div>
 
@@ -558,42 +558,49 @@ export default function AboutUsPageEnglish() {
       <section className="relative z-10 py-32 bg-[#080808]/80 border-y border-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-4">
+            <h2 className="text-4xl md:text-6xl font-black italic text-white mb-4">
               تیم رهبری
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto font-light text-lg leading-relaxed">
-              ذهن‌های استراتژیکی که پشت چشم‌انداز SafiPay قرار دارند، بر ساخت یک اکوسیستم مالی معتبر، آینده‌محور و دارای اهمیت جدی منطقه‌ای تمرکز دارند.
+              مغزهای استراتژیک در پس چشم‌انداز صافی‌پی بر روی ساخت یک اکوسیستم مالی معتبر و آینده‌نگر با اهمیت جدی منطقه‌ای متمرکز هستند.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: 'Shaheen Safi',
+                name: 'شاهین صافی (Shaheen Safi)',
                 role: 'بنیان‌گذار و مدیرعامل',
                 img: '/shaheen.jpeg',
                 href: `/${currentLang}/founder/shaheen-safi`,
                 color: 'border-amber-500/30',
               },
               {
-                name: 'Mujtaba Rahmani',
-                role: 'هم‌بنیان‌گذار و مدیر تخنیکی',
+                name: 'مجتبی رحمانی (Mujtaba Rahmani)',
+                role: 'هم‌بنیان‌گذار و مدیر فنی',
                 img: '/mujtaba.jpeg',
                 href: `/${currentLang}/founder/mujtaba-rahmani`,
                 color: 'border-blue-500/30',
               },
               {
-                name: 'Sahel Salem',
+                name: 'ساحل سالم (Sahel Salem)',
                 role: 'رهبر اکوسیستم',
                 img: '/sahel.jpeg',
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: 'border-green-500/30',
               },
+              {
+                name: 'شیرین گل احمدی (Shirin Gol Ahmadi)',
+                role: 'مدیر',
+                img: '/shirin.jpeg',
+                href: `/${currentLang}/founder/shirin-gol-ahmadi`,
+                color: 'border-purple-500/30',
+              },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
                 <motion.div
                   whileHover={{ y: -10 }}
-                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden`}
+                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden h-full`}
                 >
                   <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
                     <Image
@@ -606,10 +613,10 @@ export default function AboutUsPageEnglish() {
                   <div className="flex justify-between items-end px-2 pb-2">
                     <div>
                       <h4 className="text-xl font-black text-white italic">{member.name}</h4>
-                      <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">{member.role}</p>
+                      <p className="text-xs text-gray-500 font-bold tracking-widest mt-1">{member.role}</p>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
-                      <ArrowUpRight size={20} />
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all shrink-0">
+                      <ArrowUpRight size={20} className="rotate-180 group-hover:rotate-0 transition-transform" />
                     </div>
                   </div>
                 </motion.div>
@@ -622,21 +629,21 @@ export default function AboutUsPageEnglish() {
       <section className="relative z-10 py-32 container mx-auto px-6">
         <div className="relative p-12 md:p-16 rounded-[3rem] overflow-hidden text-center border border-white/5">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-600/10 to-transparent" />
-          <div className="absolute top-0 left-0 w-72 h-72 bg-amber-500/10 blur-[120px] rounded-full" />
+          <div className="absolute top-0 right-0 w-72 h-72 bg-amber-500/10 blur-[120px] rounded-full" />
 
           <div className="relative z-10 max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase leading-tight">
-              آماده پیوستن به <br /> اقتصاد جهانی هستید
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic leading-tight">
+              آماده پیوستن به <br /> اقتصاد جهانی هستید؟
             </h2>
             <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-10">
-              SafiPay به‌عنوان یک پل مالی جدی برای نسل بعدی کاربران افغان ساخته می‌شود. اگر می‌خواهید بخشی از این ماموریت باشید، فرصت‌های شراکت را بررسی کنید و به شکل‌دهی آینده کمک نمایید.
+              صافی‌پی به عنوان یک پل مالی جدی برای نسل بعدی کاربران افغان ساخته می‌شود. اگر می‌خواهید بخشی از این ماموریت باشید، فرصت‌های همکاری را بررسی کنید و به شکل‌گیری آینده کمک کنید.
             </p>
             <Link
               href={`/${currentLang}/partners`}
               className="inline-flex items-center gap-4 px-12 py-5 bg-amber-500 text-black font-black text-lg rounded-2xl hover:bg-white transition-all group"
             >
               با ما شریک شوید
-              <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="group-hover:-translate-x-2 transition-transform rotate-180" />
             </Link>
           </div>
         </div>

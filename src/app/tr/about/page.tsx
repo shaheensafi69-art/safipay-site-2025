@@ -170,105 +170,105 @@ function AboutScene() {
 
 export default function AboutUsPageEnglish() {
   const pathname = usePathname();
-  const currentLang = pathname?.split('/')[1] || 'ru';
+  const currentLang = pathname?.split('/')[1] || 'tr';
 
   const coreValues = [
     {
       icon: <ShieldCheck size={22} />,
-      title: 'Безопасность прежде всего',
-      desc: 'Каждый слой экосистемы SafiPay разработан на основе доверия, защиты, зашифрованного доступа и долгосрочной устойчивости платформы.',
+      title: 'Önce Güvenlik',
+      desc: 'SafiPay ekosisteminin her katmanı güven, koruma, şifreli erişim ve uzun vadeli platform dayanıklılığı üzerine tasarlanmıştır.',
     },
     {
       icon: <Globe size={22} />,
-      title: 'Глобальный доступ',
-      desc: 'Мы создаём пути, которые помогают афганцам подключаться к международным финансовым инструментам, современным цифровым платежам и безграничным возможностям.',
+      title: 'Küresel Erişim',
+      desc: 'Afganların uluslararası finansal araçlara, modern dijital ödemelere ve sınırsız fırsatlara bağlanmasına yardımcı olan yollar inşa ediyoruz.',
     },
     {
       icon: <Zap size={22} />,
-      title: 'Скорость и простота',
-      desc: 'Финансовый доступ не должен быть медленным, запутанным или зависеть от устаревших систем. SafiPay разработан так, чтобы ощущаться быстрым, чистым и современным.',
+      title: 'Hız & Sadelik',
+      desc: 'Finansal erişim yavaş, kafa karıştırıcı veya modası geçmiş sistemlere bağımlı olmamalıdır. SafiPay hızlı, temiz ve modern hissettirecek şekilde tasarlanmıştır.',
     },
     {
       icon: <Target size={22} />,
-      title: 'Реальная польза',
-      desc: 'Наша миссия — не только визуальные инновации. Наша цель — создавать практическое влияние для фрилансеров, компаний, семей и цифровых специалистов.',
+      title: 'Gerçek Fayda',
+      desc: 'Misyonumuz sadece görsel inovasyon değil; serbest çalışanlar, işletmeler, ailelerและ dijital profesyoneller için pratik bir etki yaratmaktır.',
     },
   ];
 
   const ecosystemBlocks = [
     {
       icon: <Landmark size={22} />,
-      title: 'Международный финансовый доступ',
-      desc: 'SafiPay стремится предоставить афганским пользователям доступ к более сильным и практичным финансовым инструментам, соединяющим их с более широкой цифровой экономикой.',
+      title: 'Uluslararası Finansal Erişim',
+      desc: 'SafiPay, Afgan kullanıcılara onları daha geniş dijital ekonomiye bağlayan daha güçlü ve pratik finansal araçlara erişim sunmayı amaçlar.',
     },
     {
       icon: <Wallet size={22} />,
-      title: 'Поддержка мультивалютности',
-      desc: 'Хранение и управление ценностью в основных валютах обеспечивает большую защиту, более высокую гибкость и более сильную финансовую уверенность.',
+      title: 'Çoklu Para Birimi Yeteneği',
+      desc: 'Büyük para birimlerinde değer tutmak ve yönetmek daha fazla koruma, daha fazla esneklik ve daha güçlü bir finansal güven yaratır.',
     },
     {
       icon: <CreditCard size={22} />,
-      title: 'Инфраструктура цифровых карт',
-      desc: 'Решения с виртуальными и физическими картами являются частью более широкого видения, которое должно активировать покупки, подписки, глобальные услуги и онлайн-коммерцию.',
+      title: 'Dijital Kart Altyapısı',
+      desc: 'Sanal ve fiziksel kart çözümleri; satın alma, abonelik, küresel hizmetler ve çevrimiçi ticareti etkinleştirmeye yönelik daha geniş bir vizyonun parçasıdır.',
     },
     {
       icon: <Banknote size={22} />,
-      title: 'Более умное движение денег',
-      desc: 'Мы сосредоточены на снижении трения, уменьшении зависимости от неэффективных систем и улучшении того, как пользователи перемещают ценность через границы.',
+      title: 'Daha Akıllı Para Hareketi',
+      desc: 'Sürtünmeyi azaltmaya, verimsiz sistemlere olan bağımlılığı düşürmeye ve kullanıcıların sınırların ötesine değer taşıma şeklini iyileştirmeye odaklanıyoruz.',
     },
     {
       icon: <Network size={22} />,
-      title: 'Связанная финансовая экосистема',
-      desc: 'SafiPay не был задуман как продукт с одной функцией. Он развивается как экосистема, в которой платежи, доступ, безопасность и удобство использования работают вместе.',
+      title: 'Bağlantılı Finansal Ekosistem',
+      desc: 'SafiPay tek özellikli bir ürün olarak planlanmadı. Ödemelerin, erişimin, güvenliğin ve kullanılabilirliğin birlikte çalıştığı bir ekosistem olarak şekillendiriliyor.',
     },
     {
       icon: <BadgeCheck size={22} />,
-      title: 'Серьёзный подход к соответствию',
-      desc: 'Долгосрочный рост зависит от структурированных операций, подотчётности, контролируемого онбординга и ответственной финансовой архитектуры.',
+      title: 'Ciddi Uyum Anlayışı',
+      desc: 'Uzun vadeli büyüme; yapılandırılmış operasyonlara, hesap verebilirliğe, kontrollü ilk katılım süreçlerine ve sorumlu finansal mimariye bağlıdır.',
     },
   ];
 
   const useCases = [
     {
       icon: <Users size={22} />,
-      title: 'Для частных лиц',
-      desc: 'Для людей, которым нужен более современный способ доступа к финансовым услугам, более безопасного сохранения ценности и участия в онлайн-платежах.',
+      title: 'Bireyler İçin',
+      desc: 'Finansal hizmetlere erişmek, değerleri daha güvenli tutmak ve çevrimiçi ödemelere katılmak için daha modern bir yola ihtiyaç duyan insanlar.',
     },
     {
       icon: <Briefcase size={22} />,
-      title: 'Для фрилансеров',
-      desc: 'Для специалистов, которым нужна лучшая система для получения денег, оплаты инструментов и работы с международными клиентами.',
+      title: 'Freelancerlar İçin',
+      desc: 'Para almak, araçlar için ödeme yapmak ve uluslararası müşterilerle çalışmak için daha iyi bir sistem isteyen profesyoneller.',
     },
     {
       icon: <Building2 size={22} />,
-      title: 'Для компаний',
-      desc: 'Для компаний и цифровых команд, которым нужны подписки, международные платежи, операционная гибкость и более сильная финансовая прозрачность.',
+      title: 'İşletmeler İçin',
+      desc: 'Aboneliklere, uluslararası ödemelere, operasyonel esnekliğe ve daha güçlü finansal görünürlüğe ihtiyaç duyan şirketler ve dijital ekipler.',
     },
   ];
 
   const technologyLayers = [
     {
       icon: <Cpu size={24} />,
-      title: 'Логика рисков на базе ИИ',
-      desc: 'Продвинутый мониторинг и интеллектуальные системы могут поддерживать осведомлённость о рисках, снижение мошенничества и улучшение уровней принятия решений.',
+      title: 'Yapay Zeka Destekli Risk Mantığı',
+      desc: 'Gelişmiş izleme ve akıllı sistemler risk farkındalığını, dolandırıcılığın azaltılmasını ve daha iyi karar alma katmanlarını destekleyebilir.',
       color: 'text-amber-500 bg-amber-500/10',
     },
     {
       icon: <Network size={24} />,
-      title: 'Прозрачная инфраструктура',
-      desc: 'Современная, распределённая и цифрово-ориентированная инфраструктура помогает создавать лучшую видимость, более сильный контроль и масштабируемую финансовую логику.',
+      title: 'Şeffaf Altyapı',
+      desc: 'Modern, dağıtık ve dijital öncelikli altyapı, daha güçlü görünürlük, daha iyi kontrol ve ölçeklenebilir finansal mantık oluşturmaya yardımcı olur.',
       color: 'text-blue-500 bg-blue-500/10',
     },
     {
       icon: <Wallet size={24} />,
-      title: 'Архитектура умного кошелька',
-      desc: 'Премиальный опыт использования кошелька должен поддерживать удобство, разделение валют, прозрачность счёта и более плавный контроль пользователя.',
+      title: 'Akıllı Cüzdan Mimarisi',
+      desc: 'Premium bir cüzdan deneyimi kolaylığı, para birimi ayrımını, hesap netliğini и daha sorunsuz kullanıcı kontrolünü desteklemelidir.',
       color: 'text-green-500 bg-green-500/10',
     },
     {
       icon: <Layers3 size={24} />,
-      title: 'Масштабируемый дизайн экосистемы',
-      desc: 'SafiPay задуман как многоуровневая финтех-структура, которая может развиваться в более широкие продукты, интеграции и более ценные финансовые услуги.',
+      title: 'Ölçeklenebilir Ekosistem Tasarımı',
+      desc: 'SafiPay, daha geniş ürünlere, entegrasyonlara ve daha yüksek değerli finansal hizmetlere dönüşebilen katmanlı bir fintech yapısı olarak öngörülmektedir.',
       color: 'text-purple-400 bg-purple-500/10',
     },
   ];
@@ -292,7 +292,7 @@ export default function AboutUsPageEnglish() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-[11px] font-black tracking-[0.28em] uppercase"
           >
             <Sparkles size={14} />
-            Переписывая финансовое будущее Афганистана
+            Afganistan'ın Finansal Geleceğini Yeniden Yazıyoruz
           </motion.span>
 
           <motion.h1
@@ -301,7 +301,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.08 }}
             className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-8 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter leading-[0.95]"
           >
-            ЭКОСИСТЕМА <br /> SAFIPAY
+            SAFIPAY <br /> EKOSİSTEMİ
           </motion.h1>
 
           <motion.p
@@ -310,7 +310,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.16 }}
             className="max-w-4xl mx-auto text-lg md:text-2xl text-gray-300 leading-relaxed font-light"
           >
-            SafiPay — это современное видение трансграничного финтеха, созданное для сокращения финансовой изоляции, открытия международного доступа и построения более сильного моста между Афганистаном и мировой цифровой экономикой.
+            SafiPay, finansal izolasyonu azaltmak, uluslararası erişimin kilidini açmak ve Afganistan ile küresel dijital ekonomi arasında daha güçlü bir köprü oluşturmak için kurulmuş modern bir sınır ötesi fintech vizyonudur.
           </motion.p>
 
           <motion.p
@@ -319,7 +319,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.24 }}
             className="max-w-4xl mx-auto mt-6 text-base md:text-xl text-gray-500 leading-relaxed font-light"
           >
-            Эта система — не просто инструмент оплаты, а концепция экосистемы, ориентированная на удобство использования, финансовую инклюзию, цифровую инфраструктуру, безопасность и долгосрочную стратегическую ценность для афганских людей и компаний.
+            Bir ödeme aracından daha fazlası olarak tasarlanmıştır. Afgan bireyler ve işletmeler için kullanılabilirlik, finansal kapsayıcılık, dijital altyapı, güvenlik ve uzun vadeli stratejik değere odaklanan bir ekosistem konseptidir.
           </motion.p>
         </div>
       </section>
@@ -336,17 +336,17 @@ export default function AboutUsPageEnglish() {
               <Rocket size={30} />
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white italic uppercase mb-6">
-              Почему появился SafiPay
+              SafiPay Neden Doğdu?
             </h2>
             <div className="space-y-5 text-gray-300 text-lg leading-8 font-light">
               <p>
-                Афганистан столкнулся с глубокой финансовой фрагментацией. Традиционный банковский доступ всё ещё ограничен, международная связанность остаётся слабой, и многие люди до сих пор исключены из современных финансовых систем.
+                Afganistan ciddi bir finansal parçalanmayla karşı karşıya kaldı. Geleneksel bankacılık erişimi sınırlı olmaya devam ediyor, uluslararası bağlantı zayıf ve birçok insan hala modern finansal sistemlerin dışında tutuluyor.
               </p>
               <p>
-                Фрилансеры испытывают трудности с получением денег. Компании сталкиваются с трудностями при оплате глобальных инструментов. У семей нет простого способа защитить стоимость своих активов в более сильных валютах. Профессионалы также остаются вдали от возможностей, которые уже должны быть им доступны.
+                Freelancerlar para almakta zorlanıyor. İşletmeler küresel araçlar için ödeme yaparken güçlük çekiyor. Aileler değerlerini daha güçlü para birimlerinde korumanın basit yollarından yoksun. Profesyoneller ise zaten ulaşılabilir olması gereken fırsatlardan uzak kalıyor.
               </p>
               <p>
-                SafiPay родился из необходимости изменить эту реальность. Цель состоит в том, чтобы создать более практичный, безопасный и международный финансовый опыт, точно сформированный вокруг реальных потребностей афганцев.
+                SafiPay bu gerçekliği değiştirme ihtiyacından doğdu. Hedef, tamamen gerçek Afgan ihtiyaçları etrafında şekillendirilmiş, daha pratik, güvenli ve uluslararası düzeyde bilinçli bir finansal deneyim yaratmaktır.
               </p>
             </div>
           </motion.div>
@@ -362,15 +362,15 @@ export default function AboutUsPageEnglish() {
               <Target size={30} />
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white italic uppercase mb-6">
-              Основная миссия
+              Temel Misyon
             </h2>
             <div className="space-y-4">
               {[
-                'Разрушить финансовую изоляцию для афганских пользователей',
-                'Создать доступ к международным цифровым финансам',
-                'Снизить зависимость от устаревших систем',
-                'Поддерживать фрилансеров, семьи и компании',
-                'Построить серьёзный, безопасный и масштабируемый финтех-бренд',
+                'Afgan kullanıcılar için malisel izolasyonu kırmak',
+                'Uluslararası dijital finansa erişim inşa etmek',
+                'Eski sistemlere olan bağımlılığı azaltmak',
+                'Freelancerları, aileleri ve işletmeleri desteklemek',
+                'Ciddi, güvenli ve ölçeklenebilir bir fintech markası yaratmak',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 text-gray-200">
                   <CheckCircle2 size={18} className="text-amber-500 mt-1 shrink-0" />
@@ -386,10 +386,10 @@ export default function AboutUsPageEnglish() {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-6">
-              Кризис, который <span className="text-amber-500">мы решаем</span>
+              Çözdüğümüz <span className="text-amber-500">Kriz</span>
             </h2>
             <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
-              SafiPay формируется на основе реальных структурных проблем, а не воображаемых вопросов. Это ответ на подлинные финансовые боли, с которыми сталкиваются миллионы людей.
+              SafiPay hayali sorunlar etrafında değil, gerçek yapısal sorunlar etrafında şekilleniyor. Bu, milyonlarca insanın karşı karşıya kaldığı gerçek finansal zorluklara bir yanıttır.
             </p>
           </div>
 
@@ -397,23 +397,23 @@ export default function AboutUsPageEnglish() {
             {[
               {
                 icon: <Globe size={22} />,
-                title: 'Глобальная изоляция',
-                desc: 'Слабая интеграция с международными банковскими системами делает цифровое участие намного сложнее, чем должно быть.',
+                title: 'Küresel İzolasyon',
+                desc: 'Uluslararası bankacılık sistemleriyle zayıf entegrasyon, dijital katılımı olması gerekenden çok daha zor hale getiriyor.',
               },
               {
                 icon: <Banknote size={22} />,
-                title: 'Дорогие переводы',
-                desc: 'Неформальные и неэффективные каналы часто создают более высокие расходы, меньшую прозрачность и более слабую финансовую уверенность.',
+                title: 'Pahalı Transferler',
+                desc: 'Kayıt dışı ve verimsiz kanallar genellikle daha yüksek maliyetler, daha düşük şeffaflık ve daha zayıf finansal güven yaratır.',
               },
               {
                 icon: <CreditCard size={22} />,
-                title: 'Барьеры платежей',
-                desc: 'Многие пользователи всё ещё сталкиваются с трудностями при оплате платформ, подписок, услуг, хостинга, инструментов и онлайн-коммерции.',
+                title: 'Ödeme Engelleri',
+                desc: 'Birçok kullanıcı hala platformlar, abonelikler, hizmetler, barındırma, araçlar ve çevrimiçi ticaret için ödeme yapmakta zorluk çekiyor.',
               },
               {
                 icon: <Landmark size={22} />,
-                title: 'Ограниченный современный доступ',
-                desc: 'Профессиональные финансовые инструменты, которые обычны в других местах, всё ещё недоступны или фрагментированы для многих афганцев.',
+                title: 'Sınırlı Modern Erişim',
+                desc: 'Başka yerlerde yaygın olan profesyonel finansal araçlar, birçok Afgan için erişilemez veya parçalanmış durumda kalmaya devam ediyor.',
               },
             ].map((item, i) => (
               <motion.div
@@ -439,10 +439,10 @@ export default function AboutUsPageEnglish() {
       <section className="relative z-10 py-28 container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-6">
-            Что делает <span className="text-amber-500">SafiPay особенным</span>
+            SafiPay'i <span className="text-amber-500">Farklı Kılan Ne?</span>
           </h2>
           <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
-            SafiPay задуман как финансовая экосистема высокой ценности, а не как ограниченный интерфейс с одной функцией.
+            SafiPay, dar ve tek özellikli bir arayüz değil, yüksek değerli bir finansal ekosistem olarak öngörülmektedir.
           </p>
         </div>
 
@@ -472,7 +472,7 @@ export default function AboutUsPageEnglish() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <h2 className="text-4xl md:text-5xl font-black text-white italic uppercase mb-8">
-                Основные ценности и стратегические принципы
+                Temel Değerler & Stratejik İlkeler
               </h2>
               <div className="grid gap-5">
                 {coreValues.map((item, i) => (
@@ -503,7 +503,7 @@ export default function AboutUsPageEnglish() {
                   <Layers3 size={30} />
                 </div>
                 <h3 className="text-3xl font-black text-white mb-8 italic uppercase">
-                  Технология экосистемы
+                  Ekosistem Teknolojisi
                 </h3>
                 <div className="space-y-6">
                   {technologyLayers.map((item, i) => (
@@ -527,10 +527,10 @@ export default function AboutUsPageEnglish() {
       <section className="relative z-10 py-28 container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-6">
-            Для кого создан <span className="text-amber-500">SafiPay</span>
+            SafiPay Kimler İçin <span className="text-amber-500">Geliştirildi?</span>
           </h2>
           <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed">
-            Эта платформа разработана для реального экономического использования, а не для абстрактного языка брендинга.
+            Platform, soyut bir marka dili için değil, gerçek ekonomik kullanım için tasarlanmıştır.
           </p>
         </div>
 
@@ -559,41 +559,48 @@ export default function AboutUsPageEnglish() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black italic uppercase text-white mb-4">
-              Команда руководства
+              Liderlik Ekibi
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto font-light text-lg leading-relaxed">
-              Стратегические умы, стоящие за видением SafiPay, сосредоточены на создании надёжной, ориентированной на будущее финансовой экосистемы с реальной региональной значимостью.
+              SafiPay vizyonunun arkasındaki stratejik zihinler, ciddi bölgesel öneme sahip, güvenilir ve geleceğe yönelik bir finansal ekosistem inşa etmeye odaklanmıştır.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 name: 'Shaheen Safi',
-                role: 'Основатель и генеральный директор',
+                role: 'Kurucu & CEO',
                 img: '/shaheen.jpeg',
                 href: `/${currentLang}/founder/shaheen-safi`,
                 color: 'border-amber-500/30',
               },
               {
                 name: 'Mujtaba Rahmani',
-                role: 'Сооснователь и технический директор',
+                role: 'Kurucu Ortak & CTO',
                 img: '/mujtaba.jpeg',
                 href: `/${currentLang}/founder/mujtaba-rahmani`,
                 color: 'border-blue-500/30',
               },
               {
                 name: 'Sahel Salem',
-                role: 'Руководитель экосистемы',
+                role: 'Ekosistem Lideri',
                 img: '/sahel.jpeg',
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: 'border-green-500/30',
+              },
+              {
+                name: 'Shirin Gol Ahmadi',
+                role: 'SafiPay Müdürü',
+                img: '/shirin.jpeg',
+                href: `/${currentLang}/founder/shirin-gol-ahmadi`,
+                color: 'border-purple-500/30',
               },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
                 <motion.div
                   whileHover={{ y: -10 }}
-                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden`}
+                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden h-full`}
                 >
                   <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
                     <Image
@@ -608,7 +615,7 @@ export default function AboutUsPageEnglish() {
                       <h4 className="text-xl font-black text-white italic">{member.name}</h4>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">{member.role}</p>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all shrink-0">
                       <ArrowUpRight size={20} />
                     </div>
                   </div>
@@ -626,16 +633,16 @@ export default function AboutUsPageEnglish() {
 
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase leading-tight">
-              Готовы присоединиться <br /> к мировой экономике
+              Küresel Ekonomiye <br /> Katılmaya Hazır mısınız?
             </h2>
             <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-10">
-              SafiPay создаётся как серьёзный финансовый мост для следующего поколения афганских пользователей. Если вы хотите стать частью этой миссии, изучите возможности партнёрства и помогите формировать будущее.
+              SafiPay, yeni nesil Afgan kullanıcılar için ciddi bir finansal köprü olarak inşa ediliyor. Bu misyonun bir parçası olmak istiyorsanız, ortaklık fırsatlarını keşfedin ve geleceği şekillendirmeye yardımcı olun.
             </p>
             <Link
               href={`/${currentLang}/partners`}
               className="inline-flex items-center gap-4 px-12 py-5 bg-amber-500 text-black font-black text-lg rounded-2xl hover:bg-white transition-all group"
             >
-              Станьте нашим партнёром
+              Bizimle Ortak Olun
               <ArrowRight className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>

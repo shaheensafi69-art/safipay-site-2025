@@ -274,7 +274,7 @@ export default function AboutUsPageEnglish() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative" dir="ltr">
+    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden relative" dir="rtl">
       <div className="fixed inset-0 z-0 pointer-events-none bg-[#050505]">
         <Canvas dpr={[1, 2]} gl={{ antialias: true, alpha: false }}>
           <AboutScene />
@@ -282,8 +282,8 @@ export default function AboutUsPageEnglish() {
       </div>
 
       <section className="relative z-10 pt-40 pb-28 overflow-hidden border-b border-white/5">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full -translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[140px] rounded-full translate-x-1/4 translate-y-1/4" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 blur-[150px] rounded-full translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/5 blur-[140px] rounded-full -translate-x-1/4 translate-y-1/4" />
 
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span
@@ -299,7 +299,7 @@ export default function AboutUsPageEnglish() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-8 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter leading-[0.95]"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-8 bg-gradient-to-l from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter leading-[0.95]"
           >
             د SAFIPAY <br /> ایکوسیستم
           </motion.h1>
@@ -356,7 +356,7 @@ export default function AboutUsPageEnglish() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="rounded-[2.5rem] border border-amber-500/15 bg-gradient-to-br from-amber-500/10 to-transparent p-8 md:p-10"
+            className="rounded-[2.5rem] border border-amber-500/15 bg-gradient-to-bl from-amber-500/10 to-transparent p-8 md:p-10"
           >
             <div className="inline-flex p-4 rounded-3xl bg-white/5 text-amber-400 mb-6">
               <Target size={30} />
@@ -478,7 +478,7 @@ export default function AboutUsPageEnglish() {
                 {coreValues.map((item, i) => (
                   <motion.div
                     key={i}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.06 }}
@@ -566,7 +566,7 @@ export default function AboutUsPageEnglish() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 name: 'Shaheen Safi',
@@ -589,11 +589,18 @@ export default function AboutUsPageEnglish() {
                 href: `/${currentLang}/founder/sahel-salem`,
                 color: 'border-green-500/30',
               },
+              {
+                name: 'Shirin Gol Ahmadi',
+                role: 'مدیره',
+                img: '/shirin.jpeg',
+                href: `/${currentLang}/founder/shirin-gol-ahmadi`,
+                color: 'border-purple-500/30',
+              },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
                 <motion.div
                   whileHover={{ y: -10 }}
-                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden`}
+                  className={`p-4 rounded-[2.5rem] bg-white/[0.02] border ${member.color} hover:bg-white/[0.05] transition-all overflow-hidden h-full`}
                 >
                   <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-6">
                     <Image
@@ -608,8 +615,8 @@ export default function AboutUsPageEnglish() {
                       <h4 className="text-xl font-black text-white italic">{member.name}</h4>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">{member.role}</p>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all">
-                      <ArrowUpRight size={20} />
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all shrink-0">
+                      <ArrowUpRight size={20} className="rotate-180 group-hover:rotate-0 transition-transform" />
                     </div>
                   </div>
                 </motion.div>
@@ -622,7 +629,7 @@ export default function AboutUsPageEnglish() {
       <section className="relative z-10 py-32 container mx-auto px-6">
         <div className="relative p-12 md:p-16 rounded-[3rem] overflow-hidden text-center border border-white/5">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-600/10 to-transparent" />
-          <div className="absolute top-0 left-0 w-72 h-72 bg-amber-500/10 blur-[120px] rounded-full" />
+          <div className="absolute top-0 right-0 w-72 h-72 bg-amber-500/10 blur-[120px] rounded-full" />
 
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic uppercase leading-tight">
@@ -636,7 +643,7 @@ export default function AboutUsPageEnglish() {
               className="inline-flex items-center gap-4 px-12 py-5 bg-amber-500 text-black font-black text-lg rounded-2xl hover:bg-white transition-all group"
             >
               له موږ سره شریک شئ
-              <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="group-hover:-translate-x-2 transition-transform rotate-180" />
             </Link>
           </div>
         </div>
