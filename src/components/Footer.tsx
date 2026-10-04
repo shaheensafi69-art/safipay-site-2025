@@ -43,7 +43,10 @@ export default function Footer() {
       slogan: 'صافی‌پی؛ فراتر از یک سیستم مالی، ما پلی می‌سازیم برای اتصال افغانستان به اقتصاد نوین جهانی.',
       navTitle: 'دسترسی سریع',
       blogTitle: 'دانشنامه و اخبار',
-      blogBtn: 'مشاهده تمام مقالات صافی‌پی',
+      blogBtn: 'مشاهده تمام مقالات',
+      blogDesc: 'کاوش در دانشنامه و مقالات صافی‌پی',
+      academyTitle: 'صافی اکادمی',
+      academyDesc: 'پلتفرم آموزشی و مهارت‌های نوین',
       teamTitle: 'رهبران اصلی SAFIPAY',
       authText: 'ورود / ثبت‌نام',
       contactTitle: 'ارتباط جهانی',
@@ -67,7 +70,10 @@ export default function Footer() {
       slogan: 'صافي پي؛ له مالي سیستم اخوا، موږ د نړیوال نوي اقتصاد سره د افغانستان د نښلولو لپاره یو پل جوړوو.',
       navTitle: 'چټک لاسرسی',
       blogTitle: 'پوهنغونډ او خبرونه',
-      blogBtn: 'د صافي پي ټولې مقالې وګورئ',
+      blogBtn: 'د صافي پي ټولې مقالې',
+      blogDesc: 'د صافي پي پوهنیز مرکز وپلټئ',
+      academyTitle: 'صافي اکاډمي',
+      academyDesc: 'د عصري مهارتونو زده کړه او پراختیا',
       teamTitle: 'د SAFIPAY اصلي مشرتابه',
       authText: 'ننووتل / نوم لیکنه',
       contactTitle: 'نړیواله اړیکه',
@@ -92,6 +98,9 @@ export default function Footer() {
       navTitle: 'QUICK LINKS',
       blogTitle: 'INSIGHTS & NEWS',
       blogBtn: 'VIEW ALL INSIGHTS',
+      blogDesc: 'Explore SafiPay knowledge hub',
+      academyTitle: 'SAFI ACADEMY',
+      academyDesc: 'Explore Safi Academy platform',
       teamTitle: 'CORE LEADERSHIP',
       authText: 'SIGN UP / LOGIN',
       contactTitle: 'GLOBAL ACCESS',
@@ -114,8 +123,11 @@ export default function Footer() {
     de: {
       slogan: 'SafiPay: Mehr als ein System, eine Brücke, die Afghanistan mit der modernen Weltwirtschaft verbindet.',
       navTitle: 'SCHNELLZUGRIFF',
-      blogTitle: 'WISSEN & NEWS',
+      blogTitle: 'EINBLICKE & AKTUELLES',
       blogBtn: 'ALLE ARTIKEL ANSEHEN',
+      blogDesc: 'SafiPay Wissens-Hub entdecken',
+      academyTitle: 'SAFI ACADEMY',
+      academyDesc: 'Offizielle Bildungsplattform',
       teamTitle: 'KERNLEITUNG',
       authText: 'ANMELDEN / REGISTRIEREN',
       contactTitle: 'GLOBALER ZUGANG',
@@ -138,8 +150,11 @@ export default function Footer() {
     ru: {
       slogan: 'SafiPay: Больше чем система, мост, соединяющий Афганистан с современной мировой экономикой.',
       navTitle: 'БЫСТРЫЙ ДОСТУП',
-      blogTitle: 'ЗНАНИЯ И НОВОСТИ',
+      blogTitle: 'НОВОСТИ И АНАЛИТИКА',
       blogBtn: 'ПОСМОТРЕТЬ ВСЕ СТАТЬИ',
+      blogDesc: 'Исследуйте базу знаний SafiPay',
+      academyTitle: 'SAFI ACADEMY',
+      academyDesc: 'Официальная образовательная платформа',
       teamTitle: 'КЛЮЧЕВОЕ РУКОВОДСТВО',
       authText: 'ВХОД / РЕГИСТРАЦИЯ',
       contactTitle: 'ГЛОБАЛЬНЫЙ ДОСТУП',
@@ -154,7 +169,7 @@ export default function Footer() {
         { name: 'Банковская конфиденциальность', href: `/ru/privacy` },
         { name: 'Европейские условия', href: `/ru/terms` },
         { name: 'Шахин Сафи', href: `/ru/founder/shaheen-safi` },
-        { name: 'Муджтаба Рахмани', href: `/ru/founder/mujtaba-rahmani` },
+        { name: 'Муджتاба Рахмани', href: `/ru/founder/mujtaba-rahmani` },
         { name: 'Сахель Салем', href: `/ru/founder/sahel-salem` },
         { name: 'Ширин Голь Ахмади', href: `/ru/founder/shirin-gol-ahmadi` },
       ],
@@ -162,8 +177,11 @@ export default function Footer() {
     tr: {
       slogan: "SafiPay: Bir sistemden fazlası, Afganistan'ı modern küresel ekonomiye bağlayan bir köprü.",
       navTitle: 'HIZLI ERİŞİM',
-      blogTitle: 'BİLGİ VE HABERLER',
+      blogTitle: 'İÇGÖRÜLER VE HABERLER',
       blogBtn: 'TÜM MAKALELERİ GÖR',
+      blogDesc: 'SafiPay bilgi merkezini keşfedin',
+      academyTitle: 'SAFİ AKADEMİ',
+      academyDesc: 'Resmi Eğitim ve Beceri Platformu',
       teamTitle: 'TEMEL LİDERLİK',
       authText: 'GİRİŞ / KAYIT',
       contactTitle: 'KÜRESEL ERİŞİM',
@@ -188,6 +206,9 @@ export default function Footer() {
       navTitle: 'ACCÈS RAPIDE',
       blogTitle: 'INSIGHTS & ACTUALITÉS',
       blogBtn: 'VOIR TOUS LES ARTICLES',
+      blogDesc: 'Explorer le centre de connaissances',
+      academyTitle: 'SAFI ACADEMY',
+      academyDesc: 'Plateforme académique officielle',
       teamTitle: 'DIRECTION PRINCIPALE',
       authText: "S'INSCRIRE / CONNEXION",
       contactTitle: 'ACCÈS MONDIAL',
@@ -210,10 +231,13 @@ export default function Footer() {
     ar: {
       slogan: 'صافي بي؛ أكثر من مجرد نظام مالي، نحن نبني جسراً لربط أفغانستان بالاقتصاد العالمي الحديث.',
       navTitle: 'وصول سريع',
-      blogTitle: 'الموسوعة والأخبار',
+      blogTitle: 'رؤى وأخبار',
       blogBtn: 'مشاهدة جميع المقالات',
+      blogDesc: 'استكشف مركز معارف صافي بي',
+      academyTitle: 'صافي أكاديمي',
+      academyDesc: 'منصة التعليم والمهارات الرسمية',
       teamTitle: 'القيادة الأساسية',
-      authText: 'تسجيل الدخول / اشتراك',
+      authText: 'تسجيل الدخول / اشتراک',
       contactTitle: 'وصول عالمي',
       statusText: 'بنية مالية رقمية دولية آمنة',
       privacyTitle: 'سياسة الخصوصية',
@@ -425,7 +449,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 border-t border-white/5 py-14 lg:grid-cols-[1fr_0.9fr]">
+        <div className="grid grid-cols-1 gap-10 border-t border-white/5 py-14 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <h4 className="mb-7 text-[10px] font-black uppercase tracking-[0.4em] text-amber-500">
               {content.navTitle}
@@ -453,22 +477,57 @@ export default function Footer() {
               {content.blogTitle}
             </h4>
 
-            <Link
-              href={`/${currentLang}/blog`}
-              className="group block rounded-[2rem] border border-white/6 bg-white/[0.02] p-6 transition-all hover:border-amber-500/25 hover:bg-white/[0.03]"
-            >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-500/15 bg-amber-500/10 text-amber-500">
-                <LayoutGrid size={20} />
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Box 1: View all insights */}
+              <Link
+                href={`/${currentLang}/blog`}
+                className="group flex flex-col justify-between rounded-[2rem] border border-amber-500/20 bg-white/[0.02] p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-500/40 hover:bg-white/[0.04] hover:shadow-[0_12px_35px_-10px_rgba(245,158,11,0.18)]"
+              >
+                <div>
+                  <div className="mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl border border-amber-500/20 bg-amber-500/10 text-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.15)] group-hover:scale-105 transition-transform duration-300">
+                    <LayoutGrid size={22} />
+                  </div>
 
-              <div className="mb-3 text-lg font-black tracking-tight text-white">
-                {content.blogBtn}
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500 transition-colors group-hover:text-gray-300">
-                <span>Explore SafiPay knowledge hub</span>
-                <ArrowUpRight size={15} className={`transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
-              </div>
-            </Link>
+                  <div className="mb-2 text-lg sm:text-xl font-black uppercase tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                    {content.blogBtn}
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 group-hover:text-gray-200 transition-colors">
+                    <span>{content.blogDesc}</span>
+                    <ArrowUpRight size={14} className={`shrink-0 transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'} group-hover:-translate-y-0.5`} />
+                  </div>
+                </div>
+              </Link>
+
+              {/* Box 2: Safi Academy */}
+              <a
+                href="https://safiacademy.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between rounded-[2rem] border border-amber-500/20 bg-white/[0.02] p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-500/40 hover:bg-white/[0.04] hover:shadow-[0_12px_35px_-10px_rgba(245,158,11,0.18)]"
+              >
+                <div>
+                  <div className="mb-5 relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl border border-amber-500/20 bg-amber-500/10 p-2 shadow-[0_0_20px_rgba(245,158,11,0.15)] group-hover:scale-105 transition-transform duration-300">
+                    <Image
+                      src="/safi-academy-logo.png"
+                      alt="Safi Academy"
+                      width={38}
+                      height={38}
+                      className="object-contain drop-shadow"
+                    />
+                  </div>
+
+                  <div className="mb-2 text-lg sm:text-xl font-black uppercase tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                    {content.academyTitle}
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-400 group-hover:text-gray-200 transition-colors">
+                    <span>{content.academyDesc}</span>
+                    <ArrowUpRight size={14} className={`shrink-0 transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'} group-hover:-translate-y-0.5`} />
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 

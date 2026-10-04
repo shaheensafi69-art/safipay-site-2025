@@ -62,17 +62,16 @@ export default function FloatingWhatsApp() {
     currentLang === 'fa'
       ? 'سلام، وقت بخیر. در رابطه با سیستم بانکی بین‌المللی صافی‌پی پیام می‌دهم.'
       : currentLang === 'ps'
-      ? 'سلام، د صافي پي نړیوال بانکي سیستم په اړه پوښتنه لرم.'
-      : currentLang === 'ar'
-      ? 'مرحباً، أود الاستفسار عن نظام صافي باي المصرفي الرقمي.'
-      : 'Hello, I am contacting SafiPay regarding the international digital banking system.'
+        ? 'سلام، د صافي پي نړیوال بانکي سیستم په اړه پوښتنه لرم.'
+        : currentLang === 'ar'
+          ? 'مرحباً، أود الاستفسار عن نظام صافي باي المصرفي الرقمي.'
+          : 'Hello, I am contacting SafiPay regarding the international digital banking system.'
   )}`;
 
   return (
     <div
-      className={`fixed bottom-6 z-[9999] flex items-end gap-3 select-none ${
-        isRtl ? 'left-6 flex-row' : 'right-6 flex-row-reverse'
-      }`}
+      className={`fixed bottom-6 z-[9999] flex items-end gap-3 select-none ${isRtl ? 'left-6 flex-row' : 'right-6 flex-row-reverse'
+        }`}
       dir={isRtl ? 'rtl' : 'ltr'}
     >
       {/* Floating Action Button */}
