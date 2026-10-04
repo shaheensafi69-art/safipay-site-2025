@@ -75,7 +75,7 @@ export async function middleware(request: NextRequest) {
   // اگر کاربر لاگین نیست و می‌خواهد به داشبورد برود
   if (isUserPage && !session) {
     const url = request.nextUrl.clone();
-    url.pathname = `/${currentLang}/login`;
+    url.pathname = `/${currentLang}/user/login`;
     return NextResponse.redirect(url);
   }
 
