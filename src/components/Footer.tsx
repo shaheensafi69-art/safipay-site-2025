@@ -48,11 +48,15 @@ export default function Footer() {
       authText: 'ورود / ثبت‌نام',
       contactTitle: 'ارتباط جهانی',
       statusText: 'زیرساخت مالی دیجیتال، امن و بین‌المللی',
+      privacyTitle: 'سیاست حفظ حریم خصوصی',
+      termsTitle: 'شرایط و استانداردهای خدمات',
       links: [
         { name: 'صفحه اصلی', href: `/fa` },
         { name: 'شرکای تجاری', href: `/fa/partners` },
         { name: 'ارتباط با ما', href: `/fa/contact` },
         { name: 'درباره ما', href: `/fa/about` },
+        { name: 'سیاست حریم خصوصی بانکی', href: `/fa/privacy` },
+        { name: 'شرایط و مقررات خدمات اروپا', href: `/fa/terms` },
         { name: 'شاهین صافی', href: `/fa/founder/shaheen-safi` },
         { name: 'مجتبی رحمانی', href: `/fa/founder/mujtaba-rahmani` },
         { name: 'ساحل سالم', href: `/fa/founder/sahel-salem` },
@@ -68,11 +72,15 @@ export default function Footer() {
       authText: 'ننووتل / نوم لیکنه',
       contactTitle: 'نړیواله اړیکه',
       statusText: 'خوندي، نړیوال او ډیجیټلي مالي زیربنا',
+      privacyTitle: 'د محرمیت تګلاره',
+      termsTitle: 'د خدماتو شرایط او مقررات',
       links: [
         { name: 'اصلي پاڼه', href: `/ps` },
         { name: 'سوداګریز شریکان', href: `/ps/partners` },
         { name: 'اړیکه', href: `/ps/contact` },
         { name: 'زموږ په اړه', href: `/ps/about` },
+        { name: 'د بانکي محرمیت تګلاره', href: `/ps/privacy` },
+        { name: 'د اروپا د خدماتو شرایط', href: `/ps/terms` },
         { name: 'شاهین صافی', href: `/ps/founder/shaheen-safi` },
         { name: 'مجتبی رحماني', href: `/ps/founder/mujtaba-rahmani` },
         { name: 'ساحل سالم', href: `/ps/founder/sahel-salem` },
@@ -88,11 +96,15 @@ export default function Footer() {
       authText: 'SIGN UP / LOGIN',
       contactTitle: 'GLOBAL ACCESS',
       statusText: 'Secure international digital financial infrastructure',
+      privacyTitle: 'Privacy Policy',
+      termsTitle: 'Terms of Service',
       links: [
         { name: 'Home', href: `/en` },
         { name: 'Partners', href: `/en/partners` },
         { name: 'Contact', href: `/en/contact` },
         { name: 'About Us', href: `/en/about` },
+        { name: 'Banking Privacy Policy', href: `/en/privacy` },
+        { name: 'European Banking Terms', href: `/en/terms` },
         { name: 'Shaheen Safi', href: `/en/founder/shaheen-safi` },
         { name: 'Mujtaba Rahmani', href: `/en/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/en/founder/sahel-salem` },
@@ -108,11 +120,15 @@ export default function Footer() {
       authText: 'ANMELDEN / REGISTRIEREN',
       contactTitle: 'GLOBALER ZUGANG',
       statusText: 'Sichere internationale digitale Finanzinfrastruktur',
+      privacyTitle: 'Datenschutzrichtlinie',
+      termsTitle: 'Nutzungsbedingungen',
       links: [
         { name: 'Startseite', href: `/de` },
         { name: 'Partner', href: `/de/partners` },
         { name: 'Kontakt', href: `/de/contact` },
         { name: 'Über uns', href: `/de/about` },
+        { name: 'Datenschutzrichtlinie', href: `/de/privacy` },
+        { name: 'Europäische Banken-AGB', href: `/de/terms` },
         { name: 'Shaheen Safi', href: `/de/founder/shaheen-safi` },
         { name: 'Mujtaba Rahmani', href: `/de/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/de/founder/sahel-salem` },
@@ -128,11 +144,15 @@ export default function Footer() {
       authText: 'ВХОД / РЕГИСТРАЦИЯ',
       contactTitle: 'ГЛОБАЛЬНЫЙ ДОСТУП',
       statusText: 'Безопасная международная цифровая финансовая инфраструктура',
+      privacyTitle: 'Политика конфиденциальности',
+      termsTitle: 'Условия обслуживания',
       links: [
         { name: 'Главная', href: `/ru` },
         { name: 'Партнеры', href: `/ru/partners` },
         { name: 'Контакт', href: `/ru/contact` },
         { name: 'О нас', href: `/ru/about` },
+        { name: 'Банковская конфиденциальность', href: `/ru/privacy` },
+        { name: 'Европейские условия', href: `/ru/terms` },
         { name: 'Шахин Сафи', href: `/ru/founder/shaheen-safi` },
         { name: 'Муджтаба Рахмани', href: `/ru/founder/mujtaba-rahmani` },
         { name: 'Сахель Салем', href: `/ru/founder/sahel-salem` },
@@ -148,11 +168,15 @@ export default function Footer() {
       authText: 'GİRİŞ / KAYIT',
       contactTitle: 'KÜRESEL ERİŞİM',
       statusText: 'Güvenli uluslararası dijital finans altyapısı',
+      privacyTitle: 'Gizlilik Politikası',
+      termsTitle: 'Kullanım Koşulları',
       links: [
         { name: 'Anasayfa', href: `/tr` },
         { name: 'Ortaklar', href: `/tr/partners` },
         { name: 'İletişim', href: `/tr/contact` },
         { name: 'Hakkımızda', href: `/tr/about` },
+        { name: 'Gizlilik Politikası', href: `/tr/privacy` },
+        { name: 'Avrupa Hizmet Şartları', href: `/tr/terms` },
         { name: 'Shaheen Safi', href: `/tr/founder/shaheen-safi` },
         { name: 'Mujtaba Rahmani', href: `/tr/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/tr/founder/sahel-salem` },
@@ -168,11 +192,15 @@ export default function Footer() {
       authText: "S'INSCRIRE / CONNEXION",
       contactTitle: 'ACCÈS MONDIAL',
       statusText: 'Infrastructure financière numérique internationale et sécurisée',
+      privacyTitle: 'Politique de confidentialité',
+      termsTitle: 'Conditions d’utilisation',
       links: [
         { name: 'Accueil', href: `/fr` },
         { name: 'Partenaires', href: `/fr/partners` },
         { name: 'Contact', href: `/fr/contact` },
         { name: 'À propos', href: `/fr/about` },
+        { name: 'Confidentialité bancaire', href: `/fr/privacy` },
+        { name: 'Conditions bancaires UE', href: `/fr/terms` },
         { name: 'Shaheen Safi', href: `/fr/founder/shaheen-safi` },
         { name: 'Mujtaba Rahmani', href: `/fr/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/fr/founder/sahel-salem` },
@@ -188,11 +216,15 @@ export default function Footer() {
       authText: 'تسجيل الدخول / اشتراك',
       contactTitle: 'وصول عالمي',
       statusText: 'بنية مالية رقمية دولية آمنة',
+      privacyTitle: 'سياسة الخصوصية',
+      termsTitle: 'شروط الخدمة والأحكام',
       links: [
         { name: 'الصفحة الرئيسية', href: `/ar` },
         { name: 'شركاء الأعمال', href: `/ar/partners` },
         { name: 'اتصل بنا', href: `/ar/contact` },
         { name: 'حولنا', href: `/ar/about` },
+        { name: 'سياسة الخصوصية المصرفية', href: `/ar/privacy` },
+        { name: 'الشروط المصرفية الأوروبية', href: `/ar/terms` },
         { name: 'شاهين صافي', href: `/ar/founder/shaheen-safi` },
         { name: 'مجتبى رحماني', href: `/ar/founder/mujtaba-rahmani` },
         { name: 'ساحل سالم', href: `/ar/founder/sahel-salem` },
@@ -448,6 +480,16 @@ export default function Footer() {
             <p className="text-[8px] font-bold uppercase tracking-[0.35em] text-white/20">
               Engineered by <span className="text-white/40">Shaheen Safi</span>
             </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] font-bold tracking-wider text-gray-400">
+            <Link href={`/${currentLang}/privacy`} className="hover:text-amber-400 transition-colors">
+              {content.privacyTitle}
+            </Link>
+            <span>•</span>
+            <Link href={`/${currentLang}/terms`} className="hover:text-amber-400 transition-colors">
+              {content.termsTitle}
+            </Link>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 md:justify-end">
