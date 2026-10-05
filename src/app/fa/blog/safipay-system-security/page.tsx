@@ -42,7 +42,7 @@ export default function SecuritySystemPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
             <p className="text-gray-400 text-xl md:text-2xl leading-relaxed max-w-xl font-light text-justify animate-in fade-in duration-1000 delay-300">
-              ما تنها یک بانک نیستیم؛ ما یک دژ دیجیتال هستیم تحت فرماندهی فنی مجتبی SafiPay از پروتکل‌های استاندارد اتحادیه اروپا برای حذف مرزهای مالی افغانستان استفاده می‌کند
+              ما تنها یک بانک نیستیم؛ ما یک دژ دیجیتال هستیم. تحت رهبری فنی مجتبی و تیم مهندسی، SafiPay از پروتکل‌های استاندارد اتحادیه اروپا برای حذف مرزهای مالی و ارائه بانکداری بدون محدودیت در سراسر جهان استفاده می‌کند.
             </p>
             
             <div className="flex justify-start group">
@@ -139,7 +139,7 @@ export default function SecuritySystemPage() {
                     “
                   </span>
                   <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-white relative z-10 text-right">
-                    ما به هر افغان یک گاوصندوق اروپایی در جیب‌شان می‌دهیم سرعت سلاح ماست و امنیت زره ما
+                    ما به هر کاربر در سراسر جهان یک گاوصندوق اروپایی در جیب‌شان می‌دهیم؛ سرعت سلاح ماست و امنیت زره ما.
                   </blockquote>
                   <div className="mt-12 flex items-center gap-6 justify-start">
                     <div className="w-16 h-[2px] bg-blue-600 group-hover:w-24 transition-all duration-500" />

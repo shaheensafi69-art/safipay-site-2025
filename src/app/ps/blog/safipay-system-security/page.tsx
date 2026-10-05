@@ -42,7 +42,7 @@ export default function SecuritySystemPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
             <p className="text-gray-400 text-xl md:text-2xl leading-relaxed max-w-xl font-light text-justify opacity-0 animate-[fadeIn_1s_ease-out_0.3s_forwards]">
-              موږ یوازې یو بانک نه یو؛ موږ یو ډیجیټل قلعه یو. د مجتبی تر تخنیکي قوماندې لاندې، SafiPay د اروپایي اتحادیې معیاري پروتوکولونه کاروي ترڅو د افغانستان لپاره مالي محدودیتونه له منځه یوسي.
+              موږ یوازې یو بانک نه یو؛ موږ یو ډیجیټل قلعه یو. د مجتبی او انجنیري ټیم تر تخنیکي رهبرۍ لاندې، SafiPay د اروپایي اتحادیې معیاري پروتوکولونه کاروي ترڅو مالي محدودیتونه له منځه یوسي او په ټوله نړۍ کې چټکه بانکداري برابره کړي.
             </p>
             
             <div className="flex justify-start group">
@@ -139,7 +139,7 @@ export default function SecuritySystemPage() {
                     “
                   </span>
                   <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-white relative z-10">
-                    "موږ هر افغان ته په خپل جیب کې یو اروپایي صندق ورکوو. سرعت زموږ وسله ده او امنیت زموږ زغره."
+                    "موږ هر نړیوال کاروونکي ته په خپل جیب کې یو اروپایي صندق ورکوو. سرعت زموږ وسله ده او امنیت زموږ زغره."
                   </blockquote>
                   <div className="mt-12 flex flex-row-reverse items-center gap-6 justify-start">
                     <div className="w-16 h-[2px] bg-blue-600 group-hover:w-24 transition-all duration-500" />

@@ -132,7 +132,7 @@ export default function FutureOfBankingPage() {
 
               <h2 className="text-3xl font-black text-white mb-8">Conclusion: A Leap Toward the Digital Economy</h2>
               <p>
-                At SafiPay, we believe that access to the global banking system is a fundamental right. By providing instant IBAN accounts and Visa cards, we have built a bridge connecting the Afghan economy to the heart of Europe and global markets. This is only the beginning of a major transformation in the region's financial structure.
+                At SafiPay, we believe that access to the global banking system is a fundamental right. By providing instant IBAN accounts and Visa cards, we have built a bridge connecting global users and entrepreneurs to the heart of Europe and international markets. This is only the beginning of a major transformation in modern digital finance.
               </p>
             </article>
 

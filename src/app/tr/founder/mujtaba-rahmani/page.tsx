@@ -108,7 +108,7 @@ export default function MujtabaRahmaniFullBio() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2"><MapPin size={16}/> Kabil, Afganistan</span>
+               <span className="flex items-center gap-2"><MapPin size={16}/> Global Merkez • Uluslararası</span>
                <span className="flex items-center gap-2"><User size={16}/> 28 Temmuz 2006</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline">@bigshot_tradez</span>
             </div>
@@ -121,10 +121,10 @@ export default function MujtabaRahmaniFullBio() {
             <h2 className="text-4xl font-black mb-10 border-l-8 border-blue-600 pl-6 uppercase italic">Kurucunun Misyonu</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                Ben <span className="text-white font-bold">Mujtaba Rahmani</span>; Afganistan'ın finansal geleceğini dönüştürmeye kendini adamış vizyoner bir girişimci ve profesyonel bir yatırımcıyım (Trader). <span className="text-blue-400 underline decoration-2">Ekonomi ve Online Ticaret</span> alanındaki uzmanlık geçmişimle, SafiPay'in stratejik ve finansal gelişimine liderlik ediyorum.
+                Ben <span className="text-white font-bold">Mujtaba Rahmani</span>; küresel finansal geleceği dönüştürmeye kendini adamış vizyoner bir girişimci ve profesyonel bir yatırımcıyım (Trader). <span className="text-blue-400 underline decoration-2">Ekonomi ve Online Ticaret</span> alanındaki uzmanlık geçmişimle, SafiPay'in stratejik ve finansal gelişimine liderlik ediyorum.
               </p>
               <div className="bg-blue-600/10 p-8 rounded-[2.5rem] italic border-l-8 border-blue-600 text-blue-100">
-                "Geleneksel ekonomik ilkeleri modern FinTech çözümleriyle birleştirerek Afgan halkını güçlendirmeyi ve onları küresel dijital pazarlara entegre etmeyi hedefliyoruz."
+                "Geleneksel ekonomik ilkeleri modern FinTech çözümleriyle birleştirerek dünya genelindeki kullanıcıları güçlendirmeyi ve onları sınırsız dijital pazarlara entegre etmeyi hedefliyoruz."
               </div>
               <p>
                 Grafik analizlerinin ve iş stratejilerinin ötesinde, disiplin ve istikrara inanıyorum; bu nitelikleri her gün MMA sporları ve dayanıklılık koşuları ile pekiştirerek Forex dünyasının dinamik yapısına daima hazır kalıyorum.
@@ -172,7 +172,7 @@ export default function MujtabaRahmaniFullBio() {
                   <div className="absolute -left-[41px] top-2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_15px_#2563eb]" />
                   <h4 className="text-xl font-bold text-white">Kurucu Ortak ve Yönetici</h4>
                   <p className="text-blue-400 text-sm mb-2">SafiPay Digital Bank (2024 - Günümüz)</p>
-                  <p className="text-gray-500 text-sm leading-relaxed text-justify">Finansal çerçevelerin stratejik planlaması ve Afganistan'ın ilk modern dijital bankacılık ekosisteminin geliştirilmesi.</p>
+                  <p className="text-gray-500 text-sm leading-relaxed text-justify">Finansal çerçevelerin stratejik planlaması ve dünyanın öncü sınırsız dijital bankacılık ekosisteminin geliştirilmesi.</p>
                 </div>
                 <div className="relative">
                   <div className="absolute -left-[41px] top-2 w-4 h-4 bg-white/20 rounded-full" />
@@ -215,7 +215,7 @@ export default function MujtabaRahmaniFullBio() {
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> SafiPay küresel finansal ekosisteminin kuruculuğu</li>
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Ekonomi ve dijital pazarlar alanında stratejik mezuniyet</li>
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Küresel piyasalarda 3 yılı aşkın profesyonel işlem tecrübesi</li>
-                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Afganistan'da online ticaretin aktif destekçisi</li>
+                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Küresel e-ticaret ve dijital girişimlerin aktif destekçisi</li>
                 </ul>
             </div>
         </section>

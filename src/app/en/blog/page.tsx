@@ -26,7 +26,7 @@ const blogPosts = {
     },
     {
       id: 3,
-      title: "Benefits of a European IBAN for Afghan Citizens",
+      title: "Benefits of a European IBAN for Global Users and Businesses",
       excerpt: "Direct connection to the SEPA banking system for receiving international transfers.",
       date: "Feb 22, 2026",
       readTime: "7 min",
@@ -83,7 +83,7 @@ export default function BlogPage() {
         </div>
         <h1 className="text-4xl md:text-6xl font-black mb-6 italic tracking-tighter">INSIGHTS & ANALYSIS</h1>
         <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
-          Latest breakthroughs in Fintech, International Security, and SafiPay financial solutions connecting Afghanistan to global markets.
+          Latest breakthroughs in Fintech, International Security, and SafiPay financial solutions providing boundless access to global markets.
         </p>
       </div>
 

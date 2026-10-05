@@ -132,7 +132,7 @@ export default function FutureOfBankingPage() {
 
               <h2 className="text-3xl font-black text-white mb-8">Conclusion : Un bond vers l'économie numérique</h2>
               <p>
-                Chez SafiPay, nous pensons que l'accès au système bancaire mondial est un droit fondamental pour chaque individu. En proposant des comptes IBAN instantanés et des cartes Visa, nous avons construit un pont reliant l'économie afghane au cœur de l'Europe et aux marchés mondiaux. Ce n'est que le début d'une transformation majeure de la structure financière de la région.
+                Chez SafiPay, nous pensons que l'accès au système bancaire mondial est un droit fondamental pour chaque individu. En proposant des comptes IBAN instantanés et des cartes Visa, nous avons construit un pont reliant les utilisateurs du monde entier et les entrepreneurs au cœur de l'Europe et aux marchés internationaux. Ce n'est que le début d'une transformation majeure de la finance numérique.
               </p>
             </article>
 

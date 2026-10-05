@@ -181,7 +181,7 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Globe size={22} />,
       title: 'الوصول العالمي',
-      desc: 'نحن نبني مسارات تساعد الأفغان على الاتصال بالأدوات المالية الدولية والمدفوعات الرقمية الحديثة والفرص بلا حدود.',
+      desc: 'نحن نبني مسارات تساعد المستخدمين حول العالم على الاتصال بالأدوات المالية الدولية والمدفوعات الرقمية الحديثة والفرص بلا حدود.',
     },
     {
       icon: <Zap size={22} />,
@@ -199,7 +199,7 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Landmark size={22} />,
       title: 'الوصول المالي الدولي',
-      desc: 'يسعى SafiPay إلى منح المستخدمين الأفغان وصولاً إلى أدوات مالية أقوى وأكثر عملية تربطهم بالاقتصاد الرقمي الأوسع.',
+      desc: 'يسعى SafiPay إلى منح المستخدمين والشركات حول العالم وصولاً إلى أدوات مالية أقوى وأكثر عملية تربطهم بالاقتصاد الرقمي العالمي.',
     },
     {
       icon: <Wallet size={22} />,
@@ -292,14 +292,14 @@ export default function AboutUsPageEnglish() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-[11px] font-black tracking-[0.28em] uppercase"
           >
             <Sparkles size={14} />
-            إعادة كتابة المستقبل المالي لأفغانستان
+            إعادة صياغة المستقبل المالي العالمي
           </motion.span>
 
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-8 bg-gradient-to-r from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter leading-[0.95]"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mt-8 mb-8 bg-gradient-to-l from-white via-amber-100 to-amber-500 bg-clip-text text-transparent italic tracking-tighter leading-[0.95]"
           >
             منظومة <br /> SAFIPAY
           </motion.h1>
@@ -310,7 +310,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.16 }}
             className="max-w-4xl mx-auto text-lg md:text-2xl text-gray-300 leading-relaxed font-light"
           >
-            SafiPay هي رؤية حديثة لفنتك عابر للحدود بُنيت لتقليل العزلة المالية وفتح الوصول الدولي وإنشاء جسر أقوى بين أفغانستان والاقتصاد الرقمي العالمي.
+            SafiPay هي رؤية حديثة لفنتك عابر للحدود بُنيت لتقليل العزلة المالية وفتح الوصول الدولي وإنشاء جسر أقوى يربط كافة المستخدمين بالاقتصاد الرقمي العالمي.
           </motion.p>
 
           <motion.p
@@ -319,7 +319,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.24 }}
             className="max-w-4xl mx-auto mt-6 text-base md:text-xl text-gray-500 leading-relaxed font-light"
           >
-            هذا النظام ليس مجرد أداة للدفع، بل هو مفهوم منظومي يركز على سهولة الاستخدام والشمول المالي والبنية التحتية الرقمية والأمان والقيمة الاستراتيجية طويلة الأمد للأفراد والشركات الأفغانية.
+            هذا النظام ليس مجرد أداة للدفع، بل هو مفهوم منظومي يركز على سهولة الاستخدام والشمول المالي والبنية التحتية الرقمية والأمان والقيمة الاستراتيجية طويلة الأمد للأفراد والشركات الحديثة في جميع أنحاء العالم.
           </motion.p>
         </div>
       </section>
@@ -340,13 +340,13 @@ export default function AboutUsPageEnglish() {
             </h2>
             <div className="space-y-5 text-gray-300 text-lg leading-8 font-light">
               <p>
-                واجهت أفغانستان تشتتاً مالياً شديداً. لا يزال الوصول التقليدي إلى الخدمات المصرفية محدوداً، والاتصال الدولي ضعيفاً، وما زال كثير من الناس محرومين من الأنظمة المالية الحديثة.
+                واجهت العديد من المجتمعات والأنشطة التجارية حول العالم تشتتاً مالياً. لا يزال الوصول التقليدي إلى الخدمات المصرفية محدوداً وبطيئاً، وما زال كثير من الناس ورواد الأعمال محرومين من الأنظمة المالية الرقمية المتقدمة.
               </p>
               <p>
-                يواجه المستقلون صعوبة في استلام الأموال. وتواجه الشركات صعوبة في دفع تكاليف الأدوات العالمية. ولا تمتلك العائلات طريقة بسيطة لحماية قيمة أصولها بالعملات الأقوى. كما أن المهنيين ما زالوا بعيدين عن الفرص التي يجب أن تكون في متناولهم.
+                يواجه المستقلون صعوبات في استلام الأموال، والشركات في دفع تكاليف الأدوات العالمية، بينما تفتقر العائلات إلى طرق بسيطة للحفاظ على قيمة مدخراتها بعملات قوية.
               </p>
               <p>
-                وُلد SafiPay من الحاجة إلى تغيير هذا الواقع. والهدف هو بناء تجربة مالية أكثر عملية وأماناً وطابعاً دولياً، تتشكل بدقة وفق الاحتياجات الحقيقية للأفغان.
+                وُلد SafiPay من الحاجة إلى تغيير هذا الواقع. والهدف هو بناء تجربة مالية أكثر عملية وأماناً وطابعاً دولياً، تتشكل بدقة وفق الاحتياجات الحقيقية للمستخدمين في الأسواق العالمية.
               </p>
             </div>
           </motion.div>
@@ -366,7 +366,7 @@ export default function AboutUsPageEnglish() {
             </h2>
             <div className="space-y-4">
               {[
-                'كسر العزلة المالية للمستخدمين الأفغان',
+                'كسر العزلة المالية للمستخدمين في جميع أنحاء العالم',
                 'بناء الوصول إلى التمويل الرقمي الدولي',
                 'تقليل الاعتماد على الأنظمة القديمة',
                 'دعم المستقلين والعائلات والشركات',
@@ -413,7 +413,7 @@ export default function AboutUsPageEnglish() {
               {
                 icon: <Landmark size={22} />,
                 title: 'وصول حديث محدود',
-                desc: 'إن الأدوات المالية المهنية الشائعة في أماكن أخرى ما زالت غير متاحة أو مجزأة بالنسبة لكثير من الأفغان.',
+                desc: 'إن الأدوات المالية المهنية الشائعة في الأسواق المتقدمة ما زالت غير متاحة أو مجزأة بالنسبة لكثير من المستخدمين عالمياً.',
               },
             ].map((item, i) => (
               <motion.div
@@ -566,7 +566,7 @@ export default function AboutUsPageEnglish() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {[
               {
                 name: 'Shaheen Safi',
@@ -595,6 +595,13 @@ export default function AboutUsPageEnglish() {
                 img: '/shirin.jpeg',
                 href: `/${currentLang}/founder/shirin-gol-ahmadi`,
                 color: 'border-purple-500/30',
+              },
+              {
+                name: 'Mobin Hassani',
+                role: 'قائد فريق المطورين (Lead Developer)',
+                img: '/mobin-hassani.jpg',
+                href: `/${currentLang}/founder/mobin-hassani`,
+                color: 'border-cyan-500/30',
               },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
@@ -636,7 +643,7 @@ export default function AboutUsPageEnglish() {
               هل أنت مستعد للانضمام إلى <br /> الاقتصاد العالمي
             </h2>
             <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-10">
-              يجري بناء SafiPay كجسر مالي جاد للجيل القادم من المستخدمين الأفغان. إذا كنت تريد أن تكون جزءاً من هذه المهمة, فاستكشف فرص الشراكة وساهم في تشكيل ما يأتي بعد ذلك.
+              يجري بناء SafiPay كجسر مالي متكامل للجيل القادم من المستخدمين والشركات حول العالم. إذا كنت تريد أن تكون جزءاً من هذه المهمة, فاستكشف فرص الشراكة وساهم في تشكيل ما يأتي بعد ذلك.
             </p>
             <Link
               href={`/${currentLang}/partners`}

@@ -108,10 +108,10 @@ export default function SahelSalemBio() {
               <div className="p-12 rounded-[4rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl">
                 <h3 className="text-4xl font-black italic mb-8 uppercase">Лидер нового поколения</h3>
                 <p className="text-gray-400 text-xl leading-[2.2] text-justify font-light italic">
-                   Родившийся **19 марта 2007 года**, Сахель Салем является ключевой фигурой в международной стратегии SafiPay. В настоящее время он получает степень **бакалавра делового администрирования (BBA)** в **University of the People (США)**, сочетая американские академические стандарты с глубоким пониманием финансового ландшафта Афганистана.
+                   Родившийся **19 марта 2007 года**, Сахель Салем является ключевой фигурой в международной стратегии SafiPay. В настоящее время он получает степень **бакалавра делового администрирования (BBA)** в **University of the People (США)**, сочетая американские академические стандарты с глубоким пониманием глобального финансового рынка и современных финтех-решений.
                 </p>
                 <div className="mt-12 flex items-center gap-6 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80">
-                   «Наша миссия — объединить афганскую диаспору по всему миру через безопасную финансовую инфраструктуру, регулируемую стандартами ЕС».
+                   «Наша миссия — предоставить пользователям и цифровому бизнесу по всему миру безопасную и передовую финансовую инфраструктуру мирового уровня».
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@ export default function SahelSalemBio() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { icon: <Globe size={40} />, title: "Экспансия в ЕС", desc: "Управление стратегическим присутствием SafiPay в банковских секторах Европейского Союза." },
-                { icon: <Landmark size={40} />, title: "Безопасность IBAN", desc: "Контроль интеграции SEPA-совместимых счетов для афганских пользователей." },
+                { icon: <Landmark size={40} />, title: "Безопасность IBAN", desc: "Контроль интеграции SEPA-совместимых счетов для глобальных пользователей по высшим стандартам." },
                 { icon: <ShieldCheck size={40} />, title: "Комплаенс", desc: "Обеспечение 100% соответствия международным законам о борьбе с отмыванием денег (AML)." }
               ].map((pill, i) => (
                 <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700">

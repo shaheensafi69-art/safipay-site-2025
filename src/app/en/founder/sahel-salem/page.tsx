@@ -104,10 +104,10 @@ export default function SahelSalemBio() {
               <div className="p-12 rounded-[4rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl">
                 <h3 className="text-4xl font-black italic mb-8 uppercase">The Next Gen Leader</h3>
                 <p className="text-gray-400 text-xl leading-[2.2] text-justify font-light italic">
-                   Born on **March 19, 2007**, Sahel Salem is a cornerstone of SafiPay's international strategy. Currently pursuing a **Bachelor of Business Administration (BBA)** at the **University of the People (USA)**, he combines American academic rigor with deep insights into the Afghan financial landscape.
+                   Born on **March 19, 2007**, Sahel Salem is a cornerstone of SafiPay's international strategy. Currently pursuing a **Bachelor of Business Administration (BBA)** at the **University of the People (USA)**, he combines American academic rigor with deep insights into the global financial landscape and modern fintech.
                 </p>
                 <div className="mt-12 flex items-center gap-6 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80">
-                   "Connecting the global Afghan diaspora through secure, European-regulated infrastructure."
+                   "Empowering global users and digital businesses through secure, borderless European-regulated infrastructure."
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function SahelSalemBio() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { icon: <Globe size={40} />, title: "EU Expansion", desc: "Leading SafiPay's presence across the European Union banking sectors." },
-                { icon: <Landmark size={40} />, title: "IBAN Security", desc: "Supervising the integration of SEPA-compliant accounts for Afghan users." },
+                { icon: <Landmark size={40} />, title: "IBAN Security", desc: "Supervising the integration of SEPA-compliant accounts for global users." },
                 { icon: <ShieldCheck size={40} />, title: "Compliance", desc: "Ensuring 100% alignment with international financial anti-money laundering laws." }
               ].map((pill, i) => (
                 <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700">

@@ -107,7 +107,7 @@ export default function MujtabaRahmaniFullBio() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2"><MapPin size={16}/> كابل، أفغانستان</span>
+               <span className="flex items-center gap-2"><MapPin size={16}/> المقر العالمي • Global Hub</span>
                <span className="flex items-center gap-2"><User size={16}/> 28 يوليو 2006</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline">@bigshot_tradez</span>
             </div>
@@ -120,10 +120,10 @@ export default function MujtabaRahmaniFullBio() {
             <h2 className="text-4xl font-black mb-10 border-r-8 border-blue-600 pr-6 uppercase italic">رؤية المؤسس</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                اسمي <span className="text-white font-bold">مجتبى رحماني</span>، رائد أعمال طموح ومتداول محترف مكرس جهودي لإحداث ثورة في المشهد المالي في أفغانستان. من خلال خلفيتي الأكاديمية المتخصصة في <span className="text-blue-400 underline decoration-2">الاقتصاد والأعمال عبر الإنترنت</span>، أقود التطوير الاستراتيجي والمالي لمنصة SafiPay.
+                اسمي <span className="text-white font-bold">مجتبى رحماني</span>، رائد أعمال طموح ومتداول محترف مكرس جهودي لإحداث ثورة في المشهد المالي العالمي. من خلال خلفيتي الأكاديمية المتخصصة في <span className="text-blue-400 underline decoration-2">الاقتصاد والأعمال عبر الإنترنت</span>، أقود التطوير الاستراتيجي والمالي لمنصة SafiPay.
               </p>
               <div className="bg-blue-600/10 p-8 rounded-[2.5rem] italic border-r-8 border-blue-600 text-blue-100">
-                "نحن ندمج المبادئ الاقتصادية التقليدية مع حلول التكنولوجيا المالية المبتكرة لتمكين الشعب الأفغاني وربطه بالسوق الرقمي العالمي."
+                "نحن ندمج المبادئ الاقتصادية التقليدية مع حلول التكنولوجيا المالية المبتكرة لتمكين المستخدمين حول العالم وربطهم بالأسواق الرقمية بلا حدود."
               </div>
               <p>
                 بعيداً عن الرسوم البيانية واستراتيجيات العمل، أنا مؤمن قوي بالانضباط والمرونة — وهي صفات أمارسها يومياً من خلال الفنون القتالية المختلطة (MMA) والجري، مما يضمن بقائي متيقظاً في عالم تداول العملات الأجنبية عالي المخاطر.
@@ -171,7 +171,7 @@ export default function MujtabaRahmaniFullBio() {
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_15px_#2563eb]" />
                   <h4 className="text-xl font-bold text-white">مؤسس مشارك</h4>
                   <p className="text-blue-400 text-sm mb-2">بنك SafiPay الرقمي (2024 - الحالي)</p>
-                  <p className="text-gray-500 text-sm leading-relaxed text-justify">رسم الاستراتيجيات المالية وقيادة نمو أول نظام بيئي مصرفي رقمي حديث في أفغانستان.</p>
+                  <p className="text-gray-500 text-sm leading-relaxed text-justify">رسم الاستراتيجيات المالية وقيادة نمو أول نظام بيئي مصرفي رقمي حديث على المستوى العالمي وبلا حدود.</p>
                 </div>
                 <div className="relative">
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-white/20 rounded-full" />
@@ -214,7 +214,7 @@ export default function MujtabaRahmaniFullBio() {
                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> التأسيس المشارك للنظام المالي العالمي SafiPay</li>
                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> خريج استراتيجي في الاقتصاد والأسواق الرقمية</li>
                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> متداول خبير بأكثر من 3 سنوات في سوق الصرف الأجنبي</li>
-                 <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> مدافع نشط عن الأعمال التجارية عبر الإنترنت في أفغانستان</li>
+                 <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> مدافع نشط عن التجارة الإلكترونية والشركات الناشئة العالمية</li>
                </ul>
             </div>
         </section>

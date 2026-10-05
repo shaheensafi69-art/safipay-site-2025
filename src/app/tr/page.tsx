@@ -39,7 +39,7 @@ const currencies = ['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK
 const problems = [
   {
     title: 'Sınırlı bankacılık erişimi',
-    desc: 'Birçok Afgan hâlâ günlük kişisel ve ticari kullanım için güvenilir uluslararası bankacılık hizmetlerine kolay erişime sahip değil.',
+    desc: 'Dünya genelinde birçok kullanıcı ve işletme hâlâ günlük kişisel ve ticari kullanım için güvenilir uluslararası bankacılık hizmetlerine kolay erişime sahip değil.',
   },
   {
     title: 'Küresel transferlerde kısıtlamalar',
@@ -412,7 +412,7 @@ function IntroSection() {
           transition={{ duration: 0.9 }}
           className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase pointer-events-auto"
         >
-          Tüm Afganlar için finansal sınırları kaldırıyoruz
+          Küresel düzeyde finansal sınırları kaldırıyoruz
         </motion.div>
 
         <motion.h1
@@ -424,7 +424,7 @@ function IntroSection() {
           <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
           <br />
           <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-            Afganlar için dijital bankacılık
+            Modern Küresel Dijital Bankacılık
           </span>
         </motion.h1>
 
@@ -434,7 +434,7 @@ function IntroSection() {
           transition={{ duration: 1, delay: 0.14 }}
           className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-7 leading-relaxed font-light"
         >
-          SafiPay, Afganlar için çok para birimli hesaplar, yerel banka bilgileri, güvenli dijital onboarding ve küresel ödemeler için anında sanal ve fiziksel kartlar içeren modern uluslararası bir finans platformu inşa ediyor.
+          SafiPay, dünya genelindeki kullanıcılar için çok para birimli hesaplar, yerel banka bilgileri, güvenli dijital onboarding ve küresel ödemeler için anında sanal ve fiziksel kartlar içeren modern uluslararası bir finans platformu inşa ediyor.
         </motion.p>
 
         <motion.p
@@ -508,7 +508,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">SafiPay nedir</h2>
             <p className="text-gray-300 text-lg leading-8 mb-6">
-              SafiPay, Afganların uluslararası bankacılık araçlarına erişmesine yardımcı olmaya odaklanan profesyonel bir dijital finans çözümüdür — bu araçlar geleneksel yerel sistemler üzerinden genellikle zor ya da imkânsız şekilde elde edilir.
+              SafiPay, dünya genelindeki kullanıcıların ve işletmelerin modern uluslararası bankacılık araçlarına erişmesine yardımcı olmaya odaklanan profesyonel bir dijital finans çözümüdür.
             </p>
             <p className="text-gray-400 leading-8 text-lg">
               Bu platform; uluslararası kullanılabilirliği, dijital kolaylığı, daha güçlü para birimlerine erişimi ve güvenli ödemeleri tek bir premium finans deneyiminde birleştirmek için tasarlanmıştır.
@@ -526,7 +526,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">Kimler için tasarlandı</h2>
             <div className="space-y-4 text-gray-300 text-lg">
-              <p>• Uluslararası hesap erişimine ihtiyaç duyan Afgan bireyler için</p>
+              <p>• Uluslararası hesap erişimine ihtiyaç duyan bireyler için</p>
               <p>• Küresel müşterilerden ödeme alan freelancerlar için</p>
               <p>• Birikimlerini daha güçlü para birimlerinde korumak isteyen aileler için</p>
               <p>• Küresel ödeme kabiliyetine ihtiyaç duyan işletmeler için</p>
@@ -643,7 +643,7 @@ function Services3DSection() {
             </div>
             <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase italic">SafiPay neden önemlidir</h3>
             <div className="space-y-5 text-gray-300 text-lg leading-8">
-              <p>SafiPay sadece para göndermek için değildir. Bu platform, Afgan kullanıcıların modern uluslararası ekonomiye daha profesyonel şekilde girmesine yardımcı olan tam bir dijital finans kapısı olarak tasarlanmıştır.</p>
+              <p>SafiPay sadece para göndermek için değildir. Bu platform, dünya genelindeki kullanıcıların modern uluslararası ekonomiye daha profesyonel şekilde girmesine yardımcı olan tam bir dijital finans kapısı olarak tasarlanmıştır.</p>
               <p>Bu; daha güçlü para birimlerine daha kolay erişim, daha iyi ödeme araçları, çevrim içi iş için daha fazla esneklik ve yerel sınırlamaların ötesinde pratik finansal işlevlere ihtiyaç duyan insanlar için daha fazla güven anlamına gelir.</p>
               <p>Ayrıca bu, markaya daha güçlü bir değer önerisi kazandırır; çünkü ziyaretçiler bunun sadece basit bir uygulama ekranı değil, ciddi bir altyapı projesi olduğunu hemen anlar.</p>
             </div>
@@ -738,7 +738,7 @@ function FinalCTA() {
           />
 
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-            Afganlar için küresel <br /> finansa açılan tam bir kapı
+            Tüm dünya için küresel <br /> finansa açılan tam bir kapı
           </h2>
           <p className="text-white/90 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
             SafiPay, kullanıcıların ilk ziyaretten itibaren platformun tam olarak ne sunduğunu anlamasına yardımcı olur: uluslararası erişim, daha güçlü para birimleri, daha hızlı onboarding, güvenli ödeme araçları ve küresel dijital ekonomiye gerçek bir yol.

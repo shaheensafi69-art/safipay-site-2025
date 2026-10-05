@@ -42,7 +42,7 @@ export default function SecuritySystemPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
             <p className="text-gray-400 text-xl md:text-2xl leading-relaxed max-w-xl font-light text-left opacity-0 animate-[fadeIn_1s_ease-out_0.3s_forwards]">
-              We are not just a bank; we are a digital fortress. Under the technical command of Mujtaba, SafiPay utilizes EU-standard protocols to eliminate financial boundaries for Afghanistan.
+              We are not just a bank; we are a digital fortress. Under the technical leadership of Mujtaba and our engineering division, SafiPay utilizes EU-standard protocols to eliminate financial boundaries worldwide.
             </p>
             
             <div className="flex justify-end group">
@@ -139,7 +139,7 @@ export default function SecuritySystemPage() {
                     “
                   </span>
                   <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-white relative z-10 text-left">
-                    "We are giving every Afghan a European vault in their pocket. Speed is our weapon, and security is our armor."
+                    "We are giving every global user a European vault in their pocket. Speed is our weapon, and security is our armor."
                   </blockquote>
                   <div className="mt-12 flex items-center gap-6 justify-start">
                     <div className="w-16 h-[2px] bg-blue-600 group-hover:w-24 transition-all duration-500" />

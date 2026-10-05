@@ -108,7 +108,7 @@ export default function ShaheenSafiFullExpertBio() {
             </div>
 
             <div className="flex justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2">کابل، افغانستان <MapPin size={16}/></span>
+               <span className="flex items-center gap-2">نړیوال مرکز • Global Hub <MapPin size={16}/></span>
                <span className="flex items-center gap-2">ssafi9241@hotmail.com <Mail size={16}/></span>
             </div>
           </motion.div>
@@ -173,8 +173,8 @@ export default function ShaheenSafiFullExpertBio() {
               <div className="space-y-8 border-r-2 border-white/10 pr-8">
                 <div className="relative">
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-amber-500 rounded-full" />
-                  <h4 className="text-xl font-bold text-white">د IT متخصص</h4>
-                  <p className="text-amber-500 text-sm mb-2">د افغانستان د فوټبال فدراسیون (2019-2024)</p>
+                  <h4 className="text-xl font-bold text-white">د IT او زیربناوو متخصص</h4>
+                  <p className="text-amber-500 text-sm mb-2">نړیوال ورزشي سازمانونه او فدراسیونونه (2019-2024)</p>
                   <p className="text-gray-500 text-sm">د فدراسیون د معلوماتي سیسټمونو او شبکې د زیربناوو په مدیریت کې د یونیم کال تجربه.</p>
                 </div>
                 <div className="relative">

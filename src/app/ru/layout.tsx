@@ -2,7 +2,7 @@
 
 export const metadata = {
   title: 'SafiPay - Цифровой Банкинг',
-  description: 'Первый международный цифровой банк для Афганистана.',
+  description: 'Современная международная цифровая банковская система глобального масштаба.',
 };
 
 export default function RULayout({ children }: { children: React.ReactNode }) {

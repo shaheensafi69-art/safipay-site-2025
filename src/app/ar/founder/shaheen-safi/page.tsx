@@ -108,7 +108,7 @@ export default function ShaheenSafiFullExpertBio() {
             </div>
 
             <div className="flex justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2"><MapPin size={16}/> كابل، أفغانستان</span>
+               <span className="flex items-center gap-2"><MapPin size={16}/> المقر العالمي • Global Hub</span>
                <span className="flex items-center gap-2"><Mail size={16}/> ssafi9241@hotmail.com</span>
             </div>
           </motion.div>
@@ -169,8 +169,8 @@ export default function ShaheenSafiFullExpertBio() {
               <div className="space-y-8 border-r-2 border-white/10 pr-8">
                 <div className="relative">
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-amber-500 rounded-full" />
-                  <h4 className="text-xl font-bold text-white">متخصص تكنولوجيا المعلومات</h4>
-                  <p className="text-amber-500 text-sm mb-2">اتحاد أفغانستان لكرة القدم (2019-2024)</p>
+                  <h4 className="text-xl font-bold text-white">متخصص تكنولوجيا المعلومات والبنية التحتية</h4>
+                  <p className="text-amber-500 text-sm mb-2">المنظمات الرياضية والتكنولوجية الدولية (2019-2024)</p>
                   <p className="text-gray-500 text-sm">خبرة لمدة 1.5 سنة في إدارة أنظمة تكنولوجيا المعلومات والبنية التحتية للشبكات في الاتحاد.</p>
                 </div>
                 <div className="relative">

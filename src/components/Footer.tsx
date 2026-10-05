@@ -17,6 +17,8 @@ import {
   Shield,
   Sparkles,
   MapPin,
+  Github,
+  Code2,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -40,7 +42,7 @@ export default function Footer() {
 
   const allContent: any = {
     fa: {
-      slogan: 'صافی‌پی؛ فراتر از یک سیستم مالی، ما پلی می‌سازیم برای اتصال افغانستان به اقتصاد نوین جهانی.',
+      slogan: 'صافی‌پی؛ فراتر از یک سیستم مالی، ما زیرساختی پیشرفته برای دسترسی همگانی به اقتصاد نوین جهانی می‌سازیم.',
       navTitle: 'دسترسی سریع',
       blogTitle: 'دانشنامه و اخبار',
       blogBtn: 'مشاهده تمام مقالات',
@@ -64,10 +66,11 @@ export default function Footer() {
         { name: 'مجتبی رحمانی', href: `/fa/founder/mujtaba-rahmani` },
         { name: 'ساحل سالم', href: `/fa/founder/sahel-salem` },
         { name: 'شیرین گل احمدی', href: `/fa/founder/shirin-gol-ahmadi` },
+        { name: 'مبین حسنی', href: `/fa/founder/mobin-hassani` },
       ],
     },
     ps: {
-      slogan: 'صافي پي؛ له مالي سیستم اخوا، موږ د نړیوال نوي اقتصاد سره د افغانستان د نښلولو لپاره یو پل جوړوو.',
+      slogan: 'صافي پي؛ له مالي سیستم اخوا، موږ له نوي نړیوال اقتصاد سره د نښلولو لپاره یو پیاوړی نړیوال پل جوړوو.',
       navTitle: 'چټک لاسرسی',
       blogTitle: 'پوهنغونډ او خبرونه',
       blogBtn: 'د صافي پي ټولې مقالې',
@@ -91,10 +94,11 @@ export default function Footer() {
         { name: 'مجتبی رحماني', href: `/ps/founder/mujtaba-rahmani` },
         { name: 'ساحل سالم', href: `/ps/founder/sahel-salem` },
         { name: 'شیرین ګل احمدي', href: `/ps/founder/shirin-gol-ahmadi` },
+        { name: 'مبین حسني', href: `/ps/founder/mobin-hassani` },
       ],
     },
     en: {
-      slogan: 'SafiPay: More than a system, a bridge connecting Afghanistan to the modern global economy.',
+      slogan: 'SafiPay: More than a system, a bridge connecting users worldwide to the modern global economy.',
       navTitle: 'QUICK LINKS',
       blogTitle: 'INSIGHTS & NEWS',
       blogBtn: 'VIEW ALL INSIGHTS',
@@ -118,10 +122,11 @@ export default function Footer() {
         { name: 'Mujtaba Rahmani', href: `/en/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/en/founder/sahel-salem` },
         { name: 'Shirin Gol Ahmadi', href: `/en/founder/shirin-gol-ahmadi` },
+        { name: 'Mobin Hassani', href: `/en/founder/mobin-hassani` },
       ],
     },
     de: {
-      slogan: 'SafiPay: Mehr als ein System, eine Brücke, die Afghanistan mit der modernen Weltwirtschaft verbindet.',
+      slogan: 'SafiPay: Mehr als ein System, eine Brücke, die Nutzer weltweit mit der modernen Weltwirtschaft verbindet.',
       navTitle: 'SCHNELLZUGRIFF',
       blogTitle: 'EINBLICKE & AKTUELLES',
       blogBtn: 'ALLE ARTIKEL ANSEHEN',
@@ -145,10 +150,11 @@ export default function Footer() {
         { name: 'Mujtaba Rahmani', href: `/de/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/de/founder/sahel-salem` },
         { name: 'Shirin Gol Ahmadi', href: `/de/founder/shirin-gol-ahmadi` },
+        { name: 'Mobin Hassani', href: `/de/founder/mobin-hassani` },
       ],
     },
     ru: {
-      slogan: 'SafiPay: Больше чем система, мост, соединяющий Афганистан с современной мировой экономикой.',
+      slogan: 'SafiPay: Больше чем система, глобальный мост, соединяющий пользователей по всему миру с современной экономикой.',
       navTitle: 'БЫСТРЫЙ ДОСТУП',
       blogTitle: 'НОВОСТИ И АНАЛИТИКА',
       blogBtn: 'ПОСМОТРЕТЬ ВСЕ СТАТЬИ',
@@ -169,13 +175,14 @@ export default function Footer() {
         { name: 'Банковская конфиденциальность', href: `/ru/privacy` },
         { name: 'Европейские условия', href: `/ru/terms` },
         { name: 'Шахин Сафи', href: `/ru/founder/shaheen-safi` },
-        { name: 'Муджتاба Рахмани', href: `/ru/founder/mujtaba-rahmani` },
+        { name: 'Муджтаба Рахмани', href: `/ru/founder/mujtaba-rahmani` },
         { name: 'Сахель Салем', href: `/ru/founder/sahel-salem` },
         { name: 'Ширин Голь Ахмади', href: `/ru/founder/shirin-gol-ahmadi` },
+        { name: 'Мобин Хассани', href: `/ru/founder/mobin-hassani` },
       ],
     },
     tr: {
-      slogan: "SafiPay: Bir sistemden fazlası, Afganistan'ı modern küresel ekonomiye bağlayan bir köprü.",
+      slogan: 'SafiPay: Bir sistemden fazlası, dünya çapındaki kullanıcıları modern küresel ekonomiye bağlayan bir köprü.',
       navTitle: 'HIZLI ERİŞİM',
       blogTitle: 'İÇGÖRÜLER VE HABERLER',
       blogBtn: 'TÜM MAKALELERİ GÖR',
@@ -199,10 +206,11 @@ export default function Footer() {
         { name: 'Mujtaba Rahmani', href: `/tr/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/tr/founder/sahel-salem` },
         { name: 'Shirin Gol Ahmadi', href: `/tr/founder/shirin-gol-ahmadi` },
+        { name: 'Mobin Hassani', href: `/tr/founder/mobin-hassani` },
       ],
     },
     fr: {
-      slogan: "SafiPay : Plus qu'un système, un pont reliant l'Afghanistan à l'économie mondiale moderne.",
+      slogan: "SafiPay : Plus qu'un système, un pont reliant les utilisateurs du monde entier à l'économie mondiale moderne.",
       navTitle: 'ACCÈS RAPIDE',
       blogTitle: 'INSIGHTS & ACTUALITÉS',
       blogBtn: 'VOIR TOUS LES ARTICLES',
@@ -226,10 +234,11 @@ export default function Footer() {
         { name: 'Mujtaba Rahmani', href: `/fr/founder/mujtaba-rahmani` },
         { name: 'Sahel Salem', href: `/fr/founder/sahel-salem` },
         { name: 'Shirin Gol Ahmadi', href: `/fr/founder/shirin-gol-ahmadi` },
+        { name: 'Mobin Hassani', href: `/fr/founder/mobin-hassani` },
       ],
     },
     ar: {
-      slogan: 'صافي بي؛ أكثر من مجرد نظام مالي، نحن نبني جسراً لربط أفغانستان بالاقتصاد العالمي الحديث.',
+      slogan: 'صافي بي؛ أكثر من مجرد نظام مالي، نحن نبني جسراً عالمياً لربط المستخدمين بالاقتصاد العالمي الحديث.',
       navTitle: 'وصول سريع',
       blogTitle: 'رؤى وأخبار',
       blogBtn: 'مشاهدة جميع المقالات',
@@ -253,6 +262,7 @@ export default function Footer() {
         { name: 'مجتبى رحماني', href: `/ar/founder/mujtaba-rahmani` },
         { name: 'ساحل سالم', href: `/ar/founder/sahel-salem` },
         { name: 'شيرين جول أحمدي', href: `/ar/founder/shirin-gol-ahmadi` },
+        { name: 'مبين حسني', href: `/ar/founder/mobin-hassani` },
       ],
     },
   };
@@ -313,6 +323,18 @@ export default function Footer() {
       socials: [
         { href: 'https://www.linkedin.com/in/shirin-gol-ahmadi-842b40344?utm_source=share_via&utm_content=profile&utm_medium=member_android', icon: <Linkedin size={16} />, hover: 'hover:text-[#0A66C2]' },
         { href: 'mailto:shirin@safipay.net', icon: <Mail size={14} />, hover: 'hover:text-pink-400' },
+      ],
+    },
+    {
+      name: 'MOBIN HASSANI',
+      role: 'Lead Developer',
+      image: '/mobin-hassani.jpg',
+      href: `/${currentLang}/founder/mobin-hassani`,
+      accent: 'from-cyan-500/25 to-transparent',
+      socials: [
+        { href: 'https://github.com', icon: <Github size={16} />, hover: 'hover:text-cyan-400' },
+        { href: 'https://linkedin.com', icon: <Linkedin size={16} />, hover: 'hover:text-[#0A66C2]' },
+        { href: 'mailto:mobin@safipay.net', icon: <Mail size={14} />, hover: 'hover:text-cyan-400' },
       ],
     },
   ];
@@ -376,7 +398,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/6 bg-black/40 px-4 py-3 text-sm text-gray-300">
                   <MapPin size={16} className="text-amber-500" />
-                  Kabul • Istanbul • Paris
+                  Global Hub • Istanbul • Paris • Dubai
                 </div>
                 <Link
                   href={`/${currentLang}/user/login`}
@@ -393,7 +415,7 @@ export default function Footer() {
           </div>
         </motion.div>
 
-        {/* بخش نمایش اعضای تیم که حالا به جای ۳ نفر، ۴ نفر را پشتیبانی می‌کند */}
+        {/* بخش نمایش اعضای تیم */}
         <div className="mb-14">
           <div className="mb-7 flex items-center justify-between gap-4 border-b border-white/5 pb-4">
             <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-500/70">
@@ -402,8 +424,8 @@ export default function Footer() {
             <div className="hidden h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent md:block" />
           </div>
 
-          {/* تغییر استایل گرید به لایوت منعطف تا ۴ نفر در صفحات بزرگ به زیبایی نمایش داده شوند */}
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {/* استایل گرید برای ۵ نفر عضو تیم */}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {leaders.map((leader, index) => (
               <motion.div
                 key={leader.name}

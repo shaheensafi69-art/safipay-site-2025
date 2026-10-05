@@ -39,7 +39,7 @@ const currencies = ['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK
 const problems = [
   {
     title: 'Accès bancaire limité',
-    desc: 'De nombreux Afghans n’ont toujours pas un accès facile à des services bancaires internationaux fiables pour un usage personnel et professionnel quotidien.',
+    desc: 'De nombreux utilisateurs et entreprises à travers le monde n’ont toujours pas un accès facile à des services bancaires internationaux fiables pour un usage personnel et professionnel quotidien.',
   },
   {
     title: 'Restrictions sur les transferts mondiaux',
@@ -412,7 +412,7 @@ function IntroSection() {
           transition={{ duration: 0.9 }}
           className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase pointer-events-auto"
         >
-          Briser les frontières financières pour tous les Afghans
+          Briser les frontières financières mondiales
         </motion.div>
 
         <motion.h1
@@ -424,7 +424,7 @@ function IntroSection() {
           <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
           <br />
           <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-            Banque numérique pour les Afghans
+            Banque numérique mondiale moderne
           </span>
         </motion.h1>
 
@@ -434,7 +434,7 @@ function IntroSection() {
           transition={{ duration: 1, delay: 0.14 }}
           className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-7 leading-relaxed font-light"
         >
-          SafiPay construit une plateforme financière internationale moderne pour les Afghans, comprenant des comptes multidevises, des coordonnées bancaires locales, un onboarding numérique sécurisé, ainsi que des cartes virtuelles et physiques instantanées pour les paiements mondiaux.
+          SafiPay construit une plateforme financière internationale moderne comprenant des comptes multidevises, des coordonnées bancaires locales, un onboarding numérique sécurisé, ainsi que des cartes virtuelles et physiques instantanées pour les paiements mondiaux.
         </motion.p>
 
         <motion.p
@@ -508,7 +508,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">Qu’est-ce que SafiPay</h2>
             <p className="text-gray-300 text-lg leading-8 mb-6">
-              SafiPay est une solution financière numérique et professionnelle dont l’objectif est d’aider les Afghans à accéder à des outils bancaires internationaux – des outils qui sont généralement difficiles ou impossibles à obtenir via les systèmes locaux traditionnels.
+              SafiPay est une solution financière numérique et professionnelle à l'échelle mondiale dont l’objectif est d’aider les utilisateurs et entreprises du monde entier à accéder à des outils bancaires internationaux modernes.
             </p>
             <p className="text-gray-400 leading-8 text-lg">
               Cette plateforme a été conçue pour réunir l’utilisabilité internationale, le confort numérique, l’accès à des devises plus fortes et des paiements sécurisés dans une expérience financière premium.
@@ -526,7 +526,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">Pour qui est-ce conçu</h2>
             <div className="space-y-4 text-gray-300 text-lg">
-              <p>• Les particuliers afghans qui ont besoin d’un accès à un compte international</p>
+              <p>• Les particuliers qui ont besoin d’un accès à un compte international</p>
               <p>• Les freelances qui reçoivent des fonds de clients mondiaux</p>
               <p>• Les familles qui souhaitent préserver leurs économies dans des devises plus fortes</p>
               <p>• Les entreprises qui ont besoin d’une capacité de paiement mondiale</p>
@@ -643,7 +643,7 @@ function Services3DSection() {
             </div>
             <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase italic">Pourquoi SafiPay est importante</h3>
             <div className="space-y-5 text-gray-300 text-lg leading-8">
-              <p>SafiPay n’est pas seulement conçu pour envoyer de l’argent. Cette plateforme a été pensée comme une passerelle financière numérique complète qui aide les utilisateurs afghans à entrer de manière plus professionnelle dans l’économie internationale moderne.</p>
+              <p>SafiPay n’est pas seulement conçu pour envoyer de l’argent. Cette plateforme a été pensée comme une passerelle financière numérique complète qui aide les utilisateurs du monde entier à entrer de manière plus professionnelle dans l’économie internationale moderne.</p>
               <p>Cela signifie un accès plus facile à des devises plus fortes, de meilleurs outils de paiement, plus de flexibilité pour les activités en ligne et davantage de confiance pour les personnes ayant besoin de fonctions financières pratiques au-delà des limites locales.</p>
               <p>Cela donne également à la marque une proposition de valeur plus forte, car les visiteurs comprennent immédiatement que cette plateforme est un projet d’infrastructure sérieux, et non un simple écran d’application.</p>
             </div>
@@ -738,7 +738,7 @@ function FinalCTA() {
           />
 
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-            Une passerelle complète vers <br /> la finance mondiale pour les Afghans
+            Une passerelle complète vers <br /> la finance mondiale pour tous
           </h2>
           <p className="text-white/90 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
             SafiPay aide les utilisateurs à comprendre précisément, dès la première visite, ce que propose la plateforme : un accès international, des devises plus fortes, un onboarding plus rapide, des outils de paiement sécurisés et une véritable voie vers l’économie numérique mondiale.

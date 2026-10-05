@@ -104,10 +104,10 @@ export default function SahelSalemBio() {
                   <h3 className="text-sm font-black uppercase tracking-widest">La Vision</h3>
                 </div>
                 <p className="text-gray-400 text-xl leading-[2.2] text-justify font-light italic">
-                  Né le **19 mars 2007**, Sahel Salem est un pilier stratégique de la direction de SafiPay. Alliant l'expertise académique de la **University of the People (USA)** à une vision pointue des marchés financiers mondiaux, il joue un rôle déterminant dans l'intégration de l'Afghanistan au réseau bancaire international. Sahel est l'architecte de notre expansion européenne.
+                  Né le **19 mars 2007**, Sahel Salem est un pilier stratégique de la direction de SafiPay. Alliant l'expertise académique de la **University of the People (USA)** à une vision pointue des marchés financiers mondiaux, il joue un rôle déterminant dans l'expansion du réseau bancaire international et des services financiers sans frontières. Sahel est l'architecte de notre expansion européenne.
                 </p>
                 <div className="mt-12 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80">
-                   "Notre mission est de bâtir une infrastructure financière sécurisée, régulée par l'UE, pour tous les Afghans à travers le monde."
+                   "Notre mission est de bâtir une infrastructure financière sécurisée, moderne et conforme aux normes mondiales pour tous les utilisateurs et entreprises à travers le monde."
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@ export default function SahelSalemBio() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { icon: <Globe size={40} />, title: "Expansion UE", desc: "Direction stratégique de la présence de SafiPay au sein des secteurs bancaires de l'Union Européenne." },
-                { icon: <Landmark size={40} />, title: "Sécurité IBAN", desc: "Supervision de l'intégration des comptes conformes SEPA pour les utilisateurs afghans." },
+                { icon: <Landmark size={40} />, title: "Sécurité IBAN", desc: "Supervision de l'intégration des comptes conformes SEPA pour les utilisateurs mondiaux." },
                 { icon: <ShieldCheck size={40} />, title: "Conformité", desc: "Garantie d'une adéquation totale avec les réglementations internationales anti-blanchiment (Lutte contre le blanchiment d'argent)." }
               ].map((pill, i) => (
                 <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700 text-left">

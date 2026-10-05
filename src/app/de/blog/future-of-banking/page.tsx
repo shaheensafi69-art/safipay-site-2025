@@ -132,7 +132,7 @@ export default function FutureOfBankingPage() {
 
               <h2 className="text-3xl font-black text-white mb-8">Fazit: Ein Sprung in die digitale Wirtschaft</h2>
               <p>
-                Wir bei SafiPay glauben, dass der Zugang zum globalen Bankensystem ein Grundrecht für jeden Einzelnen ist. Durch die Bereitstellung von Sofort-IBAN-Konten und Visa-Karten haben wir eine Brücke gebaut, die die afghanische Wirtschaft mit dem Herzen Europas und den globalen Märkten verbindet. Dies ist erst der Anfang einer großen Transformation in der Finanzstruktur der Region.
+                Wir bei SafiPay glauben, dass der Zugang zum globalen Bankensystem ein Grundrecht für jeden Einzelnen ist. Durch die Bereitstellung von Sofort-IBAN-Konten und Visa-Karten haben wir eine Brücke gebaut, die weltweite Nutzer und Unternehmer mit dem Herzen Europas und den internationalen Märkten verbindet. Dies ist erst der Anfang einer großen Transformation im digitalen Finanzsektor.
               </p>
             </article>
 

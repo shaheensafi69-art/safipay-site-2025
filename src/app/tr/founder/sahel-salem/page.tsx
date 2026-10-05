@@ -107,10 +107,10 @@ export default function SahelSalemBio() {
               <div className="p-12 rounded-[4rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl">
                 <h3 className="text-4xl font-black italic mb-8 uppercase">Yeni Nesil Lider</h3>
                 <p className="text-gray-400 text-xl leading-[2.2] text-justify font-light italic">
-                   **19 Mart 2007** doğumlu Sahel Salem, SafiPay'in uluslararası stratejisinin temel taşlarından biridir. Şu anda **University of the People (ABD)** bünyesinde **İşletme Yönetimi (BBA)** eğitimine devam eden Salem, Amerikan akademik disiplinini Afgan finansal ekosistemine dair derin öngörüleriyle harmanlamaktadır.
+                   **19 Mart 2007** doğumlu Sahel Salem, SafiPay'in uluslararası stratejisinin temel taşlarından biridir. Şu anda **University of the People (ABD)** bünyesinde **İşletme Yönetimi (BBA)** eğitimine devam eden Salem, Amerikan akademik disiplinini küresel finansal ekosisteme ve modern fintek alanına dair derin öngörüleriyle harmanlamaktadır.
                 </p>
                 <div className="mt-12 flex items-center gap-6 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80">
-                   "Misyonumuz, küresel Afgan diasporasını Avrupa Birliği denetimindeki güvenli finansal altyapımızla birbirine bağlamaktır."
+                   "Misyonumuz, dünya genelindeki tüm kullanıcıları ve dijital işletmeleri güvenli, sınırsız ve modern bir finansal altyapıyla buluşturmaktır."
                 </div>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function SahelSalemBio() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { icon: <Globe size={40} />, title: "AB Genişlemesi", desc: "SafiPay'in Avrupa Birliği bankacılık sektörlerindeki stratejik varlığını yönetmek." },
-                { icon: <Landmark size={40} />, title: "IBAN Güvenliği", desc: "Afgan kullanıcılar için SEPA uyumlu hesapların entegrasyonuna liderlik etmek." },
+                { icon: <Landmark size={40} />, title: "IBAN Güvenliği", desc: "Küresel kullanıcılar için en yüksek standartlarda SEPA uyumlu hesapların entegrasyonuna liderlik etmek." },
                 { icon: <ShieldCheck size={40} />, title: "Uyumluluk (Compliance)", desc: "Uluslararası kara para aklamayı önleme (AML) yasalarıyla %100 uyum sağlamak." }
               ].map((pill, i) => (
                 <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700">

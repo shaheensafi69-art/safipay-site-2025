@@ -39,7 +39,7 @@ const currencies = ['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK
 const problems = [
   {
     title: 'بانکي لاسرسی محدود دی',
-    desc: 'ډېر افغانان لا هم د خپل ورځني شخصي او سوداګریز استعمال لپاره باوري نړيوالو بانکي خدمتونو ته اسانه لاسرسی نه لري.',
+    desc: 'په ټوله نړۍ کې ډېر کاروونکي او سوداګرۍ لا هم د خپل ورځني شخصي او سوداګریز استعمال لپاره باوري نړيوالو بانکي خدمتونو ته اسانه لاسرسی نه لري.',
   },
   {
     title: 'په نړيوالو لېږدونو کې محدوديت',
@@ -412,7 +412,7 @@ function IntroSection() {
           transition={{ duration: 0.9 }}
           className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase pointer-events-auto"
         >
-          د ټولو افغانانو لپاره د مالي پولو ماتول
+          په نړيواله کچه د مالي پولو ماتول
         </motion.div>
 
         <motion.h1
@@ -424,7 +424,7 @@ function IntroSection() {
           <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
           <br />
           <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-            د افغانانو لپاره ډیجیټلي بانکداري
+            عصري نړيواله ډیجیټلي بانکداري
           </span>
         </motion.h1>
 
@@ -434,7 +434,7 @@ function IntroSection() {
           transition={{ duration: 1, delay: 0.14 }}
           className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-7 leading-relaxed font-light"
         >
-          SafiPay د افغانانو لپاره یو عصري او نړيوال مالي پلاتفورم جوړوي چې څو ارزي حسابونه، محلي بانکي معلومات، خوندي ډیجیټلي آن‌بورډینګ، او د نړیوالو تادیاتو لپاره فوري مجازي او فزیکي کارتونه پکې شامل دي.
+          SafiPay د نړۍ په کچه د کاروونکو لپاره یو عصري او نړيوال مالي پلاتفورم جوړوي چې څو ارزي حسابونه، محلي بانکي معلومات، خوندي ډیجیټلي آن‌بورډینګ، او د نړیوالو تادیاتو لپاره فوري مجازي او فزیکي کارتونه پکې شامل دي.
         </motion.p>
 
         <motion.p
@@ -508,7 +508,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">SafiPay څه شی دی</h2>
             <p className="text-gray-300 text-lg leading-8 mb-6">
-              SafiPay یو مسلکي او ډیجیټلي مالي حل دی چې تمرکز یې پر دې دی چې افغانانو ته د نړيوالو بانکي وسایلو لاسرسی برابر کړي – هغه وسایل چې عموماً د دودیزو محلي سیستمونو له لارې ترلاسه کول سخت یا ناشوني وي.
+              SafiPay یو مسلکي او نړيوال ډیجیټلي مالي حل دی چې تمرکز یې پر دې دی چې نړیوالو کاروونکو او سوداګریو ته د پرمختللو بانکي وسایلو لاسرسی برابر کړي – هغه وسایل چې عموماً د دودیزو محلي سیستمونو له لارې ترلاسه کول سخت یا ناشوني وي.
             </p>
             <p className="text-gray-400 leading-8 text-lg">
               دا پلاتفورم داسې طرحه شوی چې نړيواله کارېدنه، ډیجیټلي اسانتیا، قوي اسعارو ته لاسرسی او خوندي تادیات په یوه پریمیم مالي تجربه کې سره یوځای کړي.
@@ -526,7 +526,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">د چا لپاره دی</h2>
             <div className="space-y-4 text-gray-300 text-lg">
-              <p>• د افغانو افرادو لپاره چې نړيوال حساب ته اړتیا لري</p>
+              <p>• د هغو افرادو لپاره چې نړيوال حساب ته اړتیا لري</p>
               <p>• د هغو فریلنسرانو لپاره چې له نړیوالو پیرودونکو پیسې ترلاسه کوي</p>
               <p>• د هغو کورنیو لپاره چې غواړي خپلې سپماوې په قوي اسعارو کې وساتي</p>
               <p>• د هغو سوداګریو لپاره چې نړیوال تادیاتي وړتیا ته اړتیا لري</p>
@@ -643,7 +643,7 @@ function Services3DSection() {
             </div>
             <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase italic">ولې SafiPay مهم دی</h3>
             <div className="space-y-5 text-gray-300 text-lg leading-8">
-              <p>SafiPay یوازې د پیسو د لېږلو لپاره نه دی. دا پلاتفورم د یوې بشپړې ډیجیټلي مالي دروازې په توګه طرحه شوی چې له افغان کاروونکو سره مرسته کوي څو په لا مسلکي ډول عصري نړيوال اقتصاد ته داخل شي.</p>
+              <p>SafiPay یوازې د پیسو د لېږلو لپاره نه دی. دا پلاتفورم د یوې بشپړې ډیجیټلي مالي دروازې په توګه طرحه شوی چې په ټوله نړۍ کې له کاروونکو سره مرسته کوي څو په لا مسلکي ډول عصري نړيوال اقتصاد ته داخل شي.</p>
               <p>دا د دې معنا لري چې قوي اسعارو ته اسانه لاسرسی، غوره تادیاتي وسایل، د انلاين سوداګرۍ لپاره ډېر انعطاف، او د هغو کسانو لپاره لا زیات باور چې د محلي محدودیتونو هاخوا عملي مالي دندو ته اړتیا لري.</p>
               <p>همداراز دا برانډ ته لا قوي ارزښت ورکوي، ځکه لیدونکي سمدلاسه درک کوي چې دا پلاتفورم یو جدي زېربنايي پروژه ده، نه یوازې یوه ساده د اپلکېشن صفحه.</p>
             </div>
@@ -738,7 +738,7 @@ function FinalCTA() {
           />
 
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-            د افغانانو لپاره د <br /> نړيوال مالي سیستم بشپړه دروازه
+            د ټولې نړۍ لپاره د <br /> نړيوال مالي سیستم بشپړه دروازه
           </h2>
           <p className="text-white/90 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
             SafiPay له کاروونکو سره مرسته کوي چې له لومړۍ لیدنې څخه په دقیقه توګه پوه شي چې دا پلاتفورم څه وړاندې کوي: نړيوال لاسرسی، قوي اسعار، چټک آن‌بورډینګ، خوندي تادیاتي وسایل، او د نړيوال ډیجیټلي اقتصاد پر لور یوه رښتینې لاره.

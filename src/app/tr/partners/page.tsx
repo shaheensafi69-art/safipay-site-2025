@@ -305,7 +305,7 @@ export default function SafiPartners3DEnglish() {
   const heroScale = useTransform(smooth, [0, 0.12], [1, 0.95]);
 
   const safiPayFeatures = [
-    'Afganistan odaklı kullanıcılar ve küresel hizmet sağlayıcılar için profesyonel uluslararası hesap açılışı',
+    'Bireysel kullanıcılar, işletmeler ve küresel operatörler için profesyonel uluslararası hesap açılışı',
     'EUR, USD, GBP, PLN, SEK, NOK, RON, HUF, CZK ve DKK dahil çoklu para birimi bakiyeleri',
     'Ödemelerin, operasyonel transferlerin ve uluslararası mutabakatların daha sorunsuz alınması için yerel banka bilgileri',
     'Premium kullanıcı deneyimi ve hızlı erişim için tasarlanmış anında sanal ve fiziksel kart ihracı',
@@ -535,7 +535,7 @@ export default function SafiPartners3DEnglish() {
 
             <p className="text-gray-300 text-base sm:text-lg leading-8 font-light mb-8 sm:mb-10 italic text-left">
               SafiPay, uluslararası hesap altyapısına, premium çoklu para birimi verimliliğine, yerel banka bilgilerine ve anında kart ihracına ciddi şekilde ihtiyaç duyan kullanıcılar ve ortaklar için tasarlanmıştır.
-              Platform, Afganlar ve bu pazara daha güçlü araçlarla hizmet vermek isteyen kuruluşlar için küresel finansa açılan modern bir kapı olarak konumlandırılmıştır.
+              Platform, tüm dünyadaki bireysel kullanıcılar ve güçlü sınır ötesi ödeme araçlarına ihtiyaç duyan kuruluşlar için küresel finansa açılan modern bir dijital köprü olarak konumlandırılmıştır.
             </p>
 
             <div className="grid gap-4 mb-8 sm:mb-10">

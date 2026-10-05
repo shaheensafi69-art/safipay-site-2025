@@ -104,10 +104,10 @@ export default function SahelSalemBio() {
                   <h3 className="text-sm font-black uppercase tracking-widest">Die Vision</h3>
                 </div>
                 <p className="text-gray-400 text-xl leading-[2.2] text-justify font-light italic">
-                  Sahel Salem, geboren am **19. März 2007**, ist ein strategischer Eckpfeiler des Managements von SafiPay. Durch die Kombination von akademischem Wissen der **University of the People (USA)** und tiefgreifenden Einblicken in die globalen Finanzmärkte, spielt er eine Schlüsselrolle bei der Anbindung Afghanistans an das internationale Bankennetzwerk. Sahel ist der Architekt unserer europäischen Expansion.
+                  Sahel Salem, geboren am **19. März 2007**, ist ein strategischer Eckpfeiler des Managements von SafiPay. Durch die Kombination von akademischem Wissen der **University of the People (USA)** und tiefgreifenden Einblicken in die globalen Finanzmärkte, spielt er eine Schlüsselrolle beim Ausbau des internationalen Bankennetzwerks und grenzenloser Finanzdienstleistungen. Sahel ist der Architekt unserer europäischen Expansion.
                 </p>
                 <div className="mt-12 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80">
-                   "Unser Ziel ist der Aufbau einer sicheren, EU-regulierten Finanzinfrastruktur für alle Afghanen weltweit."
+                   "Unser Ziel ist der Aufbau einer sicheren, hochmodernen Finanzinfrastruktur für weltweite Nutzer und digitale Unternehmen."
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@ export default function SahelSalemBio() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { icon: <Globe size={40} />, title: "EU-Expansion", desc: "Strategische Leitung der Präsenz von SafiPay in den Bankensektoren der Europäischen Union." },
-                { icon: <Landmark size={40} />, title: "IBAN-Sicherheit", desc: "Überwachung der Integration SEPA-konformer Konten für afghanische Nutzer weltweit." },
+                { icon: <Landmark size={40} />, title: "IBAN-Sicherheit", desc: "Überwachung der Integration SEPA-konformer Konten für globale Nutzer weltweit." },
                 { icon: <ShieldCheck size={40} />, title: "Compliance", desc: "Sicherstellung der 100%igen Übereinstimmung mit internationalen AML-Gesetzen." }
               ].map((pill, i) => (
                 <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700 text-left">

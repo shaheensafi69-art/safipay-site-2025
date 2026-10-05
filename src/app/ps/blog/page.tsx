@@ -26,7 +26,7 @@ const blogPosts = {
     },
     {
       id: 3,
-      title: "د افغان اتباعو لپاره د اروپايي IBAN حساب ګټې",
+      title: "د نړیوالو کاروونکو او سوداګرو لپاره د اروپايي IBAN حساب ګټې",
       excerpt: "د نړیوالو حوالو ترلاسه کولو لپاره په مستقیم ډول د SEPA بانکي سیسټم سره وصل شئ.",
       date: "۴ کب ۱۴۰۴",
       readTime: "۷ دقیقې",
@@ -83,7 +83,7 @@ export default function BlogPage() {
         </div>
         <h1 className="text-4xl md:text-6xl font-black mb-6 italic tracking-tighter">د تحلیل او خبرونو مرکز</h1>
         <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
-          نړیوالو بازارونو ته د افغانستان د نښلولو لپاره د فینټیک، نړیوال امنیت او مالي حل لارو په برخه کې وروستي لاسته راوړنې.
+          نړیوالو بازارونو او پرمختللې بانکدارۍ ته د لاسرسي لپاره د فینټیک، نړیوال امنیت او مالي حل لارو په برخه کې وروستي لاسته راوړنې.
         </p>
       </div>
 

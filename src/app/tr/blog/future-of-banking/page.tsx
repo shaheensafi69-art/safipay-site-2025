@@ -132,7 +132,7 @@ export default function FutureOfBankingPage() {
 
               <h2 className="text-3xl font-black text-white mb-8">Sonuç: Dijital Ekonomiye Bir Sıçrayış</h2>
               <p>
-                SafiPay olarak, küresel bankacılık sistemine erişimin her birey için temel bir hak olduğuna inanıyoruz. Anında IBAN hesabı ve Visa kart çözümleri sunarak, Afganistan ekonomisini Avrupa'nın kalbiyle ve küresel pazarlarla birleştiren bir köprü inşa ettik. Bu, bölgenin finansal yapısındaki büyük dönüşümün sadece başlangıcıdır.
+                SafiPay olarak, küresel bankacılık sistemine erişimin her birey için temel bir hak olduğuna inanıyoruz. Anında IBAN hesabı ve Visa kart çözümleri sunarak, dünya genelindeki kullanıcıları ve girişimcileri Avrupa'nın kalbiyle ve uluslararası pazarlarla birleştiren bir köprü inşa ettik. Bu, modern dijital finans yapısındaki büyük dönüşümün sadece başlangıcıdır.
               </p>
             </article>
 

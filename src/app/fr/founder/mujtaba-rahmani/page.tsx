@@ -108,7 +108,7 @@ export default function MujtabaRahmaniFullBio() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2"><MapPin size={16}/> Kaboul, Afghanistan</span>
+               <span className="flex items-center gap-2"><MapPin size={16}/> Global Hub • International</span>
                <span className="flex items-center gap-2"><User size={16}/> 28 Juillet 2006</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline">@bigshot_tradez</span>
             </div>
@@ -121,10 +121,10 @@ export default function MujtabaRahmaniFullBio() {
             <h2 className="text-4xl font-black mb-10 border-l-8 border-blue-600 pl-6 uppercase italic">La Mission du Co-fondateur</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                Je m'appelle <span className="text-white font-bold">Mujtaba Rahmani</span>, un entrepreneur visionnaire et trader professionnel dédié à la révolution du paysage financier de l'Afghanistan. Fort d'un parcours académique spécialisé en <span className="text-blue-400 underline decoration-2">Économie et Business en Ligne</span>, je dirige le développement stratégique et financier de SafiPay.
+                Je m'appelle <span className="text-white font-bold">Mujtaba Rahmani</span>, un entrepreneur visionnaire et trader professionnel dédié à la révolution du paysage financier mondial. Fort d'un parcours académique spécialisé en <span className="text-blue-400 underline decoration-2">Économie et Business en Ligne</span>, je dirige le développement stratégique et financier de SafiPay.
               </p>
               <div className="bg-blue-600/10 p-8 rounded-[2.5rem] italic border-l-8 border-blue-600 text-blue-100">
-                "Nous fusionnons les principes économiques traditionnels avec les solutions FinTech de pointe pour autonomiser la population afghane et la connecter au marché numérique mondial."
+                "Nous fusionnons les principes économiques traditionnels avec les solutions FinTech de pointe pour autonomiser les utilisateurs du monde entier et les connecter aux marchés numériques sans frontières."
               </div>
               <p>
                 Au-delà des graphiques et des stratégies commerciales, je crois fermement en la discipline et la résilience — des qualités que je cultive quotidiennement à travers le MMA et la course à pied, afin d'être prêt pour le monde à haute pression du Forex.
@@ -172,7 +172,7 @@ export default function MujtabaRahmaniFullBio() {
                   <div className="absolute -left-[41px] top-2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_15px_#2563eb]" />
                   <h4 className="text-xl font-bold text-white">Co-fondateur</h4>
                   <p className="text-blue-400 text-sm mb-2">SafiPay Digital Bank (2024 - Présent)</p>
-                  <p className="text-gray-500 text-sm leading-relaxed text-justify">Planification stratégique du cadre financier et propulsion de la croissance du premier écosystème bancaire numérique moderne en Afghanistan.</p>
+                  <p className="text-gray-500 text-sm leading-relaxed text-justify">Planification stratégique du cadre financier et propulsion de la croissance du premier écosystème bancaire numérique mondial et sans frontières.</p>
                 </div>
                 <div className="relative">
                   <div className="absolute -left-[41px] top-2 w-4 h-4 bg-white/20 rounded-full" />
@@ -215,7 +215,7 @@ export default function MujtabaRahmaniFullBio() {
                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Co-fondation de l'Écosystème Financier Global SafiPay</li>
                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Diplômé stratégique en Économie & Marchés Numériques</li>
                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Expert Trader avec plus de 3 ans d'expérience sur le Forex</li>
-                 <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Défenseur actif du Business en Ligne en Afghanistan</li>
+                 <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> Défenseur actif du commerce électronique et des startups mondiales</li>
                </ul>
             </div>
         </section>

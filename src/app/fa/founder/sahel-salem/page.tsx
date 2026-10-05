@@ -105,10 +105,10 @@ export default function SahelSalemBio() {
                   <h3 className="text-3xl font-black italic uppercase">رهبر نسل نوین</h3>
                 </div>
                 <p className="text-gray-400 text-xl leading-[2.2] text-justify font-light italic">
-                  ساحل سالم، متولد **۱۹ مارچ ۲۰۰۷**، یکی از ستون‌های استراتژیک مدیریت در SafiPay است. او با تلفیق دانش آکادمیک مدیریت بازرگانی از **دانشگاه People آمریکا** و درک عمیق از بازارهای مالی، نقش کلیدی در اتصال افغانستان به شبکه بانکی جهانی ایفا می‌کند. ساحل معمار روابط بین‌المللی ما در اتحادیه اروپاست.
+                  ساحل سالم، متولد **۱۹ مارچ ۲۰۰۷**، یکی از ستون‌های استراتژیک مدیریت در SafiPay است. او با تلفیق دانش آکادمیک مدیریت بازرگانی از **دانشگاه People آمریکا** و درک عمیق از بازارهای مالی، نقش کلیدی در گسترش شبکه بانکی و پرداخت‌های بدون مرز جهانی ایفا می‌کند. ساحل معمار روابط بین‌المللی ما در اتحادیه اروپاست.
                 </p>
                 <div className="mt-12 flex items-center gap-6 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80">
-                   "هدف ما ایجاد زیرساخت‌های مالی امن و تحت نظارت اروپا برای تمامی افغان‌های جهان است."
+                   "هدف ما ایجاد زیرساخت‌های مالی امن، مدرن و تحت نظارت استانداردهای جهانی برای تمام کاربران و کسب‌وکارهای سراسر دنیا است."
                 </div>
               </div>
             </div>
@@ -140,7 +140,7 @@ export default function SahelSalemBio() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { icon: <Globe size={40} />, title: "توسعه در اروپا", desc: "رهبری حضور استراتژیک SafiPay در بخش‌های بانکی اتحادیه اروپا." },
-                { icon: <Landmark size={40} />, title: "امنیت IBAN", desc: "نظارت بر ادغام حساب‌های SEPA برای کاربران افغان با استانداردهای جهانی." },
+                { icon: <Landmark size={40} />, title: "امنیت IBAN", desc: "نظارت بر ادغام حساب‌های SEPA برای کاربران بین‌المللی با بالاترین استانداردهای جهانی." },
                 { icon: <ShieldCheck size={40} />, title: "انطباق قانونی", desc: "تضمین همسویی ۱۰۰ درصدی با قوانین بین‌المللی مبارزه با پولشویی." }
               ].map((pill, i) => (
                 <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700 text-right">

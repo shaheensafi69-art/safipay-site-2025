@@ -2,7 +2,7 @@
 
 export const metadata = {
   title: 'SafiPay - Dijital Bankacılık',
-  description: 'Afganistan için ilk uluslararası dijital bankacılık sistemi.',
+  description: 'Dünya çapında modern uluslararası dijital bankacılık sistemi.',
 };
 
 export default function TRLayout({ children }: { children: React.ReactNode }) {

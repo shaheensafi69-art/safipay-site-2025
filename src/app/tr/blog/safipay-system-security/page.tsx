@@ -139,7 +139,7 @@ export default function SecuritySystemPage() {
                     “
                   </span>
                   <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-white relative z-10 text-left">
-                    "Her Afgan'a cebinde taşıyabileceği bir Avrupa kasası sunuyoruz. Hız silahımız, güvenlik ise zırhımızdır."
+                    "Dünyadaki her kullanıcıya cebinde taşıyabileceği bir Avrupa kasası sunuyoruz. Hız silahımız, güvenlik ise zırhımızdır."
                   </blockquote>
                   <div className="mt-12 flex items-center gap-6 justify-start">
                     <div className="w-16 h-[2px] bg-blue-600 group-hover:w-24 transition-all duration-500" />

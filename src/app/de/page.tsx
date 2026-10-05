@@ -39,7 +39,7 @@ const currencies = ['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK
 const problems = [
   {
     title: 'Begrenzter Zugang zu Bankdienstleistungen',
-    desc: 'Viele Afghanen haben noch immer keinen einfachen Zugang zu vertrauenswürdigen internationalen Bankdienstleistungen für die tägliche private und geschäftliche Nutzung.',
+    desc: 'Viele Nutzer und Unternehmen weltweit haben noch immer keinen einfachen Zugang zu vertrauenswürdigen internationalen Bankdienstleistungen für die tägliche private und geschäftliche Nutzung.',
   },
   {
     title: 'Einschränkungen bei globalen Überweisungen',
@@ -412,7 +412,7 @@ function IntroSection() {
           transition={{ duration: 0.9 }}
           className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase pointer-events-auto"
         >
-          Finanzielle Grenzen für alle Afghanen durchbrechen
+          Globale finanzielle Grenzen durchbrechen
         </motion.div>
 
         <motion.h1
@@ -424,7 +424,7 @@ function IntroSection() {
           <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
           <br />
           <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-            Digitales Banking für Afghanen
+            Modernes globales digitales Banking
           </span>
         </motion.h1>
 
@@ -434,7 +434,7 @@ function IntroSection() {
           transition={{ duration: 1, delay: 0.14 }}
           className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-7 leading-relaxed font-light"
         >
-          SafiPay baut eine moderne internationale Finanzplattform für Afghanen auf, die Mehrwährungskonten, lokale Bankdaten, sicheres digitales Onboarding sowie sofortige virtuelle und physische Karten für globale Zahlungen umfasst.
+          SafiPay baut eine moderne internationale Finanzplattform auf, die Mehrwährungskonten, lokale Bankdaten, sicheres digitales Onboarding sowie sofortige virtuelle und physische Karten für globale Zahlungen umfasst.
         </motion.p>
 
         <motion.p
@@ -508,7 +508,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">Was ist SafiPay</h2>
             <p className="text-gray-300 text-lg leading-8 mb-6">
-              SafiPay ist eine professionelle digitale Finanzlösung, deren Fokus darauf liegt, Afghanen den Zugang zu internationalen Banking-Tools zu ermöglichen – Werkzeuge, die über traditionelle lokale Systeme meist schwer oder gar nicht erreichbar sind.
+              SafiPay ist eine professionelle digitale Finanzlösung, deren Fokus darauf liegt, Nutzern und Unternehmen weltweit den Zugang zu modernen internationalen Banking-Tools zu ermöglichen – Werkzeuge, die über traditionelle lokale Systeme meist schwer erreichbar sind.
             </p>
             <p className="text-gray-400 leading-8 text-lg">
               Diese Plattform wurde entwickelt, um internationale Nutzbarkeit, digitalen Komfort, Zugang zu stärkeren Währungen und sichere Zahlungen in einer Premium-Finanzerfahrung zu vereinen.
@@ -526,7 +526,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">Für wen ist es gedacht</h2>
             <div className="space-y-4 text-gray-300 text-lg">
-              <p>• Afghanische Einzelpersonen, die Zugang zu einem internationalen Konto benötigen</p>
+              <p>• Einzelpersonen, die Zugang zu einem internationalen Konto benötigen</p>
               <p>• Freelancer, die Geld von globalen Kunden erhalten</p>
               <p>• Familien, die ihre Ersparnisse in stärkeren Währungen bewahren möchten</p>
               <p>• Unternehmen, die globale Zahlungsfähigkeit benötigen</p>
@@ -643,7 +643,7 @@ function Services3DSection() {
             </div>
             <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase italic">Warum SafiPay wichtig ist</h3>
             <div className="space-y-5 text-gray-300 text-lg leading-8">
-              <p>SafiPay ist nicht nur zum Senden von Geld da. Diese Plattform wurde als vollständiges digitales Finanzportal konzipiert, das afghanischen Nutzern hilft, professioneller in die moderne internationale Wirtschaft einzutreten.</p>
+              <p>SafiPay ist nicht nur zum Senden von Geld da. Diese Plattform wurde als vollständiges digitales Finanzportal konzipiert, das Nutzern weltweit hilft, professioneller in die moderne internationale Wirtschaft einzutreten.</p>
               <p>Das bedeutet einfacheren Zugang zu stärkeren Währungen, bessere Zahlungstools, mehr Flexibilität für Online-Geschäfte und mehr Vertrauen für Menschen, die praktische Finanzfunktionen über lokale Einschränkungen hinaus benötigen.</p>
               <p>Außerdem verleiht dies der Marke ein stärkeres Wertversprechen, weil Besucher sofort verstehen, dass diese Plattform ein ernsthaftes Infrastrukturprojekt ist und nicht nur ein einfacher App-Bildschirm.</p>
             </div>
@@ -738,7 +738,7 @@ function FinalCTA() {
           />
 
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-            Ein vollständiges Tor zur <br /> globalen Finanzwelt für Afghanen
+            Ein vollständiges Tor zur <br /> globalen Finanzwelt weltweit
           </h2>
           <p className="text-white/90 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
             SafiPay hilft Nutzern dabei, schon beim ersten Besuch genau zu verstehen, was diese Plattform bietet: internationalen Zugang, stärkere Währungen, schnelleres Onboarding, sichere Zahlungstools und einen echten Weg in die globale digitale Wirtschaft.

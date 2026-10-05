@@ -9,10 +9,10 @@ const inter = Inter({ subsets: ['latin'] });
 // تنظیمات متادیتا در سمت سرور
 export const metadata = {
   title: {
-    default: 'SafiPay - Digital Bank for Afghans',
+    default: 'SafiPay - Global Digital Banking',
     template: '%s | SafiPay'
   },
-  description: 'SafiPay is the first international digital banking system for Afghans. Breaking borders, building the future.',
+  description: 'SafiPay is a premier international digital banking system worldwide. Breaking borders, building the future.',
 };
 
 export default async function RootLayout({
@@ -51,7 +51,7 @@ export default async function RootLayout({
         "@id": "https://www.safipay.net/founder/shaheen-safi/#person",
         "name": "Shaheen Safi",
         "jobTitle": "Founder & CEO of SafiPay",
-        "description": "Afghan entrepreneur and founder of SafiPay digital banking system.",
+        "description": "Tech entrepreneur and founder of SafiPay global digital banking system.",
         "image": "https://www.safipay.net/shaheen.jpeg",
         "worksFor": { "@id": "https://www.safipay.net/#organization" },
         "sameAs": [

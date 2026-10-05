@@ -2,7 +2,7 @@
 
 export const metadata = {
   title: 'سافي بي - البنك الرقمي',
-  description: 'أول بنك رقمي دولي لأفغانستان والحلول المالية الشاملة.',
+  description: 'النظام المصرفي الرقمي الدولي المتكامل على المستوى العالمي.',
 };
 
 export default function ARLayout({ children }: { children: React.ReactNode }) {

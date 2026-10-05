@@ -39,7 +39,7 @@ const currencies = ['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK
 const problems = [
   {
     title: 'وصول مصرفي محدود',
-    desc: 'لا يزال العديد من الأفغان لا يملكون وصولاً سهلاً إلى الخدمات المصرفية الدولية الموثوقة للاستخدام الشخصي والتجاري اليومي.',
+    desc: 'لا يزال العديد من المستخدمين والشركات حول العالم لا يملكون وصولاً سهلاً إلى الخدمات المصرفية الدولية الموثوقة للاستخدام الشخصي والتجاري اليومي.',
   },
   {
     title: 'قيود على التحويلات العالمية',
@@ -412,7 +412,7 @@ function IntroSection() {
           transition={{ duration: 0.9 }}
           className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase pointer-events-auto"
         >
-          كسر الحواجز المالية لجميع الأفغان
+          كسر الحواجز المالية على المستوى العالمي
         </motion.div>
 
         <motion.h1
@@ -424,7 +424,7 @@ function IntroSection() {
           <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
           <br />
           <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-            الخدمات المصرفية الرقمية للأفغان
+            خدمات مصرفية رقمية عالمية حديثة
           </span>
         </motion.h1>
 
@@ -434,7 +434,7 @@ function IntroSection() {
           transition={{ duration: 1, delay: 0.14 }}
           className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-7 leading-relaxed font-light"
         >
-          تعمل SafiPay على بناء منصة مالية دولية حديثة للأفغان تشمل حسابات متعددة العملات وبيانات مصرفية محلية وانضماماً رقمياً آمناً وبطاقات افتراضية وفعلية فورية للمدفوعات العالمية.
+          تعمل SafiPay على بناء منصة مالية دولية حديثة في متناول الجميع تشمل حسابات متعددة العملات وبيانات مصرفية محلية وانضماماً رقمياً آمناً وبطاقات افتراضية وفعلية فورية للمدفوعات العالمية.
         </motion.p>
 
         <motion.p
@@ -508,7 +508,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">ما هي SafiPay</h2>
             <p className="text-gray-300 text-lg leading-8 mb-6">
-              SafiPay هي حل مالي رقمي واحترافي يركّز على مساعدة الأفغان في الوصول إلى أدوات الخدمات المصرفية الدولية؛ وهي أدوات يصعب عادةً الحصول عليها أو يستحيل الوصول إليها عبر الأنظمة المحلية التقليدية.
+              SafiPay هي حل مالي رقمي واحترافي على مستوى عالمي يركّز على تمكين المستخدمين والشركات حول العالم من الوصول إلى أدوات الخدمات المصرفية الدولية المتقدمة.
             </p>
             <p className="text-gray-400 leading-8 text-lg">
               تم تصميم هذه المنصة لدمج قابلية الاستخدام الدولية والراحة الرقمية والوصول إلى العملات الأقوى والمدفوعات الآمنة في تجربة مالية مميزة.
@@ -526,7 +526,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">لمن هي</h2>
             <div className="space-y-4 text-gray-300 text-lg">
-              <p>• للأفراد الأفغان الذين يحتاجون إلى الوصول إلى حساب دولي</p>
+              <p>• للأفراد الذين يحتاجون إلى الوصول إلى حساب دولي</p>
               <p>• للمستقلين الذين يستلمون الأموال من العملاء العالميين</p>
               <p>• للعائلات التي تريد الحفاظ على مدخراتها بعملات أقوى</p>
               <p>• للشركات التي تحتاج إلى قدرة دفع عالمية</p>
@@ -643,7 +643,7 @@ function Services3DSection() {
             </div>
             <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase italic">لماذا SafiPay مهمة</h3>
             <div className="space-y-5 text-gray-300 text-lg leading-8">
-              <p>ليست SafiPay مخصصة فقط لإرسال الأموال. لقد تم تصميم هذه المنصة كبوابة مالية رقمية متكاملة تساعد المستخدمين الأفغان على الدخول إلى الاقتصاد الدولي الحديث بشكل أكثر احترافية.</p>
+              <p>ليست SafiPay مخصصة فقط لإرسال الأموال. لقد تم تصميم هذه المنصة كبوابة مالية رقمية متكاملة تساعد المستخدمين حول العالم على الدخول إلى الاقتصاد الدولي الحديث بشكل أكثر احترافية.</p>
               <p>وهذا يعني وصولاً أسهل إلى العملات الأقوى، وأدوات دفع أفضل، ومرونة أكبر للأعمال عبر الإنترنت، وثقة أكبر للأشخاص الذين يحتاجون إلى وظائف مالية عملية تتجاوز القيود المحلية.</p>
               <p>كما أن ذلك يمنح العلامة التجارية قيمة أقوى، لأن الزائرين يفهمون فوراً أن هذه المنصة مشروع بنية تحتية جاد، وليست مجرد شاشة تطبيق بسيطة.</p>
             </div>
@@ -738,7 +738,7 @@ function FinalCTA() {
           />
 
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-            بوابة متكاملة إلى <br /> التمويل العالمي للأفغان
+            بوابة متكاملة إلى <br /> التمويل العالمي لكافة المستخدمين
           </h2>
           <p className="text-white/90 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
             تساعد SafiPay المستخدمين على فهم ما تقدمه المنصة بالضبط منذ الزيارة الأولى: وصول دولي، وعملات أقوى، وانضمام أسرع، وأدوات دفع آمنة، ومسار حقيقي نحو الاقتصاد الرقمي العالمي.

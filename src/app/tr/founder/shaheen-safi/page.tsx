@@ -108,7 +108,7 @@ export default function ShaheenSafiFullExpertBio() {
             </div>
 
             <div className="flex justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2"><MapPin size={16}/> Kabil, Afganistan</span>
+               <span className="flex items-center gap-2"><MapPin size={16}/> Global Merkez • Uluslararası</span>
                <span className="flex items-center gap-2"><Mail size={16}/> ssafi9241@hotmail.com</span>
             </div>
           </motion.div>
@@ -169,8 +169,8 @@ export default function ShaheenSafiFullExpertBio() {
               <div className="space-y-8 border-l-2 border-white/10 pl-8">
                 <div className="relative">
                   <div className="absolute -left-[41px] top-2 w-4 h-4 bg-amber-500 rounded-full" />
-                  <h4 className="text-xl font-bold text-white">IT Uzmanı</h4>
-                  <p className="text-amber-500 text-sm mb-2">Afganistan Futbol Federasyonu (2019-2024)</p>
+                  <h4 className="text-xl font-bold text-white">IT & Altyapı Uzmanı</h4>
+                  <p className="text-amber-500 text-sm mb-2">Uluslararası Spor & Teknoloji Kuruluşları (2019-2024)</p>
                   <p className="text-gray-500 text-sm">Bilişim sistemleri ve ağ altyapısının yönetimi konusunda 1.5 yıllık deneyim.</p>
                 </div>
                 <div className="relative">

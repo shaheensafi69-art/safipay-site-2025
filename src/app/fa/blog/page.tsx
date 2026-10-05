@@ -26,7 +26,7 @@ const blogPosts = {
     },
     {
       id: 3,
-      title: "مزایای حساب IBAN اروپایی برای شهروندان افغانستان",
+      title: "مزایای حساب IBAN اروپایی برای کاربران و کسب‌وکارهای بین‌المللی",
       excerpt: "اتصال مستقیم به سیستم بانکی SEPA جهت دریافت حواله‌های بین‌المللی",
       date: "۴ حوت ۱۴۰۴",
       readTime: "۷ دقیقه",
@@ -83,7 +83,7 @@ export default function BlogPage() {
         </div>
         <h1 className="text-4xl md:text-6xl font-black mb-6 italic tracking-tighter">مرکز تحلیل و اخبار</h1>
         <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
-          آخرین دستاوردها در حوزه فین‌تک، امنیت بین‌الملل و راهکارهای مالی SafiPay برای اتصال افغانستان به بازارهای جهانی
+          آخرین دستاوردها در حوزه فین‌تک، امنیت بین‌الملل و راهکارهای مالی SafiPay برای دسترسی نامحدود به بازارهای جهانی
         </p>
       </div>
 

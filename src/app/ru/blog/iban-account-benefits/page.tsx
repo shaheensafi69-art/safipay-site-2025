@@ -75,7 +75,7 @@ export default function IbanBenefitsPage() {
 
             <div className="max-w-3xl border-l-4 border-[#D4AF37] pl-10 py-6 bg-white/5 backdrop-blur-sm rounded-r-3xl">
               <p className="text-white text-2xl md:text-4xl leading-tight font-light italic text-left">
-                «Мы не просто открываем счета; мы дарим каждому афганцу надежное хранилище в самом сердце Европы. Скорость — наше оружие, безопасность — наш щит».
+                «Мы не просто открываем счета; мы дарим каждому пользователю в любой точке мира надежное хранилище в самом сердце Европы. Скорость — наше оружие, безопасность — наш щит».
               </p>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function IbanBenefitsPage() {
               <div className="relative py-24 border-y border-[#D4AF37]/20">
                 <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-32 bg-[#D4AF37] rounded-full shadow-[0_0_20px_#D4AF37]" />
                 <blockquote className="text-4xl md:text-6xl font-extralight italic leading-[1.1] text-white px-12">
-                  «SafiPay — это будущее финансовой свободы для Афганистана. Мы здесь, чтобы вести за собой, защищать и расширять возможности».
+                  «SafiPay — это будущее глобальной финансовой свободы и цифрового банкинга без границ. Мы здесь, чтобы вести за собой, защищать и расширять возможности».
                 </blockquote>
                 <div className="mt-16 px-12 flex items-center gap-6">
                   <p className="text-2xl font-black tracking-[0.5em] uppercase text-[#D4AF37]">Shaheen Safi</p>

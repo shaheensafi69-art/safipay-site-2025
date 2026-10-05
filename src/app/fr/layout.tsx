@@ -2,7 +2,7 @@
 
 export const metadata = {
   title: 'SafiPay - Banque Numérique',
-  description: 'La première solution de banque numérique internationale pour les Afghans.',
+  description: 'La solution de banque numérique internationale moderne à l’échelle mondiale.',
 };
 
 export default function FRLayout({ children }: { children: React.ReactNode }) {

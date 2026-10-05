@@ -111,10 +111,10 @@ export default function SahelSalemBio() {
                   <h3 className="text-lg font-black uppercase tracking-widest">لیدلوری</h3>
                 </div>
                 <p className="text-gray-400 text-xl md:text-2xl leading-[2.2] text-justify font-light italic">
-                  ساحل سالم، چې د **۲۰۰۷ کال د مارچ په ۱۹مه** زیږیدلی، د SafiPay مدیریت یو له مهمو ستراتیژیکو ستنو څخه دی. نوموړی د **University of the People (USA)** علمي پوهه او د نړیوالو مالي بازارونو په اړه خپل لید ترکیبوي ترڅو افغانستان له نړیوال بانکي سیسټم سره وصل کړي. ساحل په اروپا کې زموږ د پراختیا اصلي معمار دی.
+                  ساحل سالم، چې د **۲۰۰۷ کال د مارچ په ۱۹مه** زیږیدلی، د SafiPay مدیریت یو له مهمو ستراتیژیکو ستنو څخه دی. نوموړی د **University of the People (USA)** علمي پوهه او د نړیوالو مالي بازارونو په اړه خپل لید ترکیبوي ترڅو نړیواله بانکي شبکه او بې پولې مالي خدمتونه پراخ کړي. ساحل په اروپا کې زموږ د پراختیا اصلي معمار دی.
                 </p>
                 <div className="mt-12 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/80 text-lg">
-                   "زموږ هدف په ټوله نړۍ کې د افغانانو لپاره د اروپایي ټولنې تر څارنې لاندې د خوندي مالي زیربنا رامینځته کول دي."
+                   "زموږ هدف په ټوله نړۍ کې د ټولو کاروونکو او نړیوالو سوداګریو لپاره د خوندي او معیاري مالي زیربنا رامینځته کول دي."
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function SahelSalemBio() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {[
                 { icon: <Globe size={40} />, title: "اروپایي پراختیا", desc: "په اروپایي ټولنه کې د SafiPay د بانکي حضور ستراتیژیک مدیریت او رهبري." },
-                { icon: <Landmark size={40} />, title: "د IBAN امنیت", desc: "د افغان کاروونکو لپاره د SEPA حسابونو د تنظیم او ادغام څارنه." },
+                { icon: <Landmark size={40} />, title: "د IBAN امنیت", desc: "د نړیوالو کاروونکو لپاره د SEPA حسابونو د تنظیم او ادغام څارنه د لوړو معیارونو سره." },
                 { icon: <ShieldCheck size={40} />, title: "قانوني اطاعت", desc: "د پیسو مینځلو ضد (AML) نړیوالو قوانینو سره د ۱۰۰٪ مطابقت ډاډ ترلاسه کول." }
               ].map((pill, i) => (
                 <div key={i} className="p-12 rounded-[3.5rem] bg-[#080808] border border-white/5 group hover:border-emerald-500/40 transition-all duration-700">

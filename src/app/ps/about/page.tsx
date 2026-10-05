@@ -181,7 +181,7 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Globe size={22} />,
       title: 'نړیوال لاسرسی',
-      desc: 'موږ داسې لارې جوړوو چې افغانان له نړیوالو مالي وسایلو، عصري ډیجیټل تادیاتو او بې سرحده فرصتونو سره ونښلوي.',
+      desc: 'موږ داسې لارې جوړوو چې په ټوله نړۍ کې کاروونکي له نړیوالو مالي وسایلو، عصري ډیجیټل تادیاتو او بې سرحده فرصتونو سره ونښلوي.',
     },
     {
       icon: <Zap size={22} />,
@@ -199,7 +199,7 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Landmark size={22} />,
       title: 'نړیوال مالي لاسرسی',
-      desc: 'SafiPay هڅه کوي افغان کاروونکو ته داسې پیاوړي او عملي مالي وسایل برابر کړي چې هغوی له پراخې ډیجیټل اقتصاد سره ونښلوي.',
+      desc: 'SafiPay هڅه کوي په ټوله نړۍ کې کاروونکو او سوداګریو ته داسې پیاوړي او عملي مالي وسایل برابر کړي چې هغوی له پراخ ډیجیټل اقتصاد سره ونښلوي.',
     },
     {
       icon: <Wallet size={22} />,
@@ -292,7 +292,7 @@ export default function AboutUsPageEnglish() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-[11px] font-black tracking-[0.28em] uppercase"
           >
             <Sparkles size={14} />
-            د افغانستان د مالي راتلونکې بیا لیکنه
+            د نړیوالې مالي راتلونکې بیا لیکنه
           </motion.span>
 
           <motion.h1
@@ -310,7 +310,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.16 }}
             className="max-w-4xl mx-auto text-lg md:text-2xl text-gray-300 leading-relaxed font-light"
           >
-            SafiPay د پولې هاخوا فین‌ټېک یوه عصري لیدلوري ده چې د مالي انزوا د کمولو، نړیوال لاسرسي د پرانیستلو او د افغانستان او نړیوال ډیجیټل اقتصاد ترمنځ د لا قوي پله د جوړولو لپاره رامنځته شوې ده.
+            SafiPay د پولې هاخوا فین‌ټېک یوه عصري لیدلوري ده چې د مالي انزوا د کمولو، بې‌سرحده لاسرسي د پرانیستلو او په ټوله نړۍ کې له عصري ډیجیټل اقتصاد سره د لا قوي پیوستون لپاره رامنځته شوې ده.
           </motion.p>
 
           <motion.p
@@ -319,7 +319,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.24 }}
             className="max-w-4xl mx-auto mt-6 text-base md:text-xl text-gray-500 leading-relaxed font-light"
           >
-            دا سیستم یوازې د تادیې وسیله نه ده، بلکې د ایکوسیستم یو مفهوم دی چې د کارونې اسانتیا، مالي شمولیت، ډیجیټلي زېربنا، امنیت او د افغان افرادو او شرکتونو لپاره پر اوږدمهال ستراتیژیک ارزښت تمرکز کوي.
+            دا سیستم یوازې د تادیې وسیله نه ده، بلکې د ایکوسیستم یو مفهوم دی چې د کارونې اسانتیا، مالي شمولیت، ډیجیټلي زېربنا، امنیت او د نړۍ په کچه د افرادو او شرکتونو لپاره پر اوږدمهال ستراتیژیک ارزښت تمرکز کوي.
           </motion.p>
         </div>
       </section>
@@ -340,13 +340,13 @@ export default function AboutUsPageEnglish() {
             </h2>
             <div className="space-y-5 text-gray-300 text-lg leading-8 font-light">
               <p>
-                افغانستان له سخت مالي ټوټې‌ټوټې کېدو سره مخ و. دودیز بانکي لاسرسی لا هم محدود دی، نړیواله نښلونکې کمزورې ده او ډېر خلک لا هم له عصري مالي سیستمونو بې برخې دي.
+                په ټوله نړۍ کې ډېرې ټولنې او سوداګرۍ له سخت مالي انزوا سره مخ وې. دودیز بانکي لاسرسی لا هم محدود او ورو دی، نړیواله نښلونکې له ستونزو ډکه ده او ډېر خلک لا هم له عصري مالي سیستمونو بې برخې دي.
               </p>
               <p>
                 فریلنسران د پیسو په ترلاسه کولو کې ستونزه لري. شرکتونه د نړیوالو وسایلو د لګښت ورکولو کې له ستونزو سره مخ دي. کورنۍ د خپلو شتمنیو د ارزښت د ساتلو لپاره په پیاوړو اسعارو کې ساده لاره نه لري. مسلکي کسان هم له هغو فرصتونو لرې پاتې دي چې باید لا دمخه ورته لاسرسی ولري.
               </p>
               <p>
-                SafiPay د همدې واقعیت د بدلولو له اړتیا څخه پیدا شو. موخه دا ده چې یوه لا عملي، خوندي او نړیواله مالي تجربه جوړه شي چې د افغانانو د ریښتینو اړتیاوو پر بنسټ سمه برابره شوې وي.
+                SafiPay د همدې واقعیت د بدلولو له اړتیا څخه پیدا شو. موخه دا ده چې یوه لا عملي، خوندي او نړیواله مالي تجربه جوړه شي چې د نړیوالو کاروونکو د ریښتینو اړتیاوو پر بنسټ سمه برابره شوې وي.
               </p>
             </div>
           </motion.div>
@@ -366,7 +366,7 @@ export default function AboutUsPageEnglish() {
             </h2>
             <div className="space-y-4">
               {[
-                'د افغان کاروونکو لپاره د مالي انزوا ماتول',
+                'په ټوله نړۍ کې د مالي انزوا ماتول',
                 'نړیوالې ډیجیټلي مالي سرچینو ته لاسرسی جوړول',
                 'په زړو سیستمونو د تړاو کمول',
                 'د فریلنسرانو، کورنیو او شرکتونو ملاتړ',
@@ -413,7 +413,7 @@ export default function AboutUsPageEnglish() {
               {
                 icon: <Landmark size={22} />,
                 title: 'محدود عصري لاسرسی',
-                desc: 'هغه مسلکي مالي وسایل چې په نورو ځایونو کې عادي دي، لا هم د ډېرو افغانانو لپاره نه‌لاسرسی یا ټوټه‌ټوټه پاتې دي.',
+                desc: 'هغه مسلکي مالي وسایل چې په پرمختللو بازارونو کې عادي دي، لا هم د نړۍ د ډېرو کاروونکو لپاره نه‌لاسرسی یا ټوټه‌ټوټه پاتې دي.',
               },
             ].map((item, i) => (
               <motion.div
@@ -566,7 +566,7 @@ export default function AboutUsPageEnglish() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {[
               {
                 name: 'Shaheen Safi',
@@ -595,6 +595,13 @@ export default function AboutUsPageEnglish() {
                 img: '/shirin.jpeg',
                 href: `/${currentLang}/founder/shirin-gol-ahmadi`,
                 color: 'border-purple-500/30',
+              },
+              {
+                name: 'Mobin Hassani',
+                role: 'د پراختیا ورکوونکو مشر (Lead Developer)',
+                img: '/mobin-hassani.jpg',
+                href: `/${currentLang}/founder/mobin-hassani`,
+                color: 'border-cyan-500/30',
               },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
@@ -636,7 +643,7 @@ export default function AboutUsPageEnglish() {
               ایا تاسو چمتو یاست چې <br /> نړیوال اقتصاد سره یوځای شئ
             </h2>
             <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-10">
-              SafiPay د افغان کاروونکو د راتلونکې نسل لپاره د یوه جدي مالي پله په توګه جوړېږي. که تاسو غواړئ د دې ماموریت برخه شئ، د شراکت فرصتونه وڅېړئ او د راتلونکې په جوړولو کې مرسته وکړئ.
+              SafiPay د نړۍ په کچه د راتلونکي نسل کاروونکو او شرکتونو لپاره د یوه پیاوړي مالي پله په توګه رامنځته شوی دی. که تاسو غواړئ د دې ماموریت برخه شئ، د شراکت فرصتونه وڅېړئ او د راتلونکې په جوړولو کې مرسته وکړئ.
             </p>
             <Link
               href={`/${currentLang}/partners`}

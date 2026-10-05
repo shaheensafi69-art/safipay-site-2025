@@ -39,7 +39,7 @@ const currencies = ['USD', 'EUR', 'GBP', 'PLN', 'SEK', 'NOK', 'RON', 'HUF', 'CZK
 const problems = [
   {
     title: 'دسترسی محدود بانکی',
-    desc: 'بسیاری از افغان‌ها هنوز هم برای استفاده روزانه شخصی و تجاری، دسترسی آسان به خدمات بانکی بین‌المللی قابل اعتماد ندارند.',
+    desc: 'بسیاری از کاربران و کسب‌وکارها در سراسر دنیا هنوز هم برای استفاده روزانه شخصی و تجاری، دسترسی آسان به خدمات بانکی بین‌المللی قابل اعتماد ندارند.',
   },
   {
     title: 'محدودیت در انتقالات جهانی',
@@ -412,7 +412,7 @@ function IntroSection() {
           transition={{ duration: 0.9 }}
           className="mb-8 inline-block px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-[10px] font-black tracking-[0.3em] uppercase pointer-events-auto"
         >
-          شکستن مرزهای مالی برای تمام افغان‌ها
+          شکستن مرزهای مالی در سطح جهانی
         </motion.div>
 
         <motion.h1
@@ -424,7 +424,7 @@ function IntroSection() {
           <span className="bg-gradient-to-b from-white via-white to-gray-500 bg-clip-text text-transparent italic">SafiPay</span>
           <br />
           <span className="text-2xl md:text-4xl lg:text-5xl text-amber-500 mt-6 block font-bold tracking-widest uppercase">
-            بانکداری دیجیتال برای افغان‌ها
+            بانکداری دیجیتال مدرن جهانی
           </span>
         </motion.h1>
 
@@ -434,7 +434,7 @@ function IntroSection() {
           transition={{ duration: 1, delay: 0.14 }}
           className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto mb-7 leading-relaxed font-light"
         >
-          SafiPay در حال ساخت یک پلتفرم مالی بین‌المللی و مدرن برای افغان‌ها است که شامل حساب‌های چند ارزی، جزئیات بانکی محلی، آن‌بوردینگ دیجیتال امن، و کارت‌های مجازی و فیزیکی فوری برای پرداخت‌های جهانی می‌باشد.
+          SafiPay در حال ساخت یک پلتفرم مالی بین‌المللی و مدرن در مقیاس جهانی است که شامل حساب‌های چند ارزی، جزئیات بانکی محلی، آن‌بوردینگ دیجیتال امن، و کارت‌های مجازی و فیزیکی فوری برای پرداخت‌های جهانی می‌باشد.
         </motion.p>
 
         <motion.p
@@ -508,7 +508,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">SafiPay چیست</h2>
             <p className="text-gray-300 text-lg leading-8 mb-6">
-              SafiPay یک راهکار مالی دیجیتال و حرفه‌ای است که تمرکز آن کمک به افغان‌ها برای دسترسی به ابزارهای بانکداری بین‌المللی است؛ ابزارهایی که معمولاً از طریق سیستم‌های محلی سنتی دشوار یا ناممکن به‌دست می‌آیند.
+              SafiPay یک راهکار مالی دیجیتال و حرفه‌ای در مقیاس جهانی است که تمرکز آن توانمندسازی کاربران و کسب‌وکارها برای دسترسی به ابزارهای بانکداری بین‌المللی مدرن، فراتر از محدودیت‌های سنتی می‌باشد.
             </p>
             <p className="text-gray-400 leading-8 text-lg">
               این پلتفرم طراحی شده تا قابلیت استفاده بین‌المللی، راحتی دیجیتال، دسترسی به ارزهای قوی‌تر و پرداخت‌های امن را در یک تجربه مالی پریمیوم ترکیب کند.
@@ -526,7 +526,7 @@ function AboutSection() {
             </div>
             <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase italic">برای چه کسانی است</h2>
             <div className="space-y-4 text-gray-300 text-lg">
-              <p>• افراد افغان که به دسترسی به حساب بین‌المللی نیاز دارند</p>
+              <p>• افراد و کاربرانی که به دسترسی به حساب بین‌المللی نیاز دارند</p>
               <p>• فریلنسرهایی که از مشتریان جهانی پول دریافت می‌کنند</p>
               <p>• خانواده‌هایی که می‌خواهند پس‌انداز خود را در ارزهای قوی‌تر حفظ کنند</p>
               <p>• کسب‌وکارهایی که به قابلیت پرداخت جهانی نیاز دارند</p>
@@ -643,7 +643,7 @@ function Services3DSection() {
             </div>
             <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase italic">چرا SafiPay مهم است</h3>
             <div className="space-y-5 text-gray-300 text-lg leading-8">
-              <p>SafiPay فقط برای ارسال پول نیست. این پلتفرم به‌عنوان یک درگاه مالی دیجیتال کامل طراحی شده که به کاربران افغان کمک می‌کند به شکل حرفه‌ای‌تری وارد اقتصاد بین‌المللی مدرن شوند.</p>
+              <p>SafiPay فقط برای ارسال پول نیست. این پلتفرم به‌عنوان یک درگاه مالی دیجیتال کامل طراحی شده که به کاربران در سراسر دنیا کمک می‌کند به شکل حرفه‌ای‌تری وارد اقتصاد بین‌المللی مدرن شوند.</p>
               <p>این یعنی دسترسی آسان‌تر به ارزهای قوی‌تر، ابزارهای پرداخت بهتر، انعطاف بیشتر برای کسب‌وکار آنلاین، و اطمینان بیشتر برای افرادی که به عملکردهای مالی عملی فراتر از محدودیت‌های محلی نیاز دارند.</p>
               <p>همچنین به برند یک پیشنهاد ارزشی قوی‌تر می‌دهد، زیرا بازدیدکنندگان فوراً درک می‌کنند که این پلتفرم یک پروژه زیرساختی جدی است، نه فقط یک صفحه ساده اپلیکیشن.</p>
             </div>
@@ -738,7 +738,7 @@ function FinalCTA() {
           />
 
           <h2 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter uppercase italic">
-            یک درگاه کامل به <br /> مالی جهانی برای افغان‌ها
+            یک درگاه کامل به <br /> مالی جهانی برای تمام دنیا
           </h2>
           <p className="text-white/90 text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
             SafiPay به کاربران کمک می‌کند از همان اولین بازدید دقیقاً بفهمند این پلتفرم چه چیزی ارائه می‌دهد: دسترسی بین‌المللی، ارزهای قوی‌تر، آن‌بوردینگ سریع‌تر، ابزارهای امن پرداخت و یک مسیر واقعی به اقتصاد دیجیتال جهانی.

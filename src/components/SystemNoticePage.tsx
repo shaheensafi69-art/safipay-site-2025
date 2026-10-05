@@ -47,7 +47,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
         },
         {
           title: 'پیاده‌سازی مکانیزم‌های بین‌المللی مبارزه با پولشویی (AML & KYC)',
-          desc: 'برای محافظت از اعتبار جامعه بین‌المللی افغان‌ها و ارتباط پایدار با سیستم مالی جهان، سیستم‌های هوشمند احراز هویت خودکار و پایش تراکنش‌ها (AMLD5/AMLD6) قبل از گشایش عمومی حساب‌ها در حال استقرار نهایی می‌باشند.',
+          desc: 'برای ارتقای بالاترین سطح انطباق بانکی بین‌المللی و تضمین تراکنش‌های شفاف و بدون وقفه در مقیاس جهانی، سیستم‌های هوشمند احراز هویت خودکار و پایش تراکنش‌ها (AMLD5/AMLD6) قبل از گشایش عمومی حساب‌ها در حال استقرار نهایی می‌باشند.',
         },
         {
           title: 'آماده‌سازی خطوط تسویه SEPA و کارت‌های بین‌المللی',
@@ -56,7 +56,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
       ],
       founderNoteTitle: 'پیام شاهین صافی (بنیان‌گذار و مدیر ارشد اجرایی صافی‌پی)',
       founderNote:
-        '«هدف ما در صافی‌پی تنها ساخت یک برنامه موقت نبود؛ هدف ما خلق یک شاهراه مالی پایدار، مقتدر و غیرقابل توقف برای اتصال افغان‌ها به قلب اقتصاد مدرن جهان و اروپا است. ما به هیچ عنوان کیفیت، امنیت و استانداردهای قانونی بین‌المللی را فدای شتاب‌زدگی نخواهیم کرد. تیم فنی و حقوقی ما شبانه‌روزی در حال کار هستند تا اولین تجربه شما از بازگشایی حساب، بدون کوچک‌ترین اختلال و در اوج امنیت بانکی رقم بخورد. از شکیبایی، همراهی و اعتماد ارزشمند شما صمیمانه سپاسگزاریم.»',
+        '«هدف ما در صافی‌پی تنها ساخت یک برنامه موقت نبود؛ هدف ما خلق یک شاهراه مالی پایدار، مقتدر و بین‌المللی برای اتصال کاربران سراسر جهان به زیرساخت بانکداری پیشرفته اروپا و اقتصاد جهانی است. ما به هیچ عنوان کیفیت، امنیت و استانداردهای قانونی بین‌المللی را فدای شتاب‌زدگی نخواهیم کرد. تیم فنی و حقوقی ما شبانه‌روزی در حال کار هستند تا اولین تجربه شما از بازگشایی حساب، بدون کوچک‌ترین اختلال و در اوج امنیت بانکی رقم بخورد. از شکیبایی، همراهی و اعتماد ارزشمند شما صمیمانه سپاسگزاریم.»',
       timelineTitle: 'مراحل آمادگی فنی و حقوقی سیستم',
       steps: [
         { name: 'معماری هسته بانکداری و چندارزی', status: 'تکمیل شد (۱۰۰٪)', done: true },
@@ -89,7 +89,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
         },
         {
           title: 'د پیسو سپینولو ضد نړیوال پړاوونه (AML & KYC)',
-          desc: 'د دې لپاره چې د نړیوالو افغانانو مالي اعتبار خوندي پاتې شي، پرمختللي اتوماتیک هویت تاییدونکي سیستمونه او د معاملو څارنه د عامه پیل څخه مخکې په وروستي ازمایښت کې دي.',
+          desc: 'د دې لپاره چې د نړیوالو کاروونکو مالي راکړې ورکړې خوندي، شفافې او له نړیوالو معیارونو سره سمې وساتل شي، پرمختللي اتوماتیک هویت تاییدونکي سیستمونه او د معاملو څارنه د عامه پیل څخه مخکې په وروستي ازمایښت کې دي.',
         },
         {
           title: 'د SEPA چټکو انتقالاتو او نړیوالو کارتونو چمتووالی',
@@ -98,7 +98,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
       ],
       founderNoteTitle: 'د شاهین صافي (د صافي پي بنسټګر او اجرایوي مشر) پیغام',
       founderNote:
-        '«په صافي پي کې زموږ نیت یوازې یو لنډمهاله اپلیکیشن جوړول نه و؛ موږ غواړو یو داسې پیاوړی، قانوني او تلپاتې مالي پل جوړ کړو چې افغانان د نړۍ او اروپا له نوي اقتصاد سره په ویاړ ونښلوي. موږ هیڅکله د سرعت لپاره کیفیت، امنیت او نړیوال بانکي قوانین تر پښو نه لاندې کوو. ډاډه اوسئ کله چې دروازې پرانیستل شي، تاسو به تر ټولو خوندي او بااعتباره تجربه ولرئ. ستاسو له بې ساري ملاتړ او باور څخه مننه کوو.»',
+        '«په صافي پي کې زموږ نیت یوازې یو لنډمهاله اپلیکیشن جوړول نه و؛ موږ غواړو یو داسې پیاوړی، قانوني او تلپاتې مالي پل جوړ کړو چې کاروونکي او نړیوال سوداګر د نړۍ او اروپا له پرمختللي اقتصاد سره وتړي. موږ هیڅکله د سرعت لپاره کیفیت، امنیت او نړیوال بانکي قوانین تر پښو نه لاندې کوو. ډاډه اوسئ کله چې دروازې پرانیستل شي، تاسو به تر ټولو خوندي او بااعتباره تجربه ولرئ. ستاسو له بې ساري ملاتړ او باور څخه مننه کوو.»',
       timelineTitle: 'د سیستم د چمتووالي پړاوونه',
       steps: [
         { name: 'د مرکزي بانکدارۍ معمارۍ او څو اسعارو زیربنا', status: 'بشپړ شوی (۱۰۰٪)', done: true },
@@ -131,7 +131,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
         },
         {
           title: 'Automated AML/CFT and Global Sanctions Gateways',
-          desc: 'To protect the global financial integrity of the Afghan diaspora and ensure smooth cross-border flows, state-of-the-art AMLD5/AMLD6 screening algorithms and biometric identity verification mechanisms are undergoing strict institutional calibration.',
+          desc: 'To maintain the highest standards of global financial compliance and ensure seamless cross-border flows, state-of-the-art AMLD5/AMLD6 screening algorithms and biometric identity verification mechanisms are undergoing strict institutional calibration.',
         },
         {
           title: 'SEPA Instant Clearing & Multi-Currency Payment Cards',
@@ -140,7 +140,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
       ],
       founderNoteTitle: 'Executive Statement by Shaheen Safi (Founder & CEO, SafiPay)',
       founderNote:
-        '"Our objective with SafiPay has never been to launch a quick, compromised utility. We are architecting an unyielding, internationally recognized financial highway that legitimately bridges Afghanistan with the modern global economy. We refuse to compromise on security, compliance, or regulatory rigor. Our engineering and compliance divisions are working around the clock so that when our portal opens, you experience a flawless, secure European-standard digital banking service. We deeply appreciate your patience, high anticipation, and unwavering trust."',
+        '"Our objective with SafiPay has never been to launch a quick, compromised utility. We are architecting an unyielding, internationally recognized financial highway that legitimately connects global users and enterprises with the modern European economy. We refuse to compromise on security, compliance, or regulatory rigor. Our engineering and compliance divisions are working around the clock so that when our portal opens, you experience a flawless, secure European-standard digital banking service. We deeply appreciate your patience, high anticipation, and unwavering trust."',
       timelineTitle: 'System Readiness & Activation Milestones',
       steps: [
         { name: 'Core Banking Engine & Multi-Currency Ledger', status: 'Completed (100%)', done: true },
@@ -224,7 +224,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
       ],
       founderNoteTitle: 'Déclaration de Shaheen Safi (Fondateur & PDG de SafiPay)',
       founderNote:
-        '« Notre vision avec SafiPay est de bâtir un pont financier robuste et durable connectant l’Afghanistan à l’économie mondiale moderne. Nous ne faisons aucun compromis sur la sécurité et la légitimité juridique. Merci pour votre patience et votre confiance. »',
+        '« Notre vision avec SafiPay est de bâtir un pont financier robuste et durable connectant les utilisateurs du monde entier à l’infrastructure bancaire européenne et à l’économie moderne. Nous ne faisons aucun compromis sur la sécurité et la légitimité juridique. Merci pour votre patience et votre confiance. »',
       timelineTitle: 'Étapes de préparation du système',
       steps: [
         { name: 'Moteur bancaire central et registre multidevises', status: 'Terminé (100%)', done: true },
@@ -266,7 +266,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
       ],
       founderNoteTitle: 'رسالة شاهين صافي (المؤسس والرئيس التنفيذي لصافي باي)',
       founderNote:
-        '«هدفنا في صافي باي هو بناء صرح مالي دولي رصين ومستدام يربط أفغانستان بالاقتصاد العالمي الحديث. لن نساوم أبداً على الأمان والامتثال القانوني الأوروبي الصارم. نشكركم على صبركم وثقتكم الكبيرة بنا، ونعدكم بتجربة مصرفية استثنائية عند الافتتاح الرسمي.»',
+        '«هدفنا في صافي باي هو بناء صرح مالي دولي رصين ومستدام يربط المستخدمين ورواد الأعمال حول العالم بالاقتصاد الأوروبي والعالمي الحديث. لن نساوم أبداً على الأمان والامتثال القانوني الأوروبي الصارم. نشكركم على صبركم وثقتكم الكبيرة بنا، ونعدكم بتجربة مصرفية استثنائية عند الافتتاح الرسمي.»',
       timelineTitle: 'مراحل الجاهزية الفنية والقانونية',
       steps: [
         { name: 'المحرك المصرفي وسجل الحسابات متعدد العملات', status: 'مكتمل (۱۰۰٪)', done: true },
@@ -308,7 +308,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
       ],
       founderNoteTitle: 'Заявление Шахина Сафи (Основатель и генеральный директор SafiPay)',
       founderNote:
-        '«Наша цель в SafiPay — создать непоколебимый, международно признанный финансовый мост, объединяющий Афганистан с современной мировой экономикой. Мы не идем на компромиссы в вопросах безопасности и европейского комплаенса. Благодарим за ваше доверие и терпение.»',
+        '«Наша цель в SafiPay — создать непоколебимый, международно признанный финансовый мост, открывающий пользователям по всему миру доступ к европейской и современной глобальной экономике. Мы не идем на компромиссы в вопросах безопасности и европейского комплаенса. Благодарим за ваше доверие и терпение.»',
       timelineTitle: 'Этапы готовности системы',
       steps: [
         { name: 'Основной банковский движок и мультивалютный реестр', status: 'Завершено (100%)', done: true },
@@ -350,7 +350,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
       ],
       founderNoteTitle: 'Shaheen Safi’den Açıklama (SafiPay Kurucusu ve CEO’su)',
       founderNote:
-        '“SafiPay ile amacımız geçici bir çözüm değil; Afganistan’ı modern dünya ekonomisine bağlayan güvenli ve uluslararası geçerliliğe sahip bir finans köprüsü kurmaktır. Güvenlik ve yasal standartlardan asla ödün vermeyeceğiz. Sabrınız ve güveniniz için teşekkür ederiz.”',
+        '“SafiPay ile amacımız geçici bir çözüm değil; dünya genelindeki kullanıcıları Avrupa bankacılık altyapısına ve modern küresel ekonomiye bağlayan güvenli bir finans köprüsü kurmaktır. Güvenlik ve yasal standartlardan asla ödün vermeyeceğiz. Sabrınız ve güveniniz için teşekkür ederiz.”',
       timelineTitle: 'Sistem Hazırlık Aşamaları',
       steps: [
         { name: 'Çekirdek Bankacılık Motoru ve Çoklu Para Defteri', status: 'Tamamlandı (%100)', done: true },

@@ -2,7 +2,7 @@
 
 export const metadata = {
   title: 'SafiPay - ډیجیټل بانک',
-  description: 'د افغانستان لپاره د نړیوال ډیجیټل بانکدارۍ لومړنی سیسټم.',
+  description: 'په نړیواله کچه د عصري او نوښتګر ډیجیټل بانکدارۍ سیسټم.',
 };
 
 export default function PSLayout({ children }: { children: React.ReactNode }) {

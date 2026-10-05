@@ -108,7 +108,7 @@ export default function MujtabaRahmaniFullBio() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2" dir="ltr"><MapPin size={16}/> کابل، افغانستان</span>
+               <span className="flex items-center gap-2" dir="ltr"><MapPin size={16}/> Global Hub • نړیوال مرکز</span>
                <span className="flex items-center gap-2" dir="ltr"><User size={16}/> ۲۸ جولای ۲۰۰۶</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline" dir="ltr">@bigshot_tradez</span>
             </div>
@@ -121,10 +121,10 @@ export default function MujtabaRahmaniFullBio() {
             <h2 className="text-4xl font-black mb-10 border-r-8 border-blue-600 pr-6 uppercase italic">د بنسټ اېښودونکي ماموریت</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                زه <span className="text-white font-bold">مجتبی رحماني</span> یم؛ یو لیدلوری لرونکی متشبث او مسلکي سوداګر (Trader) چې خپل ځان مې د افغانستان د مالي وضعیت د بدلولو لپاره وقف کړی دی. د <span className="text-blue-400 underline decoration-2">اقتصاد او آنلاین سوداګرۍ</span> په برخه کې د تخصصي اکاډمیکې مخینې سره، زه د صافي‌پی د سټراټیژیکې او مالي پراختیا مسوولیت پر غاړه لرم.
+                زه <span className="text-white font-bold">مجتبی رحماني</span> یم؛ یو لیدلوری لرونکی متشبث او مسلکي سوداګر (Trader) چې خپل ځان مې په نړیواله کچه د مالي وضعیت د بدلولو او عصري کولو لپاره وقف کړی دی. د <span className="text-blue-400 underline decoration-2">اقتصاد او آنلاین سوداګرۍ</span> په برخه کې د تخصصي اکاډمیکې مخینې سره، زه د صافي‌پی د سټراټیژیکې او مالي پراختیا مسوولیت پر غاړه لرم.
               </p>
               <div className="bg-blue-600/10 p-8 rounded-[2.5rem] italic border-r-8 border-blue-600 text-blue-100">
-                "موږ دودیز اقتصادي اصول له عصري فنټیک (FinTech) حللارو سره نښلوو ترڅو افغان ولس ځواکمن کړو او هغوی د نړۍ له ډیجیټل بازارونو سره یوځای کړو."
+                "موږ دودیز اقتصادي اصول له عصري فنټیک (FinTech) حللارو سره نښلوو ترڅو نړیوال کاروونکي ځواکمن کړو او هغوی له نړیوالو ډیجیټل بازارونو سره یوځای کړو."
               </div>
               <p>
                 د چارټونو له تحلیل او سوداګریزو سټراټیژیو هاخوا، زه په نظم او ثبات پوره باور لرم؛ هغه ځانګړتیاوې چې هره ورځ یې د رزمي سپورتونو (MMA) او منډې له لارې په خپل ځان کې پالم ترڅو د فارکس (Forex) ننګونکې نړۍ ته تل چمتو واوسم.
@@ -172,7 +172,7 @@ export default function MujtabaRahmaniFullBio() {
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_15px_#2563eb]" />
                   <h4 className="text-xl font-bold text-white">بنسټ اېښودونکی او اجرایوي شریک</h4>
                   <p className="text-blue-400 text-sm mb-2">صافي‌پی ډیجیټل بانک (۲۰۲۴ - اوس مهال)</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">د مالي چوکاټونو سټراټیژیک پلان جوړونه او په افغانستان کې د لومړي عصري بانکي ایکوسیستم پرمختګ.</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">د مالي چوکاټونو سټراټیژیک پلان جوړونه او په نړیواله کچه د لومړي عصري او بې پولې بانکي ایکوسیستم پرمختګ.</p>
                 </div>
                 <div className="relative">
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-white/20 rounded-full" />
@@ -215,7 +215,7 @@ export default function MujtabaRahmaniFullBio() {
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> د صافي‌پی د نړیوال مالي ایکوسیستم بنسټ اېښودل</li>
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> د اقتصاد او ډیجیټل بازارونو په برخه کې سټراټیژیک فارغ‌التحصیل</li>
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> د نړۍ په بازارونو کې د ۳ کلونو څخه زیاته کاري تجربه</li>
-                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> په افغانستان کې د آنلاین سوداګریو فعال ملاتړی</li>
+                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> په نړیواله کچه د آنلاین سوداګریو او سټارټ اپونو فعال ملاتړی</li>
                 </ul>
             </div>
         </section>

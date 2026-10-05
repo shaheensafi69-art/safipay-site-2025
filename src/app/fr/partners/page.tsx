@@ -305,7 +305,7 @@ export default function SafiPartners3DEnglish() {
   const heroScale = useTransform(smooth, [0, 0.12], [1, 0.95]);
 
   const safiPayFeatures = [
-    'Ouverture de compte international professionnelle pour les utilisateurs axés sur l’Afghanistan et pour les prestataires de services mondiaux',
+    'Ouverture de compte international professionnelle pour les particuliers, entreprises et opérateurs mondiaux',
     'Soldes multidevises incluant EUR, USD, GBP, PLN, SEK, NOK, RON, HUF, CZK et DKK',
     'Coordonnées bancaires locales pour une réception plus fluide des paiements, des transferts opérationnels et des règlements internationaux',
     'Émission instantanée de cartes virtuelles et physiques, conçues pour une expérience utilisateur premium et un accès rapide',
@@ -535,7 +535,7 @@ export default function SafiPartners3DEnglish() {
 
             <p className="text-gray-300 text-base sm:text-lg leading-8 font-light mb-8 sm:mb-10 italic text-left">
               SafiPay a été conçu pour les utilisateurs et les partenaires qui ont besoin d’un accès sérieux à une infrastructure de comptes internationaux, à une efficacité multidevises premium, à des coordonnées bancaires locales et à une émission instantanée de cartes.
-              La plateforme est positionnée comme une porte d’entrée moderne vers la finance mondiale pour les Afghans et pour les organisations souhaitant servir ce marché avec des outils plus puissants.
+              La plateforme est positionnée comme une passerelle moderne vers la finance internationale pour les utilisateurs du monde entier et pour les organisations nécessitant des outils robustes de règlement transfrontalier.
             </p>
 
             <div className="grid gap-4 mb-8 sm:mb-10">

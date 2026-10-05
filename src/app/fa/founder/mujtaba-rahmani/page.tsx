@@ -108,7 +108,7 @@ export default function MujtabaRahmaniFullBio() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
-               <span className="flex items-center gap-2" dir="ltr"><MapPin size={16}/>کابل، افغانستان</span>
+               <span className="flex items-center gap-2" dir="ltr"><MapPin size={16}/>Global Hub • دفتر مرکزی جهانی</span>
                <span className="flex items-center gap-2" dir="ltr"><User size={16}/> ۲۸ جولای ۲۰۰۶</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline" dir="ltr">@bigshot_tradez</span>
             </div>
@@ -121,10 +121,10 @@ export default function MujtabaRahmaniFullBio() {
             <h2 className="text-4xl font-black mb-10 border-r-8 border-blue-600 pr-6 uppercase italic">ماموریت بنیان‌گذار</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                من <span className="text-white font-bold">مجتبی رحمانی</span> هستم؛ کارآفرینی آینده‌نگر و معامله‌گر حرفه‌ای که خود را وقف متحول کردن چشم‌انداز مالی افغانستان کرده‌ام. با پیشینه آکادمیک تخصصی در حوزه <span className="text-blue-400 underline decoration-2">اقتصاد و تجارت آنلاین</span>، مسئولیت توسعه استراتژیک و مالی صافی‌پی را بر عهده دارم.
+                من <span className="text-white font-bold">مجتبی رحمانی</span> هستم؛ کارآفرینی آینده‌نگر و معامله‌گر حرفه‌ای که خود را وقف متحول کردن چشم‌انداز مالی جهانی کرده‌ام. با پیشینه آکادمیک تخصصی در حوزه <span className="text-blue-400 underline decoration-2">اقتصاد و تجارت آنلاین</span>، مسئولیت توسعه استراتژیک و مالی صافی‌پی را بر عهده دارم.
               </p>
               <div className="bg-blue-600/10 p-8 rounded-[2.5rem] italic border-r-8 border-blue-600 text-blue-100">
-                "ما اصول اقتصاد سنتی را با راهکارهای مدرن فین‌تک پیوند می‌زنیم تا مردم افغانستان را توانمند کرده و آن‌ها را به بازارهای دیجیتال جهانی متصل کنیم."
+                "ما اصول اقتصاد سنتی را با راهکارهای مدرن فین‌تک پیوند می‌زنیم تا کاربران سراسر جهان را توانمند کرده و آن‌ها را به بازارهای دیجیتال بین‌المللی متصل کنیم."
               </div>
               <p>
                 فراتر از تحلیل نمودارها و استراتژی‌های تجاری، من به نظم و تاب‌آوری باور قلبی دارم؛ ویژگی‌هایی که هر روز از طریق ورزش‌های رزمی (MMA) و دویدن در خود پرورش می‌دهم تا برای دنیای پرچالش فارکس (Forex) همواره آماده باشم.
@@ -172,7 +172,7 @@ export default function MujtabaRahmaniFullBio() {
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-blue-600 rounded-full shadow-[0_0_15px_#2563eb]" />
                   <h4 className="text-xl font-bold text-white">بنیان‌گذار و شریک اجرایی</h4>
                   <p className="text-blue-400 text-sm mb-2">بانک دیجیتال صافی‌پی (۲۰۲۴ - اکنون)</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">برنامه‌ریزی استراتژیک چارچوب‌های مالی و پیشبرد رشد اولین اکوسیستم مدرن بانکی در افغانستان.</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">برنامه‌ریزی استراتژیک چارچوب‌های مالی و پیشبرد رشد اولین اکوسیستم مدرن بانکی بدون مرز در سطح جهانی.</p>
                 </div>
                 <div className="relative">
                   <div className="absolute -right-[41px] top-2 w-4 h-4 bg-white/20 rounded-full" />
@@ -215,7 +215,7 @@ export default function MujtabaRahmaniFullBio() {
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> بنیان‌گذاری اکوسیستم مالی جهانی صافی‌پی</li>
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> فارغ‌التحصیل استراتژیک در رشته اقتصاد و بازارهای دیجیتال</li>
                   <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> معامله‌گر حرفه‌ای با بیش از ۳ سال تجربه در بازارهای جهانی</li>
-                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> حامی فعال توسعه کسب‌وکارهای آنلاین در افغانستان</li>
+                  <li className="flex items-center gap-3"><Zap size={18} className="text-blue-500"/> حامی فعال توسعه کسب‌وکارهای آنلاین و استارتاپ‌های بین‌المللی در سراسر جهان</li>
                 </ul>
             </div>
         </section>

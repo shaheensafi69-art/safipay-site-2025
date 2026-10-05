@@ -181,7 +181,7 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Globe size={22} />,
       title: 'Global Access',
-      desc: 'We are building pathways that help Afghans connect with international financial tools, modern digital payments, and borderless opportunity.',
+      desc: 'We are building pathways that help users worldwide connect with international financial tools, modern digital payments, and borderless opportunity.',
     },
     {
       icon: <Zap size={22} />,
@@ -199,7 +199,7 @@ export default function AboutUsPageEnglish() {
     {
       icon: <Landmark size={22} />,
       title: 'International Financial Access',
-      desc: 'SafiPay aims to give Afghan users access to stronger and more practical financial tools that connect them with the wider digital economy.',
+      desc: 'SafiPay aims to give global users and businesses access to modern, boundaryless financial tools that connect seamlessly with the worldwide digital economy.',
     },
     {
       icon: <Wallet size={22} />,
@@ -292,7 +292,7 @@ export default function AboutUsPageEnglish() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 text-[11px] font-black tracking-[0.28em] uppercase"
           >
             <Sparkles size={14} />
-            Rewriting the Financial Future of Afghanistan
+            Rewriting the Global Financial Future
           </motion.span>
 
           <motion.h1
@@ -310,7 +310,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.16 }}
             className="max-w-4xl mx-auto text-lg md:text-2xl text-gray-300 leading-relaxed font-light"
           >
-            SafiPay is a modern cross-border fintech vision built to reduce financial isolation, unlock international access, and create a stronger bridge between Afghanistan and the global digital economy.
+            SafiPay is a modern cross-border fintech vision built to eliminate financial isolation, unlock international access, and create a stronger bridge to the global digital economy for users worldwide.
           </motion.p>
 
           <motion.p
@@ -319,7 +319,7 @@ export default function AboutUsPageEnglish() {
             transition={{ delay: 0.24 }}
             className="max-w-4xl mx-auto mt-6 text-base md:text-xl text-gray-500 leading-relaxed font-light"
           >
-            It is designed as more than a payment tool. It is an ecosystem concept focused on usability, financial inclusion, digital infrastructure, security, and long-term strategic value for Afghan individuals and businesses.
+            It is designed as more than a payment tool. It is an ecosystem concept focused on usability, financial inclusion, digital infrastructure, security, and long-term strategic value for individuals and businesses worldwide.
           </motion.p>
         </div>
       </section>
@@ -340,13 +340,13 @@ export default function AboutUsPageEnglish() {
             </h2>
             <div className="space-y-5 text-gray-300 text-lg leading-8 font-light">
               <p>
-                Afghanistan has faced severe financial fragmentation. Traditional banking access remains limited, international connectivity is weak, and many people are still excluded from modern financial systems.
+                Many communities and businesses worldwide have faced financial fragmentation. Traditional banking access remains limited, international connectivity is fragmented, and many people are still excluded from modern financial systems.
               </p>
               <p>
                 Freelancers struggle to receive money. Businesses face difficulty paying for global tools. Families lack simple ways to protect value in stronger currencies. Professionals remain disconnected from opportunities that should already be within reach.
               </p>
               <p>
-                SafiPay was born from the need to change that reality. The goal is to create a more practical, secure, internationally aware financial experience built specifically around real Afghan needs.
+                SafiPay was born from the need to change that reality. The goal is to create a more practical, secure, internationally aware financial experience built specifically around real global needs.
               </p>
             </div>
           </motion.div>
@@ -366,7 +366,7 @@ export default function AboutUsPageEnglish() {
             </h2>
             <div className="space-y-4">
               {[
-                'Break financial isolation for Afghan users',
+                'Break financial isolation for global users',
                 'Build access to international digital finance',
                 'Reduce dependency on outdated systems',
                 'Support freelancers, families, and businesses',
@@ -413,7 +413,7 @@ export default function AboutUsPageEnglish() {
               {
                 icon: <Landmark size={22} />,
                 title: 'Limited Modern Access',
-                desc: 'Professional financial tools that are common elsewhere remain inaccessible or fragmented for many Afghans.',
+                desc: 'Professional financial tools that are common elsewhere remain inaccessible or fragmented for many global users.',
               },
             ].map((item, i) => (
               <motion.div
@@ -562,12 +562,11 @@ export default function AboutUsPageEnglish() {
               Leadership Team
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto font-light text-lg leading-relaxed">
-              The strategic minds behind the SafiPay vision are focused on building a credible, future-facing financial ecosystem with serious regional relevance.
+              The strategic and technical leaders behind the SafiPay vision are focused on building a credible, scalable, future-facing financial ecosystem with global reach.
             </p>
           </div>
 
-          {/* استایل گرید به md:grid-cols-2 lg:grid-cols-4 تغییر داده شده تا 4 نفر به درستی قرار بگیرند */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {[
               {
                 name: 'Shaheen Safi',
@@ -595,7 +594,14 @@ export default function AboutUsPageEnglish() {
                 role: 'Manager',
                 img: '/shirin.jpeg',
                 href: `/${currentLang}/founder/shirin-gol-ahmadi`,
-                color: 'border-purple-500/30', // یک رنگ جدید برای تنوع ظاهری
+                color: 'border-purple-500/30',
+              },
+              {
+                name: 'Mobin Hassani',
+                role: 'Lead Developer',
+                img: '/mobin-hassani.jpg',
+                href: `/${currentLang}/founder/mobin-hassani`,
+                color: 'border-cyan-500/30',
               },
             ].map((member, i) => (
               <Link key={i} href={member.href} className="block group">
@@ -637,7 +643,7 @@ export default function AboutUsPageEnglish() {
               Ready to Join the <br /> Global Economy
             </h2>
             <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed mb-10">
-              SafiPay is being built as a serious financial bridge for the next generation of Afghan users. If you want to become part of that mission, explore partnership opportunities and help shape what comes next.
+              SafiPay is being built as a serious financial bridge for the next generation of global users. If you want to become part of that mission, explore partnership opportunities and help shape what comes next.
             </p>
             <Link
               href={`/${currentLang}/partners`}

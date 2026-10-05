@@ -106,7 +106,7 @@ export default function AppDownloadPage() {
                             <h2 className="text-3xl font-black text-white">$92,450.00</h2>
                           </div>
 
-                          {/* ارزها: افغانی، دلار، پوند، یورو (کامل) */}
+                          {/* Multi-currency: USD, EUR, GBP, AFN */}
                           <div className="flex overflow-x-auto gap-3 px-6 no-scrollbar pb-6">
                             <CurrencyCard flag="🇦🇫" code="AFN" amount="650,000" highlight />
                             <CurrencyCard flag="🇺🇸" code="USD" amount="12,400" />

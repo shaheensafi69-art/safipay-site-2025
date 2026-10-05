@@ -26,7 +26,7 @@ const blogPosts = {
     },
     {
       id: 3,
-      title: "Vorteile einer europäischen IBAN für afghanische Bürger",
+      title: "Vorteile einer europäischen IBAN für globale Nutzer und Unternehmen",
       excerpt: "Direkte Anbindung an das SEPA-Bankensystem für internationale Überweisungen in Echtzeit.",
       date: "22. Feb. 2026",
       readTime: "7 Min.",
