@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { 
-  ShieldCheck, Zap, Globe, GraduationCap, 
+import {
+  ShieldCheck, Zap, Globe, GraduationCap,
   Landmark, Star, Target, CheckCircle2,
   History, Facebook, ArrowUpRight, Briefcase, Award,
   Instagram, MessageCircle, MapPin, Building2, TrendingUp
@@ -30,7 +30,7 @@ export default function SahelSalemBio() {
 
   const rotateX = useTransform(springY, [-0.5, 0.5], ["15deg", "-15deg"]);
   const rotateY = useTransform(springX, [-0.5, 0.5], ["-12deg", "12deg"]);
-  
+
   const moveX = useTransform(springX, [-0.5, 0.5], [-40, 40]);
   const moveY = useTransform(springY, [-0.5, 0.5], [-40, 40]);
 
@@ -49,7 +49,7 @@ export default function SahelSalemBio() {
 
   return (
     <div className="min-h-screen bg-[#000] text-white pb-32 font-sans overflow-x-hidden selection:bg-emerald-500/30" onMouseMove={handleMouseMove}>
-      
+
       {/* Background Glows */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] bg-emerald-600/5 blur-[160px] rounded-full" />
@@ -57,7 +57,7 @@ export default function SahelSalemBio() {
       </div>
 
       <div className="relative z-10">
-        
+
         {/* --- HERO SECTION --- */}
         <section ref={containerRef} className="relative pt-40 pb-20 flex flex-col items-center">
           <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="relative">
@@ -72,7 +72,7 @@ export default function SahelSalemBio() {
               <Star size={35} fill="currentColor" />
             </Floating3DObject>
             <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -left-16 top-10">
-                <div className="bg-emerald-500 text-black px-5 py-3 rounded-3xl shadow-2xl font-black text-lg">CEO</div>
+              <div className="bg-emerald-500 text-black px-5 py-3 rounded-3xl shadow-2xl font-black text-lg">CEO</div>
             </motion.div>
           </motion.div>
 
@@ -81,26 +81,26 @@ export default function SahelSalemBio() {
               SAHEL <span className="text-transparent stroke-emerald-500 stroke-2" style={{ WebkitTextStroke: '2px #10b981' }}>SALEM</span>
             </h1>
             <p className="text-emerald-500 font-bold tracking-[0.3em] text-lg md:text-2xl uppercase mt-4">Chief Executive Officer & European Relations</p>
-            
+
             {/* Quick Metadata Chips */}
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-8 text-gray-400 text-sm">
-               <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
-                 <MapPin size={16} className="text-emerald-400" /> Global Headquarters • Hub
-               </span>
-               <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
-                 <Building2 size={16} className="text-emerald-400" /> Strategic Leadership & European Banking
-               </span>
-               <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
-                 <GraduationCap size={16} className="text-emerald-400" /> BBA Student
-               </span>
+              <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
+                <MapPin size={16} className="text-emerald-400" /> Global Headquarters • Hub
+              </span>
+              <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
+                <Building2 size={16} className="text-emerald-400" /> Strategic Leadership & European Banking
+              </span>
+              <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
+                <GraduationCap size={16} className="text-emerald-400" /> BBA Student
+              </span>
             </div>
 
             {/* Social Links */}
             <div className="flex justify-center gap-6 mt-10">
               {socialLinks.map((social, idx) => (
-                <Link 
-                  key={idx} 
-                  href={social.href} 
+                <Link
+                  key={idx}
+                  href={social.href}
                   target="_blank"
                   className="group relative w-16 h-16 flex items-center justify-center rounded-3xl bg-white/[0.03] border border-white/10 text-gray-400 hover:border-emerald-500 hover:text-emerald-500 transition-all duration-500 backdrop-blur-xl overflow-hidden"
                 >
@@ -130,7 +130,7 @@ export default function SahelSalemBio() {
                   </p>
                 </div>
                 <div className="mt-10 flex items-center gap-6 p-8 bg-emerald-500/5 rounded-3xl border border-emerald-500/10 italic text-emerald-100/90 text-lg">
-                   "Our foundational mission at SafiPay is dismantling geographical limitations in financial access, delivering secure, modern, and internationally compliant banking rails so that anyone worldwide can freely participate in global commerce."
+                  "Our foundational mission at SafiPay is dismantling geographical limitations in financial access, delivering secure, modern, and internationally compliant banking rails so that anyone worldwide can freely participate in global commerce."
                 </div>
               </div>
             </div>
@@ -149,14 +149,14 @@ export default function SahelSalemBio() {
 
               {/* Direct Communication */}
               <div className="p-10 rounded-[3.5rem] bg-white/[0.02] border border-white/5 flex items-center justify-between group cursor-pointer transition-all hover:bg-white/[0.04]">
-                 <div className="text-left">
-                    <p className="text-[10px] uppercase font-black text-gray-500 mb-1">Direct Inquiries & Executive Office</p>
-                    <p className="text-xl font-bold italic">Official WhatsApp</p>
-                    <p className="text-xs text-gray-500 mt-1" dir="ltr">+93 70 058 2033</p>
-                 </div>
-                 <Link href="https://wa.me/+93700582033" target="_blank" className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black transition-all">
-                    <ArrowUpRight size={22} />
-                 </Link>
+                <div className="text-left">
+                  <p className="text-[10px] uppercase font-black text-gray-500 mb-1">Direct Inquiries & Executive Office</p>
+                  <p className="text-xl font-bold italic">Official WhatsApp</p>
+                  <p className="text-xs text-gray-500 mt-1" dir="ltr">+93 70 058 2033</p>
+                </div>
+                <Link href="https://wa.me/+93700582033" target="_blank" className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black transition-all">
+                  <ArrowUpRight size={22} />
+                </Link>
               </div>
             </div>
           </div>
@@ -195,7 +195,7 @@ export default function SahelSalemBio() {
         <section className="py-20">
           <div className="container mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12 text-left">
             <div className="space-y-10">
-              <h2 className="text-3xl font-black flex items-center gap-4 italic uppercase"><Briefcase className="text-emerald-500"/> Executive Roles & Experience</h2>
+              <h2 className="text-3xl font-black flex items-center gap-4 italic uppercase"><Briefcase className="text-emerald-500" /> Executive Roles & Experience</h2>
               <div className="space-y-8 border-l-2 border-white/10 pl-8">
                 <div className="relative">
                   <div className="absolute -left-[41px] top-2 w-4 h-4 bg-emerald-500 rounded-full shadow-[0_0_15px_#10b981]" />
@@ -217,7 +217,7 @@ export default function SahelSalemBio() {
             </div>
 
             <div className="space-y-10">
-              <h2 className="text-3xl font-black flex items-center gap-4 italic uppercase"><Target className="text-emerald-500"/> Strategic Pillars at SafiPay</h2>
+              <h2 className="text-3xl font-black flex items-center gap-4 italic uppercase"><Target className="text-emerald-500" /> Strategic Pillars at SafiPay</h2>
               <div className="space-y-8 border-l-2 border-white/10 pl-8">
                 <div className="relative">
                   <div className="absolute -left-[41px] top-2 w-4 h-4 bg-emerald-500 rounded-full" />
@@ -242,28 +242,28 @@ export default function SahelSalemBio() {
 
         {/* --- KEY ACHIEVEMENTS --- */}
         <section className="py-20 container mx-auto max-w-4xl px-6 text-center">
-            <div className="bg-gradient-to-br from-emerald-600/20 via-emerald-950/10 to-transparent p-12 rounded-[4rem] border border-emerald-500/20 relative overflow-hidden text-left">
-                <Award className="text-emerald-500 mx-auto mb-6" size={60} />
-                <h2 className="text-3xl font-black mb-8 italic uppercase text-center">Key Achievements & Milestones</h2>
-                <ul className="text-gray-300 space-y-5 text-lg inline-block w-full">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
-                    <span>Established streamlined access to dedicated European IBAN accounts with instant deposit and payout capabilities.</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
-                    <span>Architected strategic integration between the SafiPay ecosystem and the SEPA Instant clearing network.</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
-                    <span>Spearheaded negotiations with international issuing authorities for branded virtual and physical Visa/Mastercard cards.</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
-                    <span>Implemented institutional Anti-Money Laundering (AML) safeguards aligned with global regulatory bodies.</span>
-                  </li>
-                </ul>
-            </div>
+          <div className="bg-gradient-to-br from-emerald-600/20 via-emerald-950/10 to-transparent p-12 rounded-[4rem] border border-emerald-500/20 relative overflow-hidden text-left">
+            <Award className="text-emerald-500 mx-auto mb-6" size={60} />
+            <h2 className="text-3xl font-black mb-8 italic uppercase text-center">Key Achievements & Milestones</h2>
+            <ul className="text-gray-300 space-y-5 text-lg inline-block w-full">
+              <li className="flex items-center gap-3">
+                <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+                <span>Established streamlined access to dedicated European IBAN accounts with instant deposit and payout capabilities.</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+                <span>Architected strategic integration between the SafiPay ecosystem and the SEPA Instant clearing network.</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+                <span>Spearheaded negotiations with international issuing authorities for branded virtual and physical Visa/Mastercard cards.</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle2 size={20} className="text-emerald-400 shrink-0" />
+                <span>Implemented institutional Anti-Money Laundering (AML) safeguards aligned with global regulatory bodies.</span>
+              </li>
+            </ul>
+          </div>
         </section>
 
         {/* --- GLOBAL STRATEGY PILLARS --- */}
@@ -291,11 +291,11 @@ export default function SahelSalemBio() {
             SAHEL SALEM • CEO & SAFIPAY INTERNATIONAL LEADER • 2026
           </p>
           <div className="flex justify-center gap-8">
-             {socialLinks.map((social, i) => (
-               <Link key={i} href={social.href} target="_blank" className="text-gray-500 hover:text-emerald-500 transition-colors">
-                  {social.icon}
-               </Link>
-             ))}
+            {socialLinks.map((social, i) => (
+              <Link key={i} href={social.href} target="_blank" className="text-gray-500 hover:text-emerald-500 transition-colors">
+                {social.icon}
+              </Link>
+            ))}
           </div>
         </footer>
       </div>
