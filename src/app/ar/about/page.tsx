@@ -570,31 +570,31 @@ export default function AboutUsPageEnglish() {
             {[
               {
                 name: 'Shaheen Safi',
-                role: 'المؤسس والرئيس التنفيذي',
+                role: 'المدير والمؤسس (Director & Founder)',
                 img: '/shaheen.jpeg',
                 href: `/${currentLang}/founder/shaheen-safi`,
                 color: 'border-amber-500/30',
               },
               {
+                name: 'Sahel Salem',
+                role: 'الرئيس التنفيذي وعلاقات أوروبا (CEO & Europe Relations)',
+                img: '/sahel.jpeg',
+                href: `/${currentLang}/founder/sahel-salem`,
+                color: 'border-emerald-500/30',
+              },
+              {
                 name: 'Mujtaba Rahmani',
-                role: 'الشريك المؤسس والمدير التقني',
+                role: 'الشريك المؤسس والمدير التقني (Co-Founder & CTO)',
                 img: '/mujtaba.jpeg',
                 href: `/${currentLang}/founder/mujtaba-rahmani`,
                 color: 'border-blue-500/30',
               },
               {
-                name: 'Sahel Salem',
-                role: 'قائد المنظومة',
-                img: '/sahel.jpeg',
-                href: `/${currentLang}/founder/sahel-salem`,
-                color: 'border-green-500/30',
-              },
-              {
                 name: 'Shirin Gol Ahmadi',
-                role: 'مديرة صافي بي',
+                role: 'مديرة كامل المنظومة (All Ecosystem Manager)',
                 img: '/shirin.jpeg',
                 href: `/${currentLang}/founder/shirin-gol-ahmadi`,
-                color: 'border-purple-500/30',
+                color: 'border-pink-500/30',
               },
               {
                 name: 'Mobin Hassani',

@@ -570,10 +570,17 @@ export default function AboutUsPageEnglish() {
             {[
               {
                 name: 'Shaheen Safi',
-                role: 'Fondateur et PDG',
+                role: 'Directeur et Fondateur (Director & Founder)',
                 img: '/shaheen.jpeg',
                 href: `/${currentLang}/founder/shaheen-safi`,
                 color: 'border-amber-500/30',
+              },
+              {
+                name: 'Sahel Salem',
+                role: 'PDG (CEO) et Relations Européennes',
+                img: '/sahel.jpeg',
+                href: `/${currentLang}/founder/sahel-salem`,
+                color: 'border-emerald-500/30',
               },
               {
                 name: 'Mujtaba Rahmani',
@@ -583,18 +590,11 @@ export default function AboutUsPageEnglish() {
                 color: 'border-blue-500/30',
               },
               {
-                name: 'Sahel Salem',
-                role: 'Responsable de l’écosystème',
-                img: '/sahel.jpeg',
-                href: `/${currentLang}/founder/sahel-salem`,
-                color: 'border-green-500/30',
-              },
-              {
                 name: 'Shirin Gol Ahmadi',
-                role: 'Manager de SafiPay',
+                role: "Manager de tout l'écosystème (All Ecosystem Manager)",
                 img: '/shirin.jpeg',
                 href: `/${currentLang}/founder/shirin-gol-ahmadi`,
-                color: 'border-purple-500/30',
+                color: 'border-pink-500/30',
               },
               {
                 name: 'Mobin Hassani',

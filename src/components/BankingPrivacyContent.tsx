@@ -308,7 +308,7 @@ export default function BankingPrivacyContent({ lang }: BankingPrivacyProps) {
           content: `For formal legal requests, rights assertions under GDPR, or executive regulatory inquiries:
 • Executive WhatsApp Direct Line: +447476620282
 • Official Compliance Email: compliance@safipay.net
-• Executive Supervision: Shaheen Safi, Founder & CEO — SafiPay Global Digital Banking System.`,
+• Executive Supervision: Shaheen Safi, Director & Founder — SafiPay Global Digital Banking System.`,
         },
       ],
       backBtn: 'Return to Homepage',
@@ -805,7 +805,7 @@ export default function BankingPrivacyContent({ lang }: BankingPrivacyProps) {
             European Banking Compliance & Data Inquiries
           </h3>
           <p className="text-sm text-gray-300 max-w-2xl mx-auto mb-6 leading-relaxed">
-            For regulatory authorities, banking audits, data subject requests, or direct correspondence with Founder & CEO Shaheen Safi:
+            For regulatory authorities, banking audits, data subject requests, or direct correspondence with Director & Founder Shaheen Safi:
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

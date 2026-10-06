@@ -54,7 +54,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'اتصال کامل به شبکه تسویه فوری اروپا (SEPA Instant) و تخصیص کارت‌های فیزیکی و مجازی برای تضمین دسترسی بی‌وقفه و کارمزد عادلانه در جریان پیاده‌سازی است.',
         },
       ],
-      founderNoteTitle: 'پیام شاهین صافی (بنیان‌گذار و مدیر ارشد اجرایی صافی‌پی)',
+      founderNoteTitle: 'پیام شاهین صافی (دایرکتور و بنیان‌گذار صافی‌پی)',
       founderNote:
         '«هدف ما در صافی‌پی تنها ساخت یک برنامه موقت نبود؛ هدف ما خلق یک شاهراه مالی پایدار، مقتدر و بین‌المللی برای اتصال کاربران سراسر جهان به زیرساخت بانکداری پیشرفته اروپا و اقتصاد جهانی است. ما به هیچ عنوان کیفیت، امنیت و استانداردهای قانونی بین‌المللی را فدای شتاب‌زدگی نخواهیم کرد. تیم فنی و حقوقی ما شبانه‌روزی در حال کار هستند تا اولین تجربه شما از بازگشایی حساب، بدون کوچک‌ترین اختلال و در اوج امنیت بانکی رقم بخورد. از شکیبایی، همراهی و اعتماد ارزشمند شما صمیمانه سپاسگزاریم.»',
       timelineTitle: 'مراحل آمادگی فنی و حقوقی سیستم',
@@ -96,7 +96,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'د اروپا په کچه د SEPA چټک شبکې سره نښلول او د فزیکي او مجازي کارتونو ویش تر بشپړ پلان لاندې تر کار لاندې دي.',
         },
       ],
-      founderNoteTitle: 'د شاهین صافي (د صافي پي بنسټګر او اجرایوي مشر) پیغام',
+      founderNoteTitle: 'د شاهین صافي (د صافي پي ډایرکټر او بنسټګر) پیغام',
       founderNote:
         '«په صافي پي کې زموږ نیت یوازې یو لنډمهاله اپلیکیشن جوړول نه و؛ موږ غواړو یو داسې پیاوړی، قانوني او تلپاتې مالي پل جوړ کړو چې کاروونکي او نړیوال سوداګر د نړۍ او اروپا له پرمختللي اقتصاد سره وتړي. موږ هیڅکله د سرعت لپاره کیفیت، امنیت او نړیوال بانکي قوانین تر پښو نه لاندې کوو. ډاډه اوسئ کله چې دروازې پرانیستل شي، تاسو به تر ټولو خوندي او بااعتباره تجربه ولرئ. ستاسو له بې ساري ملاتړ او باور څخه مننه کوو.»',
       timelineTitle: 'د سیستم د چمتووالي پړاوونه',
@@ -138,7 +138,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'Direct integration with the Single Euro Payments Area (SEPA & SEPA Instant) network alongside Mastercard/Visa virtual and physical debit card issuance channels is reaching production readiness.',
         },
       ],
-      founderNoteTitle: 'Executive Statement by Shaheen Safi (Founder & CEO, SafiPay)',
+      founderNoteTitle: 'Executive Statement by Shaheen Safi (Director & Founder, SafiPay)',
       founderNote:
         '"Our objective with SafiPay has never been to launch a quick, compromised utility. We are architecting an unyielding, internationally recognized financial highway that legitimately connects global users and enterprises with the modern European economy. We refuse to compromise on security, compliance, or regulatory rigor. Our engineering and compliance divisions are working around the clock so that when our portal opens, you experience a flawless, secure European-standard digital banking service. We deeply appreciate your patience, high anticipation, and unwavering trust."',
       timelineTitle: 'System Readiness & Activation Milestones',
@@ -180,7 +180,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'Die direkte Anbindung an das SEPA-Instant-Netzwerk und die Ausgabe von Debitkarten stehen kurz vor dem produktiven Rollout.',
         },
       ],
-      founderNoteTitle: 'Erklärung von Shaheen Safi (Gründer & CEO von SafiPay)',
+      founderNoteTitle: 'Erklärung von Shaheen Safi (Direktor & Gründer von SafiPay)',
       founderNote:
         '„Unser Ziel bei SafiPay ist es, eine nachhaltige, international anerkannte Finanzbrücke zu schaffen. Wir machen keine Kompromisse bei Sicherheit, gesetzlichen Vorschriften und europäischer Compliance. Vielen Dank für Ihre Geduld und Ihr Vertrauen.“',
       timelineTitle: 'Meilensteine der Systembereitschaft',
@@ -222,7 +222,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'L’interconnexion directe avec le réseau SEPA et l’émission de cartes physiques et virtuelles entrent en phase de mise en production.',
         },
       ],
-      founderNoteTitle: 'Déclaration de Shaheen Safi (Fondateur & PDG de SafiPay)',
+      founderNoteTitle: 'Déclaration de Shaheen Safi (Directeur & Fondateur de SafiPay)',
       founderNote:
         '« Notre vision avec SafiPay est de bâtir un pont financier robuste et durable connectant les utilisateurs du monde entier à l’infrastructure bancaire européenne et à l’économie moderne. Nous ne faisons aucun compromis sur la sécurité et la légitimité juridique. Merci pour votre patience et votre confiance. »',
       timelineTitle: 'Étapes de préparation du système',
@@ -264,7 +264,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'يتم حالياً وضع اللمسات الأخيرة للربط المباشر بشبكة الدفع الأوروبية الموحدة (SEPA Instant) وإصدار البطاقات الرقمية والفعلية.',
         },
       ],
-      founderNoteTitle: 'رسالة شاهين صافي (المؤسس والرئيس التنفيذي لصافي باي)',
+      founderNoteTitle: 'رسالة شاهين صافي (المدير والمؤسس لصافي باي)',
       founderNote:
         '«هدفنا في صافي باي هو بناء صرح مالي دولي رصين ومستدام يربط المستخدمين ورواد الأعمال حول العالم بالاقتصاد الأوروبي والعالمي الحديث. لن نساوم أبداً على الأمان والامتثال القانوني الأوروبي الصارم. نشكركم على صبركم وثقتكم الكبيرة بنا، ونعدكم بتجربة مصرفية استثنائية عند الافتتاح الرسمي.»',
       timelineTitle: 'مراحل الجاهزية الفنية والقانونية',
@@ -306,7 +306,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'Подключение к сети мгновенных европейских платежей SEPA Instant и шлюзам выпуска дебетовых карт выходит на финишную прямую.',
         },
       ],
-      founderNoteTitle: 'Заявление Шахина Сафи (Основатель и генеральный директор SafiPay)',
+      founderNoteTitle: 'Заявление Шахина Сафи (Директор и основатель SafiPay)',
       founderNote:
         '«Наша цель в SafiPay — создать непоколебимый, международно признанный финансовый мост, открывающий пользователям по всему миру доступ к европейской и современной глобальной экономике. Мы не идем на компромиссы в вопросах безопасности и европейского комплаенса. Благодарим за ваше доверие и терпение.»',
       timelineTitle: 'Этапы готовности системы',
@@ -348,7 +348,7 @@ export default function SystemNoticePage({ lang }: SystemNoticeProps) {
           desc: 'Tek Euro Ödeme Alanı (SEPA Instant) ağı ve fiziksel/sanal kart tahsis hatları üretim ortamına alınmaktadır.',
         },
       ],
-      founderNoteTitle: 'Shaheen Safi’den Açıklama (SafiPay Kurucusu ve CEO’su)',
+      founderNoteTitle: 'Shaheen Safi’den Açıklama (SafiPay Direktörü ve Kurucusu)',
       founderNote:
         '“SafiPay ile amacımız geçici bir çözüm değil; dünya genelindeki kullanıcıları Avrupa bankacılık altyapısına ve modern küresel ekonomiye bağlayan güvenli bir finans köprüsü kurmaktır. Güvenlik ve yasal standartlardan asla ödün vermeyeceğiz. Sabrınız ve güveniniz için teşekkür ederiz.”',
       timelineTitle: 'Sistem Hazırlık Aşamaları',

@@ -82,13 +82,13 @@ export default function ShirinGolAhmadiBio() {
               <Briefcase size={30} />
             </Floating3DObject>
             <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -left-16 top-10">
-                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black">مدیر</div>
+                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black text-sm">منیجر اکوسیستم</div>
             </motion.div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-12 px-6">
             <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter text-white">شیرین <span className="text-pink-500">گل احمدی</span></h1>
-            <p className="text-pink-500 font-bold tracking-widest text-lg mt-4 uppercase">مدیر صافی‌پی و توسعه‌دهنده فول‌استک</p>
+            <p className="text-pink-500 font-bold tracking-widest text-lg mt-4 uppercase">منیجر تمام اکوسیستم صافی‌پی و توسعه‌دهنده فول‌استک</p>
             
             {/* Social Links */}
             <div className="flex justify-center gap-4 mt-8">
@@ -117,7 +117,7 @@ export default function ShirinGolAhmadiBio() {
             <h2 className="text-4xl font-black mb-10 border-r-8 border-pink-500 pr-6">درباره من</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                من شیرین گل احمدی هستم، یک متخصص چندرشته‌ای که به عنوان مدیر در صافی‌پی فعالیت می‌کنم. متولد ۱۶ دسامبر ۲۰۰۴ هستم و همواره اشتیاق زیادی به تکنولوژی، اقتصاد و حل خلاقانه مسائل داشته‌ام. مجموعه مهارت‌های متنوع من پلی میان اجرای فنی و استراتژی‌های تجاری است.
+                من شیرین گل احمدی هستم، یک متخصص چندرشته‌ای که به عنوان منیجر تمام اکوسیستم در صافی‌پی فعالیت می‌کنم. متولد ۱۶ دسامبر ۲۰۰۴ هستم و همواره اشتیاق زیادی به تکنولوژی، اقتصاد و حل خلاقانه مسائل داشته‌ام. مجموعه مهارت‌های متنوع من پلی میان اجرای فنی و استراتژی‌های تجاری است.
               </p>
               <p>
                 من فارغ‌التحصیل رشته اقتصاد از <span className="text-white font-bold underline decoration-pink-500">دانشگاه ملی علوم و فناوری (NUST)</span> در اسلام‌آباد، پاکستان هستم. در کنار پیشینه آکادمیک خود در زمینه اقتصاد، به عنوان یک توسعه‌دهنده فول‌استک، علاقه‌مند به هوش مصنوعی و طراح گرافیک، عمیقاً وارد دنیای تکنولوژی شده‌ام.

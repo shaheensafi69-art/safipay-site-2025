@@ -82,13 +82,13 @@ export default function ShirinGolAhmadiBio() {
               <Briefcase size={30} />
             </Floating3DObject>
             <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -left-16 top-10">
-                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black">المديرة</div>
+                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black text-xs md:text-sm">مديرة المنظومة</div>
             </motion.div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-12 px-6">
             <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter text-white">شيرين <span className="text-pink-500">جول أحمدي</span></h1>
-            <p className="text-pink-500 font-bold tracking-widest text-lg mt-4 uppercase">مديرة SafiPay ومطورة Full Stack</p>
+            <p className="text-pink-500 font-bold tracking-widest text-lg mt-4 uppercase">مديرة كامل المنظومة في SafiPay ومطورة Full Stack</p>
             
             {/* Social Links */}
             <div className="flex justify-center gap-4 mt-8">
@@ -117,7 +117,7 @@ export default function ShirinGolAhmadiBio() {
             <h2 className="text-4xl font-black mb-10 border-r-8 border-pink-500 pr-6">نبذة عني</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                أنا شيرين جول أحمدي، محترفة متعددة التخصصات أعمل كمديرة في SafiPay. ولدت في 16 ديسمبر 2004، وكنت دائمًا مدفوعة بشغف للتكنولوجيا والاقتصاد وحل المشكلات بأساليب مبتكرة. تعمل مجموعة مهاراتي المتنوعة كجسر بين التنفيذ التقني واستراتيجيات الأعمال.
+                أنا شيرين جول أحمدي، محترفة متعددة التخصصات أعمل كمديرة لكامل المنظومة في SafiPay. ولدت في 16 ديسمبر 2004، وكنت دائمًا مدفوعة بشغف للتكنولوجيا والاقتصاد وحل المشكلات بأساليب مبتكرة. تعمل مجموعة مهاراتي المتنوعة كجسر بين التنفيذ التقني واستراتيجيات الأعمال.
               </p>
               <p>
                 أنا خريجة جامعية بشهادة في الاقتصاد من <span className="text-white font-bold underline decoration-pink-500">الجامعة الوطنية للعلوم والتكنولوجيا (NUST)</span> في إسلام آباد، باكستان. وإلى جانب خلفيتي الأكاديمية في الاقتصاد، انغمست بعمق في عالم التكنولوجيا كمطورة Full Stack، ومهتمة بالذكاء الاصطناعي، ومصممة جرافيك.

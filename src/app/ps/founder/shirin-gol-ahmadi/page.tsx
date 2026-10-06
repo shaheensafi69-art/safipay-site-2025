@@ -82,13 +82,13 @@ export default function ShirinGolAhmadiBio() {
               <Briefcase size={30} />
             </Floating3DObject>
             <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -right-16 top-10">
-                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black">مدیره</div>
+                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black text-xs md:text-sm">د ایکوسیستم مدیره</div>
             </motion.div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-12 px-6">
             <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter text-white">شیرین <span className="text-pink-500">ګل احمدي</span></h1>
-            <p className="text-pink-500 font-bold tracking-widest text-lg mt-4 uppercase">د SafiPay مدیره او د فول سټیک ډیولپره</p>
+            <p className="text-pink-500 font-bold tracking-widest text-lg mt-4 uppercase">د SafiPay د ټول ایکوسیستم مدیره او فول سټیک ډیولپره</p>
             
             {/* Social Links */}
             <div className="flex justify-center gap-4 mt-8">
@@ -117,7 +117,7 @@ export default function ShirinGolAhmadiBio() {
             <h2 className="text-4xl font-black mb-10 border-r-8 border-pink-500 pr-6">زما په اړه</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                زه شیرین ګل احمدي یم، یو څو اړخیزه مسلکي کسان چې په SafiPay کې د مدیرې په توګه دنده ترسره کوم. زه د ۲۰۰۴ کال د ډسمبر په ۱۶مه زېږېدلې یم او تل د ټکنالوژۍ، اقتصاد او د مسایلو د خلاقانه حل سره ځانګړې مینه لرم. زما د بېلابېلو مهارتونو مجموعه د تخنیکي اجرا او سوداګریزو ستراتیژیو ترمنځ یو پیاوړی پُل دی.
+                زه شیرین ګل احمدي یم، یو څو اړخیزه مسلکي کسان چې په SafiPay کې د ټول ایکوسیستم د مدیرې په توګه دنده ترسره کوم. زه د ۲۰۰۴ کال د ډسمبر په ۱۶مه زېږېدلې یم او تل د ټکنالوژۍ، اقتصاد او د مسایلو د خلاقانه حل سره ځانګړې مینه لرم. زما د بېلابېلو مهارتونو مجموعه د تخنیکي اجرا او سوداګریزو ستراتیژیو ترمنځ یو پیاوړی پُل دی.
               </p>
               <p>
                 زه په اسلام‌اباد، پاکستان کې له <span className="text-white font-bold underline decoration-pink-500">د ساینس او ​​ټکنالوژۍ ملي پوهنتون (NUST)</span> څخه د اقتصاد په رشته کې فارغه یم. په اقتصاد کې زما د اکاډمیک شالید ترڅنګ، ما د ډیجیټل نړۍ د یوې فول سټیک ډیولپرې، د مصنوعي ځیرکتیا مینوالې او ګرافیک ډیزاینرې په توګه د ټکنالوژۍ په نړۍ کې ژور ګامونه ایښي دي.

@@ -174,7 +174,7 @@ export default function IbanBenefitsPage() {
                 <div className="mt-16 px-12 flex items-center gap-6 justify-end">
                   <div className="text-right">
                     <p className="text-2xl font-black tracking-[0.5em] uppercase text-[#D4AF37]">Shaheen Safi</p>
-                    <p className="text-xs text-gray-600 uppercase font-black">بنسټ اېښودونکی او CEO</p>
+                    <p className="text-xs text-gray-600 uppercase font-black">ډایرکټر او بنسټ اېښودونکی</p>
                   </div>
                   <div className="h-[1px] w-20 bg-gray-800" />
                 </div>

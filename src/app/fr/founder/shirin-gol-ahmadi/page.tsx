@@ -82,13 +82,13 @@ export default function ShirinGolAhmadiBio() {
               <Briefcase size={30} />
             </Floating3DObject>
             <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -right-16 top-10">
-                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black">MANAGER</div>
+                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black text-xs md:text-sm">MANAGER ÉCOSYSTÈME</div>
             </motion.div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-12 px-6">
             <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter text-white">SHIRIN <span className="text-pink-500">GOL AHMADI</span></h1>
-            <p className="text-pink-500 font-bold tracking-[0.3em] text-lg mt-4 uppercase">Manager SafiPay & Développeuse Full Stack</p>
+            <p className="text-pink-500 font-bold tracking-[0.2em] text-lg mt-4 uppercase">Manager de tout l&apos;écosystème &amp; Développeuse Full Stack</p>
             
             {/* Social Links */}
             <div className="flex justify-center gap-4 mt-8">
@@ -117,7 +117,7 @@ export default function ShirinGolAhmadiBio() {
             <h2 className="text-4xl font-black mb-10 border-l-8 border-pink-500 pl-6">À propos de moi</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                Je suis Shirin Gol Ahmadi, une professionnelle multidisciplinaire occupant le poste de Manager chez SafiPay. Née le 16 décembre 2004, j'ai toujours été animée par la passion de la technologie, de l'économie et de la résolution créative de problèmes. Mes compétences diversifiées font le pont entre l'exécution technique et la stratégie commerciale.
+                Je suis Shirin Gol Ahmadi, une professionnelle multidisciplinaire occupant le poste de Manager de tout l&apos;écosystème chez SafiPay. Née le 16 décembre 2004, j&apos;ai toujours été animée par la passion de la technologie, de l&apos;économie et de la résolution créative de problèmes. Mes compétences diversifiées font le pont entre l&apos;exécution technique et la stratégie commerciale.
               </p>
               <p>
                 Je suis diplômée en Économie de la <span className="text-white font-bold underline decoration-pink-500">National University of Sciences & Technology (NUST)</span> à Islamabad, au Pakistan. Parallèlement à ma formation académique en économie, je me suis profondément plongée dans le monde de la technologie en tant que développeuse Full Stack, passionnée d'intelligence artificielle et designer graphique.

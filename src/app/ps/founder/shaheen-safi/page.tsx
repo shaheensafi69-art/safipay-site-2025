@@ -85,13 +85,13 @@ export default function ShaheenSafiFullExpertBio() {
               <Code2 size={30} />
             </Floating3DObject>
             <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -left-16 top-10">
-                <div className="bg-amber-500 text-black p-4 rounded-3xl shadow-2xl font-black italic">CEO</div>
+                <div className="bg-amber-500 text-black p-4 rounded-3xl shadow-2xl font-black italic">ډایرکټر او بنسټ اېښودونکی</div>
             </motion.div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-12 px-6">
             <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter text-white">شاهین <span className="text-amber-500">ساپی</span></h1>
-            <p className="text-amber-500 font-bold tracking-[0.1em] text-xl mt-4 uppercase">د SafiPay بنسټ اېښودونکی او د معلوماتي ټکنالوجۍ متخصص</p>
+            <p className="text-amber-500 font-bold tracking-[0.1em] text-xl mt-4 uppercase">د SafiPay ډایرکټر او بنسټ اېښودونکی | د IT متخصص</p>
             
             {/* Social Links */}
             <div className="flex justify-center gap-4 mt-8">

@@ -82,13 +82,13 @@ export default function ShirinGolAhmadiBio() {
               <Briefcase size={30} />
             </Floating3DObject>
             <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -right-16 top-10">
-                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black">MANAGERIN</div>
+                <div className="bg-pink-500 text-white p-4 rounded-3xl shadow-2xl font-black text-xs md:text-sm">ÖKOSYSTEM-MANAGERIN</div>
             </motion.div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mt-12 px-6">
             <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter text-white">SHIRIN <span className="text-pink-500">GOL AHMADI</span></h1>
-            <p className="text-pink-500 font-bold tracking-[0.3em] text-lg mt-4 uppercase">SafiPay-Managerin & Full-Stack-Entwicklerin</p>
+            <p className="text-pink-500 font-bold tracking-[0.2em] text-lg mt-4 uppercase">Gesamte Ökosystem-Managerin & Full-Stack-Entwicklerin</p>
             
             {/* Social Links */}
             <div className="flex justify-center gap-4 mt-8">
@@ -117,7 +117,7 @@ export default function ShirinGolAhmadiBio() {
             <h2 className="text-4xl font-black mb-10 border-l-8 border-pink-500 pl-6">Über mich</h2>
             <div className="space-y-8 text-gray-300 text-xl leading-[2.3] text-justify font-light">
               <p>
-                Ich bin Shirin Gol Ahmadi, eine multidisziplinäre Fachkraft und Managerin bei SafiPay. Geboren am 16. Dezember 2004, wurde ich stets von meiner Leidenschaft für Technologie, Wirtschaft und kreative Problemlösungen angetrieben. Meine vielfältigen Fähigkeiten bilden die Brücke zwischen technischer Umsetzung und Geschäftsstrategie.
+                Ich bin Shirin Gol Ahmadi, eine multidisziplinäre Fachkraft und gesamte Ökosystem-Managerin bei SafiPay. Geboren am 16. Dezember 2004, wurde ich stets von meiner Leidenschaft für Technologie, Wirtschaft und kreative Problemlösungen angetrieben. Meine vielfältigen Fähigkeiten bilden die Brücke zwischen technischer Umsetzung und Geschäftsstrategie.
               </p>
               <p>
                 Ich bin Absolventin der Wirtschaftswissenschaften an der <span className="text-white font-bold underline decoration-pink-500">National University of Sciences & Technology (NUST)</span> in Islamabad, Pakistan. Neben meinem akademischen Hintergrund in Wirtschaftswissenschaften bin ich als Full-Stack-Entwicklerin, KI-Enthusiastin und Grafikdesignerin tief in die Tech-Welt eingetaucht.

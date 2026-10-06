@@ -570,31 +570,31 @@ export default function AboutUsPageEnglish() {
             {[
               {
                 name: 'Shaheen Safi',
-                role: 'بنسټ‌ايښودونکی او اجرائیه رئیس',
+                role: 'ډایرکټر او بنسټ‌ايښودونکی (Director & Founder)',
                 img: '/shaheen.jpeg',
                 href: `/${currentLang}/founder/shaheen-safi`,
                 color: 'border-amber-500/30',
               },
               {
+                name: 'Sahel Salem',
+                role: 'اجرائیه رئیس او د اروپا اړیکې (CEO & Europe Relations)',
+                img: '/sahel.jpeg',
+                href: `/${currentLang}/founder/sahel-salem`,
+                color: 'border-emerald-500/30',
+              },
+              {
                 name: 'Mujtaba Rahmani',
-                role: 'شریک بنسټ‌ايښودونکی او تخنیکي رئیس',
+                role: 'شریک بنسټ‌ايښودونکی او تخنیکي رئیس (Co-Founder & CTO)',
                 img: '/mujtaba.jpeg',
                 href: `/${currentLang}/founder/mujtaba-rahmani`,
                 color: 'border-blue-500/30',
               },
               {
-                name: 'Sahel Salem',
-                role: 'د ایکوسیستم مسؤل',
-                img: '/sahel.jpeg',
-                href: `/${currentLang}/founder/sahel-salem`,
-                color: 'border-green-500/30',
-              },
-              {
                 name: 'Shirin Gol Ahmadi',
-                role: 'مدیره',
+                role: 'د ټول ایکوسیستم مدیره (All Ecosystem Manager)',
                 img: '/shirin.jpeg',
                 href: `/${currentLang}/founder/shirin-gol-ahmadi`,
-                color: 'border-purple-500/30',
+                color: 'border-pink-500/30',
               },
               {
                 name: 'Mobin Hassani',

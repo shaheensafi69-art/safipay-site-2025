@@ -307,7 +307,7 @@ export default function BankingTermsContent({ lang }: BankingTermsProps) {
           content: `For legal correspondence, commercial agreements, or regulatory supervisory coordination:
 • Executive WhatsApp Direct Line: +447476620282
 • Official Legal Email: legal@safipay.net
-• Executive Supervision: Shaheen Safi, Founder & CEO — SafiPay Global Digital Banking System.`,
+• Executive Supervision: Shaheen Safi, Director & Founder — SafiPay Global Digital Banking System.`,
         },
       ],
       backBtn: 'Return to Homepage',
@@ -391,7 +391,7 @@ export default function BankingTermsContent({ lang }: BankingTermsProps) {
         {
           id: 10,
           title: '10. Offizieller Kontakt',
-          content: `WhatsApp: +447476620282 | E-Mail: legal@safipay.net | Geschäftsleitung: Shaheen Safi (Gründer & CEO).`,
+          content: `WhatsApp: +447476620282 | E-Mail: legal@safipay.net | Geschäftsleitung: Shaheen Safi (Direktor & Gründer).`,
         },
       ],
       backBtn: 'Zur Startseite',
@@ -475,7 +475,7 @@ export default function BankingTermsContent({ lang }: BankingTermsProps) {
         {
           id: 10,
           title: '10. Contact de la Direction',
-          content: `WhatsApp direction : +447476620282 | Email : legal@safipay.net | Direction : Shaheen Safi (Fondateur & PDG).`,
+          content: `WhatsApp direction : +447476620282 | Email : legal@safipay.net | Direction : Shaheen Safi (Directeur & Fondateur).`,
         },
       ],
       backBtn: 'Retour à l’accueil',
@@ -727,7 +727,7 @@ export default function BankingTermsContent({ lang }: BankingTermsProps) {
         {
           id: 10,
           title: '10. İletişim Bilgileri',
-          content: `WhatsApp: +447476620282 | E-posta: legal@safipay.net | Yönetim: Shaheen Safi (Kurucu ve CEO).`,
+          content: `WhatsApp: +447476620282 | E-posta: legal@safipay.net | Yönetim: Shaheen Safi (Direktör ve Kurucu).`,
         },
       ],
       backBtn: 'Ana Sayfaya Dön',

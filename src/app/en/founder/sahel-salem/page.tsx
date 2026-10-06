@@ -72,13 +72,16 @@ export default function SahelSalemBio() {
             <Floating3DObject x={moveX} y={moveY} translateZ={150} rotate="15deg">
               <Star size={35} fill="currentColor" />
             </Floating3DObject>
+            <motion.div style={{ x: moveY, y: moveX, translateZ: 180 }} className="absolute -right-16 top-10">
+                <div className="bg-emerald-500 text-black p-4 rounded-3xl shadow-2xl font-black">CEO</div>
+            </motion.div>
           </motion.div>
 
           <div className="text-center mt-16 px-6">
             <h1 className="text-8xl md:text-[10vw] font-black italic tracking-tighter leading-[0.8] mb-6">
               SAHEL <span className="text-transparent stroke-emerald-500 stroke-2" style={{ WebkitTextStroke: '2px #10b981' }}>SALEM</span>
             </h1>
-            <p className="text-emerald-500 font-bold tracking-[0.8em] text-lg uppercase mt-4">Director of International Expansion</p>
+            <p className="text-emerald-500 font-bold tracking-[0.4em] text-lg uppercase mt-4">CEO & Europe Relations</p>
             
             {/* Social Links Bar */}
             <div className="flex justify-center gap-6 mt-12">

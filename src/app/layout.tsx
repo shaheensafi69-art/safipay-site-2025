@@ -50,7 +50,7 @@ export default async function RootLayout({
         "@type": "Person",
         "@id": "https://www.safipay.net/founder/shaheen-safi/#person",
         "name": "Shaheen Safi",
-        "jobTitle": "Founder & CEO of SafiPay",
+        "jobTitle": "Director & Founder of SafiPay",
         "description": "Tech entrepreneur and founder of SafiPay global digital banking system.",
         "image": "https://www.safipay.net/shaheen.jpeg",
         "worksFor": { "@id": "https://www.safipay.net/#organization" },
