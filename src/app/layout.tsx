@@ -16,10 +16,26 @@ export const metadata = {
   },
   description: 'SafiPay is a premier international digital banking ecosystem providing European IBAN accounts, borderless virtual Visa cards, instant SEPA transfers, and global eSIM connectivity.',
   keywords: [
-    'SafiPay', 'صفی‌پی', 'Digital Banking', 'European IBAN', 'Virtual Visa Card',
-    'SEPA Instant', 'Global FinTech', 'Shaheen Safi', 'Border Free Banking',
-    'International Money Transfer', 'eSIM Travel Data', 'Financial Inclusion'
+    'SafiPay', 'صافی پی', 'صفی‌پی', 'صافي پي', 'صافي بي', 'СафиПей', 'Safi Pay',
+    'SafiPay Neobank', 'SafiPay App', 'net.safipay.app', 'Digital Banking',
+    'European IBAN', 'Virtual Visa Card', 'SEPA Instant', 'Global FinTech',
+    'Shaheen Safi', 'شاهین صافی', 'Border Free Banking', 'International Money Transfer',
+    'eSIM Travel Data', 'Financial Inclusion', 'نئوبانک بین‌المللی'
   ],
+  alternates: {
+    canonical: 'https://www.safipay.net',
+    languages: {
+      'fa': 'https://www.safipay.net/fa',
+      'en': 'https://www.safipay.net/en',
+      'ps': 'https://www.safipay.net/ps',
+      'ar': 'https://www.safipay.net/ar',
+      'de': 'https://www.safipay.net/de',
+      'fr': 'https://www.safipay.net/fr',
+      'tr': 'https://www.safipay.net/tr',
+      'ru': 'https://www.safipay.net/ru',
+      'x-default': 'https://www.safipay.net/en',
+    },
+  },
   authors: [{ name: 'Shaheen Safi', url: 'https://www.safipay.net/en/founder/shaheen-safi' }],
   creator: 'Shaheen Safi',
   publisher: 'SafiPay',
@@ -37,6 +53,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    alternateLocale: ['fa_IR', 'ps_AF', 'ar_AE', 'de_DE', 'fr_FR', 'tr_TR', 'ru_RU'],
     url: 'https://www.safipay.net',
     siteName: 'SafiPay',
     title: 'SafiPay — Global Digital Banking Ecosystem',
@@ -94,6 +111,7 @@ export default async function RootLayout({
           "url": "https://www.safipay.net/logo.png"
         },
         "sameAs": [
+          "https://play.google.com/store/apps/details?id=net.safipay.app",
           "https://www.wikidata.org/wiki/Q139049281",
           "https://www.facebook.com/share/16XvE4V4fF/",
           "https://www.instagram.com/safipay_official",
@@ -186,6 +204,35 @@ export default async function RootLayout({
         "worksFor": { "@id": "https://www.safipay.net/#organization" }
       },
       {
+        "@type": ["MobileApplication", "SoftwareApplication"],
+        "@id": "https://www.safipay.net/#app",
+        "name": "SafiPay: Digital Neobank",
+        "alternateName": ["SafiPay App", "اپلیکیشن صافی‌پی", "صافی پی", "SafiPay Mobile Banking"],
+        "operatingSystem": "Android",
+        "applicationCategory": "FinanceApplication",
+        "applicationSubCategory": "Digital Banking & Payments",
+        "installUrl": "https://play.google.com/store/apps/details?id=net.safipay.app&hl=en_GB",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=net.safipay.app&hl=en_GB",
+        "url": "https://play.google.com/store/apps/details?id=net.safipay.app&hl=en_GB",
+        "publisher": { "@id": "https://www.safipay.net/#organization" },
+        "author": { "@id": "https://www.safipay.net/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/PreOrder"
+        },
+        "description": "Official SafiPay Android App. Open European IBAN accounts, issue instant virtual Visa cards, and execute SEPA transfers with zero borders. Pre-registration live on Google Play.",
+        "featureList": [
+          "European IBAN Account",
+          "Instant Virtual Visa Card",
+          "SEPA Instant EUR Transfers",
+          "Global eSIM Internet",
+          "Biometric 2FA Security"
+        ],
+        "releaseNotes": "Official Pre-Registration open on Google Play Store."
+      },
+      {
         "@type": "ItemList",
         "name": "SafiPay Official Editorial & Publications",
         "itemListElement": [
@@ -195,7 +242,13 @@ export default async function RootLayout({
           { "@type": "ListItem", "position": 4, "url": "https://www.safipay.net/en/blog/about-shaheen-safi" },
           { "@type": "ListItem", "position": 5, "url": "https://www.safipay.net/en/blog/esim-travel-technology" },
           { "@type": "ListItem", "position": 6, "url": "https://www.safipay.net/en/blog/future-of-banking" },
-          { "@type": "ListItem", "position": 7, "url": "https://www.safipay.net/en/blog/what-is-safipay" }
+          { "@type": "ListItem", "position": 7, "url": "https://www.safipay.net/en/blog/what-is-safipay" },
+          { "@type": "ListItem", "position": 8, "url": "https://www.safipay.net/en/blog/sepa-regulatory-framework" },
+          { "@type": "ListItem", "position": 9, "url": "https://www.safipay.net/en/blog/fca-compliance-standards" },
+          { "@type": "ListItem", "position": 10, "url": "https://www.safipay.net/en/blog/global-ecosystem-governance" },
+          { "@type": "ListItem", "position": 11, "url": "https://www.safipay.net/en/blog/aml-fatf-regulatory-compliance" },
+          { "@type": "ListItem", "position": 12, "url": "https://www.safipay.net/en/blog/psd3-open-banking-compliance" },
+          { "@type": "ListItem", "position": 13, "url": "https://www.safipay.net/en/blog/institutional-compliance-vision" }
         ]
       }
     ]
@@ -205,6 +258,22 @@ export default async function RootLayout({
     <html lang={currentLang} suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="eC_86AguztStKds0JEwRTOwjHA7HeCY-FKprl9zXjRE" />
+        <meta name="google-play-app" content="app-id=net.safipay.app" />
+        <meta name="application-name" content="SafiPay" />
+        <meta name="apple-mobile-web-app-title" content="SafiPay" />
+        <meta name="theme-color" content="#020202" />
+        
+        {/* GEO & International Targeting */}
+        <meta name="geo.region" content="GB;FR;DE;TR;AE;AF" />
+        <meta name="geo.placename" content="London, Paris, Frankfurt, Istanbul, Dubai, Kabul" />
+        <meta name="geo.position" content="51.5074;-0.1278" />
+        <meta name="ICBM" content="51.5074, -0.1278" />
+        <meta name="target" content="all" />
+        <meta name="coverage" content="Worldwide" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+
+        <link rel="alternate" href="android-app://net.safipay.app/https/www.safipay.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(unifiedSchema) }}

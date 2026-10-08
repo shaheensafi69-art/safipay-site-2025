@@ -58,9 +58,64 @@ export default function AppDownloadPage() {
             <p className="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto md:mx-0 font-medium">
               Sadece bir uygulama inşa etmiyoruz; finansal özgürlüğe giden bir kapı açıyoruz. Hızlı, güvenli ve sınırsız.
             </p>
-            <div className="flex flex-wrap justify-center md:justify-start gap-5">
-              <StoreButton img="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" text="Yakında Play Store'da" />
-              <StoreButton img="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" text="Yakında App Store'da" />
+            {/* Mağaza Butonları ve Google Play Ön Kayıt */}
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-4 mb-6">
+              <a
+                href="https://play.google.com/store/apps/details?id=net.safipay.app&hl=en_GB"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center gap-3.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-white/10 to-amber-500/10 border-2 border-amber-500/50 hover:border-amber-400 shadow-[0_0_25px_rgba(245,158,11,0.25)] hover:shadow-[0_0_35px_rgba(245,158,11,0.45)] transition-all duration-300 hover:scale-105"
+              >
+                <div className="w-9 h-9 relative flex-shrink-0">
+                  <Image 
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                    alt="Google Play Store" 
+                    fill 
+                    className="object-contain" 
+                  />
+                </div>
+                <div className="flex flex-col text-left">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Ön Kayıt Açıldı</span>
+                  </div>
+                  <span className="text-sm font-black text-white group-hover:text-amber-400 transition-colors">
+                    Google Play'de Ön Kayıt Yap
+                  </span>
+                  <span className="text-[9px] text-gray-400">net.safipay.app</span>
+                </div>
+                <ArrowUpRight size={18} className="text-amber-400 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </a>
+
+              <div className="flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-white/5 border border-white/10 opacity-70 cursor-not-allowed">
+                <div className="w-8 h-8 relative flex-shrink-0 grayscale">
+                  <Image 
+                    src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+                    alt="Apple App Store" 
+                    fill 
+                    className="object-contain" 
+                  />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-[10px] text-gray-500 font-bold uppercase">Geliştiriliyor</span>
+                  <span className="text-xs font-bold text-gray-300">Yakında App Store'da (iOS)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Resmi Ön Kayıt Bilgi Kartı */}
+            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 max-w-xl mx-auto md:mx-0 flex items-start gap-3 text-left mb-6">
+              <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400 flex-shrink-0 mt-0.5">
+                <Smartphone size={20} />
+              </div>
+              <div>
+                <h3 className="text-xs font-black text-amber-400 mb-1">
+                  Google Play Store Resmi Ön Kayıt Yayında
+                </h3>
+                <p className="text-[11px] text-gray-300 leading-relaxed">
+                  Resmi SafiPay uygulaması artık Google Play'de. <strong>Ön Kayıt Yap (Pre-register)</strong> butonuna tıklayarak yayınlandığı anda otomatik indirilmesini sağlayın.
+                </p>
+              </div>
             </div>
           </motion.div>
 

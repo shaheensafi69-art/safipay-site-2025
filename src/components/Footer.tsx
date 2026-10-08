@@ -19,6 +19,7 @@ import {
   MapPin,
   Github,
   Code2,
+  Smartphone,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
@@ -67,6 +68,7 @@ export default function Footer() {
         { name: 'مجتبی رحمانی', href: `/fa/founder/mujtaba-rahmani` },
         { name: 'شیرین گل احمدی', href: `/fa/founder/shirin-gol-ahmadi` },
         { name: 'مبین حسنی', href: `/fa/founder/mobin-hassani` },
+        { name: 'اپلیکیشن صافی‌پی (گوگل پلی)', href: `/fa/app` },
       ],
     },
     ps: {
@@ -95,6 +97,7 @@ export default function Footer() {
         { name: 'مجتبی رحماني', href: `/ps/founder/mujtaba-rahmani` },
         { name: 'شیرین ګل احمدي', href: `/ps/founder/shirin-gol-ahmadi` },
         { name: 'مبین حسني', href: `/ps/founder/mobin-hassani` },
+        { name: 'صافي پي اپلیکیشن (ګوګل پلی)', href: `/ps/app` },
       ],
     },
     en: {
@@ -123,6 +126,7 @@ export default function Footer() {
         { name: 'Mujtaba Rahmani', href: `/en/founder/mujtaba-rahmani` },
         { name: 'Shirin Gol Ahmadi', href: `/en/founder/shirin-gol-ahmadi` },
         { name: 'Mobin Hassani', href: `/en/founder/mobin-hassani` },
+        { name: 'SafiPay App (Google Play)', href: `/en/app` },
       ],
     },
     de: {
@@ -583,6 +587,34 @@ export default function Footer() {
                 </div>
               </a>
             </div>
+
+            {/* Box 3: Google Play Pre-Registration Banner */}
+            <a
+              href="https://play.google.com/store/apps/details?id=net.safipay.app&hl=en_GB"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 group flex items-center justify-between rounded-2xl border border-amber-500/30 bg-gradient-to-r from-amber-500/10 via-white/[0.02] to-transparent p-4 sm:p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-400 hover:shadow-[0_10px_30px_-5px_rgba(245,158,11,0.2)]"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-400 group-hover:scale-105 transition-transform">
+                  <Smartphone size={24} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400">Google Play Store</span>
+                    <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[9px] font-bold border border-amber-500/30">Pre-Register</span>
+                  </div>
+                  <div className="text-sm sm:text-base font-black text-white group-hover:text-amber-400 transition-colors">
+                    {currentLang === 'fa' ? 'پیش‌ثبت‌نام رسمی اپلیکیشن صافی‌پی در گوگل پلی' : currentLang === 'ps' ? 'په ګوګل پلی کې د صافي پي د اپلیکیشن رسمي مخکې نوم لیکنه' : currentLang === 'ar' ? 'التسجيل المسبق الرسمي لتطبيق صافي‌بي على Google Play' : 'SafiPay Official App Pre-Registration on Google Play'}
+                  </div>
+                  <p className="text-[11px] text-gray-400 mt-0.5">
+                    {currentLang === 'fa' ? 'افتتاح حساب بانکی اروپایی، ویزا کارت مجازی و تراکنش‌های آنی در اندروید' : currentLang === 'ps' ? 'اروپایي بانکي حساب، ویزا کارت او چټکې پیسې په انډرایډ کې' : 'European IBAN account, virtual Visa card, and instant transfers on Android'}
+                  </p>
+                </div>
+              </div>
+              <ArrowUpRight size={18} className={`shrink-0 text-amber-400 transition-transform ${isRtl ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'} group-hover:-translate-y-1`} />
+            </a>
           </div>
         </div>
 

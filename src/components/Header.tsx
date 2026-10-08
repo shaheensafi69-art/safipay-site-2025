@@ -17,6 +17,7 @@ import {
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClientSideSupabase } from '@/lib/supabase';
+import FlagCircle from '@/components/FlagCircle';
 
 const languages = [
   { code: 'fa', label: 'فارسی', flag: '🇦🇫' },
@@ -199,7 +200,7 @@ export default function Header() {
                 }}
                 className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-2.5 text-white transition-all hover:border-amber-500/30 hover:bg-white/[0.05]"
               >
-                <span className="text-base">{activeLangObj.flag}</span>
+                <FlagCircle code={activeLangObj.code} size={20} />
                 <span className="text-xs font-bold uppercase tracking-[0.18em]">{activeLangObj.code}</span>
                 <ChevronDown size={14} className={`transition-transform ${isLangOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -225,7 +226,7 @@ export default function Header() {
                         }`}
                       >
                         <span className="flex items-center gap-3">
-                          <span className="text-lg">{lang.flag}</span>
+                          <FlagCircle code={lang.code} size={20} />
                           <span className="font-bold">{lang.label}</span>
                         </span>
                         {currentLang === lang.code && <span className="h-2 w-2 rounded-full bg-black" />}
@@ -405,7 +406,7 @@ export default function Header() {
                           : 'bg-black/40 text-gray-300 border border-white/6'
                       }`}
                     >
-                      <span className="text-base">{lang.flag}</span>
+                      <FlagCircle code={lang.code} size={20} />
                       <span>{lang.label}</span>
                     </button>
                   ))}
