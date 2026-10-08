@@ -346,9 +346,16 @@ export default function ContactPageEN() {
                 />
                 <ContactCard
                   icon={<Mail size={22} />}
-                  title="Official Email"
-                  value="safipay@hotmail.com"
-                  link="mailto:safipay@hotmail.com"
+                  title="Official Executive Email"
+                  value="contact@safipay.net"
+                  link="mailto:contact@safipay.net"
+                  color="hover:border-amber-500/30"
+                />
+                <ContactCard
+                  icon={<Mail size={22} />}
+                  title="Global Inquiries & Information"
+                  value="info@safipay.net"
+                  link="mailto:info@safipay.net"
                   color="hover:border-blue-500/30"
                 />
               </div>

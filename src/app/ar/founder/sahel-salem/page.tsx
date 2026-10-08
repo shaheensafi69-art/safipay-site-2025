@@ -5,7 +5,7 @@ import {
   ShieldCheck, Zap, Globe, GraduationCap, 
   Landmark, Star, Target, CheckCircle2,
   History, Facebook, ArrowUpLeft, Briefcase, Award,
-  Instagram, MessageCircle, MapPin, Building2, TrendingUp
+  Instagram, MessageCircle, MapPin, Building2, TrendingUp, Mail
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -45,6 +45,7 @@ export default function SahelSalemBio() {
     { icon: <Facebook size={22} />, href: "https://www.facebook.com/share/1A6hht1gio/?mibextid=wwXIfr" },
     { icon: <Instagram size={22} />, href: "https://www.instagram.com/s4_hel1?igsh=a3k3YW8zNHRxZXUx&utm_source=qr" },
     { icon: <MessageCircle size={22} />, href: "https://wa.me/+93700582033" },
+    { icon: <Mail size={22} />, href: "mailto:sahelsalem@safipay.net" },
   ];
 
   return (
@@ -82,11 +83,14 @@ export default function SahelSalemBio() {
             </h1>
             <p className="text-emerald-500 font-bold tracking-[0.3em] text-lg md:text-2xl uppercase mt-4">الرئيس التنفيذي (CEO) وعلاقات أوروبا</p>
             
-            {/* شارات سريعة */}
+            {/* شارات سریعة */}
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-8 text-gray-400 text-sm">
                <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
                  <MapPin size={16} className="text-emerald-400" /> المقر الرئيسي الدولي • Global Hub
                </span>
+               <a href="mailto:sahelsalem@safipay.net" className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5 hover:border-emerald-500/30 hover:text-emerald-400 transition-colors">
+                 <Mail size={16} className="text-emerald-400" /> sahelsalem@safipay.net
+               </a>
                <span className="flex items-center gap-2 bg-white/[0.03] px-4 py-2 rounded-2xl border border-white/5">
                  <Building2 size={16} className="text-emerald-400" /> القيادة الاستراتيجية والشبكة المصرفية الأوروبية
                </span>

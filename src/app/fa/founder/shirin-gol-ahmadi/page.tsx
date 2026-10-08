@@ -53,7 +53,7 @@ export default function ShirinGolAhmadiBio() {
   // Social Links
   const mySocials = [
     { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/shirin-gol-ahmadi-842b40344?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
-    { icon: <Mail size={20} />, href: "mailto:shirin@safipay.net" },
+    { icon: <Mail size={20} />, href: "mailto:shirinahmadi@safipay.net" },
   ];
 
   return (

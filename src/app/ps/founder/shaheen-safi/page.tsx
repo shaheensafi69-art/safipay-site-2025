@@ -57,6 +57,7 @@ export default function ShaheenSafiFullExpertBio() {
     { icon: <Facebook size={20} />, href: "https://www.facebook.com/share/1H1vuV1i9Z/" },
     { icon: <TikTokIcon size={20} />, href: "https://www.tiktok.com/@safi_sahib6" },
     { icon: <MessageCircle size={20} />, href: "https://Wa.me/+19342032497" },
+    { icon: <Mail size={20} />, href: "mailto:shaheen@safipay.net" },
   ];
 
   return (
@@ -109,7 +110,7 @@ export default function ShaheenSafiFullExpertBio() {
 
             <div className="flex justify-center gap-6 mt-10 text-gray-500 text-sm">
                <span className="flex items-center gap-2">نړیوال مرکز • Global Hub <MapPin size={16}/></span>
-               <span className="flex items-center gap-2">ssafi9241@hotmail.com <Mail size={16}/></span>
+               <a href="mailto:shaheen@safipay.net" className="flex items-center gap-2 hover:text-amber-400 transition-colors">shaheen@safipay.net <Mail size={16}/></a>
             </div>
           </motion.div>
         </section>

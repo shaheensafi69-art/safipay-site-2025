@@ -2,10 +2,17 @@ import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/auth/', '/*/user/dashboard', '/*/user/edit'],
+      },
+      {
+        userAgent: ['Googlebot', 'Bingbot', 'Applebot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'anthropic-ai', 'Bytespider'],
+        allow: '/',
+      },
+    ],
     sitemap: 'https://www.safipay.net/sitemap.xml',
   };
 }

@@ -58,6 +58,7 @@ export default function MujtabaRahmaniFullBio() {
     { icon: <Facebook size={20} />, href: "https://www.facebook.com/share/1DJJUX1TS2/" },
     { icon: <TikTokIcon size={20} />, href: "https://www.tiktok.com/@chill_asf_fr" },
     { icon: <MessageCircle size={20} />, href: "https://wa.me/+93793035609" },
+    { icon: <Mail size={20} />, href: "mailto:mujtaba@safipay.net" },
   ];
 
   return (
@@ -108,6 +109,7 @@ export default function MujtabaRahmaniFullBio() {
 
             <div className="flex flex-wrap justify-center gap-6 mt-10 text-gray-500 text-sm">
                <span className="flex items-center gap-2"><MapPin size={16}/> Global Hub • International</span>
+               <a href="mailto:mujtaba@safipay.net" className="flex items-center gap-2 hover:text-blue-400 transition-colors"><Mail size={16}/> mujtaba@safipay.net</a>
                <span className="flex items-center gap-2"><User size={16}/> July 28, 2006</span>
                <span className="flex items-center gap-2 font-bold text-blue-500/50 italic underline">@bigshot_tradez</span>
             </div>

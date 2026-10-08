@@ -283,6 +283,7 @@ export default function Footer() {
         { href: 'https://www.instagram.com/top_g_official1', icon: <Instagram size={16} />, hover: 'hover:text-[#E4405F]' },
         { href: 'https://www.tiktok.com/@safi_sahib6', icon: <TikTokIcon size={16} />, hover: 'hover:text-white' },
         { href: 'https://Wa.me/+19342032497', icon: <MessageCircle size={16} />, hover: 'hover:text-[#25D366]' },
+        { href: 'mailto:shaheen@safipay.net', icon: <Mail size={14} />, hover: 'hover:text-amber-400' },
       ],
     },
     {
@@ -298,6 +299,7 @@ export default function Footer() {
         { href: '#', icon: <Instagram size={16} />, hover: 'hover:text-[#E4405F]' },
         { href: '#', icon: <TikTokIcon size={16} />, hover: 'hover:text-white' },
         { href: '#', icon: <MessageCircle size={16} />, hover: 'hover:text-[#25D366]' },
+        { href: 'mailto:sahelsalem@safipay.net', icon: <Mail size={14} />, hover: 'hover:text-emerald-400' },
       ],
     },
     {
@@ -312,6 +314,7 @@ export default function Footer() {
         { href: 'https://www.instagram.com/bigshot_tradez', icon: <Instagram size={16} />, hover: 'hover:text-[#E4405F]' },
         { href: 'https://www.tiktok.com/@chill_asf_fr', icon: <TikTokIcon size={16} />, hover: 'hover:text-white' },
         { href: 'https://wa.me/+93793035609', icon: <MessageCircle size={16} />, hover: 'hover:text-[#25D366]' },
+        { href: 'mailto:mujtaba@safipay.net', icon: <Mail size={14} />, hover: 'hover:text-blue-400' },
       ],
     },
     {
@@ -322,7 +325,7 @@ export default function Footer() {
       accent: 'from-pink-500/25 to-transparent', // رنگ اختصاصی صورتی برای شیرین گل
       socials: [
         { href: 'https://www.linkedin.com/in/shirin-gol-ahmadi-842b40344?utm_source=share_via&utm_content=profile&utm_medium=member_android', icon: <Linkedin size={16} />, hover: 'hover:text-[#0A66C2]' },
-        { href: 'mailto:shirin@safipay.net', icon: <Mail size={14} />, hover: 'hover:text-pink-400' },
+        { href: 'mailto:shirinahmadi@safipay.net', icon: <Mail size={14} />, hover: 'hover:text-pink-400' },
       ],
     },
     {
@@ -392,10 +395,20 @@ export default function Footer() {
               </p>
 
               <div className="space-y-3">
-                <div className="flex items-center gap-3 rounded-2xl border border-white/6 bg-black/40 px-4 py-3 text-sm text-gray-300">
+                <a
+                  href="mailto:contact@safipay.net"
+                  className="flex items-center gap-3 rounded-2xl border border-white/6 bg-black/40 px-4 py-3 text-sm text-gray-300 transition-colors hover:border-amber-500/30 hover:text-white"
+                >
                   <Mail size={16} className="text-amber-500" />
                   contact@safipay.net
-                </div>
+                </a>
+                <a
+                  href="mailto:info@safipay.net"
+                  className="flex items-center gap-3 rounded-2xl border border-white/6 bg-black/40 px-4 py-3 text-sm text-gray-300 transition-colors hover:border-amber-500/30 hover:text-white"
+                >
+                  <Mail size={16} className="text-amber-500" />
+                  info@safipay.net
+                </a>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/6 bg-black/40 px-4 py-3 text-sm text-gray-300">
                   <MapPin size={16} className="text-amber-500" />
                   Global Hub • Istanbul • Paris • Dubai

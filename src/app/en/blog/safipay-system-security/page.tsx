@@ -1,187 +1,202 @@
 'use client';
 
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { 
-  Lock, Terminal, Fingerprint, 
-  ArrowRight, CheckCircle2, 
-  Scan, Activity
-} from 'lucide-react';
 import Link from 'next/link';
+import { 
+  ShieldCheck, Lock, Terminal, Fingerprint, 
+  Scan, Activity, ArrowRight, CheckCircle2,
+  KeyRound, ShieldAlert, Cpu, Server
+} from 'lucide-react';
+import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 
 export default function SecuritySystemPage() {
-  const params = useParams();
-  const lang = params?.lang || 'en';
+  const author = {
+    name: "Mujtaba Rahmani",
+    role: "Co-Founder & Technical Architect",
+    avatar: "/mujtaba.jpeg",
+    email: "mujtaba@safipay.net",
+    bio: "Mujtaba Rahmani is the co-founder and economic-technical architect of SafiPay, leading cryptographic protocol design, automated risk management engines, and regulatory data isolation.",
+    profileUrl: "/en/founder/mujtaba-rahmani"
+  };
+
+  const keyTakeaways = [
+    "SafiPay utilizes bank-grade AES-256-GCM cryptographic encryption for all at-rest account storage and TLS 1.3 for in-transit communication.",
+    "User private keys and cryptographic credentials are partitioned via Hardware Security Modules (HSM) with zero-knowledge architecture.",
+    "Full compliance with European Union Banking Authority (EBA) security guidelines and GDPR Article 32 data safety mandates.",
+    "Integrated machine-learning fraud detection inspects transactions in under 20 milliseconds, shutting down unauthorized vector attacks instantly."
+  ];
+
+  const tableOfContents = [
+    { id: "security-matrix", label: "1. The SafiPay Security Matrix" },
+    { id: "cryptographic-vaults", label: "2. Cryptographic Vaults & HSM" },
+    { id: "zero-knowledge", label: "3. Zero-Knowledge Data Isolation" },
+    { id: "eu-regulatory-safeguards", label: "4. European Custody Safeguards" },
+    { id: "ai-fraud-prevention", label: "5. Real-Time AI Fraud Prevention" },
+  ];
+
+  const faqs = [
+    {
+      question: "Are user funds protected by European deposit insurance rules?",
+      answer: "Yes. All client balances deposited into SafiPay accounts are held in segregated reserve accounts at regulated Tier-1 European partner banking institutions, safeguarding them against commercial insolvency."
+    },
+    {
+      question: "Can SafiPay employees view my card CVV or banking credentials?",
+      answer: "No. All sensitive financial credentials undergo zero-knowledge client-side encryption. CVV numbers and PINs are computed inside isolated cryptographic hardware and never displayed in plaintext to staff."
+    },
+    {
+      question: "What happens if my phone or card is stolen?",
+      answer: "Users have instantaneous one-click biometric kill switches in the SafiPay mobile portal to immediately lock virtual and physical cards, revoke API session tokens, and block outgoing transfers."
+    }
+  ];
+
+  const relatedPosts = [
+    {
+      title: "What is SafiPay? The Premier European Digital Banking Platform",
+      slug: "what-is-safipay",
+      category: "Platform Overview",
+      readTime: "8 min",
+      excerpt: "Comprehensive analysis of the entire neobanking infrastructure and core services."
+    },
+    {
+      title: "Complete Guide to SafiPay Virtual Visa Cards",
+      slug: "visa-card-guide",
+      category: "Digital Banking",
+      readTime: "15 min",
+      excerpt: "Master international payments and 3D Secure 2.0 transaction protection."
+    },
+    {
+      title: "Benefits of a Dedicated European IBAN",
+      slug: "iban-account-benefits",
+      category: "Digital Banking",
+      readTime: "7 min",
+      excerpt: "Why owning a direct European bank account eliminates costly remittance markups."
+    }
+  ];
 
   return (
-    <main className="min-h-screen bg-[#000] text-white selection:bg-blue-600 selection:text-white overflow-hidden font-sans" dir="ltr">
+    <main className="min-h-screen bg-black text-white selection:bg-[#D4AF37] font-sans overflow-x-hidden pt-28">
       
-      {/* Ambient Background Elements */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[130px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-900/10 blur-[130px] rounded-full animate-pulse" />
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-6 z-10">
-        <div className="container mx-auto">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-[1px] w-12 bg-blue-500" />
-            <span className="text-blue-500 font-bold tracking-widest text-[10px] uppercase">
-              Encrypted Core v2.0
-            </span>
+      {/* Hero Header */}
+      <section className="relative pt-12 pb-16 px-6 z-10 border-b border-white/5">
+        <div className="container mx-auto max-w-5xl text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 mb-6">
+            <Lock size={16} className="text-blue-400" />
+            <span className="text-blue-400 text-xs font-bold uppercase tracking-[0.25em]">Cryptographic Protocol Whitepaper • v2.6</span>
           </div>
-
-          <h1 className="text-[10vw] md:text-[7vw] font-black leading-[0.9] tracking-tighter uppercase italic mb-12 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
-            IRONCLAD <br />
-            <span className="text-transparent hover:text-white transition-colors duration-700 cursor-default" style={{ WebkitTextStroke: '2px white' }}>
-              SECURITY
-            </span>
+          
+          <h1 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter italic uppercase leading-[1.05]">
+            IRONCLAD <span className="text-[#D4AF37]">SECURITY</span>
           </h1>
+          
+          <p className="max-w-3xl mx-auto text-gray-300 text-lg md:text-2xl leading-relaxed font-light mb-8">
+            An in-depth technical analysis of SafiPay’s multi-layered defense architecture, European custodial safety, and automated real-time fraud mitigation.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-            <p className="text-gray-400 text-xl md:text-2xl leading-relaxed max-w-xl font-light text-left opacity-0 animate-[fadeIn_1s_ease-out_0.3s_forwards]">
-              We are not just a bank; we are a digital fortress. Under the technical leadership of Mujtaba and our engineering division, SafiPay utilizes EU-standard protocols to eliminate financial boundaries worldwide.
+      {/* Editorial Wrapper */}
+      <BlogEditorialEnhancer
+        locale="en"
+        slug="safipay-system-security"
+        title="EU-Level Institutional Security: How SafiPay Protects Your Assets"
+        description="Technical analysis of SafiPay security protocols: AES-256-GCM encryption, biometric key isolation, zero-knowledge proofs, and European compliance."
+        category="Security & Compliance"
+        readTime="12 min"
+        publishedDate="Feb 27, 2026"
+        author={author}
+        keyTakeaways={keyTakeaways}
+        tableOfContents={tableOfContents}
+        faqs={faqs}
+        relatedPosts={relatedPosts}
+      >
+        <article className="prose prose-invert max-w-none space-y-16 text-gray-300 leading-relaxed font-light text-base md:text-lg">
+          
+          {/* Section 1 */}
+          <section id="security-matrix" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-blue-500 pl-4">
+              1. The SafiPay Security Matrix: Defense in Depth
+            </h2>
+            <p>
+              In modern international finance, digital trust is paramount. Under the technical engineering supervision of co-founder <strong className="text-white font-bold">Mujtaba Rahmani</strong>, SafiPay was engineered from day zero with a military-grade "Defense in Depth" paradigm. Rather than relying on a single perimeter firewall, every individual software component, database shard, and API microservice treats surrounding nodes as untrusted.
+            </p>
+            <p>
+              Our infrastructure actively isolates customer records, payment authorization queues, and settlement rails across mathematically segregated European cloud instances.
+            </p>
+
+            <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
+              <Image 
+                src="/blog/safipay-system-security/hero.jpg" 
+                alt="SafiPay Security Architecture" 
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                <span className="text-xs text-blue-400 font-bold uppercase tracking-wider">Figure 1.0: Real-time cryptographic ledger monitoring & anomaly detection</span>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2 */}
+          <section id="cryptographic-vaults" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-blue-500 pl-4">
+              2. Cryptographic Vaults & Hardware Security Modules (HSM)
+            </h2>
+            <p>
+              At the foundation of our encryption stack lies dedicated FIPS 140-2 Level 3 certified Hardware Security Modules (HSM). Master encryption keys never exist in plaintext server memory.
             </p>
             
-            <div className="flex justify-end group">
-              <div className="relative w-full max-w-md aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl shadow-blue-500/10 transition-transform duration-500 group-hover:scale-[1.02]">
-                <Image 
-                  src="/blog/safipay-system-security/hero.jpg" 
-                  alt="SafiPay Security Architecture" 
-                  fill 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-green-400">Mujtaba Security Matrix Active</span>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose my-8">
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                <Terminal size={24} className="text-blue-400 mb-3" />
+                <h4 className="text-base font-bold text-white mb-1">AES-256-GCM</h4>
+                <p className="text-xs text-gray-400">Authenticated symmetric encryption safeguarding all stored financial databases and transaction logs.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                <KeyRound size={24} className="text-blue-400 mb-3" />
+                <h4 className="text-base font-bold text-white mb-1">ECDSA Secp256k1</h4>
+                <p className="text-xs text-gray-400">High-entropy asymmetric signatures for verifying payment initiation requests and administrative changes.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                <Server size={24} className="text-blue-400 mb-3" />
+                <h4 className="text-base font-bold text-white mb-1">TLS 1.3 Strict Mode</h4>
+                <p className="text-xs text-gray-400">Perfect forward secrecy enforcing modern cipher suites, immune to legacy downgrade interception attacks.</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* Content Grid Section */}
-      <section className="relative py-32 px-6 z-10">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            
-            {/* Sidebar Info */}
-            <div className="lg:col-span-4 space-y-12 opacity-0 animate-[fadeIn_0.7s_ease-out_0.5s_forwards]">
-              <div className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/40">
-                    <Fingerprint size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg">Safi AI</h4>
-                    <p className="text-[10px] text-gray-500 uppercase font-bold">Official Spokesperson</p>
-                  </div>
-                </div>
-                <p className="text-md text-gray-400 leading-relaxed mb-6 italic text-left">
-                  "Our security is the bridge between isolation and the global market. Mujtaba secures the code, while Sahel ensures international compliance."
-                </p>
-                <div className="flex items-center gap-2 text-blue-500 text-xs font-bold">
-                  <CheckCircle2 size={14} className="animate-pulse" /> Verified by SafiPay EU
-                </div>
-              </div>
+          {/* Section 3 */}
+          <section id="zero-knowledge" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-blue-500 pl-4">
+              3. Zero-Knowledge Data Isolation
+            </h2>
+            <p>
+              Even in the improbable event of an infrastructure compromise, user card data remains unreadable. Primary Account Numbers (PAN) and verification codes are dynamically tokenized. The database merely stores cryptographically salted tokens that only authorized payment processors can decode during an active transaction session.
+            </p>
+          </section>
 
-              <div className="space-y-4">
-                <div className="text-[10px] font-bold text-gray-600 uppercase tracking-widest px-4">Technical Defense Layers</div>
-                {['AES-256-GCM Encryption', 'TLS 1.3 High Security', 'Zero-Knowledge Proofs'].map((tech) => (
-                  <div 
-                    key={tech} 
-                    className="flex items-center justify-between p-5 rounded-xl border border-white/5 bg-white/[0.01] hover:translate-x-[10px] hover:text-blue-500 transition-all duration-300 cursor-pointer"
-                  >
-                    <span className="text-sm font-medium">{tech}</span>
-                    <Lock size={14} />
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Section 4 */}
+          <section id="eu-regulatory-safeguards" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-blue-500 pl-4">
+              4. European Custody Safeguards & Capital Segregation
+            </h2>
+            <p>
+              Unlike risky crypto exchanges or non-regulated payment conduits, SafiPay never lends or re-hypothecates client deposits. Under the leadership of CEO <strong className="text-white font-bold">Sahel Salem</strong>, our operational framework maintains 100% reserve liquidity backed by established Tier-1 European partner banking institutions.
+            </p>
+          </section>
 
-            {/* Main Article Content */}
-            <div className="lg:col-span-8 opacity-0 animate-[fadeIn_1s_ease-out_0.7s_forwards]">
-              <div className="space-y-24">
-                
-                <div className="space-y-8">
-                  <h2 className="text-4xl md:text-5xl font-black italic tracking-tight flex items-center gap-4">
-                    <Activity className="text-blue-500" /> THE SECURITY MATRIX
-                  </h2>
-                  <p className="text-gray-400 text-lg leading-[2.2] text-justify font-light">
-                    In the digital age, security is the only currency that matters. Our Director of Technical Security, Mujtaba, has architected a multi-layered defense system that operates in the shadows. Every transaction is scrutinized by Safi AI, and every asset is held within an EU-regulated infrastructure that traditional banks simply cannot match in speed or safety.
-                  </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10">
-                    <div className="p-10 rounded-[3rem] bg-gradient-to-br from-blue-600/10 to-transparent border border-blue-500/20 hover:translate-y-[-10px] transition-all duration-300">
-                      <Terminal className="text-blue-500 mb-6" size={32} />
-                      <h3 className="text-xl font-bold mb-4 uppercase italic">Bulletproof Code</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">Mujtaba's team performs 24/7 penetration tests on every node in the SafiPay network to ensure 100% vulnerability-free operations.</p>
-                    </div>
-                    
-                    <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:translate-y-[-10px] transition-all duration-300">
-                      <Scan className="text-white mb-6" size={32} />
-                      <h3 className="text-xl font-bold mb-4 uppercase italic">EU Supervision</h3>
-                      <p className="text-sm text-gray-500 leading-relaxed">Sahel ensures all protocols are integrated with European SEPA and banking mandates for 100% legal safety and cross-border fluidity.</p>
-                    </div>
-                  </div>
-                </div>
+          {/* Section 5 */}
+          <section id="ai-fraud-prevention" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-blue-500 pl-4">
+              5. Real-Time AI Fraud Prevention Engine
+            </h2>
+            <p>
+              Our algorithmic fraud mitigation engine processes over 120 behavioral telemetry markers per swipe or click—including geolocation coherence, device fingerprinting, and spending velocity—allowing legitimate transfers in milliseconds while freezing suspicious vectors automatically.
+            </p>
+          </section>
 
-                {/* Founder Quote */}
-                <div className="relative py-20 border-y border-white/10 group">
-                  <span className="absolute top-10 left-0 text-[15rem] font-black opacity-[0.03] leading-none select-none pointer-events-none italic">
-                    “
-                  </span>
-                  <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-white relative z-10 text-left">
-                    "We are giving every global user a European vault in their pocket. Speed is our weapon, and security is our armor."
-                  </blockquote>
-                  <div className="mt-12 flex items-center gap-6 justify-start">
-                    <div className="w-16 h-[2px] bg-blue-600 group-hover:w-24 transition-all duration-500" />
-                    <p className="text-xl font-bold tracking-widest uppercase">Shahin Safi — Founder</p>
-                  </div>
-                </div>
-
-                {/* Back Link */}
-                <div className="pt-20">
-                  <Link href={`/${lang}/blog`} className="inline-flex items-center gap-6 group">
-                    <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-500">
-                      <ArrowRight size={32} className="transition-transform duration-500 group-hover:-rotate-180" />
-                    </div>
-                    <span className="text-2xl font-bold uppercase tracking-tighter italic group-hover:text-blue-500 transition-colors">
-                      Back to SafiPay Encyclopedia
-                    </span>
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Security Scanner Line */}
-      <div className="fixed top-0 left-0 w-full h-[1px] bg-blue-500/40 z-50 pointer-events-none animate-scan" />
-
-      <style jsx global>{`
-        @keyframes scan {
-          0% { top: 0; opacity: 0; }
-          50% { opacity: 1; }
-          100% { top: 100vh; opacity: 0; }
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-scan {
-          animation: scan 4s linear infinite;
-        }
-      `}</style>
+        </article>
+      </BlogEditorialEnhancer>
     </main>
   );
 }

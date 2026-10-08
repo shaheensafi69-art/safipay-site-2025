@@ -1,183 +1,199 @@
 'use client';
 
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { 
-  Lock, Terminal, Fingerprint, 
-  ArrowRight, CheckCircle2, 
-  Scan, Activity
-} from 'lucide-react';
 import Link from 'next/link';
+import { 
+  ShieldCheck, Lock, Terminal, Fingerprint, 
+  Scan, Activity, ArrowLeft, CheckCircle2,
+  KeyRound, ShieldAlert, Cpu, Server
+} from 'lucide-react';
+import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 
-export default function SecuritySystemPage() {
-  const params = useParams();
-  const lang = params?.lang || 'fa';
+export default function SecuritySystemPageFa() {
+  const author = {
+    name: "مجتبی رحمانی",
+    role: "بنیان‌گذار و معمار ارشد فنی و اقتصادی",
+    avatar: "/mujtaba.jpeg",
+    email: "mujtaba@safipay.net",
+    bio: "مجتبی رحمانی هم‌بنیان‌گذار و معمار فنی و اقتصادی SafiPay است که طراحی الگوریتم‌های مدیریت ریسک، سیستم‌های امنیتی رمزنگاری‌شده و نظارت بر رعایت استانداردهای مالی اتحادیه اروپا را بر عهده دارد.",
+    profileUrl: "/fa/founder/mujtaba-rahmani"
+  };
+
+  const keyTakeaways = [
+    "سافی‌پی از رمزنگاری پیشرفته نظامی AES-256-GCM برای پایگاه داده‌ها و پروتکل TLS 1.3 برای ارتباطات امن شبکه بهره می‌برد.",
+    "کلیدهای خصوصی کاربران در ماژول‌های سخت‌افزاری اختصاصی (HSM) به صورت کاملاً ایزوله و بدون دسترسی پرسنل نگهداری می‌شوند.",
+    "تطابق کامل با راهنماهای مرجع بانکی اروپا (EBA) و استانداردهای حفاظت از داده‌های شخصی اتحادیه اروپا (GDPR).",
+    "موتور هوش مصنوعی تشخیص کلاهبرداری، تراکنش‌ها را در کمتر از ۲۰ میلی‌ثانیه تحلیل کرده و الگوهای مشکوک را بلافاصله مسدود می‌کند."
+  ];
+
+  const tableOfContents = [
+    { id: "security-matrix", label: "۱. ماتریس امنیتی و دفاع چندلایه" },
+    { id: "cryptographic-vaults", label: "۲. گاوصندوق‌های سخت‌افزاری HSM" },
+    { id: "zero-knowledge", label: "۳. ایزوله‌سازی داده‌ها بدون افشای اطلاعات" },
+    { id: "eu-regulatory-safeguards", label: "۴. نگهداری دارایی در بانک‌های اروپا" },
+    { id: "ai-fraud-prevention", label: "۵. هوش مصنوعی تشخیص آنی تقلب" },
+  ];
+
+  const faqs = [
+    {
+      question: "آیا موجودی حساب کاربران مشمول قوانین بیمه سپرده اروپا است؟",
+      answer: "بله، دارایی‌های کاربران سافی‌پی در حساب‌های مجزا (Segregated Accounts) در بانک‌های معتبر و سطح یک شریک در اروپا نگهداری شده و در برابر هرگونه ریسک ورشکستگی کاملاً بیمه و محافظت شده هستند."
+    },
+    {
+      question: "آیا کارمندان سافی‌پی به شماره کارت یا رمز دوم من دسترسی دارند؟",
+      answer: "خیر، به لطف معماری Zero-Knowledge، هیچ‌یک از کارکنان به اطلاعات حساس کارت دسترسی ندارند و ارقام در ماژول سخت‌افزاری و سمت دستگاه کاربر رمزگشایی می‌شوند."
+    },
+    {
+      question: "در صورت مفقود شدن گوشی یا کارت چه اقدامی باید انجام داد؟",
+      answer: "کاربران می‌توانند با استفاده از کلید توقف اضطراری در پنل وب یا اپلیکیشن، در یک ثانیه تمام کارت‌ها را مسدود کرده و دسترسی سشن‌ها را لغو نمایند."
+    }
+  ];
+
+  const relatedPosts = [
+    {
+      title: "سافی‌پی چیست؟ راهنمای جامع نئوبانک اروپایی",
+      slug: "what-is-safipay",
+      category: "معرفی پلتفرم",
+      readTime: "۸ دقیقه",
+      excerpt: "بررسی کامل زیرساخت حساب‌های بین‌المللی و خدمات مالی بدون مرز."
+    },
+    {
+      title: "راهنمای کامل ویزا کارت مجازی سافی‌پی",
+      slug: "visa-card-guide",
+      category: "بانکداری دیجیتال",
+      readTime: "۱۵ دقیقه",
+      excerpt: "آموزش گام به گام پرداخت‌های اینترنتی و مدیریت کارت‌های ارزی."
+    },
+    {
+      title: "مزایای حساب IBAN اختصاصی اروپایی",
+      slug: "iban-account-benefits",
+      category: "بانکداری دیجیتال",
+      readTime: "۷ دقیقه",
+      excerpt: "چرا داشتن شماره حساب مستقیم اروپایی برای تجارت فرامرزی ضروری است."
+    }
+  ];
 
   return (
-    <main className="min-h-screen bg-[#000] text-white selection:bg-blue-600 selection:text-white overflow-hidden font-sans" dir="rtl">
+    <main className="min-h-screen bg-black text-white selection:bg-[#D4AF37] font-sans overflow-x-hidden pt-28" dir="rtl">
       
-      {/* المان‌های پس‌زمینه ثابت */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[130px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900/10 blur-[130px] rounded-full animate-pulse" />
-      </div>
-
-      {/* بخش هیرو */}
-      <section className="relative pt-40 pb-20 px-6 z-10">
-        <div className="container mx-auto">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-[1px] w-12 bg-blue-500" />
-            <span className="text-blue-500 font-bold tracking-widest text-[10px] uppercase">
-              هسته رمزنگاری شده نسخه ۲.۰
-            </span>
+      {/* هدر مقاله */}
+      <section className="relative pt-12 pb-16 px-6 z-10 border-b border-white/5">
+        <div className="container mx-auto max-w-5xl text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 mb-6">
+            <Lock size={16} className="text-blue-400" />
+            <span className="text-blue-400 text-xs font-bold uppercase tracking-[0.2em]">گزارش تخصصی امنیت رمزنگاری • نسخه ۲.۶</span>
           </div>
-
-          <h1 className="text-[10vw] md:text-[7vw] font-black leading-[0.9] tracking-tighter uppercase italic mb-12 animate-in fade-in slide-in-from-right duration-1000">
-            امنیت <br />
-            <span className="text-transparent hover:text-white transition-colors duration-700 cursor-default" style={{ WebkitTextStroke: '2px white' }}>
-              پولادین
-            </span>
+          
+          <h1 className="text-4xl md:text-7xl font-black mb-8 tracking-tight italic">
+            امنیت فولادین <span className="text-[#D4AF37]">سیستم</span>
           </h1>
+          
+          <p className="max-w-3xl mx-auto text-gray-300 text-lg md:text-2xl leading-relaxed font-light mb-8">
+            تحلیل عمیق فنی ساختار دفاعی چندلایه نئوبانک سافی‌پی، الزامات انطباق با بانک مرکزی اروپا و موتور هوش مصنوعی مهار تهدیدات مالی.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-            <p className="text-gray-400 text-xl md:text-2xl leading-relaxed max-w-xl font-light text-justify animate-in fade-in duration-1000 delay-300">
-              ما تنها یک بانک نیستیم؛ ما یک دژ دیجیتال هستیم. تحت رهبری فنی مجتبی و تیم مهندسی، SafiPay از پروتکل‌های استاندارد اتحادیه اروپا برای حذف مرزهای مالی و ارائه بانکداری بدون محدودیت در سراسر جهان استفاده می‌کند.
+      {/* کامپوننت ارتقادهنده تحلیلی */}
+      <BlogEditorialEnhancer
+        locale="fa"
+        slug="safipay-system-security"
+        title="امنیت نهادی در سطح اتحادیه اروپا: چگونه سافی‌پی از دارایی‌های شما محافظت می‌کند"
+        description="بررسی تخصصی معماری امنیتی SafiPay: پروتکل‌های رمزنگاری نظامی AES-256، ایزوله‌سازی کلیدها و استانداردهای انطباق SEPA در اتحادیه اروپا."
+        category="امنیت و انطباق قانونی"
+        readTime="۱۲ دقیقه"
+        publishedDate="۹ حوت ۱۴۰۴"
+        author={author}
+        keyTakeaways={keyTakeaways}
+        tableOfContents={tableOfContents}
+        faqs={faqs}
+        relatedPosts={relatedPosts}
+      >
+        <article className="prose prose-invert max-w-none space-y-16 text-gray-300 leading-[2.2] font-light text-base md:text-lg text-justify">
+          
+          {/* بخش ۱ */}
+          <section id="security-matrix" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-blue-500 pr-4">
+              ۱. ماتریس امنیتی سافی‌پی: مفهوم دفاع چندلایه
+            </h2>
+            <p>
+              در دنیای تبادلات مالی بین‌المللی، اعتماد دیجیتال بزرگترین دارایی است. تحت نظارت مهندسی هم‌بنیان‌گذار <strong className="text-white font-bold">مجتبی رحمانی</strong>، سافی‌پی از نخستین خطوط کد بر مبنای الگوی «دفاع چندلایه» بنا نهاده شده است. به این معنا که هیچ جزئی از سیستم به اجزای دیگر اعتماد کورکورانه ندارد و هر درخواست تراکنش باید هویت و امضای دیجیتال خود را اثبات کند.
+            </p>
+
+            <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
+              <Image 
+                src="/blog/safipay-system-security/hero.jpg" 
+                alt="معماری امنیتی سیستم" 
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                <span className="text-xs text-blue-400 font-bold">تصویر ۱: نظارت بلادرنگ بر دفترکل رمزنگاری و شناسایی الگوهای نامتعارف</span>
+              </div>
+            </div>
+          </section>
+
+          {/* بخش ۲ */}
+          <section id="cryptographic-vaults" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-blue-500 pr-4">
+              ۲. گاوصندوق‌های رمزنگاری و ماژول‌های سخت‌افزاری HSM
+            </h2>
+            <p>
+              زیرساخت ذخیره‌سازی داده‌های حساس از تراشه‌های سخت‌افزاری تاییدشده FIPS 140-2 سطح ۳ بهره می‌برد که هرگز کلیدهای مادر را در حافظه رم سرورها به صورت متن آشکار قرار نمی‌دهند.
             </p>
             
-            <div className="flex justify-start group">
-              <div className="relative w-full max-w-md aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl shadow-blue-500/10 transition-transform duration-500 group-hover:scale-[1.02]">
-                <Image 
-                  src="/blog/safipay-system-security/hero.jpg" 
-                  alt="SafiPay Security" 
-                  fill 
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-6 right-6 flex items-center gap-3">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-green-400">سیستم امنیتی مجتبی فعال است</span>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose my-8">
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                <Terminal size={24} className="text-blue-400 mb-3" />
+                <h4 className="text-base font-bold text-white mb-1">الگوریتم AES-256-GCM</h4>
+                <p className="text-xs text-gray-400">رمزنگاری متقارن احرازشده برای تمام پایگاه‌های داده ذخیره‌سازی موجودی و تاریخچه تراکنش‌ها.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                <KeyRound size={24} className="text-blue-400 mb-3" />
+                <h4 className="text-base font-bold text-white mb-1">امضای دیجیتال ECDSA</h4>
+                <p className="text-xs text-gray-400">امضاهای نامتقارن با انتروپی بالا جهت تایید صحت درخواست‌های حواله و تغییرات امنیتی حساب.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10">
+                <Server size={24} className="text-blue-400 mb-3" />
+                <h4 className="text-base font-bold text-white mb-1">پروتکل اجباری TLS 1.3</h4>
+                <p className="text-xs text-gray-400">حفاظت از تبادل داده‌ها در بستر اینترنت و مسدودسازی کامل هرگونه تلاش برای شنود اطلاعات.</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* بخش محتوای شبکه ای */}
-      <section className="relative py-32 px-6 z-10">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            
-            {/* سایدبار اطلاعات */}
-            <div className="lg:col-span-4 space-y-12 animate-in fade-in slide-in-from-right duration-700">
-              <div className="p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl hover:bg-white/[0.06] transition-all duration-300">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/40">
-                    <Fingerprint size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg">Safi AI</h4>
-                    <p className="text-[10px] text-gray-500 uppercase font-bold">سخنگوی رسمی</p>
-                  </div>
-                </div>
-                <p className="text-md text-gray-400 leading-relaxed mb-6 italic text-justify">
-                  امنیت ما پلی میان انزوای فعلی و بازارهای جهانی است مجتبی کدها را ایمن می‌کند و ساحل تطبیق‌پذیری بین‌المللی را تضمین می‌نماید
-                </p>
-                <div className="flex items-center gap-2 text-blue-500 text-xs font-bold">
-                  <CheckCircle2 size={14} className="animate-pulse" /> تایید شده توسط SafiPay
-                </div>
-              </div>
+          {/* بخش ۳ */}
+          <section id="zero-knowledge" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-blue-500 pr-4">
+              ۳. ایزوله‌سازی داده‌ها و اصل عدم دسترسی (Zero-Knowledge)
+            </h2>
+            <p>
+              حتی در فرضی‌ترین حالت دسترسی غیرمجاز به زیرساخت‌ها، ارقام اصلی کارت (PAN) و رمز دوم به صورت توکن‌های یکبارمصرف ذخیره شده‌اند و هیچ فردی خارج از چرخه شاپرک بین‌المللی قادر به بازخوانی اطلاعات کارت نخواهد بود.
+            </p>
+          </section>
 
-              <div className="space-y-4">
-                <div className="text-[10px] font-bold text-gray-600 uppercase tracking-widest px-4">لایه‌های دفاع فنی</div>
-                {['رمزنگاری AES-256-GCM', 'امنیت سطح بالای TLS 1.3', 'اثبات دانش صفر'].map((tech) => (
-                  <div 
-                    key={tech} 
-                    className="flex items-center justify-between p-5 rounded-xl border border-white/5 bg-white/[0.01] hover:translate-x-[-10px] hover:text-blue-500 transition-all duration-300 cursor-pointer"
-                  >
-                    <span className="text-sm font-medium">{tech}</span>
-                    <Lock size={14} />
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* بخش ۴ */}
+          <section id="eu-regulatory-safeguards" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-blue-500 pr-4">
+              ۴. حفاظت از سپرده‌ها در بانک‌های مرکزی اروپا
+            </h2>
+            <p>
+              بر خلاف پلتفرم‌های رمزارزی با ریسک بالا، سافی‌پی هرگز موجودی سپرده‌گذاران را وارد فعالیت‌های وام‌دهی پرخطر نمی‌کند. تحت مدیریت مدیرعامل <strong className="text-white font-bold">ساحل سالم</strong>، صددرصد دارایی‌ها در بانک‌های رده‌بالای اتحادیه اروپا به صورت نقد نگهداری می‌شوند.
+            </p>
+          </section>
 
-            {/* محتوای اصلی مقاله */}
-            <div className="lg:col-span-8 animate-in fade-in duration-1000 delay-500">
-              <div className="space-y-24">
-                
-                <div className="space-y-8">
-                  <h2 className="text-4xl md:text-5xl font-black italic tracking-tight flex items-center gap-4">
-                    <Activity className="text-blue-500" /> ماتریکسِ امنیت
-                  </h2>
-                  <p className="text-gray-400 text-lg leading-[2.2] text-justify font-light">
-                    در عصر دیجیتال امنیت تنها واحد پولی است که اهمیت دارد مدیر امنیت فنی ما مجتبی سیستمی چند لایه طراحی کرده است که در سایه‌ها عمل می‌کند هر تراکنش توسط Safi AI تحلیل شده و تمام دارایی‌ها در زیرساخت‌های تحت نظارت اتحادیه اروپا نگهداری می‌شوند که بانک‌های سنتی هرگز در سرعت و امنیت به پای آن نمی‌رسند
-                  </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10">
-                    <div className="p-10 rounded-[3rem] bg-gradient-to-br from-blue-600/10 to-transparent border border-blue-500/20 hover:translate-y-[-10px] transition-all duration-300">
-                      <Terminal className="text-blue-500 mb-6" size={32} />
-                      <h3 className="text-xl font-bold mb-4 uppercase italic">کد ضد گلوله</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">تیم مجتبی به صورت ۲۴ ساعته تست‌های نفوذ را بر روی تمام گره‌های شبکه SafiPay اجرا می‌کند تا امنیت صد درصدی تضمین شود</p>
-                    </div>
-                    
-                    <div className="p-10 rounded-[3rem] bg-white/[0.02] border border-white/5 hover:translate-y-[-10px] transition-all duration-300">
-                      <Scan className="text-white mb-6" size={32} />
-                      <h3 className="text-xl font-bold mb-4 uppercase italic">نظارت اروپایی</h3>
-                      <p className="text-sm text-gray-500 leading-relaxed">ساحل اطمینان حاصل می‌کند که تمامی پروتکل‌های ما با قوانین بانکی اروپا و حساب‌های IBAN برای امنیت حقوقی کامل هماهنگ است</p>
-                    </div>
-                  </div>
-                </div>
+          {/* بخش ۵ */}
+          <section id="ai-fraud-prevention" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-blue-500 pr-4">
+              ۵. هوش مصنوعی تشخیص آنی و هوشمند کلاهبرداری
+            </h2>
+            <p>
+              الگوریتم‌های حفاظتی سافی‌پی در کسری از ثانیه بیش از ۱۲۰ فاکتور رفتاری (موقعیت مکانی، سرعت تراکنش و اثر انگشت دستگاه) را بررسی کرده و تراکنش‌های واقعی را تایید و موارد فریبکارانه را در نطفه خاموش می‌کنند.
+            </p>
+          </section>
 
-                {/* نقل قول بنیان‌گذار */}
-                <div className="relative py-20 border-y border-white/10 group">
-                  <span className="absolute top-10 right-0 text-[15rem] font-black opacity-[0.03] leading-none select-none pointer-events-none italic">
-                    “
-                  </span>
-                  <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-white relative z-10 text-right">
-                    ما به هر کاربر در سراسر جهان یک گاوصندوق اروپایی در جیب‌شان می‌دهیم؛ سرعت سلاح ماست و امنیت زره ما.
-                  </blockquote>
-                  <div className="mt-12 flex items-center gap-6 justify-start">
-                    <div className="w-16 h-[2px] bg-blue-600 group-hover:w-24 transition-all duration-500" />
-                    <p className="text-xl font-bold tracking-widest uppercase">شاهین صافی — بنیان‌گذار</p>
-                  </div>
-                </div>
-
-                {/* لینک بازگشت */}
-                <div className="pt-20">
-                  <Link href={`/${lang}/blog`} className="inline-flex items-center gap-6 group">
-                    <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-500">
-                      <ArrowRight size={32} className="transition-transform duration-500 group-hover:rotate-180" />
-                    </div>
-                    <span className="text-2xl font-bold uppercase tracking-tighter italic group-hover:text-blue-500 transition-colors">
-                      بازگشت به دانشنامه SafiPay
-                    </span>
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* خط اسکنر (انیمیشن با CSS خالص) */}
-      <div className="fixed top-0 right-0 w-full h-[1px] bg-blue-500/40 z-50 pointer-events-none animate-scan" />
-
-      <style jsx global>{`
-        @keyframes scan {
-          0% { top: 0; opacity: 0; }
-          50% { opacity: 1; }
-          100% { top: 100vh; opacity: 0; }
-        }
-        .animate-scan {
-          animation: scan 4s linear infinite;
-        }
-      `}</style>
+        </article>
+      </BlogEditorialEnhancer>
     </main>
   );
 }
