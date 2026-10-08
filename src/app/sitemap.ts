@@ -19,6 +19,12 @@ const staticRoutes = [
   { path: '/blog/esim-travel-technology', changeFrequency: 'weekly' as const, priority: 0.85 },
   { path: '/blog/future-of-banking', changeFrequency: 'weekly' as const, priority: 0.85 },
   { path: '/blog/what-is-safipay', changeFrequency: 'weekly' as const, priority: 0.85 },
+  { path: '/blog/sepa-regulatory-framework', changeFrequency: 'weekly' as const, priority: 0.9 },
+  { path: '/blog/fca-compliance-standards', changeFrequency: 'weekly' as const, priority: 0.9 },
+  { path: '/blog/global-ecosystem-governance', changeFrequency: 'weekly' as const, priority: 0.9 },
+  { path: '/blog/aml-fatf-regulatory-compliance', changeFrequency: 'weekly' as const, priority: 0.9 },
+  { path: '/blog/psd3-open-banking-compliance', changeFrequency: 'weekly' as const, priority: 0.9 },
+  { path: '/blog/institutional-compliance-vision', changeFrequency: 'weekly' as const, priority: 0.9 },
   // Executive Leadership Profiles
   { path: '/founder/shaheen-safi', changeFrequency: 'monthly' as const, priority: 0.95 },
   { path: '/founder/sahel-salem', changeFrequency: 'monthly' as const, priority: 0.9 },

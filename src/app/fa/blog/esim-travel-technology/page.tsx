@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function ESimTechnologyPageFa() {
   const author = {
     name: "مبین حسنی",
-    role: "هم‌بنیان‌گذار و مدیر راهبردی فین‌تک و مخابرات",
+    role: "لیدر بخش دولوپمنت (Lead Developer)",
     avatar: "/mobin.jpeg",
     email: "mobin@safipay.net",
-    bio: "مبین حسنی، هم‌بنیان‌گذار صافی‌پی و استراتژیست نوآوری مخابراتی، مسئول توسعه و یکپارچه‌سازی شبکه ارتباطی جهانی eSIM و اتصال خودکار کاربران به اپراتورهای مخابراتی رتبه یک جهان است.",
+    bio: "مبین حسنی، لیدر بخش دولوپمنت در صافی‌پی، مسئول رهبری تیم فنی، توسعه و یکپارچه‌سازی شبکه ارتباطی جهانی eSIM و اتصال خودکار کاربران به اپراتورهای مخابراتی درجه یک جهان است.",
     profileUrl: "/fa/founder/mobin-hassani"
   };
 

@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function FutureOfBankingPage() {
   const author = {
     name: "Sahel Salem",
-    role: "Co-Founder & Chief Operating Officer",
+    role: "CEO & Europe Relations",
     avatar: "/sahel.jpeg",
     email: "sahelsalem@safipay.net",
-    bio: "Sahel Salem is co-founder and Chief Operating Officer at SafiPay, orchestrating global banking partnerships, cross-border financial expansion, and AI-driven automation systems.",
+    bio: "Sahel Salem is CEO & Europe Relations at SafiPay, orchestrating European banking correspondent conduits, cross-border financial expansion, and SEPA interoperability.",
     profileUrl: "/en/founder/sahel-salem"
   };
 

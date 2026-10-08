@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function VisaCardGuidePageFa() {
   const author = {
     name: "شاهین صافی",
-    role: "بنیان‌گذار و مدیر ارشد اجرایی",
+    role: "دایرکتور و فوندر (Director & Founder)",
     avatar: "/founders/shaheen-safi.png",
     email: "shaheen@safipay.net",
-    bio: "شاهین صافی بنیان‌گذار SafiPay، با تخصص در معماری پرداخت‌های ارزی، شبکه‌های تصفیه مالی فرامرزی و ساخت نئوبانک‌های مستقل بین‌المللی است.",
+    bio: "شاهین صافی، دایرکتور و فوندر SafiPay، با تخصص در معماری پرداخت‌های ارزی، شبکه‌های تسویه مالی فرامرزی و ساخت نئوبانک‌های مستقل بین‌المللی است.",
     profileUrl: "/fa/founder/shaheen-safi"
   };
 

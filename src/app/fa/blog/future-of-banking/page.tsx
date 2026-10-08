@@ -3,8 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  Cpu, Zap, Lock, Globe, 
+import {
+  Cpu, Zap, Lock, Globe,
   TrendingUp, Landmark, ShieldCheck,
   CheckCircle2, ArrowLeft, Sparkles
 } from 'lucide-react';
@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function FutureOfBankingPageFa() {
   const author = {
     name: "ساحل سالم",
-    role: "هم‌بنیان‌گذار و مدیر ارشد عملیات (COO)",
+    role: "سی ای او و ارتباطات اروپا (CEO & Europe Relations)",
     avatar: "/sahel.jpeg",
     email: "sahelsalem@safipay.net",
-    bio: "ساحل سالم، هم‌بنیان‌گذار و مدیر ارشد عملیات صافی‌پی، پیشران راهبردی توسعه بین‌المللی، مدیریت مشارکت‌های بانکی در اتحادیه اروپا و پیاده‌سازی سیستم‌های هوش مصنوعی در ساختار خدمات مالی مدرن است.",
+    bio: "ساحل سالم، سی ای او و مسئول ارتباطات بانکی اروپا در صافی‌پی، مدیریت توسعه روابط بانکی بین‌المللی و اتصال پایدار کاربران به سوئیچ‌های تسویه اروپا را بر عهده دارد.",
     profileUrl: "/fa/founder/sahel-salem"
   };
 
@@ -76,7 +76,7 @@ export default function FutureOfBankingPageFa() {
 
   return (
     <main className="min-h-screen bg-black text-white selection:bg-[#D4AF37] font-sans overflow-x-hidden pt-28" dir="rtl">
-      
+
       {/* هدر مقاله (Hero Header) */}
       <section className="relative pt-12 pb-16 px-6 z-10 border-b border-white/5">
         <div className="container mx-auto max-w-5xl text-center">
@@ -84,11 +84,11 @@ export default function FutureOfBankingPageFa() {
             <Cpu size={16} className="text-[#D4AF37]" />
             <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.25em]">گزارش تخصصی آینده مالی • ۲۰۲۶</span>
           </div>
-          
+
           <h1 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter italic leading-[1.1]">
             آینده <span className="text-[#D4AF37]">بانکداری دیجیتال</span>
           </h1>
-          
+
           <p className="max-w-3xl mx-auto text-gray-300 text-lg md:text-2xl leading-relaxed font-light mb-8">
             چگونه هوش مصنوعی مستقل، پروتکل‌های تسویه آنی و سیستم‌های نامتمرکز مالی در حال نابود کردن انحصار صد ساله بانکداری سنتی و شعب سنگی هستند.
           </p>
@@ -111,7 +111,7 @@ export default function FutureOfBankingPageFa() {
         relatedPosts={relatedPosts}
       >
         <article className="prose prose-invert max-w-none space-y-16 text-gray-300 leading-relaxed font-light text-base md:text-lg text-right">
-          
+
           {/* بخش ۱ */}
           <section id="legacy-collapse" className="space-y-6 scroll-mt-28">
             <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-[#D4AF37] pr-4">
@@ -125,9 +125,9 @@ export default function FutureOfBankingPageFa() {
             </p>
 
             <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
-              <Image 
-                src="/blog/future-of-banking/hero.jpg" 
-                alt="آینده بانکداری دیجیتال و خودکار" 
+              <Image
+                src="/blog/future-of-banking/hero.jpg"
+                alt="آینده بانکداری دیجیتال و خودکار"
                 fill
                 className="object-cover"
               />

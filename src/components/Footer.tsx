@@ -437,47 +437,67 @@ export default function Footer() {
             <div className="hidden h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent md:block" />
           </div>
 
-          {/* استایل گرید برای ۵ نفر عضو تیم */}
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {/* استایل گرید فوق‌العاده مدرن و متوازن برای ۵ عضو اصلی تیم */}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
             {leaders.map((leader, index) => (
               <motion.div
                 key={leader.name}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.75, delay: index * 0.08 }}
-                className="group relative overflow-hidden rounded-[2rem] border border-white/6 bg-white/[0.02] p-5 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:border-amber-500/25 hover:bg-white/[0.03]"
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-[2.2rem] border border-white/8 bg-gradient-to-b from-white/[0.04] to-black/60 p-6 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-amber-500/40 hover:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.9)]"
               >
-                <div className={`absolute inset-x-0 top-0 h-28 bg-gradient-to-b ${leader.accent}`} />
+                {/* هدر گرادینت با درخشش اختصاصی رنگی هر عضو */}
+                <div className={`absolute inset-x-0 top-0 h-32 bg-gradient-to-b ${leader.accent} opacity-40 transition-opacity duration-500 group-hover:opacity-75`} />
 
-                <div className="relative z-10 flex items-start gap-4">
-                  <Link href={leader.href} className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[1.4rem] border border-white/10 bg-black/40">
-                    <Image src={leader.image} alt={leader.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                {/* بخش بالایی: تصویر و مشخصات هویتی بدون هیچ‌گونه کوتاه‌شدگی متن */}
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  {/* آواتار با حاشیه لوکس */}
+                  <Link
+                    href={leader.href}
+                    className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl border-2 border-white/10 bg-black/60 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:border-amber-400/50"
+                  >
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
                   </Link>
 
-                  <div className="min-w-0 flex-1">
-                    <Link href={leader.href} className="block">
-                      <h5 className="truncate text-sm font-black tracking-[0.08em] text-white transition-colors group-hover:text-amber-400">
-                        {leader.name}
-                      </h5>
-                    </Link>
-                    <p className="mt-1 text-[11px] uppercase tracking-[0.24em] text-gray-500">
-                      {leader.role}
-                    </p>
+                  {/* نام کامل بدون Truncate */}
+                  <Link href={leader.href} className="mt-4 block w-full">
+                    <h5 className="text-sm font-black tracking-wider text-white transition-colors duration-300 group-hover:text-amber-400">
+                      {leader.name}
+                    </h5>
+                  </Link>
 
-                    <div className="mt-4 flex flex-wrap gap-2.5 text-gray-500">
-                      {leader.socials.map((social, i) => (
-                        <Link
-                          key={i}
-                          href={social.href}
-                          target="_blank"
-                          className={`rounded-full border border-white/6 bg-black/40 p-2 transition-all ${social.hover}`}
-                        >
-                          {social.icon}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                  {/* سمت رسمی و دقیق */}
+                  <p className="mt-1.5 text-[10.5px] font-bold uppercase tracking-[0.14em] text-amber-500/90 leading-tight">
+                    {leader.role}
+                  </p>
+                </div>
+
+                {/* نوار شبکه‌های اجتماعی پایین کارت به‌صورت کاملاً متقارن و متوازن */}
+                <div className="relative z-10 mt-6 flex w-full flex-wrap items-center justify-center gap-2 border-t border-white/5 pt-4">
+                  {leader.socials.map((social, i) => (
+                    <Link
+                      key={i}
+                      href={social.href}
+                      target="_blank"
+                      className={`flex h-8 w-8 items-center justify-center rounded-full border border-white/8 bg-black/60 text-gray-400 transition-all duration-300 hover:scale-110 hover:border-white/20 ${social.hover}`}
+                    >
+                      {social.icon}
+                    </Link>
+                  ))}
+                  <Link
+                    href={leader.href}
+                    title="View Bio Profile"
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-amber-500/20 bg-amber-500/10 text-amber-400 transition-all duration-300 hover:scale-110 hover:border-amber-500/40 hover:bg-amber-500/20"
+                  >
+                    <UserCircle2 size={15} />
+                  </Link>
                 </div>
               </motion.div>
             ))}

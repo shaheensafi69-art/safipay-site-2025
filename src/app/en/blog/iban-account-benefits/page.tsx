@@ -13,7 +13,7 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function IbanBenefitsPage() {
   const author = {
     name: "Sahel Salem",
-    role: "Chief Executive Officer & European Relations",
+    role: "CEO & Europe Relations",
     avatar: "/sahel.jpeg",
     email: "sahelsalem@safipay.net",
     bio: "Sahel Salem serves as CEO and Director of European Banking Relations at SafiPay, establishing correspondent clearing conduits, SEPA interoperability, and institutional regulatory compliance.",

@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function ESimTechnologyPage() {
   const author = {
     name: "Mobin Hassani",
-    role: "Co-Founder & FinTech Strategist",
+    role: "Lead Developer",
     avatar: "/mobin.jpeg",
     email: "mobin@safipay.net",
-    bio: "Mobin Hassani is co-founder and telecom-fintech strategist at SafiPay, spearheading telecommunications carrier integrations and programmatic eSIM infrastructure.",
+    bio: "Mobin Hassani is the Lead Developer at SafiPay, leading telecommunications carrier integrations, mobile infrastructure, and programmatic eSIM technology.",
     profileUrl: "/en/founder/mobin-hassani"
   };
 

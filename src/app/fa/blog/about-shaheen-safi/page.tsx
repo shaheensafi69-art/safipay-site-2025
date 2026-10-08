@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function AboutFounderPageFa() {
   const author = {
     name: "شیرین گل احمدی",
-    role: "مدیر ارشد بازاریابی و ارتباطات بین‌الملل",
+    role: "مدیر و منیجر تمام اکوسیستم (All Ecosystem Manager)",
     avatar: "/shirin.jpeg",
     email: "shirinahmadi@safipay.net",
-    bio: "شیرین گل احمدی رهبری ارتباطات رسانه‌ای، توسعه برند بین‌المللی و جذب کاربران در سراسر اروپا و خاورمیانه را برای پلتفرم نئوبانک SafiPay بر عهده دارد.",
+    bio: "شیرین گل احمدی، مدیر و منیجر تمام اکوسیستم صافی‌پی، مدیریت یکپارچه‌سازی فرآیندهای بین‌المللی، هماهنگی دپارتمان‌های راهبردی و گسترش خدمات فین‌تک را در سطح جهانی بر عهده دارد.",
     profileUrl: "/fa/founder/shirin-gol-ahmadi"
   };
 

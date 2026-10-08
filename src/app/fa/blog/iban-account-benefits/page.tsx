@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function IbanBenefitsPageFa() {
   const author = {
     name: "ساحل سالم",
-    role: "مدیر ارشد اجرایی (CEO) و روابط بانکی اروپا",
+    role: "سی ای او و ارتباطات اروپا (CEO & Europe Relations)",
     avatar: "/sahel.jpeg",
     email: "sahelsalem@safipay.net",
-    bio: "ساحل سالم مدیرعامل SafiPay است که مسئولیت توسعه کریدورهای بانکی اروپا، عضویت در سوئیچ‌های تصفیه SEPA و تطابق با الزامات تنظیم‌گری بانک مرکزی اروپا را بر عهده دارد.",
+    bio: "ساحل سالم، سی ای او و مسئول ارتباطات بانکی اروپا در صافی‌پی، مدیریت توسعه روابط بانکی بین‌المللی و اتصال پایدار کاربران به سوئیچ‌های تسویه اتحادیه اروپا را بر عهده دارد.",
     profileUrl: "/fa/founder/sahel-salem"
   };
 

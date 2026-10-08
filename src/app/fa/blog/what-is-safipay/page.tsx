@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function WhatIsSafiPayPageFa() {
   const author = {
     name: "شاهین صافی",
-    role: "بنیان‌گذار و مدیر ارشد اجرایی",
+    role: "دایرکتور و فوندر (Director & Founder)",
     avatar: "/founders/shaheen-safi.png",
     email: "shaheen@safipay.net",
-    bio: "شاهین صافی بنیان‌گذار و معمار اصلی اکوسیستم نئوبانک بین‌المللی SafiPay است که با هدف توانمندسازی اقتصادی و اتصال شهروندان خاورمیانه و جهان به شبکه مالی اروپا این پلتفرم را بنیان نهاد.",
+    bio: "شاهین صافی، دایرکتور و فوندر اکوسیستم نئوبانک بین‌المللی SafiPay است که با هدف توانمندسازی اقتصادی و اتصال شهروندان به شبکه مالی مدرن اروپا و جهان این پلتفرم را بنیان نهاد.",
     profileUrl: "/fa/founder/shaheen-safi"
   };
 

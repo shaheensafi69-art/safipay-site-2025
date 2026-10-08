@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function SecuritySystemPageFa() {
   const author = {
     name: "مجتبی رحمانی",
-    role: "بنیان‌گذار و معمار ارشد فنی و اقتصادی",
+    role: "مدیر عملیات (Operations Manager)",
     avatar: "/mujtaba.jpeg",
     email: "mujtaba@safipay.net",
-    bio: "مجتبی رحمانی هم‌بنیان‌گذار و معمار فنی و اقتصادی SafiPay است که طراحی الگوریتم‌های مدیریت ریسک، سیستم‌های امنیتی رمزنگاری‌شده و نظارت بر رعایت استانداردهای مالی اتحادیه اروپا را بر عهده دارد.",
+    bio: "مجتبی رحمانی، مدیر عملیات اکوسیستم نئوبانک SafiPay است که هدایت یکپارچگی عملیاتی، طراحی الگوریتم‌های مدیریت ریسک، نظارت بر تراکنش‌ها و انطباق سیستم با الزامات امنیتی بین‌المللی را بر عهده دارد.",
     profileUrl: "/fa/founder/mujtaba-rahmani"
   };
 

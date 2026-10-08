@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function VisaCardGuidePage() {
   const author = {
     name: "Shaheen Safi",
-    role: "Founder & Chief Strategist",
+    role: "Director & Founder",
     avatar: "/founders/shaheen-safi.png",
     email: "shaheen@safipay.net",
-    bio: "Shaheen Safi is the founder of SafiPay, specializing in global payment clearing, cross-border remittance mechanisms, and sovereign neobank architectures.",
+    bio: "Shaheen Safi is the Director & Founder of SafiPay, specializing in global payment clearing, cross-border remittance mechanisms, and sovereign neobank architectures.",
     profileUrl: "/en/founder/shaheen-safi"
   };
 

@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function AboutFounderPage() {
   const author = {
     name: "Shirin Gol Ahmadi",
-    role: "Executive Director of Marketing & Growth",
+    role: "All Ecosystem Manager",
     avatar: "/shirin.jpeg",
     email: "shirinahmadi@safipay.net",
-    bio: "Shirin Gol Ahmadi leads global brand communications, media relations, and international user adoption across Europe and emerging markets for SafiPay.",
+    bio: "Shirin Gol Ahmadi is the All Ecosystem Manager at SafiPay, orchestrating cross-departmental operations, multi-jurisdiction financial synchronizations, and institutional partner governance.",
     profileUrl: "/en/founder/shirin-gol-ahmadi"
   };
 

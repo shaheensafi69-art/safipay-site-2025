@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function WhatIsSafiPayPage() {
   const author = {
     name: "Shaheen Safi",
-    role: "Founder & Visionary Leader",
+    role: "Director & Founder",
     avatar: "/founders/shaheen-safi.png",
     email: "shaheen@safipay.net",
-    bio: "Shaheen Safi is the founder and chief architect behind SafiPay's global neobanking ecosystem, pioneering financial inclusion and borderless digital infrastructure between Europe and emerging markets.",
+    bio: "Shaheen Safi is the Director & Founder of SafiPay's global neobanking ecosystem, pioneering financial inclusion and borderless digital infrastructure between Europe and emerging markets.",
     profileUrl: "/en/founder/shaheen-safi"
   };
 

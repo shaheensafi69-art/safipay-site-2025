@@ -13,10 +13,10 @@ import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 export default function SecuritySystemPage() {
   const author = {
     name: "Mujtaba Rahmani",
-    role: "Co-Founder & Technical Architect",
+    role: "Operations Manager",
     avatar: "/mujtaba.jpeg",
     email: "mujtaba@safipay.net",
-    bio: "Mujtaba Rahmani is the co-founder and economic-technical architect of SafiPay, leading cryptographic protocol design, automated risk management engines, and regulatory data isolation.",
+    bio: "Mujtaba Rahmani is the Operations Manager of SafiPay, leading day-to-day operational integrity, cryptographic protocol execution, automated risk mitigation engines, and transaction monitoring standards.",
     profileUrl: "/en/founder/mujtaba-rahmani"
   };
 
