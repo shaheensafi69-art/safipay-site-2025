@@ -1,169 +1,189 @@
 'use client';
 
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   CreditCard, Globe, Zap, ShieldCheck, 
-  ArrowRight, ShoppingBag, CheckCircle2,
-  Lock, AlertCircle, Terminal
+  ArrowLeft, ShoppingBag, CheckCircle2,
+  Lock, AlertCircle, Terminal, Smartphone, DollarSign
 } from 'lucide-react';
-import Link from 'next/link';
+import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 
-export default function VisaCardGuidePage() {
-  const params = useParams();
-  const lang = params?.lang || 'fa';
-
-  const content = {
-    fa: {
-      category: "تحلیل استراتژیک و راهنما",
-      title: "ویزا کارت مجازی SafiPay؛",
-      subtitle: "دسترسی نامحدود به اقتصاد بدون مرز",
-      author: "Safi AI",
-      role: "سخنگوی رسمی SafiPay",
-      readTime: "۱۵ دقیقه مطالعه",
-      intro: "بسیاری از بانک‌های سنتی کارت‌هایی صادر می‌کنند که با محدودیت‌ها و کارمزدهای سنگین بین‌المللی همراه است. SafiPay این مرزها را شکسته است. ما کارت‌هایی صادر می‌کنیم که در قلب اروپا، آمریکا و تمام سایت‌های جهانی با قدرت کار می‌کنند.",
-      advantageTitle: "چرا ویزا کارت ما متفاوت است؟",
-      advantageText: "بزرگترین مشکل کارت‌های بانکی سنتی، عدم اتصال پایدار به سیستم‌های پرداخت مدرن جهانی است. کارت‌های SafiPay مستقیماً از نهادهای مالی معتبر اتحادیه اروپا صادر می‌شوند. این یعنی شما بدون ترس از ریجکت شدن تراکنش، می‌توانید از هر کجای دنیا هزینه‌های خود را در سراسر جهان پرداخت کنید.",
-      comparisonTitle: "تفاوت‌های کلیدی در یک نگاه",
-      comp1: "کارکرد جهانی: برخلاف سیستم‌های محدود، کارت ما در ۱۰۰٪ درگاه‌های بین‌المللی فعال است.",
-      comp2: "سرعت صدور: صدور در کمتر از ۱ دقیقه، در حالی که بانک‌های سنتی هفته‌ها وقت شما را می‌گیرند.",
-      comp3: "امنیت فنی: نظارت مستقیم مجتبی (مدیر امنیت فنی) بر تمامی پروتکل‌ها.",
-      techTitle: "زیرساخت فنی و مدیریتی",
-      techDesc: "مجتبی، مدیر عملیات و فنی ما، پروتکل‌هایی را پیاده‌سازی کرده که تراکنش‌های شما را از فیلترهای بین‌المللی عبور می‌دهد. همچنین ساحل (مدیر توسعه بین‌الملل) تضمین کرده است که این کارت‌ها با قوانین پولی اروپا و حساب‌های IBAN کاملاً همگام باشند.",
-      quote: "ما فقط یک کارت صادر نمی‌کنیم؛ ما دروازه‌های اقتصاد جهانی را به روی تمامی کاربران در سراسر دنیا باز می‌کنیم.",
-      quoteAuthor: "شاهین صافی — بنیان‌گذار SafiPay",
-      backBtn: "بازگشت به دانشنامه SafiPay"
-    }
+export default function VisaCardGuidePageFa() {
+  const author = {
+    name: "شاهین صافی",
+    role: "بنیان‌گذار و مدیر ارشد اجرایی",
+    avatar: "/founders/shaheen-safi.png",
+    email: "shaheen@safipay.net",
+    bio: "شاهین صافی بنیان‌گذار SafiPay، با تخصص در معماری پرداخت‌های ارزی، شبکه‌های تصفیه مالی فرامرزی و ساخت نئوبانک‌های مستقل بین‌المللی است.",
+    profileUrl: "/fa/founder/shaheen-safi"
   };
 
-  const t = content.fa;
+  const keyTakeaways = [
+    "ویزا کارت مجازی سافی‌پی در کمتر از ۶۰ ثانیه صادر شده و بلافاصله به پیش‌شماره‌های بانکی معتبر (BIN) اتحادیه اروپا متصل می‌شود.",
+    "تایید هویت امنیتی 3D Secure 2.0 خطرات سواستفاده و سرقت اطلاعات کارت را در خریدهای اینترنتی کاملاً از بین می‌برد.",
+    "امکان شارژ مستقیم و مدیریت موجودی با ارزهای یورو، دلار و پوند با نرخ تبدیل شفاف بین‌بانکی بدون کارمزدهای مخفی.",
+    "سازگاری ۱۰۰ درصدی با اپل پی، گوگل والت، پی‌پال، آمازون، هوش مصنوعی ChatGPT، ادز فیسبوک و گوگل و کلیه وب‌سایت‌های بین‌المللی."
+  ];
 
-  // کلاس مشترک برای انیمیشن هاور باکس‌ها
-  const cardStyle = "bg-white/[0.02] border border-white/10 rounded-[2.5rem] p-10 my-16 transition-all duration-500 hover:scale-[1.03] hover:bg-white/[0.06] hover:border-amber-500/50 group cursor-default shadow-xl";
+  const tableOfContents = [
+    { id: "virtual-vs-physical", label: "۱. مقایسه کارت‌های مجازی و فیزیکی" },
+    { id: "instant-issuance-protocol", label: "۲. پروتکل صدور آنی ۶۰ ثانیه‌ای" },
+    { id: "3d-secure-shield", label: "۳. سپر امنیتی 3D Secure 2.0" },
+    { id: "multi-currency-treasury", label: "۴. معماری پرداخت چندارزی" },
+    { id: "merchant-acceptance", label: "۵. پرداخت‌های تجاری و تبلیغات خارجی" },
+  ];
+
+  const faqs = [
+    {
+      question: "آیا ویزا کارت مجازی سافی‌پی برای پرداخت تبلیغات متا و گوگل کار می‌کند؟",
+      answer: "بله، کارت‌های سافی‌پی دارای BINهای بسیار معتبر اروپایی هستند که بدون رد شدن (Decline) توسط هوش مصنوعی درگاه‌های گوگل، متا و تیک‌تاک پذیرفته می‌شوند."
+    },
+    {
+      question: "امکان صدور چند کارت مجازی برای هر حساب وجود دارد؟",
+      answer: "کاربران تاییدشده می‌توانند چندین کارت مجازی مستقل با سقف‌های بودجه مجزا برای خرید شخصی، تبلیغات یا اشتراک‌های نرم‌افزاری ایجاد کنند."
+    },
+    {
+      question: "چگونه در صورت هک یک سایت خارجی کارت را مسدود کنیم؟",
+      answer: "با ورود به داشبورد SafiPay می‌توانید تنها با یک کلیک کارت مورد نظر را به حالت تعلیق درآورده یا برای همیشه باطل کنید بدون اینکه به حساب اصلی آسیبی برسد."
+    }
+  ];
+
+  const relatedPosts = [
+    {
+      title: "سافی‌پی چیست؟ راهنمای جامع نئوبانک اروپایی",
+      slug: "what-is-safipay",
+      category: "معرفی پلتفرم",
+      readTime: "۸ دقیقه",
+      excerpt: "بررسی کامل زیرساخت حساب‌های بین‌المللی و خدمات مالی بدون مرز."
+    },
+    {
+      title: "امنیت نهادی در سطح اتحادیه اروپا: چگونه سافی‌پی از دارایی‌های شما محافظت می‌کند",
+      slug: "safipay-system-security",
+      category: "امنیت و انطباق قانونی",
+      readTime: "۱۲ دقیقه",
+      excerpt: "بررسی پروتکل‌های رمزنگاری پیشرفته نظامی و حفاظت از داده‌ها."
+    },
+    {
+      title: "مزایای حساب IBAN اختصاصی اروپایی",
+      slug: "iban-account-benefits",
+      category: "بانکداری دیجیتال",
+      readTime: "۷ دقیقه",
+      excerpt: "چرا داشتن شماره حساب مستقیم اروپایی برای تجارت فرامرزی ضروری است."
+    }
+  ];
 
   return (
-    <main className="min-h-screen bg-[#030303] pb-32 overflow-x-hidden text-white font-sans" dir="rtl">
+    <main className="min-h-screen bg-black text-white selection:bg-[#D4AF37] font-sans overflow-x-hidden pt-28" dir="rtl">
       
-      {/* Hero Section */}
-      <section className="relative h-[75vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-50 scale-105">
-          <Image 
-            src="/blog/visa-card-guide/hero.jpg" 
-            alt="SafiPay Visa Guide"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-l from-[#030303] via-[#030303]/80 to-transparent z-10" />
-
-        <div className="container mx-auto px-6 relative z-20">
-          <div className="max-w-4xl text-right animate-in fade-in slide-in-from-right duration-1000">
-            <div className="flex items-center justify-start gap-3 mb-6 text-amber-500 font-bold tracking-widest text-sm">
-              <Terminal size={20} />
-              <span>{t.category}</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-4 drop-shadow-2xl">
-              {t.title} <br/> 
-              <span className="text-amber-500">{t.subtitle}</span>
-            </h1>
+      {/* هدر مقاله */}
+      <section className="relative pt-12 pb-16 px-6 z-10 border-b border-white/5">
+        <div className="container mx-auto max-w-5xl text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 mb-6">
+            <CreditCard size={16} className="text-amber-400" />
+            <span className="text-amber-400 text-xs font-bold uppercase tracking-[0.2em]">راهنمای جامع پرداخت‌های ارزی • ۱۴۰۴</span>
           </div>
+          
+          <h1 className="text-4xl md:text-7xl font-black mb-8 tracking-tight italic">
+            ویزا کارت مجازی <span className="text-[#D4AF37]">سافی‌پی</span>
+          </h1>
+          
+          <p className="max-w-3xl mx-auto text-gray-300 text-lg md:text-2xl leading-relaxed font-light mb-8">
+            نقشه راه کامل دسترسی نامحدود به اقتصاد دیجیتال جهانی: صدور ۶۰ ثانیه‌ای، اعتبار بانکی اروپایی، کیف پول چندارزی و سپرهای ضدکلاهبرداری.
+          </p>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="container mx-auto px-6 -mt-24 relative z-30 text-right">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-[#080808]/95 border border-white/10 rounded-[3rem] p-8 md:p-16 shadow-2xl backdrop-blur-3xl animate-in fade-in slide-in-from-bottom duration-1000">
-            
-            {/* Header / Author */}
-            <div className="flex flex-row items-center justify-between mb-16 pb-10 border-b border-white/5">
-              <div className="text-gray-400 text-xs font-bold bg-white/5 px-4 py-2 rounded-xl border border-white/5">
-                {t.readTime}
-              </div>
-              <div className="flex items-center gap-5">
-                <div className="text-right">
-                  <div className="flex items-center justify-end gap-2">
-                    <p className="text-white font-bold text-xl">{t.author}</p>
-                    <CheckCircle2 size={18} className="text-blue-500" />
-                  </div>
-                  <p className="text-gray-500 text-[10px] uppercase font-black tracking-widest mt-1">{t.role}</p>
-                </div>
-                <div className="w-16 h-16 rounded-2xl bg-black border border-white/10 p-3 flex items-center justify-center shadow-lg shadow-amber-500/5">
-                   <img src="/logo.png" alt="SafiPay" className="w-full h-full object-contain" />
-                </div>
+      {/* کامپوننت ارتقادهنده تحلیلی */}
+      <BlogEditorialEnhancer
+        locale="fa"
+        slug="visa-card-guide"
+        title="راهنمای جامع ویزا کارت مجازی و فیزیکی سافی‌پی: پرداخت‌های جهانی بدون مرز"
+        description="آموزش کامل نحوه دریافت و استفاده از ویزا کارت‌های SafiPay: صدور آنی ۶۰ ثانیه‌ای، پروتکل امنیتی 3D Secure، پرداخت ارزی و اتصال به کیف‌پول‌های بین‌المللی."
+        category="بانکداری دیجیتال"
+        readTime="۱۵ دقیقه"
+        publishedDate="۷ حوت ۱۴۰۴"
+        author={author}
+        keyTakeaways={keyTakeaways}
+        tableOfContents={tableOfContents}
+        faqs={faqs}
+        relatedPosts={relatedPosts}
+      >
+        <article className="prose prose-invert max-w-none space-y-16 text-gray-300 leading-[2.2] font-light text-base md:text-lg text-justify">
+          
+          {/* بخش ۱ */}
+          <section id="virtual-vs-physical" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-amber-500 pr-4">
+              ۱. کارت‌های مجازی در برابر فیزیکی: نهایت انعطاف‌پذیری مالی
+            </h2>
+            <p>
+              در نظام بانکی کلاسیک، دریافت یک کارت پلاستیکی مستلزم هفته‌ها انتظار پستی و مراجعات وقت‌گیر است. در مقابل، تجارت و خریدهای اینترنتی در عصر امروز نیازمند دسترسی فوری و بلادرنگ است.
+            </p>
+            <p>
+              سافی‌پی کارت‌های ویزای مجازی را بلافاصله پس از تایید هویت کاربر صادر می‌کند. این کارت‌ها با رمز دوم متغیر و موجودی مجزا، امکان خرید اشتراک‌های هوش مصنوعی (ChatGPT، Midjourney)، رزرو هتل و بلیت، پرداخت آزمون‌های بین‌المللی و خریدهای آنلاین را بدون به خطر انداختن اطلاعات حساب اصلی فراهم می‌کنند.
+            </p>
+
+            <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
+              <Image 
+                src="/blog/visa-card-guide/hero.jpg" 
+                alt="طراحی ویزا کارت سافی‌پی" 
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                <span className="text-xs text-amber-400 font-bold">تصویر ۱: زیرساخت تولید و تخصیص آنی کارت مجازی در شبکه پرداخت اروپا</span>
               </div>
             </div>
+          </section>
 
-            <article className="space-y-16 text-gray-300 leading-[2.4] text-right">
-              <p className="text-2xl text-white font-semibold mb-12 border-r-4 border-amber-500 pr-6">
-                {t.intro}
-              </p>
+          {/* بخش ۲ */}
+          <section id="instant-issuance-protocol" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-amber-500 pr-4">
+              ۲. موتور صدور نرم‌افزاری ۶۰ ثانیه‌ای
+            </h2>
+            <p>
+              با همکاری تیم فنی به رهبری <strong className="text-white font-bold">مجتبی رحمانی</strong> و شبکه سوئیچ‌های بانکی اروپا، فرآیند صدور به صورت تمام ابری اجرا می‌شود:
+            </p>
+            <ol className="list-decimal pr-6 space-y-3 text-gray-300">
+              <li>یک پیش‌شماره معتبر اروپایی (BIN) از بانک‌های تحت نظارت اتحادیه اروپا به کاربر تخصیص می‌یابد.</li>
+              <li>شماره ۱۶ رقمی، تاریخ انقضا و کد اعتبارسنجی CVV داخل ماژول سخت‌افزاری امن تولید می‌شوند.</li>
+              <li>اطلاعات بلافاصله در اپلیکیشن نمایش داده شده و آماده اتصال به Apple Pay و Google Wallet است.</li>
+            </ol>
+          </section>
 
-              <div className="space-y-6">
-                <h2 className="text-3xl font-black text-white flex items-center justify-start gap-4">
-                  <AlertCircle className="text-amber-500 shrink-0" /> {t.advantageTitle}
-                </h2>
-                <p className="text-lg text-justify">{t.advantageText}</p>
-              </div>
+          {/* بخش ۳ */}
+          <section id="3d-secure-shield" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-amber-500 pr-4">
+              ۳. سپر امنیتی پیشرفته 3D Secure 2.0
+            </h2>
+            <p>
+              امنیت پرداخت با فناوری 3D Secure تضمین می‌شود. هنگام خرید در وب‌سایت‌های خارجی، پیام تایید آنی با نمایش دقیق نام پذیرنده و مبلغ به گوشی کاربر ارسال می‌شود و تا زمان تایید بیومتریک، وجهی کسر نخواهد شد.
+            </p>
+          </section>
 
-              {/* Comparison Box */}
-              <div className={cardStyle}>
-                <h3 className="text-2xl font-black text-white mb-10">{t.comparisonTitle}</h3>
-                <ul className="space-y-8">
-                  {[t.comp1, t.comp2, t.comp3].map((item, i) => (
-                    <li key={i} className="flex items-start gap-5">
-                      <div className="mt-3 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.7)] shrink-0 group-hover:scale-125 transition-transform" />
-                      <p className="text-gray-200 font-medium text-lg leading-relaxed">{item}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {/* بخش ۴ */}
+          <section id="multi-currency-treasury" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-amber-500 pr-4">
+              ۴. معماری پرداخت چندارزی بدون کارمزد مخفی
+            </h2>
+            <p>
+              کارت‌های سافی‌پی امکان اتصال به کیف پول‌های ارزی یورو، دلار و پوند را دارند. در صورت خرید با ارزی دیگر، تبدیل بر مبنای نرخ عمده‌فروشی بین‌بانکی صورت گرفته و از کارمزدهای غیرمنصفانه ۴ تا ۶ درصدی بانک‌های سنتی جلوگیری می‌شود.
+            </p>
+          </section>
 
-              <div className="space-y-6">
-                <h2 className="text-3xl font-black text-white flex items-center justify-start gap-4">
-                  <ShieldCheck className="text-amber-500 shrink-0" /> {t.techTitle}
-                </h2>
-                <p className="text-lg text-justify">{t.techDesc}</p>
-              </div>
+          {/* بخش ۵ */}
+          <section id="merchant-acceptance" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-amber-500 pr-4">
+              ۵. پرداخت‌های بین‌المللی تجاری و تبلیغات آنلاین
+            </h2>
+            <p>
+              برای آژانس‌های دیجیتال مارکتینگ و شرکت‌هایی که هزینه‌های سنگین در درگاه‌های تبلیغاتی مانند Google Ads و Meta صرف می‌کنند، کارت‌های سافی‌پی به دلیل پیشینه اعتباری عالی در بانک‌های اروپا بدون ریجکت شدن و به صورت پایدار فعالیت می‌کنند.
+            </p>
+          </section>
 
-              {/* Quote Area */}
-              <div className="bg-gradient-to-r from-amber-500/10 to-transparent border-r-4 border-amber-500 p-12 rounded-3xl my-24">
-                <p className="text-white text-3xl italic font-light leading-snug text-right uppercase">
-                  "{t.quote}"
-                </p>
-                <p className="text-amber-500 font-bold mt-8 text-xl text-right">— {t.quoteAuthor}</p>
-              </div>
-
-              {/* Grid Features */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 my-24">
-                <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/10 transition-all duration-500 hover:scale-105 hover:bg-white/[0.05] group">
-                  <div className="flex justify-start mb-8 transition-transform group-hover:rotate-12"><ShoppingBag className="text-amber-500" size={40} /></div>
-                  <h4 className="text-white font-black text-2xl mb-4">خرید جهانی</h4>
-                  <p className="text-gray-500 leading-relaxed text-sm">دسترسی نامحدود به آمازون و تمامی درگاه‌های بین‌المللی با امنیت SafiPay.</p>
-                </div>
-                <div className="p-12 rounded-[3rem] bg-white/[0.02] border border-white/10 transition-all duration-500 hover:scale-105 hover:bg-white/[0.05] group">
-                  <div className="flex justify-start mb-8 transition-transform group-hover:rotate-12"><Lock className="text-amber-500" size={40} /></div>
-                  <h4 className="text-white font-black text-2xl mb-4">امنیت اروپایی</h4>
-                  <p className="text-gray-500 leading-relaxed text-sm">تراکنش‌های شما تحت نظارت مستقیم مجتبی و استانداردهای اتحادیه اروپا است.</p>
-                </div>
-              </div>
-            </article>
-
-            {/* Back CTA */}
-            <div className="mt-24 pt-12 border-t border-white/5 flex justify-center">
-              <Link href={`/${lang}/blog`} className="group relative px-14 py-5 bg-white text-black font-black rounded-3xl overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl">
-                <div className="absolute inset-0 bg-amber-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                <span className="relative z-10 flex items-center gap-4 text-xl">
-                    {t.backBtn}
-                    <ArrowRight size={26} className="rotate-180 transition-transform group-hover:-translate-x-2" />
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+        </article>
+      </BlogEditorialEnhancer>
     </main>
   );
 }

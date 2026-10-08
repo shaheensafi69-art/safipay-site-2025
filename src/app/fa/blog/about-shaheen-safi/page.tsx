@@ -1,146 +1,185 @@
 'use client';
 
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Crown, Star, Award, ShieldCheck, 
-  Quote, Zap, CheckCircle2 
+  Quote, Zap, CheckCircle2, ArrowLeft,
+  Landmark, Globe
 } from 'lucide-react';
+import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 
-export default function AboutFounderPage() {
-  const params = useParams();
-  
+export default function AboutFounderPageFa() {
+  const author = {
+    name: "شیرین گل احمدی",
+    role: "مدیر ارشد بازاریابی و ارتباطات بین‌الملل",
+    avatar: "/shirin.jpeg",
+    email: "shirinahmadi@safipay.net",
+    bio: "شیرین گل احمدی رهبری ارتباطات رسانه‌ای، توسعه برند بین‌المللی و جذب کاربران در سراسر اروپا و خاورمیانه را برای پلتفرم نئوبانک SafiPay بر عهده دارد.",
+    profileUrl: "/fa/founder/shirin-gol-ahmadi"
+  };
+
+  const keyTakeaways = [
+    "شاهین صافی با هدف شکستن انزوای مالی تحمیل‌شده بر استعدادهای مستعد کشورهای در حال توسعه، نئوبانک SafiPay را پایه‌گذاری نمود.",
+    "این مسیر موفقیت‌آمیز، پیونددهنده تجربیات کارآفرینی منطقه‌ای با زیرساخت‌های مالی مستحکم اروپایی تا زمان تاسیس هاب پاریس بود.",
+    "تحت رهبری شاهین، سافی‌پی از یک پروژه جاه‌طلبانه به یک اکوسیستم نئوبانک بین‌المللی چند میلیون دلاری تبدیل شد.",
+    "فلسفه مدیریتی او بر دموکراتیزه کردن سرمایه، شفافیت بانکی و لغو هرگونه تبعیض جغرافیایی در تجارت جهانی استوار است."
+  ];
+
+  const tableOfContents = [
+    { id: "origins-vision", label: "۱. خاستگاه یک رویای بدون مرز" },
+    { id: "overcoming-barriers", label: "۲. شکستن انزوای اقتصادی و آپارتاید مالی" },
+    { id: "paris-expansion", label: "۳. تاسیس مقر اروپایی در قلب پاریس" },
+    { id: "leadership-philosophy", label: "۴. فلسفه رهبری و باورهای شاهین صافی" },
+    { id: "the-road-ahead", label: "۵. چشم‌انداز دهه آینده فین‌تک" },
+  ];
+
+  const faqs = [
+    {
+      question: "چه انگیزه‌ای باعث شد شاهین صافی پلتفرم SafiPay را تاسیس کند؟",
+      answer: "مشاهده مشکلات روزمره فریلنسرها، برنامه‌نویسان و خانواده‌هایی که به دلیل محدودیت‌های بانکی سنتی قادر به دریافت دستمزد یا خرید بین‌المللی نبودند، محرک اصلی شاهین برای ساخت این پل بانکی مدرن بود."
+    },
+    {
+      question: "دفتر مرکزی و مدیریت اجرایی سافی‌پی در کجا مستقر است؟",
+      answer: "سافی‌پی دارای مقر اجرایی در پاریس فرانسه است و با همکاری نهادهای مالی دارای مجوز در اتحادیه اروپا به کاربران جهانی خدمات ارائه می‌دهد."
+    },
+    {
+      question: "چگونه می‌توان با شاهین صافی ارتباط مستقیم برقرار کرد؟",
+      answer: "پیشنهادات همکاری، مصاحبه‌های مطبوعاتی و ارتباطات استراتژیک از طریق ایمیل رسمی shaheen@safipay.net مدیریت می‌شوند."
+    }
+  ];
+
+  const relatedPosts = [
+    {
+      title: "سافی‌پی چیست؟ راهنمای جامع نئوبانک اروپایی",
+      slug: "what-is-safipay",
+      category: "معرفی پلتفرم",
+      readTime: "۸ دقیقه",
+      excerpt: "بررسی کامل زیرساخت حساب‌های بین‌المللی و خدمات مالی بدون مرز."
+    },
+    {
+      title: "امنیت نهادی در سطح اتحادیه اروپا: چگونه سافی‌پی از دارایی‌های شما محافظت می‌کند",
+      slug: "safipay-system-security",
+      category: "امنیت و انطباق قانونی",
+      readTime: "۱۲ دقیقه",
+      excerpt: "بررسی پروتکل‌های رمزنگاری پیشرفته نظامی و حفاظت از داده‌ها."
+    },
+    {
+      title: "آینده بانکداری دیجیتال: هوش مصنوعی و اقتصاد فرامرزی",
+      slug: "future-of-banking",
+      category: "معماری فین‌تک",
+      readTime: "۶ دقیقه",
+      excerpt: "چگونگی تحول بانکداری در دهه آینده و حذف واسطه‌های سنتی."
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-black text-[#d4d4d8] selection:bg-[#D4AF37] selection:text-black font-sans" dir="rtl">
+    <main className="min-h-screen bg-black text-white selection:bg-[#D4AF37] font-sans overflow-x-hidden pt-28" dir="rtl">
       
-      {/* استایل‌های اختصاصی برای فریم عکس و انیمیشن‌ها */}
-      <style jsx global>{`
-        .gold-glow {
-          filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
-        }
-        .founder-frame {
-          position: relative;
-          border: 1px solid rgba(212, 175, 55, 0.3);
-          background: linear-gradient(145deg, #0a0a0a, #000);
-          overflow: hidden;
-        }
-        .founder-frame::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border: 8px solid transparent;
-          border-image: linear-gradient(to bottom, #D4AF37, transparent) 1;
-          pointer-events: none;
-        }
-        .reveal-up {
-          animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes reveal {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-
-      {/* Hero Section: لوگو + عنوان + عکس کادربندی شده */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            {/* سمت راست (در حالت RTL): هویت و لوگو */}
-            <div className="reveal-up z-20 order-2 lg:order-1 text-right">
-              <div className="flex items-center gap-4 mb-8 justify-start">
-                <Image 
-                  src="/logo.png" 
-                  alt="SafiPay Logo" 
-                  width={60} 
-                  height={60} 
-                  className="gold-glow"
-                />
-                <div className="h-[2px] w-12 bg-[#D4AF37]" />
-                <span className="text-[#D4AF37] font-bold tracking-[0.4em] text-xs uppercase">هویت بنیان‌گذار</span>
-              </div>
-              
-              <h1 className="text-6xl md:text-8xl font-black text-white italic leading-tight mb-6">
-                شاهین <br />
-                <span className="text-[#D4AF37] gold-glow">صافی</span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl font-light text-gray-400 italic border-r-4 border-[#D4AF37] pr-6 max-w-lg">
-                معمار اصلی SafiPay؛ بازتعریف آزادی مالی برای نسل نوین شهروندان جهانی.
-              </p>
-            </div>
-
-            {/* سمت چپ (در حالت RTL): عکس در باکس طراحی شده */}
-            <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-              <div className="founder-frame w-full max-w-[500px] aspect-[4/5] rounded-[2rem] shadow-2xl shadow-[#D4AF37]/10">
-                <Image 
-                  src="/blog/about-shaheen-safi/hero.jpg" 
-                  alt="شاهین صافی" 
-                  fill 
-                  className="object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
-              </div>
-              {/* المان تزئینی پشت عکس */}
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-[#D4AF37]/10 blur-3xl rounded-full animate-pulse" />
-            </div>
-
+      {/* هدر مقاله */}
+      <section className="relative pt-12 pb-16 px-6 z-10 border-b border-white/5">
+        <div className="container mx-auto max-w-5xl text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 mb-6">
+            <Crown size={16} className="text-[#D4AF37]" />
+            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.2em]">زندگینامه و داستان ساخت پلتفرم</span>
           </div>
+          
+          <h1 className="text-4xl md:text-7xl font-black mb-8 tracking-tight italic">
+            داستان شاهین <span className="text-[#D4AF37]">صافی</span>
+          </h1>
+          
+          <p className="max-w-3xl mx-auto text-gray-300 text-lg md:text-2xl leading-relaxed font-light mb-8">
+            روایت خواندنی از چگونگی تاسیس نئوبانک پیشرفته اروپایی SafiPay به رهبری شاهین صافی جهت شکستن محدودیت‌های مالی برای شهروندان جهان.
+          </p>
         </div>
       </section>
 
-      {/* بخش چشم‌انداز و فلسفه */}
-      <section className="py-32 bg-[#050505]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-24">
-            <Quote className="mx-auto text-[#D4AF37] mb-8 opacity-40" size={60} />
-            <h2 className="text-4xl md:text-6xl font-black text-white italic mb-10">فراتر از یک <span className="text-[#D4AF37]">بنیان‌گذاری</span></h2>
-            <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light italic">
-              "هدف من هرگز تنها ساخت یک اپلیکیشن نبود. هدف، ساختن یک پل بود؛ دروازه‌ای که جامعه ما را با سرعت و امنیتی که شایسته آن هستند، به قلب مالی اروپا متصل کند."
+      {/* کامپوننت ارتقادهنده تحلیلی */}
+      <BlogEditorialEnhancer
+        locale="fa"
+        slug="about-shaheen-safi"
+        title="داستان ساخت سافی‌پی: از چالش‌های آغازین تا هاب بین‌المللی پاریس"
+        description="مسیر الهام‌بخش ساخت نئوبانک بین‌المللی SafiPay به رهبری شاهین صافی؛ پشتکار، نوآوری در فین‌تک و ماموریت آزادسازی مبادلات مالی برای شهروندان بدون مرز."
+        category="چشم‌انداز و رهبری"
+        readTime="۱۰ دقیقه"
+        publishedDate="۱ حوت ۱۴۰۴"
+        author={author}
+        keyTakeaways={keyTakeaways}
+        tableOfContents={tableOfContents}
+        faqs={faqs}
+        relatedPosts={relatedPosts}
+      >
+        <article className="prose prose-invert max-w-none space-y-16 text-gray-300 leading-[2.2] font-light text-base md:text-lg text-justify">
+          
+          {/* بخش ۱ */}
+          <section id="origins-vision" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-[#D4AF37] pr-4">
+              ۱. خاستگاه یک رویای بدون مرز
+            </h2>
+            <p>
+              تحولات بزرگ مالی در اتاق‌های راحت مدیریت آغاز نمی‌شوند، بلکه در مواجهه با چالش‌های واقعی زندگی شکل می‌گیرند. هنگامی که <strong className="text-white font-bold">شاهین صافی</strong> انزوای تحمیل‌شده بر جوانان نخبه و متخصصان فریلنسر را مشاهده کرد، دریافت که نظام سنتی جهان نیازمند یک انقلاب اساسی است.
             </p>
-          </div>
+            <p>
+              هزاران جوان بااستعداد ماه‌ها برای کارفرمایان خارجی کار می‌کردند اما به دلیل نبود کارت بانکی بین‌المللی، ماه‌ها در دریافت دستمزد زحمات خود ناکام می‌ماندند. شاهین صافی اراده کرد تا این تبعیض سیستماتیک را با ساخت یک نئوبانک مستقیم در قلب اروپا برای همیشه درمان کند.
+            </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:border-[#D4AF37]/50 transition-all group">
-              <Award className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={32} />
-              <h4 className="text-white text-2xl font-bold mb-3">اصالت</h4>
-              <p className="text-gray-500 italic leading-relaxed text-sm">بنا شده بر پایه اعتماد جهانی و شفافیت مطلق در تمامی تراکنش‌ها.</p>
+            <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
+              <Image 
+                src="/blog/about-shaheen-safi/hero.jpg" 
+                alt="چشم‌انداز شاهین صافی" 
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                <span className="text-xs text-[#D4AF37] font-bold">تصویر ۱: هدایت استراتژیک توسعه نئوبانک سافی‌پی در اروپا</span>
+              </div>
             </div>
+          </section>
 
-            <div className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:border-[#D4AF37]/50 transition-all group">
-              <ShieldCheck className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={32} />
-              <h4 className="text-white text-2xl font-bold mb-3">استاندارد اروپا</h4>
-              <p className="text-gray-500 italic leading-relaxed text-sm">تضمین امنیت دارایی‌ها تحت نظارت مستقیم مجتبی در چهارچوب‌های اتحادیه اروپا.</p>
-            </div>
+          {/* بخش ۲ */}
+          <section id="overcoming-barriers" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-[#D4AF37] pr-4">
+              ۲. شکستن انزوای اقتصادی و آپارتاید مالی
+            </h2>
+            <p>
+              شاهین صافی با گرد هم آوردن تیمی مقتدر و متخصص—شامل <strong className="text-white font-bold">ساحل سالم</strong> در روابط بانکی اروپا، <strong className="text-white font-bold">مجتبی رحمانی</strong> در معماری امنیت فنی، <strong className="text-white font-bold">شیرین گل احمدی</strong> در بازاریابی بین‌الملل و <strong className="text-white font-bold">مبین حسنی</strong> در استراتژی فین‌تک—توانست سیستمی استاندارد و دارای انطباق حقوقی را پایه‌ریزی کند.
+            </p>
+          </section>
 
-            <div className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] hover:border-[#D4AF37]/50 transition-all group">
-              <Zap className="text-[#D4AF37] mb-6 group-hover:scale-110 transition-transform" size={32} />
-              <h4 className="text-white text-2xl font-bold mb-3">قدرت آنی</h4>
-              <p className="text-gray-500 italic leading-relaxed text-sm">صدور ابزارهای مالی در کمتر از ۶۰ ثانیه و حذف کامل کاغذبازی‌های سنتی.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          {/* بخش ۳ */}
+          <section id="paris-expansion" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-[#D4AF37] pr-4">
+              ۳. تاسیس مقر اروپایی در قلب پاریس
+            </h2>
+            <p>
+              اعتبار واقعی در نظام بین‌الملل مستلزم پایبندی به بالاترین موازین قانونی اتحادیه اروپاست. سافی‌پی تحت هدایت شاهین توانست الزامات سازمان ناظر بانکی اروپا (EBA) را تامین نموده و هاب مدیریتی خود را در فرانسه بنا نهد.
+            </p>
+          </section>
 
-      {/* فوتر رسمی با امضای دیجیتال */}
-      <footer className="py-40 border-t border-white/10 bg-black text-center">
-        <div className="container mx-auto px-6">
-          <p className="text-[#D4AF37] font-black tracking-[1em] text-[10px] uppercase mb-8 opacity-60">پورتفولیو رسمی</p>
-          <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12">
-            <h2 className="text-4xl md:text-6xl font-black italic text-white uppercase tracking-tighter">شاهین صافی</h2>
-            <div className="h-[2px] w-20 bg-[#D4AF37] hidden md:block" />
-            <h2 className="text-4xl md:text-6xl font-black italic text-[#D4AF37] uppercase tracking-tighter opacity-80">بنیان‌گذار SafiPay</h2>
-          </div>
-          <div className="mt-20 flex justify-center gap-8 opacity-30">
-            <Star size={20} />
-            <Crown size={20} />
-            <CheckCircle2 size={20} />
-          </div>
-        </div>
-      </footer>
+          {/* بخش ۴ */}
+          <section id="leadership-philosophy" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-[#D4AF37] pr-4">
+              ۴. فلسفه رهبری و باورهای شاهین صافی
+            </h2>
+            <blockquote className="border-r-4 border-[#D4AF37] pr-6 my-8 italic text-white text-xl font-light">
+              «ما سافی‌پی را نساختیم تا فقط یک اپلیکیشن دیگر در تلفن همراه شما باشد؛ ما آن را ساختیم تا کلیدی باشد برای گشودن درهای اقتصاد جهانی به روی هر انسانی که صاحب استعداد و انگیزه است، بدون توجه به اینکه در کجای این کره خاکی متولد شده است.»
+              <footer className="text-xs text-[#D4AF37] font-bold tracking-widest mt-3">— شاهین صافی</footer>
+            </blockquote>
+          </section>
 
+          {/* بخش ۵ */}
+          <section id="the-road-ahead" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-r-4 border-[#D4AF37] pr-4">
+              ۵. چشم‌انداز آینده و ده سال پیش رو
+            </h2>
+            <p>
+              افق پیش روی سافی‌پی دربرگیرنده بهره‌گیری از هوش مصنوعی برای مدیریت نقدینگی، اتصال کارت‌های بین‌المللی به کلیه درگاه‌های دیجیتال و تسویه آنی مبادلات است تا رویاهای کارآفرینان در کمترین زمان به حقیقت بپیوندد.
+            </p>
+          </section>
+
+        </article>
+      </BlogEditorialEnhancer>
     </main>
   );
 }

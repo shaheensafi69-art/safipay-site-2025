@@ -1,206 +1,190 @@
 'use client';
 
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Landmark, ArrowRight, ShieldCheck, 
   Zap, Globe, Crown, Sparkles, TrendingUp,
-  Fingerprint
+  CheckCircle2, Building2
 } from 'lucide-react';
-import Link from 'next/link';
+import BlogEditorialEnhancer from '@/components/blog/BlogEditorialEnhancer';
 
 export default function IbanBenefitsPage() {
-  const params = useParams();
-  const lang = params?.lang || 'en';
+  const author = {
+    name: "Sahel Salem",
+    role: "Chief Executive Officer & European Relations",
+    avatar: "/sahel.jpeg",
+    email: "sahelsalem@safipay.net",
+    bio: "Sahel Salem serves as CEO and Director of European Banking Relations at SafiPay, establishing correspondent clearing conduits, SEPA interoperability, and institutional regulatory compliance.",
+    profileUrl: "/en/founder/sahel-salem"
+  };
+
+  const keyTakeaways = [
+    "A dedicated European IBAN grants non-resident international citizens direct entry into the 36-nation Single Euro Payments Area (SEPA).",
+    "SEPA Instant transfers clear in under 10 seconds 24/7/365, bypassing slow correspondent SWIFT banking wires and intermediaries.",
+    "Accounts are issued under your legal personal or corporate name, establishing verified credibility with Western clients and employers.",
+    "Eliminates expensive incoming wire deductions, enabling frictionless salary receipts from global tech employers."
+  ];
+
+  const tableOfContents = [
+    { id: "sepa-gateway", label: "1. The European Banking Gateway" },
+    { id: "personal-naming", label: "2. Dedicated Name Credibility" },
+    { id: "sepa-instant-speed", label: "3. SEPA Instant vs. Legacy SWIFT" },
+    { id: "zero-hidden-deductions", label: "4. Transparent Low-Fee Structure" },
+    { id: "european-banking-safety", label: "5. Regulatory Security & Solvency" },
+  ];
+
+  const faqs = [
+    {
+      question: "Do I need European residency to obtain a SafiPay IBAN?",
+      answer: "No. SafiPay was explicitly architected to provide qualified global citizens, digital entrepreneurs, and international remote workers with legitimate European IBAN accounts regardless of their home country."
+    },
+    {
+      question: "Can I receive payouts from Stripe, Upwork, and Deel into my SafiPay IBAN?",
+      answer: "Yes. Because your SafiPay IBAN is a recognized European bank account in your name, global payout platforms like Stripe, PayPal, Upwork, Fiverr, and Deel recognize it as a domestic EU clearing bank."
+    },
+    {
+      question: "What currencies can I hold in my SafiPay European account?",
+      answer: "Your IBAN natively clears in Euros (EUR) and enables seamless conversion into USD, GBP, and other major trading pairs with live interbank pricing."
+    }
+  ];
+
+  const relatedPosts = [
+    {
+      title: "What is SafiPay? The Premier European Digital Banking Platform",
+      slug: "what-is-safipay",
+      category: "Platform Overview",
+      readTime: "8 min",
+      excerpt: "Deep overview of EU IBAN accounts, cross-border SEPA rails, and mobile banking."
+    },
+    {
+      title: "Complete Guide to SafiPay Virtual Visa Cards",
+      slug: "visa-card-guide",
+      category: "Digital Banking",
+      readTime: "15 min",
+      excerpt: "Master international payments and 3D Secure 2.0 transaction protection."
+    },
+    {
+      title: "EU-Level Institutional Security: How SafiPay Protects Your Assets",
+      slug: "safipay-system-security",
+      category: "Security & Compliance",
+      readTime: "12 min",
+      excerpt: "Technical analysis of AES-256-GCM encryption and zero-knowledge storage."
+    }
+  ];
 
   return (
-    <main className="min-h-screen bg-[#000] text-[#d4d4d8] selection:bg-[#D4AF37] selection:text-black overflow-x-hidden font-sans" dir="ltr">
+    <main className="min-h-screen bg-black text-white selection:bg-[#D4AF37] font-sans overflow-x-hidden pt-28">
       
-      {/* Heavy CSS Animations & Global Styles */}
-      <style jsx global>{`
-        @keyframes gold-pulse {
-          0%, 100% { opacity: 0.1; transform: scale(1); }
-          50% { opacity: 0.2; transform: scale(1.1); }
-        }
-        @keyframes reveal-up {
-          from { opacity: 0; transform: translateY(50px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes border-flow {
-          0% { border-color: rgba(212,175,55,0.1); }
-          50% { border-color: rgba(212,175,55,0.6); }
-          100% { border-color: rgba(212,175,55,0.1); }
-        }
-        .animate-reveal { animation: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .gold-glow { box-shadow: 0 0 30px rgba(212,175,55,0.15); }
-        .gold-text-stroke { -webkit-text-stroke: 1px #D4AF37; color: transparent; }
-        .vertical-text { writing-mode: vertical-rl; }
-      `}</style>
-
-      {/* Ambient Luxury Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full animate-[gold-pulse_8s_infinite]" />
-        <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-[#D4AF37]/10 blur-[180px] rounded-full" />
-      </div>
-
-      {/* Hero Section - The Financial Gateway */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <Image 
-            src="/blog/iban-account-benefits/hero.jpg" 
-            alt="SafiPay European IBAN" 
-            fill 
-            className="object-cover grayscale brightness-50"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-6xl animate-reveal">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="h-[2px] w-24 bg-gradient-to-r from-[#D4AF37] to-transparent" />
-              <span className="text-[#D4AF37] font-black tracking-[0.8em] text-[10px] uppercase flex items-center gap-2">
-                <Crown size={12} /> SafiPay Prestige
-              </span>
-            </div>
-
-            <h1 className="text-[10vw] md:text-[7vw] font-black leading-[0.85] tracking-tighter uppercase italic mb-10 text-white text-left">
-              EXCLUSIVE <br />
-              <span className="gold-text-stroke hover:text-[#D4AF37] transition-all duration-700 cursor-default">
-                EUROPEAN IBAN
-              </span>
-            </h1>
-
-            <div className="max-w-3xl border-l-4 border-[#D4AF37] pl-10 py-6 bg-white/5 backdrop-blur-sm rounded-r-3xl">
-              <p className="text-white text-2xl md:text-4xl leading-tight font-light italic text-left">
-                "We don't just issue accounts; we grant every global user a secure vault in the heart of Europe. Speed is our weapon, security is our shield."
-              </p>
-            </div>
+      {/* Hero Header */}
+      <section className="relative pt-12 pb-16 px-6 z-10 border-b border-white/5">
+        <div className="container mx-auto max-w-5xl text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 mb-6">
+            <Landmark size={16} className="text-[#D4AF37]" />
+            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.25em]">European Banking Masterclass • 2026</span>
           </div>
+          
+          <h1 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter italic uppercase leading-[1.05]">
+            EUROPEAN <span className="text-[#D4AF37]">IBAN BENEFITS</span>
+          </h1>
+          
+          <p className="max-w-3xl mx-auto text-gray-300 text-lg md:text-2xl leading-relaxed font-light mb-8">
+            Why possessing a direct European International Bank Account Number is the single most valuable financial asset for remote professionals and global entrepreneurs.
+          </p>
         </div>
       </section>
 
-      {/* Strategic Content Grid */}
-      <section className="relative py-40 px-6 z-10">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
-            
-            {/* Sidebar: Sahel's Executive Oversight */}
-            <div className="lg:col-span-4 order-2 lg:order-1">
-              <div className="sticky top-32 space-y-8">
-                <div className="p-10 rounded-[3rem] bg-black border border-[#D4AF37]/30 gold-glow relative overflow-hidden group hover:animate-[border-flow_2s_infinite]">
-                  <div className="absolute -right-10 -top-10 opacity-10 group-hover:scale-110 transition-transform duration-1000">
-                    <Globe size={200} className="text-[#D4AF37]" />
-                  </div>
-                  <h3 className="text-[#D4AF37] font-black text-xs uppercase tracking-[0.4em] mb-8 text-left">EXECUTIVE OVERSIGHT</h3>
-                  <p className="text-gray-300 italic text-lg leading-relaxed mb-12 relative z-10 text-left">
-                    "Under Sahel’s international development strategy, your European IBAN is instantly integrated into the SEPA network, ensuring global liquidity and legal protection."
-                  </p>
-                  
-                  {/* Sahel's Profile Section with Image */}
-                  <div className="flex items-center gap-5 relative z-10">
-                    <div className="relative w-16 h-16">
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#8A6D3B] p-[1px] shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-                        <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black">
-                          <Image 
-                            src="/sahel.jpeg" 
-                            alt="Sahel - International Development Director"
-                            fill
-                            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                          />
-                        </div>
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#D4AF37] border-2 border-black rounded-full shadow-lg z-20"></div>
-                    </div>
-                    
-                    <div>
-                      <p className="font-black text-white text-lg tracking-tight">Sahel</p>
-                      <p className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-bold">Intl. Development Director</p>
-                    </div>
-                  </div>
-                </div>
+      {/* Editorial Wrapper */}
+      <BlogEditorialEnhancer
+        locale="en"
+        slug="iban-account-benefits"
+        title="Benefits of a Dedicated European IBAN for Global Citizens and Remote Workers"
+        description="Discover why having a direct European IBAN account through SafiPay unlocks SEPA Instant credit transfers, eliminates international wire fees, and empowers global trade."
+        category="Digital Banking"
+        readTime="7 min"
+        publishedDate="Feb 22, 2026"
+        author={author}
+        keyTakeaways={keyTakeaways}
+        tableOfContents={tableOfContents}
+        faqs={faqs}
+        relatedPosts={relatedPosts}
+      >
+        <article className="prose prose-invert max-w-none space-y-16 text-gray-300 leading-relaxed font-light text-base md:text-lg">
+          
+          {/* Section 1 */}
+          <section id="sepa-gateway" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-[#D4AF37] pl-4">
+              1. The European Banking Gateway (SEPA)
+            </h2>
+            <p>
+              The Single Euro Payments Area (SEPA) is the world's most advanced multi-jurisdiction payment harmonization network, uniting 36 European nations under standardized electronic credit transfer rules. Historically, accessing this system required physical residency in Europe, extensive utility bill verification, and tedious in-person bank appointments.
+            </p>
+            <p>
+              Through SafiPay’s licensed architecture, managed under CEO <strong className="text-white font-bold">Sahel Salem</strong>, global users receive a dedicated IBAN account directly within the European banking grid, eliminating geographic penalties for international talent.
+            </p>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 text-center hover:bg-[#D4AF37]/5 transition-colors group">
-                    <p className="text-4xl font-black text-[#D4AF37] group-hover:scale-110 transition-transform">1 Min</p>
-                    <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">Instant Issuance</p>
-                  </div>
-                  <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 text-center hover:bg-[#D4AF37]/5 transition-colors group">
-                    <p className="text-4xl font-black text-[#D4AF37] group-hover:scale-110 transition-transform">EU</p>
-                    <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest">Regulated</p>
-                  </div>
-                </div>
+            <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
+              <Image 
+                src="/blog/iban-account-benefits/hero.jpg" 
+                alt="SafiPay European IBAN Clearing" 
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                <span className="text-xs text-[#D4AF37] font-bold uppercase tracking-wider">Figure 1.0: SEPA Instant settlement node connectivity</span>
               </div>
             </div>
+          </section>
 
-            {/* Main Content Area */}
-            <div className="lg:col-span-8 order-1 lg:order-2 space-y-32">
-              <div className="space-y-16 animate-reveal">
-                <div className="flex items-center gap-6">
-                  <div className="w-24 h-24 rounded-[2rem] bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] border border-[#D4AF37]/40 gold-glow">
-                    <Landmark size={48} />
-                  </div>
-                  <h2 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter text-white">
-                    GOLDEN <span className="text-[#D4AF37]">IBAN</span>
-                  </h2>
-                </div>
+          {/* Section 2 */}
+          <section id="personal-naming" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-[#D4AF37] pl-4">
+              2. Dedicated Name Credibility & Professional Standing
+            </h2>
+            <p>
+              Many non-regulated payment conduits issue "pooled" accounts where thousands of users share one master account number with internal reference IDs. This triggers compliance red flags on platforms like Upwork, Deel, and Stripe.
+            </p>
+            <p>
+              SafiPay issues genuine dedicated IBANs registered in your exact legal or company name. When a client transfers funds, the sender sees your verified name as the recipient bank account holder, projecting supreme corporate trust.
+            </p>
+          </section>
 
-                <p className="text-gray-400 text-2xl leading-[2] font-light text-left">
-                  SafiPay provides a direct bridge to the European financial system. With **Mujtaba's** military-grade security core, we bypass traditional banking delays. Your dedicated IBAN allows for instant SEPA transfers, giving you the power to manage wealth globally with the same speed as a Tier-1 European bank.
-                </p>
+          {/* Section 3 */}
+          <section id="sepa-instant-speed" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-[#D4AF37] pl-4">
+              3. SEPA Instant vs. Legacy SWIFT
+            </h2>
+            <p>
+              Traditional cross-border wires over SWIFT take between 3 and 7 business days, traveling through multiple intermediary correspondent banks that each siphon off $20 to $50 in routing charges.
+            </p>
+            <p>
+              With SEPA Instant on SafiPay, fund transfers settle in under 10 seconds, around the clock, even on bank holidays. You receive your hard-earned international contract income immediately.
+            </p>
+          </section>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="p-12 rounded-[3.5rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 group hover:border-[#D4AF37]/50 transition-all duration-500">
-                    <Zap className="text-[#D4AF37] mb-8 group-hover:scale-125 transition-transform duration-500" size={44} />
-                    <h4 className="text-2xl font-black uppercase mb-4 text-white italic tracking-tight">SEPA VELOCITY</h4>
-                    <p className="text-gray-500 text-lg leading-relaxed text-left">Account issuance in under 1 minute. Instant global transfers with zero bureaucratic friction.</p>
-                  </div>
-                  <div className="p-12 rounded-[3.5rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 group hover:border-[#D4AF37]/50 transition-all duration-500">
-                    <Fingerprint className="text-[#D4AF37] mb-8 group-hover:scale-125 transition-transform duration-500" size={44} />
-                    <h4 className="text-2xl font-black uppercase mb-4 text-white italic tracking-tight">MUJTABA SECURITY</h4>
-                    <p className="text-gray-500 text-lg leading-relaxed text-left">Protected by the most advanced encryption protocols within the European Union.</p>
-                  </div>
-                </div>
-              </div>
+          {/* Section 4 */}
+          <section id="zero-hidden-deductions" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-[#D4AF37] pl-4">
+              4. Transparent Low-Fee Structure
+            </h2>
+            <p>
+              Incoming SEPA transfers on SafiPay are credited without deductions. Users preserve their full earning potential, allowing seamless conversion between EUR, USD, and local currencies at verified interbank wholesale quotes.
+            </p>
+          </section>
 
-              {/* Shaheen Safi's Founder Quote */}
-              <div className="relative py-24 border-y border-[#D4AF37]/20">
-                <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-2 h-32 bg-[#D4AF37] rounded-full shadow-[0_0_20px_#D4AF37]" />
-                <blockquote className="text-4xl md:text-6xl font-extralight italic leading-[1.1] text-white px-12">
-                  "SafiPay is the future of global financial freedom and borderless digital banking. We are here to lead, protect, and empower."
-                </blockquote>
-                <div className="mt-16 px-12 flex items-center gap-6">
-                  <p className="text-2xl font-black tracking-[0.5em] uppercase text-[#D4AF37]">Shaheen Safi</p>
-                  <div className="h-[1px] w-20 bg-gray-800" />
-                  <p className="text-xs text-gray-600 uppercase font-black">Director & Founder</p>
-                </div>
-              </div>
+          {/* Section 5 */}
+          <section id="european-banking-safety" className="space-y-6 scroll-mt-28">
+            <h2 className="text-2xl md:text-4xl font-black text-white italic tracking-tight border-l-4 border-[#D4AF37] pl-4">
+              5. Regulatory Security & Solvency Protection
+            </h2>
+            <p>
+              SafiPay funds are safeguarded under strict European Union directives. Capital is segregated in Tier-1 custodian banks and never exposed to risky corporate lending, ensuring 100% solvency and liquidity on demand.
+            </p>
+          </section>
 
-              {/* Luxury Navigation */}
-              <div className="flex justify-end pt-10 pb-40">
-                <Link href={`/${lang}/blog`} className="group flex items-center gap-12">
-                  <div className="text-right">
-                    <span className="block text-[#D4AF37] font-black uppercase tracking-[0.4em] text-xs mb-3 text-right">RETURN TO HEADQUARTERS</span>
-                    <span className="text-5xl font-black uppercase italic text-white group-hover:text-[#D4AF37] transition-all duration-500">ENCYCLOPEDIA</span>
-                  </div>
-                  <div className="w-28 h-28 rounded-full border-2 border-[#D4AF37]/30 flex items-center justify-center group-hover:bg-[#D4AF37] transition-all duration-700 gold-glow">
-                    <ArrowRight size={48} className="text-[#D4AF37] group-hover:text-black group-hover:translate-x-3 transition-all duration-500" />
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Decorative Branding Sidebar */}
-      <div className="fixed bottom-10 left-10 z-50 pointer-events-none hidden xl:block">
-        <p className="text-[10px] font-black text-[#D4AF37] uppercase tracking-[1.5em] vertical-text opacity-40">SAFIPAY EUROPE ELITE</p>
-      </div>
-
+        </article>
+      </BlogEditorialEnhancer>
     </main>
   );
 }
