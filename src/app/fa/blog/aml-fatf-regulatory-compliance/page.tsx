@@ -126,7 +126,7 @@ export default function AmlFatfCompliancePageFa() {
 
             <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
               <Image 
-                src="/blog/safipay-system-security/hero.jpg" 
+                src="/blog/aml-fatf-regulatory-compliance/hero.jpg" 
                 alt="سیستم‌های ضدپولشویی و نظارت عملیاتی در صافی‌پی" 
                 fill
                 className="object-cover"

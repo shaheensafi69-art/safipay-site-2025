@@ -126,7 +126,7 @@ export default function SepaRegulatoryPageEn() {
 
             <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
               <Image 
-                src="/blog/iban-account-benefits/hero.jpg" 
+                src="/blog/sepa-regulatory-framework/hero.jpg" 
                 alt="SafiPay SEPA European Clearing Integration" 
                 fill
                 className="object-cover"

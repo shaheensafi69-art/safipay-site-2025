@@ -126,7 +126,7 @@ export default function GlobalGovernancePageEn() {
 
             <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
               <Image 
-                src="/blog/what-is-safipay/hero.jpg" 
+                src="/blog/global-ecosystem-governance/hero.jpg" 
                 alt="SafiPay Global Ecosystem Governance Architecture" 
                 fill
                 className="object-cover"

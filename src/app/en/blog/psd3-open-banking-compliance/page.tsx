@@ -126,7 +126,7 @@ export default function Psd3CompliancePageEn() {
 
             <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
               <Image 
-                src="/blog/future-of-banking/hero.jpg" 
+                src="/blog/psd3-open-banking-compliance/hero.jpg" 
                 alt="SafiPay Open Banking and PSD3 Technical Architecture" 
                 fill
                 className="object-cover"

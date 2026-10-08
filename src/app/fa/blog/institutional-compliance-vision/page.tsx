@@ -126,7 +126,7 @@ export default function InstitutionalCompliancePageFa() {
 
             <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
               <Image 
-                src="/blog/about-shaheen-safi/hero.jpg" 
+                src="/blog/institutional-compliance-vision/hero.jpg" 
                 alt="شاهین صافی دایرکتور و فوندر صافی پی" 
                 fill
                 className="object-cover"

@@ -126,7 +126,7 @@ export default function FcaCompliancePageEn() {
 
             <div className="my-8 rounded-3xl overflow-hidden border border-white/10 relative h-72 md:h-96">
               <Image 
-                src="/blog/safipay-system-security/hero.jpg" 
+                src="/blog/fca-compliance-standards/hero.jpg" 
                 alt="SafiPay FCA Asset Safeguarding Architecture" 
                 fill
                 className="object-cover"
